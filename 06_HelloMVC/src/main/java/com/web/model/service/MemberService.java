@@ -1,10 +1,14 @@
 package com.web.model.service;
 
+import static com.web.common.JDBCTemplate.close;
+import static com.web.common.JDBCTemplate.getConnection;
+
 //import static com.jsp.common.JDBCTemplate.getConnection;
 
 import java.sql.Connection;
 
 import com.web.common.JDBCTemplate;
+//import com.web.member.model.vo.Member;
 import com.web.model.dao.MemberDao;
 import com.web.model.dto.MemberDTO;
 
@@ -28,7 +32,7 @@ public class MemberService {
 
 	public MemberDTO login(String userId, String password) {
 		Connection conn = JDBCTemplate.getConnection();
-		MemberDTO list = dao.login(conn, userId, password);
+		MemberDTO list = dao.selectByUserIdAndPw(conn, userId, password);
 		JDBCTemplate.close(conn);
 		return list;
 	}
@@ -58,7 +62,25 @@ public class MemberService {
 			JDBCTemplate.commit(conn);
 		else
 			JDBCTemplate.rollback(conn);
-		JDBCTemplate.close(conn);
+			JDBCTemplate.close(conn);
 		return result;
+	}
+	
+	public int updatePassword(String userId, String password) {
+		Connection conn=JDBCTemplate.getConnection();
+		int result=dao.updatePassword(conn,userId,password);
+		if(result>0)
+			JDBCTemplate.commit(conn);
+		else
+			JDBCTemplate.rollback(conn);
+			JDBCTemplate.close(conn);
+		return result;
+	}
+	
+	public MemberDTO selectByUserIdAndPw(String userId,String password) {
+		Connection conn=getConnection();
+		MemberDTO m=dao.selectByUserIdAndPw(conn,userId,password);
+		JDBCTemplate.close(conn);
+		return m;
 	}
 }

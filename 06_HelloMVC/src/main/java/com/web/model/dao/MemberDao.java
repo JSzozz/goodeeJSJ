@@ -1,5 +1,7 @@
 package com.web.model.dao;
 
+import static com.web.common.JDBCTemplate.close;
+
 import java.io.FileReader;
 import java.io.IOException;
 import java.sql.Connection;
@@ -9,6 +11,7 @@ import java.sql.SQLException;
 import java.util.Properties;
 
 import com.web.common.JDBCTemplate;
+//import com.web.member.model.vo.Member;
 import com.web.model.dto.MemberDTO;
 
 public class MemberDao {
@@ -25,7 +28,7 @@ public class MemberDao {
 	}
 
 	
-	public MemberDTO login(Connection conn, String userId, String password){
+	public MemberDTO selectByUserIdAndPw(Connection conn, String userId, String password){
 		PreparedStatement pstmt=null;
 		ResultSet rs=null;
 //		String sql="SELECT * FROM MEMBER WHERE MEMBER_NAME LIKE ?";//properties로 하기!
@@ -117,6 +120,23 @@ public class MemberDao {
 			JDBCTemplate.close(pstmt);
 		}return result;
 	}
+	
+	public int updatePassword(Connection conn,String userId,String password) {
+		PreparedStatement pstmt=null;
+		int result=0;
+		try {
+			pstmt=conn.prepareStatement(sql.getProperty("updatePassword"));//UPDATE MEMBER SET PASSWORD=? WHERE USERID=?
+			pstmt.setString(1, password);
+			pstmt.setString(2, userId);
+			result=pstmt.executeUpdate();
+		}catch(SQLException e){
+			e.printStackTrace();
+		}finally {
+			JDBCTemplate.close(pstmt);;
+		}return result;
+	}
+	
+
 	
 	private MemberDTO getMember(ResultSet rs) throws SQLException{
 		return MemberDTO.builder().userId(rs.getString("userid"))

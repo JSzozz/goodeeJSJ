@@ -3,6 +3,7 @@
 <% 
 String msg=(String)request.getAttribute("msg");/* msg:아이디, 패스워드가 일치하지 않습니다. */
 String loc=(String)request.getAttribute("loc");/* loc(location):/ */
+String script=(String)request.getAttribute("script");
 %> 
     
 <!DOCTYPE html>
@@ -15,6 +16,9 @@ String loc=(String)request.getAttribute("loc");/* loc(location):/ */
 	
 	<script>
 		alert("<%=msg%>");
+		<%=script!=null?script:""%>;
+		/* script : close(); */
+		
 		location.replace("<%=request.getContextPath()%><%=loc%>");
 	</script>
 	<!-- 브라우저/서버가 2번 읽기 때문에 ""가 추가적으로 필요함! -->

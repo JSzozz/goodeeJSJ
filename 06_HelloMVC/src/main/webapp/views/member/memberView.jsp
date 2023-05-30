@@ -120,7 +120,9 @@
 	</section>
 	<script>
 		const fn_updatePassword=()=>{
-			$("#memberFrm").attr("action","<%=request.getContextPath()%>/member/updatePassword.do").submit();
+			/* 새 창으로 패스워드 변경하자 */
+			open("<%=request.getContextPath()%>/member/passwordUpdate.do?userId=<%=loginMember.getUserId()%>","_blank","width=400,height=200");
+			<%-- $("#memberFrm").attr("action","<%=request.getContextPath()%>/member/updatePassword.do").submit(); --%>
 		}
 		
 		const fn_updateMember=()=>{
