@@ -45,7 +45,7 @@ public class UpdatePasswordEndServlet extends HttpServlet {
 			if(result>0) {
 				msg="비밀번호가 수정되었습니다.";
 				loc="/";
-				request.setAttribute("script", "close();");
+				request.setAttribute("script", "opener.location.replace('"+request.getContextPath()+"/logout.do');close();");
 			}else {
 				msg="비밀번호 수정이 실패하였습니다.";
 				loc="/member/updatePassword.do";

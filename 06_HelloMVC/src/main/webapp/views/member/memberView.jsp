@@ -92,8 +92,6 @@
 							<input type="radio" name="gender" id="gender1" value="F"
 							<%=infoMember.getGender()=='F'?"checked":"" %>>
 							<label for="gender1">여</label>
-							
-						
 					</td>
 				</tr>
 				<tr>
@@ -109,13 +107,12 @@
 						<%=checkData[3] %>><label for="hobby3">게임</label>
 						<input type="checkbox" name="hobby" id="hobby4" value="여행" 
 						<%=checkData[4] %>><label for="hobby4">여행</label><br />
-
 					</td>
 				</tr>
 			</table>
 			<input type="button" onclick="fn_updatePassword();" value="비밀번호수정"/>
 			<input type="button" onclick="fn_updateMember();" value="정보수정"/>
-			<input type="button" value="탈퇴"/>
+			<input type="button" value="탈퇴" onclick=/>
 		</form>
 	</section>
 	<script>
@@ -124,7 +121,6 @@
 			open("<%=request.getContextPath()%>/member/passwordUpdate.do?userId=<%=loginMember.getUserId()%>","_blank","width=400,height=200");
 			<%-- $("#memberFrm").attr("action","<%=request.getContextPath()%>/member/updatePassword.do").submit(); --%>
 		}
-		
 		const fn_updateMember=()=>{
 			/* form전송하기 */
 			$("#memberFrm").attr("action","<%=request.getContextPath()%>/member/updateEndMember.do").submit();
