@@ -18,6 +18,8 @@
 		첨부파일 있으면 이미지, 없으면 공란으로 표시
 		이미지파일은 web/images/file.png에 저장 -->
 		</table>
+		<br>
+		<button>글쓰기</button>
 	</section>
 
  	<style>

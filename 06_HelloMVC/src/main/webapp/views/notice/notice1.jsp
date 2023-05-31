@@ -1,6 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ include file="/views/common/header.jsp"%>
 	
 	<!-- 공지사항상세화면.txt -->
 	<div id="notice-container">
@@ -14,7 +13,7 @@
 	            <td></td>
 	        </tr>
 	        <tr>
-	            <th>첨부파일</th>
+	            <th>첨부파일*아직안해도됨</th>
 	            <td>
 	           	있으면 이미지출력하기 없으면 공란
 	            </td>
@@ -41,4 +40,3 @@
     table#tbl-notice td {border:1px solid; padding: 5px 0 5px 10px; text-align:left;}
     </style>
     
-<%@ include file="/views/common/footer.jsp"%>

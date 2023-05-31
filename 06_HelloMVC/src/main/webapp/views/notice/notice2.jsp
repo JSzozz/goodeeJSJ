@@ -1,6 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<%@ include file="/views/common/header.jsp"%>
 
 	<!-- 공지사항작성화면.txt -->
 	<div id="notice-container">
@@ -38,4 +37,3 @@
     table#tbl-notice th {width: 125px; border:1px solid; padding: 5px 0; text-align:center;} 
     table#tbl-notice td {border:1px solid; padding: 5px 0 5px 10px; text-align:left;}
     </style>
-	<%@ include file="/views/common/footer.jsp"%>
