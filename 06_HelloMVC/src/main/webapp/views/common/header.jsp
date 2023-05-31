@@ -36,7 +36,7 @@
 <body>
 	<div id="container">
 		<header>
-			<h1> Hello MVC </h1>
+			<a href="<%=request.getContextPath() %>" style="text-decoration-line: none; color:blue;"><h1> Hello MVC </h1></a>
 			
 			<div class="login-container">
 			 <%
@@ -95,6 +95,11 @@
 					<li class="home"><a href="">home</a>
 					<li id="notice"><a href="">공지사항</a>
 					<li id="board"><a href="">게시판</a>
+					<%
+					if(loginMember!=null&&loginMember.getUserId().equals("admin")){
+					%>
+					<li id="memberManage"><a href="<%=request.getContextPath() %>/admin/memberList.do">회원관리</a>
+					<%} %>
 				</ul>
 			</nav>
 		</header>

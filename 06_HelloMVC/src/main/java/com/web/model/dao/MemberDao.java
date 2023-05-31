@@ -1,13 +1,13 @@
 package com.web.model.dao;
 
-import static com.web.common.JDBCTemplate.close;
-
 import java.io.FileReader;
 import java.io.IOException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Properties;
 
 import com.web.common.JDBCTemplate;
@@ -77,6 +77,7 @@ public class MemberDao {
 		}
 		return result;
 	}
+	
 
 	public MemberDTO selectByUserId(Connection conn, String userId) {
 		PreparedStatement pstmt=null;

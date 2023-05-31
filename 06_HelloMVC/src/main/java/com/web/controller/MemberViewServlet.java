@@ -1,6 +1,7 @@
 package com.web.controller;
 
 import java.io.IOException;
+import java.util.List;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -36,6 +37,7 @@ public class MemberViewServlet extends HttpServlet {
 //		회원정보를 보여주는 화면으로 이동시키는 서블릿
 //		1. DB에 로그인한 회원의 정보를 가져와 화면에 출력
 		String userId=request.getParameter("userId");
+		
 		MemberDTO m=new MemberService().selectByUserId(userId);
 
 		//Email, Phone복호화

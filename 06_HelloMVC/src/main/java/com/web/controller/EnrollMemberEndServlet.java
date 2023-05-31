@@ -47,7 +47,7 @@ public class EnrollMemberEndServlet extends HttpServlet {
 		try {
 			phone=AESEncryptor.encryptData(phone);
 		}catch(Exception e){
-			System.out.println("email 암호화실패(*EnrollMemberEndServlet)");
+			System.out.println("phone 암호화실패(*EnrollMemberEndServlet)");
 		}
 		String address=request.getParameter("address");
 		String gender=request.getParameter("gender");

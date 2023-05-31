@@ -1,11 +1,11 @@
 package com.web.model.service;
 
-import static com.web.common.JDBCTemplate.close;
 import static com.web.common.JDBCTemplate.getConnection;
 
 //import static com.jsp.common.JDBCTemplate.getConnection;
 
 import java.sql.Connection;
+import java.util.List;
 
 import com.web.common.JDBCTemplate;
 //import com.web.member.model.vo.Member;
