@@ -92,14 +92,14 @@
 				return false; 
 				}
 		}
-        $("#password_2").change(e=>{
+        $("#password_2").blur(e=>{
         	const password=$("#password_").val();
         	const passwordCheck=$(e.target).val();
         	if(password==passwordCheck){
         	}else{
         		alert("비밀번호가 일치하지 않습니다!");
         		$("#password_2").val("");
-				$("#password_2").focus();
+				$("#password_").focus();
         	}
         });
     </script>
