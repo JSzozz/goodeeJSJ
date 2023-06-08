@@ -31,7 +31,7 @@ table#tbl-board td {border: 1px solid;padding: 5px 0 5px 10px;text-align: left;}
 			<tr>
 				<th>첨부파일</th>
 				<td>있으면 이미지출력 없으면 공란, 클릭하면 다운로드할 수 있게 구현</td>
-			</tr>
+			</tr>ㅇ
 			<tr>
 				<th>내 용</th>
 				<td></td>
