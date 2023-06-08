@@ -15,6 +15,8 @@ import java.util.Properties;
 
 import com.web.model.dto.MemberDTO;
 
+import oracle.jdbc.proxy.annotation.Pre;
+
 public class AdminDao {
 
 	private final Properties sql = new Properties();
@@ -75,6 +77,53 @@ public class AdminDao {
 
 	}
 
+	public List<MemberDTO> selectMemberByKeyword(Connection conn, String type, String keyword, int cPage, int numPerpage){//String type은 컬럼명
+		PreparedStatement pstmt=null;
+		ResultSet rs=null;
+		String query= sql.getProperty("selectMemberByKeyword");//SELECT * FROM (SELECT rownum AS rnum, m.* FROM (SELECT * FROM MEMBER WHERE #COL LIKE ?)m) WHERE rnum BETWEEN ? AND ?
+		List<MemberDTO> members=new ArrayList();
+
+		try {
+			query=query.replace("#COL", type);//v : 컬럼명을 문자열로 인식하기 때문에 필요한 작업
+			pstmt=conn.prepareStatement(query);
+			pstmt.setString(1, type.equals("gender")?keyword:"%"+keyword+"%");
+			pstmt.setInt(2, (cPage-1)*numPerpage+1);
+			pstmt.setInt(3, cPage*numPerpage);
+			rs=pstmt.executeQuery();
+			while(rs.next()) {
+				members.add(getMember(rs));
+			}
+				
+		}catch(SQLException e) {
+			e.printStackTrace();
+		}finally {
+			close(rs);
+			close(pstmt);
+		}return members;
+	}
+	
+	public int selectMemberByKeywordCount(Connection conn, String type, String keyword) {
+		PreparedStatement pstmt=null;
+		ResultSet rs=null;
+		int result=0;
+		String query=sql.getProperty("selectMemberByKeywordCount").replace("#COL", type);//SELECT COUNT(*) FROM MEMBER WHERE #COL LIKE ?
+		try {
+			pstmt=conn.prepareStatement(query);
+			pstmt.setString(1, type.equals("gender")?keyword:"%"+keyword+"%");
+			rs=pstmt.executeQuery();
+			if(rs.next()) {
+				result=rs.getInt(1);
+			}
+			
+		}catch(SQLException e) {
+			e.printStackTrace();
+		}finally {
+			close(rs);
+			close(pstmt);
+		}return result;
+		
+		
+	}
 	public static MemberDTO getMember(ResultSet rs) throws SQLException { // static 메소드
 		return MemberDTO.builder().userId(rs.getString("userId")).userName(rs.getString("username"))
 				.gender(rs.getString("gender").charAt(0)).age(rs.getInt("age")).email(rs.getString("email"))
