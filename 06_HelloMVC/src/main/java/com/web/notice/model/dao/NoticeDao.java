@@ -45,6 +45,7 @@ public class NoticeDao {
 		List<Notice> list=new ArrayList();
 		try {
 			pstmt=conn.prepareStatement(sql.getProperty("selectNotice"));
+			//SELECT * FROM (SELECT ROWNUM AS RNUM, N.* FROM(SELECT * FROM NOTICE ORDER BY NOTICE_DATE DESC)N) WHERE RNUM BETWEEN ? AND ?
 			pstmt.setInt(1, (cPage-1)*numPerpage+1);
 			pstmt.setInt(2, cPage*numPerpage);
 			rs=pstmt.executeQuery();

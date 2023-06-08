@@ -1,7 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ include file="/views/common/header.jsp"%>
-<section id="content">
 	<style>
 section#board-container {width: 600px;margin: 0 auto;text-align: center;}
 section#board-container h2 {margin: 10px 0;}
@@ -46,5 +45,4 @@ table#tbl-board td {border: 1px solid;padding: 5px 0 5px 10px;text-align: left;}
 		</table>
 
 	</section>
-</section>
 <%@ include file="/views/common/footer.jsp"%>
