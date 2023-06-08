@@ -18,7 +18,9 @@ import com.web.model.dto.MemberDTO;
 /**
  * Servlet Filter implementation class adminCheckFilter
  */
-@WebFilter("/admin/*")
+
+@WebFilter(urlPatterns={"/admin/*","/notice/insertForm.do"})
+// #springsecurity : 보안 시큐리티API(?)
 public class adminCheckFilter extends HttpFilter implements Filter {
        
     /**

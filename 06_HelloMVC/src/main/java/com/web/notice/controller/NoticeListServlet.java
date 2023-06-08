@@ -1,4 +1,4 @@
-package com.web.admin.controller;
+package com.web.notice.controller;
 
 import java.io.IOException;
 import java.util.List;
@@ -9,20 +9,20 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.web.admin.model.service.AdminService;
-import com.web.model.dto.MemberDTO;
+import com.web.notice.model.service.NoticeService;
+import com.web.notice.model.vo.Notice;
 
 /**
- * Servlet implementation class MemberSearchServlet
+ * Servlet implementation class NoticeListServlet
  */
-@WebServlet("/admin/searchMember")
-public class MemberSearchServlet extends HttpServlet {
+@WebServlet("/notice/noticeList.do")
+public class NoticeListServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public MemberSearchServlet() {
+    public NoticeListServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -31,14 +31,8 @@ public class MemberSearchServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
 		
-		//클라이언트가 보낸 데이터를 기준으로 Member테이블에서 해당하는 데이터를 조회해서 보내줌
-		String type=request.getParameter("searchType");
-		String keyword=request.getParameter("searchKeyword");
-		
-		
-		int cPage, numPerpage;
+		int cPage,numPerpage;
 		try {
 			cPage=Integer.parseInt(request.getParameter("cPage"));
 		}catch(NumberFormatException e) {
@@ -49,14 +43,8 @@ public class MemberSearchServlet extends HttpServlet {
 		}catch(NumberFormatException e) {
 			numPerpage=5;
 		}
-		
-		List<MemberDTO> members=new AdminService().selectMemberByKeyword(type, keyword, cPage, numPerpage);
-		
-		request.setAttribute("members", members);
-		
 		String pageBar="";
-		
-		int totalData=new AdminService().selectMemberByKeywordCount(type, keyword);
+		int totalData=new NoticeService().selectNoticeCount();
 		int totalPage=(int)Math.ceil((double)totalData/numPerpage);
 		int pageBarSize=5;
 		int pageNo=((cPage-1)/pageBarSize)*pageBarSize+1;
@@ -64,44 +52,34 @@ public class MemberSearchServlet extends HttpServlet {
 		
 		if(pageNo==1) {
 			pageBar+="<span>[이전]</span>";
-			
 		}else {
 			pageBar+="<a href='"+request.getRequestURI()
-			+"?searchType="+type
-			+"&searchKeyword="+keyword
-			+"&cPage="+(pageNo-1)
-			+"&numPerPage="+numPerpage
-			+"'>[이전]</a>";
+			+"?cPage="+(pageNo-1)
+			+"&numPerpage="+numPerpage+">[이전]</a>'";
 		}
 		while(!(pageNo>pageEnd||pageNo>totalPage)) {
 			if(pageNo==cPage) {
 				pageBar+="<span>"+pageNo+"</span>";
 			}else {
 				pageBar+="<a href='"+request.getRequestURI()
-				+"?searchType="+type
-				+"&searchKeyword="+keyword
-				+"&cPage="+pageNo
-				+"&numPerPage="+numPerpage
-				+"'>"+pageNo+"</a>";
+				+"?cPage="+pageNo
+				+"&numPerpage="+numPerpage+">"+pageNo+"</a>'";
 			}
 			pageNo++;
 		}
 		if(pageNo>totalPage) {
-			pageBar="<span>[다음]</span>";
-			
+			pageBar+="<span>[다음]</span>";
 		}else {
 			pageBar+="<a href='"+request.getRequestURI()
-			+"?searchType="+type
-			+"&searchKeyword="+keyword
-			+"&cPage="+pageNo
-			+"&numPerPage="+numPerpage
-			+"'>[다음]</a>";
+			+"?cPage="+pageNo
+			+"&numPerpage="+numPerpage+">[다음]</a>'";
 		}
 		request.setAttribute("pageBar", pageBar);
+		List<Notice> list=new NoticeService().selectNotice(cPage,numPerpage);
+		request.setAttribute("notices", list);
 		
-		request.getRequestDispatcher("/views/admin/manageMember.jsp").forward(request, response);
-		
-		
+		request.getRequestDispatcher("/views/notice/noticeList.jsp")
+		.forward(request, response);
 	}
 
 	/**

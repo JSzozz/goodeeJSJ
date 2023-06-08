@@ -93,7 +93,7 @@
 			<nav>
 				<ul class="main-nav">
 					<li class="home"><a href="">home</a>
-					<li id="notice"><a href="">공지사항</a>
+					<li id="notice"><a href="<%=request.getContextPath()%>/notice/noticeList.do">공지사항</a>
 					<li id="board"><a href="">게시판</a>
 					<%
 					if(loginMember!=null&&loginMember.getUserId().equals("admin")){
