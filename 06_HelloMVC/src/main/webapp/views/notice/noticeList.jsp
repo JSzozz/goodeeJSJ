@@ -5,11 +5,21 @@
 	List<Notice> notices=(List)request.getAttribute("notices");
 %>
 <%@ include file="/views/common/header.jsp"%>
+<style>
+	section#notice-container {width: 600px;margin: 0 auto;text-align: center;}
+	section#notice-container h2 {margin: 10px 0;}
+	table#tbl-notice {width: 100%;margin: 0 auto;border: 1px solid black;border-collapse: collapse;}
+	table#tbl-notice th, table#tbl-notice td {border: 1px solid;padding: 5px 0;text-align: center;}
+	section#notice-container>div:first-of-type {/* text-align:left; *//* width:100%; */display: flex;justify-context: end;}
+	/* button#insertNotice {margin-left:524px;} */
+	
+</style>
+
 <section id="notice-container">
 	<h2>공지사항</h2>
 	<div>
 		<%if(loginMember!=null&&loginMember.getUserId().equals("admin")) { %>
-		<button
+		<button id="insertNotice"
 			onclick="location.assign('<%=request.getContextPath()%>/notice/insertForm.do')">글쓰기
 		</button>
 		<%} %>
@@ -51,11 +61,4 @@
 		<%=request.getAttribute("pageBar") %>
 	</div>
 </section>
-<style>
-	section#notice-container {width: 600px;margin: 0 auto;text-align: center;}
-	section#notice-container h2 {margin: 10px 0;}
-	table#tbl-notice {width: 100%;margin: 0 auto;border: 1px solid black;border-collapse: collapse;}
-	table#tbl-notice th, table#tbl-notice td {border: 1px solid;padding: 5px 0;text-align: center;}
-	section#notice-container>div:first-of-type {/* text-align:left; *//* width:100%; */display: flex;justify-context: end;}
-</style>
 <%@ include file="/views/common/footer.jsp"%>

@@ -4,15 +4,14 @@
 <%
 	List<Board> boards=(List<Board>)request.getAttribute("boards");
 %>	
-	
-	
 <style>
 	section#board-container {width: 600px;margin: 0 auto;text-align: center;}
 	section#board-container h2 {margin: 10px 0;}
 	table#tbl-board {width: 100%;margin: 0 auto;border: 1px solid black;border-collapse: collapse;clear: both;}
 	table#tbl-board th, table#tbl-board td {border: 1px solid;padding: 5px 0;text-align: center;}
 	/*글쓰기버튼*/
-	input#btn-add {float: right;margin: 0 0 15px;}
+	input#btn-add {float: right;margin: 0 0 15px; margin-left:522px;}
+	/* button{float: right;margin: 0 0 15px; margin-left:522px;} */
 	/*페이지바*/
 	div#pageBar {margin-top: 10px;text-align: center;background-color: rgba(0, 188, 212, 0.3);}
 	div#pageBar span.cPage {color: #0066ff;}
@@ -25,10 +24,9 @@
 	<h2>게시판</h2>
 	<div>
 		<%if(loginMember!=null) {%>
-		<button
-			onclick="location.assing('<%=request.getContextPath() %>/board/insertForm.do')">글쓰기
-		</button>
-
+		<input type="button" id="btn-add" value="글쓰기" onclick="location.assing('<%=request.getContextPath() %>/board/insertForm.do')">
+		<%-- 	onclick="location.assing('<%=request.getContextPath() %>/board/insertForm.do')">글쓰기
+		</button> --%>
 		<%} %>
 	</div>
 	<table id="tbl-board">

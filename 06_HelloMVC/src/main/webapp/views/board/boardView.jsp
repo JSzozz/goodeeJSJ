@@ -97,8 +97,10 @@
 				<!-- 관리자, 작성자만 가능하게! -->
 				<td>	
 					<button class="btn-reply">답글</button>
+					<% if(loginMember.getUserId().equals("admin")) {%>
 					<button class="btn-reply">수정</button>
 					<button class="btn-reply">삭제</button>
+					<%} %>
 				</td>
 			</tr>
 			<%	}
@@ -108,7 +110,6 @@
 	
 	<script>
 		const loginCheck=()=>{
-			console.log("gd");
 			const userId='<%=loginMember!=null?loginMember.getUserId():""%>';
 			if(userId==""){
 				alert("로그인해주세요");
