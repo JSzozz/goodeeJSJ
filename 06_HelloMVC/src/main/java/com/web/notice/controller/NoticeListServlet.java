@@ -72,7 +72,7 @@ public class NoticeListServlet extends HttpServlet {
 		}else {
 			pageBar+="<a href='"+request.getRequestURI()
 			+"?cPage="+pageNo
-			+"&numPerpage="+numPerpage+">[다음]</a>'";
+			+"&numPerpage="+numPerpage+"'>[다음]</a>";
 		}
 		request.setAttribute("pageBar", pageBar);
 		List<Notice> list=new NoticeService().selectNotice(cPage,numPerpage);

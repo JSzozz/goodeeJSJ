@@ -16,7 +16,8 @@ public class Board {
 
 	private int boardNo;
 	private String boardTitle;
-	private String boardWriter;
+	private String boardWriter; // 관습적 사용 방식
+//	private Member boardWriter; //참조관계에 따른 자바클래스
 	private String boardContent;
 	private String boardOriginalFilename;
 	private String boardRenamedFilename;

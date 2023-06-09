@@ -11,7 +11,6 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.web.board.model.service.BoardService;
 import com.web.board.model.vo.Board;
-import com.web.notice.model.service.NoticeService;
 
 /**
  * Servlet implementation class BoardListServlet
@@ -32,7 +31,6 @@ public class BoardListServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
 		int cPage,numPerpage;
 		try {
 			cPage=Integer.parseInt(request.getParameter("cPage"));
@@ -44,8 +42,11 @@ public class BoardListServlet extends HttpServlet {
 		}catch(NumberFormatException e) {
 			numPerpage=5;
 		}
+	
+		List<Board> boards=new BoardService().selectBoard(cPage,numPerpage);
+		
 		String pageBar="";
-		int totalData=new NoticeService().selectNoticeCount();
+		int totalData=new BoardService().selectBoardCount();
 		int totalPage=(int)Math.ceil((double)totalData/numPerpage);
 		int pageBarSize=5;
 		int pageNo=((cPage-1)/pageBarSize)*pageBarSize+1;
@@ -54,32 +55,38 @@ public class BoardListServlet extends HttpServlet {
 		if(pageNo==1) {
 			pageBar+="<span>[이전]</span>";
 		}else {
-			pageBar+="<a href='"+request.getRequestURI()
-			+"?cPage="+(pageNo-1)
-			+"&numPerpage="+numPerpage+">[이전]</a>'";
+			pageBar+="<a href='"+request.getRequestURI()+"?cPage="+(pageNo-1)
+					+"&numPerpage="+numPerpage+"'>[이전]</a>";
 		}
+		
 		while(!(pageNo>pageEnd||pageNo>totalPage)) {
 			if(pageNo==cPage) {
 				pageBar+="<span>"+pageNo+"</span>";
 			}else {
 				pageBar+="<a href='"+request.getRequestURI()
-				+"?cPage="+pageNo
-				+"&numPerpage="+numPerpage+">"+pageNo+"</a>'";
+						+"?cPage="+(pageNo)
+						+"&numPerpage="+numPerpage+"'>"+pageNo+"</a>";
 			}
 			pageNo++;
 		}
+		
 		if(pageNo>totalPage) {
 			pageBar+="<span>[다음]</span>";
 		}else {
 			pageBar+="<a href='"+request.getRequestURI()
-			+"?cPage="+pageNo
-			+"&numPerpage="+numPerpage+">[다음]</a>'";
+					+"?cPage="+(pageNo)
+					+"&numPerpage="+numPerpage+"'>[다음]</a>";
 		}
+		
 		request.setAttribute("pageBar", pageBar);
-		List<Board> list=new BoardService().selectBoard(cPage,numPerpage);
-		request.setAttribute("boards", list);
+		request.setAttribute("boards", boards);
+		
+		request.getRequestDispatcher("/views/board/boardList.jsp")
+		.forward(request, response);
 	
-		request.getRequestDispatcher("/views/board/boardList.jsp").forward(request, response);
+	
+	
+	
 	}
 
 	/**
