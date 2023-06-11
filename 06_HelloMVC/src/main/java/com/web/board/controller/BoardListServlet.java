@@ -56,16 +56,16 @@ public class BoardListServlet extends HttpServlet {
 			pageBar+="<span>[이전]</span>";
 		}else {
 			pageBar+="<a href='"+request.getRequestURI()+"?cPage="+(pageNo-1)
-					+"&numPerpage="+numPerpage+"'>[이전]</a>";
+					+"&numPerpage="+numPerpage+"'>[이전]</a> ";
 		}
 		
 		while(!(pageNo>pageEnd||pageNo>totalPage)) {
 			if(pageNo==cPage) {
-				pageBar+="<span>"+pageNo+"</span>";
+				pageBar+="<span> "+pageNo+" </span>";
 			}else {
-				pageBar+="<a href='"+request.getRequestURI()
+				pageBar+="<span> </span>"+"<a href='"+request.getRequestURI()
 						+"?cPage="+(pageNo)
-						+"&numPerpage="+numPerpage+"'>"+pageNo+"</a>";
+						+"&numPerpage="+numPerpage+"'>"+pageNo+"</a>"+"<span> </span>";
 			}
 			pageNo++;
 		}

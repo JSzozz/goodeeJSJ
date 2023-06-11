@@ -16,7 +16,7 @@
 	<form action="<%=request.getContextPath()%>/notice/insertNotice.do" method="post" enctype="multipart/form-data">
 		<table id="tbl-notice">
 			<tr>
-ontextPath()%>/notice/insertNotice.do" method="post" enctype="				<th>제 목</th>
+				<th>제 목</th>
 				<td><input type="text" name="noticeTitle" required></td>
 			</tr>
 			<tr>

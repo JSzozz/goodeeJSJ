@@ -59,7 +59,7 @@ public class NoticeListServlet extends HttpServlet {
 		}
 		while(!(pageNo>pageEnd||pageNo>totalPage)) {
 			if(pageNo==cPage) {
-				pageBar+="<span>"+pageNo+"</span>";
+				pageBar+="<span> "+pageNo+" </span>";
 			}else {
 				pageBar+="<a href='"+request.getRequestURI()
 				+"?cPage="+pageNo

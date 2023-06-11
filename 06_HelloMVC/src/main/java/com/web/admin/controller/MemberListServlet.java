@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.web.admin.model.service.AdminService;
+import com.web.board.model.service.BoardService;
 import com.web.model.dto.MemberDTO;
 
 /**
@@ -31,46 +32,7 @@ public class MemberListServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse
 	 *      response)
 	 */
-//    protected void doGet2(HttpServletRequest request, HttpServletRequest resonse) throws ServletException, IOException{
-//    	
-//    	//페이징처리하기
-//    	int cPage;
-//    	try {
-//    		cPage=Integer.parseInt(request.getParameter("cPage"));
-//    	}catch(NumberFormatException e) {
-//    		cPage=1; // v
-//    	}
-//    	int numPerpage=10;
-//    	//1. DB에서 member테이블에 있는 데이터 가져오기
-//    	List<MemberDTO> members=new AdminService().selectMemberAll2(cPage, numPerpage);
-//    	//2. DB에서 가져온 데이터 저장
-//    	request.setAttribute("members", members);
-//    	//3. 페이지바를 구성
-//    	// 1) DB에 저장된 전체 데이터의 수를 가져오기
-//    	int totalData=new AdminService().selectMemberCount2();
-//    	// 2) 전체 페이지 수 계산하기(소수점 주의)
-//    	int totalPage=(int)Math.ceil(totalData/numPerpage);
-//    	// 3) 페이지바 시작번호 계산하기 
-//    	int pageBarSize=10;
-//    	int pageNo= ((cPage-1)/pageBarSize)*pageBarSize+1;
-//    	int pageEnd= pageNo+pageBarSize-1;
-//    	//4. 페이지바를 구성하는 html저장하기 : pageBar
-//    	String pageBar="";
-//    	if(pageNo==1) {
-//    		pageBar+="<span>[이전]</span>";
-//    	}else {
-//    		pageBar+="<a href='"+request.getRequestURI()+"?cPage="+(pageNo-1)+"'>[이전]</a>";
-//    	}
-//    	//선택할 페이지 번호 출력하기
-//    	while(!(pageNo>pageEnd)||pageNo>totalPage)){
-//    		if(pageNo==cPage) {
-//    			pageBar+="<span>"+pageNo+"</span>";
-//    		}else {
-//    			pageBar+="<a href='"+request.getRequestURI()+"?cPage="+pageNo+"'>"+pageNo+"</a>";
-//    		}
-//    	}
-//    	
-//    }
+
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
@@ -112,28 +74,51 @@ public class MemberListServlet extends HttpServlet {
 		// 4. 페이지바를 구성하는 html저장하기 : pageBar
 		String pageBar = "";// append방식이 더 효율적
 		// 이전 표시하기
-		if (pageNo == 1) {
-			pageBar += "<span>[이전]</span>";
-		} else {
-			pageBar += "<a href='" + request.getRequestURI() + "?cPage=" + (pageNo - 1) + "'>[이전]</a>";
+//		if (pageNo == 1) {
+//			pageBar += "<span>[이전]</span>";
+//		} else {
+//			pageBar += "<a href='" + request.getRequestURI() + "?cPage=" + (pageNo - 1) + "'>[이전]</a>";
+//		}
+		if(pageNo==1) {
+			pageBar+="<span>[이전]</span>";
+		}else {
+			pageBar+="<a href='"+request.getRequestURI()+"?cPage="+(pageNo-1)
+					+"&numPerpage="+numPerpage+"'>[이전]</a> ";
 		}
 		// 선택할 페이지 번호 출력하기
-		while (!(pageNo > pageEnd || pageNo > totalPage)) {// v: 부정연산_조건문이 다 false여야 true
-			if (pageNo == cPage) {
-				pageBar += "<span>" + pageNo + "</span>";
-			} else {
-				pageBar += "<a href='" + request.getRequestURI() + "?cPage=" + pageNo + "'>" + pageNo + "</a>";
+//		while (!(pageNo > pageEnd || pageNo > totalPage)) {// v: 부정연산_조건문이 다 false여야 true
+//			if (pageNo == cPage) {
+//				pageBar += "<span>" + pageNo + "</span>";
+//			} else {
+//				pageBar += "<a href='" + request.getRequestURI() + "?cPage=" + pageNo + "'>" + pageNo + "</a>";
+//			}
+//			pageNo++;
+//		}
+		while(!(pageNo>pageEnd||pageNo>totalPage)) {
+			if(pageNo==cPage) {
+				pageBar+="<span>"+pageNo+"</span>";
+			}else {
+				pageBar+="<a href='"+request.getRequestURI()
+						+"?cPage="+(pageNo)
+						+"&numPerpage="+numPerpage+"'>"+pageNo+"</a>";
 			}
 			pageNo++;
 		}
 		// 다음 출력
-		if (pageNo > totalPage) {
-			pageBar += "<span>[다음]</span>";
-		} else {
-			pageBar += "<a href='" + request.getRequestURI() + "?cPage=" + pageNo + "'>[다음]</a>";
+//		if (pageNo > totalPage) {
+//			pageBar += "<span>[다음]</span>";
+//		} else {
+//			pageBar += "<a href='" + request.getRequestURI() + "?cPage=" + pageNo + "'>[다음]</a>";
+//		}
+		if(pageNo>totalPage) {
+			pageBar+="<span>[다음]</span>";
+		}else {
+			pageBar+="<a href='"+request.getRequestURI()
+					+"?cPage="+(pageNo)
+					+"&numPerpage="+numPerpage+"'>[다음]</a>";
 		}
 		request.setAttribute("pageBar", pageBar);
-
+		
 		// 4.출력할 화면을 선택(이동)
 		request.getRequestDispatcher("/views/admin/manageMember.jsp").forward(request, response);
 	}
