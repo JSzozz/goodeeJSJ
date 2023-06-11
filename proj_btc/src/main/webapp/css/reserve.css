@@ -16,3 +16,6 @@ div#search-userName{display:none;}
 div#search-gender{display:none;}
 div#numPerpage-container{float:right;}
 form#numperPageFrm{display:inline;}
+
+table.scriptCalendar{margin-left:auto;margin-right:auto;}
+div.reserve_step2{display:none;}
