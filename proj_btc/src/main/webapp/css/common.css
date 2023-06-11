@@ -1,0 +1,71 @@
+	
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+      text-decoration: none;
+  }
+  
+li{list-style:none}
+
+a{text-decoration:none;font-size:14px}
+
+/* menu */
+.menu {
+    width: 100%;
+    overflow: hidden;
+    margin: 10px auto;
+    position: fixed;
+    z-index: 1;
+}
+
+.menu > li {
+    width: 12.5%; /*12.5*5=100%*/
+    float: left;
+    text-align: center;
+    line-height: 40px;
+    background-color: #ffffff;
+}
+
+.menu a {
+    color: #000000;
+}
+
+.menu > li.liHover:hover {
+    background-color: #f9c47f;
+    color:#ffffff;
+    transition-duration: 0.5s;
+    padding: 5px 0px 2px 0px; 
+    /* ㄴ 메뉴바 옮겨주는 효과 : 별로면 빼기 */
+    
+}
+.menu > li > a:hover {
+    font-weight: bold;
+}
+
+.menu > li.three:hover .submenu {
+    height: 150px; /*서브메뉴 li한개의 높이 50*5*/
+    transition-duration: 1s;
+}
+
+.menu > li.two:hover .submenu {
+    height: 100px; /*서브메뉴 li한개의 높이 50*5*/
+    transition-duration: 1s;
+}
+
+/* submenu  */
+.submenu > li {
+    line-height: 50px;
+    background-color: #fff;
+}
+
+.submenu {
+    height: 0; /*ul의 높이를 안보이게 처리*/
+    overflow: hidden;
+}
+.submenu > li a:hover {
+    font-weight: bold;
+    text-decoration: underline;
+}
+
+/* .contents-area {margin-top: 200px;} */
