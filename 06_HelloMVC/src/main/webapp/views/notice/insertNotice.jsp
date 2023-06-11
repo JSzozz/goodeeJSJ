@@ -13,11 +13,10 @@
 <!-- 공지사항작성화면.txt -->
 <section id="notice-container">
 		<h2>공지사항작성</h2>
-	<form action="<%=request.getContextPath()%>/notice/insertNotice.do"
-		method="post" enctype="multipart/form-data">
+	<form action="<%=request.getContextPath()%>/notice/insertNotice.do" method="post" enctype="multipart/form-data">
 		<table id="tbl-notice">
 			<tr>
-				<th>제 목</th>
+ontextPath()%>/notice/insertNotice.do" method="post" enctype="				<th>제 목</th>
 				<td><input type="text" name="noticeTitle" required></td>
 			</tr>
 			<tr>

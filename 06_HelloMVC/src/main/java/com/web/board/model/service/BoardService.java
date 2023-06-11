@@ -49,6 +49,7 @@ public class BoardService {
 		close(conn);
 		return list;
 	}
+	
 	public int insertBoard(Board b) {
 		Connection conn=getConnection();
 		int result=dao.insertBoard(conn, b);
@@ -57,12 +58,15 @@ public class BoardService {
 		close(conn);
 		return result;
 	}
+	
 	public int updateBoard(Board b) {
 		return 0;
 	}
+	
 	public int deleteBoard(int no) {
 		return 0;
 	}
+	
 	public int insertBoardComment(BoardComment bc) {
 		Connection conn=getConnection();
 		int result=dao.insertBoardComment(conn, bc);

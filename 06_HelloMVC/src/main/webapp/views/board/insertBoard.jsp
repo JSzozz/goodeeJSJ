@@ -14,26 +14,26 @@
 
 <div id='board-container'>
 	<h2>게시판 작성</h2>
-	<form action=''>
+	<form action="<%=request.getContextPath()%>/board/insertBoard.do" method="post" enctype="multipart/form-data">
 		<table id='tbl-board'>
 			<tr>
 				<th>제목</th>
-				<td></td>
+				<td><input type="text" name="boardTitle" required></td>
 			</tr>
 			<tr>
 				<th>작성자</th>
-				<td></td>
+				<td><input type="text" name="boardWriter" value="<%=loginMember.getUserId()%>" readonly></td>
 			</tr>
 			<tr>
 				<th>첨부파일</th>
-				<td></td>
+				<td><input type="file" name="upFile"></td>
 			</tr>
 			<tr>
 				<th>내용</th>
-				<td>
+				<td><textarea rows="5" cols="50" name="boardContent" required></textarea></td>
 			</tr>
 			<tr>
-				<th colspan="2"></th>
+				<th colspan="2"><input type="submit" value="등록하기"></th>
 			</tr>
 		</table>
 	</form>

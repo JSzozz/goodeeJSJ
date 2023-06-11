@@ -8,11 +8,13 @@
 %>
 
 <style>
+	
 	section#board-container {width: 600px;margin: 0 auto;text-align: center;}
 	section#board-container h2 {margin: 10px 0;}
 	table#tbl-board {width: 500px;margin: 0 auto;border: 1px solid black;border-collapse: collapse;clear: both;}
 	table#tbl-board th {width: 125px;border: 1px solid;padding: 5px 0;text-align: center;}
 	table#tbl-board td {border: 1px solid;padding: 5px 0 5px 10px;text-align: left;}
+	div.download-container{cursor:pointer;}
 	
 	div#comment-container button#btn-insert{width:60px;height:50px; color:white;background-color:#3300FF;position:relative;top:-20px;}
     /*댓글테이블*/
@@ -56,7 +58,13 @@
 			</tr>
 			<tr>
 				<th>첨부파일</th>
-				<td>있으면 이미지출력 없으면 공란, 클릭하면 다운로드할 수 있게 구현</td>
+				<td>
+					<%if(b.getBoardOriginalFilename()!=null){ %>
+						<div class="download-container" onclick="fileDownload('<%=b.getBoardOriginalFilename()%>');">
+							<img src="<%=request.getContextPath() %>/images/file.png" width="20"><span><%=b.getBoardOriginalFilename() %></span>
+						</div>
+					<%} %>
+				</td>
 			</tr>
 			<tr>
 				<th>내 용</th>
@@ -97,7 +105,7 @@
 				<!-- 관리자, 작성자만 가능하게! -->
 				<td>	
 					<button class="btn-reply">답글</button>
-					<% if(loginMember.getUserId().equals("admin")) {%>
+					<% if(loginMember!=null&&loginMember.getUserId().equals("admin")) {%>
 					<button class="btn-reply">수정</button>
 					<button class="btn-reply">삭제</button>
 					<%} %>
@@ -122,5 +130,10 @@
 				$("#userId").focus();
 			}
 		} --%>
+		
+		const fileDownload=(filename)=>{
+			/* alert("파일다운로드"); */
+			location.assign("<%=request.getContextPath()%>/fileDowload.do?name="+filename);
+		}
 	</script>
 <%@ include file="/views/common/footer.jsp"%>

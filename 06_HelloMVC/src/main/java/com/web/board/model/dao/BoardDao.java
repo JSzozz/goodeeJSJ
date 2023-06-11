@@ -148,14 +148,29 @@ public class BoardDao {
 	}
 
 	public int insertBoard(Connection conn, Board b) {
-		return 0;
+		PreparedStatement pstmt=null;
+		int result=0;
+		try {
+			pstmt=conn.prepareStatement(sql.getProperty("insertBoard"));
+			//INSERT INTO BOARD VALUES(SEQ_BOARD_NO.NEXTVAL, ?, ?, ?, ?, ?, DEFAULT, DEFAULT)
+			pstmt.setString(1,  b.getBoardTitle());
+			pstmt.setString(2, b.getBoardWriter());
+			pstmt.setString(3, b.getBoardContent());
+			pstmt.setString(4, b.getBoardOriginalFilename());
+			pstmt.setString(5, b.getBoardRenamedFilename());
+			result=pstmt.executeUpdate();
+		}catch(SQLException e) {
+			e.printStackTrace();
+		}finally {
+			close(pstmt);
+		}return result;
 	}
 
 	public int insertBoardComment(Connection conn, BoardComment bc) {
 		PreparedStatement pstmt = null;
 		int result = 0;
 		try {
-			pstmt = conn.prepareStatement(sql.getProperty("insertBoardCimment"));
+			pstmt = conn.prepareStatement(sql.getProperty("insertBoardCimment"));//오타 고치기!
 			// INSERT INTO BOARD_COMMENT VALUES(SEQ_BOARD_COMMENT_NO.NEXTVAL,?,?,?,?,?,DEFAULT)
 			pstmt.setInt(1, bc.getLevel());
 			pstmt.setString(2, bc.getBoardCommentWriter());

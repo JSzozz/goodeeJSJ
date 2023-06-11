@@ -36,7 +36,6 @@ public class NoticeInsertEndServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		//파일 업로드 처리하기(upload) -> cos.jar라이브러리가 제공하는 클래스를 이용한다.
-		
 		//1.mutipart/form-data형식의 요청인지 확인
 		if(!ServletFileUpload.isMultipartContent(request)) {
 			request.setAttribute("msg", "잘못된 접근입니다. 관리자에게 문의하세요.");
@@ -61,7 +60,7 @@ public class NoticeInsertEndServlet extends HttpServlet {
 		System.out.println(path);
 		
 		//최대파일크기설정
-		int maxSize=1024*1024*100;//10mb
+		int maxSize=1024*1024*100;//100mb
 		//인코딩설정
 		String encode="UTF-8";
 		//리네임클래스 생성

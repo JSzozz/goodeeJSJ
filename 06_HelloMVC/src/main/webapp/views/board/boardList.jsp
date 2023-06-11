@@ -24,7 +24,7 @@
 	<h2>게시판</h2>
 	<div>
 		<%if(loginMember!=null) {%>
-		<input type="button" id="btn-add" value="글쓰기" onclick="location.assing('<%=request.getContextPath() %>/board/insertForm.do')">
+		<input type="button" id="btn-add" value="글쓰기" onclick="location.assign('<%=request.getContextPath() %>/board/insertForm.do')">
 		<%-- 	onclick="location.assing('<%=request.getContextPath() %>/board/insertForm.do')">글쓰기
 		</button> --%>
 		<%} %>
