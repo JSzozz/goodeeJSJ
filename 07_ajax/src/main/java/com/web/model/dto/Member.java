@@ -3,6 +3,8 @@ package com.web.model.dto;
 
 import java.sql.Date;
 import java.sql.ResultSet;
+import java.text.SimpleDateFormat;
+import java.util.Arrays;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -40,5 +42,8 @@ public class Member {
 	private String[] hobby;
 	private Date enrollDate;
 
-	
+	@Override
+	public String toString() {
+		return userId+"$"+userName+"$"+gender+"$"+age+"$"+email+"$"+phone+"$"+address+"$"+Arrays.toString(hobby)+"$"+new SimpleDateFormat("yyyy-mm-dd").format(enrollDate);
+	}
 }

@@ -2,6 +2,7 @@ package com.ajax.controller;
 
 import java.io.IOException;
 import java.util.List;
+import java.util.stream.Collectors;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -30,15 +31,26 @@ public class AjaxMemberAllServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		// TODO Auto-generated method stub
 		List<Member> members=new AdminService().selectMemberAll(1, 100);
-		System.out.println(members);
-//		members.stream().forEach(System.out::println);//v
+		//members.stream().forEach(System.out::println);
 		
-		request.setAttribute("members", members);
-		request.getRequestDispatcher("/views/memberTable.jsp").forward(request, response);
-
+		String resultData=members.stream()
+				.map(e->e.toString())
+				.collect(Collectors.joining("\n"));//v 잘 이해안간다
+		
+		System.out.println(resultData);
+		
+		response.setContentType("text/csv;charset=utf-8");
+		response.getWriter().print(resultData);
+		
+//		request.setAttribute("members", members);
+//		
+//		request.getRequestDispatcher("/views/memberTable.jsp")
+//		.forward(request, response);
+	
+		//csv방식으로 데이터를 보내	
 	}
-
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */

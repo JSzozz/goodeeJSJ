@@ -195,7 +195,7 @@
 	<button id="xmlbtn">xmlbtn</button>
 	<div id="xmlcontainer"></div>
 	<script>
-<%-- 		$("#xmlbtn").click(e=>{
+ 		$("#xmlbtn").click(e=>{
 			$.get("<%=request.getContextPath()%>/test/books.xml"
 					,(data)=>{
 						/* console.log(data);
@@ -218,30 +218,7 @@
 						$("#xmlcontainer").append(table);
 					}
 			);
-		});  --%>
-		 $("#xmlbtn").click(e=>{
-			$.get("<%=request.getContextPath()%>/test/books.xml",
-					function(data){
-						/* console.log($(data)); */
-						const root=$(data).find(":root");
-						console.log(root);
-						const books=root.children();
-						console.log(books);
-						const table=$("<table>");
-						const header="<tr><th>구분</th><th>제목</th><th>작가</th></tr>";
-						table.html(header);
-						books.each(function(i,e){
-							const tr=$("<tr>");
-							const subject=$("<td>").text($(e).find("submit").text());
-							const title=$("<td>").text($(e).find("title").text());
-							const writer=$("<td>").text($(e).find("writer").text());
-							tr.append(subject).append(title).append(writer);
-							table.append(tr);
-						});
-						$("#xmlcontainer").html(table);
-					}
-			);
-		}) 
+		});  
 	</script>
 	
 	<h2>서버에서 보낸 데이터</h2>
@@ -266,11 +243,31 @@
 		$("#searchMember").click(e=>{
 			$.get("<%=request.getContextPath()%>/memberAll.do",
 					function(data){
-						console.log(data);
-						$("#memberList").html(data);
-					});
-			});
-	
+						const members=data.split("\n");
+						const table=$("<table>");
+						const header=$("<tr>");
+						const headerdata=["아이디","이름","나이","성별","이메일","전화번호","주소","취미","가입일"];
+						headerdata.forEach(e=>{
+							const th=$("<th>").text(e);
+							header.append(th);
+						});
+						table.append(header);
+						
+						members.forEach(e=>{
+							const member=e.split("$");
+							const tr=$("<tr>");
+							member.forEach(m=>{
+								tr.append($("<td>").text(m));
+							});
+							
+							table.append(tr);
+						});
+						table.css("border","1px solid black");
+						table.css("border-color","gray");
+						$("#memberList").html(table); 
+					}
+			);
+		});
 	</script>
 
 
