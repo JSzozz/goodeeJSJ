@@ -9,7 +9,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import com.web.model.dto.MemberDTO;
+import com.web.model.dto.Member;
 import com.web.model.service.MemberService;
 
 /**
@@ -33,7 +33,7 @@ public class MemberUpdateServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 //		회원정보를 수정하는 서비스
 //		1. 클라이언트가 보낸 데이터를 받아오기
-		MemberDTO m=MemberDTO.builder()
+		Member m=Member.builder()
 				.userId(request.getParameter("userId"))
 				.userName(request.getParameter("userName"))
 				.age(Integer.parseInt(request.getParameter("age")))

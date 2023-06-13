@@ -8,7 +8,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.web.model.dto.MemberDTO;
+import com.web.model.dto.Member;
 import com.web.model.service.MemberService;
 
 /**
@@ -33,7 +33,7 @@ public class UpdatePasswordEndServlet extends HttpServlet {
 		String userId=request.getParameter("userId");
 		String oriPw=request.getParameter("password");
 		String newPw=request.getParameter("password_new");
-		MemberDTO m=new MemberService().selectByUserIdAndPw(userId, oriPw);
+		Member m=new MemberService().selectByUserIdAndPw(userId, oriPw);
 		String msg="",loc="/member/updatePassword.do?userId="+userId;
 		if(m==null) {
 			//비밀번호가 일치하지 않음

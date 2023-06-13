@@ -15,7 +15,7 @@ import javax.servlet.http.HttpSession;
 
 import org.eclipse.jdt.internal.compiler.ast.ThrowStatement;
 
-import com.web.model.dto.MemberDTO;
+import com.web.model.dto.Member;
 
 /**
  * Servlet Filter implementation class CheckAthunticate
@@ -47,7 +47,7 @@ public class CheckAthunticate extends HttpFilter implements Filter {
 		// TODO Auto-generated method stub
 		// place your code here
 		HttpSession session=((HttpServletRequest)request).getSession();
-		MemberDTO loginMember=(MemberDTO)session.getAttribute("loginMember");
+		Member loginMember=(Member)session.getAttribute("loginMember");
 		if(loginMember==null||!loginMember.getUserId().equals(request.getParameter("userId"))) {
 			request.setAttribute("msg", "잘못된 접근입니다.");
 			request.setAttribute("loc", "/");

@@ -11,7 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.web.admin.model.service.AdminService;
 import com.web.board.model.service.BoardService;
-import com.web.model.dto.MemberDTO;
+import com.web.model.dto.Member;
 
 /**
  * Servlet implementation class MemberListServlet
@@ -54,7 +54,7 @@ public class MemberListServlet extends HttpServlet {
 		}
 		// DB의 member테이블에 저장된 전체 회원을 가져와 화면에 출력해주는 기능
 		// 1. DB에서 member테이블에 있는 데이터 가져오기
-		List<MemberDTO> members = new AdminService().selectMemberAll(cPage, numPerpage);
+		List<Member> members = new AdminService().selectMemberAll(cPage, numPerpage);
 
 		// 2. DB에서 가져온 데이터 저장(화면출력)
 		request.setAttribute("members", members);

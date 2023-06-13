@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ include file="/views/common/header.jsp"%>
-<%@ page import="com.web.board.model.vo.Board, com.web.board.model.vo.BoardComment, java.util.List"%>
+<%@ page import="com.web.board.model.vo.Board,com.web.board.model.vo.BoardComment,java.util.List"%>
 <%
 	Board b=(Board)request.getAttribute("board");
 	List<BoardComment> comments=(List)request.getAttribute("boardComment");

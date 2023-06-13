@@ -1,11 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ page import="com.web.model.dto.MemberDTO" %>
+<%@ page import="com.web.model.dto.Member" %>
 
 <%
-	
-	/* (*LoginfrmServlet)(로그인 기능)client-DB 유효성 검사 */
-	MemberDTO loginMember=(MemberDTO)session.getAttribute("loginMember");
+/* (*LoginfrmServlet)(로그인 기능)client-DB 유효성 검사 */
+	Member loginMember=(Member)session.getAttribute("loginMember");
 	
 	/* (*LoginfrmServlet)(로그인 기능)아이디 저장 */
 	Cookie[] cookies=request.getCookies();
@@ -13,15 +12,15 @@
 	if(cookies!=null){
 		for(Cookie c : cookies)
 		{
-			if(c.getName().equals("saveId"))
-			{
-				saveId=c.getValue();
-				break;
-			}
-			/* else
-			{
-				saveId="";
-			} */
+	if(c.getName().equals("saveId"))
+	{
+		saveId=c.getValue();
+		break;
+	}
+	/* else
+	{
+		saveId="";
+	} */
 		}
 	}
 %>

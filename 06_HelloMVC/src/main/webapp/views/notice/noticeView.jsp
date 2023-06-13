@@ -4,7 +4,7 @@
 <%@
 	page import="com.web.notice.model.vo.Notice"%>
 <%
-	Notice n=(Notice)request.getAttribute("notice");
+Notice n=(Notice)request.getAttribute("notice");
 %>
 
 <%@ include file="/views/common/header.jsp"%>

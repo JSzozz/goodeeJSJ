@@ -15,6 +15,13 @@
 				</td>
 			</tr>
 			<tr>
+				<th>
+				</th>
+				<td>
+					<!-- 아이디 중복확인 -->
+				</td>
+			</tr>			
+			<tr>
 				<th>패스워드</th>
 				<td>
 					<input type="password" name="password" id="password_" ><br>
@@ -31,7 +38,6 @@
 				</th>
 				<td>
 					<!-- 비밀번호가 일치하지 않습니다. -->
-					
 				</td>
 			</tr>
 			<tr>
@@ -88,8 +94,63 @@
 		<input type="reset" value="취소">
         </form>
     </section>
-	
-	 <script>
+	<script>
+<%-- 		$("#userId_").keyup(e=>{
+			$.ajax({
+				url:"<%=request.getContextPath()%>/ajaxDuplicateId.do",
+				data:{"userId":$(e.target).val()},
+				success:function(data){
+					console.log(data,typeof data);
+					let msg="",css={};
+					if(data==='true'){
+						msg="사용가능한 아이디입니다.";
+						css={color:"green"};
+					}else{
+						msg="사용 불가능한 아이디입니다.";
+						css={color:"red"};
+					}
+					const tr=$("<tr>");
+					const td=$("<td colspan='2'>").text(msg).css(css);
+					tr.append(td)
+					if($(e.target).parents("tr").next().find("input").length==0){
+						$(e.target).parents("tr").next().remove();
+					}
+					$(e.target).parents("tr").after(tr);
+					
+				},error:function(r,m){
+					console.log(r);
+					console.log(m);
+				}
+			});
+		}); --%>
+		
+		
+		/* 아래는 내 코드 - 실행됨*/
+ 		$("#userId_").keyup(e=>{
+			$.get("<%=request.getContextPath()%>/searchId.do?id="+$(e.target).val(),
+					function(data){
+						/* $("#data").html('') */
+						const userIds=data.split(",");
+						const inputId=$("#userId_").val();
+						userIds.forEach(e=>{
+						let color, msg;
+							if(userIds.includes(inputId)){
+								color="red"; msg="중복 아이디가 있습니다."
+								$("<p>").css("color",color).text(msg);
+							}else if(inputId.length<4){
+								color="red"; msg="아이디는 4글자 이상 영문으로 입력해주세요."
+								$("<p>").css("color",color).text(msg);
+							}else{
+								color="green"; msg="아이디 생성이 가능합니다."
+								$("<p>").css("color",color).text(msg);
+							}
+							const td=$("#userId_").parents("tr").next().find("td");
+							td.html("");
+				        	$("<p>").css("color",color).text(msg).appendTo(td);
+						});
+					});
+			});  
+					
        /* const getChecked=()=>{
             let checkboxes = document.querySelectorAll('input[type="checkbox"]');
             let checkedValues = [];
@@ -135,7 +196,7 @@
         		$("<p>").css("color",color).text(msg);
         	}
         	const td=$(e.target).parents("tr").next().find("td");
-        	td.html("");
+			td.html("");
         	$("<p>").css("color",color).text(msg).appendTo(td);
         });
         

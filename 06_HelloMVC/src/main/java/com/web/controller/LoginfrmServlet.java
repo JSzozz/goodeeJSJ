@@ -10,7 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import com.web.model.dto.MemberDTO;
+import com.web.model.dto.Member;
 import com.web.model.service.MemberService;
 
 /**
@@ -39,7 +39,7 @@ public class LoginfrmServlet extends HttpServlet {
 		
 		//student계정의 Member테이블에 있는 모든 데이터를 조회하는 기능
 		//1. DB에서 필요한 데이터를 가져온다. -> JDBC를 이용
-		MemberDTO loginMember=new MemberService().login(userId, password);
+		Member loginMember=new MemberService().login(userId, password);
 		System.out.println(loginMember);
 
 		//화면에 조회한 데이터를 전달하는 방법

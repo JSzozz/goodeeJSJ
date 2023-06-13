@@ -9,7 +9,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.web.common.AESEncryptor;
-import com.web.model.dto.MemberDTO;
+import com.web.model.dto.Member;
 import com.web.model.service.MemberService;
 
 /**
@@ -68,7 +68,7 @@ public class EnrollMemberEndServlet extends HttpServlet {
 //		}
 		
 		
-		MemberDTO m= MemberDTO.builder().userId(userId).password(password).userName(userName)
+		Member m= Member.builder().userId(userId).password(password).userName(userName)
 					.age(age).email(email).gender(gender.charAt(0)).phone(phone).address(address)
 					.hobby(hobbies).build();
 		int result=new MemberService().insertMember(m);

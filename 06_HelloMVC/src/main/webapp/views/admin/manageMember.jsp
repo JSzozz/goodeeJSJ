@@ -2,11 +2,10 @@
     pageEncoding="UTF-8"%>
 <%@ page import="java.util.List" %>    
 <%
-	List<MemberDTO> members=(List)request.getAttribute("members");
-	String type=request.getParameter("searchType");
-	String keyword=request.getParameter("searchKeyword");
-	
-%> 
+    List<Member> members=(List)request.getAttribute("members");
+    	String type=request.getParameter("searchType");
+    	String keyword=request.getParameter("searchKeyword");
+    %> 
 <!-- css파일 불러오기 필요! -->
 
 <!DOCTYPE html>
@@ -43,15 +42,15 @@
         <div id="search-container">
         	검색타입 : 
         	<select id="searchType">
-        		<option value="userId" <%=type!=null&&type.equals("userId")?"selected":"" %> >아이디</option>
-        		<option value="userName" <%=type!=null&&type.equals("userName")?"selected":"" %> >회원이름</option>
-        		<option value="gender" <%=type!=null&&type.equals("gender")?"selected":"" %> >성별</option>
+        		<option value="userId" <%=type!=null&&type.equals("userId")?"selected":""%> >아이디</option>
+        		<option value="userName" <%=type!=null&&type.equals("userName")?"selected":""%> >회원이름</option>
+        		<option value="gender" <%=type!=null&&type.equals("gender")?"selected":""%> >성별</option>
         	</select>
         	<div id="search-userId">
         		<form action="<%=request.getContextPath()%>/admin/searchMember">
         			<input type="hidden" name="searchType" value="userId" >
         			<input type="text" name="searchKeyword" size="25" 
-        			placeholder="검색할 아이디를 입력하세요" value=<%=type!=null&&type.equals("userId")?keyword:"" %> >
+        			placeholder="검색할 아이디를 입력하세요" value=<%=type!=null&&type.equals("userId")?keyword:""%> >
         			<button type="submit">검색</button>
         		</form>
         	</div>
@@ -59,16 +58,16 @@
         		<form action="<%=request.getContextPath()%>/admin/searchMember">
         			<input type="hidden" name="searchType" value="userName">
         			<input type="text" name="searchKeyword" size="25" 
-        			placeholder="검색할 이름을 입력하세요" value=<%=type!=null&&type.equals("userName")?keyword:"" %> >
+        			placeholder="검색할 이름을 입력하세요" value=<%=type!=null&&type.equals("userName")?keyword:""%> >
         			<button type="submit">검색</button>
         		</form>
         	</div>
         	<div id="search-gender">
         		<form action="<%=request.getContextPath()%>/admin/searchMember">
         			<input type="hidden" name="searchType" value="gender">
-        			<label><input type="radio" name="searchKeyword" value="M" <%=type!=null&&type.equals("gender")&&keyword!=null&&keyword.equals("M")?"checked":"" %>>남</label>
+        			<label><input type="radio" name="searchKeyword" value="M" <%=type!=null&&type.equals("gender")&&keyword!=null&&keyword.equals("M")?"checked":""%>>남</label>
         			<!-- keyword!=null는 로직상 생기지 않는 오류기는함(url입력 상황 예외) -->
-        			<label><input type="radio" name="searchKeyword" value="F" <%=type!=null&&type.equals("gender")&&keyword!=null&&keyword.equals("F")?"checked":"" %>>여</label>
+        			<label><input type="radio" name="searchKeyword" value="F" <%=type!=null&&type.equals("gender")&&keyword!=null&&keyword.equals("F")?"checked":""%>>여</label>
         			<button type="submit">검색</button>
         		</form>
         	</div>
@@ -101,12 +100,16 @@
                 </tr>
             </thead>
             <tbody>
-            		<%if(members.isEmpty()){ %>
+            		<%
+            		if(members.isEmpty()){
+            		%>
             			<tr>
             				<td colspan="9">조회된 결과가 없으면 한줄(row)로 결과가 없습니다 출력</td>
 						</tr>
-		       	    <%} else{
-		       	    	for(MemberDTO m:members){%>
+		       	    <%
+		       	    } else{
+		       	    		       	    	for(Member m:members){
+		       	    %>
 			    		<tr>
 				            <td><%=m.getUserId() %></td>
 				            <td><%=m.getUserName() %></td>

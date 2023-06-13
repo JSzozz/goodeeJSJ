@@ -1,25 +1,25 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
     
-<%@ page import="com.web.model.dto.MemberDTO" %>
+<%@ page import="com.web.model.dto.Member" %>
     
 <%
-	MemberDTO infoMember=(MemberDTO)request.getAttribute("infoMember");
+    Member infoMember=(Member)request.getAttribute("infoMember");
 
-	/* String[] checkData=new String[infoMember.getHobby().length]; */
-	String[] checkData=new String[5];
-	if(infoMember.getHobby()!=null){
-		for(String h:infoMember.getHobby()){
-			switch(h){
-				case "운동":checkData[0]="checked";break;
-				case "등산":checkData[1]="checked";break;
-				case "독서":checkData[2]="checked";break;
-				case "게임":checkData[3]="checked";break;
-				case "여행":checkData[4]="checked";break;
-			}
-		}
-	}
-%>
+    	/* String[] checkData=new String[infoMember.getHobby().length]; */
+    	String[] checkData=new String[5];
+    	if(infoMember.getHobby()!=null){
+    		for(String h:infoMember.getHobby()){
+    	switch(h){
+    		case "운동":checkData[0]="checked";break;
+    		case "등산":checkData[1]="checked";break;
+    		case "독서":checkData[2]="checked";break;
+    		case "게임":checkData[3]="checked";break;
+    		case "여행":checkData[4]="checked";break;
+    	}
+    		}
+    	}
+    %>
 <%@ include file="/views/common/header.jsp"%>
 <!--  mapping 주소 : /member/memverView.do
 수정주소 : /member/memberUpdate.do -->

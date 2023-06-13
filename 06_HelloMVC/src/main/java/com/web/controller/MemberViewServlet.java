@@ -10,7 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.web.common.AESEncryptor;
-import com.web.model.dto.MemberDTO;
+import com.web.model.dto.Member;
 import com.web.model.service.MemberService;
 
 /**
@@ -38,7 +38,7 @@ public class MemberViewServlet extends HttpServlet {
 //		1. DB에 로그인한 회원의 정보를 가져와 화면에 출력
 		String userId=request.getParameter("userId");
 		
-		MemberDTO m=new MemberService().selectByUserId(userId);
+		Member m=new MemberService().selectByUserId(userId);
 
 		//Email, Phone복호화
 		try {

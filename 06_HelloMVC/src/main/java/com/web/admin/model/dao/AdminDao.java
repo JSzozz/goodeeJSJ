@@ -13,7 +13,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Properties;
 
-import com.web.model.dto.MemberDTO;
+import com.web.model.dto.Member;
 
 import oracle.jdbc.proxy.annotation.Pre;
 
@@ -31,11 +31,11 @@ public class AdminDao {
 		}
 	}// 메소드는 초기화블록으로 대체 가능!
 
-	public List<MemberDTO> selectMemberAll(Connection conn, int cPage, int numPerpage) {
+	public List<Member> selectMemberAll(Connection conn, int cPage, int numPerpage) {
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
 //		List<MemberDTO> m= null;
-		List<MemberDTO> result = new ArrayList();
+		List<Member> result = new ArrayList();
 		try {
 //			pstmt=conn.prepareStatement(sql.getProperty("selectMemberAll"));//SELECT * FROM MEMBER - 메소드 기능 수정시킴
 			pstmt = conn.prepareStatement(sql.getProperty("selectMemberAll"));
@@ -77,11 +77,11 @@ public class AdminDao {
 
 	}
 
-	public List<MemberDTO> selectMemberByKeyword(Connection conn, String type, String keyword, int cPage, int numPerpage){//String type은 컬럼명
+	public List<Member> selectMemberByKeyword(Connection conn, String type, String keyword, int cPage, int numPerpage){//String type은 컬럼명
 		PreparedStatement pstmt=null;
 		ResultSet rs=null;
 		String query= sql.getProperty("selectMemberByKeyword");//SELECT * FROM (SELECT rownum AS rnum, m.* FROM (SELECT * FROM MEMBER WHERE #COL LIKE ?)m) WHERE rnum BETWEEN ? AND ?
-		List<MemberDTO> members=new ArrayList();
+		List<Member> members=new ArrayList();
 
 		try {
 			query=query.replace("#COL", type);//v : 컬럼명을 문자열로 인식하기 때문에 필요한 작업
@@ -124,8 +124,8 @@ public class AdminDao {
 		
 		
 	}
-	public static MemberDTO getMember(ResultSet rs) throws SQLException { // static 메소드
-		return MemberDTO.builder().userId(rs.getString("userId")).userName(rs.getString("username"))
+	public static Member getMember(ResultSet rs) throws SQLException { // static 메소드
+		return Member.builder().userId(rs.getString("userId")).userName(rs.getString("username"))
 				.gender(rs.getString("gender").charAt(0)).age(rs.getInt("age")).email(rs.getString("email"))
 				.phone(rs.getString("phone")).address(rs.getString("address"))
 				.hobby(rs.getString("hobby") != null ? rs.getString("hobby").split(",") : null)

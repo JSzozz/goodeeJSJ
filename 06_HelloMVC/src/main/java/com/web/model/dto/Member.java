@@ -25,7 +25,7 @@ import lombok.RequiredArgsConstructor;
 @RequiredArgsConstructor//NonNull(notnull)설정, final설정된 필드를 매개변수 하는 생성자 생성
 
 //window-show view-outline를 보며 변동사항 확인 가능
-public class MemberDTO {
+public class Member {
 //	@Getter
 	private final String userId;
 //	@Getter@Setter

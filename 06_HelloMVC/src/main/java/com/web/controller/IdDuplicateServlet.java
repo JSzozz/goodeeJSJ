@@ -8,7 +8,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.web.model.dto.MemberDTO;
+import com.web.model.dto.Member;
 import com.web.model.service.MemberService;
 
 /**
@@ -34,7 +34,7 @@ public class IdDuplicateServlet extends HttpServlet {
 
 		//클라이언트가 전송한 값(userId)이 DB(member테이블)에 있는지 확인하기
 		String userId=request.getParameter("userId");
-		MemberDTO m= new MemberService().selectByUserId(userId);
+		Member m= new MemberService().selectByUserId(userId);
 		
 		request.setAttribute("result", m);
 		request.getRequestDispatcher("/views/member/idDuplicate.jsp").forward(request, response);;

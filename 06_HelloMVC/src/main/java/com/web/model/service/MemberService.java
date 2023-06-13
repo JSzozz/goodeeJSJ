@@ -10,7 +10,7 @@ import java.util.List;
 import com.web.common.JDBCTemplate;
 //import com.web.member.model.vo.Member;
 import com.web.model.dao.MemberDao;
-import com.web.model.dto.MemberDTO;
+import com.web.model.dto.Member;
 
 public class MemberService {
 
@@ -30,14 +30,14 @@ public class MemberService {
 //		return list;
 //	}
 
-	public MemberDTO login(String userId, String password) {
+	public Member login(String userId, String password) {
 		Connection conn = JDBCTemplate.getConnection();
-		MemberDTO list = dao.selectByUserIdAndPw(conn, userId, password);
+		Member list = dao.selectByUserIdAndPw(conn, userId, password);
 		JDBCTemplate.close(conn);
 		return list;
 	}
 
-	public int insertMember(MemberDTO m) {
+	public int insertMember(Member m) {
 		Connection conn = JDBCTemplate.getConnection();
 		int result = dao.insertMember(conn, m);
 		if (result > 0)
@@ -49,13 +49,13 @@ public class MemberService {
 
 	}
 	
-	public MemberDTO selectByUserId(String userId) {
+	public Member selectByUserId(String userId) {
 		Connection conn = JDBCTemplate.getConnection();
-		MemberDTO m=dao.selectByUserId(conn,userId);
+		Member m=dao.selectByUserId(conn,userId);
 		JDBCTemplate.close(conn);
 		return m;
 	}
-	public int updateMember(MemberDTO m) {
+	public int updateMember(Member m) {
 		Connection conn = JDBCTemplate.getConnection();
 		int result=dao.updateMember(conn,m);
 		if(result>0)
@@ -77,9 +77,9 @@ public class MemberService {
 		return result;
 	}
 	
-	public MemberDTO selectByUserIdAndPw(String userId,String password) {
+	public Member selectByUserIdAndPw(String userId,String password) {
 		Connection conn=getConnection();
-		MemberDTO m=dao.selectByUserIdAndPw(conn,userId,password);
+		Member m=dao.selectByUserIdAndPw(conn,userId,password);
 		JDBCTemplate.close(conn);
 		return m;
 	}

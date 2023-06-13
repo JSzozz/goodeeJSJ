@@ -10,7 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.web.admin.model.service.AdminService;
-import com.web.model.dto.MemberDTO;
+import com.web.model.dto.Member;
 
 /**
  * Servlet implementation class MemberSearchServlet
@@ -50,7 +50,7 @@ public class MemberSearchServlet extends HttpServlet {
 			numPerpage=5;
 		}
 		
-		List<MemberDTO> members=new AdminService().selectMemberByKeyword(type, keyword, cPage, numPerpage);
+		List<Member> members=new AdminService().selectMemberByKeyword(type, keyword, cPage, numPerpage);
 		
 		request.setAttribute("members", members);
 		

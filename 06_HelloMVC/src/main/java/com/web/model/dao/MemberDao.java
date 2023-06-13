@@ -12,7 +12,7 @@ import java.util.Properties;
 
 import com.web.common.JDBCTemplate;
 //import com.web.member.model.vo.Member;
-import com.web.model.dto.MemberDTO;
+import com.web.model.dto.Member;
 
 public class MemberDao {
 
@@ -28,12 +28,12 @@ public class MemberDao {
 	}
 
 	
-	public MemberDTO selectByUserIdAndPw(Connection conn, String userId, String password){
+	public Member selectByUserIdAndPw(Connection conn, String userId, String password){
 		PreparedStatement pstmt=null;
 		ResultSet rs=null;
 //		String sql="SELECT * FROM MEMBER WHERE MEMBER_NAME LIKE ?";//properties로 하기!
 //x		MemberDTO list=new ArrayList();//check!!
-		MemberDTO list=null;//check!!
+		Member list=null;//check!!
 		try {
 			pstmt = conn.prepareStatement(sql.getProperty("selectByUserIdAndPw"));//selectByUserIdAndPw=SELECT * FROM MEMBER WHERE USERID=? AND PASSWORD=?
 			//메소드명, 키값, 주소는 복사하기!
@@ -53,7 +53,7 @@ public class MemberDao {
 		return list;
 	}
 	
-	public int insertMember(Connection conn, MemberDTO m) {
+	public int insertMember(Connection conn, Member m) {
 		PreparedStatement pstmt=null;
 		int result=0;
 		try {
@@ -79,10 +79,10 @@ public class MemberDao {
 	}
 	
 
-	public MemberDTO selectByUserId(Connection conn, String userId) {
+	public Member selectByUserId(Connection conn, String userId) {
 		PreparedStatement pstmt=null;
 		ResultSet rs=null;
-		MemberDTO m=null;
+		Member m=null;
 		try {
 			pstmt=conn.prepareStatement(sql.getProperty("selectByUserId"));//SELECT * FROM MEMBER WHERE USERID=?
 			pstmt.setString(1, userId);
@@ -100,7 +100,7 @@ public class MemberDao {
 		
 	}
 	
-	public int updateMember(Connection conn, MemberDTO m) {
+	public int updateMember(Connection conn, Member m) {
 		PreparedStatement pstmt=null;
 		int result=0;
 		try {
@@ -139,8 +139,8 @@ public class MemberDao {
 	
 
 	
-	private MemberDTO getMember(ResultSet rs) throws SQLException{
-		return MemberDTO.builder().userId(rs.getString("userid"))
+	private Member getMember(ResultSet rs) throws SQLException{
+		return Member.builder().userId(rs.getString("userid"))
 				.password(rs.getString("password")).userName(rs.getString("username"))
 				.gender(rs.getString("gender").charAt(0)).age(rs.getInt("age")).email(rs.getString("email")).phone(rs.getString("phone"))
 				.address(rs.getString("address")).hobby(rs.getString("hobby").split(",")).enrollDate(rs.getDate("enrolldate"))

@@ -2,7 +2,7 @@
 	pageEncoding="UTF-8"%>
 <%@ page import="java.util.List,com.web.board.model.vo.Board"%>
 <%
-	List<Board> boards=(List<Board>)request.getAttribute("boards");
+List<Board> boards=(List<Board>)request.getAttribute("boards");
 %>	
 <style>
 	section#board-container {width: 600px;margin: 0 auto;text-align: center;}

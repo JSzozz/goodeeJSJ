@@ -2,7 +2,7 @@
 	pageEncoding="UTF-8"%>
 <%@ page import="java.util.List,com.web.notice.model.vo.Notice"%>
 <%
-	List<Notice> notices=(List)request.getAttribute("notices");
+List<Notice> notices=(List)request.getAttribute("notices");
 %>
 <%@ include file="/views/common/header.jsp"%>
 <style>

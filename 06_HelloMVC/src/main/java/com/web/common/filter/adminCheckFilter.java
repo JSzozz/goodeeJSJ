@@ -13,7 +13,7 @@ import javax.servlet.http.HttpFilter;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
-import com.web.model.dto.MemberDTO;
+import com.web.model.dto.Member;
 
 /**
  * Servlet Filter implementation class adminCheckFilter
@@ -46,7 +46,7 @@ public class adminCheckFilter extends HttpFilter implements Filter {
 		// place your code here
 		HttpServletRequest req=((HttpServletRequest)request);
 		HttpSession session=((HttpServletRequest)request).getSession();//import
-		MemberDTO loginMember=(MemberDTO)session.getAttribute("loginMember");
+		Member loginMember=(Member)session.getAttribute("loginMember");
 		
 		if(loginMember==null||!loginMember.getUserId().equals("admin")) {
 			req.setAttribute("msg", "관리자 아이디로 접속해주세요");
