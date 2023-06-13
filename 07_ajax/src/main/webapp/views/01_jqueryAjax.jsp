@@ -183,7 +183,7 @@
 				dataType:"html",
 				success:(data)=>{
 					console.log(data);
-					$("#htmlcontainer").text(data);
+					$("#htmlcontainer").html(data);//지양하는 방식 : 파싱할 수 없기 때문임
 				}
 			});
 		});
@@ -191,8 +191,87 @@
 		
 	</script>
 	
-
-
+	<h2>xml</h2>
+	<button id="xmlbtn">xmlbtn</button>
+	<div id="xmlcontainer"></div>
+	<script>
+<%-- 		$("#xmlbtn").click(e=>{
+			$.get("<%=request.getContextPath()%>/test/books.xml"
+					,(data)=>{
+						/* console.log(data);
+						console.log($(data)); */
+						const root=$(data).find(":root");//v
+						/* console.log(root); */
+						const books=root.children();
+						console.log(books);
+						const table=$("<table>");
+						const header="<tr><th>구분</th><th>제목</th><th>작가</th></tr>";
+						table.html(header);
+						books.each((i,e)=>{
+							const tr=$("<tr>");
+							const subject=$("<td>").text($(e).find("submit").text());
+							const title=$("<td>").text($(e).find("title").text());
+							const writer=$("<td>").text($(e).find("writer").text());
+							tr.append(subject).append(title).append(writer);
+							table.append(tr);
+						});
+						$("#xmlcontainer").append(table);
+					}
+			);
+		});  --%>
+		 $("#xmlbtn").click(e=>{
+			$.get("<%=request.getContextPath()%>/test/books.xml",
+					function(data){
+						/* console.log($(data)); */
+						const root=$(data).find(":root");
+						console.log(root);
+						const books=root.children();
+						console.log(books);
+						const table=$("<table>");
+						const header="<tr><th>구분</th><th>제목</th><th>작가</th></tr>";
+						table.html(header);
+						books.each(function(i,e){
+							const tr=$("<tr>");
+							const subject=$("<td>").text($(e).find("submit").text());
+							const title=$("<td>").text($(e).find("title").text());
+							const writer=$("<td>").text($(e).find("writer").text());
+							tr.append(subject).append(title).append(writer);
+							table.append(tr);
+						});
+						$("#xmlcontainer").html(table);
+					}
+			);
+		}) 
+	</script>
+	
+	<h2>서버에서 보낸 데이터</h2>
+	<input type="search" id="userId" list="data">
+	<button id="searchMember">아이디검색</button>
+	<datalist id="data"></datalist>
+	<div id="memberList"></div>
+	<script>
+		$("#userId").keyup(e=>{
+			$.get("<%=request.getContextPath()%>/searchId.do?id="+$(e.target).val(),
+					function(data){
+					$("#data").html('')
+					const userIds=data.split(",");
+					//console.log(userIds);
+					userIds.forEach(e=>{
+						const option=$("<option>").attr("value",e).text(e);
+						$("#data").append(option);
+					});
+				
+			});
+		});
+		$("#searchMember").click(e=>{
+			$.get("<%=request.getContextPath()%>/memberAll.do",
+					function(data){
+						console.log(data);
+						$("#memberList").html(data);
+					});
+			});
+	
+	</script>
 
 
 
