@@ -1,4 +1,4 @@
-package com.web.admin.controller;
+package com.web.controller;
 
 import java.io.IOException;
 import java.util.List;

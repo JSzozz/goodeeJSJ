@@ -95,7 +95,7 @@
         </form>
     </section>
 	<script>
-<%-- 		$("#userId_").keyup(e=>{
+ 		<%-- $("#userId_").keyup(e=>{
 			$.ajax({
 				url:"<%=request.getContextPath()%>/ajaxDuplicateId.do",
 				data:{"userId":$(e.target).val()},
@@ -122,12 +122,12 @@
 					console.log(m);
 				}
 			});
-		}); --%>
+		});  --%>
 		
 		
 		/* 아래는 내 코드 - 실행됨*/
- 		$("#userId_").keyup(e=>{
-			$.get("<%=request.getContextPath()%>/searchId.do?id="+$(e.target).val(),
+  		$("#userId_").keyup(e=>{
+			$.get("<%=request.getContextPath()%>/searchId.do?id="+$(e.target).val(), /* com.web.controller - AjaxUserIdSearchServlet */
 					function(data){
 						/* $("#data").html('') */
 						const userIds=data.split(",");
@@ -138,7 +138,7 @@
 								color="red"; msg="중복 아이디가 있습니다."
 								$("<p>").css("color",color).text(msg);
 							}else if(inputId.length<4){
-								color="red"; msg="아이디는 4글자 이상 영문으로 입력해주세요."
+								color="red"; msg="4글자 이상 입력해주세요."
 								$("<p>").css("color",color).text(msg);
 							}else{
 								color="green"; msg="아이디 생성이 가능합니다."
@@ -171,7 +171,7 @@
 				alert("아이디는 4글자 이상입니다.");
 				/* $("#userId_").val(""); */
 				/* 공간 비우기 : 안 비우면 값이 남아있는 상태임*/
-				$("#userId").focus();
+				$("#userId_").focus();
 				return false; 
 				/* form실행을 막음 */
 				}

@@ -46,7 +46,6 @@ public class MemberService {
 			JDBCTemplate.rollback(conn);
 		JDBCTemplate.close(conn);
 		return result;
-
 	}
 	
 	public Member selectByUserId(String userId) {
