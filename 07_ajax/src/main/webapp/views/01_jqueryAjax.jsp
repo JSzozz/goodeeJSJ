@@ -16,14 +16,15 @@
 	</ol>
 	<h2>$.ajax()함수 활용하기</h2>
 	<p>
-		매개변수로 요청에 대한 설정을 한 객체를 전달한다.<br> 매개변수 객체의 key값은 $.ajax()함수에서 정해놓음<br>
-		url : 요청주소를 설정 -> string<br> [type : 요청방식(get,post) -> string
-		default : get방식임 ]<br> [data : 서버에 요청할때 전송할 데이터 ->
-		Object({key:value,...})]<br> [dataType : 응답데이터 타입에 대한 설정 ->
-		string(json,html,text...)]<br> success : 응답이 완료되고 실행되는 callback함수
-		status 200일때(성공) 실행하는 함수 -> (data)=>{}<br> [error : 응답이 완료되고 실행되는
-		callback함수 status가 200이 아닐때 실행하는 함수 -> (e,r,m)=>{}]<br> [complete
-		: 응답이 성공,실패되도 무조건실행되는 함수 -> ()=>{}]<br>
+		매개변수로 요청에 대한 설정을 한 객체를 전달한다.<br> 
+		매개변수 객체의 key값은 $.ajax()함수에서 정해놓음<br>
+		url : 요청주소를 설정 -> string<br> 
+		[type : 요청방식(get,post) -> string default : get방식임 ]<br> 
+		[data : 서버에 요청할때 전송할 데이터 -> Object({key:value,...})]<br> 
+		[dataType : 응답데이터 타입에 대한 설정 -> string(json,html,text...)]<br> 
+		success : 응답이 완료되고 실행되는 callback함수 status 200일때(성공) 실행하는 함수 -> (data)=>{}<br> 
+		[error : 응답이 완료되고 실행되는 callback함수 status가 200이 아닐때 실행하는 함수 -> (e,r,m)=>{}]<br> 
+		[complete : 응답이 성공,실패되도 무조건실행되는 함수 -> ()=>{}]<br>
 	</p>
 
 	<button id="btn">기본 $.ajax이용하기</button>
@@ -172,7 +173,24 @@
 		});
 	</script>
 
-
+	<h2>html페이지</h2>
+	<button id="btnhtml">btnhtml</button>
+	<div id="htmlcontainer"></div>
+	<script>
+		$("#btnhtml").click(e=>{
+			$.ajax({
+				url:"<%=request.getContextPath()%>/ajax/htmlTest.do",
+				dataType:"html",
+				success:(data)=>{
+					console.log(data);
+					$("#htmlcontainer").text(data);
+				}
+			});
+		});
+		
+		
+	</script>
+	
 
 
 

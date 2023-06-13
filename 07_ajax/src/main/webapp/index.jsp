@@ -35,10 +35,8 @@
 			const request=new XMLHttpRequest();
 			request.open("post","<%=request.getContextPath()%>/js/ajax.do");
 			request.onreadystatechange=()=>{
-				if(request.readyState==4){
-					if(request.status==200){
-						document.getElementById("result").innerHTML=request.responseText;
-					}
+				if(request.readyState==4&&request.status==200){
+					document.getElementById("result").innerHTML=request.responseText;
 				}
 			}
 			//post방식으로 요청을 보낼때는 해더설정을 추가로 해줘야한다.
