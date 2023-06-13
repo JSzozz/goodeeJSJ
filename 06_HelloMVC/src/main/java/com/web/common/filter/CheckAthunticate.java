@@ -15,7 +15,7 @@ import javax.servlet.http.HttpSession;
 
 import org.eclipse.jdt.internal.compiler.ast.ThrowStatement;
 
-import com.web.model.dto.Member;
+import com.web.member.model.dto.Member;
 
 /**
  * Servlet Filter implementation class CheckAthunticate

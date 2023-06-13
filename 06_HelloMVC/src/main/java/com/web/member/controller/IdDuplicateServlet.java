@@ -1,4 +1,4 @@
-package com.web.controller;
+package com.web.member.controller;
 
 import java.io.IOException;
 
@@ -7,19 +7,21 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
+
+import com.web.member.model.dto.Member;
+import com.web.member.model.service.MemberService;
 
 /**
- * Servlet implementation class LogoutServlet
+ * Servlet implementation class IdDuplicateServlet
  */
-@WebServlet("/logout.do")
-public class LogoutServlet extends HttpServlet {
+@WebServlet("/member/idDuplicate.do")
+public class IdDuplicateServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public LogoutServlet() {
+    public IdDuplicateServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -29,18 +31,19 @@ public class LogoutServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		//로그인사용자를 로그아웃 시키기!
-		//세션 불러오기-세션 지우기
-		System.out.println("(*LogoutServlet_doGet()실행");
-//x		HttpSession session = request.getSession();
-		HttpSession session = request.getSession(false);//jsp덕분에 의미없는 유효성 검사이기는 함
+
+		//클라이언트가 전송한 값(userId)이 DB(member테이블)에 있는지 확인하기
+		String userId=request.getParameter("userId");
+		Member m= new MemberService().selectByUserId(userId);
 		
-		if(session!=null)//jsp덕분에 의미없는 유효성 검사이기는 함
-//		session.removeAttribute("loginMember");	
-		session.invalidate();
+		request.setAttribute("result", m);
+		request.getRequestDispatcher("/views/member/idDuplicate.jsp").forward(request, response);;
 		
-		// - 출력할 화면 : 메인화면
-		response.sendRedirect(request.getContextPath());
+		
+//		RequestDispatcher rd = request.getRequestDispatcher("/views/member/idDuplicate.jsp");
+//		rd.forward(request, response);		
+
+//		response.sendRedirect(request.getContextPath()+"/views/member/idDuplicate.jsp");
 	}
 
 	/**

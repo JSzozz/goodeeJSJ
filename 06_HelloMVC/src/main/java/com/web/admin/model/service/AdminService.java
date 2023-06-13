@@ -4,8 +4,9 @@ import java.sql.Connection;
 import java.util.List;
 
 import com.web.admin.model.dao.AdminDao;
+import com.web.member.model.dto.Member;
+
 import static com.web.common.JDBCTemplate.*;
-import com.web.model.dto.Member;
 
 public class AdminService {
 

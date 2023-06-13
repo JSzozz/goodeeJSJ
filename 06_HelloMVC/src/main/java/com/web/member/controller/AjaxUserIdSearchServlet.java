@@ -1,7 +1,8 @@
-package com.web.controller;
+package com.web.member.controller;
 
 import java.io.IOException;
 import java.util.List;
+import java.util.stream.Collectors;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -9,21 +10,20 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.google.gson.Gson;
 import com.web.admin.model.service.AdminService;
-import com.web.model.dto.Member;
+import com.web.member.model.dto.Member;
 
 /**
- * Servlet implementation class AjaxUserListServlet
+ * Servlet implementation class AjaxUserIdSearchServlet
  */
-@WebServlet("/memberList.do")
-public class AjaxUserListServlet extends HttpServlet {
+@WebServlet("/searchId.do")
+public class AjaxUserIdSearchServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public AjaxUserListServlet() {
+    public AjaxUserIdSearchServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -32,10 +32,20 @@ public class AjaxUserListServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		List<Member> list=new AdminService().selectMemberAll(1, 100);
-		Gson gson=new Gson();
-		response.setContentType("application/json;charset=utf-8");
-		gson.toJson(list,response.getWriter());
+		String userId=request.getParameter("id");
+		System.out.println(userId);
+		List<Member> members=new AdminService().selectMemberByKeyword("userId", userId, 1, 100);
+		List<String> userIds=members.stream().map(e->e.getUserId()).collect(Collectors.toList());
+//		System.out.println(userIds);
+		
+		String data="";
+		for(int i=0;i<members.size();i++) {
+			if(i!=0) data+=",";
+			data+=members.get(i).getUserId();
+		}
+		System.out.println(data);
+		response.setContentType("text/csv;charset=utf-8");
+		response.getWriter().print(data);
 	}
 
 	/**

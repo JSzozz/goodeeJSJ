@@ -1,6 +1,7 @@
-package com.web.controller;
+package com.web.member.controller;
 
 import java.io.IOException;
+import java.util.List;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -8,20 +9,21 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.web.model.dto.Member;
-import com.web.model.service.MemberService;
+import com.google.gson.Gson;
+import com.web.admin.model.service.AdminService;
+import com.web.member.model.dto.Member;
 
 /**
- * Servlet implementation class AjaxDuflicateIdServlet
+ * Servlet implementation class AjaxMemberListById
  */
-@WebServlet("/ajaxDuplicateId.do")
-public class AjaxDuflicateIdServlet extends HttpServlet {
+@WebServlet("/membersSearchById.do")
+public class AjaxMemberListById extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public AjaxDuflicateIdServlet() {
+    public AjaxMemberListById() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -30,14 +32,16 @@ public class AjaxDuflicateIdServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String userId=request.getParameter("userId");
-		Member m=new MemberService().selectByUserId(userId);
-		
-		response.setContentType("text/csv;charset=uft-8");
-		response.getWriter().print(m==null?true:false);;
-		
-		
-		
+		// TODO Auto-generated method stub
+		/* String userId=request.getParameter("id"); */
+		String userId=request.getParameter("id");
+		System.out.println("abc");
+		System.out.println(userId);
+		List<Member> list = new AdminService().selectMemberByKeyword("USERID", userId, 1, 100);
+		Gson gson= new Gson();
+		/* request.setCharacterEncoding("application/json;charset=utf-8"); */
+		response.setContentType("application/json;charset=utf-8");
+		gson.toJson(list,response.getWriter());
 	}
 
 	/**

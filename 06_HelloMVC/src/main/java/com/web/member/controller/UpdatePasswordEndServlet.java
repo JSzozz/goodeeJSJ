@@ -1,4 +1,4 @@
-package com.web.controller;
+package com.web.member.controller;
 
 import java.io.IOException;
 
@@ -8,8 +8,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.web.model.dto.Member;
-import com.web.model.service.MemberService;
+import com.web.member.model.dto.Member;
+import com.web.member.model.service.MemberService;
 
 /**
  * Servlet implementation class UpdatePasswordEndServlet

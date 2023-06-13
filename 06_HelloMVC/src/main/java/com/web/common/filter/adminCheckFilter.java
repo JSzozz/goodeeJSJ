@@ -13,7 +13,7 @@ import javax.servlet.http.HttpFilter;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
-import com.web.model.dto.Member;
+import com.web.member.model.dto.Member;
 
 /**
  * Servlet Filter implementation class adminCheckFilter

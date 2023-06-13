@@ -1,8 +1,6 @@
-package com.web.controller;
+package com.web.member.controller;
 
 import java.io.IOException;
-import java.util.List;
-import java.util.stream.Collectors;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -10,20 +8,20 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.web.admin.model.service.AdminService;
-import com.web.model.dto.Member;
+import com.web.member.model.dto.Member;
+import com.web.member.model.service.MemberService;
 
 /**
- * Servlet implementation class AjaxUserIdSearchServlet
+ * Servlet implementation class AjaxDuflicateIdServlet
  */
-@WebServlet("/searchId.do")
-public class AjaxUserIdSearchServlet extends HttpServlet {
+@WebServlet("/ajaxDuplicateId.do")
+public class AjaxDuflicateIdServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public AjaxUserIdSearchServlet() {
+    public AjaxDuflicateIdServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -32,20 +30,14 @@ public class AjaxUserIdSearchServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String userId=request.getParameter("id");
-		System.out.println(userId);
-		List<Member> members=new AdminService().selectMemberByKeyword("userId", userId, 1, 100);
-		List<String> userIds=members.stream().map(e->e.getUserId()).collect(Collectors.toList());
-//		System.out.println(userIds);
+		String userId=request.getParameter("userId");
+		Member m=new MemberService().selectByUserId(userId);
 		
-		String data="";
-		for(int i=0;i<members.size();i++) {
-			if(i!=0) data+=",";
-			data+=members.get(i).getUserId();
-		}
-		System.out.println(data);
-		response.setContentType("text/csv;charset=utf-8");
-		response.getWriter().print(data);
+		response.setContentType("text/csv;charset=uft-8");
+		response.getWriter().print(m==null?true:false);;
+		
+		
+		
 	}
 
 	/**

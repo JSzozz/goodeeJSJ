@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ page import="com.web.model.dto.Member" %>
+<%@ page import="com.web.member.model.dto.Member" %>
 
 <%
 /* (*LoginfrmServlet)(로그인 기능)client-DB 유효성 검사 */

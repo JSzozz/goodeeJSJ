@@ -1,4 +1,4 @@
-package com.web.controller;
+package com.web.member.controller;
 
 import java.io.IOException;
 import java.util.List;
@@ -11,19 +11,19 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.google.gson.Gson;
 import com.web.admin.model.service.AdminService;
-import com.web.model.dto.Member;
+import com.web.member.model.dto.Member;
 
 /**
- * Servlet implementation class AjaxMemberListById
+ * Servlet implementation class AjaxUserListServlet
  */
-@WebServlet("/memberListById.do")
-public class AjaxMemberListById extends HttpServlet {
+@WebServlet("/memberList.do")
+public class AjaxUserListServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public AjaxMemberListById() {
+    public AjaxUserListServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -32,12 +32,8 @@ public class AjaxMemberListById extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		/* String userId=request.getParameter("id"); */
-		String userId="a";
-		List<Member> list = new AdminService().selectMemberByKeyword("userId", userId, 1, 100);
-		Gson gson= new Gson();
-		/* request.setCharacterEncoding("application/json;charset=utf-8"); */
+		List<Member> list=new AdminService().selectMemberAll(1, 100);
+		Gson gson=new Gson();
 		response.setContentType("application/json;charset=utf-8");
 		gson.toJson(list,response.getWriter());
 	}

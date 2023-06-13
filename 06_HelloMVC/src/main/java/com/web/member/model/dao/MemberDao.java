@@ -1,4 +1,4 @@
-package com.web.model.dao;
+package com.web.member.model.dao;
 
 import java.io.FileReader;
 import java.io.IOException;
@@ -11,8 +11,7 @@ import java.util.List;
 import java.util.Properties;
 
 import com.web.common.JDBCTemplate;
-//import com.web.member.model.vo.Member;
-import com.web.model.dto.Member;
+import com.web.member.model.dto.Member;
 
 public class MemberDao {
 
