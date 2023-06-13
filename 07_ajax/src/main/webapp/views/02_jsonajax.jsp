@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+	pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -14,10 +14,35 @@
 		java에서 생성한 객체(Vo,Collection들...)를 자동으로 변환해주는 라이브러리를 사용함
 		<li>jsonsimple.jar -> JSONObject,JSONArray클래스를 이용해서 처리</li>
 		<li>gson.jar -> Gson클래스를 이용</li>
-		<li>jackson.jar -> ObjectMapper클래스 이용 * Spring에서 기본사용</li> 
+		<li>jackson.jar -> ObjectMapper클래스 이용 * Spring에서 기본사용</li>
 	</ul>
 	<button id="jsonBtn">jsonSimple</button>
+	<button id="gsonBtn">gsonTest</button>
+	<button id="jsonpars">jsonpars test</button>
 	<script>
+	$("#jsonpars").click(e=>{
+		fetch("<%=request.getContextPath()%>/gsontest.do",
+				{
+				method:"post",
+				body:JSON.stringify({"userId":"bsyoo", //v : 그냥 보기
+						"password":"1234",
+						"age":19,
+						"userName":"유병승",
+						"gender":'M',
+						"email":"teacherdev09@gmail.com"})
+				}).then(response=>response.json())
+				.then(data=>{
+					console.log(data);
+				});
+	});
+	
+	$("#gsonBtn").click(e=>{
+		$.get("<%=request.getContextPath()%>/gsontest.do",
+				data=>{
+					console.log(data);
+				});
+		});
+	
 	$("#jsonBtn").click(e=>{
 		<%-- $.get("<%=request.getContextPath()%>/basicJson.do",
 				function(data){
@@ -29,7 +54,7 @@
 		$.ajax({
 			url:"<%=request.getContextPath()%>/basicJson.do",
 			success:function(data){
-				 console.log(JSON.parse(data)); 
+				 /* console.log(JSON.parse(data));  */
 				console.log(data);
 			},error:function(r,m){
 				console.log(r);
