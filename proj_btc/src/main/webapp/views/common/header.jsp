@@ -5,7 +5,6 @@ page import="com.web.model.dto.MemberDTO"%>
 <%
 /* (*LoginfrmServlet)(로그인 기능)client-DB 유효성 검사 */
 MemberDTO loginMember = (MemberDTO) session.getAttribute("loginMember");
-
 /* (*LoginfrmServlet)(로그인 기능)아이디 저장 */
 Cookie[] cookies = request.getCookies();
 String saveId = null;
@@ -15,13 +14,10 @@ if (cookies != null) {
 	saveId = c.getValue();
 	break;
 		}
-		/* else
-		{
-	saveId="";
-		} */
 	}
 }
 %>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -45,6 +41,9 @@ if (cookies != null) {
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;700&display=swap" rel="stylesheet">
+
+
+
 </head>
 <body>
 	<!-- bootstrap cdn처리 -->
@@ -58,7 +57,7 @@ if (cookies != null) {
 			<a class="navbar-brand" href="#"><img src="./images/casa64.png"
 				width="120px"></a>
 
-			<button class="navbar-toggler" type="button"
+			<button class="navbar-toggler black" type="button"
 				data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
 				aria-controls="navbarSupportedContent" aria-expanded="false"
 				aria-label="Toggle navigation">

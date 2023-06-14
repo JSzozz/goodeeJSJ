@@ -85,7 +85,6 @@
                     divNode.setAttribute("class",toDay.getFullYear()+"-"+autoLeftPad((toDay.getMonth() + 1), 2)+"-"+autoLeftPad(day, 2))+" room"+(i+1);
                     /*aNode.setAttribute("href","<%=request.getContextPath()%>/reserve/reserveation.do?reserveDate="+toDay.getFullYear()+"-"+autoLeftPad((toDay.getMonth() + 1), 2)+"-"+autoLeftPad(day, 2)+"&roomNo="+(i+1));*/
                 	divNode.setAttribute("id","room");
-                	
                 }
 
                 // @param 일요일인 경우

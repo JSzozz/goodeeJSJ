@@ -4,27 +4,27 @@
    	String type=request.getParameter("searchType");
    	String keyword=request.getParameter("searchKeyword");
 %>
-<%@ include file="/views/common/header.jsp"%>
-<link rel="stylesheet" type="text/css"
-	href="<%=request.getContextPath()%>/css/reserve.css">
 <script src="<%=request.getContextPath()%>/js/reserve.js"></script>
+<link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/css/reserve.css">
 
-<div>
+<%@ include file="/views/common/header.jsp"%>
+
+<section>
 	<h3>COSA64 펜션 객실 예약</h3>
+	
 	<div id="numPerpage-container">
-        	이용인원 : 
         	<%-- <form id="numPerFrm" action="<%=request.getContextPath()%>/admin/memberList.do"> --%>
         	
-        		<select name="numPerpage" id="numPerpage">
-					<option >선택</option>
+        		<select class="form-select" >
+					<option selected>객실이용인원</option>
         			<option value="10">최대 2인</option>
         			<option value="5" >최대 4인</option>
         			<option value="3" >최대 8인</option>
         		</select>
-        		
         	<!-- </form> -->
     </div>
-	<div id="search-container">
+    
+	<div id="search-container" style="background-color: #f3f3da;">
 		객실 조회하기 : 
 		<select id="searchType">
 			<option value="filter"
@@ -38,7 +38,7 @@
 			<form action="<%=request.getContextPath()%>/admin/searchMember">
 				<input type="hidden" name="searchType" value="gender"> 
 				<label>
-					<input type="radio" name="searchKeyword" value="F"
+					<input type="radio" name="searchKeyword" value="F" 
 					<%=type!=null&&type.equals("gender")&&keyword!=null&&keyword.equals("F")?"checked":""%>>오션뷰
 				</label>
 				<label>
@@ -46,28 +46,28 @@
 					<%=type!=null&&type.equals("gender")&&keyword!=null&&keyword.equals("M")?"checked":""%>>시티뷰
 				</label>
 				<label>
-					<input type="radio" name="searchKeyword" value="M"
+					<input type="radio" name="searchKeyword" value="M" 
 					<%=type!=null&&type.equals("gender")&&keyword!=null&&keyword.equals("M")?"checked":""%>>오션뷰&시티뷰
 				</label>				
-				<button type="submit" class="btn btn-primary">검색</button>
+				<button type="submit" class="btn btn-dark">검색</button>
 			</form>
 		</div>
 		<div id="search-filter2">
 			<form action="<%=request.getContextPath()%>/admin/searchMember">
 				<input type="hidden" name="searchType" value="gender"> 
 				<label>
-					<input type="checkbox" name="searchKeyword" value="F"
+					<input type="checkbox" name="searchKeyword" value="F" 
 					<%=type!=null&&type.equals("gender")&&keyword!=null&&keyword.equals("F")?"checked":""%>>프라이빗 풀
 				</label>
 				<label>
-					<input type="checkbox" name="searchKeyword" value="M"
+					<input type="checkbox" name="searchKeyword" value="M" 
 					<%=type!=null&&type.equals("gender")&&keyword!=null&&keyword.equals("M")?"checked":""%>>자쿠지
 				</label>
 				<label>
-					<input type="checkbox" name="searchKeyword" value="M"
+					<input type="checkbox" name="searchKeyword" value="M" 
 					<%=type!=null&&type.equals("gender")&&keyword!=null&&keyword.equals("M")?"checked":""%>>테라스
 				</label>				
-				<button type="submit" class="btn btn-primary">검색</button>
+				<button type="submit" class="btn btn-dark">검색</button>
 			</form>
 		</div>
 		<div id="search-filter3">
@@ -81,21 +81,23 @@
 					<input type="checkbox" name="searchKeyword" value="M"
 					<%=type!=null&&type.equals("gender")&&keyword!=null&&keyword.equals("M")?"checked":""%>>노래방
 				</label>				
-				<button type="submit" class="btn btn-primary">검색</button>
+				<button type="submit" class="btn btn-dark">검색</button>
 			</form>
 		</div>
 	</div>
-	<br>
+	
 	<div class="reserve_step1">
-		<table class="scriptCalendar">
-			<thead>
+		<table class="scriptCalendar table">
+			<thead style="background-color: #f3f3da;">
 				<tr>
 					<td class="calendarBtn" id="btnPrevCalendar">&#60;&#60;</td>
-					<td colspan="5"><span id="calYear">YYYY</span>년 <span
-						id="calMonth">MM</span>월</td>
+					<td colspan="5">
+						<span id="calYear">YYYY</span>년 
+						<span id="calMonth">MM</span>월
+					</td>
 					<td class="calendarBtn" id="nextNextCalendar">&#62;&#62;</td>
 				</tr>
-				<tr>
+				<tr style="background-color: #f3f3da;">
 					<td>일</td>
 					<td>월</td>
 					<td>화</td>
@@ -113,7 +115,7 @@
 		<h1>Hi</h1>	
 		<h1>Hi</h1>
 	</div>
-</div>
+</section>
 
 <script>
 	$("#searchType").change(e=>{
@@ -153,5 +155,5 @@
 	})//ready함수 : searchKeyword input태그 변동 방지
 	
 </script>
-
-<%-- <%@ include file="/views/common/footer.jsp"%> --%>
+<%--  <%@ include file="/views/common/footer.jsp"%>  --%> 
+<!-- footer바닥 고정법 찾아보기 -->
