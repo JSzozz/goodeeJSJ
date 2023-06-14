@@ -33,6 +33,10 @@ public class ChattingServer {
 		Message m=new Gson().fromJson(msg,Message.class);
 		
 		System.out.println(m);
+		switch(m.getType()) {
+			case "접속" : addClient(session,m);break;
+			case "채팅" : sendMessage(session,m);break;
+		}
 		
 //		//접속한 session을 가져올 수 있는 메소드제공
 //		Set<Session> clients=session.getOpenSessions();
@@ -50,6 +54,40 @@ public class ChattingServer {
 //		}catch(IOException e) {
 //			e.printStackTrace();
 //		}
+	}
+	
+	private void addClient(Session session, Message msg) {
+		//session을 구분할 수 있는 데이터를 저장하기
+		session.getUserProperties().put("msg", msg);
+		sendMessage(session,Message.builder()
+				.type("알람")
+				.msg(msg.getSender()+"님이 접속하셨습니다")
+				.build());
+	}
+	private  void sendMessage(Session session,Message msg) {
+		//접속한 클라이언트에게 메세지를 전송해주는 기능
+		Set<Session> clients=session.getOpenSessions();
+		try {
+			if(msg.getReceiver()==null||msg.getReceiver().isBlank()) {
+				//전체접속자에게 전송
+				for(Session client:clients) {
+					client.getBasicRemote()
+					.sendText(new Gson().toJson(msg));
+				}
+			}else {
+				//받는사람에게만 전송
+				for(Session client:clients) {
+					Message c=(Message)client.getUserProperties().get("msg");
+					if(c.getSender().equals(msg.getReceiver())) {
+						client.getBasicRemote()
+						.sendText(new Gson().toJson(msg));
+					}
+					
+				}
+			}
+		}catch(IOException e) {
+			e.printStackTrace();
+		}
 	}
 }
 

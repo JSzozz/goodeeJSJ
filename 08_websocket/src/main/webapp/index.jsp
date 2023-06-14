@@ -13,8 +13,7 @@
 		<button id="chattingBtn">채팅접속</button>
 		<input type="text" id="receiver" placeholder="받는사람">
 		<br>
-		<input type="text" id="sendMsg"> &nbsp;
-		<button id="sendBtn">전송</button>
+		<input type="text" id="sendMsg"> &nbsp;<button id="sendBtn">전송</button>
 	</div>
 	<div id="msgcontainer"></div>
 	<script>
@@ -43,11 +42,18 @@
 				console.log(sendData);
 				switch(sendData.type){
 					case "채팅" : printData(sendData);break;
+					case "알람" : alamPrint(sendData);break;
 				}
 				/* const textContainer=$("<div>").append(sup).append(span);
 				$("#msgcontainer").append(textContainer); */
 			}
 		});
+		const alamPrint=(sendData)=>{
+			const h3=$("<h3>").text(sendData.msg).css("color","green");
+			const container=$("<div>").css({"display":"flex","justifyContent":"center"});
+			container.append(h3);
+			$("#msgcontainer").append(container);
+		}
 		const printData=(sendData)=>{
 			const sup=$("<sup>").text(sendData.sender).css("marginRight","2%");
 			const text=$("<span>").text(sendData.msg).css("fontSize","20px");
