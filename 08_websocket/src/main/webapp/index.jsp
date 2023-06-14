@@ -10,7 +10,8 @@
 </head>
 <body>
 	<div id="container">
-		<input type="text" id="sendMsg">
+		<input type="text" id="sender" placeholder="보내는 사람"><br>
+		<input type="text" id="sendMsg"> &nbsp;<button id="sendBtn">전송</button>
 	</div>
 	<div id="msgcontainer"></div>
 
@@ -23,11 +24,29 @@
 		const socket= new WebSocket("ws://localhost:9090/<%=request.getContextPath()%>/chatting");
 		socket.onopen=(e)=>{
 			console.log(e);
+			/* socket.send("안녕"); */
 		}
 		//
 		socket.onmessage=(e)=>{
 			console.log(e);
+			const msg=e.data.split(",");
+			const sup=$("<sup>").text(msg[0]+" : ");
+			const span=$("<span>").text(msg[1]).css("fontsize", "10px");
+			const textContainer=$("<div>").append(sup).append(span);
+			
+			$("#msgcontainer").append(textContainer);
 		}
+		$("#sendBtn").click(e=>{
+			const msg=$("#sendMsg").val();
+			let sender=$("#sender").val();
+			sendMsg(sender+","+msg)
+		});
+		function sendMsg(msg){
+			if(msg.length>0)
+				socket.send(msg);
+			else throw new Error("메세지가 비어있습니다");
+				
+		}		
 	</script>
 
 
