@@ -37,11 +37,27 @@
 	});
 	
 	$("#gsonBtn").click(e=>{
-		$.get("<%=request.getContextPath()%>/gsontest.do",
+		<%-- $.get("<%=request.getContextPath()%>/gsontest.do",
 				data=>{
 					console.log(data);
-				});
-		});
+				}); --%>
+		$.post("<%=request.getContextPath()%>/gsontest.do",
+				{data:JSON.stringify({
+					userId:"bsyoo",
+					password:"1234",
+					userName:"유병승",
+					gender:"M",
+					age:19,
+					email:"afe@adf.com",
+					phone:"123",
+					address:"경기도시흥시",
+					enrollDate:'20230614'
+				})},
+				data=>{
+					
+				})	
+	});
+
 	
 	$("#jsonBtn").click(e=>{
 		<%-- $.get("<%=request.getContextPath()%>/basicJson.do",
