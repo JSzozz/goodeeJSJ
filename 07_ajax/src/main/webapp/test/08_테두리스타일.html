@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>테두리스타일</title>
+</head>
+<body>
+
+    <h1>태그의 테두리(border)에 스타일 적용</h1>
+    <!-- 모든 태그들에 다 적용가능! -->
+    <div class="container">
+        <div class="child dash circle">dash</div>
+        <div class="chile dotted">dotted</div>
+        <div class="child double">double</div>
+        <div class="child groove">groove</div>
+        <div class="child inset">inset</div>
+        <div class="child outset">outset</div>
+        <div class="child ridge">ridge</div>
+
+    </div>
+    <style>
+        .line{
+            border: 3px solid rgba(220, 195, 29, 0.682);
+        }
+        .container{
+            display: flex;
+            width: 100%;
+            justify-content: space-between;
+        }
+        .child{
+            width:100px;
+            height:100px;
+            border:6px solid red;
+        }
+        .dash{
+            border-style:dashed;
+            border-color: lime;
+            border-width: 10px;
+            border-right-style: double;
+        }
+        .dotted{
+            border-style: dotted
+        }
+        .double{
+            border-style: double;
+        }
+        .groove{
+            border-style: groove;
+        }
+        .inset{
+            border-style: inset;
+        }
+        .outset{
+            border-style: outset;
+        }
+        .ridge{
+            border-style: ridge;
+        }
+        .circle{
+            border-radius: 90px;
+            /* border-top-left-radius: 90px;
+            border-top-right-radius: 90px; */
+        }
+    </style>
+
+    <img src="./image/qk.png" alt="" width="100" height="100" class="circle line boxshadow ">
+    <h3 class="textshadow boxshadow">태그의 테두리에 그림자효과 넣기</h3>
+    
+    <style>
+        .textshadow{
+            text-shadow:10px 10px 15px yellow, -10px -10px 5px red;
+            /* 가로길이, 세로길이, 번짐 */
+        }
+        .boxshadow{
+            box-shadow: 2px 2px 10px rgb(253, 235, 29);
+        }
+    </style>
+
+    <img src="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wCEABQODxIPDRQSEBIXFRQYHjIhHhwcHj0sLiQySUBMS0dARkVQWnNiUFVtVkVGZIhlbXd7gYKBTmCNl4x9lnN+gXwBFRcXHhoeOyEhO3xTRlN8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fP/AABEIAIIAigMBEQACEQEDEQH/xAAaAAEAAgMBAAAAAAAAAAAAAAAAAQYCAwQF/8QANhABAAEDAQYCBwUJAAAAAAAAAAECAxEEBRITITGxUXIUM0JxgZGyMlKSoeEiNENhc4LB0fD/xAAZAQEAAwEBAAAAAAAAAAAAAAAAAQIEAwX/xAAfEQEAAgICAgMAAAAAAAAAAAAAAQIREgMxMlETIUH/2gAMAwEAAhEDEQA/ALUosAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA1TqbMXJt8SJriMzEc8KW5K07Wisynj2/vfkp89PadLHGt/fhb5qe0aWR6TYjrdoj4p+Sk/prPpMaizPS7bn+6FtoRiWcVUz0qifinKEgAAAAAAAAAA5NpXKrekmaZxMzEK2nEJrH25Ni0xc9JmY5xVEfl+rJyRmXWZw9ThR4OeqNjhR4Gpsjgx4GpuidPRPWiJ+BqbsJ0Vietm3+GDVO56FZjpRj3ck/ftGzK3TNuube9NVOM0705mPHn8mrhtMxiVLe212VAAAAAAAAcm0rVVzSzFMZmJiVbdLV7cez7tOjmviRVuXJiZmIzuz/3ZmmHSYz09CNo6Of49Me+JhTMK629Mo12lnpqLf4jMGtvToSqAjkCcA0zMTqeXs0c/jP6O3D3JPTN3VAAAAAAAAAYTatz1op+QImxan2IBWtfbppu6jEYxVV3ZrdtFZ+lsjpCjiA4I0Vi9NdddP7U11Z6eMu1KVmuZhM2mGdOhsU+zPzW+KnpG9m+i3Rbp3aKYpjryXiIiMQrM57ZJAAAAAAAAAAAFZ2h67U+eruzXd69LRHSHNySDRZ+zV56vqlq4/FEti6AAAAAAAAAAAAAFZ1/rtR56u7Nf9d69LPE8ocsuScmRpsfYq89X1S18fjCJ7bF0AAAAAAAAAAAAAKzr/W6jzVd2a/60Ve5GojEc2TZOp6THibGrZpat6znxqq+qW/h8Icb9tzqoAAAAAAAAAAAAArOv9ZqfNV3Zr/rRV08WcMTqxm7KcJets6c6Kif51d5ehw+EMnJ5Ol1UAAAAAAAAAAAAAVnaHrNT5qu7NdoqnLG6ompKXt7M/cLfvq7y38PhDJyeTrdVAAAAAAADIIyBkDII3gN8Fd2vauWb83KLN29auVZqi3TMzTnq5248ukXw5qblc0xmzez/Sq/0yzw2z9Q7ReMMqeNXVEU6e/mfG1VH+D4b+jevtYtHRwNLbtz1pjn755tlK61wzWnM5b95ZCcgZAyCcgAAAAAjAGAMAYA3QMAjdBO6BgDAGAMAYBOAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAf//Z" 
+    alt="" width="100" height="100" class="boxshadow circle">
+
+</body>
+</html>

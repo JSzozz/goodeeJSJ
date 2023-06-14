@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>애니메이션 메뉴</title>
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Black+And+White+Picture&family=Single+Day&display=swap" rel="stylesheet"><body>
+    <style>
+        @keyframes mainMenu{
+            to{
+                transform: translate(3px);
+                color: aqua;
+                text-decoration: overline;
+
+            }
+            from{
+                transform: translate(-3px, 3px);
+                color: lightblue;
+                box-decoration: overline;
+
+            }
+        }
+        nav>ul{
+            display: flex;
+            justify-content: space-around;
+            list-style-type: none;
+            /* display: flex; */
+            width: 100%;
+            /* ㄴ nav에 flex를 하면 그 자식인 ul에 width값 설정 필수!!(중요) */
+        }
+        nav>ul>li{
+            font-family: Single+Day;
+            font-size: 40px;
+            font-weight: bolder;
+            color: lightblue;
+            letter-spacing: 5px;
+            cursor: pointer
+        }
+        nav{
+            background-color: beige;
+            height: 80px;
+            display: flex;
+            align-items: center;
+            
+        }
+        nav>ul>li:hover{
+            animation:mainMenu 0.5s infinite alternate;
+            /* ㄴ 애니메이션 덕분에 한 번에 설정 처리 가능! */
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>애니메이션메뉴</h1>
+        <nav>
+            <ul>
+                <li>HomePlus</li>
+                <li>Board</li>
+                <li>Gallery</li>
+                <li>WareHouser</li>
+            </ul>
+        </nav>
+    </header>
+    
+
+    <section>
+
+    </section>
+    
+
+    <footer>
+
+    </footer>
+</body>
+</html>

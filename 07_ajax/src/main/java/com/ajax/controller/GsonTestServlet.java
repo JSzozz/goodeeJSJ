@@ -38,6 +38,7 @@ public class GsonTestServlet extends HttpServlet {
 		List<Member> list=new AdminService()
 				.selectMemberByKeyword("userId", "a", 1, 30);
 		Member m=list.get(0);
+		System.out.println(m);
 		//Gson라이브러리를 이용해서 json파싱하기
 		//Gson클래스를 생성한다.
 		Gson gson=new Gson();

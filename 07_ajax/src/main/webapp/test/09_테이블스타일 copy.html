@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>테이블스타일</title>
+</head>
+<body>
+
+    <h2>table스타일 적용하기</h2>
+    <p>
+        border-collapse : 테이블의 선을 한 줄 또는 두 줄로 표시하는 속성  collapse, separate<br> 
+        border-spacing  : 테이블의 선이 두 줄일때 그 사이 간격을 설정 <br>
+        empty-cells     : td에 값이 없을 때 출력여부를 설정 separate속성일 때 가능(잘 체크하자!) <br>
+        table-layout    : 테이블의 크기를 고정하는 설정 <br>
+        text-aling      : td안에 문자열을 수평정렬<br>
+        vertival-align  : td안에 문자열을 수직정렬 <br>
+    </p>
+    <!-- table>(tr>td{$}*3)*3 -->
+    <style>
+        table{
+            width: 400px;
+            height: 400px;
+            border: 1px solid midnightblue;
+            /* border-collapse:collapse; */
+            border-collapse:separate;
+            border-spacing: 30px;
+            empty-cells: hide;
+            table-layout: fixed;
+           
+            /* (실험용)overflow: scroll; */
+            /* 테이블 셀 크기 고정 */
+        }
+        table td{
+            /* (실험용)max-height: 50px; */
+           
+            border: 1px solid lightblue;
+            text-align: right;
+            vertical-align: text-top;
+            word-break: break-all;
+        }
+        .nowrap{
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+    </style>
+    <table>
+        <tr>
+            <td>1</td>
+            <td>2</td>
+            <td>3</td>
+        </tr>
+        <tr>
+            <td id="nowrap"></td>
+            <td>5</td>
+            <td>6</td>
+        </tr>
+        <tr>
+            <td>7</td>
+            <td></td>
+            <td>9</td>
+        </tr>
+    </table>
+
+</body>
+</html>
