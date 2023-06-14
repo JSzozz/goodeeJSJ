@@ -9,6 +9,9 @@ import javax.websocket.OnOpen;
 import javax.websocket.Session;
 import javax.websocket.server.ServerEndpoint;
 
+import com.google.gson.Gson;
+import com.websocket.vo.Message;
+
 @ServerEndpoint("/chatting")
 public class ChattingServer {
 	//private Set<Session> clients=new ArrayList();
@@ -27,19 +30,26 @@ public class ChattingServer {
 		//send()함수의 인자값이 두번째 매개변수에 저장이 된다.
 		//클라이언트가 보낸데이터가 두번째 매개변수에 저장된다.
 		System.out.println(msg);
-		//접속한 session을 가져올 수 있는 메소드제공
-		Set<Session> clients=session.getOpenSessions();
-		System.out.println(clients.size());
+		Message m=new Gson().fromJson(msg,Message.class);
 		
-		try {
-			for(Session client : clients) {
-			//접속한 사용자에게 받은메세지를 전달
-				//session.getBasicRemote().sendText(msg);
-				client.getBasicRemote().sendText(msg);
-			}
-		}catch(IOException e) {
-			e.printStackTrace();
-		}
+		System.out.println(m);
+		
+//		//접속한 session을 가져올 수 있는 메소드제공
+//		Set<Session> clients=session.getOpenSessions();
+//		System.out.println(clients.size());
+//		//session에 대한 구분자 값을 저장하기
+//		session.getUserProperties().put("msg",msg);
+//		
+//		try {
+//			for(Session client : clients) {
+//				
+//			//접속한 사용자에게 받은메세지를 전달
+//				//session.getBasicRemote().sendText(msg);
+//				client.getBasicRemote().sendText(msg);
+//			}
+//		}catch(IOException e) {
+//			e.printStackTrace();
+//		}
 	}
 }
 
