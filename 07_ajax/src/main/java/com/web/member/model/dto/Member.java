@@ -1,4 +1,4 @@
-package com.web.model.dto;
+package com.web.member.model.dto;
 
 
 import java.sql.Date;

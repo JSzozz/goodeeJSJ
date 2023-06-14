@@ -15,20 +15,17 @@
 	<p>ajax : 비동기식으로 서버와 통신을 하는 기술</p>
 	<h2>javascript로 ajax통신 구현하기</h2>
 	<p>
-		javascript로 비동기통신을 구현하려면 js가 제공하는 객체를 이용<br>
-		XMLHttpRequest객체를 이용<br>
-		1. XMLHttpRequest객체를 생성<br>
-		2. 필요한 속성에 대한 설정<br>
-		   - 요청할 서버의주소, 요청방식 등<br>
-		   - 요청이 끝나고 실행할 함수를 설정(callback함수)<br>
-		3. 요청보내기함수 실행 -> send()<br>
+		javascript로 비동기통신을 구현하려면 js가 제공하는 객체를 이용<br> XMLHttpRequest객체를 이용<br>
+		1. XMLHttpRequest객체를 생성<br> 2. 필요한 속성에 대한 설정<br> - 요청할
+		서버의주소, 요청방식 등<br> - 요청이 끝나고 실행할 함수를 설정(callback함수)<br> 3.
+		요청보내기함수 실행 -> send()<br>
 	</p>
 	<h3>js로 요청보내기</h3>
 	<input id="data" type="text">
 	<button id="jsSendBtn">js로 ajax통신</button>
 	<button id="postBtn">js로 post방식보내기</button>
 	<div id="result"></div>
-	
+
 	<script>
 		const postBtn=document.getElementById("postBtn");
 		postBtn.addEventListener("click",e=>{
@@ -90,6 +87,9 @@
 		});
 	
 	</script>
+
+
+
 
 </body>
 </html>

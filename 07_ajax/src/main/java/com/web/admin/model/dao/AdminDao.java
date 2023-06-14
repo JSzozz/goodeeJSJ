@@ -1,7 +1,7 @@
 package com.web.admin.model.dao;
 
 import static com.web.common.JDBCTemplate.close;
-import static com.web.model.dao.MemberDao.*;//MemberDao는 template에 넣어도 된다!
+import static com.web.member.model.dao.MemberDao.*;
 
 import java.io.FileReader;
 import java.io.IOException;
@@ -13,7 +13,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Properties;
 
-import com.web.model.dto.Member;
+import com.web.member.model.dto.Member;
 
 import oracle.jdbc.proxy.annotation.Pre;
 

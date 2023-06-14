@@ -259,14 +259,12 @@
 							member.forEach(m=>{
 								tr.append($("<td>").text(m));
 							});
-							
 							table.append(tr);
 						});
 						table.css("border","1px solid black");
 						table.css("border-color","gray");
 						$("#memberList").html(table); 
-					}
-			);
+					});
 		});
 	</script>
 

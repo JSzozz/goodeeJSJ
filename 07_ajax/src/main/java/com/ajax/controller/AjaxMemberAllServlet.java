@@ -11,7 +11,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.web.admin.model.service.AdminService;
-import com.web.model.dto.Member;
+import com.web.member.model.dto.Member;
 /**
  * Servlet implementation class SearchMemberListServlet
  */

@@ -1,5 +1,5 @@
 <%@page import="java.util.Arrays"%>
-<%@page import="com.web.model.dto.Member"%>
+<%@page import="com.web.member.model.dto.Member"%>
 <%@page import="java.util.List"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"  %>
