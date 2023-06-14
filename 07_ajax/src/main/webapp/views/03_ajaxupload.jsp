@@ -44,5 +44,67 @@
 			
 		});
 	</script>
+	
+	<h2>업로드 이미지 미리보기 기능</h2>
+	
+	<img src="https://img.freepik.com/free-icon/user_318-804790.jpg"
+	width="100" height="100" id="profile">
+	<input type="file" style="display:none" id="profileInput" accept="image/*">
+	<div id="uploadpreview"></div>
+	
+	<input type="file" id="upfiles" multiple accept="image/*">
+	<div id="1"></div>
+
+	
+	<script>
+		$("#upfiles").change(e=>{
+			/* const reader = new FileReader();
+			reader.onload=(e)=>{
+				const img =$("<img>").attr("src", e.target.result).attr("width", "100"); 
+				$("#1").append(img);
+			}
+			 reader.readAsDataURL(e.target.files[0]); */
+
+			 $("#uploadpreview").html('');
+			 const files=e.target.files;
+				$.each(files,(i,f)=>{
+					const reader=new FileReader();
+					reader.onload=e=>{
+						const img=$("<img>").attr({
+							src:e.target.result,
+							"width":"100",
+							"height":"100"
+						});
+						$("#uploadpreview").append(img);
+					}
+					reader.readAsDataURL(f);
+				})
+		});
+
+		$("#profile").click(e=>{
+			$("#profileInput").click(); // 숨어있는 input태그가 클릭되는 효과!
+		});	
+		
+		$("#profileInput").change(e=>{
+			const reader = new FileReader();
+			reader.onload=(e)=>{
+				//e.target.result속성에 변경된 file이 나옴 ~ readerAsDataURL(e.target.files[0])
+				 $("#profile").attr("src", e.target.result); 
+			}
+				 reader.readAsDataURL(e.target.files[0]); 
+		});
+		
+	</script>
+	<style>
+		#profile{
+			border-radius:100px;
+			border: 1px solid yellow;
+		}
+	</style>
+	
+	
+	
+	
+	
 </body>
 </html>
