@@ -3,16 +3,19 @@ package com.websocket.controller;
 import java.io.IOException;
 import java.util.Set;
 
+import javax.websocket.EncodeException;
 import javax.websocket.EndpointConfig;
 import javax.websocket.OnMessage;
 import javax.websocket.OnOpen;
 import javax.websocket.Session;
 import javax.websocket.server.ServerEndpoint;
 
-import com.google.gson.Gson;
 import com.websocket.vo.Message;
 
-@ServerEndpoint("/chatting")
+@ServerEndpoint(value="/chatting",
+		decoders = {JsonDecoder.class},//json형식의 데이터를 자바클래스로 변경
+		encoders = {JsonEncoder.class}//자바클래스를 json형식을 변경
+)
 public class ChattingServer {
 	//private Set<Session> clients=new ArrayList();
 	
@@ -24,13 +27,14 @@ public class ChattingServer {
 		//clients.add(session);
 	}
 	@OnMessage
-	public void message(Session session,String msg) {
+	//public void message(Session session,String msg) {
+	public void message(Session session,Message m) {
 		//js에서 socket.send("메세지")함수를 실행했을때
 		//실행되는 메소드
 		//send()함수의 인자값이 두번째 매개변수에 저장이 된다.
 		//클라이언트가 보낸데이터가 두번째 매개변수에 저장된다.
-		System.out.println(msg);
-		Message m=new Gson().fromJson(msg,Message.class);
+		System.out.println(m);
+		//Message m=new Gson().fromJson(msg,Message.class);
 		
 		System.out.println(m);
 		switch(m.getType()) {
@@ -72,7 +76,8 @@ public class ChattingServer {
 				//전체접속자에게 전송
 				for(Session client:clients) {
 					client.getBasicRemote()
-					.sendText(new Gson().toJson(msg));
+					//.sendText(new Gson().toJson(msg));
+					.sendObject(msg);
 				}
 			}else {
 				//받는사람에게만 전송
@@ -80,12 +85,13 @@ public class ChattingServer {
 					Message c=(Message)client.getUserProperties().get("msg");
 					if(c.getSender().equals(msg.getReceiver())) {
 						client.getBasicRemote()
-						.sendText(new Gson().toJson(msg));
+						//.sendText(new Gson().toJson(msg));
+						.sendObject(msg);
 					}
 					
 				}
 			}
-		}catch(IOException e) {
+		}catch(IOException|EncodeException e) {
 			e.printStackTrace();
 		}
 	}
