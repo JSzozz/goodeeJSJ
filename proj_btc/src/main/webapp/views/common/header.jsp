@@ -24,16 +24,12 @@ if (cookies != null) {
 <meta charset="UTF-8">
 <title>cosa64</title>
 
-<link rel="stylesheet" type="text/css"
-	href="<%=request.getContextPath()%>/css/style.css">
+<!-- (경로에 '?after' 추가) -->
+<link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/css/style.css?after">
 <script src="<%=request.getContextPath()%>/js/jquery-3.7.0.min.js"></script>
 
 <!-- bootstrap css cdn처리-->
-<link
-	href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
-	rel="stylesheet"
-	integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM"
-	crossorigin="anonymous">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
 
 <!-- Failed to load resource: the server responded with a status of 404 (Not Found) 오류메세지 제거용 -->
 <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
@@ -42,19 +38,14 @@ if (cookies != null) {
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;700&display=swap" rel="stylesheet">
 
-
-
 </head>
 <body>
 	<!-- bootstrap cdn처리 -->
-	<script
-		src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"
-		integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz"
-		crossorigin="anonymous"></script>
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>
 		
 	<nav class="navbar navbar-expand-lg navbar-light">
 		<div class="container-fluid">
-			<a class="navbar-brand" href="#"><img src="./images/casa64.png"
+			<a class="navbar-brand" href="#"><img src="<%=request.getContextPath() %>/images/casa64.png"
 				width="120px"></a>
 
 			<button class="navbar-toggler black" type="button"
