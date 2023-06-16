@@ -1,17 +1,20 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<%
-   	String type=request.getParameter("searchType");
-   	String keyword=request.getParameter("searchKeyword");
-%>
+
 <script src="<%=request.getContextPath()%>/js/reserve.js"></script>
 <%@ include file="/views/common/header.jsp"%>
+	
+		<!-- 카테고리별 이미지 -->
+		<div class="category-image">
+			<img src="<%=request.getContextPath() %>/images/reservation.png" width="100%" height="200px">
+			<div>RESERVATION</div>
+		</div>
+		
+	<br><br><br>
+<!-- 0. 필터 버튼  --> <!-- 아이콘 출처 : https://tabler-icons.io/  -->
 <section class="p-2 m-0 border-0 bd-example">
 	<!-- <h3>COSA64 펜션 객실 예약</h3> -->
-	
-	<br>
-<!-- 0. 필터 버튼  --> <!-- 아이콘 출처 : https://tabler-icons.io/  -->
-	<div id="filterBox"  >
+	<div id="filterBox" >
 	    <div class="btn-group" role="group" aria-label="Basic radio toggle button group" >
 	        <input type="checkbox" class="btn-check" name="btncheck" id="btncheck1" autocomplete="off" checked="" value="ocean">
 	        <label class="btn btn-outline-secondary" for="btncheck1"> 
@@ -273,20 +276,20 @@
                         <li data-cnt="0"></li> -->                    
                         <input type="checkbox"  id="OPTN0"  data-cnt="0"  class="optCode op_name" value="1" data-tooltip >
                         <lable class="op_la">옵션명-n인기준(n0,000원)</lable>
-                        <button type="button" class="btn btn-secondary" data-bs-toggle="tooltip" data-bs-placement="right" title="예약시간 준수 및 사용시간 2시간 제한 있습니다.<br>금액 : n0,000원">
+                        <button type="button" class="btn btn-secondary btn-sm" data-bs-toggle="tooltip" data-bs-placement="right" title="예약시간 준수 및 사용시간 2시간 제한 있습니다. 이용 금액 : n0,000원">
                             상세설명
                         </button>
                     </li>
                     <li>
                         <input type="checkbox"  id="OPTN0"  data-cnt="0"  class="optCode op_name" value="1" data-tooltip >
                         <lable class="op_la">옵션명-n인기준(n0,000원)</lable>
-                        <button type="button" class="btn btn-secondary" data-bs-toggle="tooltip" data-bs-placement="right" title="예약시간 준수 및 사용시간 2시간 제한 있습니다.<br>금액 : n0,000원">
+                        <button type="button" class="btn btn-secondary btn-sm" data-bs-toggle="tooltip" data-bs-placement="right" title="예약시간 준수 및 사용시간 2시간 제한 있습니다. 이용 금액 : n0,000원">
                             상세설명
                         </button>
                     </li>                <li>
                         <input type="checkbox"  id="OPTN0"  data-cnt="0"  class="optCode op_name" value="1" data-tooltip >
                         <lable class="op_la">옵션명-n인기준(n0,000원)</lable>
-                        <button type="button" class="btn btn-secondary" data-bs-toggle="tooltip" data-bs-placement="right" title="예약시간 준수 및 사용시간 2시간 제한 있습니다.<br>금액 : n0,000원">
+                        <button type="button" class="btn btn-secondary btn-sm" data-bs-toggle="tooltip" data-bs-placement="right" title="예약시간 준수 및 사용시간 2시간 제한 있습니다. 이용  금액 : n0,000원">
                             상세설명
                         </button>
                     </li>               
@@ -334,7 +337,9 @@
 	    <hr>
 	    <div class="buttons"  >
 	        <p>체크아웃 날짜와 인원(성인, 영유아)을 선택하시면 다음 단계로 넘어가실 수 있습니다.</p>
-	        <button class="button-1 btn btn-secondary" id="goNextBtn">다음단계</button>
+	        <button class="button-1 btn btn-secondary btn-lg" id="goNextBtn"
+	        onclick="location.href='<%=request.getContextPath() %>/views/reserve/reserveList2.jsp' "
+	        >다음단계</button>
 	    </div>
     </div>
 </section>
@@ -351,29 +356,9 @@
   			$(".reserve_step2").show();
  		 });
 	});
-	
-	$(()=>{
-		$("#searchType").change();
-		$("#numPerpage").change(e=>{
-			let url=location.href;
-			/* console.log(url.substring(0,url.indexOf("?")+1));  */
-			if(url.includes("?")){
-	 			url=url.substring(0,url.indexOf("?")+1)
-	 			+'searchType=<%=type%>'
-	 			+'&searchKeyword=<%=keyword%>'
-	 			+'&cPage=<%=request.getParameter("cPage") != null ? request.getParameter("cPage") : 1%>'
-	 			+'&numPerpage='+e.target.value;
-	 			/* url+='&numPerpage='+e.target.value; */
-			}else{
-				url+='?';
-				url+=+'cPage=<%=request.getParameter("cPage") != null ? request.getParameter("cPage") : 1%>'
- 				+'&numPerpage='+e.target.value;
-			}
-			location.assign(url); 
-			console.log(url);
-		})
-	})//ready함수 : searchKeyword input태그 변동 방지
+
 </script>
 
-<%--  <%@ include file="/views/common/footer.jsp"%>  --%> 
+		<!-- 푸터 영역 -->
+<%@ include file="/views/common/footer.jsp"%>
 <!-- footer바닥 고정법 찾아보기 -->

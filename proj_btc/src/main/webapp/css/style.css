@@ -42,7 +42,10 @@ footer{/* background-color:#00BCD4; */clear:both;height:75px;text-align:center;p
 	div#search-gender{display:none;}
 	div#numPerpage-container{float:right;}
 	form#numperPageFrm{display:inline;}
+/* ====================================================================================== */
 
+*{font-family: 'Noto Sans KR', sans-serif;}
+    
 /* 필터 박스 */
 div#filterBox{ text-align:center;}
 
@@ -57,32 +60,56 @@ div#filterBox{ text-align:center;}
 
 .calendarBtn { cursor:pointer; } 
 
+/* 배너 */
+.category-image { position:relative;text-align:center;color:#FFFFFF; }
+.category-image div { position: absolute;top:50%;left:50%; transform: translate(-50%, -50%); color: black; font-size: 30px; font-weight: bolder;}
+
+
 /* 예약하기 */
 table.scriptCalendar{margin-left:auto;margin-right:auto;}
 div.reserve_step2{display:none;}
 
-/* 객실예약정보입력 */
- div#reserveInput > div {margin-bottom: 0.4rem;}
+/* 객실예약 공통 */
+buttons{text-align: center; font-size:1.2rem; font-weight: bold;}
+.buttons{ text-align: center; font-size:1.2rem; font-weight: bold;}
 
- div#reserveInput .header:nth-child(1) { font-size: 0.8rem; padding-left: 1rem; } 
- div.roundbox > div.header  { background-color: #F2F2F2; padding: 0.1rem 1rem;  border-bottom: 1px solid #c8c9cb; }
- div#reserveInput .header >h3 { margin: 0.4rem 0 0.4rem 0; } 
- div.roundbox > .content {  padding: 0rem 1rem 0rem 1rem; line-height: 1.8em; }
- div.roundbox > .content > ul > li {list-style-type: none;}
+/* 객실예약정보입력1 */
+div#reserveInput > div {margin-bottom: 0.4rem !important; }
+
+div#reserveInput .header:nth-child(1) { font-size: 0.8rem; padding-left: 1rem; } 
+div.roundbox > div.header  { background-color: #F2F2F2; padding: 0.1rem 1rem;  border-bottom: 1px solid #c8c9cb; }
+div#reserveInput .header >h3 { margin: 0.4rem 0 0.4rem 0; } 
+div.roundbox > .content {padding: 1rem 0.6rem 1rem 0.8rem ; line-height: 1.8em; }
+div.roundbox > .content > ul > li {list-style-type: none;}
+
+div#reserveInput > #tempHeader { margin-bottom: 1rem;}
+div#reserveInput > #tempHeader > span { font-weight: bold; }
+div#reserveInput > #tempHeader > span > #typeNm {font-size: 2rem; margin-left: 1rem;}
+
+div#reserveInput > .perio-wrapper {border: 0.1rem solid red; border-radius: 0.5rem;}
+div#reserveInput > .perio-wrapper > .content  > div > p {  text-decoration: underline; font-size: 0.9rem; color: gray; margin: 0 5rem 0 2.5rem;}
+div#reserveInput > .perio-wrapper > .content  > div:nth-child(2)  { font-weight: bold; font-size: 2rem; padding: 0 0 0 1rem; }
+div#reserveInput > .perio-wrapper > .content  > div > span {  font-weight: bold; font-size: 1.5rem; margin:  0 0 0 2.5rem;}
+
+div#reserveInput > .extra-person-wrapper {border: 0.1rem solid orange; border-radius: 0.5rem; }
+div#reserveInput > .options-wrapper {border: 0.1rem solid yellow; border-radius: 0.5rem; }
+div#reserveInput > .summary-wrapper {border: 0.1rem solid green; border-radius: 0.5rem;}
+.roundbox > .content > div > p > em {font-size: large; font-size: 2rem; padding-right: 1.5rem;}
  
- div#reserveInput > #tempHeader { margin-bottom: 1rem;}
- div#reserveInput > #tempHeader > span { font-weight: bold; }
- div#reserveInput > #tempHeader > span > #typeNm {font-size: 2rem; margin-left: 1rem;}
+/* 객실예약정보입력2 */
+.reserve_step3 > form > .roundbox > div.container { margin: 1.5rem;}
+.reserve_step3 > form > div.roundbox > div.container > h3 > span:first-child {background-color: #333333;color: #ffffff;border: 1px solid #566278;font-family: 'arial';font-size: 1rem;padding: 0.2rem 0.2rem;letter-spacing: -0.1rem;}
+form > div.roundbox > div.container > h3 > span:last-child {font-size: 1.25rem;color: #313131;padding-bottom: 0.1rem;font-weight: bold;}
+form > div.roundbox > div.container > table.table-1 tbody tr td {border: 1px solid #dedede;border-width: 1px 0px 1px 1px;padding: 0.5px 1rem;color: #555555;line-height: 1.5em;font-size: 0.9rem;font-weight: bold;}
+form > div.roundbox > div.container-1 > table > tbody > :last-child td span:last-child em {color: #ff3535; }
+form > .roundbox > div.container-2 table > tbody tr > td > textarea{ resize: none;}
+table.table-2 thead tr th { background-color: #f2f2f2; border: 1px solid #dedede; /* border-width: 1px 0; */text-align: center;padding: 0.3rem 0.3rem;font-size: 0.8rem;font-weight: bold;}
+table.table-2 tbody tr td {border: 1px solid #dedede;/* border-width: 1px 0; */padding: 0.5rem 1rem;color: #555555;line-height: 1.5em;font-size: 0.8rem;font-weight: bold;}
+ 
+/* 객실예약정보입력3 */
+div.container > h3 > span:first-child {background-color: #333333;color: #ffffff;border: 1px solid #566278;font-family: 'arial';font-size: 1rem;padding: 0.3rem 0.3rem;letter-spacing: -1px;padding-top: 0.5rem;}
+table.table-1 tbody tr th{background-color: #f2f2f2;border: 1px solid #dedede; /* border-width: 1px 0; */text-align: center; padding: 0.5rem 0;width: 6rem;font-weight: bold;}
+table.table-1 tbody tr td {border: 1px solid #dedede; border-width: 1px 0; padding: 0.5rem 1rem;color: #555555;line-height: 1.5em;font-size: 0.8rem;font-weight: bold;}
+div.reserve_step4 div.container-1 p {color: #ff3535;font-size: 0.8rem;display: block;width: 96%;line-height: 2;}
 
- div#reserveInput > .perio-wrapper {border: 0.1rem solid red; border-radius: 0.5rem;}
- div#reserveInput > .perio-wrapper > .content  > div > p {  text-decoration: underline; font-size: 0.9rem; color: gray; margin: 0 5rem 0 2.5rem;}
- div#reserveInput > .perio-wrapper > .content  > div:nth-child(2)  { font-weight: bold; font-size: 2rem; padding: 0 0 0 1rem; }
- div#reserveInput > .perio-wrapper > .content  > div > span {  font-weight: bold; font-size: 1.5rem; margin:  0 0 0 2.5rem;}
-
- div#reserveInput > .extra-person-wrapper {border: 0.1rem solid orange; border-radius: 0.5rem; }
- div#reserveInput > .options-wrapper {border: 0.1rem solid yellow; border-radius: 0.5rem; }
- div#reserveInput > .summary-wrapper {border: 0.1rem solid green; border-radius: 0.5rem;}
- .roundbox > .content > div > p > em {font-size: large; font-size: 2rem; padding-right: 1.5rem;}
-
- .buttons{  text-align: center; font-size:1.2rem; font-weight: bold;}
    
