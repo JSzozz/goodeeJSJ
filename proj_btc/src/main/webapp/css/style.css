@@ -53,7 +53,7 @@ div#filterBox{ text-align:center;}
 .scriptCalendar { text-align:center; }
 .scriptCalendar > thead > tr > td { width:150px;height:50px; }
 .scriptCalendar > thead > tr:first-child > td { font-weight:bold; }
-.scriptCalendar > thead > tr:last-child > td { background-color:#f3f3da; }
+.scriptCalendar > thead > tr:last-child > td { background-color:gray;color:white; }
 .scriptCalendar > tbody > tr > td { width:150px;height:150px; }
 .scriptCalendar > tbody > tr > td > hr {margin :5px 0 10px 0; }
 .scriptCalendar > tbody > tr > td > div {padding:3px; }
@@ -72,6 +72,7 @@ div.reserve_step2{display:none;}
 /* 객실예약 공통 */
 buttons{text-align: center; font-size:1.2rem; font-weight: bold;}
 .buttons{ text-align: center; font-size:1.2rem; font-weight: bold;}
+div.roundbox * {vertical-align: middle;}
 
 /* 객실예약정보입력1 */
 div#reserveInput > div {margin-bottom: 0.4rem !important; }
@@ -86,14 +87,14 @@ div#reserveInput > #tempHeader { margin-bottom: 1rem;}
 div#reserveInput > #tempHeader > span { font-weight: bold; }
 div#reserveInput > #tempHeader > span > #typeNm {font-size: 2rem; margin-left: 1rem;}
 
-div#reserveInput > .perio-wrapper {border: 0.1rem solid red; border-radius: 0.5rem;}
+div#reserveInput > .perio-wrapper {border: 0.1rem solid gray; border-radius: 0.5rem;}
 div#reserveInput > .perio-wrapper > .content  > div > p {  text-decoration: underline; font-size: 0.9rem; color: gray; margin: 0 5rem 0 2.5rem;}
 div#reserveInput > .perio-wrapper > .content  > div:nth-child(2)  { font-weight: bold; font-size: 2rem; padding: 0 0 0 1rem; }
 div#reserveInput > .perio-wrapper > .content  > div > span {  font-weight: bold; font-size: 1.5rem; margin:  0 0 0 2.5rem;}
 
-div#reserveInput > .extra-person-wrapper {border: 0.1rem solid orange; border-radius: 0.5rem; }
-div#reserveInput > .options-wrapper {border: 0.1rem solid yellow; border-radius: 0.5rem; }
-div#reserveInput > .summary-wrapper {border: 0.1rem solid green; border-radius: 0.5rem;}
+div#reserveInput > .extra-person-wrapper {border: 0.1rem solid gray; border-radius: 0.5rem; }
+div#reserveInput > .options-wrapper {border: 0.1rem solid gray; border-radius: 0.5rem; }
+div#reserveInput > .summary-wrapper {border: 0.1rem solid gray; border-radius: 0.5rem;}
 .roundbox > .content > div > p > em {font-size: large; font-size: 2rem; padding-right: 1.5rem;}
  
 /* 객실예약정보입력2 */

@@ -178,7 +178,7 @@
 	
 	
 <!-- 2. 객실 예약정보 입력-->
-	<div class="reserve_step2 offset-md-1 col-md-10" id="reserveInput">
+	<div class="reserve_step2 offset-md-2 col-md-8" id="reserveInput">
 		<hr>
 
 		<div class="header" id="tempHeader">
@@ -306,7 +306,7 @@
                     <table>
                         <tbody>
                             <tr>
-                                <th>객실금액 : </th>
+                                <th>객 실 금 액 : </th>
                                 <td><span id="roomPrice">0</span>원</td>
                             </tr>
                             <tr>
@@ -314,11 +314,11 @@
                                 <td><span id="persePrice">0</span>원</td>
                             </tr>
                             <tr>
-                                <th>옵션금액  : </th>
-                                <td><span id="optnPrice">0</span>원(연박할인 체크!)</td>
+                                <th>옵 션 금 액  : </th>
+                                <td><span id="optnPrice">0</span>원&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(연박 할인가능)</td>
                             </tr>
                             <tr id="consApply" style="display:none">
-                                <th>연박할인 : </th>
+                                <th>연 박 할 인 : </th>
                                 <td><span id="consApplyPrice">0</span>원</td>
                             </tr>
                         </tbody>

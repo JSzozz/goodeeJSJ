@@ -58,8 +58,9 @@
 											<em id="persPirce">#persPirce</em>
 											원 + 옵션추가금액=
 											<em id="optnPrice">#optnPrice</em>
-											원 ::
+											원 
 										</span>
+										<br>
 										<span>
 											합계=
 											<em id="totPirce">#totPirce</em>
