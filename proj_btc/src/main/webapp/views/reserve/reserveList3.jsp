@@ -99,7 +99,7 @@
 				</div>
 
 			<div class="buttons">
-				<button class="buttons-1 btn btn-secondary btn-lg" type="button" id="saveBtn">결제하기</button>
+				<button class="buttons-1 btn btn btn-outline-dark btn-lg" type="button" id="saveBtn">결제하기</button>
 			</div>
 		</div>
 		<!-- <div class="customLayerPopup" style="display: block;">

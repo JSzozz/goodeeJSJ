@@ -64,6 +64,9 @@ div#filterBox{ text-align:center;}
 .category-image { position:relative;text-align:center;color:#FFFFFF; }
 .category-image div { position: absolute;top:50%;left:50%; transform: translate(-50%, -50%); color: black; font-size: 30px; font-weight: bolder;}
 
+/* 객실 조회하기 */
+li.checkbox > label > input{margin : 0.5rem;}
+ul > li > .btn{ margin-left:2.5rem; margin-top:0.6rem; /* text-decoration: underline;  */ font-size:1.05rem;}
 
 /* 예약하기 */
 table.scriptCalendar{margin-left:auto;margin-right:auto;}
@@ -81,7 +84,10 @@ div#reserveInput .header:nth-child(1) { font-size: 0.8rem; padding-left: 1rem; }
 div.roundbox > div.header  { background-color: #F2F2F2; padding: 0.1rem 1rem;  border-bottom: 1px solid #c8c9cb; }
 div#reserveInput .header >h3 { margin: 0.4rem 0 0.4rem 0; } 
 div.roundbox > .content {padding: 1rem 0.6rem 1rem 0.8rem ; line-height: 1.8em; }
-div.roundbox > .content > ul > li {list-style-type: none;}
+div.roundbox > .content > ul { list-style:none; }
+div.roundbox > #countPerson > ul > li{vertical-align: middle; display: table-cell;  padding-right: 2rem;}
+div.roundbox > #countPerson > ul > li > *{ display: flex; flex-direction: column; justify-content: center;}
+
 
 div#reserveInput > #tempHeader { margin-bottom: 1rem;}
 div#reserveInput > #tempHeader > span { font-weight: bold; }
@@ -104,13 +110,14 @@ form > div.roundbox > div.container > h3 > span:last-child {font-size: 1.25rem;c
 form > div.roundbox > div.container > table.table-1 tbody tr td {border: 1px solid #dedede;border-width: 1px 0px 1px 1px;padding: 0.5px 1rem;color: #555555;line-height: 1.5em;font-size: 0.9rem;font-weight: bold;}
 form > div.roundbox > div.container-1 > table > tbody > :last-child td span:last-child em {color: #ff3535; }
 form > .roundbox > div.container-2 table > tbody tr > td > textarea{ resize: none;}
+table.table-2  {margin-left:2.5rem;}
 table.table-2 thead tr th { background-color: #f2f2f2; border: 1px solid #dedede; /* border-width: 1px 0; */text-align: center;padding: 0.3rem 0.3rem;font-size: 0.8rem;font-weight: bold;}
 table.table-2 tbody tr td {border: 1px solid #dedede;/* border-width: 1px 0; */padding: 0.5rem 1rem;color: #555555;line-height: 1.5em;font-size: 0.8rem;font-weight: bold;}
  
 /* 객실예약정보입력3 */
 div.container > h3 > span:first-child {background-color: #333333;color: #ffffff;border: 1px solid #566278;font-family: 'arial';font-size: 1rem;padding: 0.3rem 0.3rem;letter-spacing: -1px;padding-top: 0.5rem;}
+table.table-1 {margin:1rem 2rem;}
 table.table-1 tbody tr th{background-color: #f2f2f2;border: 1px solid #dedede; /* border-width: 1px 0; */text-align: center; padding: 0.5rem 0;width: 6rem;font-weight: bold;}
-table.table-1 tbody tr td {border: 1px solid #dedede; border-width: 1px 0; padding: 0.5rem 1rem;color: #555555;line-height: 1.5em;font-size: 0.8rem;font-weight: bold;}
+table.table-1 tbody tr td {border: 1px solid #dedede; /* border-width: 1px 0; */ padding: 0.5rem 1rem;color: #555555;line-height: 1.5em;font-size: 0.8rem;font-weight: bold;}
 div.reserve_step4 div.container-1 p {color: #ff3535;font-size: 0.8rem;display: block;width: 96%;line-height: 2;}
 
-   

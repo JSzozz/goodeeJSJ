@@ -92,9 +92,9 @@ document.addEventListener("DOMContentLoaded", function() {
 	            }
 	            
 	            //객실목록
-		        let roomList=["Ocean Terrace 101","Ocean Terrace 201","Ocean Terrace 301",
-		        "Sunset Terrace 101","Sunset Terrace 201","Sunset Terrace 301",
-		        "Premium Spa 101","Premium Spa 201"];
+		        let roomList=["오션 테라스 101","오션 테라스 201","오션 테라스 301",
+		        "썬셋 테라스 101","썬셋 테라스 201","썬셋 테라스 301",
+		        "프리미엄스파 101","프리미엄스파 201"];
 /* 객실 */	            
 		      	//객실 추가
 	            for(let i=0;i<roomList.length;i++){

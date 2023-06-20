@@ -10,14 +10,66 @@
 			<div>RESERVATION</div>
 		</div>
 		
-	<br><br><br>
+	<br> 
+	
 <!-- 0. 필터 버튼  --> <!-- 아이콘 출처 : https://tabler-icons.io/  -->
-<section class="p-2 m-0 border-0 bd-example">
 	<!-- <h3>COSA64 펜션 객실 예약</h3> -->
-	<div id="filterBox" >
+	<%-- <form class="container">
+	  <div class="row">
+	    <div class="offset-md-1 col-md-3 <!-- col-sm-3 col-xs-12 -->">
+	      <p class="font-weight-bold">Bonnet</p>
+	      <div data-toggle="buttons">
+	        <label class="btn btn-outline-dark">
+	          <input type="checkbox" name="oil" checked autocomplete="on" value="oil"> Oil
+	        </label>
+	        <label class="btn btn-outline-dark ">
+	          <input type="checkbox" name="coolant" checked autocomplete="off"> Coolant
+	        </label>
+	        <label class="btn btn-outline-dark">
+	          <input type="checkbox" name="breakfluid" checked autocomplete="off"> Break Fluid
+	        </label>
+	      </div>
+	    </div>
+	    <div class="offset-md-1 col-md-3">
+	      <p class="font-weight-bold">Outside</p>
+	      <div data-toggle="buttons">
+	        <label class="btn btn-outline-dark">
+	          <input type="checkbox" name="tyres" checked autocomplete="off"> Tyres
+	        </label>
+	        <label class="btn btn-outline-dark">
+	          <input type="checkbox" name="wiperblades" checked autocomplete="off"> Wiper Blades
+	        </label>
+	        <label class="btn btn-outline-dark">
+	          <input type="checkbox" name="lights" checked autocomplete="off"> Lights
+	        </label>
+	      </div>
+	    </div>
+	    <div class="offset-md-1 col-md-3">
+	      <p class="font-weight-bold">Inside</p>
+	      <div data-toggle="buttons">
+	        <label class="btn btn-outline-dark">
+	          <input type="checkbox" name="horn" checked autocomplete="off"> Horn
+	        </label>
+	        <label class="btn btn-outline-dark">
+	          <input type="checkbox" name="breaks" checked autocomplete="off"> Breaks/Handbrake
+	        </label>
+	        <label class="btn btn-block btn-success active">
+	          <input type="checkbox" name="seatbelt" checked autocomplete="off"> Seatbelt
+	        </label>
+	      </div>
+	    </div>
+	    <div class="offset-md-5 col-md-4">
+	      <button class="btn btn-lg btn btn-outline-dark" type="submit">Submit</button>
+	      <div id="formValues"></div>
+	    </div>
+	  </div>
+	</form> --%>
+  
+
+	<!-- <div id="filterBox" >
 	    <div class="btn-group" role="group" aria-label="Basic radio toggle button group" >
 	        <input type="checkbox" class="btn-check" name="btncheck" id="btncheck1" autocomplete="off" checked="" value="ocean">
-	        <label class="btn btn-outline-secondary" for="btncheck1"> 
+	        <label class="btn btn btn-outline-dark" for="btncheck1"> 
 	            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-beach" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
 	                <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
 	                <path d="M17.553 16.75a7.5 7.5 0 0 0 -10.606 0"></path>
@@ -30,8 +82,8 @@
 	            </svg>
 	        </label>
 	        <input type="checkbox" class="btn-check" name="btncheck" id="btncheck2" autocomplete="off" value="city">
-	        <label class="btn btn-outline-secondary" for="btncheck2">
-	            <span class="form-selectgroup-label"><!-- Download SVG icon from http://tabler-icons.io/i/home -->
+	        <label class="btn btn btn-outline-dark" for="btncheck2">
+	            <span class="form-selectgroup-label">Download SVG icon from http://tabler-icons.io/i/home
 	                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-building-community" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
 	                    <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
 	                    <path d="M8 9l5 5v7h-5v-4m0 4h-5v-7l5 -5m1 1v-6a1 1 0 0 1 1 -1h10a1 1 0 0 1 1 1v17h-8"></path>
@@ -45,7 +97,7 @@
 	            </span>
 	        </label>
 	        <input type="checkbox" class="btn-check" name="btncheck" id="btncheck3" autocomplete="off" value="premium">
-	        <label class="btn btn-outline-secondary" for="btncheck3">
+	        <label class="btn btn btn-outline-dark" for="btncheck3">
 	            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-home-star" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
 	                <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
 	                <path d="M19.258 10.258l-7.258 -7.258l-9 9h2v7a2 2 0 0 0 2 2h4"></path>
@@ -59,7 +111,7 @@
 	    
 	    <div class="btn-group" role="group" aria-label="Basic radio toggle button group">
 	        <input type="checkbox" class="btn-check" name="btncheck" id="btncheck4" autocomplete="off" checked="" value="privatePool">
-	        <label class="btn btn-outline-secondary" for="btncheck4"> 
+	        <label class="btn btn btn-outline-dark" for="btncheck4"> 
 	            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-bath" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
 	                <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
 	                <path d="M4 12h16a1 1 0 0 1 1 1v3a4 4 0 0 1 -4 4h-10a4 4 0 0 1 -4 -4v-3a1 1 0 0 1 1 -1z"></path>
@@ -71,7 +123,7 @@
 	            </svg>
 	        </label>
 	        <input type="checkbox" class="btn-check" name="btncheck" id="btncheck5" autocomplete="off" value="musicRoom">
-	        <label class="btn btn-outline-secondary" for="btncheck5">
+	        <label class="btn btn btn-outline-dark" for="btncheck5">
 	            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-swimming" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
 	                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-music" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
 	                    <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
@@ -85,7 +137,7 @@
 	            </svg>
 	        </label>
 	        <input type="checkbox" class="btn-check" name="btncheck" id="btncheck6" autocomplete="off" value="beamProjector">
-	        <label class="btn btn-outline-secondary" for="btncheck6">
+	        <label class="btn btn btn-outline-dark" for="btncheck6">
 	            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-radio" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
 	                <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
 	                <path d="M14 3l-9.371 3.749a1 1 0 0 0 -.629 .928v11.323a1 1 0 0 0 1 1h14a1 1 0 0 0 1 -1v-11a1 1 0 0 0 -1 -1h-14.5"></path>
@@ -133,10 +185,39 @@
 	            <b><small>웰컴 드링크</small></b>
 	        </label>
 	    </div>	
-	</div> 
+	</div>  -->
 	
 	<br>
 	
+<section class="p-2 m-0 border-0 bd-example">
+
+<!-- 0. 필터 -->
+	<span class="btn-group dropend offset-md-8 col-md-2">
+		<button class="btn btn-outline-dark dropdown-toggle " type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+			<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-funnel-fill" viewBox="0 0 16 16">
+			  <path d="M1.5 1.5A.5.5 0 0 1 2 1h12a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-.128.334L10 8.692V13.5a.5.5 0 0 1-.342.474l-3 1A.5.5 0 0 1 6 14.5V8.692L1.628 3.834A.5.5 0 0 1 1.5 3.5v-2z"/>
+			</svg>
+		    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		    객실 조회하기
+		    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		</button>
+	  <!-- modal -->
+		<ul class="dropdown-menu" role="menu">
+			<li class="checkbox keep-open"><label><input type="checkbox">오션 뷰</label></li>
+		    <li class="checkbox keep-open"><label><input type="checkbox">시티 뷰</label></li>
+		    <li class="checkbox keep-open"><label><input type="checkbox">프리미엄</label></li>
+		    <hr>
+		    <li class="checkbox keep-open"><label><input type="checkbox">프라이빗 풀</label></li>
+		    <li class="checkbox keep-open"><label><input type="checkbox">뮤직룸</label></li>
+		    <li class="checkbox keep-open"><label><input type="checkbox">프로젝터</label></li>
+		    <hr>
+		    <li class="checkbox keep-open"><label><input type="checkbox">커피 머신</label></li>
+		    <li class="checkbox keep-open"><label><input type="checkbox">구스다운 베드</label></li>
+		    <li class="checkbox keep-open"><label><input type="checkbox">웰컴 드링크</label></li>
+		    <li><a class="btn btn btn-outline-secondary btn-sm">조회하기</a></li>
+		</ul>
+	</span>
+  
 <!-- 1. 객실 선택 -->
 	<div class="reserve_step1 ">
 		<table class="scriptCalendar table w-auto p-3">
@@ -224,7 +305,7 @@
             <div class="header">
                 <h3>인원</h3>
             </div>
-            <div class="content">
+            <div class="content" id="countPerson">
                 <ul>
                     <li>
                         <label id="adtNm">성인</label>
@@ -276,20 +357,20 @@
                         <li data-cnt="0"></li> -->                    
                         <input type="checkbox"  id="OPTN0"  data-cnt="0"  class="optCode op_name" value="1" data-tooltip >
                         <lable class="op_la">옵션명-n인기준(n0,000원)</lable>
-                        <button type="button" class="btn btn-secondary btn-sm" data-bs-toggle="tooltip" data-bs-placement="right" title="예약시간 준수 및 사용시간 2시간 제한 있습니다. 이용 금액 : n0,000원">
+                        <button type="button" class="btn btn btn-outline-dark btn-sm" data-bs-toggle="tooltip" data-bs-placement="right" title="예약시간 준수 및 사용시간 2시간 제한 있습니다. 이용 금액 : n0,000원">
                             상세설명
                         </button>
                     </li>
                     <li>
                         <input type="checkbox"  id="OPTN0"  data-cnt="0"  class="optCode op_name" value="1" data-tooltip >
                         <lable class="op_la">옵션명-n인기준(n0,000원)</lable>
-                        <button type="button" class="btn btn-secondary btn-sm" data-bs-toggle="tooltip" data-bs-placement="right" title="예약시간 준수 및 사용시간 2시간 제한 있습니다. 이용 금액 : n0,000원">
+                        <button type="button" class="btn btn btn-outline-dark btn-sm" data-bs-toggle="tooltip" data-bs-placement="right" title="예약시간 준수 및 사용시간 2시간 제한 있습니다. 이용 금액 : n0,000원">
                             상세설명
                         </button>
                     </li>                <li>
                         <input type="checkbox"  id="OPTN0"  data-cnt="0"  class="optCode op_name" value="1" data-tooltip >
                         <lable class="op_la">옵션명-n인기준(n0,000원)</lable>
-                        <button type="button" class="btn btn-secondary btn-sm" data-bs-toggle="tooltip" data-bs-placement="right" title="예약시간 준수 및 사용시간 2시간 제한 있습니다. 이용  금액 : n0,000원">
+                        <button type="button" class="btn btn btn btn-outline-dark btn-sm" data-bs-toggle="tooltip" data-bs-placement="right" title="예약시간 준수 및 사용시간 2시간 제한 있습니다. 이용  금액 : n0,000원">
                             상세설명
                         </button>
                     </li>               
@@ -337,7 +418,7 @@
 	    <hr>
 	    <div class="buttons"  >
 	        <p>체크아웃 날짜와 인원(성인, 영유아)을 선택하시면 다음 단계로 넘어가실 수 있습니다.</p>
-	        <button class="button-1 btn btn-secondary btn-lg" id="goNextBtn"
+	        <button class="button-1 btn btn btn-outline-dark btn-lg" id="goNextBtn"
 	        onclick="location.href='<%=request.getContextPath() %>/views/reserve/reserveList2.jsp' "
 	        >다음단계</button>
 	    </div>
@@ -345,6 +426,7 @@
 </section>
 
 <script>
+
 	$("#searchType").change(e=>{
 	 	const type=$(e.target).val();
 	 	$(e.target).parent().find("div").css("display","none");
@@ -357,6 +439,17 @@
  		 });
 	});
 
+	$('.keep-open').click(function(e) {
+        if (/input|label/i.test(e.target.tagName)){
+          var parent = $(e.target).parent();
+          if(parent.hasClass('checkbox')){
+            var checkbox = parent.find('input[type=checkbox]');
+            checkbox.prop("checked", !checkbox.prop("checked"));
+            return false;
+          }
+        }
+      });
+		
 </script>
 
 		<!-- 푸터 영역 -->

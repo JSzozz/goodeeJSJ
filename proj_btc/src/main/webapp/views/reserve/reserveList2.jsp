@@ -182,7 +182,7 @@
 					</div>
 				</div>
 				<div class="buttons">
-					<button class="buttons-1 btn btn-secondary btn-lg" 
+					<button class="buttons-1 btn btn btn-outline-dark btn-lg" 
 	        		onclick="location.href='<%=request.getContextPath() %>/views/reserve/reserveList3.jsp' "
 					type="button" id="saveBtn">객실 예약하기</button>
 				</div>

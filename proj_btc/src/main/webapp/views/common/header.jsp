@@ -38,6 +38,16 @@ if (cookies != null) {
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;700&display=swap" rel="stylesheet">
 
+
+	<link rel="stylesheet" href="<%=request.getContextPath() %>/css/bootstrap-select.min.css">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="<%=request.getContextPath() %>/css/bootstrap.min.css">
+    
+    <!-- Style -->
+    <link rel="stylesheet" href="<%=request.getContextPath() %>/css/style.css">
+
+
 </head>
 <body>
 	<!-- bootstrap cdn처리 -->
