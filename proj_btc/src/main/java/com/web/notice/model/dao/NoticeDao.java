@@ -1,4 +1,6 @@
-package com.web.reserve.model.dao;
+package com.web.notice.model.dao;
+
+import static com.web.common.JDBCTemplate.close;
 
 import java.io.FileReader;
 import java.io.IOException;
@@ -10,9 +12,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Properties;
 
-import com.web.reserve.model.vo.Notice;
-
-import static com.web.common.JDBCTemplate.close;
+import com.web.notice.model.vo.Notice;
 
 public class NoticeDao {
 	

@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<%@ page import="java.util.List,com.web.reserve.model.vo.Notice"%>
+<%@ page import="java.util.List,com.web.notice.model.vo.Notice"%>
 <%
 List<Notice> notices=(List)request.getAttribute("notices");
 %>

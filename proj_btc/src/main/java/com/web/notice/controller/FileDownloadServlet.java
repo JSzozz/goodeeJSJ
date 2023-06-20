@@ -1,4 +1,4 @@
-package com.web.reserve.controller;
+package com.web.notice.controller;
 
 import java.io.BufferedInputStream;
 import java.io.BufferedOutputStream;

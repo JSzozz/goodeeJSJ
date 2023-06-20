@@ -1,12 +1,15 @@
-package com.web.reserve.model.service;
+package com.web.notice.model.service;
 
-import static com.web.common.JDBCTemplate.*;
+import static com.web.common.JDBCTemplate.close;
+import static com.web.common.JDBCTemplate.commit;
+import static com.web.common.JDBCTemplate.getConnection;
+import static com.web.common.JDBCTemplate.rollback;
 
 import java.sql.Connection;
 import java.util.List;
 
-import com.web.reserve.model.dao.NoticeDao;
-import com.web.reserve.model.vo.Notice;
+import com.web.notice.model.dao.NoticeDao;
+import com.web.notice.model.vo.Notice;
 public class NoticeService {
 	private NoticeDao dao=new NoticeDao();
 	

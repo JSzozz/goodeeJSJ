@@ -9,13 +9,13 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.web.reserve.model.service.NoticeService;
-import com.web.reserve.model.vo.Notice;
+import com.web.reserve.model.service.ReserveService;
+import com.web.room.model.vo.Room;
 
 /**
  * Servlet implementation class NoticeListServlet
  */
-@WebServlet("/reserve/reserveList.do")
+@WebServlet("/reserve/reserveList1.do")
 public class ReserveListServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
@@ -31,7 +31,9 @@ public class ReserveListServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
+
+		List<Room> list=new ReserveService().selectAllRoom();
+		System.out.println(list);
 		request.getRequestDispatcher("/views/reserve/reserveList.jsp")
 		.forward(request, response);
 	}

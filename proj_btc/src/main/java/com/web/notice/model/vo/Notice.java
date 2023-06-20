@@ -1,4 +1,4 @@
-package com.web.reserve.model.vo;
+package com.web.notice.model.vo;
 
 import java.sql.Date;
 

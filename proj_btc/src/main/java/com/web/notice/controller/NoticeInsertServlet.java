@@ -1,27 +1,23 @@
-package com.web.reserve.controller;
+package com.web.notice.controller;
 
 import java.io.IOException;
-
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.web.reserve.model.service.NoticeService;
-import com.web.reserve.model.vo.Notice;
-
 /**
- * Servlet implementation class NoticeViewServlet
+ * Servlet implementation class NoticeInsertServlet
  */
-@WebServlet("/notice/noticeView.do")
-public class NoticeViewServlet extends HttpServlet {
+@WebServlet("/notice/insertForm.do")
+public class NoticeInsertServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public NoticeViewServlet() {
+    public NoticeInsertServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -31,11 +27,9 @@ public class NoticeViewServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		//클라이언트가 보낸 공지사항No이 있고, 이와 관련된 공지사항 정보를 DB에서 가져와 전달해주는 기능
-		int no=Integer.parseInt(request.getParameter("no"));
-		Notice n=new NoticeService().selectNoticeByNo(no);
-		request.setAttribute("notice", n);
-		request.getRequestDispatcher("/views/notice/noticeView.jsp").forward(request, response);
+		
+		request.getRequestDispatcher("/views/notice/insertNotice.jsp").forward(request, response);
+	
 	}
 
 	/**

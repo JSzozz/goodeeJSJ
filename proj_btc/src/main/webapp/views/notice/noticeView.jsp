@@ -2,7 +2,7 @@
 	pageEncoding="UTF-8"%>
 
 <%@
-	page import="com.web.reserve.model.vo.Notice"%>
+	page import="com.web.notice.model.vo.Notice"%>
 <%
 	Notice n=(Notice)request.getAttribute("notice");
 %>

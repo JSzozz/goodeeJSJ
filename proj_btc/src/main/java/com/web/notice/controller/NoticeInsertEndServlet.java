@@ -1,4 +1,4 @@
-package com.web.reserve.controller;
+package com.web.notice.controller;
 
 import java.io.IOException;
 
@@ -12,8 +12,8 @@ import org.apache.tomcat.util.http.fileupload.servlet.ServletFileUpload;
 
 import com.oreilly.servlet.MultipartRequest;
 import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
-import com.web.reserve.model.service.NoticeService;
-import com.web.reserve.model.vo.Notice;
+import com.web.notice.model.service.NoticeService;
+import com.web.notice.model.vo.Notice;
 
 /**
  * Servlet implementation class NoticeInsertEndServlet
