@@ -19,26 +19,23 @@
         <div class="row d-flex justify-content-evenly"> 
         	<%if(rooms.isEmpty()){ %>
         		<h2>rooms불러오기 실패</h2>
-         	<%}else{
-         		for(Room r:rooms){ %>
-<!--         		const div=$("<div>"); -->
-<!--         		div.innerText+=<div class="card col-md-6 b" style="width:20rem";>; -->
-<!--         		console.log(div); -->
-        		 <div class="card col-md-6 b" style="width: 20rem;">
-        			<a href="<%=request.getContextPath() %>/RoomViewServlet.do?roomNo=<%=r.getRoomNo() %>" class="text-decoration-none">
-        				<img src="<%=request.getContextPath() %>/images/ocean1/01.jpg" class="card-img-top">
-        				<div class="card-body">
-        					<h5 class="card-title"><%=r.getRoomName() %></h5>
-                        	<p class="card-text">MIN CAP <%=r.getRoomCap() %>PPL/MAX CAP <%=r.getRoomMaxCap() %>PPL</p>
-        				</div>
-        			</a>
-        		</div>
-        	<%}
-        	} %>
-         
-        
-        
-        
+         	<% }else{
+         		for (Room r : rooms) {%>
+         	
+            <%    if (r.getRoomName().contains(((String) request.getAttribute("type")))) { %>
+                    <div class="card col-md-6 b" style="width: 20rem;">
+                        <a href="<%= request.getContextPath() %>/RoomViewServlet.do?no=<%= r.getRoomNo() %>" class="text-decoration-none">
+                            <img src="<%= request.getContextPath() %>/images/ocean1/01.jpg" class="card-img-top" alt="...">
+                            <div class="card-body">
+                                <h5 class="card-title"><%= r.getRoomName() %></h5>
+                                <p class="card-text">MIN CAP <%= r.getRoomCap() %>PPL/MAX CAP <%= r.getRoomMaxCap() %>PPL</p>
+                            </div>
+                        </a>
+                    </div>
+                 <%} 
+           		 }%>
+           <%  } %>
+ 
         
    <%--          <div class="card col-md-6 b" style="width: 20rem;">
             	<a href="<%=request.getContextPath() %>/RoomViewServlet.do?no=" class="text-decoration-none">

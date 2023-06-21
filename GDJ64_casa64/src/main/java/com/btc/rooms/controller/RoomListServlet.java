@@ -2,6 +2,9 @@ package com.btc.rooms.controller;
 
 import java.io.IOException;
 import java.util.List;
+import java.util.Map;
+import java.util.Set;
+import java.util.stream.Collectors;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -32,6 +35,15 @@ public class RoomListServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		List<Room> rooms=new RoomService().selectAllRoom();
+		Map<Object,List<Room>> groupRoom=rooms.stream().collect(Collectors.groupingBy((r)->{
+			if(r.getRoomName().contains("OCEAN")) return "ocean";
+			else if(r.getRoomName().contains("SUNSET")) return "sunset";
+			else if(r.getRoomName().contains("SPA")) return "spa";
+			else return "etc";
+		},Collectors.toList()));
+		System.out.println(groupRoom.get("ocean"));
+		System.out.println(groupRoom.get("sunset"));
+		System.out.println(groupRoom.get("spa"));
 		request.setAttribute("rooms", rooms);
 		request.getRequestDispatcher("/views/rooms/roomsMain.jsp").forward(request, response);
 	}
