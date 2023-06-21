@@ -3,3 +3,5 @@ src/main/resources/
 .dbeaver/
 src/main/webapp/images/
 src/main/webapp/upload/
+**/*driver*.properties
+**/*sql*.properties
