@@ -3,7 +3,11 @@
 <%@ include file="/views/common/header.jsp" %>
 <%@ page import="java.util.List,com.btc.rooms.model.vo.Room" %>
 <%
-	List<Room> rooms=(List<Room>)request.getAttribute("rooms");
+	/* List<Room> rooms=(List<Room>)request.getAttribute("rooms"); */
+	List<Room> oceans=(List<Room>)request.getAttribute("ocean");
+	List<Room> sunsets=(List<Room>)request.getAttribute("sunset");
+	List<Room> spas=(List<Room>)request.getAttribute("spa");
+	
 %>
 <section>
 <div class="category-image">
@@ -17,12 +21,10 @@
          <!-- row-cols-1 row-cols-md-3 g-4 -->
         <h2 name="type"><strong>Ocean Terrace</strong></h2><br>
         <div class="row d-flex justify-content-evenly"> 
-        	<%if(rooms.isEmpty()){ %>
+        	<%if(oceans.isEmpty()){ %>
         		<h2>rooms불러오기 실패</h2>
          	<% }else{
-         		for (Room r : rooms) {%>
-         	
-            <%    if (r.getRoomName().contains(((String) request.getAttribute("type")))) { %>
+         		for (Room r : oceans) {%>
                     <div class="card col-md-6 b" style="width: 20rem;">
                         <a href="<%= request.getContextPath() %>/RoomViewServlet.do?no=<%= r.getRoomNo() %>" class="text-decoration-none">
                             <img src="<%= request.getContextPath() %>/images/ocean1/01.jpg" class="card-img-top" alt="...">
@@ -33,8 +35,7 @@
                         </a>
                     </div>
                  <%} 
-           		 }%>
-           <%  } %>
+           	 }%>
  
         
    <%--          <div class="card col-md-6 b" style="width: 20rem;">
@@ -65,11 +66,26 @@
             	</a>
             </div> --%>
         </div>
-       <%--  <br><br><br><br>
+		<br><br><br><br>
         <h2 id="room-type"><strong>Sunset Terrace</strong></h2><br>
         <div class="row d-flex justify-content-evenly">
-            
-            <div class="card" style="width: 20rem;">
+        <%if(sunsets.isEmpty()){ %>
+        		<h2>rooms불러오기 실패</h2>
+         	<% }else{
+         		for (Room r : sunsets) {%>
+                    <div class="card col-md-6 b" style="width: 20rem;">
+                        <a href="<%= request.getContextPath() %>/RoomViewServlet.do?no=<%= r.getRoomNo() %>" class="text-decoration-none">
+                            <img src="<%= request.getContextPath() %>/images/ocean1/01.jpg" class="card-img-top" alt="...">
+                            <div class="card-body">
+                                <h5 class="card-title"><%= r.getRoomName() %></h5>
+                                <p class="card-text">MIN CAP <%= r.getRoomCap() %>PPL/MAX CAP <%= r.getRoomMaxCap() %>PPL</p>
+                            </div>
+                        </a>
+                    </div>
+                 <%} 
+           	 }%>
+    <%--         
+         <div class="card" style="width: 20rem;">
                 <a href="#" class="text-decoration-none">
                     <img src="<%=request.getContextPath() %>/images/sunset1/01.jpg" class="card-img-top" alt="...">
                     <div class="card-body">
@@ -98,11 +114,27 @@
                     </div>
                 </a>
             </div>
-        </div>
+        </div> --%>
         <br><br><br><br>
         <h2 id="room-type"><strong>Premium Spa Terrace</strong></h2><br>
         <div class="row d-flex justify-content-evenly">
-            <div class="card col-sm-4" style="width: 20rem;">
+        <%if(oceans.isEmpty()){ %>
+        		<h2>rooms불러오기 실패</h2>
+         	<% }else{
+         		for (Room r : spas) {%>
+                    <div class="card col-md-6 b" style="width: 20rem;">
+                        <a href="<%= request.getContextPath() %>/RoomViewServlet.do?no=<%= r.getRoomNo() %>" class="text-decoration-none">
+                            <img src="<%= request.getContextPath() %>/images/ocean1/01.jpg" class="card-img-top" alt="...">
+                            <div class="card-body">
+                                <h5 class="card-title"><%= r.getRoomName() %></h5>
+                                <p class="card-text">MIN CAP <%= r.getRoomCap() %>PPL/MAX CAP <%= r.getRoomMaxCap() %>PPL</p>
+                            </div>
+                        </a>
+                    </div>
+                 <%} 
+           	 }%>
+           	 
+ <%--            <div class="card col-sm-4" style="width: 20rem;">
             	<a href="#" class="text-decoration-none">
                     <img src="<%=request.getContextPath() %>/images/spa1/01.jpg" class="card-img-top" alt="...">
                     <div class="card-body">
@@ -120,8 +152,8 @@
                     </div>
             	</a>
             </div>
-        </div>
+        </div> --%>
         <br><br><br><br>
-    </div> --%>
+    </div>
 </section>
 <%@ include file="/views/common/footer.jsp" %>
