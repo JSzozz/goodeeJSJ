@@ -8,6 +8,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import com.btc.reserve.model.service.ReserveService;
 import com.btc.rooms.model.vo.Room;
@@ -32,10 +33,14 @@ public class ReserveListServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-//		List<Room> list=new ReserveService().selectAllRoom();
-//		System.out.println(list);
-//		request.getRequestDispatcher("/views/reserve/reserveList1.jsp")
-//		.forward(request, response);
+		List<Room> rooms=new ReserveService().selectAllRoom();
+//		System.out.println(rooms);
+		
+		HttpSession session=request.getSession();
+		session.setAttribute("rooms", rooms);
+		
+		request.getRequestDispatcher("/views/reserve/reserveList1.jsp")
+		.forward(request, response);
 	}
 
 	/**

@@ -21,7 +21,7 @@ public class ReserveDao {
 	
 	public ReserveDao() {
 		String path=ReserveDao.class
-				.getResource("/sql/reserve/reservesql.properties")
+				.getResource("/sql/reserve/sql_reserve.properties")
 				.getPath();
 		try {
 			sql.load(new FileReader(path));
@@ -30,40 +30,33 @@ public class ReserveDao {
 		}
 		
 	}
-//	private Room getRoom(ResultSet rs) throws SQLException{
-//		return Room.builder()
-//	         .roomNo(rs.getInt("room_no"))
-//	         .roomName(rs.getString("room_name"))
-//	         .roomPrice(rs.getInt("room_price"))
-//	         .roomSize(rs.getInt("room_size"))
-//	         .roomCap(rs.getInt("room_cap"))
-//	         .roomMaxCap(rs.getInt("room_max_cap"))
-//	         .bookable(rs.getString("bookable"))
-//	         .roomImage(rs.getString("room_image"))
-//	         .dateCreated(rs.getDate("date_created"))
-//	         .dateModified(rs.getDate("date_modified"))
-//	         .roomDescription(rs.getString("room_description"))
-//	         .build();
-//	}
+	private Room getRoom(ResultSet rs) throws SQLException{
+		return Room.builder().roomNo(rs.getInt("room_no")).roomName(rs.getString("room_name"))
+				.roomPrice(rs.getInt("room_price")).roomSize(rs.getInt("room_size"))
+				.roomCap(rs.getInt("room_cap")).roomMaxCap(rs.getInt("room_max_cap"))
+				.bookable(rs.getString("bookable").charAt(0)).roomImage(rs.getString("room_image"))
+				.dateCreated(rs.getDate("date_created")).dateModified(rs.getDate("date_modified"))
+				.roomDescription(rs.getString("room_description")).build();
+	}
 	
-//	public List<Room> selectAllRoom(Connection conn){
-//		PreparedStatement pstmt=null;
-//		ResultSet rs=null;
-//		List<Room> list=new ArrayList();
-//		try {
-//			pstmt=conn.prepareStatement(sql.getProperty("selectAllRoom"));
-//			//SELECT * FROM ROOM
-//			rs=pstmt.executeQuery();
-//			while(rs.next()) {
-//				list.add(getRoom(rs));
-//			}
-//		}catch(SQLException e) {
-//			e.printStackTrace();
-//		}finally {
-//			close(rs);
-//			close(pstmt);
-//		}return list;	
-//	}
+	public List<Room> selectAllRoom(Connection conn){
+		PreparedStatement pstmt=null;
+		ResultSet rs=null;
+		List<Room> list=new ArrayList();
+		try {
+			pstmt=conn.prepareStatement(sql.getProperty("selectAllRoom"));
+			//SELECT * FROM ROOM
+			rs=pstmt.executeQuery();
+			while(rs.next()) {
+				list.add(getRoom(rs));
+			}
+		}catch(SQLException e) {
+			e.printStackTrace();
+		}finally {
+			close(rs);
+			close(pstmt);
+		}return list;	
+	}
 	
 //	private Notice getNotice(ResultSet rs) throws SQLException{
 //		return Notice.builder()

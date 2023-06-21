@@ -1,6 +1,22 @@
+<%@page import="com.btc.rooms.model.vo.Room"%>
+<%@page import="java.util.List"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-
+<%
+	List<Room> rooms=(List<Room>)session.getAttribute("rooms");
+%>
+<%-- 		
+		<%if(rooms.isEmpty()) {%>
+			<h1>조회된 방이 없습니다.</h1>
+		<%} else{
+			for(Room r:rooms){%>
+			<%=r.getRoomName() %>
+			<%=r.getRoomPrice() %>
+			<br>
+		<%	}
+		}%>	 
+--%>
+		
 <%-- <script src="<%=request.getContextPath()%>/js/reserve.js"></script> --%>
 <%@ include file="/views/common/header.jsp"%>
 	
@@ -24,9 +40,9 @@
 			<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-funnel-fill" viewBox="0 0 16 16">
 			  <path d="M1.5 1.5A.5.5 0 0 1 2 1h12a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-.128.334L10 8.692V13.5a.5.5 0 0 1-.342.474l-3 1A.5.5 0 0 1 6 14.5V8.692L1.628 3.834A.5.5 0 0 1 1.5 3.5v-2z"/>
 			</svg>
-		    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 		    객실 조회하기
-		    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 		</button>
 	  <!-- modal -->
 		<ul class="dropdown-menu" role="menu">
@@ -45,7 +61,7 @@
 		</ul>
 	</span>
 	
-  	<br>
+  	<br><br>
 
 <!-- 1. 객실 선택 -->
 	<div class="reserve_step1 ">
@@ -255,7 +271,18 @@
 </section>
 
 <script>
-
+	
+ 	 /* ["오션 테라스 101","오션 테라스 201","오션 테라스 301",
+	 	 "썬셋 테라스 101","썬셋 테라스 201","썬셋 테라스 301",
+      	 "프리미엄스파 101","프리미엄스파 201"]; */
+   	// 객실 목록
+   	
+	let roomList=[];
+	<%for(Room room:rooms) {%>
+		roomList.push("<%=room.getRoomName()%>");
+	<%}%>
+	
+	    		  
 	$("#searchType").change(e=>{
 	 	const type=$(e.target).val();
 	 	$(e.target).parent().find("div").css("display","none");
@@ -283,11 +310,9 @@
 <script>
 	document.addEventListener("DOMContentLoaded", function() {
 	    buildCalendar();
-	    
 	    document.getElementById("btnPrevCalendar").addEventListener("click", function(event) {
 	        prevCalendar();
 	    });
-	    
 	    document.getElementById("nextNextCalendar").addEventListener("click", function(event) {
 	        nextCalendar();
 	    });
@@ -375,9 +400,9 @@
 	            }
 	            
 	            //객실목록
-		        let roomList=["오션 테라스 101","오션 테라스 201","오션 테라스 301",
+/* 		        let roomList=["오션 테라스 101","오션 테라스 201","오션 테라스 301",
 		        "썬셋 테라스 101","썬셋 테라스 201","썬셋 테라스 301",
-		        "프리미엄스파 101","프리미엄스파 201"];
+		        "프리미엄스파 101","프리미엄스파 201"]; */
 /* 객실 */	            
 		      	//객실 추가
 	            for(let i=0;i<roomList.length;i++){
@@ -387,7 +412,7 @@
 	                divNode.appendChild(aNode);
 	                column.appendChild(divNode);
 	                divNode.setAttribute("class",toDay.getFullYear()+"-"+autoLeftPad((toDay.getMonth() + 1), 2)+"-"+autoLeftPad(day, 2))+" room"+(i+1);
-	                /*aNode.setAttribute("href","<%=request.getContextPath()%>/reserve/reserveation.do?reserveDate="+toDay.getFullYear()+"-"+autoLeftPad((toDay.getMonth() + 1), 2)+"-"+autoLeftPad(day, 2)+"&roomNo="+(i+1));*/
+	                /* aNode.setAttribute("href","<%=request.getContextPath()%>/reserve/reserveation.do?reserveDate="+toDay.getFullYear()+"-"+autoLeftPad((toDay.getMonth() + 1), 2)+"-"+autoLeftPad(day, 2)+"&roomNo="+(i+1));*/
 	            	divNode.setAttribute("id","room");
 	            }
 	            

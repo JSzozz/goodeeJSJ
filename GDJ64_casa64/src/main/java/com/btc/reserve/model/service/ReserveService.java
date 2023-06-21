@@ -13,12 +13,12 @@ import com.btc.rooms.model.vo.Room;
 public class ReserveService {
 	private ReserveDao dao=new ReserveDao();
 	
-//	public List<Room> selectAllRoom(){
-//		Connection conn=getConnection();
-//		List<Room> list=dao.selectAllRoom(conn);
-//		close(conn);
-//		return list;
-//	}
+	public List<Room> selectAllRoom(){
+		Connection conn=getConnection();
+		List<Room> list=dao.selectAllRoom(conn);
+		close(conn);
+		return list;
+	}
 	
 	
 //	private NoticeDao dao=new NoticeDao();

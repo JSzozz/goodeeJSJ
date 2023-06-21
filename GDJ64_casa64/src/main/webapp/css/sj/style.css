@@ -52,7 +52,7 @@ div#filterBox{ text-align:center;}
 /* 달력 */
 .scriptCalendar { text-align:center; }
 .scriptCalendar > thead > tr > td { width:150px;height:50px; }
-.scriptCalendar > thead > tr:first-child > td { font-weight:bold; }
+.scriptCalendar > thead > tr:first-child > td { background-color:white;font-weight:bold; }
 .scriptCalendar > thead > tr:last-child > td { background-color:gray;color:white; }
 .scriptCalendar > tbody > tr > td { width:150px;height:150px; }
 .scriptCalendar > tbody > tr > td > hr {margin :5px 0 10px 0; }
