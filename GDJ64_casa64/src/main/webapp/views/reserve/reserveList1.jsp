@@ -271,7 +271,6 @@
 </section>
 
 <script>
-	
  	 /* ["오션 테라스 101","오션 테라스 201","오션 테라스 301",
 	 	 "썬셋 테라스 101","썬셋 테라스 201","썬셋 테라스 301",
       	 "프리미엄스파 101","프리미엄스파 201"]; */
@@ -283,18 +282,12 @@
 	<%}%>
 	
 	    		  
-	$("#searchType").change(e=>{
+/* 	$("#searchType").change(e=>{
 	 	const type=$(e.target).val();
 	 	$(e.target).parent().find("div").css("display","none");
 	 	$("#search-"+type).css("display","inline-block");
-	});
-
-	$(document).ready(function () {
- 		$("div[id='room']").click(function () {
-  			$(".reserve_step2").show();
- 		 });
-	});
-
+	}); */
+	
 	$('.keep-open').click(function(e) {
         if (/input|label/i.test(e.target.tagName)){
           var parent = $(e.target).parent();
@@ -305,7 +298,6 @@
           }
         }
       });
-		
 </script>
 <script>
 	document.addEventListener("DOMContentLoaded", function() {
@@ -378,7 +370,7 @@
 /* 일자 */	
 	            // @param 평일 날짜 데이터 삽입 & <hr>
 	           /* column.innerText = autoLeftPad(day, 2);*/
-	
+				
 	            const divNode = document.createElement("div");
 	            const aNode = document.createElement("a");
 	            aNode.textContent = autoLeftPad(day, 2);
@@ -412,8 +404,10 @@
 	                divNode.appendChild(aNode);
 	                column.appendChild(divNode);
 	                divNode.setAttribute("class",toDay.getFullYear()+"-"+autoLeftPad((toDay.getMonth() + 1), 2)+"-"+autoLeftPad(day, 2))+" room"+(i+1);
-	                /* aNode.setAttribute("href","<%=request.getContextPath()%>/reserve/reserveation.do?reserveDate="+toDay.getFullYear()+"-"+autoLeftPad((toDay.getMonth() + 1), 2)+"-"+autoLeftPad(day, 2)+"&roomNo="+(i+1));*/
+	                <%-- aNode.setAttribute("href","<%=request.getContextPath()%>/reserve/reserveation.do?reserveDate="+toDay.getFullYear()+"-"+autoLeftPad((toDay.getMonth() + 1), 2)+"-"+autoLeftPad(day, 2)+"&roomNo="+(i+1)); --%>
+	                /* aNode.setAttribute("href",""); */
 	            	divNode.setAttribute("id","room");
+	            	divNode.setAttribute("price","room");
 	            }
 	            
 	            column.style.margin="1px 1px 1px 1px";
@@ -529,6 +523,20 @@
 	    }
 	    return num;
 	}
+</script>
+<script>
+	$(function() {
+		
+		$("div[id='room']").click(e=> {
+				$(".reserve_step2").show();
+				console.dir($(e.target));
+				console.log($(e.target).text());
+				console.dir($(e.target).attr("class"));
+				console.dir($(e.target).text());
+				
+		 });
+	});
+	
 </script>
 		<!-- 푸터 영역 -->
 <%@ include file="/views/common/footer.jsp"%>
