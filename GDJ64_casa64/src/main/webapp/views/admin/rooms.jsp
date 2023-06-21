@@ -33,13 +33,13 @@
                                             <tr>
                                                 <td>1</td>
                                                 <td>
-                                                    <img src="<%=request.getContextPath()%>/images/01.jpg" alt="객실사진" width="150" height="100">
+                                                    <img src="#" alt="객실사진" width="150" height="100">
                                                 </td>
                                                 <td>오션뷰 테라스</td>
                                                 <td>공개</td>
                                                 <td>120,000원</td>
                                                 <td>
-                                                    <form action="#">
+                                                    <form action="<%=request.getContextPath()%>/views/admin/room-check.jsp">
                                                         <button type="submit" class="btn btn-dark btn-sm">상세조회</button>
                                                     </form>
                                                 </td>
@@ -48,7 +48,7 @@
                                     </table>
                                     <!-- 관리자 버튼 -->
                                     <div class="d-flex justify-content-end">
-                                        <form action="#">
+                                        <form action="<%=request.getContextPath()%>/views/admin/room-insert.jsp">
                                             <button type="submit" class="btn btn-dark">객실추가</button>
                                         </form>
                                     </div>

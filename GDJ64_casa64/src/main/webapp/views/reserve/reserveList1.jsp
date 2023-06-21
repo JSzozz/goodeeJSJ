@@ -113,7 +113,7 @@
                 </div>
                 <div class="checkout on"> 
                     <p>CHEKC OUT</p>
-                    <span id="checkinDt">#checkout</span>
+                    <span id="checkoutDt">#checkout</span>
                 </div>   
                 <div>
                     <select class="availableDays">
@@ -180,24 +180,21 @@
             </div>
             <div class="content">
                 <ul id="optnList">
-                    <li>
-                        <!-- <li data-cnt="0"></li>
-                        <li data-cnt="0"></li>
-                        <li data-cnt="0"></li> -->                    
-                        <input type="checkbox"  id="OPTN0"  data-cnt="0"  class="optCode op_name" value="1" data-tooltip >
+                    <li>                 
+                        <input type="checkbox"  id="OPTN0"  data-cnt="0"  class="optCode op_name" value="101" data-tooltip >
                         <lable class="op_la">옵션명-n인기준(n0,000원)</lable>
                         <button type="button" class="btn btn btn-outline-dark btn-sm" data-bs-toggle="tooltip" data-bs-placement="right" title="예약시간 준수 및 사용시간 2시간 제한 있습니다. 이용 금액 : n0,000원">
                             상세설명
                         </button>
                     </li>
                     <li>
-                        <input type="checkbox"  id="OPTN0"  data-cnt="0"  class="optCode op_name" value="1" data-tooltip >
+                        <input type="checkbox"  id="OPTN0"  data-cnt="0"  class="optCode op_name" value="102" data-tooltip >
                         <lable class="op_la">옵션명-n인기준(n0,000원)</lable>
                         <button type="button" class="btn btn btn-outline-dark btn-sm" data-bs-toggle="tooltip" data-bs-placement="right" title="예약시간 준수 및 사용시간 2시간 제한 있습니다. 이용 금액 : n0,000원">
                             상세설명
                         </button>
                     </li>                <li>
-                        <input type="checkbox"  id="OPTN0"  data-cnt="0"  class="optCode op_name" value="1" data-tooltip >
+                        <input type="checkbox"  id="OPTN0"  data-cnt="0"  class="optCode op_name" value="103" data-tooltip >
                         <lable class="op_la">옵션명-n인기준(n0,000원)</lable>
                         <button type="button" class="btn btn btn btn-outline-dark btn-sm" data-bs-toggle="tooltip" data-bs-placement="right" title="예약시간 준수 및 사용시간 2시간 제한 있습니다. 이용  금액 : n0,000원">
                             상세설명
@@ -505,6 +502,10 @@
 	    return num;
 	}
 </script>
+
+<!-- 결제기능 구현 -->
+<script src="https://cdn.iamport.kr/v1/iamport.js"></script>
+<script src="<%=request.getContextPath()%>/js/dj/payment.js"></script>
 		<!-- 푸터 영역 -->
 <%@ include file="/views/common/footer.jsp"%>
 <!-- footer바닥 고정법 찾아보기 -->

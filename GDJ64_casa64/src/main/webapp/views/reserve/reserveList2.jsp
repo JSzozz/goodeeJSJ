@@ -107,16 +107,6 @@
 							</tbody>
 						</table>
 					</div>
-
-					<!-- <div class="contaoner contaoner-3">
-						<h3>
-
-						</h3>
-						<table class="table-1">
-							
-						</table>
-
-					</div> -->
 					
 	<!-- 3. 03 환불규정확인 -->
 					<div class="container container">
@@ -183,17 +173,11 @@
 				</div>
 				<div class="buttons">
 					<button class="buttons-1 btn btn btn-outline-dark btn-lg" 
-	        		onclick="location.href='<%=request.getContextPath() %>/views/reserve/reserveList3.jsp' "
+	        		onclick=""
 					type="button" id="saveBtn">객실 예약하기</button>
 				</div>
 			</form>
 		</div>
-<!-- 		<div class="customLayerPopup" style="display: block;">
-			<p>#point를 정확히 입력하세요</p>
-			<div style="width: 5rem;">
-				<strong>확인</strong>
-			</div>
-		</div> -->
 		<!-- 내용 종료 -->
 
 	</div>
