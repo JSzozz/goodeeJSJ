@@ -1,0 +1,562 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    text-decoration: none;
+}
+
+/* index */
+
+/* booking-complete */
+#booking-complete{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    margin-bottom: 6.25rem;
+}
+#booking-image{
+    margin-right: 7.5rem;
+}
+#booking-info{
+    height: 25rem;
+    margin-top: 7rem;
+    padding-top: 3rem;
+  }
+#booking-info>table{
+  text-align: left;
+  border-collapse: separate;
+  border-spacing: 0 1rem;
+}
+#booking-info th{
+  padding-bottom: 1.2rem;
+  padding-right: 1.25rem;
+}
+#booking-info th:last-of-type{
+    padding-bottom: 0rem;
+}
+#booking-info>button{
+    width: 8.75rem;
+    height: 2.5rem;
+    margin-left: 0.375rem;
+    margin-right: 0.375rem;
+    margin-top: 1.5rem;
+}
+#booking-info>table button[class="btn btn-dark"]{
+    font-size: 0.75rem;
+    height: 1.5rem;
+    margin-bottom: 0.5rem;
+    padding: 0.25rem 0.625rem;
+}
+/* /booking-complete */
+
+/* booking-status */
+#booking-status{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+#status-image{
+  text-align: center;
+}
+#booking-status>div:first-of-type{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+#booking-status>div:first-of-type>span:first-of-type>p{
+    padding: 0.625rem 0;
+}
+#booking-status>div:first-of-type>span{
+    margin: 0.75rem;
+}
+/* /booking-status */
+
+/* swiper */
+.swiper {
+    width: 100vw;
+    height: calc(100vh - 4.625rem);
+}
+.swiper-slide {
+    width: 100vw;
+    text-align:center;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+}
+.swiper-slide>img {
+    width: 100%;
+    height: 100%;
+}
+#footer{
+    background-color: rgb(211, 211, 211);
+    width: 100vw;
+    height: 4.5rem !important;
+    display: none;
+    position: fixed;
+    top: 93%;
+    z-index: 950;
+}
+.swiper-button-prev{
+    color: black !important;
+    position: fixed;
+    top: 40%;
+    left: 96%;
+}
+.swiper-button-next {
+    color: black !important;
+    position: fixed;
+    top: 60%;
+    left: 96%;
+}
+.swiper-pagination {
+    position: fixed;
+    top: 50% !important;
+    left: 96.45% !important;
+}
+.swiper-pagination-bullet{
+    background-color: black;
+}
+.swiper-button-next::after,
+.swiper-button-prev::after {
+    display: none;
+}
+#search-btn{
+    cursor: pointer;
+    width: 3rem;
+    height: 3rem;
+    position: fixed;
+    top: 93%;
+    left: 49%;
+    z-index: 999;
+}#booking-filter{
+    width: 50%;
+    height: 70%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    margin-bottom: 3rem;
+}
+#filter-header{
+    width: 100%;
+    height: 3rem;
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    margin-top: 1.5rem;
+}
+#filter-search-button{
+    display: inline-block;
+    background-color: #212529;
+    width: 3rem;
+    height: 3rem;
+    /* padding: 1px; */
+    border-top-left-radius: 0.5rem;
+    border-bottom-left-radius: 0.5rem;
+    cursor: pointer;
+}
+#filter-search-button>img{
+    width: 2rem;
+    height: 2rem;
+    position: relative;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+}
+.filter-search{
+    display: inline-block;
+    width: 100%;
+    height: 3rem;
+    margin-left: 0px;
+    border-top-right-radius: 0.5rem;
+    border-bottom-right-radius: 0.5rem;
+}
+#filter-button>div{
+    margin: 0.5rem 0;
+}
+
+/* animation */
+@keyframes btncolor{
+  to{
+    background-color: white;
+    color: #212529;
+  }from{
+    background-color: #212529;
+    color: white;
+  }
+}  
+@keyframes rebtncolor{
+  to{
+    background-color: #212529;
+    color: white;
+  }from{
+    background-color: white;
+    color: #212529;
+  }
+}
+.change-btn{
+  animation-name: btncolor;
+  animation-duration: 0.5s;
+  animation-direction: normal;
+}
+.rechange-btn{
+  animation-name: rebtncolor;
+  animation-duration: 0.5s;
+  animation-direction: normal;
+}
+/* /animation */
+
+#filter-button label{
+    border: 1px solid #212529;
+    background-color: white;
+    color: #212529;
+    border-radius: 0.5rem;
+    margin: 0.625rem;
+    padding: 0.5rem 1rem;
+    cursor: pointer;
+}
+/* /swiper */
+.filterbox{
+    display: none;
+}
+/* /index */
+
+/* ============================================================== */
+
+/* login */
+*, ::before, ::after {
+  box-sizing: border-box;
+}
+/* body {
+  margin: 0;
+  padding: 0;
+  font-family:  'Noto Sans KR', sans-serif;
+  font-size: 1rem;
+} */
+/* section{ //지워도 되는지 모르겠음
+    height: calc(100vh - 4.625rem);
+} */
+/* h1 {
+  margin: 0;
+} */
+
+/* a { //custom에서 바꾸긴 했는데 맞는지 물어봐야함
+  text-decoration: none;
+} */
+
+/* img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+} */
+
+.login {
+  height: calc(100vh - 4.625rem) !important;
+  display: grid;
+  grid-template-columns: 100%;
+}
+.login__content {
+  display: grid;
+}
+.login__img {
+  justify-self: center;
+}
+.login__forms {
+  position: relative;
+}
+.login__register, .login__create {
+  bottom: 1rem;
+  width: 100%;
+  height: 75vh;
+  background-color: #f2f2f2;
+  padding: 3rem 2rem;
+  border-radius: 1rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  text-align: center;
+  box-shadow: 0 8px 20px rgba(35, 0, 77, 0.2);
+  animation-duration: 0.4s;
+  animation-name: animateLogin;
+}
+.login__title {
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+}
+.login__box {
+  display: grid;
+  grid-template-columns: max-content 1fr;
+  column-gap: 0.5rem;
+  padding: 0.75rem 1rem;
+  background-color: #fff;
+  margin-top: 0.75rem;
+  border-radius: 0.5rem;
+}
+.login__icon {
+  font-size: 1.5rem;
+  color:  #212529;
+}
+.login__input {
+  border: none;
+  outline: none;
+  font-size: 1rem;
+  font-weight: 700;
+  color: #23004d;
+  width: 100%;
+}
+.login__input::placeholder {
+  font-size: 1rem;
+  font-family: "Open Sans", sans-serif;
+  color: #a49eac;
+}
+.login__forgot {
+  display: block;
+  width: max-content;
+  margin-left: auto;
+  margin-top: 1rem;
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: #a49eac;
+}
+.login__button {
+  display: block;
+  padding: 1rem;
+  margin: 1rem 0;
+  background-color: #212529;
+  color: #fff;
+  font-weight: 600;
+  text-align: center;
+  border-radius: 0.5rem;
+  transition: 0.3s;
+}
+.login__button:hover {
+  background-color: white;
+  color: #212529;
+}
+.login__account, .login__signin, .login__signup {
+  font-weight: 600;
+  font-size: 0.75rem;
+}
+.login__account--account, .login__signin--account, .login__signup--account {
+  color: #23004d;
+}
+.login__account--signin, .login__account--signup, .login__signin--signin, .login__signin--signup, .login__signup--signin, .login__signup--signup {
+  color:  rgb(206, 30, 7);
+  cursor: pointer;
+}
+.login__social {
+  margin-top: 2rem;
+}
+.login__social--icon {
+  font-size: 1.5rem;
+  color: #23004d;
+  margin: 0 1rem;
+}
+
+.block {
+  display: block;
+}
+
+.none {
+  display: none;
+}
+
+#sns-login{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    margin: 1rem;
+}
+#sns-login img{
+    cursor: pointer;
+}
+/* /login */
+
+/* sign-up */
+
+/* signup01-agreement */
+#login-up>.swiper{
+  width: 100%;
+  height: 90%;
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  justify-content: space-between;
+}
+#login-up .swiper-slide {
+  width: 100vw;
+  text-align:center;
+  display:flex;
+  align-items:center;
+  justify-content:start !important;
+}
+#login-up .swiper-pagination {
+  position: fixed;
+  top: 65% !important;
+  left: 50% !important;
+  transform: translate(-50%,0%);
+}
+#login-up textarea{
+  width: 100%;
+  height: 15rem;
+  font-size: 1rem;
+}
+#login-up .swiper-slide{
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+}
+#login-up .swiper-slide>h4{
+  font-size: 1.25rem;
+  margin-bottom: 2rem;
+}
+#login-up .swiper-slide>div{
+  margin: 1rem 0;
+}
+
+#login-up label{
+  font-size: 1rem;
+}
+#login-up .swiper-pagination{
+  height: 2.5rem;
+}
+#login-up .signup-nextbtn{
+  display: inline-block;
+}
+/* /signup01-agreement */
+
+/* signup03-success */
+form[class="login__create"]{
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  justify-content: space-between;
+}
+.login__msg{
+  font-weight: bolder;
+  font-size: 2.5rem;
+}
+/* /signup03-success */
+#signin-input{
+    display: flex;
+    flex-direction: column;
+}
+#signin-input>span{
+    margin: 0.5rem;
+}
+#pw-box{
+  display: flex;
+    flex-direction: row;
+}
+#pw-box>div:first-child{
+  margin-right: 1%;
+}
+#pw-box>div:last-child{
+  margin-left: 1%;
+}
+#check-pw{
+    display: flex;
+    flex-direction: row;
+    margin: 0px 0.5rem;
+  }
+#check-pw>button{
+  width: 6.25rem;
+  height: 2rem;
+  font-size: 0.75rem;
+  padding: 0 0.4rem;
+}
+/* /sign-up */
+
+/* pw-search */
+#check-email{
+    display: flex;
+    flex-direction: row;
+}
+#check-email>button{
+    width: 6.25rem;
+    height: 2rem;
+    font-size: 0.75rem;
+}
+.text-alert{
+  height: 2.5rem;
+  font-size: 1.25rem;
+  text-align: start;
+  margin-top: 0.75rem;
+  font-size: 1rem !important;
+}
+/* /pw-search */
+
+#login-input-menu{
+  display: inline-block;
+}
+#login-sub-menu{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+#login-sub-menu>a{
+  margin-left: 0%;
+}
+.login-in{
+  display: flex;
+  flex-direction: column;
+}
+#position-box{
+  height: 30vh;
+}
+
+
+@keyframes animateLogin {
+  0% {
+    transform: scale(1, 1);
+  }
+  50% {
+    transform: scale(1.1, 1.1);
+  }
+  100% {
+    transform: scale(1, 1);
+  }
+}
+@media screen and (min-width: 576px) {
+  .login__forms {
+    width: 25vw;
+    min-height: 70vh;
+    justify-self: center;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+  }
+}
+@media screen and (min-width: 1024px) {
+  .login {
+    height: 100vh;
+    overflow: hidden;
+  }
+  .login__content {
+    grid-template-columns: repeat(2, max-content);
+    justify-content: center;
+    align-items: center;
+  }
+  .login__img {
+    display: flex;
+    width: 100vw;
+    height: 100vh;
+    background-color: #fff;
+    border-radius: 1rem;
+  }
+  .login__img img {
+    width: 100%;
+    margin-top: 0;
+  }
+  .login__register, .login__create {
+    left: -11rem;
+  }
+  .login__register {
+    bottom: -2rem;
+  }
+  .login__create {
+    bottom: -5.5rem;
+  }
+}
+/* /login */
