@@ -27,30 +27,30 @@
                     <!-- 사이드바 -->
                     <div class="col-xl-2 col-lg-3 sidebar fixed-top bg-dark">
                         <div class="p-3 mt-3 border-bottom text-center">
-                            <img src="<%=request.getContextPath()%>/images/logo.png" alt="로고사진" width="200" height="100">
+                            <img src="<%=request.getContextPath()%>/images/admin/logo.png" alt="로고사진" width="200" height="100">
                             <span class="navbar-brand text-white d-block m-0 fs-2 mt-2">CASA64</span>
                         </div>
                         <ul class="navbar-nav flex-column text-center mx-auto mt-4">
                             <li class="nav-item mb-1">
-                                <a href="#" class="nav-link text-white admin-link sidebar-link"><i class="bi bi-person-fill me-2"></i>회원관리</a>
+                                <a href="<%=request.getContextPath()%>/views/admin/list-member.jsp" class="nav-link text-white admin-link sidebar-link"><i class="bi bi-person-fill me-2"></i>회원관리</a>
                             </li>
                             <li class="nav-item mb-1">
-                                <a href="#" class="nav-link text-white admin-link sidebar-link"><i class="bi bi-person-fill-lock me-2"></i>블랙회원</a>
+                                <a href="<%=request.getContextPath()%>/views/admin/black-member.jsp" class="nav-link text-white admin-link sidebar-link"><i class="bi bi-person-fill-lock me-2"></i>블랙회원</a>
                             </li>
                             <li class="nav-item mb-1">
-                                <a href="#" class="nav-link sidebar-link text-white"><i class="bi bi-houses-fill me-2"></i>객실관리</a>
+                                <a href="<%=request.getContextPath() %>/views/admin/rooms.jsp" class="nav-link sidebar-link text-white"><i class="bi bi-houses-fill me-2"></i>객실관리</a>
                             </li>
                             <li class="nav-item mb-1">
-                                <a href="#" class="nav-link sidebar-link text-white"><i class="bi bi-currency-exchange me-2"></i>요금관리</a>
+                                <a href="<%=request.getContextPath()%>/views/admin/season-price.jsp" class="nav-link sidebar-link text-white"><i class="bi bi-currency-exchange me-2"></i>요금관리</a>
                             </li>
                             <li class="nav-item mb-1">
                                 <a href="#" class="nav-link sidebar-link text-white"><i class="bi bi-megaphone-fill me-2"></i>게시판</a>
                             </li>
                             <li class="nav-item mb-1">
-                                <a href="#" class="nav-link sidebar-link text-white"><i class="bi bi-calendar-fill me-2"></i>예약관리</a>
+                                <a href="<%=request.getContextPath()%>/views/admin/reservation.jsp" class="nav-link sidebar-link text-white"><i class="bi bi-calendar-fill me-2"></i>예약관리</a>
                             </li>
                             <li class="nav-item mb-1">
-                                <a href="#" class="nav-link text-white admin-link sidebar-link"><i class="bi bi-person-fill-dash me-2"></i>탈퇴회원</a>
+                                <a href="<%=request.getContextPath()%>/views/admin/leave-member.jsp" class="nav-link text-white admin-link sidebar-link"><i class="bi bi-person-fill-dash me-2"></i>탈퇴회원</a>
                             </li>
                         </ul>
                     </div>
@@ -59,8 +59,8 @@
                         <div class="row d-flex justify-content-end align-items-center">
                             <div class="col-auto">
                                 <ul class="navbar-nav ms-auto">
-                                    <li class="nav-item"><a href="<%=request.getContextPath()%>/" class="nav-link top-link">메인으로</a></li>
-                                    <li class="nav-item"><a href="#" class="nav-link top-link">홈페이지</a></li>
+                                    <li class="nav-item"><a href="<%=request.getContextPath()%>/views/admin/admin-page.jsp" class="nav-link top-link">메인으로</a></li>
+                                    <li class="nav-item"><a href="<%=request.getContextPath()%>/" class="nav-link top-link">홈페이지</a></li>
                                     <li class="nav-item"><a href="#" class="nav-link top-link" data-bs-toggle="modal" data-bs-target="#logout">로그아웃</a></li>
                                 </ul>
                             </div>
