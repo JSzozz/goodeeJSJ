@@ -9,30 +9,12 @@
 <!-- 부트스트랩 CSS -->
 <link rel="stylesheet" href="<%=request.getContextPath()%>/css/bootstrap.min.css">
 <link rel="stylesheet" href="<%=request.getContextPath()%>/css/custom.css">
-<link rel="stylesheet" href="<%=request.getContextPath()%>/css/style.css">
+<link rel="stylesheet" href="<%=request.getContextPath()%>/css/dj/style.css">
 
 <!-- 부트스트랩 아이콘 -->
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css">
 </head>
 <body>
-    <!-- 로그아웃 모달 -->
-    <div class="modal fade" id="logout" tabindex="-1" aria-labelledby="logoutModalLabel" aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="logoutModalLabel">경고</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body">
-                정말로 로그아웃합니까?
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-danger">로그아웃</button>
-                <button type="button" class="btn btn-dark" data-bs-dismiss="modal">취소</button>
-            </div>
-            </div>
-        </div>
-    </div>
 
     <!-- 네비게이션 -->
     <nav class="navbar navbar-expand-md navbar-light">
