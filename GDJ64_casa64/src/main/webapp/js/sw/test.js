@@ -86,7 +86,7 @@ $("#login-submit-button").on("mousedown",(e)=>{
 // /login
 
 // pw-create
-/*$(".fn-password-check").keyup(e=>{
+$(".fn-password-check").keyup(e=>{
     const i = document.getElementsByClassName("login__input")[0].value;
     const j = document.getElementsByClassName("login__input")[1].value;
     let msg,color;
@@ -99,7 +99,7 @@ $("#login-submit-button").on("mousedown",(e)=>{
     }
     $(".text-alert").html("");
     $(".text-alert").append($("<p>").text(msg).css("color",color));
-});*/
+});
 // /pw-create
 
 // pw-search
@@ -119,27 +119,27 @@ $('.check-num>button[class="btn btn-dark"]').click((e)=>{
 // /pw-search
 
  //signup01-agreement
-// const swiper = new Swiper('.swiper', {
-//     // Optional parameters
-//     direction: 'horizontal',
-//     mousewheel: true,
-//     loop: false,
-//     // If we need pagination
-//     pagination: {
-//         el: '.swiper-pagination',
-//         clickable : true,
-//     },
-//     // Navigation arrows
-//     navigation: {
-//         nextEl: '.swiper-button-next',
-//         prevEl: '.swiper-button-prev',
-//     },
-//     });
+ const swiper = new Swiper('.swiper', {
+     // Optional parameters
+     direction: 'horizontal',
+     mousewheel: true,
+     loop: false,
+     // If we need pagination
+     pagination: {
+         el: '.swiper-pagination',
+         clickable : true,
+     },
+     // Navigation arrows
+     navigation: {
+         nextEl: '.swiper-button-next',
+         prevEl: '.swiper-button-prev',
+    },
+     });
 // /signup01-agreement
 
 // signup02-input
 // pw-check
-/*$(".fn-password-check").keyup(e=>{
+$(".fn-password-check").keyup(()=>{
     const i = $("#ck-pw1").val();
     const j = $("#ck-pw2").val();
     let msg,color;
@@ -154,7 +154,7 @@ $('.check-num>button[class="btn btn-dark"]').click((e)=>{
     }
     $(".pwcheck").html("");
     $(".pwcheck").append($("<p>").text(msg).css("color",color));
-});*/
+});
 
 //double-check
 /*$('#check-pw>button[class="btn btn-dark"]').click((e)=>{

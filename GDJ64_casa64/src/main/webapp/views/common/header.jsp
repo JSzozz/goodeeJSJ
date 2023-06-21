@@ -89,6 +89,18 @@
     
                 </ul>
             </div>
+            
+            <%if(loginMember!=null&&(loginMember.getEmail().equals("admin@btc.com"))){ %>
+            <div id="login-selector">
+                <ul class=navbar-nav>
+                
+                    <li class="nav-item">
+                        <a class="nav-link" href="<%=request.getContextPath()%>/views/admin/admin-page.jsp">ADMIN</a>
+                    </li>            
+                    
+                </ul>
+            </div>
+            <%} %>
             <div id="login-selector">
                 <ul class=navbar-nav>
                 <%if(loginMember==null) {%>

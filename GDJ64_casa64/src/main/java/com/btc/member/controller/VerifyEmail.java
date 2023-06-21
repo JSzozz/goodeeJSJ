@@ -34,7 +34,7 @@ public class VerifyEmail {
 	
 	
 	public String sendMail(String to) {
-		String result="fail";
+		String result=null;
 		Properties prop=new Properties();
 		prop.put("mail.smtp.host","smtp.gmail.com");
 		prop.put("mail.smtp.port",465);
@@ -68,15 +68,15 @@ public class VerifyEmail {
 			
 			message.setSubject("BTC이메일 인증");
 			
-			message.setText("인증코드입니다: ["+buffer+"] 입니다");
+			message.setText("인증코드: ["+buffer+"] 입니다");
 			
 			Transport.send(message);
-			System.out.println("메일발송성공");
+			result=buffer.toString();
 		}catch(AddressException e) {
 			e.printStackTrace();
 		}catch(MessagingException e) {
 			e.printStackTrace();
-		}return result=buffer.toString();
+		}return result;
 	}
 }
 

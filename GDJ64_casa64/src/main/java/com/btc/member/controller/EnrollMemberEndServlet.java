@@ -29,20 +29,48 @@ public class EnrollMemberEndServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
-		String userName=request.getParameter("userName");
-		String email=request.getParameter("email");
-		String nickName=request.getParameter("nickName");
-		String phone=request.getParameter("phone");
-		String password=request.getParameter("password");
-		VerifyEmail mail=new VerifyEmail();
-		String code=mail.sendMail(email);
 		HttpSession session=request.getSession();
-		session.setAttribute("code", code);
-		if(code!=null) {
+		String userName=(String)session.getAttribute("userName");
+		String email=(String)session.getAttribute("email");
+		String nickName=(String)session.getAttribute("nickName");
+		String phone=(String)session.getAttribute("phone");
+		String password=(String)session.getAttribute("password");
+		String code=(String)session.getAttribute("code");
+//		System.out.println(userName);
+//		System.out.println(email);
+//		System.out.println(nickName);
+//		System.out.println(phone);
+//		System.out.println(password);
+//		System.out.println(code);
+		String inputCode=request.getParameter("code");
+//		System.out.println(inputCode);
+		
+		String msg="",loc="",script="";
+		if(code.equals(inputCode)) {
+			int result=new MemberService().insertMember(userName, email, nickName, phone, password);
 			
-				request.getRequestDispatcher("/views/LOGIN/signup03-success.jsp").forward(request, response);
-		}
+			if(result>0) {
+				msg="회원가입성공";
+				loc="/index.jsp";
+				request.setAttribute("msg", msg);
+				request.setAttribute("loc", loc);
+				request.getRequestDispatcher("/views/common/msg.jsp").forward(request, response);
+			}else {
+				msg="서버오류";
+				loc="/views/LOGIN/signup03-success.jsp";
+				request.setAttribute("loc", loc);
+				request.setAttribute("msg", msg);
+				
+				request.getRequestDispatcher("/views/common/msg.jsp").forward(request, response);
+			}
+		}else{
+				msg="인증번호가 일치하지 않습니다";
+				loc="/views/LOGIN/signup03-success.jsp";
+				request.setAttribute("loc", loc);
+				request.setAttribute("msg", msg);
+				
+				request.getRequestDispatcher("/views/common/msg.jsp").forward(request, response);
+			}
 	}
 
 	/**

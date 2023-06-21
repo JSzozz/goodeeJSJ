@@ -14,14 +14,14 @@
                     <img src="<%=request.getContextPath()%>/images/rooms image/no.1 rooms/09.jpg"  alt="user login">
                 </div>
                 <div class="login__forms">
-                    <form action="" class="login__create">
+                    <form action="<%=request.getContextPath() %>/member/enrollMemberEnd.do" class="login__create">
                         <h1 class="login__title">3. 인증번호입력</h1>
                         <div id="signin-input">
                         <div class="login__box">
                             <i class='bx bx-user login__icon'></i>
-                            <input type="text" placeholder="Username" class="login__input" name="userName">
+                            <input type="text" placeholder="Username" class="login__input" name="code">
                         </div>
-                        <a href="<%=request.getContextPath()%>/views/LOGIN/login.jsp" class="login__button">로그인 하러가기</a>
+                        <button type="submit" class="login__button">가입완료</button>
                     </form>
                 </div>
             </div>
