@@ -17,7 +17,7 @@ public class RoomDao {
 	private Properties sql=new Properties();
 	
 	public RoomDao() {
-		String path=RoomDao.class.getResource("sql/room/roomsql.properties").getPath();
+		String path=RoomDao.class.getResource("/sql/room/roomsql.properties").getPath();
 		try {
 			sql.load(new FileReader(path));
 		}catch(IOException e) {

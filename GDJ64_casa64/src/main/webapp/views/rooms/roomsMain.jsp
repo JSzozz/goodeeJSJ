@@ -21,11 +21,10 @@
         		<h2>rooms불러오기 실패</h2>
          	<%}else{
          		for(Room r:rooms){ %>
-         	}
-        		const div=$("<div>");
-        		div.innerText+=<div class="card col-md-6 b" style="width:20rem";>;
-        		console.log(div);
-        		 <%-- <div class="card col-md-6 b" style="width: 20rem;">
+<!--         		const div=$("<div>"); -->
+<!--         		div.innerText+=<div class="card col-md-6 b" style="width:20rem";>; -->
+<!--         		console.log(div); -->
+        		 <div class="card col-md-6 b" style="width: 20rem;">
         			<a href="<%=request.getContextPath() %>/RoomViewServlet.do?roomNo=<%=r.getRoomNo() %>" class="text-decoration-none">
         				<img src="<%=request.getContextPath() %>/images/ocean1/01.jpg" class="card-img-top">
         				<div class="card-body">
@@ -33,8 +32,9 @@
                         	<p class="card-text">MIN CAP <%=r.getRoomCap() %>PPL/MAX CAP <%=r.getRoomMaxCap() %>PPL</p>
         				</div>
         			</a>
-        		</div> --%>
-        	<%} %>
+        		</div>
+        	<%}
+        	} %>
          
         
         
