@@ -34,7 +34,7 @@ public class ReserveListServlet extends HttpServlet {
 
 		List<Room> list=new ReserveService().selectAllRoom();
 		System.out.println(list);
-		request.getRequestDispatcher("/views/reserve/reserveList.jsp")
+		request.getRequestDispatcher("/views/reserve/reserveList1.jsp")
 		.forward(request, response);
 	}
 

@@ -9,7 +9,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.web.common.AESEncryptor;
+//import com.web.common.AESEncryptor;
 import com.web.model.dto.MemberDTO;
 import com.web.model.service.MemberService;
 
@@ -41,16 +41,16 @@ public class MemberViewServlet extends HttpServlet {
 		MemberDTO m=new MemberService().selectByUserId(userId);
 
 		//Email, Phone복호화
-		try {
-			m.setEmail(AESEncryptor.decryptData(m.getEmail()));
-		}catch(Exception e) {
-			e.printStackTrace();
-		}
-		try {
-			m.setPhone(AESEncryptor.decryptData(m.getPhone()));
-		}catch(Exception e) {
-			e.printStackTrace();
-		}
+//		try {
+//			m.setEmail(AESEncryptor.decryptData(m.getEmail()));
+//		}catch(Exception e) {
+//			e.printStackTrace();
+//		}
+//		try {
+//			m.setPhone(AESEncryptor.decryptData(m.getPhone()));
+//		}catch(Exception e) {
+//			e.printStackTrace();
+//		}
 //		Email, Phone는 따로 try-catch를 하라고 함
 		request.setAttribute("infoMember", m);
 //		2. 화면에서 전달받은 회원 데이터 출력
