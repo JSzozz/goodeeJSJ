@@ -29,6 +29,9 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 	<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;700&display=swap" rel="stylesheet">
+	<!-- 상준css -->
+    <link rel="stylesheet" href="<%=request.getContextPath()%>/css/sj/style.css"/>
+	
 </head>
 
 <body>
@@ -72,8 +75,15 @@
                             ROOMS
                         </a>
                         <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            <li><a href="#" class="dropdown-item">객실별 정보</a></li>
-                            <li><a href="#" class="dropdown-item">이 객실 예약하기</a></li>
+                            <li><a href="<%=request.getContextPath() %>/RoomListServlet.do" class="dropdown-item">전체 객실 보기</a></li>
+                            <li><a href="#" class="dropdown-item">오션테라스 101</a></li>
+                            <li><a href="#" class="dropdown-item">오션테라스 201</a></li>
+                            <li><a href="#" class="dropdown-item">오션테라스 301</a></li>
+                            <li><a href="#" class="dropdown-item">선셋테라스 101</a></li>
+                            <li><a href="#" class="dropdown-item">선셋테라스 201</a></li>
+                            <li><a href="#" class="dropdown-item">선셋테라스 301</a></li>
+                            <li><a href="#" class="dropdown-item">스파테라스 101</a></li>
+                            <li><a href="#" class="dropdown-item">스파테라스 201</a></li>
                         </ul>
                     </li>
                     <li class="nav-item dropdown">
@@ -82,7 +92,7 @@
                             RESERVATION
                         </a>
                         <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            <li><a href="#" class="dropdown-item">예약하기</a></li>
+                            <li><a href="<%=request.getContextPath()%>/reserve/reserveList1.do" class="dropdown-item">예약하기</a></li>
                             <li><a href="#" class="dropdown-item">예약 관련 정보</a></li>
                         </ul>
                     </li>

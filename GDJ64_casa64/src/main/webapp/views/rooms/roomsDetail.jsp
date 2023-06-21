@@ -1,6 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ include file="/views/common/header.jsp" %>
+<%@ page import="java.util.List,com.btc.rooms.model.vo.Room" %>
+<%
+	Room r=(Room)request.getAttribute("room");
+%>
 <section>
 	<div class="category-image">
         <!-- 이미지에 rooms새겨진 최상단 화면 -->
@@ -8,7 +12,7 @@
         <div>ROOMS</div><!-- 클릭된 객실의 이름 -->
     </div>
     <br><br><br><br>
-	<h2 class="text-center"><strong>Ocean Terrace 101</strong></h2>
+	<h2 class="text-center"><strong><%=r.getRoomName() %></strong></h2>
 	<br><br>
 	<div class="row">
 		<!-- 이미지로 버튼만들어서 클릭하면 아래 사진위의버튼이 트리거 되도록 -->
@@ -101,8 +105,8 @@
   					<dt class="col-sm-3">객실 안내</dt>
   					<dd class="col-sm-9">
     					<dl class="row">
-      						<dd class="col-sm-4">기준 인원 (00)명</dt>
-      						<dd class="col-sm-8">최대 인원 (00)명</dt>
+      						<dd class="col-sm-4">기준 인원 <%=r.getRoomCap() %>명</dt>
+      						<dd class="col-sm-8">최대 인원 <%=r.getRoomMaxCap() %>명</dt>
 
     					</dl>
   					</dd>
@@ -113,14 +117,14 @@
   					</dd>
 
   					<dt class="col-sm-3">객실 정보</dt>
-  					<dd class="col-sm-9">푸른 동해가 마주 보이는 탁 트인 전망에 도시에서의 복잡함은 잊힐거에요. 소중한 사람이 절로 생각나는 마음 따뜻해지는 곳에서 한 숨 쉬고나면 다시 에너지 충전 완료!</dd>
+  					<dd class="col-sm-9"><%=r.getRoomDescription() %></dd>
 
 
   					<dt class="col-sm-3">가격 안내</dt>
   					<dd class="col-sm-9">
     					<dl class="row">
       						<dt class="col-sm-4">비수기 평일</dt>
-      						<dd class="col-sm-8">100,000</dd>
+      						<dd class="col-sm-8"><%=r.getRoomPrice() %></dd>
       						<dt class="col-sm-4">비수기 주말</dt>
       						<dd class="col-sm-8">150,000</dd>
       						<dt class="col-sm-4">성수기 평일</dt>
@@ -132,7 +136,7 @@
 				</dl>
 				<div class="row">
 					<div class="col-4"></div>
-					<button class="col-5 btn btn-dark"><h4>이 객실 예약하러 가기</h4></button>
+					<button onclick="" style="cursor:pointer" class="col-5 btn btn-dark"><h4>이 객실 예약하러 가기</h4></button>
 				</div>
 				
 			</div>

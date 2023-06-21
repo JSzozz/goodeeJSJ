@@ -27,11 +27,11 @@ public class RoomViewServlet extends HttpServlet {
 
 	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		int roomNo=Integer.parseInt(request.getParameter("roomNo"));
+		/* int roomNo=Integer.parseInt(request.getParameter("roomNo")); */
 		String type=request.getParameter("type");
 		List<Room> rooms=new RoomService().selectRoomByType(type);
 		request.setAttribute("rooms", rooms);
-		request.getRequestDispatcher("views/rooms/roomsDetail.jsp").forward(request, response);
+		request.getRequestDispatcher("/views/rooms/roomsDetail.jsp").forward(request, response);
 	}
 
 

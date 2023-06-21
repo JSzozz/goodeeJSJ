@@ -17,7 +17,7 @@ public class RoomDao {
 	private Properties sql=new Properties();
 	
 	public RoomDao() {
-		String path=RoomDao.class.getResource("sql/room/roomsql.properties").getPath();
+		String path=RoomDao.class.getResource("/sql/room/roomsql.properties").getPath();
 		try {
 			sql.load(new FileReader(path));
 		}catch(IOException e) {
@@ -49,6 +49,25 @@ public class RoomDao {
 		}finally {
 			close(rs);
 			close(pstmt);
+		}
+		return list;
+	}
+	public List<Room> selectAllRoom(Connection conn) {
+		PreparedStatement pstmt=null;
+		ResultSet rs=null;
+		List<Room> list=new ArrayList();
+		try {
+			String query=sql.getProperty("selectAllRoom");
+			pstmt=conn.prepareStatement(query);
+			rs=pstmt.executeQuery();
+			while(rs.next()) {
+				list.add(getRoom(rs));
+			}
+		}catch(SQLException e) {
+			e.printStackTrace();
+		}finally{
+			close(rs);
+			close(conn);
 		}
 		return list;
 	}

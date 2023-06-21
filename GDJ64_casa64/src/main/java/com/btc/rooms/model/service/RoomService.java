@@ -18,4 +18,11 @@ public class RoomService {
 		return list;
 	}
 
+	public List<Room> selectAllRoom() {
+		Connection conn=getConnection();
+		List<Room> list=dao.selectAllRoom(conn);
+		close(conn);
+		return list;
+	}
+
 }
