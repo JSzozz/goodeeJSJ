@@ -1,6 +1,7 @@
 package com.btc.review.controller;
 
 import java.io.IOException;
+
 import java.util.List;
 
 import javax.servlet.ServletException;
@@ -10,7 +11,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.btc.review.model.service.ReviewService;
-import com.btc.review.model.vo.Reviews;
+import com.btc.review.model.vo.Review;
 import com.btc.rooms.model.service.RoomService;
 import com.btc.rooms.model.vo.Room;
 
@@ -41,7 +42,7 @@ public class ReviewList extends HttpServlet {
 		String roomNo = request.getParameter("room-no");
 
 		
-		List<Reviews> list = new ReviewService().selectReviews(type, keyword, roomNo); // Review 클래스에 있는 값만 담길 list를 생성
+		List<Review> list = new ReviewService().selectReviews(type, keyword, roomNo); // Review 클래스에 있는 값만 담길 list를 생성
 		List<Room> rooms = new RoomService().selectAllRoom();
 		request.setAttribute("ReviewList", list);
 		request.setAttribute("selectRooms", rooms);

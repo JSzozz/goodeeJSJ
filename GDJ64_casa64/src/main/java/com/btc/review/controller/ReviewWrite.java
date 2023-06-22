@@ -2,6 +2,7 @@ package com.btc.review.controller;
 
 import java.io.IOException;
 
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -9,7 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.btc.review.model.service.ReviewService;
-import com.btc.review.model.vo.Reviews;
+import com.btc.review.model.vo.Review;
 
 /**
  * Servlet implementation class ReviewWrite
@@ -48,7 +49,7 @@ public class ReviewWrite extends HttpServlet {
 		int memberNo = 1; // 세션에서 가져와야하는 멤버 no
 		int bookingNo = 1; // 원래는 선택한 객실 번호와 함께 셋팅 되어야 함..
 		
-		Reviews reviews = Reviews.builder()
+		Review reviews = Review.builder()
 				.title(title)
 				.contents(contents)
 				.views(0)
