@@ -1,6 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ include file="/views/admin/common/header.jsp"%>
+<%@ page import="com.btc.rooms.model.vo.Room" %>
+<%
+	Room r=(Room)request.getAttribute("selectedRoom");
+%>
                     <!-- 컨테츠 -->
                     <section>
                         <div class="container-fluid">
