@@ -94,16 +94,16 @@
 			success:function(result){
 				if(result==0){
 					$(".emailcheck").html("이미 가입된 이메일입니다.");
-					$(".emailcheck").attr("color","red");
+					 
 					
 				}else if(fn_emailChk(email)==true){
-					$(".emailcheck").html("사용가능한 이메일입니다.").attr("color","green");
+					$(".emailcheck").html("사용가능한 이메일입니다.");
 					$(".login__button").attr("disabled",false);
 					
 					
 				}else{
 					$(".emailcheck").html("이메일 형식이 아닙니다.");
-					$(".emailcheck").attr("color","green");
+					
 				}
 			},
 				error:function(){

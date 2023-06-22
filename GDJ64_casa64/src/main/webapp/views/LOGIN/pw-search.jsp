@@ -14,7 +14,7 @@
                 <img src="<%=request.getContextPath()%>/images/rooms image/no.1 rooms/08.jpg"  alt="user login">
             </div>
             <div class="login__forms">
-            <form action="" class="login__register login-in">
+            <form action="<%=request.getContextPath() %>/views/LOGIN/pw-create.jsp" class="login__register login-in">
             <h1 class="login__title">본인인증</h1>
             <p>본인인증을 위한 절차를 진행해 주세요</p>
             <div class="login__box">
@@ -34,7 +34,7 @@
             <div id="login-sub-menu">
                 <a href="<%=request.getContextPath()%>/views/LOGIN/login.jsp" class="login__forgot">로그인 하러가기</a>
             </div>
-            <button class="login__button" onclick="location.replace='<%=request.getContextPath() %>/views/LOGIN/pw-create.jsp'" disabled >Next</button>
+            <button type="submit" class="login__button" disabled>Next</button>
             
             <div>
                 <span class="login__account login__account--account">가입된 계정이 없으십니까?</span>
@@ -75,6 +75,7 @@
     		}else{
     			msg="인증번호가 알치하지 않습니다";
     			color="red";
+    			$(".login__button").attr("disabled",true);
     		}
     		
     		 	$(".text-alert").html("");

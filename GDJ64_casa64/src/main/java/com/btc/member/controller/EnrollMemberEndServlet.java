@@ -36,14 +36,9 @@ public class EnrollMemberEndServlet extends HttpServlet {
 		String phone=(String)session.getAttribute("phone");
 		String password=(String)session.getAttribute("password");
 		String code=(String)session.getAttribute("code");
-//		System.out.println(userName);
-//		System.out.println(email);
-//		System.out.println(nickName);
-//		System.out.println(phone);
-//		System.out.println(password);
-//		System.out.println(code);
+
 		String inputCode=request.getParameter("code");
-//		System.out.println(inputCode);
+		
 		
 		String msg="",loc="",script="";
 		if(code.equals(inputCode)) {
@@ -54,7 +49,9 @@ public class EnrollMemberEndServlet extends HttpServlet {
 				loc="/index.jsp";
 				request.setAttribute("msg", msg);
 				request.setAttribute("loc", loc);
+				session.invalidate();
 				request.getRequestDispatcher("/views/common/msg.jsp").forward(request, response);
+				
 			}else {
 				msg="서버오류";
 				loc="/views/LOGIN/signup03-success.jsp";

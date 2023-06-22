@@ -32,7 +32,7 @@
                         </div>
                         <ul class="navbar-nav flex-column text-center mx-auto mt-4">
                             <li class="nav-item mb-1">
-                                <a href="<%=request.getContextPath()%>/views/admin/list-member.jsp" class="nav-link text-white admin-link sidebar-link"><i class="bi bi-person-fill me-2"></i>회원관리</a>
+                                <a href="<%=request.getContextPath()%>/views/admin/memberList.do" class="nav-link text-white admin-link sidebar-link"><i class="bi bi-person-fill me-2"></i>회원관리</a>
                             </li>
                             <li class="nav-item mb-1">
                                 <a href="<%=request.getContextPath()%>/views/admin/black-member.jsp" class="nav-link text-white admin-link sidebar-link"><i class="bi bi-person-fill-lock me-2"></i>블랙회원</a>

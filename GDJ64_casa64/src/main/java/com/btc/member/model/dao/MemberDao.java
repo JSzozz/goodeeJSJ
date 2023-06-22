@@ -49,7 +49,7 @@ public class MemberDao {
 			pstmt=conn.prepareStatement(sql.getProperty("insertMember"));
 			pstmt.setString(1, name);
 			pstmt.setString(2, email);
-			pstmt.setString(3, email);
+			pstmt.setString(3, nickName);
 			pstmt.setString(4, pw);
 			pstmt.setString(5, phone);
 			result=pstmt.executeUpdate();
@@ -76,6 +76,22 @@ public class MemberDao {
 			close(pstmt);
 		}return m;
 	}
+	
+	public int updatePassword(Connection conn, String email, String pw) {
+		PreparedStatement pstmt=null;
+		int result=0;
+		try {
+			pstmt=conn.prepareStatement(sql.getProperty("updatePassword"));
+			pstmt.setString(1, pw);
+			pstmt.setString(2, email);
+			result=pstmt.executeUpdate();
+		}catch(SQLException e) {
+			e.printStackTrace();
+		}finally {
+			close(pstmt);
+		}return result;
+	}
+	
 	
 	private Member getMember(ResultSet rs) throws SQLException{
 		return Member.builder().memberNo(rs.getInt("memberno")).memberType(rs.getInt("membertype")).memberName(rs.getString("membername"))
