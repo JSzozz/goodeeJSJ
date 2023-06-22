@@ -1,6 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ include file="/views/common/header.jsp"%>
+<%@ page import="java.util.List,com.btc.review.model.vo.Review" %>
+<%
+	List<Review> reviews = (List)request.getAttribute("MypageReviewList");
+%> 
 
 <!-- 컨텐츠/내용 시작 -->
 <div class="container">
@@ -103,6 +107,42 @@
 
 					</tbody>
 				</table>
+				<table class="table table-hover text-center">
+			<colgroup>
+				<col width="40px" />
+				<col width="100px" />
+				<col width="150px" />
+				<col width="50px" />
+				<col width="60px" />
+				<col width="60px" />
+			</colgroup>
+			<thead>
+				<tr>
+					<th>번호</th>
+					<th>이용객실</th>
+					<th>제목</th>
+					<th>조회수</th>
+					<th>작성일</th>
+					<th>비고</th>
+				</tr>
+			</thead>
+			<tbody>
+			<% for(Review r : reviews){%>
+				<tr>
+					<td><%= r.getNo() %></td>
+					<td><%= r.getRoomName() %></td>
+					<td>
+						<a href="<%=request.getContextPath()%>/review/reviewView.do?no=<%= r.getNo() %>">
+						<%= r.getTitle() %>
+						</a>
+					</td>
+					<td><%= r.getViews() %></td>
+					<td><%= r.getDateCreated() %></td>
+					<td><button type="button" class="btn btn-primary btn-sm">리뷰수정</button></td>
+				</tr>
+				<% }%>
+			</tbody>
+		</table>
 			</div>
 
 		</div>
