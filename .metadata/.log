@@ -573,3 +573,16 @@ java.util.concurrent.TimeoutException
 
 !ENTRY org.eclipse.lsp4e 1 0 2023-06-22 12:17:03.441
 !MESSAGE [Info]	ESLint server running in node v18.12.1
+
+!ENTRY org.eclipse.jst.server.tomcat.core 4 0 2023-06-22 12:26:16.100
+!MESSAGE Could not load the Tomcat server configuration at \Servers\Tomcat v9.0 Server at localhost-config. The Servers project is closed.
+
+!ENTRY org.eclipse.egit.core 4 0 2023-06-22 12:30:59.931
+!MESSAGE Pulling 1 repository
+!SUBENTRY 1 org.eclipse.egit.core 4 0 2023-06-22 12:30:59.931
+!MESSAGE Cannot pull into a repository with state: MERGING
+!STACK 0
+org.eclipse.jgit.api.errors.WrongRepositoryStateException: Cannot pull into a repository with state: MERGING
+	at org.eclipse.jgit.api.PullCommand.call(PullCommand.java:220)
+	at org.eclipse.egit.core.op.PullOperation$PullJob.run(PullOperation.java:256)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:63)
