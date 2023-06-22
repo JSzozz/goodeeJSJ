@@ -1,6 +1,7 @@
 package com.btc.review.model.dao;
 
 import static com.btc.common.JDBCTemplate.close;
+
 import static com.btc.common.JDBCTemplate.getConnection;
 
 import java.sql.Connection;
@@ -10,7 +11,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.btc.review.model.vo.Reviews;
+import com.btc.review.model.vo.Review;
 
 public class ReviewDao {
 
@@ -22,10 +23,10 @@ public class ReviewDao {
     * @param roomNo
     * @return
     */
-   public List<Reviews> selectReviews(Connection conn, String type, String keyword, String roomNo){
+   public List<Review> selectReviews(Connection conn, String type, String keyword, String roomNo){
       PreparedStatement pstmt = null;
       ResultSet rs = null;
-      List<Reviews> list = new ArrayList();
+      List<Review> list = new ArrayList();
       
       try {
          String sql = getBasicQuery(); // 실행할 기본 쿼리
@@ -50,7 +51,7 @@ public class ReviewDao {
          rs = pstmt.executeQuery(); // 쿼리 실행
          
          while(rs.next()) { // rs 다음 값이 있을 경우
-            Reviews reviews = getReviews(rs);
+            Review reviews = getReviews(rs);
             list.add(reviews); // 
          }
          
@@ -70,7 +71,7 @@ public class ReviewDao {
     * @param reviewNo
     * @return
     */
-   public Reviews getReviewView(Connection conn, int reviewNo) {
+   public Review getReviewView(Connection conn, int reviewNo) {
       
       String sql = getBasicQuery();
       sql += "AND REVIEWS.NO = ?";
@@ -78,7 +79,7 @@ public class ReviewDao {
       PreparedStatement pstmt = null;
       ResultSet rs = null;
       
-      Reviews reviews = new Reviews();
+      Review reviews = new Review();
       try {
          conn = getConnection();
          pstmt = conn.prepareStatement(sql);
@@ -103,15 +104,15 @@ public class ReviewDao {
     * @return
     * @throws SQLException
     */
-   public int insertReviews(Connection conn, Reviews reviews) {
+   public int insertReviews(Connection conn, Review reviews) {
       PreparedStatement pstmt = null;
       int result = 0; // 실패를 기본 값으로
 
       try {
          conn = getConnection(); // DB 접속
          // 3. 쿼리 작성
-         String sql = "INSERT INTO REVIEWS (NO,TITLE,CONTENTS,VIEWS,IS_DELETED,ROOM_NO,MEMBER_NO,BOOKING_NO, DATE_CREATED, DATE_MODIFIED) " 
-                  + "VALUES (REVIEWS_SEQ.NEXTVAL,?,?,?,?,?,?,?, TO_DATE(SYSDATE , 'yyyy/mm/dd hh24:mi:ss'), TO_DATE(SYSDATE , 'yyyy/mm/dd hh24:mi:ss'))"; // 실행할 쿼리
+         String sql = "INSERT INTO REVIEW (NO,TITLE,CONTENTS,VIEWS,IS_DELETED,ROOM_NO,MEMBER_NO,BOOKING_NO, DATE_CREATED, DATE_MODIFIED) " 
+                  + "VALUES (REVIEW_SEQ.NEXTVAL,?,?,?,?,?,?,?, TO_DATE(SYSDATE , 'yyyy/mm/dd hh24:mi:ss'), TO_DATE(SYSDATE , 'yyyy/mm/dd hh24:mi:ss'))"; // 실행할 쿼리
          
          pstmt = conn.prepareStatement(sql); // 실행 준비
 //         4. 쿼리에 파라미터 셋팅
@@ -144,14 +145,14 @@ public class ReviewDao {
     * @return
     * @throws SQLException
     */
-   public List<Reviews> selectReviewsMypage(Connection conn, int memberNo) {
+   public List<Review> selectReviewsMypage(Connection conn, int memberNo) {
       PreparedStatement pstmt = null;
       ResultSet rs = null;
-      List<Reviews> list = new ArrayList();
+      List<Review> list = new ArrayList();
    
       try {
          String sql = getBasicQuery(); // 실행할 기본 쿼리
-         sql += " AND REVIEWS.MEMBER_NO = ? ";
+         sql += " AND REVIEW.MEMBER_NO = ? ";
 //         sql += " ORDER BY REVIEWS.NO DESC";
          
          pstmt = conn.prepareStatement(sql); // 실제 쿼리 들어가고
@@ -159,7 +160,7 @@ public class ReviewDao {
          rs = pstmt.executeQuery(); // 쿼리 실행
          
          while(rs.next()) { // rs 다음 값이 있을 경우
-            Reviews reviews = getReviews(rs);
+            Review reviews = getReviews(rs);
             list.add(reviews); // 
          }
          
@@ -172,10 +173,10 @@ public class ReviewDao {
       return list;
    }
    
-   private Reviews getReviews(ResultSet rs) throws SQLException{
+   private Review getReviews(ResultSet rs) throws SQLException{
 //      Reviews reviews = new Reviews();
 
-      return Reviews.builder()
+      return Review.builder()
             .no(rs.getInt("NO"))
             .title(rs.getString("TITLE"))
             .contents(rs.getString("CONTENTS"))
@@ -197,10 +198,10 @@ public class ReviewDao {
    
    public String getBasicQuery() {
       return "SELECT "
-         + "  REVIEWS.* , MEMBER.NICKNAME, ROOM.ROOM_NAME "
-         + "    FROM REVIEWS  "
-         + "    JOIN MEMBER ON MEMBER.NO = REVIEWS.MEMBER_NO "
-         + "    JOIN ROOM ON ROOM.NO = REVIEWS.ROOM_NO " 
-         + "    WHERE 1=1 AND REVIEWS.IS_DELETED = 0 "; // 실행할 기본 쿼리
+         + "  REVIEW.* , MEMBER.NICKNAME, ROOM.ROOM_NAME "
+         + "    FROM REVIEW  "
+         + "    JOIN MEMBER ON MEMBER.MEMBERNO = REVIEW.MEMBER_NO "
+         + "    JOIN ROOM ON ROOM.ROOM_NO = REVIEW.ROOM_NO " 
+         + "    WHERE 1=1 AND REVIEW.IS_DELETED = 0 "; // 실행할 기본 쿼리
    }
 }

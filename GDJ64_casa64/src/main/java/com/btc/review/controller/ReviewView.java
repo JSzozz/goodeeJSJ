@@ -2,6 +2,7 @@ package com.btc.review.controller;
 
 import java.io.IOException;
 
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -9,7 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.btc.review.model.service.ReviewService;
-import com.btc.review.model.vo.Reviews;
+import com.btc.review.model.vo.Review;
 
 /**
  * Servlet implementation class ReviewView
@@ -33,7 +34,7 @@ public class ReviewView extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		int reviewNo = Integer.parseInt(request.getParameter("no"));
-		Reviews reviews = new ReviewService().getReviewView(reviewNo);
+		Review reviews = new ReviewService().getReviewView(reviewNo);
 
 		request.setAttribute("review", reviews);
 		request.setAttribute("categoryName", "COMMUNITY");

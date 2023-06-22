@@ -1,6 +1,7 @@
 package com.btc.mypage.controller;
 
 import java.io.IOException;
+
 import java.util.List;
 
 import javax.servlet.ServletException;
@@ -10,12 +11,12 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.btc.review.model.service.ReviewService;
-import com.btc.review.model.vo.Reviews;
+import com.btc.review.model.vo.Review;
 
 /**
  * Servlet implementation class MyPageReview
  */
-@WebServlet("/mypage/myPageReview")
+@WebServlet("/myPage/myPageReview")
 public class MyPageReview extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
@@ -33,7 +34,7 @@ public class MyPageReview extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 		int memberNo= 1;
-		List<Reviews> list = new ReviewService().selectReviewsMypage(memberNo);
+		List<Review> list = new ReviewService().selectReviewsMypage(memberNo);
 		request.setAttribute("MypageReviewList", list);
 		request.getRequestDispatcher("/views/myPage/myPageReview.jsp").forward(request, response);
 	}
