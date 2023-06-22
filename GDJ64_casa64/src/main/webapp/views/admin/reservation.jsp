@@ -37,21 +37,18 @@
                                         </div>
                                         <!-- 상태조회 -->
                                         <div class="form-group row mt-3 align-items-center text-center">
-                                            <ul class="nav nav-tabs d-flex text-center justify-content-evenly mt-2">
+                                            <ul id="reservationTabs" class="nav nav-tabs d-flex text-center justify-content-evenly mt-2">
                                                 <li class="nav-item">
-                                                    <a class="nav-link active" href="#">전체</a>
+                                                    <span class="nav-link active">전체</span>
                                                 </li>
                                                 <li class="nav-item">
-                                                    <a class="nav-link" href="#">결제대기</a>
+                                                    <span class="nav-link">결제취소요청</span>
                                                 </li>
                                                 <li class="nav-item">
-                                                    <a class="nav-link" href="#">결제취소요청</a>
+                                                    <span class="nav-link">예약완료</span>
                                                 </li>
                                                 <li class="nav-item">
-                                                    <a class="nav-link" href="#">예약완료</a>
-                                                </li>
-                                                <li class="nav-item">
-                                                    <a class="nav-link" href="#">이용완료</a>
+                                                    <span class="nav-link" onclick='completeUse("<%=request.getContextPath()%>/completeUseRoom.do")'>이용완료</span>
                                                 </li>
                                             </ul>
                                         </div>                          
@@ -59,15 +56,14 @@
                                       <!-- 예약상태 -->
                                       <div class="col-sm-12 p-2">
                                           <div class="card card-reservation">
-                                              <div class="card-body">
+                                              <div id="cardBody" class="card-body">
+                                                <!--  내용부분 -->
                                                   <p>결제대기</p>
                                                   <div class="d-flex text-center">
                                                       <div class="col-sm-4">
-                                                          <img src="<%=request.getContextPath()%>/images/01.jpg" alt="객실사진" class="img-fluid">
+                                                          <img src="#" alt="객실사진" class="img-fluid">
                                                           <div class="mt-2 fs-5">오션뷰 테라스</div>
-                                                          <div class="mt-2 bg-light">
-                                                            옵션: 바베큐, 온수
-                                                          </div>
+                                                          <div class="mt-2 bg-light">옵션: 바베큐, 온수</div>
                                                       </div>
                                                       <div class="col-sm-7 ms-5">
                                                         <div><strong>예약자명:&nbsp;&nbsp;</strong>
@@ -99,6 +95,7 @@
                                                         </div>
                                                       </div>
                                                   </div>
+                                                  <!-- 내용 끝 -->
                                               </div>
                                           </div>
                                         </div>                          
@@ -107,4 +104,5 @@
                             </div>
                         </div>
                     </section>
+<script src="<%=request.getContextPath()%>/js/dj/admin-reservation.js"></script>
 <%@ include file="/views/admin/common/footer.jsp"%>

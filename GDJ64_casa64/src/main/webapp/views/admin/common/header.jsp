@@ -13,6 +13,9 @@
 
 <!-- 부트스트랩 아이콘 -->
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css">
+
+<!-- 제이쿼리 -->
+<script src="<%=request.getContextPath()%>/js/jquery-3.7.0.min.js"></script>
 </head>
 <body>
 
