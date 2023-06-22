@@ -1,3 +1,4 @@
+
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <div class="card">
@@ -8,17 +9,17 @@
 	</div>
 </div>
 <ul class="mt-5 nav flex-column col-10 ">
-	<li class="nav-item"><a class="nav-link active"
-		href="<%=request.getContextPath()%>/mypage/mypageMain">마이페이지</a></li>
 	<li class="nav-item"><a class="nav-link"
-		href="<%=request.getContextPath()%>/mypage/myPageInfo">회원수정/탈퇴</a></li>
+		href="<%=request.getContextPath()%>/myPage/myPageInfo">회원정보/수정</a></li>
 	<li class="nav-item"><a class="nav-link"
-		href="<%=request.getContextPath()%>/mypage/mypageReservation">예약내역</a>
+		href="<%=request.getContextPath()%>/myPage/myPageReservation">예약내역</a>
 	</li>
 	<li class="nav-item"><a class="nav-link"
-		href="<%=request.getContextPath()%>/mypage/myPageReview">나의 이용후기</a></li>
+		href="<%=request.getContextPath()%>/myPage/myPageReview">이용후기</a></li>
 	<li class="nav-item"><a class="nav-link"
-		href="<%=request.getContextPath()%>/mypage/myPageQnA">나의 문의사항</a></li>
+		href="<%=request.getContextPath()%>/myPage/myPageQnA">문의사항</a></li>
+	<li class="nav-item"><a class="nav-link active"
+		href="<%=request.getContextPath()%>/myPage/memberOut">회원탈퇴</a></li>
 </ul>
 <!-- Modal -->
 <div class="modal fade" id="passwordcheckMyinfo"
@@ -43,4 +44,5 @@
 		</div>
 	</div>
 </div>
+
 

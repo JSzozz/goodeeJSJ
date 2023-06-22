@@ -1,9 +1,11 @@
+
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ include file="/views/common/header.jsp" %>
-<%@ page import="java.util.List,com.btc.rooms.model.vo.Room" %>
+<%@ page import="java.util.List,com.btc.rooms.model.vo.Room,com.btc.rooms.model.vo.RoomImage" %>
 <%
 	Room r=(Room)request.getAttribute("room");
+	List<RoomImage> imageList=(List<RoomImage>)request.getAttribute("imageList");
 %>
 <section>
 	<div class="category-image">
@@ -163,4 +165,5 @@
 		//캘린더로 페이지 이동
 	}) */
 </script>
+
 <%@ include file="/views/common/footer.jsp" %>

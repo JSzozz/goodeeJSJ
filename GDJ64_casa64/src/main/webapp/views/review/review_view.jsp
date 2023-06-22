@@ -1,10 +1,11 @@
+
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ include file="/views/common/header.jsp"%>
 <link rel="stylesheet" href="<%=request.getContextPath()%>/nara_publish/css/common.css" />
-<%@ page import="java.util.List,com.btc.review.model.vo.Reviews" %>
+<%@ page import="java.util.List,com.btc.review.model.vo.Review" %>
 <%
-	Reviews reviews = (Reviews)request.getAttribute("review");
+	Review reviews = (Review)request.getAttribute("review");
 %> 
 
 <!-- 카테고리별 이미지 -->
@@ -81,6 +82,7 @@
 
 
 <!-- 내용 종료 -->
+
 
 
 <%@ include file="/views/common/footer.jsp"%>
