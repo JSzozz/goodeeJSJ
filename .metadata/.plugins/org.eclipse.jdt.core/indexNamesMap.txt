@@ -1,3 +1,0 @@
-INDEX VERSION 1.132
-file:/D:/semiProject/btc-casa64-project/.metadata/.plugins/org.eclipse.jdt.core/1865797976.index
-meta_index
