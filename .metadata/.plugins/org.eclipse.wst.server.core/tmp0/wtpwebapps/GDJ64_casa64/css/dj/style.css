@@ -1,0 +1,100 @@
+* {
+    font-family: 'Noto Sans KR', sans-serif;
+}
+
+.border-bottom {
+  border-bottom: 2px groove white;
+}
+
+.sidebar {
+    height: 100vh;
+}
+
+.sidebar-link {
+  font-size: 1.25rem;
+  transition: all 0.4s;
+}
+
+.sidebar-link:hover {
+  background-color: #495057;
+  border-radius: 7px;
+  transform: translate(-1px);
+}
+
+.admin-link:hover {
+  background-color: #6c757d;
+  border-radius: 7px;
+  transform: translate(-1px);
+}
+
+.top-link {
+  transition: all 0.25s;
+}
+
+.top-link:hover {
+  transform: scale(1.15);
+}
+
+.card-common {
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+  transition: all 0.4s;
+}
+
+.card-common:hover {
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+  transform: translate(-1px);
+}
+
+.card-footer:hover{
+  cursor: pointer;
+}
+
+.search-area {
+    margin-bottom: 30px;
+}
+
+.season-tab {
+    text-align: center;
+    font-size: 0;
+}
+
+.season-tab ul li {
+    display: inline-block;
+}
+
+.season-tab ul li a {
+    display: inline-block;
+    color: #909090;
+    font-weight: 700;
+    font-size: 1.25rem;
+    width: 120px;
+    height: 50px;
+    position: relative;
+    line-height: 50px;
+    border-bottom: 1px solid #909090;
+    text-decoration: none;
+}
+
+.season-tab ul li a:after {
+    position: absolute;
+    bottom: -1px;
+    left: 0;
+    width: 100%;
+    height: 3px;
+    background-color: #909090;
+    content: "";
+    display: none;
+}
+
+.season-tab ul li a.active {
+    color: #222222;
+}
+
+.season-tab ul li a.active:after {
+    display: block;
+    background-color: #222222;
+}
+
+.card-reservation {
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+}
