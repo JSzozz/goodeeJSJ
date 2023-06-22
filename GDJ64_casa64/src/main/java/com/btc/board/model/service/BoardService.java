@@ -6,6 +6,7 @@ import static com.btc.common.JDBCTemplate.getConnection;
 import java.sql.Connection;
 import java.util.List;
 
+import com.btc.board.model.dao.BoardDao;
 import com.btc.notice.controller.Board;
 
 public class BoardService {

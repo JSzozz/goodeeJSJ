@@ -75,8 +75,15 @@
                             ROOMS
                         </a>
                         <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            <li><a href="#" class="dropdown-item">객실별 정보</a></li>
-                            <li><a href="#" class="dropdown-item">이 객실 예약하기</a></li>
+                            <li><a href="<%=request.getContextPath() %>/RoomListServlet.do" class="dropdown-item">전체 객실 보기</a></li>
+                            <li><a href="#" class="dropdown-item">오션테라스 101</a></li>
+                            <li><a href="#" class="dropdown-item">오션테라스 201</a></li>
+                            <li><a href="#" class="dropdown-item">오션테라스 301</a></li>
+                            <li><a href="#" class="dropdown-item">선셋테라스 101</a></li>
+                            <li><a href="#" class="dropdown-item">선셋테라스 201</a></li>
+                            <li><a href="#" class="dropdown-item">선셋테라스 301</a></li>
+                            <li><a href="#" class="dropdown-item">스파테라스 101</a></li>
+                            <li><a href="#" class="dropdown-item">스파테라스 201</a></li>
                         </ul>
                     </li>
                     <li class="nav-item dropdown">
@@ -92,6 +99,18 @@
     
                 </ul>
             </div>
+            
+            <%if(loginMember!=null&&(loginMember.getEmail().equals("admin@btc.com"))){ %>
+            <div id="login-selector">
+                <ul class=navbar-nav>
+                
+                    <li class="nav-item">
+                        <a class="nav-link" href="<%=request.getContextPath()%>/views/admin/admin-page.jsp">ADMIN</a>
+                    </li>            
+                    
+                </ul>
+            </div>
+            <%} %>
             <div id="login-selector">
                 <ul class=navbar-nav>
                 <%if(loginMember==null) {%>

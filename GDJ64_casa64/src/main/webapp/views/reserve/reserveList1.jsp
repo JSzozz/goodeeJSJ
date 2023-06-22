@@ -578,6 +578,6 @@
 <!-- 결제기능 구현 -->
 <script src="https://cdn.iamport.kr/v1/iamport.js"></script>
 <script src="<%=request.getContextPath()%>/js/dj/payment.js"></script>
-      <!-- 푸터 영역 -->
+		<!-- 푸터 영역 -->
 <%@ include file="/views/common/footer.jsp"%>
 <!-- footer바닥 고정법 찾아보기 -->

@@ -52,4 +52,23 @@ public class RoomDao {
 		}
 		return list;
 	}
+	public List<Room> selectAllRoom(Connection conn) {
+		PreparedStatement pstmt=null;
+		ResultSet rs=null;
+		List<Room> list=new ArrayList();
+		try {
+			String query=sql.getProperty("selectAllRoom");
+			pstmt=conn.prepareStatement(query);
+			rs=pstmt.executeQuery();
+			while(rs.next()) {
+				list.add(getRoom(rs));
+			}
+		}catch(SQLException e) {
+			e.printStackTrace();
+		}finally{
+			close(rs);
+			close(conn);
+		}
+		return list;
+	}
 }

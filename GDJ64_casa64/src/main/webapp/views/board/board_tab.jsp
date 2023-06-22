@@ -18,11 +18,11 @@
 </div>
 
 <div class="cummunity-title">
-	<h3 class="text-center"><%=request.getParameter("name") %></h3>
+	<h3 class="text-center"><%=request.getAttribute("communityTitle") %></h3>
 </div>
 
 <script>
-	/* const current_url = window.location.pathname;
+	const current_url = window.location.pathname;
 	console.log($(".text-center").text());
 	$(function() {
 		$('.category-tab-a').removeClass('active');
@@ -33,16 +33,5 @@
 		} else {
 			$('.category-tab-review').addClass('active');
 		}
-	}) */
-	const text = $(".text-center").text();
-	$(function(){
-		$('.category-tab-a').removeClass('active');
-		if(text=="공지사항"){
-			$('.category-tab-notice').addClass('active');
-		}else if(text=="QnA"){
-			$('.category-tab-qna').addClass('active');			
-		}else{
-			$('.category-tab-review').addClass('active');
-		}
-	});
+	}) 
 </script>

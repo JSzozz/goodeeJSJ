@@ -1,0 +1,198 @@
+* {
+    font-family: 'Noto Sans KR', sans-serif;
+}
+a  {
+	text-decoration: none !important;
+}
+.w-15 {
+    width: 15% !important;
+}
+/*카테고리 이미지*/
+.category-image { position:relative;text-align:center;color:#FFFFFF; }
+.category-image div { position: absolute;top:50%;left:50%; transform: translate(-50%, -50%); color: black; font-size: 30px; font-weight: bolder;}
+
+
+
+/*카테고리 탭*/
+.category-tab {
+    text-align: center;
+    font-size: 0;
+    margin-top: 40px;
+    margin-bottom: 60px;
+}
+.category-tab ul li {
+    display: inline-block;
+}
+
+.category-tab ul  {
+    padding: inherit;
+}
+
+.category-tab ul li a {
+    display: inline-block;
+    color: #909090;
+    font-weight: 700;
+    font-size: 18px;
+    width: 116px;
+    height: 50px;
+    position: relative;
+    line-height: 50px;
+    border-bottom: 1px solid #909090;
+    text-decoration: none;
+}
+.category-tab ul li a:after {
+    position: absolute;
+    bottom: -1px;
+    left: 0;
+    width: 100%;
+    height: 3px;
+    background-color: #909090;
+    content: "";
+    display: none;
+}
+.category-tab ul li a.active {
+    color: #222222;
+}
+.category-tab ul li a.active:after {
+    display: block;
+    background-color: #222222;
+}
+
+
+
+/*커뮤니티 텍스트*/
+h3 {
+    margin-bottom: 30px;
+    font-weight: bolder;
+}
+
+/*검색창 영역*/
+.search-area {
+    margin-bottom: 30px;
+}
+
+/*게시판 페이징*/
+.board-pasing {
+    margin-top: 30px;
+}
+
+
+
+
+
+/*======== 게시판 상세보기 ========*/
+
+.qnaview-button {
+    line-height: 0.75rem;
+    padding-left: 0.5rem;
+    padding-right: 0.5rem;
+    font-size: 0.75rem;
+}
+
+/*목록 버튼*/
+.list-btn {
+    margin-bottom: 30px;
+    text-align: end;
+}
+
+.board-data {
+    min-height: 300px;
+    padding-top: 15px;
+    resize: none;
+}
+
+
+
+
+.date-created{
+    color: #ababab;
+    font-size: 12px;
+} 
+
+/*조회수*/
+.count-inner {
+    margin-top: 20px;
+    text-align: end;
+    align-self: center;
+} 
+
+
+/*관리자 댓글전체*/
+.comment-inner {
+    margin-top: 30px;
+
+} 
+
+/*관리자 댓글입력창*/
+.comment {
+    height: 90px;
+    resize: none;
+}
+.comment-btn {
+    width: 90px;
+    height: 90px;
+} 
+
+/*수정삭제 버튼*/
+.admin-comment {
+    margin-top: 30px;
+}
+.admin-comment>.writer {
+    font-weight: bolder;
+}  
+
+
+/*게시글 작성하기*/
+.border-create p.col-2 {
+    font-weight: bolder;
+    display: inline;;
+}
+
+.border-create .col-10 {
+    resize: none;
+}
+
+.chooseroom {
+    font-size: 10px;
+    background-color: #ababab;
+    border-color: white;
+}
+
+.btn:hover {
+    background-color: #ffffff;
+    color: black;
+    border-color: #ababab;
+} 
+
+p.writer {margin: 0;}
+.inq-write-wrap .board table td .td-con .editor-wrap .editor-area {
+    width: 602px;
+    height: 278px;
+    box-sizing: border-box;
+}
+textarea.review-contents{resize: none;}
+
+
+
+
+
+.title-inner {
+    margin-top: 15px;
+    margin-bottom: 15px
+}
+
+
+.room-list-area h6 {
+    font-weight: bolder;
+}
+
+
+.room-list-area small {
+    font-size: 14px;
+    color: #ababab;
+}
+
+
+.room-list-area {
+    margin-top: 15px;
+}
