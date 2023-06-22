@@ -12,7 +12,7 @@ import lombok.NoArgsConstructor;
 public class RoomImage {
 	private int fileNo;
 	private int roomNo;
-	private String roomRenamedFilename;
-	private String originalFilename;
+	private String roomReFilename;
+	private String roomOriFilename;
 	
 }
