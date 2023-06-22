@@ -6,4 +6,3 @@ src/main/webapp/upload/
 **/*driver*.properties
 **/*sql*.properties
 /bin/
-
