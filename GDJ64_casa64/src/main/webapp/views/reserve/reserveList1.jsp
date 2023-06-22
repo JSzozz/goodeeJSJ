@@ -35,7 +35,7 @@
 <section class="p-2 m-0 border-0 bd-example">
 
 <!-- 0. 필터 버튼  --> <!-- 아이콘 출처 : https://tabler-icons.io/  -->
-   <span class="btn-group dropend offset-md-7 col-md-1">
+   <span class="btn-group dropend offset-md-1 col-md-1">
       <button class="btn btn-outline-dark dropdown-toggle " type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-funnel-fill" viewBox="0 0 16 16">
            <path d="M1.5 1.5A.5.5 0 0 1 2 1h12a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-.128.334L10 8.692V13.5a.5.5 0 0 1-.342.474l-3 1A.5.5 0 0 1 6 14.5V8.692L1.628 3.834A.5.5 0 0 1 1.5 3.5v-2z"/>
@@ -264,9 +264,7 @@
        <hr>
        <div class="buttons"  >
            <p>체크아웃 날짜와 인원(성인, 영유아)을 선택하시면 다음 단계로 넘어가실 수 있습니다.</p>
-           <button class="button-1 btn btn btn-outline-dark btn-lg" id="goNextBtn"
-           onclick="location.href='<%=request.getContextPath() %>/views/reserve/reserveList2.jsp' "
-           >다음단계</button>
+           <button class="button-1 btn btn btn-outline-dark btn-lg" id="goNextBtn">다음단계</button>
        </div>
     </div>
 </section>
@@ -651,10 +649,10 @@
 		        "프리미엄스파 101","프리미엄스파 201"]; */
 /* 객실 */	            
 		      	//객실 추가
-	            for(let i=0;i<roomList.length;i++){
+	            for(let i=0;i<roomName.length;i++){
 	                const divNode = document.createElement("div");
 	                const aNode = document.createElement("a");
-	                aNode.textContent = roomList[i];
+	                aNode.textContent = roomName[i];
 	                divNode.appendChild(aNode);
 	                column.appendChild(divNode);
 	                divNode.setAttribute("class",toDay.getFullYear()+"-"+autoLeftPad((toDay.getMonth() + 1), 2)+"-"+autoLeftPad(day, 2))+" room"+(i+1);
@@ -789,10 +787,6 @@
 	});
    
 </script>
-
-<!-- 결제기능 구현 -->
-<script src="https://cdn.iamport.kr/v1/iamport.js"></script>
-<script src="<%=request.getContextPath()%>/js/dj/payment.js"></script>
 		<!-- 푸터 영역 -->
 <%@ include file="/views/common/footer.jsp"%>
 <!-- footer바닥 고정법 찾아보기 -->
