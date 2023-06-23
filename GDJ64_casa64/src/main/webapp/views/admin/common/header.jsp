@@ -41,7 +41,7 @@
                                 <a href="<%=request.getContextPath()%>/views/admin/black-member.jsp" class="nav-link text-white admin-link sidebar-link"><i class="bi bi-person-fill-lock me-2"></i>블랙회원</a>
                             </li>
                             <li class="nav-item mb-1">
-                                <a href="<%=request.getContextPath() %>/views/admin/rooms.jsp" class="nav-link sidebar-link text-white"><i class="bi bi-houses-fill me-2"></i>객실관리</a>
+                                <a href="<%=request.getContextPath() %>/admin/room/showAllRoom.do" class="nav-link sidebar-link text-white"><i class="bi bi-houses-fill me-2"></i>객실관리</a>
                             </li>
                             <li class="nav-item mb-1">
                                 <a href="<%=request.getContextPath()%>/views/admin/season-price.jsp" class="nav-link sidebar-link text-white"><i class="bi bi-currency-exchange me-2"></i>요금관리</a>
@@ -50,7 +50,7 @@
                                 <a href="#" class="nav-link sidebar-link text-white"><i class="bi bi-megaphone-fill me-2"></i>게시판</a>
                             </li>
                             <li class="nav-item mb-1">
-                                <a href="<%=request.getContextPath()%>/views/admin/reservation.jsp" class="nav-link sidebar-link text-white"><i class="bi bi-calendar-fill me-2"></i>예약관리</a>
+                                <a href="<%=request.getContextPath()%>/views/admin/booking.jsp" class="nav-link sidebar-link text-white"><i class="bi bi-calendar-fill me-2"></i>예약관리</a>
                             </li>
                             <li class="nav-item mb-1">
                                 <a href="<%=request.getContextPath()%>/views/admin/leave-member.jsp" class="nav-link text-white admin-link sidebar-link"><i class="bi bi-person-fill-dash me-2"></i>탈퇴회원</a>
