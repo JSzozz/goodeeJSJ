@@ -32,7 +32,8 @@ public class ShowAllRoomServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		List<Room> rooms=new AdminService().selectAllExistingRooms();
-		request.getRequestDispatcher("/views/admin/rooms/jsp").forward(request,response);
+		request.setAttribute("rooms",rooms);
+		request.getRequestDispatcher("/views/admin/rooms.jsp").forward(request,response);
 //		
 		///views/admin/rooms.jsp로 이동
 	}
