@@ -109,7 +109,7 @@
 				},
 				success:function(data){
 					if(data==1){
-						alert("삭제성공");
+						alert("탈퇴성공");
 					}else{
 						alert("실패");
 					}
