@@ -22,7 +22,6 @@ public class ReservationCompleteUseServlet extends HttpServlet {
 		// 오늘 날짜 데이터 저장하기
 		LocalDate now = LocalDate.now();
 		
-		List<Reservation> list = new AdminService().ReservationCompleteUseServlet(now);
 		
 		response.getWriter().print("하이하이");
 	}
