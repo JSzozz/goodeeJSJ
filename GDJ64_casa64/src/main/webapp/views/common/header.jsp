@@ -62,7 +62,7 @@
                             COMMUNITY
                         </a>
                         <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            <li><a href="<%=request.getContextPath()%>/" class="dropdown-item">공지사항</a></li>
+                            <li><a href="<%=request.getContextPath()%>/notice/insertNotice.do" class="dropdown-item">공지사항</a></li>
                             <li><a href="<%=request.getContextPath()%>/" class="dropdown-item">QnA</a></li>
                             <li><a href="<%=request.getContextPath()%>/review/reviewList" class="dropdown-item">이용후기</a></li>
                         </ul>
@@ -103,7 +103,7 @@
                             RESERVATION
                         </a>
                         <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            <li><a href="<%=request.getContextPath()%>/reserve/reserveList1.do" class="dropdown-item">예약하기</a></li>
+                            <li><a href="<%=request.getContextPath()%>/booking/booking-list1.do" class="dropdown-item">예약하기</a></li>
                             <li><a href="#" class="dropdown-item">예약 관련 정보</a></li>
                         </ul>
                     </li>

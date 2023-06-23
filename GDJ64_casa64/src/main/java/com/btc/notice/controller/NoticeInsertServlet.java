@@ -32,11 +32,10 @@ public class NoticeInsertServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		//주제, 이름을 받아 표시하기(categoryimage , board_tab)
-		String categoryName = request.getParameter("categoryName");
-		String communityTitle = request.getParameter("communityTitle");
-		
-//		request.setAttribute("categoryName", categoryName);
-//		request.setAttribute("communityTitle", communityTitle);
+//		String categoryName = request.getParameter("categoryName");
+//		String communityTitle = request.getParameter("communityTitle");
+		request.setAttribute("categoryName", "COMMUNITY");
+		request.setAttribute("communityTitle", "공지사항");
 		
 		//게시물 & 페이징 처리
 		int cPage; //현재페이지
@@ -64,7 +63,7 @@ public class NoticeInsertServlet extends HttpServlet {
 			pageBar+="<li class='page-item'><a class='page-link' aria-label='Previous'> <span aria-hidden='true'>&laquo;</span></a></li>";
 		}else {
 			pageBar+="<li class='page-item'>"
-			+ "<a class='page-link' href='"+request.getRequestURI()+"?cPage="+(cPage-1)+"&numPerpage="+numPerpage+"&categoryName="+categoryName+"&communityTitle="+communityTitle
+			+ "<a class='page-link' href='"+request.getRequestURI()+"?cPage="+(cPage-1)+"&numPerpage="+numPerpage
 			+ "' aria-label='Previous'> <span aria-hidden='true'>&laquo;</span></a></li>";
 		}
 		//페이징 번호 (현재페이지=1, 페이징처리의 시작번호=1 다음pageNo는 6이므로 6까지 증가하면서 증가시킨 pageNo별 주소 할당)
@@ -74,7 +73,7 @@ public class NoticeInsertServlet extends HttpServlet {
 			}else {
 				//pageNo 증가 로직
 				pageBar+="<li class='page-item'><a class='page-link' href='"+request.getRequestURI()
-						+"?cPage="+pageNo+"&numPerpage="+numPerpage+"&categoryName="+categoryName+"&communityTitle="+communityTitle+"'>"
+						+"?cPage="+pageNo+"&numPerpage="+numPerpage+"'>"
 						+pageNo+"</a></li>";
 			}pageNo++;
 		}
@@ -83,14 +82,12 @@ public class NoticeInsertServlet extends HttpServlet {
 			pageBar+="<li class='page-item'><a class='page-link' aria-label='Next'> <span aria-hidden='true'>&raquo;</span></a></li>"; //클릭 비활성화
 		}else {
 			pageBar+="<li class='page-item'><a class='page-link' href='"+request.getRequestURI()
-			+"?cPage="+pageNo+"&numPerpage="+numPerpage+"&categoryName="+categoryName+"&communityTitle="+communityTitle+"'aria-label='Next'>"
+			+"?cPage="+pageNo+"&numPerpage="+numPerpage+"'aria-label='Next'>"
 					+ " <span aria-hidden='true'>&raquo;</span></a></li>";
 		}
-
 		request.setAttribute("pageBar", pageBar);
 		request.setAttribute("notices",notices);
-		request.setAttribute("categoryName",categoryName);
-		request.setAttribute("communityTitle",communityTitle);
+
 		
 		request.getRequestDispatcher("/views/board/notice.jsp").forward(request, response);
 		

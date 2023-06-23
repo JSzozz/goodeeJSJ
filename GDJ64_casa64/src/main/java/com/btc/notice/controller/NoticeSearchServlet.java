@@ -36,13 +36,16 @@ public class NoticeSearchServlet extends HttpServlet {
 		//클라이언트가 보낸 데이터를 기준으로 member테이블에서 해당하는 데이터를 보내줌(입력타입과 입력값을 이용해서 회원필터기능을 만드는 로직)
     	//header 관리자상태로 회원조회누르면 여기로와서 입력타입,입력값가지고 리스트를 멤버로 저장 저장한걸 기존 서블릿으로 이동
     	//1. 입력타입과 입력값을 받아오기
-    	String searchType=request.getParameter("searchType");
+    	String searchType=request.getParameter("search-type");
 		String keyword=request.getParameter("keyword");
 		
-		String categoryName = request.getParameter("categoryName");
-		String communityTitle = request.getParameter("communityTitle");
+		String categoryName = (String)request.getParameter("categoryName");
+		String communityTitle = (String)request.getParameter("communityTitle");
 		
-		System.out.println(searchType+","+keyword+","+categoryName+","+communityTitle);
+		System.out.println(categoryName+", "+communityTitle);
+		
+		request.setAttribute("categoryName", categoryName);
+		request.setAttribute("communityTitle", communityTitle);
 		
 		//searchType에 따른 searchKeyword값을 map방식으로 저장
 		Map map=Map.of("type",searchType,"keyword",keyword);
@@ -59,7 +62,7 @@ public class NoticeSearchServlet extends HttpServlet {
 		try {
 			numPerpage=Integer.parseInt(request.getParameter("numPerpage"));
 		}catch(NumberFormatException e) {
-			numPerpage=10;
+			numPerpage=5;
 		}
 		//cPage에 따른 numPerpage값을 map방식으로 저장
 		Map pagemap=Map.of("cPage",cPage,"numPerpage",numPerpage);
@@ -84,7 +87,7 @@ public class NoticeSearchServlet extends HttpServlet {
 			pageBar+="<li class='page-item'><a class='page-link' aria-label='Previous'> <span aria-hidden='true'>&laquo;</span></a></li>";
 		}else {
 			pageBar+="<li class='page-item'>"
-			+ "<a class='page-link' href='"+request.getRequestURI()+"?cPage="+(cPage-1)+"&numPerpage="+numPerpage+"&categoryName="+categoryName+"&communityTitle="+communityTitle
+			+ "<a class='page-link' href='"+request.getRequestURI()+"?cPage="+(cPage-1)+"&numPerpage="+numPerpage+"&search-type="+searchType+"&keyword="+keyword
 			+ "' aria-label='Previous'> <span aria-hidden='true'>&laquo;</span></a></li>";
 		}
 		//페이징 번호 (현재페이지=1, 페이징처리의 시작번호=1 다음pageNo는 6이므로 6까지 증가하면서 증가시킨 pageNo별 주소 할당)
@@ -94,7 +97,7 @@ public class NoticeSearchServlet extends HttpServlet {
 			}else {
 				//pageNo 증가 로직
 				pageBar+="<li class='page-item'><a class='page-link' href='"+request.getRequestURI()
-						+"?cPage="+pageNo+"&numPerpage="+numPerpage+"&categoryName="+categoryName+"&communityTitle="+communityTitle+"'>"
+						+"?cPage="+pageNo+"&numPerpage="+numPerpage+"&search-type="+searchType+"&keyword="+keyword+"'>"
 						+pageNo+"</a></li>";
 			}pageNo++;
 		}
@@ -103,7 +106,7 @@ public class NoticeSearchServlet extends HttpServlet {
 			pageBar+="<li class='page-item'><a class='page-link' aria-label='Next'> <span aria-hidden='true'>&raquo;</span></a></li>"; //클릭 비활성화
 		}else {
 			pageBar+="<li class='page-item'><a class='page-link' href='"+request.getRequestURI()
-			+"?cPage="+pageNo+"&numPerpage="+numPerpage+"&categoryName="+categoryName+"&communityTitle="+communityTitle+"'aria-label='Next'>"
+			+"?cPage="+pageNo+"&numPerpage="+numPerpage+"&search-type="+searchType+"&keyword="+keyword+"'aria-label='Next'>"
 					+ " <span aria-hidden='true'>&raquo;</span></a></li>";
 		}
 		request.setAttribute("pageBar", pageBar);
