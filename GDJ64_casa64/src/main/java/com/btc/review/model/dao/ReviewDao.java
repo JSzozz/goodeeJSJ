@@ -223,7 +223,7 @@ public class ReviewDao {
 
 	public String getBasicQuery() {
 		return "SELECT " + "  REVIEW.* , MEMBER.NICKNAME, ROOM.ROOM_NAME " + "    FROM REVIEW  "
-				+ "    JOIN MEMBER ON MEMBER.MEMBERNO = REVIEW.MEMBER_NO "
+				+ "    JOIN MEMBER ON MEMBER.MEMBER_NO = REVIEW.MEMBER_NO "
 				+ "    JOIN ROOM ON ROOM.ROOM_NO = REVIEW.ROOM_NO " + "    WHERE 1=1 AND REVIEW.IS_DELETED = 0 "; // 실행할
 																													// 기본
 																													// 쿼리

@@ -18,5 +18,5 @@ public class Member {
 	private String nickName;
 	private String password;
 	private String phone;
-	private boolean memberBlack;
+	private String memberBlack;
 }

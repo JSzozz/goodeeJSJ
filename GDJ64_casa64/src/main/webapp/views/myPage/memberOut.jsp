@@ -17,16 +17,16 @@
 		<div class="mt-5 col-7 mx-auto">
 			<div class="p-3">
 				<div class="border-primary border-bottom border-2">
-					<h5>회원탈퇴 안내</h5>
+					<h4 class="mb-3"><b>회원탈퇴 안내</b></h4>
 
 				</div>
-				<p>회원탈퇴를 신청하기 전에 안내 사항을 확인해주세요.</p>
+				<p class="mt-5">회원탈퇴를 신청하기 전에 안내 사항을 확인해주세요.</p>
 				<div class="mt-5">
-					<h5>사용하고 계신 아이디는 탈퇴할 경우 재사용 및 복구가 불가능 합니다.</h5>
+					<p>사용하고 계신 아이디는 탈퇴할 경우 재사용 및 복구가 불가능 합니다.</p>
 					<p>탈퇴한 아이디는 복구가 불가능하오니 신중하게 선택하시기 바랍니다.</p>
 				</div>
-				<div class="mt-5">
-					<h5>탈퇴 후에도 게시판에 등록한 게시물은 그대로 남아 있습니다.</h5>
+				<div class="">
+					<p>※ 탈퇴 후에도 게시판에 등록한 게시물은 그대로 남아 있습니다.</p>
 				</div>
 
 				<div class="border text-center mt-5 my-3">회원탈퇴하려는 계정 :

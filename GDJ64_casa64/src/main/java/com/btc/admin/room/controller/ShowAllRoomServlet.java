@@ -1,23 +1,28 @@
-package com.btc.mypage.controller;
+package com.btc.admin.room.controller;
 
 import java.io.IOException;
+import java.util.List;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.btc.admin.model.service.AdminService;
+import com.btc.rooms.model.vo.Room;
+
 /**
- * Servlet implementation class MyPageQnA
+ * Servlet implementation class ShowAllRoomServlet
  */
-@WebServlet("/myPage/myPageQnA")
-public class MyPageQnA extends HttpServlet {
+@WebServlet("/admin/room/showAllRoom.do")
+public class ShowAllRoomServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public MyPageQnA() {
+    public ShowAllRoomServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -26,7 +31,11 @@ public class MyPageQnA extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		request.getRequestDispatcher("/views/myPage/myPageQnA.jsp").forward(request, response);
+		List<Room> rooms=new AdminService().selectAllExistingRooms();
+		request.setAttribute("rooms",rooms);
+		request.getRequestDispatcher("/views/admin/rooms.jsp").forward(request,response);
+//		
+		///views/admin/rooms.jsp로 이동
 	}
 
 	/**
