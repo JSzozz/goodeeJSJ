@@ -81,13 +81,6 @@
 							<td><button type="button" class="btn btn-primary btn-sm"
 									data-bs-toggle="modal" data-bs-target="#passwordcheckMyinfo">수정</button></td>
 						</tr>
-						<tr>
-							<th>회원탈퇴</th>
-							<td></td>
-							<td><button type="button" class="btn btn-danger btn-sm"
-									onclick="location.href='<%=request.getContextPath()%>/views/myPage/memberOut.jsp'">탈퇴</button></td>
-
-						</tr>
 					</tbody>
 				</table>
 			</div>
