@@ -557,11 +557,11 @@
 	});
 
 /* 달력에서 객실 클릭 */
-let totalBookPrice=0;
+	let totalBookPrice=0;
+	let totalRoomPrice=0;
 	$(function() {
 		let checkInDt="";//(String)
 		let roomPrice=0;
-		let totalRoomPrice=0;
 
 	    $(document).on("click","div[bookable=available]",e=> {
 	          $(".reserve_step2").show();
@@ -606,7 +606,7 @@ let totalBookPrice=0;
 		        let period = Number($("select[class=availableDays] option:selected").val());
 		        totalRoomPrice=period*roomPrice;
 		        $("#roomPrice").html(totalRoomPrice);
-		        totalBookPrice=totalRoomPrice;
+		        totalBookPrice=totalRoomPrice+personPrce+OPTprice;
 		        $("#totPrice").html(totalBookPrice);
 		          
 			});
@@ -614,25 +614,31 @@ let totalBookPrice=0;
 	 });
 /* 2. 인원 */
 	let adultPers, kidsPers, infPers, totalPerson;
-	let optionPrce=0;
+	let personPrce=0;
 	$(function() {
 		$(document).on("change","select[class=adultPers]",e=>{
 			adultPers = Number($("select[class=adultPers] option:selected").attr('value'));
 			pers=adultPers+kidsPers;
 			/* console.log(pers); */
 			switch(pers){
-				case 0 : optionPrce=0; color="black"; break;
-				case 1 : optionPrce=0; color="black"; break;
-				case 2 : optionPrce=0; color="black"; break;
-				case 3 : optionPrce=0; color="black"; break;
-				case 4 : optionPrce=0; color="black"; break;
-				case 5 : optionPrce=20000; color="black"; break;
-				case 6 : optionPrce=40000; color="black"; break;
-				case 7 : optionPrce=60000; color="black"; break;
-				case 8 : optionPrce=80000; color="black"; break;
-				default: optionPrce="'성인', '아동/유아' 인원 수를 선택해주세요"; color="red"; break;
+				case 0 : personPrce=0; color="black"; break;
+				case 1 : personPrce=0; color="black"; break;
+				case 2 : personPrce=0; color="black"; break;
+				case 3 : personPrce=0; color="black"; break;
+				case 4 : personPrce=0; color="black"; break;
+				case 5 : personPrce=20000; color="black"; break;
+				case 6 : personPrce=40000; color="black"; break;
+				case 7 : personPrce=60000; color="black"; break;
+				case 8 : personPrce=80000; color="black"; break;
+				default: personPrce="'성인', '아동/유아' 인원 수를 선택해주세요"; color="red"; break;
 			};
-			$("#persePrice").html(optionPrce).css("color",color);
+			$("#persePrice").html(personPrce).css("color",color);
+			if(typeof personPrce=="string"){
+				totalBookPrice="";		
+			}else{
+	        	totalBookPrice=totalRoomPrice+personPrce+OPTprice;
+			}
+	        $("#totPrice").html(totalBookPrice);
 		});
 	});	
 	$(function() {
@@ -641,18 +647,24 @@ let totalBookPrice=0;
 			pers=adultPers+kidsPers;
 			console.log(pers);
 			switch(pers){
-				case 0 : optionPrce=0; color="black"; break;
-				case 1 : optionPrce=0; color="black"; break;
-				case 2 : optionPrce=0; color="black"; break;
-				case 3 : optionPrce=0; color="black"; break;
-				case 4 : optionPrce=0; color="black"; break;
-				case 5 : optionPrce=20000; color="black"; break;
-				case 6 : optionPrce=40000; color="black"; break;
-				case 7 : optionPrce=60000; color="black"; break;
-				case 8 : optionPrce=80000; color="black"; break;
-				default: optionPrce="'성인', '아동/유아' 인원 수를 선택해주세요"; color="red"; break;
+				case 0 : personPrce=0; color="black"; break;
+				case 1 : personPrce=0; color="black"; break;
+				case 2 : personPrce=0; color="black"; break;
+				case 3 : personPrce=0; color="black"; break;
+				case 4 : personPrce=0; color="black"; break;
+				case 5 : personPrce=20000; color="black"; break;
+				case 6 : personPrce=40000; color="black"; break;
+				case 7 : personPrce=60000; color="black"; break;
+				case 8 : personPrce=80000; color="black"; break;
+				default: personPrce="'성인', '아동/유아' 인원 수를 선택해주세요"; color="red"; break;
 			};
-			$("#persePrice").html(optionPrce).css("color",color);
+			$("#persePrice").html(personPrce).css("color",color);
+			if(typeof personPrce=="string"){
+				totalBookPrice="";		
+			}else{
+	        	totalBookPrice=totalRoomPrice+personPrce+OPTprice;
+			}
+			$("#totPrice").html(totalBookPrice);
 		});
 	});	
 	$(function() {
@@ -671,11 +683,15 @@ let totalBookPrice=0;
 				OPTprice += Number($("#OPTN1").attr("data-cnt"));
 				/* console.log(OPTprice); */
 				$("#optnPrice").html(OPTprice);
+		        totalBookPrice=totalRoomPrice+personPrce+OPTprice;
+		        $("#totPrice").html(totalBookPrice);
 			}
 			else {
 				OPTprice -= Number($("#OPTN1").attr("data-cnt"));
 				/* console.log(OPTprice); */
 				$("#optnPrice").html(OPTprice);
+		        totalBookPrice=totalRoomPrice+personPrce+OPTprice;
+		        $("#totPrice").html(totalBookPrice);
 			}
 		});
 	});		
@@ -684,10 +700,14 @@ let totalBookPrice=0;
 			if($(e.target).is(":checked")){
 				OPTprice += Number($("#OPTN2").attr("data-cnt"));
 				$("#optnPrice").html(OPTprice);
+		        totalBookPrice=totalRoomPrice+personPrce+OPTprice;
+		        $("#totPrice").html(totalBookPrice);
 			}
 			else {
 				OPTprice -= Number($("#OPTN2").attr("data-cnt"));
 				$("#optnPrice").html(OPTprice);
+		        totalBookPrice=totalRoomPrice+personPrce+OPTprice;
+		        $("#totPrice").html(totalBookPrice);
 			}
 		});
 	});		
@@ -696,20 +716,20 @@ let totalBookPrice=0;
 			if($(e.target).is(":checked")){
 				OPTprice += Number($("#OPTN3").attr("data-cnt"));
 				$("#optnPrice").html(OPTprice);
+		        totalBookPrice=totalRoomPrice+personPrce+OPTprice;
+		        $("#totPrice").html(totalBookPrice);
 			}
 			else {
 				OPTprice -= Number($("#OPTN3").attr("data-cnt"));
 				$("#optnPrice").html(OPTprice);
+		        totalBookPrice=totalRoomPrice+personPrce+OPTprice;
+		        $("#totPrice").html(totalBookPrice);
 			}
 		});
 	});		
 	
 /* 4. 금액 */
-	$(function() {
-		$(document).on("change","input[id=OPTN3]",e=>{
-			console.log("여기도 나오나??"+OPTprice);
-		});
-	});	
+
 </script>
 
 <!-- 결제기능 구현 -->
@@ -717,4 +737,3 @@ let totalBookPrice=0;
 <script src="<%=request.getContextPath()%>/js/dj/payment.js"></script>
       <!-- 푸터 영역 -->
 <%@ include file="/views/common/footer.jsp"%>
-<!-- footer바닥 고정법 찾아보기 -->
