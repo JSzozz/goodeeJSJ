@@ -34,9 +34,8 @@ public class NoticeInsertServlet extends HttpServlet {
 		//주제, 이름을 받아 표시하기(categoryimage , board_tab)
 		String categoryName = request.getParameter("categoryName");
 		String communityTitle = request.getParameter("communityTitle");
-		
-//		request.setAttribute("categoryName", categoryName);
-//		request.setAttribute("communityTitle", communityTitle);
+		request.setAttribute("categoryName", "COMMUNITY");
+		request.setAttribute("communityTitle", "이용후기");
 		
 		//게시물 & 페이징 처리
 		int cPage; //현재페이지
@@ -89,8 +88,7 @@ public class NoticeInsertServlet extends HttpServlet {
 
 		request.setAttribute("pageBar", pageBar);
 		request.setAttribute("notices",notices);
-		request.setAttribute("categoryName",categoryName);
-		request.setAttribute("communityTitle",communityTitle);
+
 		
 		request.getRequestDispatcher("/views/board/notice.jsp").forward(request, response);
 		
