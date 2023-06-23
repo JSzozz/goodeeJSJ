@@ -8,7 +8,7 @@
 
 		<!-- 카테고리별 이미지 -->
 		<div class="category-image">
-			<img src="<%=request.getContextPath() %>/images/reserve/reservation.png" width="100%" height="200px">
+			<img src="<%=request.getContextPath() %>/images/booking/reservation.png" width="100%" height="200px">
 			<div>RESERVATION</div>
 		</div>
 		

@@ -1,4 +1,4 @@
-package com.btc.reserve.model.service;
+package com.btc.booking.model.service;
 
 import static com.btc.common.JDBCTemplate.close;
 import static com.btc.common.JDBCTemplate.commit;
@@ -8,10 +8,10 @@ import static com.btc.common.JDBCTemplate.rollback;
 import java.sql.Connection;
 import java.util.List;
 
-import com.btc.reserve.model.dao.ReserveDao;
+import com.btc.booking.model.dao.BookingDao;
 import com.btc.rooms.model.vo.Room;
-public class ReserveService {
-	private ReserveDao dao=new ReserveDao();
+public class BookingService {
+	private BookingDao dao=new BookingDao();
 	
 	public List<Room> selectAllRoom(){
 		Connection conn=getConnection();

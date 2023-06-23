@@ -1,4 +1,4 @@
-package com.btc.reserve.model.dao;
+package com.btc.booking.model.dao;
 
 import static com.btc.common.JDBCTemplate.close;
 
@@ -15,12 +15,12 @@ import java.util.Properties;
 import com.btc.rooms.model.vo.Room;
 
 
-public class ReserveDao {
+public class BookingDao {
 	
 	private Properties sql=new Properties();
 	
-	public ReserveDao() {
-		String path=ReserveDao.class
+	public BookingDao() {
+		String path=BookingDao.class
 				.getResource("/sql/reserve/sql_reserve.properties")
 				.getPath();
 		try {
@@ -38,6 +38,7 @@ public class ReserveDao {
 				.dateCreated(rs.getDate("date_created")).dateModified(rs.getDate("date_modified"))
 				.roomDescription(rs.getString("room_description")).build();
 	}
+	
 	
 	public List<Room> selectAllRoom(Connection conn){
 		PreparedStatement pstmt=null;

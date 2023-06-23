@@ -1,4 +1,4 @@
-package com.btc.reserve.model.vo;
+package com.btc.booking.model.vo;
 
 import java.sql.Date;
 
@@ -14,7 +14,7 @@ import lombok.NoArgsConstructor;
 public class Booking {
    
    private int bookingNo;
-   private int memberId;
+   private String memberId;
    private int roomNo;
    private String bookingCode;
    private Date checkIn;
