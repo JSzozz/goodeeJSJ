@@ -11,7 +11,6 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import com.btc.member.model.dto.Member;
-import com.btc.reserve.model.vo.Booking;
 import com.btc.review.model.service.ReviewService;
 import com.btc.review.model.vo.Review;
 
