@@ -14,25 +14,16 @@ import lombok.NoArgsConstructor;
 public class Booking {
    
    private int bookingNo;
-   private String memberId;
+   private int memberNo;
    private int roomNo;
-   private String bookingCode;
    private Date checkIn;
    private Date checkOut;
    private int guestAdult;
    private int guestChild;
    private int guestInfant;
-   private int xtraNo;
    private int bookingPrice;
-   private String paid;
-   
-//   private int noticeNo;
-//   private String noticeTitle;
-//   private String noticeWriter;
-//   private String noticeContent;
-//   private Date noticeDate;
-//   private String filePath;
-//   private String status;
-   
+   private String bookingComment;
+   private String bookingState;
+   private Date paymentDate;
    
 }
