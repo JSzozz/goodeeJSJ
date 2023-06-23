@@ -34,6 +34,14 @@ public class NoticeViewServlet extends HttpServlet {
 		int no=Integer.parseInt(request.getParameter("no"));
 		//새로고침해도 조회수를 증가하지않게 만드는 로직
 		
+		String categoryName = (String)request.getParameter("categoryName");
+		String communityTitle = (String)request.getParameter("communityTitle");
+		
+		System.out.println(categoryName+", "+communityTitle);
+		
+		request.setAttribute("categoryName", categoryName);
+		request.setAttribute("communityTitle", communityTitle);
+		
 		//다른 페이지의 조회수를 관리하기위해 이전값 불러오기
 		//쿠키 조회
 		Cookie[] cookies=request.getCookies();
