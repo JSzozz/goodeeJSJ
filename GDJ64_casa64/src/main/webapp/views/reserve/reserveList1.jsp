@@ -2,6 +2,8 @@
 <%@page import="java.util.List"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
    pageEncoding="UTF-8"%>
+<!-- 상준css -->
+<link rel="stylesheet" href="<%=request.getContextPath()%>/css/sj/style.css"/>
 <%
    List<Room> rooms=(List<Room>)session.getAttribute("rooms");
 %>
@@ -153,7 +155,7 @@
                     <li>
                         <label id="adtNm">성인</label>
                         <select class="adultPers" id="adultPers">  
-                            <option value="0">선택</option>
+                            <option value=".">선택</option>
                             <option value="1" price="">1명</option>
                             <option value="2" price="">2명</option>
                             <option value="3" price="">3명</option>
@@ -165,7 +167,7 @@
                     <li>
                         <lable id="kidNm">아동/유아</lable>
                         <select class="kidsPers" id="kidsPers">  
-                            <option value="0">선택</option>
+                            <option value=".">선택</option>
                             <option value="0">없음</option>
                             <option value="1" price="20000">1명</option>
                             <option value="2" price="20000">2명</option>
@@ -176,7 +178,6 @@
                     <li>
                         <lable id="infNm">영아(24개월 미만)</lable>
                         <select class="infPers" id="infPers">  
-                            <option value="0">선택</option>
                             <option value="0">없음</option>
                             <option value="1" price="20000">1명</option>
                             <option value="" price="20000">2명</option>
@@ -195,22 +196,22 @@
             <div class="content">
                 <ul id="optnList">
                     <li>                 
-                        <input type="checkbox"  id="OPTN0"  data-cnt="20000"  class="optCode op_name" value="101" data-tooltip >
-                        <lable class="op_la">옵션명-n인기준(20,000원)</lable>
+                        <input type="checkbox"  id="OPTN1"  data-cnt="30000"  class="optCode op_name" value="101" data-tooltip >
+                        <lable class="op_la">온수옵션(30,000원)</lable>
                         <button type="button" class="btn btn btn-outline-dark btn-sm" data-bs-toggle="tooltip" data-bs-placement="right" title="예약시간 준수 및 사용시간 2시간 제한 있습니다. 이용 금액 : n0,000원">
                             상세설명
                         </button>
                     </li>
                     <li>
-                        <input type="checkbox"  id="OPTN0"  data-cnt="20000"  class="optCode op_name" value="102" data-tooltip >
-                        <lable class="op_la">옵션명-n인기준(20,000원)</lable>
+                        <input type="checkbox"  id="OPTN2"  data-cnt="30000"  class="optCode op_name" value="102" data-tooltip >
+                        <lable class="op_la">물놀이용 수영장(30,000원)</lable>
                         <button type="button" class="btn btn btn-outline-dark btn-sm" data-bs-toggle="tooltip" data-bs-placement="right" title="예약시간 준수 및 사용시간 2시간 제한 있습니다. 이용 금액 : n0,000원">
                             상세설명
                         </button>
                     </li>                
                     <li>
-                        <input type="checkbox"  id="OPTN0"  data-cnt="20000"  class="optCode op_name" value="103" data-tooltip >
-                        <lable class="op_la">옵션명-n인기준(20,000원)</lable>
+                        <input type="checkbox"  id="OPTN3"  data-cnt="40000"  class="optCode op_name" value="103" data-tooltip >
+                        <lable class="op_la">바베큐-4인기준(40,000원)</lable>
                         <button type="button" class="btn btn btn btn-outline-dark btn-sm" data-bs-toggle="tooltip" data-bs-placement="right" title="예약시간 준수 및 사용시간 2시간 제한 있습니다. 이용  금액 : n0,000원">
                             상세설명
                         </button>
@@ -554,68 +555,84 @@
       	  $(e.target).css("font-weight","normal");
         });	
 	});
-	
+
 /* 달력에서 객실 클릭 */
+let totalBookPrice=0;
 	$(function() {
-		let checkInDt="";
+		let checkInDt="";//(String)
+		let roomPrice=0;
+		let totalRoomPrice=0;
+
 	    $(document).on("click","div[bookable=available]",e=> {
 	          $(".reserve_step2").show();
-	          console.dir($(e.target));
+/* 	          console.dir($(e.target));
 	          console.log($(e.target).text());
 	          console.log($(e.target).parent().attr("class"));
 	          console.log($(e.target).attr("class"));
-	          console.dir($(e.target).attr("price"));
-	          
+	          console.dir($(e.target).attr("price")); */
 	          $(e.target).css("text-decoration","underline");
 
 	          $("#typeNm").html($(e.target).text());
 	          $("#checkinDt").html($(e.target).attr("class"));
-	          $("#roomPrice").html($(e.target).attr("price"));
-	          $("#totPrice").html($(e.target).attr("price"));
-				
+	          
 	          checkInDt=$(e.target).attr("class");
-	    	});
+
+	          roomPrice = Number($(e.target).attr("price"));// /* 1. 기간선택& 4. 금액 */과 이어짐
+	          console.log(roomPrice);
+	          
+	    });
 	    
 /* 이용가능한 객실 선택 _ 예약 정보 받기 */
 		$(function() {
 			$(document).on("change","select[class=availableDays]",e=>{
-/* 1. 기간선택 */				
-				const checkOut=new Date(checkInDt);
-				/* console.log(checkOutDate+Number($("select[class=availableDays] option:selected").val())); */
-				checkOut.setDate(checkOutDate.getDate() + Number($("select[class=availableDays] option:selected").val()));
+/* 1. 기간선택& 4. 금액 */				
+				const stringToDate=new Date(checkInDt);//(Date)
+				/* console.log(checkOut+Number($("select[class=availableDays] option:selected").val())); */
+				stringToDate.setDate(stringToDate.getDate() + Number($("select[class=availableDays] option:selected").val()));
 
-				const year = checkOut.getFullYear();
-				const month = ('0' + (checkOut.getMonth() + 1)).slice(-2);
-				const day = ('0' + checkOut.getDate()).slice(-2);
-		        const checkoutDt = year+"-"+month+"-"+day;//예약일자
+				const year = stringToDate.getFullYear();
+				const month = ('0' + (stringToDate.getMonth() + 1)).slice(-2);
+				const day = ('0' + stringToDate.getDate()).slice(-2);
+		        const checkoutDt = year+"-"+month+"-"+day;//(String)
 		        // 어떤 날짜여도 'YYYY-DD-YY'형식으로 변환!
 		        
-		        $("#checkoutDt").html(dateStr);
+		        $("#checkoutDt").html(checkoutDt);
 /*  			console.log($("select[class=availableDays] option:selected").val());
 				console.log($("select[class=availableDays] option:selected").attr('price'));
 				console.log($("select[class=availableDays] option:selected").attr('consprice'));
 				console.log($("select[class=availableDays] option:selected").text()); */ 
+				
+		        /* totalRoomPrice */
+		        let period = Number($("select[class=availableDays] option:selected").val());
+		        totalRoomPrice=period*roomPrice;
+		        $("#roomPrice").html(totalRoomPrice);
+		        totalBookPrice=totalRoomPrice;
+		        $("#totPrice").html(totalBookPrice);
+		          
 			});
 		});
 	 });
 /* 2. 인원 */
-	let adultPers, kidsPers, infPers, pers;
+	let adultPers, kidsPers, infPers, totalPerson;
+	let optionPrce=0;
 	$(function() {
 		$(document).on("change","select[class=adultPers]",e=>{
 			adultPers = Number($("select[class=adultPers] option:selected").attr('value'));
 			pers=adultPers+kidsPers;
-			console.log(pers);
+			/* console.log(pers); */
 			switch(pers){
-				case 1 : $("#persePrice").html(0).css("color","gray"); break;
-				case 2 : $("#persePrice").html(0).css("color","gray"); break;
-				case 3 : $("#persePrice").html(0).css("color","gray"); break;
-				case 4 : $("#persePrice").html(0).css("color","gray"); break;
-				case 5 : $("#persePrice").html(20000).css("color","black"); break;
-				case 6 : $("#persePrice").html(40000).css("color","black"); break;
-				case 7 : $("#persePrice").html(60000).css("color","black"); break;
-				case 8 : $("#persePrice").html(80000).css("color","black"); break;
-				default: $("#persePrice").html("객실 이용 인원을 체크해주세요");$("#persePrice").css("color","red"); break;
+				case 0 : optionPrce=0; color="black"; break;
+				case 1 : optionPrce=0; color="black"; break;
+				case 2 : optionPrce=0; color="black"; break;
+				case 3 : optionPrce=0; color="black"; break;
+				case 4 : optionPrce=0; color="black"; break;
+				case 5 : optionPrce=20000; color="black"; break;
+				case 6 : optionPrce=40000; color="black"; break;
+				case 7 : optionPrce=60000; color="black"; break;
+				case 8 : optionPrce=80000; color="black"; break;
+				default: optionPrce="'성인', '아동/유아' 인원 수를 선택해주세요"; color="red"; break;
 			};
+			$("#persePrice").html(optionPrce).css("color",color);
 		});
 	});	
 	$(function() {
@@ -624,16 +641,18 @@
 			pers=adultPers+kidsPers;
 			console.log(pers);
 			switch(pers){
-				case 1 : $("#persePrice").html(0).css("color","gray"); break;
-				case 2 : $("#persePrice").html(0).css("color","gray"); break;
-				case 3 : $("#persePrice").html(0).css("color","gray"); break;
-				case 4 : $("#persePrice").html(0).css("color","gray"); break;
-				case 5 : $("#persePrice").html(20000).css("color","black"); break;
-				case 6 : $("#persePrice").html(40000).css("color","black"); break;
-				case 7 : $("#persePrice").html(60000).css("color","black"); break;
-				case 8 : $("#persePrice").html(80000).css("color","black"); break;
-				default: $("#persePrice").html("객실 이용 인원을 체크해주세요");$("#persePrice").css("color","red"); break;
+				case 0 : optionPrce=0; color="black"; break;
+				case 1 : optionPrce=0; color="black"; break;
+				case 2 : optionPrce=0; color="black"; break;
+				case 3 : optionPrce=0; color="black"; break;
+				case 4 : optionPrce=0; color="black"; break;
+				case 5 : optionPrce=20000; color="black"; break;
+				case 6 : optionPrce=40000; color="black"; break;
+				case 7 : optionPrce=60000; color="black"; break;
+				case 8 : optionPrce=80000; color="black"; break;
+				default: optionPrce="'성인', '아동/유아' 인원 수를 선택해주세요"; color="red"; break;
 			};
+			$("#persePrice").html(optionPrce).css("color",color);
 		});
 	});	
 	$(function() {
@@ -644,19 +663,53 @@
 		});
 	});	
 
-/* 3. 옵션*/
+/* 3. 옵션 */
+	let OPTprice=0;
 	$(function() {
-		$(document).on("change","button[class=infPers]",e=>{
-			infPers = Number($("select[class=infPers] option:selected").attr('value'));
-			pers=adultPers+kidsPers;
-			console.log(pers);
+		$(document).on("change","input[id=OPTN1]",e=>{
+			if($(e.target).is(":checked")){
+				OPTprice += Number($("#OPTN1").attr("data-cnt"));
+				/* console.log(OPTprice); */
+				$("#optnPrice").html(OPTprice);
+			}
+			else {
+				OPTprice -= Number($("#OPTN1").attr("data-cnt"));
+				/* console.log(OPTprice); */
+				$("#optnPrice").html(OPTprice);
+			}
+		});
+	});		
+	$(function() {
+		$(document).on("change","input[id=OPTN2]",e=>{
+			if($(e.target).is(":checked")){
+				OPTprice += Number($("#OPTN2").attr("data-cnt"));
+				$("#optnPrice").html(OPTprice);
+			}
+			else {
+				OPTprice -= Number($("#OPTN2").attr("data-cnt"));
+				$("#optnPrice").html(OPTprice);
+			}
+		});
+	});		
+	$(function() {
+		$(document).on("change","input[id=OPTN3]",e=>{
+			if($(e.target).is(":checked")){
+				OPTprice += Number($("#OPTN3").attr("data-cnt"));
+				$("#optnPrice").html(OPTprice);
+			}
+			else {
+				OPTprice -= Number($("#OPTN3").attr("data-cnt"));
+				$("#optnPrice").html(OPTprice);
+			}
 		});
 	});		
 	
-
-	
-	
-	
+/* 4. 금액 */
+	$(function() {
+		$(document).on("change","input[id=OPTN3]",e=>{
+			console.log("여기도 나오나??"+OPTprice);
+		});
+	});	
 </script>
 
 <!-- 결제기능 구현 -->
