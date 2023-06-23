@@ -28,7 +28,7 @@ public class AdminDao {
 	public List<Room> selectAllExistingRoom(Connection conn) {
 		PreparedStatement pstmt=null;
 		ResultSet rs=null;
-		List<Room> list=new ArrayList();
+		List<Room> list=new ArrayList<Room>();
 		try {
 			String query=sql.getProperty("selectAllExistingRoom");
 			pstmt=conn.prepareStatement(query);
@@ -51,6 +51,24 @@ public class AdminDao {
 				.bookable(rs.getString("bookable").charAt(0)).roomImage(rs.getString("room_image"))
 				.dateCreated(rs.getDate("date_created")).dateModified(rs.getDate("date_modified"))
 				.roomDescription(rs.getString("room_description")).build();
+	}
+	public Room viewRoom(Connection conn, int roomNo) {
+		PreparedStatement pstmt=null;
+		ResultSet rs=null;
+		Room r=null;
+		try {
+			String query=sql.getProperty("showSelectedRoom");
+			pstmt=conn.prepareStatement(query);
+			pstmt.setInt(1, roomNo);
+			rs=pstmt.executeQuery();
+			if(rs.next()) r=getRoom(rs);
+		}catch(SQLException e) {
+			e.printStackTrace();
+		}finally{
+			close(rs);
+			close(conn);
+		}
+		return r;
 	}
 
 }
