@@ -421,7 +421,7 @@
                }
               
                   column.style.margin="1px 1px 1px 1px";
-               	  column.style.padding="1px 1px 1px 1px";
+                    column.style.padding="1px 1px 1px 1px";
            }
    
            // @param 평일 전월일과 익월일의 데이터 날짜변경
@@ -442,13 +442,13 @@
                    if(nowDate.getDate() > day && Math.sign(day) == 1) {
                        column.style.backgroundColor = "#E5E5E5";
                        
-						/* (Tip).children : 자식노드를 배열 형태로 반환 */
-						for(let i=1;i<column.children.length;i++){
-							column.children[i].setAttribute("bookable","unavailable");
-							column.children[i].style.color="gray";
-							column.children[i].style.fontSize="0.95rem";
+                  /* (Tip).children : 자식노드를 배열 형태로 반환 */
+                  for(let i=1;i<column.children.length;i++){
+                     column.children[i].setAttribute("bookable","unavailable");
+                     column.children[i].style.color="gray";
+                     column.children[i].style.fontSize="0.95rem";
 
-						}
+                  }
                    }   
    
                    // @details 현재일보다 이후이면서 현재월에 포함되는 일인경우
@@ -547,49 +547,58 @@
 <script>
 
 /* 달력 객실 선택 효과 */
-	$(function() {
-	    $(document).on("mouseover","div[bookable=available]",e=> {
-      	  $(e.target).css("font-weight","bold");
+   $(function() {
+       $(document).on("mouseover","div[bookable=available]",e=> {
+           $(e.target).css("font-weight","bold");
         });
-	    $(document).on("mouseout","div[bookable=available]",e=> {
-      	  $(e.target).css("font-weight","normal");
-        });	
-	});
+       $(document).on("mouseout","div[bookable=available]",e=> {
+           $(e.target).css("font-weight","normal");
+        });   
+   });
 
 /* 달력에서 객실 클릭 */
+<<<<<<< HEAD
 	let totalBookPrice=0;
 	let totalRoomPrice=0;
 	$(function() {
 		let checkInDt="";//(String)
 		let roomPrice=0;
+=======
+   let totalBookPrice=0;
+   let totalRoomPrice=0;
+   $(function() {
+      let checkInDt="";//(String)
+      let roomPrice=0;
+>>>>>>> branch 'main' of https://github.com/Muggung/btc-casa64-project.git
 
-	    $(document).on("click","div[bookable=available]",e=> {
-	          $(".reserve_step2").show();
-/* 	          console.dir($(e.target));
-	          console.log($(e.target).text());
-	          console.log($(e.target).parent().attr("class"));
-	          console.log($(e.target).attr("class"));
-	          console.dir($(e.target).attr("price")); */
-	          $(e.target).css("text-decoration","underline");
+       $(document).on("click","div[bookable=available]",e=> {
+             $(".reserve_step2").show();
+/*              console.dir($(e.target));
+             console.log($(e.target).text());
+             console.log($(e.target).parent().attr("class"));
+             console.log($(e.target).attr("class"));
+             console.dir($(e.target).attr("price")); */
+             $(e.target).css("text-decoration","underline");
 
-	          $("#typeNm").html($(e.target).text());
-	          $("#checkinDt").html($(e.target).attr("class"));
-	          
-	          checkInDt=$(e.target).attr("class");
+             $("#typeNm").html($(e.target).text());
+             $("#checkinDt").html($(e.target).attr("class"));
+             
+             checkInDt=$(e.target).attr("class");
 
-	          roomPrice = Number($(e.target).attr("price"));// /* 1. 기간선택& 4. 금액 */과 이어짐
-	          console.log(roomPrice);
-	          
-	    });
-	    
+             roomPrice = Number($(e.target).attr("price"));// /* 1. 기간선택& 4. 금액 */과 이어짐
+             console.log(roomPrice);
+             
+       });
+       
 /* 이용가능한 객실 선택 _ 예약 정보 받기 */
-		$(function() {
-			$(document).on("change","select[class=availableDays]",e=>{
-/* 1. 기간선택& 4. 금액 */				
-				const stringToDate=new Date(checkInDt);//(Date)
-				/* console.log(checkOut+Number($("select[class=availableDays] option:selected").val())); */
-				stringToDate.setDate(stringToDate.getDate() + Number($("select[class=availableDays] option:selected").val()));
+      $(function() {
+         $(document).on("change","select[class=availableDays]",e=>{
+/* 1. 기간선택& 4. 금액 */            
+            const stringToDate=new Date(checkInDt);//(Date)
+            /* console.log(checkOut+Number($("select[class=availableDays] option:selected").val())); */
+            stringToDate.setDate(stringToDate.getDate() + Number($("select[class=availableDays] option:selected").val()));
 
+<<<<<<< HEAD
 				const year = stringToDate.getFullYear();
 				const month = ('0' + (stringToDate.getMonth() + 1)).slice(-2);
 				const day = ('0' + stringToDate.getDate()).slice(-2);
@@ -612,7 +621,32 @@
 			});
 		});
 	 });
+=======
+            const year = stringToDate.getFullYear();
+            const month = ('0' + (stringToDate.getMonth() + 1)).slice(-2);
+            const day = ('0' + stringToDate.getDate()).slice(-2);
+              const checkoutDt = year+"-"+month+"-"+day;//(String)
+              // 어떤 날짜여도 'YYYY-DD-YY'형식으로 변환!
+              
+              $("#checkoutDt").html(checkoutDt);
+/*           console.log($("select[class=availableDays] option:selected").val());
+            console.log($("select[class=availableDays] option:selected").attr('price'));
+            console.log($("select[class=availableDays] option:selected").attr('consprice'));
+            console.log($("select[class=availableDays] option:selected").text()); */ 
+            
+              /* totalRoomPrice */
+              let period = Number($("select[class=availableDays] option:selected").val());
+              totalRoomPrice=period*roomPrice;
+              $("#roomPrice").html(totalRoomPrice);
+              totalBookPrice=totalRoomPrice+personPrce+OPTprice;
+              $("#totPrice").html(totalBookPrice);
+                
+         });
+      });
+    });
+>>>>>>> branch 'main' of https://github.com/Muggung/btc-casa64-project.git
 /* 2. 인원 */
+<<<<<<< HEAD
 	let adultPers, kidsPers, infPers, totalPerson;
 	let personPrce=0;
 	$(function() {
@@ -674,8 +708,64 @@
 			console.log(pers);
 		});
 	});	
+=======
+   let adultPers, kidsPers, infPers, totalPerson;
+   let personPrce=0;
+   $(function() {
+      $(document).on("change","select[class=adultPers]",e=>{
+         adultPers = Number($("select[class=adultPers] option:selected").attr('value'));
+         pers=adultPers+kidsPers;
+         /* console.log(pers); */
+         switch(pers){
+            case 0 : personPrce=0; color="black"; break;
+            case 1 : personPrce=0; color="black"; break;
+            case 2 : personPrce=0; color="black"; break;
+            case 3 : personPrce=0; color="black"; break;
+            case 4 : personPrce=0; color="black"; break;
+            case 5 : personPrce=20000; color="black"; break;
+            case 6 : personPrce=40000; color="black"; break;
+            case 7 : personPrce=60000; color="black"; break;
+            case 8 : personPrce=80000; color="black"; break;
+            default: personPrce="'성인', '아동/유아' 인원 수를 선택해주세요"; color="red"; break;
+         };
+         $("#persePrice").html(personPrce).css("color",color);
+           totalBookPrice=totalRoomPrice+personPrce+OPTprice;
+           $("#totPrice").html(totalBookPrice);
+      });
+   });   
+   $(function() {
+      $(document).on("change","select[class=kidsPers]",e=>{
+         kidsPers = Number($("select[class=kidsPers] option:selected").attr('value'));
+         pers=adultPers+kidsPers;
+         console.log(pers);
+         switch(pers){
+            case 0 : personPrce=0; color="black"; break;
+            case 1 : personPrce=0; color="black"; break;
+            case 2 : personPrce=0; color="black"; break;
+            case 3 : personPrce=0; color="black"; break;
+            case 4 : personPrce=0; color="black"; break;
+            case 5 : personPrce=20000; color="black"; break;
+            case 6 : personPrce=40000; color="black"; break;
+            case 7 : personPrce=60000; color="black"; break;
+            case 8 : personPrce=80000; color="black"; break;
+            default: personPrce="'성인', '아동/유아' 인원 수를 선택해주세요"; color="red"; break;
+         };
+         $("#persePrice").html(personPrce).css("color",color);
+           totalBookPrice=totalRoomPrice+personPrce+OPTprice;
+           $("#totPrice").html(totalBookPrice);
+      });
+   });   
+   $(function() {
+      $(document).on("change","select[class=infPers]",e=>{
+         infPers = Number($("select[class=infPers] option:selected").attr('value'));
+         pers=adultPers+kidsPers;
+         console.log(pers);
+      });
+   });   
+>>>>>>> branch 'main' of https://github.com/Muggung/btc-casa64-project.git
 
 /* 3. 옵션 */
+<<<<<<< HEAD
 	let OPTprice=0;
 	$(function() {
 		$(document).on("change","input[id=OPTN1]",e=>{
@@ -728,8 +818,70 @@
 		});
 	});		
 	
+=======
+   let OPTprice=0;
+   $(function() {
+      $(document).on("change","input[id=OPTN1]",e=>{
+         if($(e.target).is(":checked")){
+            OPTprice += Number($("#OPTN1").attr("data-cnt"));
+            /* console.log(OPTprice); */
+            $("#optnPrice").html(OPTprice);
+              totalBookPrice=totalRoomPrice+personPrce+OPTprice;
+              $("#totPrice").html(totalBookPrice);
+         }
+         else {
+            OPTprice -= Number($("#OPTN1").attr("data-cnt"));
+            /* console.log(OPTprice); */
+            $("#optnPrice").html(OPTprice);
+              totalBookPrice=totalRoomPrice+personPrce+OPTprice;
+              $("#totPrice").html(totalBookPrice);
+         }
+      });
+   });      
+   $(function() {
+      $(document).on("change","input[id=OPTN2]",e=>{
+         if($(e.target).is(":checked")){
+            OPTprice += Number($("#OPTN2").attr("data-cnt"));
+            $("#optnPrice").html(OPTprice);
+              totalBookPrice=totalRoomPrice+personPrce+OPTprice;
+              $("#totPrice").html(totalBookPrice);
+         }
+         else {
+            OPTprice -= Number($("#OPTN2").attr("data-cnt"));
+            $("#optnPrice").html(OPTprice);
+              totalBookPrice=totalRoomPrice+personPrce+OPTprice;
+              $("#totPrice").html(totalBookPrice);
+         }
+      });
+   });      
+   $(function() {
+      $(document).on("change","input[id=OPTN3]",e=>{
+         if($(e.target).is(":checked")){
+            OPTprice += Number($("#OPTN3").attr("data-cnt"));
+            $("#optnPrice").html(OPTprice);
+              totalBookPrice=totalRoomPrice+personPrce+OPTprice;
+              $("#totPrice").html(totalBookPrice);
+         }
+         else {
+            OPTprice -= Number($("#OPTN3").attr("data-cnt"));
+            $("#optnPrice").html(OPTprice);
+              totalBookPrice=totalRoomPrice+personPrce+OPTprice;
+              $("#totPrice").html(totalBookPrice);
+         }
+      });
+   });      
+   
+>>>>>>> branch 'main' of https://github.com/Muggung/btc-casa64-project.git
 /* 4. 금액 */
+<<<<<<< HEAD
 
+=======
+   $(function() {
+      $(document).on("change","input[id=OPTN3]",e=>{
+         console.log("여기도 나오나??"+OPTprice);
+      });
+   });   
+>>>>>>> branch 'main' of https://github.com/Muggung/btc-casa64-project.git
 </script>
 
 <!-- 결제기능 구현 -->

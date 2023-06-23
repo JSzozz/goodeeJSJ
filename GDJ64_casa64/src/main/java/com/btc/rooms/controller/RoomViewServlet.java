@@ -18,24 +18,24 @@ import com.btc.rooms.model.vo.Room;
 @WebServlet("/RoomViewServlet.do")
 public class RoomViewServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-       
-   
-    public RoomViewServlet() {
-        super();
-        // TODO Auto-generated constructor stub
-    }
 
-	
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		/* int roomNo=Integer.parseInt(request.getParameter("roomNo")); */
-		String type=request.getParameter("type");
-		List<Room> rooms=new RoomService().selectRoomByType(type);
-		request.setAttribute("rooms", rooms);
-		request.getRequestDispatcher("/views/rooms/roomsDetail.jsp").forward(request, response);
+	public RoomViewServlet() {
+		super();
+		// TODO Auto-generated constructor stub
 	}
 
+	/*
+	 * protected void doGet(HttpServletRequest request, HttpServletResponse
+	 * response) throws ServletException, IOException { int
+	 * roomNo=Integer.parseInt(request.getParameter("no")); String
+	 * type=request.getParameter("type"); Room r=new RoomService().viewRoom(roomNo);
+	 * request.setAttribute("room", r);
+	 * request.getRequestDispatcher("/views/rooms/roomsDetail.jsp").forward(request,
+	 * response); }
+	 */
 
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	protected void doPost(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		doGet(request, response);
 	}

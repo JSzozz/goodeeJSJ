@@ -1,6 +1,13 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ include file="/views/common/header.jsp"%>
+<<<<<<< HEAD
+<%@ page import="java.util.List,com.btc.review.model.vo.Review"%>
+<%
+List<Review> reviews = (List) request.getAttribute("MypageReviewList");
+%>
+=======
+>>>>>>> branch 'main' of https://github.com/Muggung/btc-casa64-project.git
 
 <!-- 컨텐츠/내용 시작 -->
 <div class="container">
@@ -18,89 +25,48 @@
 		<div class="mt-5 col-9 mx-auto">
 
 			<div class="tb">
-				<table class="table table-hover text-center align-middle">
+				<table class="table table-hover text-center">
 					<colgroup>
-						<col width="10%">
-						<col width="15%">
-						<col width="30%">
-						<col width="10%">
-						<col width="10%">
-						<col width="15%">
-						<col width="15%">
+						<col width="40px" />
+						<col width="100px" />
+						<col width="150px" />
+						<col width="50px" />
+						<col width="60px" />
+						<col width="60px" />
 					</colgroup>
 					<thead>
 						<tr>
 							<th>번호</th>
-							<th>객실사진</th>
+							<th>이용객실</th>
 							<th>제목</th>
-							<th>작성자</th>
 							<th>조회수</th>
 							<th>작성일</th>
 							<th>비고</th>
 						</tr>
 					</thead>
 					<tbody>
-						<tr>
-							<td>1</td>
-							<td><img alt=""
-								src="<%=request.getContextPath()%>/images/22.jpg"
-								class="img-fluid"></td>
-							<td>후기1</td>
-							<td>user1</td>
-							<td>25</td>
-							<td>2023-01-12</td>
-							<td><button type="button" class="btn btn-primary btn-sm">리뷰수정</button></td>
-						</tr>
-
-						<tr>
-							<td>2</td>
-							<td><img alt=""
-								src="<%=request.getContextPath()%>/images/44.jpg"
-								class="img-fluid"></td>
-							<td>후기1</td>
-							<td>user1</td>
-							<td>25</td>
-							<td>2023-01-12</td>
-							<td><button type="button" class="btn btn-primary btn-sm">리뷰수정</button></td>
-						</tr>
-
-						<tr>
-							<td>3</td>
-							<td><img alt=""
-								src="<%=request.getContextPath()%>/images/33.jpg"
-								class="img-fluid"></td>
-							<td>후기1</td>
-							<td>user1</td>
-							<td>25</td>
-							<td>2023-01-12</td>
-							<td><button type="button" class="btn btn-primary btn-sm">리뷰수정</button></td>
-						</tr>
-
-						<tr>
-							<td>4</td>
-							<td><img alt=""
-								src="<%=request.getContextPath()%>/images/5.jpeg"
-								class="img-fluid"></td>
-							<td>후기1</td>
-							<td>user1</td>
-							<td>25</td>
-							<td>2023-01-12</td>
-							<td><button type="button" class="btn btn-primary btn-sm">리뷰수정</button></td>
-						</tr>
-
-
-						<!-- 리뷰가 없을 때  -->
-						<!-- <tr>
-                              <td colspan="6" >
-                                작성한 리뷰가 없습니다
-                              </td>
-                            </tr>
-                            <tr>
-                              <td colspan="6">
-                                <button type="button" class="btn btn-outline-dark">리뷰작성</button>
-                              </td>
-                            </tr> -->
-
+						<%
+						if(reviews != null && !reviews.isEmpty()) {
+							for (Review r : reviews) {
+						%>
+							<tr>
+								<td><%=r.getNo()%></td>
+								<td><%=r.getRoomName()%></td>
+								<td><a
+									href="<%=request.getContextPath()%>/review/reviewView?no=<%=r.getNo()%>">
+										<%=r.getTitle()%>
+								</a></td>
+								<td><%=r.getViews()%></td>
+								<td><%=r.getDateCreated()%></td>
+								<td><a href="<%=request.getContextPath() %>/review/reviewWrite?no=<%=r.getNo() %>" class="btn btn-primary btn-sm">리뷰수정</a></td>
+							</tr>
+						<%
+							} 
+						} else { %>
+							<tr>
+								<td colspan="6">작성된 게시물이 없습니다.</td>
+							</tr>
+						<% } %>
 					</tbody>
 				</table>
 			</div>
