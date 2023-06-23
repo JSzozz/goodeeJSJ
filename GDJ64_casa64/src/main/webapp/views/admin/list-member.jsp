@@ -45,7 +45,7 @@
                                         	for(Member m:members){%>
                                             <tr>
                                                 <td>
-                                                    <input type="radio" name="choice">
+                                                    <input type="radio" name="choice" value="<%=m.getMemberNo()%>">
                                                 </td>
                                                 <td><%=m.getMemberNo() %></td>
                                                 <td><%=m.getMemberName() %></td>
@@ -59,7 +59,7 @@
                                     <!-- 관리자 버튼 -->
                                     <div class="d-flex justify-content-end">
                                         <button type="button" class="btn btn-dark me-2">블랙처리</button>
-                                        <button type="button" class="btn btn-danger">회원탈퇴</button>
+                                        <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#cancelMember">회원탈퇴</button>
                                     </div>
                                     <!-- 페이지바 -->
                                     <nav aria-label="Page navigation">
@@ -71,4 +71,49 @@
                             </div>
                         </div>
                     </section>
+                    
+                    <div class="modal fade" id="cancelMember"
+								data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+								aria-labelledby="staticBackdropLabel" aria-hidden="true">
+								<div class="modal-dialog">
+									<div class="modal-content">
+										<div class="modal-header">
+											<h5 class="modal-title">회원탈퇴 확인</h5>
+											<button type="button" class="btn-close"
+												data-bs-dismiss="modal" aria-label="Close"></button>
+										</div>
+										<div class="modal-body">
+											<p>선택한 회원을 정말 탈퇴시키겠습니까?</p>
+										</div>
+										<div class="modal-footer">
+											<button type="button" class="btn btn-secondary"
+												data-bs-dismiss="modal">닫기</button>
+											<button type="button" class="btn btn-primary"
+												onclick="checkCancelMember();" data-bs-dismiss="modal">확인</button>
+										</div>
+
+									</div>
+								</div>
+							</div>
+
+	<script>
+		const checkCancelMember=()=>{
+			cancelMember=$("input[name=choice]").val();
+			console.log(cancelMember);
+		}
+	</script>
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
 <%@ include file="/views/admin/common/footer.jsp"%>
