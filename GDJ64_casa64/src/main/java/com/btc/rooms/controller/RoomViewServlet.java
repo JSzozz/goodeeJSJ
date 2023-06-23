@@ -24,15 +24,16 @@ public class RoomViewServlet extends HttpServlet {
 		// TODO Auto-generated constructor stub
 	}
 
-	/*
-	 * protected void doGet(HttpServletRequest request, HttpServletResponse
-	 * response) throws ServletException, IOException { int
-	 * roomNo=Integer.parseInt(request.getParameter("no")); String
-	 * type=request.getParameter("type"); Room r=new RoomService().viewRoom(roomNo);
-	 * request.setAttribute("room", r);
-	 * request.getRequestDispatcher("/views/rooms/roomsDetail.jsp").forward(request,
-	 * response); }
-	 */
+	
+	 protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException { 
+		 int roomNo=Integer.parseInt(request.getParameter("no")); 
+		 String type=request.getParameter("type"); 
+		 Room r=new RoomService().viewRoom(roomNo);
+		 request.setAttribute("room", r);
+		 request.getRequestDispatcher("/views/rooms/roomsDetail.jsp").forward(request, response);
+		 
+	 }
+	 
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {

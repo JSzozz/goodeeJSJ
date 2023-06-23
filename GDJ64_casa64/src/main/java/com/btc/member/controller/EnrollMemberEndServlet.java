@@ -36,16 +36,11 @@ public class EnrollMemberEndServlet extends HttpServlet {
 		String phone=(String)session.getAttribute("phone");
 		String password=(String)session.getAttribute("password");
 		String code=(String)session.getAttribute("code");
-//		System.out.println(userName);
-//		System.out.println(email);
-//		System.out.println(nickName);
-//		System.out.println(phone);
-//		System.out.println(password);
-//		System.out.println(code);
+
 		String inputCode=request.getParameter("code");
-//		System.out.println(inputCode);
+
 		
-		String msg="",loc="",script="";
+		String msg="",loc="";
 		if(code.equals(inputCode)) {
 			int result=new MemberService().insertMember(userName, email, nickName, phone, password);
 			
