@@ -36,7 +36,7 @@ public class MyPageReservation extends HttpServlet {
 //	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 //		int memberNo = checkLogin(request, response);
 //		if (memberNo > 0) {
-//			List<Review> list = new ReservationService().selectReservationMypage();
+//			List<Review> list = new BookingService().selectBookingMypage();
 //			request.setAttribute("MypageBookingList", list);
 //		request.getRequestDispatcher("/views/myPage/myPageReservation.jsp").forward(request, response);
 //	}
