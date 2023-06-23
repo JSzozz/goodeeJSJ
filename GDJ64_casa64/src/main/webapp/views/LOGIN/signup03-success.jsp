@@ -21,6 +21,7 @@
                             <i class='bx bx-user login__icon'></i>
                             <input type="text" placeholder="Username" class="login__input" name="code">
                         </div>
+                        </div>
                         <button type="submit" class="login__button">가입완료</button>
                     </form>
                 </div>

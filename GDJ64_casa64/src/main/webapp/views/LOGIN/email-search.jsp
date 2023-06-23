@@ -4,7 +4,7 @@
     <%@ include file="/views/common/header.jsp" %>
     <!-- 헤더 영역 종료 -->
 
-    <section>
+ <section>
         <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
         <!-- <link href='../test.scss' rel='stylesheet'> -->
         <div class="login">
@@ -28,7 +28,7 @@
                             <a href="<%=request.getContextPath()%>/views/LOGIN/login.jsp" class="login__forgot">로그인 하러가기</a>
                             <a href="<%=request.getContextPath()%>/views/LOGIN/pw-search.jsp" class="login__forgot">비밀번호 찾기</a>
                         </div>
-                        <a href="#" class="login__button">이메일 조회</a>
+                        <button type="button" class="login__button" onclick="emailCheck();">이메일 조회</button>
                         <div>
                             <span class="login__account login__account--account">가입된 계정이 없으십니까?</span>
                             <a href="<%=request.getContextPath()%>/views/LOGIN/signup01-agreement.jsp" class="login__signin login__signin--signup" id="sign-up">회원가입</a>
@@ -38,6 +38,45 @@
             </div>
         </div>        
     </section>
+    
+     <script>
+    	const emailCheck=()=>{
+    		const email=$("#email-search").val();
+    		const fn_emailChk=(email)=>{
+   			 var regExp = /\w+([-+.]\w+)*@\w+([-.]\w+)*\.[a-zA-Z]{2,4}$/;
+   					if(!regExp.test(email)){
+   					    return false;
+   					  }
+   					  return true;
+   					};
+   		$.ajax({
+   			url:"<%=request.getContextPath()%>/member/duplicatedEmail",
+   			type:"post",
+   			data:{email:email},
+   			dataType:"json",
+   			success:function(result){
+   				console.log(result);
+   				if(fn_emailChk(email)==false){
+   					$(".text-alert").html("");
+   					$(".text-alert").append($("<p>").text("이메일형식이 아닙니다").css("color","red"));
+   					
+   				}else if(result==1){
+   					$(".text-alert").html("");
+   					$(".text-alert").append($("<p>").text("가입정보가 없습니다").css("color","red"));
+   					
+   				}else if(result==0){
+   					$(".text-alert").html("");
+   					$(".text-alert").append($("<p>").text("가입된 이메일입니다").css("color","green"));
+   				}
+   			
+   			},
+   				error:function(){
+   					alert("error");
+   				}
+   			
+   		});
+    	}
+ </script>
 
     <!-- 푸터 영역 -->
     <%@ include file="/views/common/footer.jsp" %>	
