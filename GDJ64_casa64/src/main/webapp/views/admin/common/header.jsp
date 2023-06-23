@@ -13,6 +13,9 @@
 
 <!-- 부트스트랩 아이콘 -->
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css">
+
+<!-- 제이쿼리 -->
+<script src="<%=request.getContextPath()%>/js/jquery-3.7.0.min.js"></script>
 </head>
 <body>
 
@@ -32,13 +35,13 @@
                         </div>
                         <ul class="navbar-nav flex-column text-center mx-auto mt-4">
                             <li class="nav-item mb-1">
-                                <a href="<%=request.getContextPath()%>/views/admin/list-member.jsp" class="nav-link text-white admin-link sidebar-link"><i class="bi bi-person-fill me-2"></i>회원관리</a>
+                                <a href="<%=request.getContextPath()%>/admin/memberList.do" class="nav-link text-white admin-link sidebar-link"><i class="bi bi-person-fill me-2"></i>회원관리</a>
                             </li>
                             <li class="nav-item mb-1">
                                 <a href="<%=request.getContextPath()%>/views/admin/black-member.jsp" class="nav-link text-white admin-link sidebar-link"><i class="bi bi-person-fill-lock me-2"></i>블랙회원</a>
                             </li>
                             <li class="nav-item mb-1">
-                                <a href="<%=request.getContextPath() %>/views/admin/rooms.jsp" class="nav-link sidebar-link text-white"><i class="bi bi-houses-fill me-2"></i>객실관리</a>
+                                <a href="<%=request.getContextPath() %>/admin/room/showAllRoom.do" class="nav-link sidebar-link text-white"><i class="bi bi-houses-fill me-2"></i>객실관리</a>
                             </li>
                             <li class="nav-item mb-1">
                                 <a href="<%=request.getContextPath()%>/views/admin/season-price.jsp" class="nav-link sidebar-link text-white"><i class="bi bi-currency-exchange me-2"></i>요금관리</a>

@@ -1,6 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ include file="/views/admin/common/header.jsp"%>
+<%@ page import="java.util.List,com.btc.rooms.model.vo.Room" %>
+<%
+	List<Room> rooms=(List<Room>)request.getAttribute("rooms");
+%>
                     <!-- 컨테츠 -->
                     <section>
                         <div class="container-fluid">
@@ -30,20 +34,29 @@
                                             <th>상세조회</th>
                                         </thead>
                                         <tbody class="align-middle">
+                                        <%if(rooms.isEmpty()||rooms==null){ %>
+                                        <tr>
+                                        	<td colspan="6">등록된 객실이 존재하지 않습니다. 추가 버튼을 눌러 객실을 등록해주세요.</td>
+                                        </tr>
+                                        <%}else{
+                                        	for(Room r :rooms){%>
+                      
                                             <tr>
-                                                <td>1</td>
+                                                <td><%=r.getRoomNo() %></td>
                                                 <td>
                                                     <img src="#" alt="객실사진" width="150" height="100">
                                                 </td>
-                                                <td>오션뷰 테라스</td>
-                                                <td>공개</td>
-                                                <td>120,000원</td>
+                                                <td><%=r.getRoomName() %></td>
+                                                <td><%=r.getBookable() %></td>
+                                                <td><%=r.getRoomPrice() %></td>
                                                 <td>
                                                     <form action="<%=request.getContextPath()%>/views/admin/room-check.jsp">
                                                         <button type="submit" class="btn btn-dark btn-sm">상세조회</button>
                                                     </form>
                                                 </td>
                                             </tr>
+                                            <%}
+                                        	}%>
                                         </tbody>
                                     </table>
                                     <!-- 관리자 버튼 -->

@@ -17,7 +17,7 @@ public class RoomDao {
 	private Properties sql=new Properties();
 	
 	public RoomDao() {
-		String path=RoomDao.class.getResource("/sql/room/roomsql.properties").getPath();
+		String path=RoomDao.class.getResource("/sql/room/sql_room.properties").getPath();
 		try {
 			sql.load(new FileReader(path));
 		}catch(IOException e) {
@@ -32,26 +32,7 @@ public class RoomDao {
 				.dateCreated(rs.getDate("date_created")).dateModified(rs.getDate("date_modified"))
 				.roomDescription(rs.getString("room_description")).build();
 	}
-	public List<Room> selectRoomByType(Connection conn, String type){
-		PreparedStatement pstmt=null;
-		ResultSet rs=null;
-		List<Room> list=new ArrayList();
-		try {
-			String query=sql.getProperty("selectRoomByType");
-			query.replace("#", "%"+type+"%");
-			pstmt=conn.prepareStatement(query);
-			rs=pstmt.executeQuery();
-			while(rs.next()) {
-				list.add(getRoom(rs));
-			}
-		}catch(SQLException e) {
-			e.printStackTrace();
-		}finally {
-			close(rs);
-			close(pstmt);
-		}
-		return list;
-	}
+
 	public List<Room> selectAllRoom(Connection conn) {
 		PreparedStatement pstmt=null;
 		ResultSet rs=null;
@@ -71,4 +52,24 @@ public class RoomDao {
 		}
 		return list;
 	}
+	public Room viewRoom(Connection conn, int roomNo) {
+		PreparedStatement pstmt=null;
+		ResultSet rs=null;
+		Room r=null;
+		try {
+			String query=sql.getProperty("selectAllRoom");
+			pstmt=conn.prepareStatement(query);
+			rs=pstmt.executeQuery();
+			while(rs.next()) {
+				r=getRoom(rs);
+			}
+		}catch(SQLException e) {
+			e.printStackTrace();
+		}finally{
+			close(rs);
+			close(conn);
+		}
+		return r;
+	}
+	
 }

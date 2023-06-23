@@ -41,7 +41,7 @@ public class AdminMemberList extends HttpServlet {
 		try {
 			numPerpage=Integer.parseInt(request.getParameter("numPerpage"));
 		}catch(NumberFormatException e) {
-			numPerpage=10;
+			numPerpage=5;
 		}
 		
 		StringBuffer pageBar=new StringBuffer();
@@ -50,29 +50,31 @@ public class AdminMemberList extends HttpServlet {
 		int pageBarSize=5;
 		int pageStart=((cPage-1)/pageBarSize)*pageBarSize+1;
 		int pageEnd=pageStart+pageBarSize-1;
-		
+		//이전
 		if(pageStart==1) {
-			pageBar.append("<span>[이전]</span>");
+			pageBar.append("<li class='page-item'><a class='page-link' aria-label='Previous'><span aria-hidden='true'>&laquo;</span></a></li>");
 		}else {
-			pageBar.append("<a href='"+request.getRequestURI()+"?cPage="+(pageStart-1)+"&numPerpage="+numPerpage+"'>[이전]</a>");
+			pageBar.append("<li class='page-item'><a class='page-link' aria-label='Previous' href='"+request.getRequestURI()+"?cPage="+(pageStart-1)+"&numPerpage="+numPerpage+"'><span aria-hidden='true'>&laquo;</span></a></li>");
 		}
+		//현재
 		while(!(pageStart>pageEnd||pageStart>totalPage)) {
 			if(pageStart==cPage) {
-				pageBar.append("<span>"+pageStart+"</span>");
+				pageBar.append("<li class='page-item active'><a class='page-link'>"+pageStart+"</a></li>");
 			}else {
-				pageBar.append("<a href='"+request.getRequestURI()+"?cPage="+pageStart+"&numPerpage="+numPerpage+"'>"+pageStart+"</a>");
+				pageBar.append("<li class='page-item'><a class='page-link' href='"+request.getRequestURI()+"?cPage="+pageStart+"&numPerpage="+numPerpage+"'>"+pageStart+"</a></li>");
 			}
 			pageStart++;
 		}
+		//다음
 		if(pageStart>totalPage) {
-			pageBar.append("<span>[다음]</span>");
+			pageBar.append("<li class='page-item'><a class='page-link' aria-label='Next'><span aria-hidden='true'>&raquo;</span></a></li>");
 		}else {
-			pageBar.append("<a href='"+request.getRequestURI()+"?cPage="+pageStart+"&numPerpage="+numPerpage+"'>[다음]</a>");
+			pageBar.append("<li class='page-item'><a class='page-link' aria-label='Next' href='"+request.getRequestURI()+"?cPage="+pageStart+"&numPerpage="+numPerpage+"'><span aria-hidden='true'>&raquo;</span></a></li>");
 		}
 		request.setAttribute("pageBar", pageBar);
-//		List<Member> list=new AdminMemberService().memberList();
-//		request.setAttribute("members", list);
-		request.getRequestDispatcher("/views/admin/admin-page.jsp").forward(request, response);
+		List<Member> list=new AdminMemberService().memberList(cPage,numPerpage);
+		request.setAttribute("members", list);
+		request.getRequestDispatcher("/views/admin/list-member.jsp").forward(request, response);
 	}
 
 	/**
