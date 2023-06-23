@@ -3,11 +3,11 @@
 <div class="category-tab">
 	<ul>
 		<li>
-			<a href="<%=request.getContextPath()%>/notice/insertNotice.do?title=COMMUNITY&name=공지사항"
+			<a href="<%=request.getContextPath()%>/notice/insertNotice.do?"
 			class="category-tab-a category-tab-notice">공지사항</a>
 		</li>
 		<li>
-			<a href="<%=request.getContextPath()%>/notice/insertNotice.do?title=COMMUNITY&name=QnA"
+			<a href="<%=request.getContextPath()%>/notice/insertNotice.do?"
 			class="category-tab-a category-tab-qna">QnA</a>
 		</li>
 		<li>
