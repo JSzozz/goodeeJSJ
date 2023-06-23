@@ -98,9 +98,26 @@
 
 	<script>
 		const checkCancelMember=()=>{
-			cancelMember=$("input[name=choice]").val();
+			const cancelMember=$("input[name=choice]:checked").val();
 			console.log(cancelMember);
-		}
+			$.ajax({
+				url:"<%=request.getContextPath()%>/admin/member/cancelMember.do",
+				type:"get",
+				data:{
+					cancelM:cancelMember,
+					
+				},
+				success:function(data){
+					if(data==1){
+						alert("삭제성공");
+					}else{
+						alert("실패");
+					}
+				},error:function(){
+					alert("실패ㅠ했습니다");
+				}
+			});
+		};
 	</script>
                     
                     

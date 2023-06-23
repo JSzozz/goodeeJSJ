@@ -67,6 +67,57 @@ public class AdminMemberDao {
 		}return members;
 	}
 	
+	public int memberCancel(Connection conn, int memberNo) {
+		PreparedStatement pstmt=null;
+		int result=0;
+		try {
+			pstmt=conn.prepareStatement(sql.getProperty("memberCancel"));
+			pstmt.setInt(1, memberNo);
+			result=pstmt.executeUpdate();
+		}catch(SQLException e) {
+			e.printStackTrace();
+		}finally {
+			
+			close(pstmt);
+		}return result;
+		
+	}
+	
+	public Member selectMember(Connection conn, int memberNo) {
+		PreparedStatement pstmt=null;
+		ResultSet rs=null;
+		Member m=null;
+		try {
+			pstmt=conn.prepareStatement(sql.getProperty("selectMember"));
+			pstmt.setInt(1, memberNo);
+			rs=pstmt.executeQuery();
+			if(rs.next()) m=getMember(rs);
+		}catch(SQLException e) {
+			e.printStackTrace();
+		}finally {
+			close(rs);
+			close(pstmt);
+		}return m;
+	}
+	
+	public int insertCancelMember(Connection conn, String name, String nickname, String email, String phone) {
+		PreparedStatement pstmt=null;
+		int result=0;
+		try {
+			pstmt=conn.prepareStatement(sql.getProperty("insertCancelMember"));
+			pstmt.setString(1, name);
+			pstmt.setString(2, nickname);
+			pstmt.setString(3, email);
+			pstmt.setString(4, phone);
+			result=pstmt.executeUpdate();
+		}catch(SQLException e) {
+			e.printStackTrace();
+		}finally {
+			
+			close(pstmt);
+		}return result;
+	}
+	
 	private Member getMember(ResultSet rs) throws SQLException{
 		return Member.builder().memberNo(rs.getInt("member_No")).memberName(rs.getString("member_Name")).email(rs.getString("email")).nickName(rs.getString("nickName"))
 				.phone(rs.getString("phone")).memberBlack(rs.getString("member_black")).build();
