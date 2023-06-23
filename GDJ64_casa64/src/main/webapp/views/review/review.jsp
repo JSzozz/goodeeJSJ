@@ -1,11 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<%@ page import="java.util.List,com.btc.review.model.vo.Reviews" %>
+<%@ page import="java.util.List,com.btc.review.model.vo.Review" %>
 <%@ page import="java.util.List,com.btc.rooms.model.vo.Room" %>
 <%@ include file="/views/common/header.jsp"%>
 <link rel="stylesheet" href="<%=request.getContextPath()%>/nara_publish/css/common.css" />
 <%
-	List<Reviews> reviews = (List)request.getAttribute("ReviewList");
+	List<Review> reviews = (List)request.getAttribute("ReviewList");
 	List<Room> rooms = (List)request.getAttribute("selectRooms");
 %> 
 	
@@ -87,7 +87,7 @@
 				</tr>
 			</thead>
 			<tbody>
-			<% for(Reviews r : reviews){%>
+			<% for(Review r : reviews){%>
 				<tr>
 					<td><%= r.getNo() %></td>
 					<td><%= r.getRoomName() %></td>
