@@ -1,10 +1,13 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ include file="/views/common/header.jsp"%>
+<<<<<<< HEAD
 <%@ page import="java.util.List,com.btc.review.model.vo.Review"%>
 <%
 List<Review> reviews = (List) request.getAttribute("MypageReviewList");
 %>
+=======
+>>>>>>> branch 'main' of https://github.com/Muggung/btc-casa64-project.git
 
 <!-- 컨텐츠/내용 시작 -->
 <div class="container">

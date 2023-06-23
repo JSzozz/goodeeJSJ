@@ -2,9 +2,9 @@
 	pageEncoding="UTF-8"%>
 <%@ include file="/views/common/header.jsp"%>
 <link rel="stylesheet" href="<%=request.getContextPath()%>/nara_publish/css/common.css" />
-<%@ page import="java.util.List,com.btc.review.model.vo.Review" %>
+<%@ page import="java.util.List,com.btc.review.model.vo.Reviews" %>
 <%
-	Review reviews = (Review)request.getAttribute("review");
+	Reviews reviews = (Reviews)request.getAttribute("review");
 %> 
 
 <!-- 카테고리별 이미지 -->

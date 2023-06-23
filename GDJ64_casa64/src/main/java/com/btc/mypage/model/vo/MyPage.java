@@ -1,3 +1,4 @@
+
 package com.btc.mypage.model.vo;
 
 import java.sql.Date;
@@ -14,3 +15,5 @@ public class MyPage {
 	
 
 }
+
+

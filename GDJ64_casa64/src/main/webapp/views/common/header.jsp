@@ -1,10 +1,9 @@
-<%@page import="com.btc.member.model.dto.Member,com.btc.rooms.model.vo.Room,java.util.List"%>
+<%@page import="com.btc.member.model.dto.Member"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 
 <%-- <link rel="stylesheet" href="<%=request.getContextPath()%>/css/custom.css" /> --%>
 
 <%
-	List<Room> rooms=(List<Room>)request.getAttribute("rooms");
 	Member loginMember=(Member)session.getAttribute("loginMember");
 %>
 
@@ -75,11 +74,11 @@
                         </a>
                         <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                             <li><a href="<%=request.getContextPath() %>/RoomListServlet.do" class="dropdown-item">전체 객실 보기</a></li>
-                            <%
+<%--                             <%
                            	if(rooms != null){ 
                             	for(Room r:rooms){ %>
                             		<li><a href="<%=request.getContextPath() %>/RoomViewServlet.do?no="+<%= r.getRoomNo()%> class="dropdown-item"><%=r.getRoomName() %></a></li>
-                            <%} }%>
+                            <%} }%> --%>
                            <%--  <li><a href="<%=request.getContextPath() %>/RoomViewServlet.do?no=1" class="dropdown-item">오션테라스 101</a></li>
                             <li><a href="<%=request.getContextPath() %>/RoomViewServlet.do?no=2" class="dropdown-item">오션테라스 201</a></li>
                             <li><a href="<%=request.getContextPath() %>/RoomViewServlet.do?no=3" class="dropdown-item">오션테라스 301</a></li>
@@ -87,7 +86,15 @@
                             <li><a href="<%=request.getContextPath() %>/RoomViewServlet.do?no=5" class="dropdown-item">선셋테라스 201</a></li>
                             <li><a href="<%=request.getContextPath() %>/RoomViewServlet.do?no=6" class="dropdown-item">선셋테라스 301</a></li>
                             <li><a href="<%=request.getContextPath() %>/RoomViewServlet.do?no=7" class="dropdown-item">스파테라스 101</a></li>
-                            <li><a href="<%=request.getContextPath() %>/RoomViewServlet.do?no=8" class="dropdown-item">스파테라스 201</a></li> --%>
+                            <li><a href="<%=request.getContextPath() %>/RoomViewServlet.do?no=8" class="dropdown-item">스파테라스 201</a></li> 
+                            <li><a href="#" class="dropdown-item">오션테라스 101</a></li>
+                            <li><a href="#" class="dropdown-item">오션테라스 201</a></li>
+                            <li><a href="#" class="dropdown-item">오션테라스 301</a></li>
+                            <li><a href="#" class="dropdown-item">선셋테라스 101</a></li>
+                            <li><a href="#" class="dropdown-item">선셋테라스 201</a></li>
+                            <li><a href="#" class="dropdown-item">선셋테라스 301</a></li>
+                            <li><a href="#" class="dropdown-item">스파테라스 101</a></li>
+                            <li><a href="#" class="dropdown-item">스파테라스 201</a></li>--%>
                         </ul>
                     </li>
                     <li class="nav-item dropdown">

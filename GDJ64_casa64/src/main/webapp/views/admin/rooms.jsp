@@ -1,10 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ include file="/views/admin/common/header.jsp"%>
-<%@ page import="com.btc.rooms.model.vo.Room,java.util.List" %>
-<%
-	List<Room> rooms=(List<Room>)request.getAttribute("rooms");
-%>
                     <!-- 컨테츠 -->
                     <section>
                         <div class="container-fluid">
@@ -33,31 +29,7 @@
                                             <th>가격</th>
                                             <th>상세조회</th>
                                         </thead>
-                                      <%if(rooms==null||rooms.isEmpty()){ %>
-                                      	<tr>
-                                      		<td colspan="6">등록된 객실이 없습니다. 객실을 추가해주세요.</td>
-                                      	</tr>
-                                      <%}else{
-                                    	  for(Room r:rooms){%>
-                                    	  <tbody class="align-middle">
-                                            <tr>
-                                                <td><%=r.getRoomNo() %></td>
-                                                <td>
-                                                    <img src="#" alt="객실사진" width="150" height="100">
-                                                </td>
-                                                <td><%=r.getRoomName() %></td>
-                                                <td><%=r.getBookable() %>='Y'?공개:비공개</td>
-                                                <td><%=r.getRoomPrice() %></td>
-                                                <td>
-                                                    <form action="<%=request.getContextPath()%>/views/admin/room-check.jsp">
-                                                        <button type="submit" class="btn btn-dark btn-sm">상세조회</button>
-                                                    </form>
-                                                </td>
-                                            </tr>
-                                        </tbody>
-                                      <% }
-                                      }%>
-                                        <%-- <tbody class="align-middle">
+                                        <tbody class="align-middle">
                                             <tr>
                                                 <td>1</td>
                                                 <td>
@@ -72,7 +44,7 @@
                                                     </form>
                                                 </td>
                                             </tr>
-                                        </tbody> --%>
+                                        </tbody>
                                     </table>
                                     <!-- 관리자 버튼 -->
                                     <div class="d-flex justify-content-end">

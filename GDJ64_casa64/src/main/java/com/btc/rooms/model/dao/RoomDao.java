@@ -32,16 +32,26 @@ public class RoomDao {
 				.dateCreated(rs.getDate("date_created")).dateModified(rs.getDate("date_modified"))
 				.roomDescription(rs.getString("room_description")).build();
 	}
-
-	/*
-	 * public List<Room> selectRoomByType(Connection conn, String type){
-	 * PreparedStatement pstmt=null; ResultSet rs=null; List<Room> list=new
-	 * ArrayList(); try { String query=sql.getProperty("selectRoomByType");
-	 * query.replace("#", "%"+type+"%"); pstmt=conn.prepareStatement(query);
-	 * rs=pstmt.executeQuery(); while(rs.next()) { list.add(getRoom(rs)); }
-	 * }catch(SQLException e) { e.printStackTrace(); }finally { close(rs);
-	 * close(pstmt); } return list; }
-	 */
+	public List<Room> selectRoomByType(Connection conn, String type){
+		PreparedStatement pstmt=null;
+		ResultSet rs=null;
+		List<Room> list=new ArrayList();
+		try {
+			String query=sql.getProperty("selectRoomByType");
+			query.replace("#", "%"+type+"%");
+			pstmt=conn.prepareStatement(query);
+			rs=pstmt.executeQuery();
+			while(rs.next()) {
+				list.add(getRoom(rs));
+			}
+		}catch(SQLException e) {
+			e.printStackTrace();
+		}finally {
+			close(rs);
+			close(pstmt);
+		}
+		return list;
+	}
 	public List<Room> selectAllRoom(Connection conn) {
 		PreparedStatement pstmt=null;
 		ResultSet rs=null;
@@ -60,21 +70,5 @@ public class RoomDao {
 			close(conn);
 		}
 		return list;
-	}
-	public Room viewRoom(Connection conn, int roomNo) {
-		PreparedStatement pstmt=null;
-		ResultSet rs=null;
-		Room r=null;
-		try {
-			pstmt=conn.prepareStatement(sql.getProperty("showSelectedRoom"));
-			pstmt.setInt(1, roomNo);
-			rs=pstmt.executeQuery();
-			if(rs.next()) r=getRoom(rs);
-		}catch(SQLException e) {
-			e.printStackTrace();
-		}finally {
-			close(rs);
-			close(conn);
-		}return r;
 	}
 }

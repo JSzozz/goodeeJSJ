@@ -24,10 +24,10 @@ public class RoomService {
 		return list;
 	}
 
-	public Room viewRoom(int roomNo) {
-		Connection conn=getConnection();
-		Room r=dao.viewRoom(conn,roomNo);
-		return r;
-	}
+//	public Room viewRoom(int roomNo) {
+//		Connection conn=getConnection();
+//		Room r=dao.viewRoom(conn,roomNo);
+//		return r;
+//	}
 
 }
