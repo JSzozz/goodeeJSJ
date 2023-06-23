@@ -34,7 +34,7 @@
                                             <th>상세조회</th>
                                         </thead>
                                         <tbody class="align-middle">
-                                        <%if(rooms.isEmpty()||rooms==null){ %>
+                                        <%if(rooms==null){ %>
                                         <tr>
                                         	<td colspan="6">등록된 객실이 존재하지 않습니다. 추가 버튼을 눌러 객실을 등록해주세요.</td>
                                         </tr>
@@ -50,9 +50,9 @@
                                                 <td><%=r.getBookable() %></td>
                                                 <td><%=r.getRoomPrice() %></td>
                                                 <td>
-                                                    <form action="<%=request.getContextPath()%>/admin/room/roomDetail.do?roomNo=<%=r.getRoomNo()%>">
-                                                        <button type="submit" class="btn btn-dark btn-sm">상세조회</button>
-                                                    </form>
+<%--                                                     <form action="<%=request.getContextPath()%>/admin/room/roomDetail.do?roomNo=<%=r.getRoomNo() %>"> --%>
+                                                        <button type="submit" class="btn btn-dark btn-sm" onclick="location.assign('<%=request.getContextPath()%>/admin/room/roomDetail.do?roomNo=<%=r.getRoomNo() %>')">상세조회</button>
+<!--                                                     </form> -->
                                                 </td>
                                             </tr>
                                             <%}

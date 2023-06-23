@@ -27,6 +27,7 @@ public class RoomService {
 	public Room viewRoom(int roomNo) {
 		Connection conn=getConnection();
 		Room r=dao.viewRoom(conn,roomNo);
+		close(conn);
 		return r;
 	}
 

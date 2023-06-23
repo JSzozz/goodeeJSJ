@@ -59,6 +59,7 @@ public class RoomDao {
 		try {
 			String query=sql.getProperty("showSelectedRoom");
 			pstmt=conn.prepareStatement(query);
+			pstmt.setInt(1, roomNo);
 			rs=pstmt.executeQuery();
 			if(rs.next()) r=getRoom(rs);
 		}catch(SQLException e) {

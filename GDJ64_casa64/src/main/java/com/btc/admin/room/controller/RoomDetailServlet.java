@@ -1,13 +1,14 @@
 package com.btc.admin.room.controller;
 
 import java.io.IOException;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.btc.rooms.model.service.RoomService;
+import com.btc.admin.model.service.AdminService;
 import com.btc.rooms.model.vo.Room;
 
 /**
@@ -30,7 +31,7 @@ public class RoomDetailServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		int roomNo=Integer.parseInt(request.getParameter("roomNo")); 
-		Room r=new RoomService().viewRoom(roomNo);
+		Room r=new AdminService().viewRoom(roomNo);
 		//RoomService로 가져와도 되겠지?
 		request.setAttribute("room", r);
 		request.getRequestDispatcher("/views/admin/room-check.jsp").forward(request, response);

@@ -5,6 +5,25 @@
 <%
 	Room r=(Room)request.getAttribute("room");
 %>
+                    <!-- 삭제 모달 -->
+                    <div class="modal fade" id="removeRoom" tabindex="-1" aria-labelledby="removeRoomModalLabel" aria-hidden="true">
+                      <div class="modal-dialog">
+                        <div class="modal-content">
+                          <div class="modal-header">
+                            <h5 class="modal-title" id="removeRoomModalLabel">경고</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                          </div>
+                          <div class="modal-body">
+                            객실을 정말 삭제합니까?
+                          </div>
+                          <div class="modal-footer">
+                            <button type="button" class="btn btn-danger">삭제</button>
+                            <button type="button" class="btn btn-dark" data-bs-dismiss="modal">취소</button>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+
                     <!-- 컨테츠 -->
                     <section>
                         <div class="container-fluid">
@@ -63,21 +82,24 @@
                                         </div>
                                         <!-- 객실 공개 -->
                                         <div class="form-group row mt-3 align-items-center">
-                                          <label class="col-sm-1 col-form-label text-center">공개기한</label>
-                                          <div class="col-sm-4">
-                                            <div class="input-group">
-                                              <input type="date" class="form-control">
-                                              <div class="input-group-text">~</div>
-                                              <input type="date" class="form-control">
+                                          <label class="col-sm-1 col-form-label text-center">공개설정</label>
+                                          <div class="col-sm-11 d-flex align-items-center">
+                                            <div class="form-check form-check-inline">
+                                              <input class="form-check-input" type="radio" name="room-status" id="public" value="public" />
+                                              <label class="form-check-label" for="public">공개</label>
+                                            </div>
+                                            <div class="form-check form-check-inline">
+                                              <input class="form-check-input" type="radio" name="room-status" id="private" value="private" />
+                                              <label class="form-check-label" for="private">비공개</label>
                                             </div>
                                           </div>
-                                        </div>                                    
+                                        </div>                                
                                       </form>
                                     </div>
                                     <!-- 관리자 버튼 -->
                                     <div class="d-flex justify-content-end mt-2">
                                         <button type="submit" class="btn btn-dark me-2">수정</button>
-                                        <button type="submit" class="btn btn-danger">삭제</button>
+                                        <button type="submit" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#removeRoom">삭제</button>
                                     </div>
                                 </div>
                             </div>
