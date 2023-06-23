@@ -20,8 +20,6 @@ public class MyPageDao {
 
 		try {
 			String sql = getBasicQuery(); // 실행할 기본 쿼리
-			sql += " AND BOOKING.MEMBER_NO = ? ";
-//         sql += " ORDER BY BOOKING.NO DESC";
 
 			pstmt = conn.prepareStatement(sql); // 실제 쿼리 들어가고
 			pstmt.setInt(1, memberNo);
@@ -44,11 +42,11 @@ public class MyPageDao {
 	private Booking getBooking(ResultSet rs) throws SQLException {
 		return Booking.builder()
 				.bookingNo(rs.getInt("BOOKING_NO"))
-				.memberNo(rs.getInt("MEMBER_ID"))
-				.checkIn(rs.getDate("CHECK_IN"))
-				.checkOut(rs.getDate("CHECK_OUT"))
-				.checkOut(rs.getDate("CHECK_OUT"))
-				.bookingPrice(rs.getInt("BOOKING_PRICE"))
+				.memberNo(rs.getInt("MEMBER_NO"))
+//				.checkIn(rs.getDate("CHECK_IN"))
+//				.checkOut(rs.getDate("CHECK_OUT"))
+//				.checkOut(rs.getDate("CHECK_OUT"))
+//				.bookingPrice(rs.getInt("BOOKING_PRICE"))
 				.build();
 		
 //		 private int bookingNo;
@@ -65,10 +63,7 @@ public class MyPageDao {
 	}
 
 	public String getBasicQuery() {
-		return "SELECT B.*, R.NO FROM BOOKING B " +
-				"JOIN MEMBER M ON M.EMAIL = B.MEMBER_NO " +
-				"LEFT JOIN REVIEW R ON R.MEMBER_NO = M.MEMBER_NO AND R.BOOKING_NO = B.BOOKING_NO " +
-				"WHERE B.MEMBER_NO = '?' AND R.NO IS NULL"; // 실행할 기본 쿼리
+		return "SELECT * FROM BOOKING WHERE BOOKING.MEMBER_NO = '?'"; // 실행할 기본 쿼리
 	}
 
 }

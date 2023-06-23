@@ -10,9 +10,10 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+
 import com.btc.member.model.dto.Member;
-import com.btc.review.model.service.ReviewService;
-import com.btc.review.model.vo.Review;
+import com.btc.mypage.model.service.MyPageService;
+import com.btc.mypage.model.vo.Booking;
 
 /**
  * Servlet implementation class MyPageReservation
@@ -32,13 +33,14 @@ public class MyPageReservation extends HttpServlet {
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
-//	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-//		int memberNo = checkLogin(request, response);
-//		if (memberNo > 0) {
-//			List<Review> list = new BookingService().selectBookingMypage();
-//			request.setAttribute("MypageBookingList", list);
-//		request.getRequestDispatcher("/views/myPage/myPageReservation.jsp").forward(request, response);
-//	}
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		int memberNo = checkLogin(request, response);
+		if (memberNo > 0) {
+			List<Booking> list = new MyPageService().selectBookingMyPage(memberNo);
+			request.setAttribute("MyPageBookingList", list);
+			request.getRequestDispatcher("/views/myPage/myPageReservation.jsp").forward(request, response);
+		}
+	}
 
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)

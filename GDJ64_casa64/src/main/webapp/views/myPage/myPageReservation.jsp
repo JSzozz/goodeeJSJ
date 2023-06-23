@@ -2,10 +2,12 @@
 	pageEncoding="UTF-8"%>
 <%@ include file="/views/common/header.jsp"%>
 <%@ page import="java.util.List,com.btc.review.model.vo.Review" %>
+<%@ page import="java.util.List,com.btc.mypage.model.vo.Booking" %>
 <%@ page import="java.util.List,com.btc.rooms.model.vo.Room" %>
 <%
 	List<Review> reviews = (List)request.getAttribute("ReviewList");
 	List<Room> rooms = (List)request.getAttribute("selectRooms");
+	List<Booking> bookings = (List)request.getAttribute("MyPageBookingList");
 %>
 <!-- 컨텐츠/내용 시작 -->
 <div class="container">
@@ -47,8 +49,9 @@
                               <td colspan="5" class="text-center">예약내역이 없습니다.</td>
                             </tr>
                            -->
+                          <% for(Booking b : bookings){%>
 						<tr>
-							<td>1</td>
+							<td><%=b.getBookingNo() %></td>
 							<td>room1</td>
 							<td>결제완료</td>
 							<td>2023-05-13</td>
@@ -56,27 +59,8 @@
 <!-- 							결제완료일 경우 결제취소 / 결재대기일경우 결제하기
 							<td><button type="button" class="btn btn-primary btn-sm">결제하기</button></td> -->
 						</tr>
-						<tr>
-							<td>2</td>
-							<td>room2</td>
-							<td>결제대기</td>
-							<td>2023-05-13</td>
-							<td><button type="button" class="btn btn-primary btn-sm">결제하기</button></td>
-						</tr>
-						<tr>
-							<td>3</td>
-							<td>room2</td>
-							<td>결제완료</td>
-							<td>2023-05-13</td>
-							<td><button type="button" class="btn btn-primary btn-sm">결제취소</button></td>
-						</tr>
-						<tr>
-							<td>4</td>
-							<td>room2</td>
-							<td>결제대기</td>
-							<td>2023-05-13</td>
-							<td><button type="button" class="btn btn-primary btn-sm">결제하기</button></td>
-						</tr>
+						<%} %>
+					
 					</tbody>
 				</table>
 			</div>
