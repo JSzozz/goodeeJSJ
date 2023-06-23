@@ -44,11 +44,11 @@
 						<!-- 
                             결제내역이 없을떄
                             <tr>
-                              <td colspan="5" class="text-center">예약내역이 없습니다</td>
+                              <td colspan="5" class="text-center">예약내역이 없습니다.</td>
                             </tr>
                            -->
 						<tr>
-							<td><%= %></td>
+							<td>1</td>
 							<td>room1</td>
 							<td>결제완료</td>
 							<td>2023-05-13</td>
