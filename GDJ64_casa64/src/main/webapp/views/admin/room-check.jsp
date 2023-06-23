@@ -1,6 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ include file="/views/admin/common/header.jsp"%>
+<%@ page import="com.btc.rooms.model.vo.Room" %>
+<%
+	Room r=(Room)request.getAttribute("room");
+%>
                     <!-- 컨테츠 -->
                     <section>
                         <div class="container-fluid">
@@ -15,32 +19,32 @@
                                         <div class="form-group row mt-3 align-items-center">
                                           <label for="roomName" class="col-sm-1 col-form-label text-center">객실명</label>
                                           <div class="col-sm-4">
-                                            <input type="text" id="roomName" class="form-control" placeholder="객실명을 입력해주세요.">
+                                            <input type="text" id="roomName" class="form-control" placeholder="<%=r.getRoomName()%>">
                                           </div>
                                         </div>
                                         <!-- 객실정보 -->
                                         <div class="form-group row mt-3 align-items-center">
                                           <label for="roomInfo" class="col-sm-1 col-form-label text-center">객실소개</label>
                                           <div class="col-sm-11">
-                                            <textarea id="roomInfo" class="form-control" rows="4" placeholder="객실정보를 입력해주세요."></textarea>
+                                            <textarea id="roomInfo" class="form-control" rows="4" placeholder="<%=r.getRoomDescription()%>"></textarea>
                                           </div>
                                         </div>
                                         <!-- 인원 -->
                                         <div class="form-group row mt-3 align-items-center">
                                           <label for="capacity" class="col-sm-1 col-form-label text-center">기준인원</label>
                                           <div class="col-sm-2">
-                                            <input type="number" id="capacity" class="form-control" placeholder="기준인원">
+                                            <input type="number" id="capacity" class="form-control" placeholder="<%=r.getRoomCap()%>">
                                           </div>
                                           <label for="maxCapcity" class="col-sm-1 col-form-label text-center">최대인원</label>
                                           <div class="col-sm-2">
-                                            <input type="number" id="maxCapcity" class="form-control" placeholder="최대인원">
+                                            <input type="number" id="maxCapcity" class="form-control" placeholder="<%=r.getRoomMaxCap()%>">
                                           </div>
                                         </div>
                                         <!-- 가격 -->
                                         <div class="form-group row mt-3 align-items-center">
                                           <label for="price" class="col-sm-1 col-form-label text-center">가격</label>
                                           <div class="col-sm-3">
-                                            <input type="number" id="price" class="form-control" placeholder="가격을 입력해주세요.">
+                                            <input type="number" id="price" class="form-control" placeholder="<%=r.getRoomPrice()%>">
                                           </div>
                                         </div>
                                         <!-- 옵션 -->                                            

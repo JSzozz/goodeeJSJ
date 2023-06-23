@@ -50,7 +50,7 @@
                                                 <td><%=r.getBookable() %></td>
                                                 <td><%=r.getRoomPrice() %></td>
                                                 <td>
-                                                    <form action="<%=request.getContextPath()%>/views/admin/room-check.jsp">
+                                                    <form action="<%=request.getContextPath()%>/admin/room/roomDetail.do?roomNo=<%=r.getRoomNo()%>">
                                                         <button type="submit" class="btn btn-dark btn-sm">상세조회</button>
                                                     </form>
                                                 </td>
@@ -61,7 +61,7 @@
                                     </table>
                                     <!-- 관리자 버튼 -->
                                     <div class="d-flex justify-content-end">
-                                        <form action="<%=request.getContextPath()%>/views/admin/room-insert.jsp">
+                                        <form action="<%=request.getContextPath()%>/admin/room/insertRoom.do">
                                             <button type="submit" class="btn btn-dark">객실추가</button>
                                         </form>
                                     </div>

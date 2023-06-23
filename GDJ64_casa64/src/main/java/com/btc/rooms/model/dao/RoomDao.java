@@ -57,12 +57,10 @@ public class RoomDao {
 		ResultSet rs=null;
 		Room r=null;
 		try {
-			String query=sql.getProperty("selectAllRoom");
+			String query=sql.getProperty("showSelectedRoom");
 			pstmt=conn.prepareStatement(query);
 			rs=pstmt.executeQuery();
-			while(rs.next()) {
-				r=getRoom(rs);
-			}
+			if(rs.next()) r=getRoom(rs);
 		}catch(SQLException e) {
 			e.printStackTrace();
 		}finally{
