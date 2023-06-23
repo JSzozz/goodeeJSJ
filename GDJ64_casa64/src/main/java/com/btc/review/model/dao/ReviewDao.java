@@ -212,13 +212,23 @@ public class ReviewDao {
 	private Review getReviews(ResultSet rs) throws SQLException {
 //      Reviews reviews = new Reviews();
 
-		return Review.builder().no(rs.getInt("NO")).title(rs.getString("TITLE")).contents(rs.getString("CONTENTS"))
-				.views(rs.getInt("VIEWS")).dateCreated(rs.getDate("DATE_CREATED"))
-				.dateModified(rs.getDate("DATE_MODIFIED")).dateDeleted(rs.getDate("DATE_DELETED"))
-				.isDeleted(rs.getInt("IS_DELETED")).roomName(rs.getString("ROOM_NAME"))
-				.nickName(rs.getString("NICKNAME")).roomNo(rs.getInt("ROOM_NO")).memberNo(rs.getInt("MEMBER_NO"))
-				.bookingNo(rs.getInt("BOOKING_NO")).adminReply(rs.getString("ADMIN_REPLY"))
-				.lastReplyDate(rs.getDate("LAST_REPLY_DATE")).isReply(rs.getInt("IS_REPLY")).build();
+		return Review.builder()
+				.no(rs.getInt("NO")).title(rs.getString("TITLE"))
+				.contents(rs.getString("CONTENTS"))
+				.views(rs.getInt("VIEWS"))
+				.dateCreated(rs.getDate("DATE_CREATED"))
+				.dateModified(rs.getDate("DATE_MODIFIED"))
+				.dateDeleted(rs.getDate("DATE_DELETED"))
+				.isDeleted(rs.getInt("IS_DELETED"))
+				.roomName(rs.getString("ROOM_NAME"))
+				.nickName(rs.getString("NICKNAME"))
+				.roomNo(rs.getInt("ROOM_NO"))
+				.memberNo(rs.getInt("MEMBER_NO"))
+				.bookingNo(rs.getInt("BOOKING_NO"))
+				.adminReply(rs.getString("ADMIN_REPLY"))
+				.lastReplyDate(rs.getDate("LAST_REPLY_DATE"))
+				.isReply(rs.getInt("IS_REPLY"))
+				.build();
 	}
 
 	public String getBasicQuery() {
