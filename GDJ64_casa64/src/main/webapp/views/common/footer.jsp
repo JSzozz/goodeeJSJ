@@ -15,10 +15,8 @@
             </span>
         </div>
     </div>
-			
 </footer>
-	</div>
-
+</div>
     <!-- js파일 -->
     <script src="<%=request.getContextPath()%>/js/sw/test.js"></script>
 </body>

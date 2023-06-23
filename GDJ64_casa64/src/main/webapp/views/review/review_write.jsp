@@ -4,6 +4,10 @@
 <link rel="stylesheet" href="<%=request.getContextPath()%>/nara_publish/css/common.css" />
 <script type="text/javascript"
 	src="<%=request.getContextPath()%>/nara_publish/smarteditor2/js/HuskyEZCreator.js" charset="utf-8"></script>
+<%@ page import="java.util.List,com.btc.review.model.vo.Review" %> <!-- Review 클래스를 사용하기 위해 임포트 -->
+<%
+	Review reviews = (Review)request.getAttribute("reviews");
+%> 
 <!-- 카테고리별 이미지 -->
 <%@ include file="/views/common/categoryImage.jsp"%>
 
@@ -14,7 +18,13 @@
 	<!--게시글 작성하기-->
 	<div class="board">
 		<div id="content" class="no-bg">
-			<form action="<%=request.getContextPath()%>/board/reviewWrite.do" method="post" id="board-form">
+			<form action="<%=request.getContextPath()%>/review/reviewWrite" method="post" id="board-form">
+			<% 
+				int no = (request.getParameter("no") != null) ? Integer.parseInt(request.getParameter("no")) : 0;
+				String type = (no > 0) ? "update" : "write";
+			%>
+			<input type="hidden" name="type" value="<%= type %>">
+			<input type="hidden" name="reviewNo" value="<%= no %>">
 			<div class="inner">
 				<div class="inq-write-wrap">
 					<div class="board">
@@ -28,14 +38,17 @@
 									<th class="text-center align-middle"><span>작성자</span></th>
 									<td>
 										<div class="td-con">
-											<p class="writer"></p>
+											<p class="writer"><%=(reviews != null) ? reviews.getNickName() : loginMember.getNickName() %></p>
 										</div>
 									</td>
 								</tr>
 								<tr>
 									<th class="text-center align-middle"><span>객실선택</span></th>
 									<td>
-										<input type="hidden" id="roomNo" name="roomNo" value="">
+										<input type="hidden" id="roomNo" name="roomNo" value="<%=(reviews != null) ? reviews.getRoomNo() : "" %>">
+										<%
+											if(type == "write"){
+										%>
 										<div class="td-con d-flex flex-row align-items-center">
 											<div class="add-room-area" style="display: none;">
 												<span class="thumb-area"> <img
@@ -47,6 +60,20 @@
 													data-bs-toggle="modal" data-bs-target="#staticBackdrop">객실선택</button>
 											</div>
 										</div>
+										<%
+											} else {
+										%>
+										<div class="td-con d-flex flex-row align-items-center">
+											<div class="add-room-area" >
+												<span class="thumb-area"> <img
+													id="selected_room_img" width="70">
+												</span> <span class="txt-area"><%=reviews.getRoomName() %></span>
+											</div>
+											
+										</div>
+										<%
+											}
+										%>
 									</td>
 								</tr>
 								<tr>
@@ -54,7 +81,7 @@
 									<td>
 										<div class="td-con">
 											<div class="input-area">
-												<input type="text" class="form-control w-50" name="title">
+												<input type="text" class="form-control w-50" name="title" value='<%=(reviews != null) ? reviews.getTitle() : "" %>'>
 											</div>
 										</div>
 									</td>
@@ -66,7 +93,7 @@
 											<div class="editor-wrap">
 												<div id="smarteditor" class="editor-area">
 													<!--에디터가 들어가는 영역입니다.-->
-													<textarea name="contents" id="contents"></textarea>
+													<textarea name="contents" id="contents"><%=(reviews != null) ? reviews.getContents() : "" %></textarea>
 												</div>
 											</div>
 										</div>

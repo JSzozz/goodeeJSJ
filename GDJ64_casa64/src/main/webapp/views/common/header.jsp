@@ -30,13 +30,11 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 	<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;700&display=swap" rel="stylesheet">
-	<!-- 상준css -->
-    <link rel="stylesheet" href="<%=request.getContextPath()%>/css/sj/style.css"/>
-	
 </head>
 
 <body>
 <!-- header -->
+<div id="wrap" class="container-fluid">
 <header id="header">
     <nav class="navbar navbar-expand-lg navbar-light">
         <div class="container-fluid">
@@ -54,9 +52,9 @@
                             ABOUT
                         </a>
                         <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            <li><a href="../ABOUT/about.html" class="dropdown-item">오시는 길</a></li>
-                            <li><a href="../ABOUT/travel.html" class="dropdown-item">주변 여행지</a></li>
-                            <li><a href="../ABOUT/team-introduction.html" class="dropdown-item">조원소개</a></li>
+                            <li><a href="<%=request.getContextPath()%>/about/about" class="dropdown-item">오시는 길</a></li>
+                            <li><a href="<%=request.getContextPath()%>/about/travel" class="dropdown-item">주변 여행지</a></li>
+                            <li><a href="<%=request.getContextPath()%>/about/teamBTC" class="dropdown-item">팀원 소개</a></li>
                         </ul>
                     </li>
                     <li class="nav-item dropdown">
@@ -65,9 +63,9 @@
                             COMMUNITY
                         </a>
                         <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            <li><a href="#" class="dropdown-item">FAQ</a></li>
-                            <li><a href="#" class="dropdown-item">공지사항</a></li>
-                            <li><a href="#" class="dropdown-item">후기</a></li>
+                            <li><a href="<%=request.getContextPath()%>/" class="dropdown-item">공지사항</a></li>
+                            <li><a href="<%=request.getContextPath()%>/" class="dropdown-item">QnA</a></li>
+                            <li><a href="<%=request.getContextPath()%>/review/reviewList" class="dropdown-item">이용후기</a></li>
                         </ul>
                     </li>
                     <li class="nav-item dropdown">
@@ -77,9 +75,11 @@
                         </a>
                         <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                             <li><a href="<%=request.getContextPath() %>/RoomListServlet.do" class="dropdown-item">전체 객실 보기</a></li>
-                            <%for(Room r:rooms){ %>
-                            <li><a href="<%=request.getContextPath() %>/RoomViewServlet.do?no="+<%= r.getRoomNo()%> class="dropdown-item"><%=r.getRoomName() %></a></li>
-                            <%} %>
+                            <%
+                           	if(rooms != null){ 
+                            	for(Room r:rooms){ %>
+                            		<li><a href="<%=request.getContextPath() %>/RoomViewServlet.do?no="+<%= r.getRoomNo()%> class="dropdown-item"><%=r.getRoomName() %></a></li>
+                            <%} }%>
                            <%--  <li><a href="<%=request.getContextPath() %>/RoomViewServlet.do?no=1" class="dropdown-item">오션테라스 101</a></li>
                             <li><a href="<%=request.getContextPath() %>/RoomViewServlet.do?no=2" class="dropdown-item">오션테라스 201</a></li>
                             <li><a href="<%=request.getContextPath() %>/RoomViewServlet.do?no=3" class="dropdown-item">오션테라스 301</a></li>
@@ -123,7 +123,7 @@
                     </li>            
                 <%}else{%>
                     <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="#">MYPAGE</a>
+                        <a class="nav-link active" aria-current="page" href="<%=request.getContextPath()%>/views/myPage/myPageInfo.jsp"">MYPAGE</a>
                     </li>
                     <li class="nav-item logout">
                         <a class="nav-link logout" onclick="location.replace('<%=request.getContextPath() %>/logout.do')">LOGOUT</a>

@@ -15,7 +15,7 @@ import com.btc.review.model.vo.Review;
 /**
  * Servlet implementation class ReviewView
  */
-@WebServlet("/board/reviewView.do")
+@WebServlet("/review/reviewView")
 public class ReviewView extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
@@ -35,7 +35,7 @@ public class ReviewView extends HttpServlet {
 			throws ServletException, IOException {
 		int reviewNo = Integer.parseInt(request.getParameter("no"));
 		Review reviews = new ReviewService().getReviewView(reviewNo);
-
+		
 		request.setAttribute("review", reviews);
 		request.setAttribute("categoryName", "COMMUNITY");
 		request.setAttribute("communityTitle", "이용후기");

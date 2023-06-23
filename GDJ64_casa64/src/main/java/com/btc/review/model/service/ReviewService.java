@@ -34,6 +34,14 @@ public class ReviewService {
 		close(conn);
 		return result;
 	}
+	
+	public int updateReviews(Review reviews) {
+		Connection conn = getConnection();
+		int result = dao.updateReviews(conn, reviews);
+		close(conn);
+		return result;
+	}
+	
 	// 마이페이지용 리뷰 리스트 ( 파라미터는 memberNo)
 	public List<Review> selectReviewsMypage(int memberNo){
 		Connection conn = getConnection(); // db 접속 시작

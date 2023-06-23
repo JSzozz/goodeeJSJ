@@ -16,8 +16,10 @@
 
 	<!--목록버튼-->
 	<div class="list-btn">
-		<button type="button" class="btn btn-primary btn-sm ms-1">목록</button>
-		<a href="<%=request.getContextPath()%>/board/reviewWrite.do?no=<%= reviews.getNo() %>" class="btn btn-primary btn-sm ms-1">수정하기</a>
+		<a href="<%=request.getContextPath()%>/review/reviewList" class="btn btn-primary btn-sm ms-1">목록</a>
+		<%if(loginMember != null && loginMember.getMemberNo()==reviews.getMemberNo()) {%>
+			<a href="<%=request.getContextPath()%>/review/reviewWrite?no=<%= reviews.getNo() %>" class="btn btn-primary btn-sm ms-1">수정하기</a>
+		<%} %>
 	</div>
 
 	<!--게시판 상세보기-->
@@ -45,7 +47,7 @@
 			<div class="col board-data">
 				<p class="text-data"><%= reviews.getContents() %></p>
 				<img class="img-data"
-					src="<%=request.getContextPath()%>/publish/images/ex_img.png">
+					src="<%=request.getContextPath()%>/nara_publish/images/ex_img.png">
 			</div>
 		</div>
 
@@ -74,8 +76,6 @@
 			</form>
 		</div>
 	</div>
-
-</div>
 </div>
 
 

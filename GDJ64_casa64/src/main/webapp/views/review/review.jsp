@@ -6,7 +6,6 @@
 <link rel="stylesheet" href="<%=request.getContextPath()%>/nara_publish/css/common.css" />
 <%
 	List<Review> reviews = (List)request.getAttribute("ReviewList");
-	List<Room> rooms = (List)request.getAttribute("selectRooms");
 %> 
 	
 <!-- 카테고리별 이미지 -->
@@ -35,9 +34,11 @@
 						value="<%= (keyword != null ) ? keyword : "" %>">
 					<select id="room-no" name="room-no" style="display:none" class="ms-1" onChange="autoSubmit()">
 						<option value="">전체</option>
-						<% for(Room rm : rooms){%>
-						<option value="<%= rm.getRoomNo() %>" <%= ( roomNo != null && roomNo.equals(Integer.toString(rm.getRoomNo()))) ? "selected" : "" %>><%= rm.getRoomName() %></option>
-						<%} %>
+						<% 
+							if(rooms != null) {
+								for(Room rm : rooms){%>
+									<option value="<%= rm.getRoomNo() %>" <%= ( roomNo != null && roomNo.equals(Integer.toString(rm.getRoomNo()))) ? "selected" : "" %>><%= rm.getRoomName() %></option>
+						<%}}%>
 						
 					</select>
 					<button type="submit" class="btn btn-primary btn-sm ms-1">검색</button>
@@ -90,7 +91,7 @@
 					<td><%= r.getNo() %></td>
 					<td><%= r.getRoomName() %></td>
 					<td>
-						<a href="<%=request.getContextPath()%>/review/reviewView.do?no=<%= r.getNo() %>">
+						<a href="<%=request.getContextPath()%>/review/reviewView?no=<%= r.getNo() %>">
 						<%= r.getTitle() %>
 						</a>
 					</td>
@@ -103,7 +104,7 @@
 		</table>
 	</div>
 	<div class="write-area text-end">
-		<a href="<%=request.getContextPath()%>/board/reviewWrite.do"
+		<a href="<%=request.getContextPath()%>/review/reviewWrite"
 			class="btn btn-primary btn-sm ms-1">작성하기</a>
 	</div>
 

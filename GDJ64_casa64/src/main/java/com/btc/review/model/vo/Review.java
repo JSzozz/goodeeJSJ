@@ -25,7 +25,7 @@ public class Review {
 	private int roomNo;
 	private int memberNo;
 	private int bookingNo;
-	private String reply;
+	private String adminReply;
 	private Date lastReplyDate;
 	private int isReply;
 }

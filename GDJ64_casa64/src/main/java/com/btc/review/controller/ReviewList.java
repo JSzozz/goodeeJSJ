@@ -18,7 +18,7 @@ import com.btc.rooms.model.vo.Room;
 /**
  * Servlet implementation class ReviewList
  */
-@WebServlet("/board/reviewList.do")
+@WebServlet("/review/reviewList")
 public class ReviewList extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
@@ -43,9 +43,9 @@ public class ReviewList extends HttpServlet {
 
 		
 		List<Review> list = new ReviewService().selectReviews(type, keyword, roomNo); // Review 클래스에 있는 값만 담길 list를 생성
-		List<Room> rooms = new RoomService().selectAllRoom();
+//		List<Room> rooms = new RoomService().selectAllRoom();
 		request.setAttribute("ReviewList", list);
-		request.setAttribute("selectRooms", rooms);
+//		request.setAttribute("selectRooms", rooms);
 		
 		request.setAttribute("categoryName", "COMMUNITY");
 		request.setAttribute("communityTitle", "이용후기");
