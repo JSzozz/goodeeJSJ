@@ -5,8 +5,6 @@
 <%@ page import="java.util.List,com.btc.mypage.model.vo.Booking" %>
 <%@ page import="java.util.List,com.btc.rooms.model.vo.Room" %>
 <%
-	List<Review> reviews = (List)request.getAttribute("ReviewList");
-	List<Room> rooms = (List)request.getAttribute("selectRooms");
 	List<Booking> bookings = (List)request.getAttribute("MyPageBookingList");
 %>
 <!-- 컨텐츠/내용 시작 -->
@@ -30,7 +28,7 @@
 						<col width="10%">
 						<col width="20%">
 						<col width="15%">
-						<col width="15%">
+						<col width="25%">
 						<col width="15%">
 					</colgroup>
 					<thead>
@@ -38,29 +36,28 @@
 							<th>번호</th>
 							<th>객실명</th>
 							<th>예약상태</th>
-							<th>예약날짜</th>
+							<th>이용날짜</th>
 							<th>비고</th>
 						</tr>
 					</thead>
 					<tbody>
-						<!-- 
-                            결제내역이 없을떄
-                            <tr>
-                              <td colspan="5" class="text-center">예약내역이 없습니다.</td>
-                            </tr>
-                           -->
-                          <% for(Booking b : bookings){%>
+                     
+                        <% if(bookings != null && !bookings.isEmpty()) {
+                  			for(Booking b : bookings){%>
 						<tr>
 							<td><%=b.getBookingNo() %></td>
-							<td>room1</td>
+							<td><%=b.getRoomName() %></td>
 							<td>결제완료</td>
-							<td>2023-05-13</td>
+							<td><%=b.getCheckIn() %> ~ <%=b.getCheckOut() %></td>
 							<td><button type="button" class="btn btn-primary btn-sm">결제취소</button></td>
 <!-- 							결제완료일 경우 결제취소 / 결재대기일경우 결제하기
 							<td><button type="button" class="btn btn-primary btn-sm">결제하기</button></td> -->
 						</tr>
-						<%} %>
-					
+						<%} } else { %>
+						<tr>
+							<td colspan="5">예약내역이 없습니다.</td>
+						</tr>
+						<% } %>
 					</tbody>
 				</table>
 			</div>

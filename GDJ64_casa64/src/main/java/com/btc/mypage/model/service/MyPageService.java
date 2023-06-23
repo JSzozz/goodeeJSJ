@@ -9,6 +9,8 @@ import java.util.List;
 import com.btc.member.model.dto.Member;
 import com.btc.mypage.model.dao.MyPageDao;
 import com.btc.mypage.model.vo.Booking;
+import com.btc.review.model.dao.ReviewDao;
+import com.btc.review.model.vo.Review;
 
 public class MyPageService {
 	private  MyPageDao dao = new MyPageDao();

@@ -1,7 +1,6 @@
 package com.btc.review.model.service;
 
 import static com.btc.common.JDBCTemplate.close;
-
 import static com.btc.common.JDBCTemplate.getConnection;
 
 import java.sql.Connection;
@@ -9,6 +8,7 @@ import java.util.List;
 
 import com.btc.review.model.dao.ReviewDao;
 import com.btc.review.model.vo.Review;
+import com.btc.rooms.model.vo.Room;
 
 public class ReviewService {
 	private  ReviewDao dao = new ReviewDao();
@@ -46,6 +46,13 @@ public class ReviewService {
 	public List<Review> selectReviewsMypage(int memberNo){
 		Connection conn = getConnection(); // db 접속 시작
 		List<Review> list = dao.selectReviewsMypage(conn, memberNo); // conn 생성해서 dao로 전달하는 역할
+		close(conn); // db 접속 종료
+		return list;
+	}
+	
+	public List<Room> selectAllRoom() {
+		Connection conn = getConnection(); // db 접속 시작
+		List<Room> list = dao.selectAllRoom(conn); // conn 생성해서 dao로 전달하는 역할
 		close(conn); // db 접속 종료
 		return list;
 	}

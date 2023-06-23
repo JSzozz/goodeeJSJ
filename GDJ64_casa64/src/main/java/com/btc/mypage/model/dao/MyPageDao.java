@@ -43,27 +43,21 @@ public class MyPageDao {
 		return Booking.builder()
 				.bookingNo(rs.getInt("BOOKING_NO"))
 				.memberNo(rs.getInt("MEMBER_NO"))
-//				.checkIn(rs.getDate("CHECK_IN"))
-//				.checkOut(rs.getDate("CHECK_OUT"))
-//				.checkOut(rs.getDate("CHECK_OUT"))
-//				.bookingPrice(rs.getInt("BOOKING_PRICE"))
+				.checkIn(rs.getDate("CHECK_IN"))
+				.checkOut(rs.getDate("CHECK_OUT"))
+				.guestAdult(rs.getInt("GUEST_ADUIT"))
+				.guestChild(rs.getInt("GUEST_CHILD"))
+				.guestInfant(rs.getInt("GUEST_INFANT"))
+				.bookingPrice(rs.getInt("BOOKING_PRICE"))
+				.roomName(rs.getString("ROOM_NAME"))
+				// 이용상태(결제대기, 결제완료, 예약완료, 사용완료, 취소요청, 취소완료) 컬럼 추가해야함
 				.build();
-		
-//		 private int bookingNo;
-//		   private int memberNo;
-//		   private int roomNo;
-//		   private Date checkIn;
-//		   private Date checkOut;
-//		   private int guestAdult;
-//		   private int guestChild;
-//		   private int guestInfant;
-//		   private int xtraNo;
-//		   private int bookingPrice;
-//		   private String paid;
 	}
 
 	public String getBasicQuery() {
-		return "SELECT * FROM BOOKING WHERE BOOKING.MEMBER_NO = '?'"; // 실행할 기본 쿼리
+		return "SELECT B.*, R.ROOM_NAME FROM BOOKING B " +
+				"JOIN ROOM R ON R.ROOM_NO = B.ROOM_NO " +
+				"WHERE B.MEMBER_NO = ?"; // 실행할 기본 쿼리
 	}
 
 }

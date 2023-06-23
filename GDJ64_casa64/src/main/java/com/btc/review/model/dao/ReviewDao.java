@@ -1,7 +1,6 @@
 package com.btc.review.model.dao;
 
 import static com.btc.common.JDBCTemplate.close;
-
 import static com.btc.common.JDBCTemplate.getConnection;
 
 import java.sql.Connection;
@@ -12,6 +11,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.btc.review.model.vo.Review;
+import com.btc.rooms.model.vo.Room;
 
 public class ReviewDao {
 
@@ -32,19 +32,19 @@ public class ReviewDao {
 		try {
 			String sql = getBasicQuery(); // 실행할 기본 쿼리
 			// 방 선택된 게 있을 경우
-			if (roomNo != null && roomNo != "") {
-				sql += " AND ROOM.NO = " + roomNo;
+			if (roomNo != null && roomNo != "" && type != null && type.equals("rooms")) {
+				sql += " AND ROOM.ROOM_NO = " + roomNo;
 			}
 			// 검색 타입과 검색어가 있을 경우
 			if (type != null && keyword != "" && !type.equals("rooms")) {
 				if (type.equals("title")) { // 검색 타입이 제목일 경우
-					sql += " AND REVIEW.TITLE ";
+					sql += " AND LOWER(REVIEW.TITLE) ";
 				} else if (type.equals("contents")) { // 검색 타입이 내용일 경우
-					sql += " AND REVIEW.CONTENTS ";
+					sql += " AND LOWER(REVIEW.CONTENTS) ";
 				} else if (type.equals("writer")) { // 검색 타입이 작성자 일 경우
-					sql += " AND MEMBER.NICKNAME ";
+					sql += " AND LOWER(MEMBER.NICKNAME) ";
 				}
-				sql += " LIKE '%" + keyword + "%' ";
+				sql += " LIKE '%" + keyword.toLowerCase() + "%' ";
 			}
 			sql += " ORDER BY REVIEW.NO DESC";
 
@@ -117,7 +117,7 @@ public class ReviewDao {
 			conn = getConnection(); // DB 접속
 			// 3. 쿼리 작성
 			String sql = "INSERT INTO REVIEW (NO,TITLE,CONTENTS,VIEWS,IS_DELETED,ROOM_NO,MEMBER_NO,BOOKING_NO, DATE_CREATED, DATE_MODIFIED) "
-					+ "VALUES (REVIEW_SEQ.NEXTVAL,?,?,?,?,?,?,?, TO_DATE(SYSDATE , 'YYYY-MM-DD HH24:MI:SS'), TO_DATE(SYSDATE , 'YYYY-MM-DD HH24:MI:SS'))"; // 실행할
+					+ "VALUES (REVIEW_SEQ.NEXTVAL,?,?,?,?,?,?,?, SYSTIMESTAMP, SYSTIMESTAMP)"; // 실행할
 																																							// 쿼리
 
 			pstmt = conn.prepareStatement(sql); // 실행 준비
@@ -152,7 +152,7 @@ public class ReviewDao {
 		try {
 			conn = getConnection(); // DB 접속
 			// 3. 쿼리 작성
-			String sql = "UPDATE REVIEW SET TITLE = ?, CONTENTS = ?, DATE_MODIFIED = TO_DATE(SYSDATE,'YYYY-MM-DD HH24:MI:SS')"
+			String sql = "UPDATE REVIEW SET TITLE = ?, CONTENTS = ?, DATE_MODIFIED = SYSTIMESTAMP"
 					+ "WHERE REVIEW.NO = ?";
 			pstmt = conn.prepareStatement(sql); // 실행 준비
 //	         4. 쿼리에 파라미터 셋팅
@@ -208,6 +208,36 @@ public class ReviewDao {
 		}
 		return list;
 	}
+	
+	public List<Room> selectAllRoom(Connection conn){
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		List<Room> list = new ArrayList();
+
+		try {
+			String sql = "SELECT R.ROOM_NO, R.ROOM_NAME FROM ROOM R "
+					+ "WHERE R.BOOKABLE='Y'"; // 실행할 기본 쿼리
+
+			pstmt = conn.prepareStatement(sql); // 실제 쿼리 들어가고
+			rs = pstmt.executeQuery(); // 쿼리 실행
+
+			while (rs.next()) { // rs 다음 값이 있을 경우
+				Room rooms = new Room();
+				rooms.setRoomNo(rs.getInt("ROOM_NO"));
+				rooms.setRoomName(rs.getString("ROOM_NAME"));
+				list.add(rooms); //
+			}
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(rs);
+			close(pstmt);
+		}
+		return list;
+	}
+		
+	
 
 	private Review getReviews(ResultSet rs) throws SQLException {
 //      Reviews reviews = new Reviews();

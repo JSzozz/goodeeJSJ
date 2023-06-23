@@ -6,7 +6,7 @@
 <link rel="stylesheet" href="<%=request.getContextPath()%>/nara_publish/css/common.css" />
 <%
 	List<Review> reviews = (List)request.getAttribute("ReviewList");
-	List<Room> rooms = (List)request.getAttribute("selectRooms");
+	List<Room> roomsList = (List)request.getAttribute("selectRooms");
 %> 
 	
 <!-- 카테고리별 이미지 -->
@@ -25,7 +25,7 @@
 						String roomNo = request.getParameter("room-no");
 						String keyword = request.getParameter("keyword");
 					%>
-					<select name="search-type" class="ms-1" onchange="selectRoom(this.value);">
+					<select id="search-type" name="search-type" class="ms-1" onchange="searchType(this.value);">
 						<option value="title" <%= (searchType != null && searchType.equals("title")) ? "selected" : "" %>>제목</option>
 						<option value="contents" <%= (searchType != null && searchType.equals("contents")) ? "selected" : "" %>>내용</option>
 						<option value="writer" <%= (searchType != null && searchType.equals("writer")) ? "selected" : "" %>>작성자</option>
@@ -35,36 +35,18 @@
 						value="<%= (keyword != null ) ? keyword : "" %>">
 					<select id="room-no" name="room-no" style="display:none" class="ms-1" onChange="autoSubmit()">
 						<option value="">전체</option>
-						<% 
-							if(rooms != null) {
-								for(Room rm : rooms){%>
+					<%
+						if(roomsList != null && !roomsList.isEmpty()) {
+								for(Room rm : roomsList){%>
 									<option value="<%= rm.getRoomNo() %>" <%= ( roomNo != null && roomNo.equals(Integer.toString(rm.getRoomNo()))) ? "selected" : "" %>><%= rm.getRoomName() %></option>
 						<%}}%>
 						
 					</select>
-					<button type="submit" class="btn btn-primary btn-sm ms-1">검색</button>
+					<button type="button" class="btn btn-primary btn-sm ms-1" onClick="checkSubmit()">검색</button>
 				</div>
 			</div>
 		</div>
 	</form>
-	<script>
-		$(function(){
-			selectRoom('<%= request.getParameter("search-type")%>');
-		});
-		function selectRoom(value){
-			if(value=="rooms"){
-				$("#room-no").show();
-				$("#keyword").hide();
-				$("#keyword").val('');
-			}else{
-				$("#room-no").hide();
-				$("#keyword").show();
-			}
-		}
-		function autoSubmit(){
-			$('#search-form').submit();
-		}
-	</script>
 	<!--테이블-->
 	<div class="list-area">
 		<table class="table table-hover text-center">
@@ -129,3 +111,34 @@
 </div>
 <!-- 내용 종료 -->
 <%@ include file="/views/common/footer.jsp"%>
+<script>
+	$(function(){ // ready function => 페이지 로드 시 실행하는 함수
+		searchType('<%= request.getParameter("search-type")%>'); // 검색 타입이 객실명이면 객실리트가 보여지도록
+	});
+	function searchType(value){
+		if(value=="rooms"){
+			$("#room-no").show();
+			$("#keyword").hide();
+			$("#keyword").val('');
+		}else{
+			$("#room-no").hide();
+			$("#room-no").val('')
+			$("#keyword").show();
+		}
+	}
+	// 자동 form 검색
+	function autoSubmit(){
+		$('#search-form').submit();
+	}
+	function checkSubmit(){
+		if($('#search-type').val() != 'rooms') {
+			if($('#keyword').val().length < 1){
+				alert('검색어를 입력해 주세요!');
+				$('#keyword').focus();
+				return;
+			}
+		}
+		$('#search-form').submit();
+		
+	}
+</script>

@@ -22,9 +22,9 @@ public class Booking {
    private int guestAdult;
    private int guestChild;
    private int guestInfant;
-   private int xtraNo;
    private int bookingPrice;
    private String paid;
+   private String roomName;
    
    
 }
