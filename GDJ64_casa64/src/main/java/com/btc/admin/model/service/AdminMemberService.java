@@ -22,4 +22,36 @@ public class AdminMemberService {
 		close(conn);
 		return members;
 	}
+	
+	public int memberCancel(int memberNo) {
+		Connection conn=getConnection();
+		int result=dao.memberCancel(conn,memberNo);
+		if(result>0)commit(conn);
+		else rollback(conn);
+		close(conn);
+		return result;
+	}
+	
+	public Member selectMember(int memberNo) {
+		Connection conn=getConnection();
+		Member member=dao.selectMember(conn,memberNo);
+		close(conn);
+		return member;
+	}
+	
+	public int insertCancelMember(String name, String nickname, String email, String phone) {
+		Connection conn=getConnection();
+		int result=dao.insertCancelMember(conn,name,nickname,email,phone);
+		close(conn);
+		return result;
+	}
 }
+
+
+
+
+
+
+
+
+
