@@ -55,7 +55,7 @@
                                       </form>
                                       <!-- 예약상태 -->
                                       <div id="result">
-                                        <table class="table text-center">
+                                    <table class="table text-center">
                                         <thead>
                                             <th>상태</th>
                                             <th>객실명</th>
@@ -74,96 +74,6 @@
                                                 <td>23/06/17</td>
                                                 <td>23/06/19</td>
                                                 <td>상세조회</td>
-                                            </tr>
-                                            <tr>
-                                                <td>2</td>
-                                                <td>동제동이</td>
-                                                <td>@naver.com</td>
-                                                <td>010-0000-0000</td>
-                                                <td>23/06/19</td>
-                                                <td>
-                                                    <button type="button" class="btn btn-dark btn-sm">상세조회</button>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td>3</td>
-                                                <td>동제동이</td>
-                                                <td>@naver.com</td>
-                                                <td>010-0000-0000</td>
-                                                <td>23/06/19</td>
-                                                <td>
-                                                    <button type="button" class="btn btn-dark btn-sm">상세조회</button>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td>4</td>
-                                                <td>동제동이</td>
-                                                <td>@naver.com</td>
-                                                <td>010-0000-0000</td>
-                                                <td>23/06/19</td>
-                                                <td>
-                                                    <button type="button" class="btn btn-dark btn-sm">상세조회</button>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td>5</td>
-                                                <td>동제동이</td>
-                                                <td>@naver.com</td>
-                                                <td>010-0000-0000</td>
-                                                <td>23/06/19</td>
-                                                <td>
-                                                    <button type="button" class="btn btn-dark btn-sm">상세조회</button>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td>6</td>
-                                                <td>동제동이</td>
-                                                <td>@naver.com</td>
-                                                <td>010-0000-0000</td>
-                                                <td>23/06/19</td>
-                                                <td>
-                                                    <button type="button" class="btn btn-dark btn-sm">상세조회</button>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td>7</td>
-                                                <td>동제동이</td>
-                                                <td>@naver.com</td>
-                                                <td>010-0000-0000</td>
-                                                <td>23/06/19</td>
-                                                <td>
-                                                    <button type="button" class="btn btn-dark btn-sm">상세조회</button>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td>8</td>
-                                                <td>동제동이</td>
-                                                <td>@naver.com</td>
-                                                <td>010-0000-0000</td>
-                                                <td>23/06/19</td>
-                                                <td>
-                                                    <button type="button" class="btn btn-dark btn-sm">상세조회</button>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td>9</td>
-                                                <td>동제동이</td>
-                                                <td>@naver.com</td>
-                                                <td>010-0000-0000</td>
-                                                <td>23/06/19</td>
-                                                <td>
-                                                    <button type="button" class="btn btn-dark btn-sm">상세조회</button>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td>10</td>
-                                                <td>동제동이</td>
-                                                <td>@naver.com</td>
-                                                <td>010-0000-0000</td>
-                                                <td>23/06/19</td>
-                                                <td>
-                                                    <button type="button" class="btn btn-dark btn-sm">상세조회</button>
-                                                </td>
                                             </tr>
                                         </tbody>
                                     </table>
