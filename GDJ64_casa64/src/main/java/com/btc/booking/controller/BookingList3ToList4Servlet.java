@@ -12,7 +12,6 @@ import javax.servlet.http.HttpSession;
 
 import com.btc.booking.model.service.BookingService;
 import com.btc.booking.model.vo.Booking;
-import com.web.model.service.MemberService;
 
 /**
  * Servlet implementation class ReserveList1ToList2Servlet
