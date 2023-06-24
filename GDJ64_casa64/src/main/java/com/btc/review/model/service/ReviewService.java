@@ -50,6 +50,13 @@ public class ReviewService {
 		return 0;
 	}
 	
+	public List<ReviewImages> getReviewImages(int reviewNo) {
+		Connection conn = getConnection(); // db 접속 시작
+		List<ReviewImages> list = dao.getReviewImages(conn, reviewNo); // conn 생성해서 dao로 전달하는 역할
+		close(conn); // db 접속 종료
+		return list;
+	}
+	
 	
 	// 마이페이지용 리뷰 리스트 ( 파라미터는 memberNo)
 	public List<Review> selectReviewsMypage(int memberNo){

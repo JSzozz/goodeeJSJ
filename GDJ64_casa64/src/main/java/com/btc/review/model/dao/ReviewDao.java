@@ -78,7 +78,7 @@ public class ReviewDao {
 	public Review getReviewView(Connection conn, int reviewNo) {
 
 		String sql = getBasicQuery();
-		sql += "AND REVIEW.NO = ?";
+		sql += " AND REVIEW.NO = ?";
 
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
@@ -237,6 +237,37 @@ public class ReviewDao {
 		}
 		return list;
 	}
+	
+	public List<ReviewImages> getReviewImages(Connection conn, int reviewNo){
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		List<ReviewImages> list = new ArrayList();
+
+		try {
+			String sql = "SELECT * FROM REVIEW_IMAGES RI WHERE RI.REVIEW_NO = ?"; // 실행할 기본 쿼리
+
+			pstmt = conn.prepareStatement(sql); // 실제 쿼리 들어가고
+			pstmt.setInt(1, reviewNo);
+			rs = pstmt.executeQuery(); // 쿼리 실행
+
+			while (rs.next()) { // rs 다음 값이 있을 경우
+				ReviewImages ri = new ReviewImages();
+				ri.setNo(rs.getInt("NO"));
+				ri.setFileName(rs.getString("FILENAME"));
+				ri.setSaveFileName(rs.getString("SAVE_FILENAME"));
+				ri.setDateCreated(rs.getDate("DATE_CREATED"));
+				list.add(ri); //
+			}
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(rs);
+			close(pstmt);
+		}
+		return list;
+		
+	}
 		
 	public int uploadImages(Connection conn, List<ReviewImages> imgList, Review reviews) {
 		PreparedStatement pstmt = null;
@@ -311,9 +342,11 @@ public class ReviewDao {
 	}
 
 	public String getBasicQuery() {
-		return "SELECT " + "  REVIEW.* , MEMBER.NICKNAME, ROOM.ROOM_NAME " + "    FROM REVIEW  "
-				+ "    JOIN MEMBER ON MEMBER.MEMBER_NO = REVIEW.MEMBER_NO "
-				+ "    JOIN ROOM ON ROOM.ROOM_NO = REVIEW.ROOM_NO " + "    WHERE 1=1 AND REVIEW.IS_DELETED = 0 "; // 실행할
+		return "SELECT REVIEW.* , MEMBER.NICKNAME, ROOM.ROOM_NAME " 
+				+ "	FROM REVIEW  "
+				+ " JOIN MEMBER ON MEMBER.MEMBER_NO = REVIEW.MEMBER_NO "
+				+ " JOIN ROOM ON ROOM.ROOM_NO = REVIEW.ROOM_NO " 
+				+ " WHERE 1=1 AND REVIEW.IS_DELETED = 0 "; // 실행할
 																													// 기본
 																													// 쿼리
 	}

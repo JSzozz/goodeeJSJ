@@ -7,7 +7,7 @@
 <script type="text/javascript"
 	src="//dapi.kakao.com/v2/maps/sdk.js?appkey=ceba3d61a1b8c20c16bbe54d8baca88b"></script>
 <!-- 카테고리별 이미지 -->
-<%@ include file="/views/common/about_categoryImage.jsp"%>
+<%@ include file="/views/common/categoryImage.jsp"%>
 
 <!-- 컨텐츠/내용 시작 -->
 <div id="wrap" class="container-fluid">

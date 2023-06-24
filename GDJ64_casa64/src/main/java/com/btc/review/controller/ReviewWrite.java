@@ -66,7 +66,7 @@ public class ReviewWrite extends HttpServlet {
 	 * 이용후기 작성 버튼 클릭 후 실행하는 곳 (post, insert)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		int memberNo = 1;//checkLogin(request, response);
+		int memberNo = checkLogin(request, response);
 		if(memberNo > 0){
 			int result = 1;
 			if(!ServletFileUpload.isMultipartContent(request)) {
