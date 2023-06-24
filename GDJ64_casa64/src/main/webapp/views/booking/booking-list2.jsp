@@ -1,3 +1,5 @@
+<%@page import="java.util.List"%>
+<%@page import="com.btc.booking.model.vo.Booking"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!-- 상준css -->
@@ -5,24 +7,36 @@
 		<!-- 헤더 영역 시작 -->
 <%@ include file="/views/common/header.jsp"%>
 		<!-- 헤더 영역 종료 -->
-
+<%String roomNm=(String)request.getAttribute("roomNm");%>
+<%int roomNo=(int)request.getAttribute("roomNo");%>
+<%Booking booking=(Booking)request.getAttribute("booking");%>
+<%List<String> price=(List<String>)request.getAttribute("price");%>
+<%=loginMember %><br>
+<%=roomNm %><br>
+<%=roomNo %><br>
+<%=booking %><br>
+<%=price.get(0) %><br>
+<%=price.get(1) %><br>
+<%=price.get(2) %>
 		<!-- 카테고리별 이미지 -->
 		<div class="category-image">
 			<img src="<%=request.getContextPath() %>/images/booking/reservation.png" width="100%" height="200px">
 			<div>RESERVATION</div>
 		</div>
-		
 <br><br><br>
-		
 		<!-- 컨텐츠/내용 시작 -->
 		<div class="reserve_step3 offset-md-1 col-md-10">
-			<form id="frm" name="frm" method="post">
-				<input type="hidden" name="RESV_NO" id="RESV" value="#">
-				<input type="hidden" name="RESV_NO" id="RESV_NO" value="#">
-				<input type="hidden" name="CARD_RESULT" id="CARD_RESULT" value="#">
-				<input type="hidden"  id="NUM_PER_DIV_ADT" value="성인">
-				<input type="hidden"  id="NUM_PER_DIV_KID" value="아동/유아">
-				<input type="hidden"  id="NUM_PER_DIV_INF" value="영아(24개월 미만)">
+        	<form name="bookFrm" onsubmit="return chkSum();" action="<%=request.getContextPath()%>/booking/bookingList2ToList3.do" method="post">
+				<input type="hidden" name="memberNo" value="<%=loginMember.getMemberNo()%>">
+				<input type="hidden" name="roomNo" value="<%=roomNo%>">
+				<input type="hidden" name="checkin" value="<%=booking.getCheckIn()%>">
+				<input type="hidden" name="checkout" value="<%=booking.getCheckOut()%>">
+				<input type="hidden" name="guestAdult" value="<%=booking.getGuestAdult()%>">
+				<input type="hidden" name="guestChild" value="<%=booking.getGuestChild()%>">
+				<input type="hidden" name="guestInfant" value="<%=booking.getGuestInfant()%>">
+				<input type="hidden" name="bookingPrice" value="<%=booking.getBookingPrice()%>">
+				<input type="hidden" name="bookingComment" value="">
+
 				<div class="roundbox">
 	<!-- 01 예약정보 확인 -->
 					<div class="container container-1">
@@ -56,9 +70,9 @@
 										<span id="detailPrice">
 											객실금액=
 											<em id="roomPirce">#roomPirce</em>
-											원 + 인원추가금액=
+											원, 인원추가금액=
 											<em id="persPirce">#persPirce</em>
-											원 + 옵션추가금액=
+											원, 옵션추가금액=
 											<em id="optnPrice">#optnPrice</em>
 											원 
 										</span>
@@ -73,8 +87,7 @@
 							</tbody>
 						</table>
 					</div>
-
-	<!-- 02 개인정보 확인 -->
+<!-- 02 개인정보 확인 -->
 					<div class="container container-2">
 						<h3>
 							<span>02</span>
@@ -83,34 +96,33 @@
 						<table class="table-1">
 							<tbody>
 								<tr>
-									<th>예약자명</th>
+									<th>예약자</th>
 									<td>
-										<input type="text" name="RESV_NM" id="RESV_NM" placeholder="#RESV_NM">
+										<input type="text" name="RESV_NM" id="RESV_NM" placeholder="#RESV_NM" readonly>
 									</td>
 								</tr>
 								<tr>
 									<th>연락처</th>
 									<td>
-										<input type="text" name="RESV_PHONE" id="RESV_PHONE" placeholder="#RESV_PHONE">
+										<input type="text" name="RESV_PHONE" id="RESV_PHONE" placeholder="#RESV_PHONE" readonly>
 									</td>
 								</tr>
-								<tr>
+<!-- 								<tr>
 									<th>비상연락처</th>
 									<td>
 										<input type="text" name="RESV_PHONE2" id="RESV_PHONE2" placeholder="#RESV_PHONE2">
 									</td>
-								</tr>
+								</tr> -->
 								<tr>
 									<th>요청사항</th>
 									<td>
-										<textarea name="RESV_COMT" id="RESV_COMT" cols="40" rows="4" placeholder="#RESV_COMT"></textarea>
+										<textarea name="RESV_COMT" id="RESV_COMT" cols="50" rows="4" placeholder="이용자명, 비상 연락처 등 추가 요청사항 작성해주세요."></textarea>
 									</td>
 								</tr>
 							</tbody>
 						</table>
 					</div>
-					
-	<!-- 3. 03 환불규정확인 -->
+<!-- 3. 03 환불규정확인 -->
 					<div class="container container">
 						<h3>
 							<span id="refundNum">03</span>
@@ -174,18 +186,35 @@
 					</div>
 				</div>
 				<div class="buttons">
-					<button class="buttons-1 btn btn btn-outline-dark btn-lg" 
-	        		onclick=""
-					type="button" id="saveBtn">객실 예약하기</button>
+					<button class="buttons-1 btn btn btn-outline-dark btn-lg" id="saveBtn">객실 예약하기</button>
 				</div>
 			</form>
 		</div>
 		<!-- 내용 종료 -->
-
 	</div>
-	
 </section>
-
+<script>
+	$("#typeNm").text("<%=roomNm %>");
+	$("#period").text("<%=booking.getCheckIn()%> ~ <%=booking.getCheckOut()%>")
+	$("#person").text("성인 = <%=booking.getGuestAdult()%>명, 아동/유아 = <%=booking.getGuestChild()%>명, 영아(24개월 미만) = <%=booking.getGuestInfant()%>명")
+	$("#optionList").text("개발중");
+	$("#roomPirce").text("<%=price.get(0)%>");
+	$("#persPirce").text("<%=price.get(1)%>");
+	$("#optnPrice").text("<%=price.get(2)%>");
+	$("#totPirce").text("<%=booking.getBookingPrice()%>");
+	$("#RESV_NM").val("<%=loginMember.getMemberName() %>");
+	$("#RESV_PHONE").val("<%=loginMember.getPhone() %>");
+	
+	$(function chkSum() {
+		$(document).on("click","button[id=saveBtn]",e=>{
+		/* 예약정보 post 보내기 */
+		$('input[name=bookingComment]').attr('value',$("#RESV_COMT").val());
+		});
+		return true;
+	});	
+<%-- <%=price.get(0) %><br>
+ --%>
+</script>
 <!-- 결제기능 구현 -->
 <script src="https://cdn.iamport.kr/v1/iamport.js"></script>
 <script src="<%=request.getContextPath()%>/js/dj/payment.js"></script>

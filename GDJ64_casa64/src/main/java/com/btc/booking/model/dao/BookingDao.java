@@ -12,6 +12,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Properties;
 
+import com.btc.booking.model.vo.Booking;
 import com.btc.rooms.model.vo.Room;
 
 
@@ -57,6 +58,51 @@ public class BookingDao {
 			close(rs);
 			close(pstmt);
 		}return list;	
+	}
+	
+	public int searchRoomNo(Connection conn, String roomNm) {
+		PreparedStatement pstmt= null;
+		ResultSet rs=null;
+		int roomNo=0;
+		try {
+			pstmt=conn.prepareStatement(sql.getProperty("searchRoomNo"));
+			//SELECT ROOM_NO FROM ROOM WHERE ROOM_NAME = ?
+			pstmt.setString(1, roomNm);
+			rs=pstmt.executeQuery();
+			if(rs.next()) roomNo=rs.getInt(1);
+		}catch(SQLException e) {
+			e.printStackTrace();
+		}finally {
+			close(rs);
+			close(pstmt);
+		}
+		return roomNo;
+	}
+	
+	public int insertBooking(Connection conn, Booking b	) {
+	PreparedStatement pstmt=null;
+	int result=0;
+	String bookingState="결제완료";
+	try{
+		pstmt=conn.prepareStatement(sql.getProperty("insertBooking"));
+//INSERT INTO BOOKING VALUES(SEQ_BOOKING_NO.NEXTVAL,?,?,?,?,?,?,?,?,?,?,DEFAULT)
+		pstmt.setInt(1, b.getMemberNo());
+		pstmt.setInt(2, b.getRoomNo());
+		pstmt.setDate(3, b.getCheckIn());
+		pstmt.setDate(4, b.getCheckOut());
+		pstmt.setInt(5, b.getGuestAdult());
+		pstmt.setInt(6, b.getGuestChild());
+		pstmt.setInt(7, b.getGuestInfant());
+		pstmt.setInt(8, b.getBookingPrice());
+		pstmt.setString(9, b.getBookingComment());
+		pstmt.setString(10,bookingState);
+		result=pstmt.executeUpdate();
+		
+	}catch(SQLException e) {
+		e.printStackTrace();
+	}finally {
+		close(pstmt);
+	}return result;
 	}
 	
 //	private Notice getNotice(ResultSet rs) throws SQLException{
