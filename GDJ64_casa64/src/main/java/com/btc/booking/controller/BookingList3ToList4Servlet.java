@@ -8,21 +8,23 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import com.btc.booking.model.service.BookingService;
 import com.btc.booking.model.vo.Booking;
+import com.web.model.service.MemberService;
 
 /**
  * Servlet implementation class ReserveList1ToList2Servlet
  */
-@WebServlet("/booking/bookingList1ToList2.do")
-public class BookingList1ToList2Servlet extends HttpServlet {
+@WebServlet("/booking/bookingList3ToList4.do")
+public class BookingList3ToList4Servlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	/**
 	 * @see HttpServlet#HttpServlet()
 	 */
-	public BookingList1ToList2Servlet() {
+	public BookingList3ToList4Servlet() {
 
 		super();
 		// TODO Auto-generated constructor stub
@@ -34,40 +36,35 @@ public class BookingList1ToList2Servlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		BookingService service = new BookingService();
 
 		int memberNo = Integer.parseInt(request.getParameter("memberNo"));
-		String roomNm = request.getParameter("roomNm");
-		int roomNo = service.searchRoomNo(roomNm);// roomNm->roomNo
-		
+		int roomNo = Integer.parseInt(request.getParameter("roomNo"));
 		java.sql.Date checkIn = java.sql.Date.valueOf(request.getParameter("checkin"));
 		java.sql.Date checkOut = java.sql.Date.valueOf(request.getParameter("checkout"));
-		
-		
 		int guestAdult = Integer.parseInt(request.getParameter("guestAdult"));
 		int guestChild = Integer.parseInt(request.getParameter("guestChild"));
 		int guestInfant = Integer.parseInt(request.getParameter("guestInfant"));
 		int bookingPrice = Integer.parseInt(request.getParameter("bookingPrice"));
-
-
-		String roomPrice = request.getParameter("roomPrice");
-		String persePrice = request.getParameter("persePrice");
-		String optnPrice = request.getParameter("optnPrice");
-        ArrayList<String> price = new ArrayList<>();
-        price.add(roomPrice);
-        price.add(persePrice);
-        price.add(optnPrice);
+		String bookingComment = request.getParameter("bookingComment");
 		
 		Booking b = Booking.builder().memberNo(memberNo).roomNo(roomNo).checkIn(checkIn).checkOut(checkOut).guestAdult(guestAdult)
-				.guestChild(guestChild).guestInfant(guestInfant).bookingPrice(bookingPrice).build();
-		request.setAttribute("booking", b);
-		request.setAttribute("roomNm", roomNm);
-		request.setAttribute("roomNo", roomNo);
-		request.setAttribute("price", price);
+				.guestChild(guestChild).guestInfant(guestInfant).bookingPrice(bookingPrice).bookingComment(bookingComment).build();
+		HttpSession session=request.getSession();
+		session.setAttribute("booking",b);		
 
-
-		request.getRequestDispatcher("/views/booking/booking-list2.jsp").forward(request, response);
-
+		int result = new BookingService().insertBooking(b);
+		String msg="";
+		String loc="";
+		if(result>0) {
+			 msg="예약이 완료되었습니다.";
+			 loc="/views/booking/booking-list4.jsp";
+		}else{
+			 msg="예약이 실패하였습니다. \n 다시 시도헤주세요.";
+			 loc="/booking/booking-list1.do";
+		}
+		request.setAttribute("loc", loc);
+		request.setAttribute("msg", msg);
+		request.getRequestDispatcher("/views/common/msg.jsp").forward(request, response);
 
 	}
 

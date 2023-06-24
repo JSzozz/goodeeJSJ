@@ -1,14 +1,13 @@
 package com.btc.booking.model.service;
 
 import static com.btc.common.JDBCTemplate.close;
-import static com.btc.common.JDBCTemplate.commit;
 import static com.btc.common.JDBCTemplate.getConnection;
-import static com.btc.common.JDBCTemplate.rollback;
 
 import java.sql.Connection;
 import java.util.List;
 
 import com.btc.booking.model.dao.BookingDao;
+import com.btc.booking.model.vo.Booking;
 import com.btc.rooms.model.vo.Room;
 public class BookingService {
 	private BookingDao dao=new BookingDao();
@@ -20,6 +19,18 @@ public class BookingService {
 		return list;
 	}
 	
+	public int searchRoomNo(String roomNm) {
+		Connection conn=getConnection();
+		int roomNo=dao.searchRoomNo(conn, roomNm);
+		close(conn);
+		return roomNo;
+	}
+	public int insertBooking(Booking b) {
+		Connection conn=getConnection();
+		int result=dao.insertBooking(conn, b);
+		close(conn);
+		return result;
+	}
 	
 //	private NoticeDao dao=new NoticeDao();
 //	

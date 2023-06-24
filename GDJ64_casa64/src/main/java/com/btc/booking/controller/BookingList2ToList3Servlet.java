@@ -15,14 +15,14 @@ import com.btc.booking.model.vo.Booking;
 /**
  * Servlet implementation class ReserveList1ToList2Servlet
  */
-@WebServlet("/booking/bookingList1ToList2.do")
-public class BookingList1ToList2Servlet extends HttpServlet {
+@WebServlet("/booking/bookingList2ToList3.do")
+public class BookingList2ToList3Servlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	/**
 	 * @see HttpServlet#HttpServlet()
 	 */
-	public BookingList1ToList2Servlet() {
+	public BookingList2ToList3Servlet() {
 
 		super();
 		// TODO Auto-generated constructor stub
@@ -37,36 +37,20 @@ public class BookingList1ToList2Servlet extends HttpServlet {
 		BookingService service = new BookingService();
 
 		int memberNo = Integer.parseInt(request.getParameter("memberNo"));
-		String roomNm = request.getParameter("roomNm");
-		int roomNo = service.searchRoomNo(roomNm);// roomNm->roomNo
-		
+		int roomNo = Integer.parseInt(request.getParameter("roomNo"));
 		java.sql.Date checkIn = java.sql.Date.valueOf(request.getParameter("checkin"));
 		java.sql.Date checkOut = java.sql.Date.valueOf(request.getParameter("checkout"));
-		
-		
 		int guestAdult = Integer.parseInt(request.getParameter("guestAdult"));
 		int guestChild = Integer.parseInt(request.getParameter("guestChild"));
 		int guestInfant = Integer.parseInt(request.getParameter("guestInfant"));
 		int bookingPrice = Integer.parseInt(request.getParameter("bookingPrice"));
-
-
-		String roomPrice = request.getParameter("roomPrice");
-		String persePrice = request.getParameter("persePrice");
-		String optnPrice = request.getParameter("optnPrice");
-        ArrayList<String> price = new ArrayList<>();
-        price.add(roomPrice);
-        price.add(persePrice);
-        price.add(optnPrice);
+		String bookingComment = request.getParameter("bookingComment");
 		
 		Booking b = Booking.builder().memberNo(memberNo).roomNo(roomNo).checkIn(checkIn).checkOut(checkOut).guestAdult(guestAdult)
-				.guestChild(guestChild).guestInfant(guestInfant).bookingPrice(bookingPrice).build();
+				.guestChild(guestChild).guestInfant(guestInfant).bookingPrice(bookingPrice).bookingComment(bookingComment).build();
 		request.setAttribute("booking", b);
-		request.setAttribute("roomNm", roomNm);
-		request.setAttribute("roomNo", roomNo);
-		request.setAttribute("price", price);
 
-
-		request.getRequestDispatcher("/views/booking/booking-list2.jsp").forward(request, response);
+		request.getRequestDispatcher("/views/booking/booking-list3.jsp").forward(request, response);
 
 
 	}
