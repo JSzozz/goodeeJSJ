@@ -35,7 +35,7 @@
 					<b><%= reviews.getTitle() %></b>
 				</p>
 				<p class="writer">
-					<%= reviews.getNickName() %><span class="date-created"><%= reviews.getDateCreated() %></span>
+					<%= reviews.getNickName() %><span class="date-created ms-2"><%= reviews.getDateCreated() %></span>
 				</p>
 			</div>
 			<div class="count-inner col-2">

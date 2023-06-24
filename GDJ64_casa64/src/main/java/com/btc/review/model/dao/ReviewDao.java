@@ -10,6 +10,8 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.btc.mypage.model.dao.MyPageDao;
+import com.btc.mypage.model.vo.Booking;
 import com.btc.review.model.vo.Review;
 import com.btc.review.model.vo.ReviewImages;
 import com.btc.rooms.model.vo.Room;
@@ -267,6 +269,36 @@ public class ReviewDao {
 		}
 		return list;
 		
+	}
+	
+	public List<Booking> getBookingList(Connection conn, int memberNo) {
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		List<Booking> bkList = new ArrayList();
+
+		try {
+			String sql = "SELECT B.* , RM.ROOM_NAME FROM BOOKING B " +
+					"JOIN MEMBER M ON M.MEMBER_NO = B.MEMBER_NO " +
+					"JOIN ROOM RM ON RM.ROOM_NO = B.ROOM_NO " +
+					"LEFT JOIN REVIEW R ON R.MEMBER_NO = M.MEMBER_NO AND R.BOOKING_NO = B.BOOKING_NO " +
+					"WHERE B.MEMBER_NO = ? AND B.BOOKING_STATE = '이용완료' AND R.NO IS NULL"; // 실행할 기본 쿼리
+
+			pstmt = conn.prepareStatement(sql); // 실제 쿼리 들어가고
+			pstmt.setInt(1, memberNo);
+			rs = pstmt.executeQuery(); // 쿼리 실행
+
+			while (rs.next()) { // rs 다음 값이 있을 경우
+				Booking bookings = new MyPageDao().getBooking(rs);
+				bkList.add(bookings);
+			}
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(rs);
+			close(pstmt);
+		}
+		return bkList;
 	}
 		
 	public int uploadImages(Connection conn, List<ReviewImages> imgList, Review reviews) {

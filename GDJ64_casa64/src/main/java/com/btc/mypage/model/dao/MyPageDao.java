@@ -40,13 +40,14 @@ public class MyPageDao {
 		return list;
 	}
 	
-	private Booking getBooking(ResultSet rs) throws SQLException {
+	public Booking getBooking(ResultSet rs) throws SQLException {
 		return Booking.builder()
 				.bookingNo(rs.getInt("BOOKING_NO"))
 				.memberNo(rs.getInt("MEMBER_NO"))
+				.roomNo(rs.getInt("ROOM_NO"))
 				.checkIn(rs.getDate("CHECK_IN"))
 				.checkOut(rs.getDate("CHECK_OUT"))
-				.guestAdult(rs.getInt("GUEST_ADUIT"))
+				.guestAdult(rs.getInt("GUEST_ADULT"))
 				.guestChild(rs.getInt("GUEST_CHILD"))
 				.guestInfant(rs.getInt("GUEST_INFANT"))
 				.bookingPrice(rs.getInt("BOOKING_PRICE"))
