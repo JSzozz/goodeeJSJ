@@ -1,6 +1,7 @@
-package com.btc.booking.model.vo;
+package com.btc.mypage.model.vo;
 
 import java.sql.Date;
+
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -22,8 +23,8 @@ public class Booking {
    private int guestChild;
    private int guestInfant;
    private int bookingPrice;
-   private String bookingComment;
-   private String bookingState;
-   private Date paymentDate;
+   private String paid;
+   private String roomName;
+   
    
 }

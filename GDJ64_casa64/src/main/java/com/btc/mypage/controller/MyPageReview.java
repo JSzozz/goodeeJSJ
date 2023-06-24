@@ -59,7 +59,7 @@ public class MyPageReview extends HttpServlet {
 		HttpSession session = request.getSession();
 		Member loginMember = (Member) session.getAttribute("loginMember");
 		if (loginMember == null) { // 로그인 해야함
-			String msg = "로그인이 필요합니다";
+			String msg = "로그인이 필요합니다.";
 			String loc = "/views/LOGIN/login.jsp";
 			request.setAttribute("msg", msg);
 			request.setAttribute("loc", loc);

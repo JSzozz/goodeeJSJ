@@ -1,11 +1,19 @@
 package com.btc.mypage.controller;
 
 import java.io.IOException;
+import java.util.List;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+
+
+import com.btc.member.model.dto.Member;
+import com.btc.mypage.model.service.MyPageService;
+import com.btc.mypage.model.vo.Booking;
 
 /**
  * Servlet implementation class MyPageReservation
@@ -26,7 +34,12 @@ public class MyPageReservation extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		request.getRequestDispatcher("/views/myPage/myPageReservation.jsp").forward(request, response);
+		int memberNo = checkLogin(request, response);
+		if (memberNo > 0) {
+			List<Booking> list = new MyPageService().selectBookingMyPage(memberNo);
+			request.setAttribute("MyPageBookingList", list);
+			request.getRequestDispatcher("/views/myPage/myPageReservation.jsp").forward(request, response);
+		}
 	}
 
 	/**
@@ -35,6 +48,21 @@ public class MyPageReservation extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		doGet(request, response);
+	}
+	
+	public int checkLogin(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+		HttpSession session = request.getSession();
+		Member loginMember = (Member) session.getAttribute("loginMember");
+		if (loginMember == null) { // 로그인 해야함
+			String msg = "로그인이 필요합니다.";
+			String loc = "/views/LOGIN/login.jsp";
+			request.setAttribute("msg", msg);
+			request.setAttribute("loc", loc);
+			request.getRequestDispatcher("/views/common/msg.jsp").forward(request, response);
+			return 0;
+		}
+		return loginMember.getMemberNo();
 	}
 
 }
