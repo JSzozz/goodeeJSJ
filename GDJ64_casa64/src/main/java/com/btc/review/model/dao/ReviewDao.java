@@ -11,6 +11,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.btc.review.model.vo.Review;
+import com.btc.review.model.vo.ReviewImages;
 import com.btc.rooms.model.vo.Room;
 
 public class ReviewDao {
@@ -237,7 +238,55 @@ public class ReviewDao {
 		return list;
 	}
 		
-	
+	public int uploadImages(Connection conn, List<ReviewImages> imgList, Review reviews) {
+		PreparedStatement pstmt = null;
+		int result = 0; // 실패를 기본 값으로
+		int reviewNo = 0;
+		int sum = 0;
+		// 1. reivew_images 에 insert
+		// 2. list 의 개수만큼 insert 가 되어야 함 : 반복문을 통해 인서트
+		// 3. insert 전에 review_no 를 먼저 구해야함. (완료)
+		try {
+			conn = getConnection(); // DB 접속
+			// review no 를 가져오는 쿼리 작성 및 실행.
+			String sql = "SELECT R.NO FROM REVIEW R WHERE R.BOOKING_NO = ? AND R.MEMBER_NO = ? ";
+			
+			// 반복문으로 insert 쿼리 작성 및 실행
+			// 3. 쿼리 작성
+			
+			pstmt = conn.prepareStatement(sql); // 실행 준비
+//	         4. 쿼리에 파라미터 셋팅
+
+			pstmt.setInt(1, reviews.getBookingNo());
+			pstmt.setInt(2, reviews.getMemberNo());
+			ResultSet rs = pstmt.executeQuery(); // 쿼리 실행
+			while(rs.next()) {
+				reviewNo = rs.getInt("NO");
+			}
+			if(reviewNo > 0) {
+				sql = "INSERT INTO REVIEW_IMAGES VALUES(REVIEW_IMAGES_SEQ.NEXTVAL, ?, ?, ?, SYSTIMESTAMP)";
+				for(ReviewImages ri : imgList) {
+					pstmt = conn.prepareStatement(sql); // 실행 준비
+					pstmt.setInt(1, reviewNo);
+					pstmt.setString(2, ri.getFileName());
+					pstmt.setString(3, ri.getSaveFileName());
+					result = pstmt.executeUpdate();
+					sum += result;
+				}
+			}
+			if (sum > 0) {
+				conn.commit();
+			} else {
+				conn.rollback();
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			close(pstmt);
+		}
+		return sum;
+	}
 
 	private Review getReviews(ResultSet rs) throws SQLException {
 //      Reviews reviews = new Reviews();

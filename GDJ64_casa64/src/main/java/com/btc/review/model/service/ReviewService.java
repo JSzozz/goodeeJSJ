@@ -8,6 +8,7 @@ import java.util.List;
 
 import com.btc.review.model.dao.ReviewDao;
 import com.btc.review.model.vo.Review;
+import com.btc.review.model.vo.ReviewImages;
 import com.btc.rooms.model.vo.Room;
 
 public class ReviewService {
@@ -41,6 +42,14 @@ public class ReviewService {
 		close(conn);
 		return result;
 	}
+	
+	public int uploadImages(List<ReviewImages> imgList, Review reviews) {
+		Connection conn = getConnection();
+		int result = dao.uploadImages(conn, imgList, reviews);
+		close(conn);
+		return 0;
+	}
+	
 	
 	// 마이페이지용 리뷰 리스트 ( 파라미터는 memberNo)
 	public List<Review> selectReviewsMypage(int memberNo){
