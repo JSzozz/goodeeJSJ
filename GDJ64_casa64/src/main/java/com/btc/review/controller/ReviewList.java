@@ -43,9 +43,9 @@ public class ReviewList extends HttpServlet {
 
 		
 		List<Review> list = new ReviewService().selectReviews(type, keyword, roomNo); // Review 클래스에 있는 값만 담길 list를 생성
-//		List<Room> rooms = new RoomService().selectAllRoom();
+		List<Room> rooms = new ReviewService().selectAllRoom();
 		request.setAttribute("ReviewList", list);
-//		request.setAttribute("selectRooms", rooms);
+		request.setAttribute("selectRooms", rooms);
 		
 		request.setAttribute("categoryName", "COMMUNITY");
 		request.setAttribute("communityTitle", "이용후기");

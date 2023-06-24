@@ -10,7 +10,6 @@
 %> 
 <!-- 카테고리별 이미지 -->
 <%@ include file="/views/common/categoryImage.jsp"%>
-
 <!-- 컨텐츠/내용 시작 -->
 <div class="container">
 	<%@ include file="/views/board/board_tab.jsp"%>
@@ -18,7 +17,7 @@
 	<!--게시글 작성하기-->
 	<div class="board">
 		<div id="content" class="no-bg">
-			<form action="<%=request.getContextPath()%>/review/reviewWrite" method="post" id="board-form">
+			<form action="<%=request.getContextPath()%>/review/reviewWrite" method="post" id="board-form" enctype="multipart/form-data">
 			<% 
 				int no = (request.getParameter("no") != null) ? Integer.parseInt(request.getParameter("no")) : 0;
 				String type = (no > 0) ? "update" : "write";
@@ -46,6 +45,7 @@
 									<th class="text-center align-middle"><span>객실선택</span></th>
 									<td>
 										<input type="hidden" id="roomNo" name="roomNo" value="<%=(reviews != null) ? reviews.getRoomNo() : "" %>">
+										<input type="hidden" id="bookingNo" name="bookingNo" value="<%=(reviews != null) ? reviews.getBookingNo() : "" %>">
 										<%
 											if(type == "write"){
 										%>
@@ -81,7 +81,7 @@
 									<td>
 										<div class="td-con">
 											<div class="input-area">
-												<input type="text" class="form-control w-50" name="title" value='<%=(reviews != null) ? reviews.getTitle() : "" %>'>
+												<input id="title" type="text" class="form-control w-50" name="title" value='<%=(reviews != null) ? reviews.getTitle() : "" %>'>
 											</div>
 										</div>
 									</td>
@@ -104,8 +104,12 @@
 									<td>
 										<div class="td-con">
 											<div class="fileBox addfile">
-												<span class="inputOuter bTp"> <input type="file"
-													id="uploadBtn1" class="uploadBtn">
+												<span class="inputOuter bTp"> 
+													<input type="file" name="uploadFiles1" id="uploadFiles1" class="uploadBtn" accept="image/*"  >
+													<input type="file" name="uploadFiles2" id="uploadFiles2" class="uploadBtn" accept="image/*"  >
+													<input type="file" name="uploadFiles3" id="uploadFiles3" class="uploadBtn" accept="image/*"  >
+													<input type="file" name="uploadFiles4" id="uploadFiles4" class="uploadBtn" accept="image/*"  >
+													<input type="file" name="uploadFiles5" id="uploadFiles5" class="uploadBtn" accept="image/*"  >
 												</span>
 											</div>
 										</div>
@@ -116,11 +120,8 @@
 					</div>
 					<div class="d-flex justify-content-center mt-4">
 						<!--  만약 생성글이라면 -->
-						<button type="button" class="btn btn-dark btn-sm ms-1">뒤로</button>
+						<a href="javascript:history.back()" class="btn btn-dark btn-sm ms-1">뒤로</a>
 						<button type="submit" class="btn btn-dark btn-sm ms-1">저장</button>
-						<!-- 수정글일 경우 아래 버튼을 보여주면 됨 -->
-						<!-- <button class="btn btn-dark btn-sm ms-1">수정</button> -->
-						<!-- <button class="btn btn-dark btn-sm ms-1">삭제</button> -->
 					</div>
 				</div>
 			</div>
@@ -166,7 +167,8 @@
 									<small>2022-12-31</small>
 								</div>
 							</div>
-						</a> <a href="javascript:void(0)"
+						</a> 
+						<a href="javascript:void(0)"
 							class="list-group-item list-group-item-action"
 							aria-current="true">
 							<div class="d-flex w-100 justify-content-between">
@@ -188,51 +190,7 @@
 									<small>2022-12-31</small>
 								</div>
 							</div>
-						</a> <a href="javascript:void(0)"
-							class="list-group-item list-group-item-action"
-							aria-current="true">
-							<div class="d-flex w-100 justify-content-between">
-								<div class="flex-fill" style="">
-									<input type="radio" style="margin-top: 30px;"
-										name="checked_room" value="3">
-								</div>
-								<div class="flex-fill bd-highlight">
-									<img
-										src="<%=request.getContextPath()%>/publish/images/room.png"
-										width="70" id="thumbnail_img_3">
-								</div>
-								<div class="flex-fill bd-highlight">
-									<h6 class="mb-1">객실명</h6>
-									<small id="room_name_3">CASA 3호</small>
-								</div>
-								<div class="flex-fill bd-highlight">
-									<h6 class="mb-1">이용기간</h6>
-									<small>2022-12-31</small>
-								</div>
-							</div>
-						</a> <a href="javascript:void(0)"
-							class="list-group-item list-group-item-action"
-							aria-current="true">
-							<div class="d-flex w-100 justify-content-between ">
-								<div class="flex-fill" style="">
-									<input type="radio" style="margin-top: 30px;"
-										name="checked_room" value="4">
-								</div>
-								<div class="flex-fill bd-highlight">
-									<img
-										src="<%=request.getContextPath()%>/publish/images/room.png"
-										width="70" id="thumbnail_img_4">
-								</div>
-								<div class="flex-fill bd-highlight">
-									<h6 class="mb-1">객실명</h6>
-									<small id="room_name_4">CASA 4호</small>
-								</div>
-								<div class="flex-fill bd-highlight">
-									<h6 class="mb-1">이용기간</h6>
-									<small>2022-12-31</small>
-								</div>
-							</div>
-						</a>
+						</a> 
 					</div>
 				</div>
 			</div>
@@ -246,11 +204,10 @@
 </div>
 
 <script>
-
 	$('.btn-room-checked').on('click', function(e) {
 		const $checked = $('input[name="checked_room"]:checked');
 		if ($checked.length < 1) {
-			alert('객실을 선택해주세요');
+			alert('객실을 선택해 주세요!'); // 모달에서 선택했을 때
 			return false;
 		}
 		const id = $checked.val();
@@ -281,11 +238,29 @@
 	// form 전송 시 textarea 에 에디터에 쓴 내용을 업데이트해줌
 	$("#board-form").on('submit',function(e){
 		oEditors.getById["contents"].exec("UPDATE_CONTENTS_FIELD", []);
+		if ($("#title").val().length < 1) {
+			alert('제목을 입력해 주세요!');
+			$('#title').focus();
+			return false;
+		} 
+		var contents = $("#contents").val();
+
+        if( contents.length < 1 || contents == ""  || contents == null || contents == '&nbsp;' || contents == '<p>&nbsp;</p>')  {
+        	alert('내용을 입력해 주세요!');
+            oEditors.getById["contents"].exec("FOCUS"); //포커싱
+            return false;
+        }
+        if($('#roomNo').val() == null || $('#roomNo').val() == undefined || $('#roomNo').val() == "" || $('#roomNo').val().length < 1 ){
+        	alert('객실을 선택해 주세요!'); // 작성하기를 클릭했을 때
+			return false;
+        }
 	});
 		
 	$(document).ready(function() {
 		smartEditor();
-	})
+	});
+	
+
 </script>
 
 <!-- 내용 종료 -->

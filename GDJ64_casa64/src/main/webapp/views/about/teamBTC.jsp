@@ -2,7 +2,7 @@
 	pageEncoding="UTF-8"%>
 <%@ include file="/views/common/header.jsp"%>
 <!-- 카테고리별 이미지 -->
-<%@ include file="/views/common/about_categoryImage.jsp"%>
+<%@ include file="/views/common/categoryImage.jsp"%>
 <link rel="stylesheet"
 	href="<%=request.getContextPath()%>/nara_publish/css/about.css" />
 
