@@ -27,7 +27,7 @@ public class ReviewDao {
 	 * @param roomNo
 	 * @return
 	 */
-	public List<Review> selectReviews(Connection conn, String type, String keyword, String roomNo) {
+	public List<Review> selectReviews(Connection conn, String type, String keyword, String roomNo, int page, int postsPerPage) {
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
 		List<Review> list = new ArrayList();
@@ -39,7 +39,7 @@ public class ReviewDao {
 				sql += " AND ROOM.ROOM_NO = " + roomNo;
 			}
 			// 검색 타입과 검색어가 있을 경우
-			if (type != null && keyword != "" && !type.equals("rooms")) {
+			if (type != null && type!= "" && keyword != null &&  keyword != "" && !type.equals("rooms")) {
 				if (type.equals("title")) { // 검색 타입이 제목일 경우
 					sql += " AND LOWER(REVIEW.TITLE) ";
 				} else if (type.equals("contents")) { // 검색 타입이 내용일 경우
@@ -50,8 +50,11 @@ public class ReviewDao {
 				sql += " LIKE '%" + keyword.toLowerCase() + "%' ";
 			}
 			sql += " ORDER BY REVIEW.NO DESC";
-
-			pstmt = conn.prepareStatement(sql); // 실제 쿼리 들어가고
+			String query = "SELECT * FROM (SELECT ROWNUM AS RNUM, R.* FROM ("+sql+") R ) WHERE RNUM BETWEEN ? AND ?";
+			
+			pstmt = conn.prepareStatement(query); // 실제 쿼리 들어가고
+			pstmt.setInt(1,(page-1)*postsPerPage+1);
+			pstmt.setInt(2, page*postsPerPage);
 			rs = pstmt.executeQuery(); // 쿼리 실행
 
 			while (rs.next()) { // rs 다음 값이 있을 경우
@@ -349,6 +352,47 @@ public class ReviewDao {
 			close(pstmt);
 		}
 		return sum;
+	}
+	
+	public int selectReviewsTotalCount(Connection conn, String type, String keyword, String roomNo) {
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		int result = 0;
+		String sql = getBasicQuery(); // 실행할 기본 쿼리
+		// 방 선택된 게 있을 경우
+		if (roomNo != null && roomNo != "" && type != null && type.equals("rooms")) {
+			sql += " AND ROOM.ROOM_NO = " + roomNo;
+		}
+		// 검색 타입과 검색어가 있을 경우
+		if (type != null && type!= "" && keyword != null &&  keyword != "" && !type.equals("rooms")) {
+			if (type.equals("title")) { // 검색 타입이 제목일 경우
+				sql += " AND LOWER(REVIEW.TITLE) ";
+			} else if (type.equals("contents")) { // 검색 타입이 내용일 경우
+				sql += " AND LOWER(REVIEW.CONTENTS) ";
+			} else if (type.equals("writer")) { // 검색 타입이 작성자 일 경우
+				sql += " AND LOWER(MEMBER.NICKNAME) ";
+			}
+			sql += " LIKE '%" + keyword.toLowerCase() + "%' ";
+		}
+		sql += " ORDER BY REVIEW.NO DESC";
+		String query = "SELECT COUNT(1) RN FROM ( "+ sql +" ) ";
+		try {
+			pstmt=conn.prepareStatement(query);
+			rs=pstmt.executeQuery();
+			if(rs.next()) result=rs.getInt("RN");
+		} catch(SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(rs);
+			close(pstmt);
+		}
+		return result;
+	}
+	
+	public int updateAdminReply(Connection conn, String adminReply, int reviewNo) {
+		 // UPDATE REVIEW SET ADMIN_REPLY = ?, IS_REPLY = 1, LAST_REPLY_DATE = SYSTIMESTAMP WHERE NO = ?
+		
+		return 0;
 	}
 
 	private Review getReviews(ResultSet rs) throws SQLException {

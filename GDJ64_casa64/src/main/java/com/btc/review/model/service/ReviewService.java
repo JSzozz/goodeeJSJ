@@ -15,11 +15,17 @@ import com.btc.rooms.model.vo.Room;
 public class ReviewService {
 	private  ReviewDao dao = new ReviewDao();
 	
-	public List<Review> selectReviews(String type, String keyword, String roomNo){
+	public List<Review> selectReviews(String type, String keyword, String roomNo, int page, int postsPerPage){
 		Connection conn = getConnection(); // db 접속 시작
-		List<Review> list = dao.selectReviews(conn, type, keyword, roomNo); // conn 생성해서 dao로 전달하는 역할
+		List<Review> list = dao.selectReviews(conn, type, keyword, roomNo, page, postsPerPage); // conn 생성해서 dao로 전달하는 역할
 		close(conn); // db 접속 종료
 		return list;
+	}
+	public int selectReviewsTotalCount(String type, String keyword, String roomNo){
+		Connection conn = getConnection(); // db 접속 시작
+		int totalCount = dao.selectReviewsTotalCount(conn, type, keyword, roomNo); // conn 생성해서 dao로 전달하는 역할
+		close(conn); // db 접속 종료
+		return totalCount;
 	}
 	
 	public Review getReviewView(int reviewNo){
@@ -67,6 +73,13 @@ public class ReviewService {
 	}
 	
 	
+	public int updateAdminReply(String adminReply, int reviewNo) {
+		Connection conn = getConnection();
+		int result = dao.updateAdminReply(conn, adminReply, reviewNo);
+		close(conn);
+		return result;
+	}
+	
 	// 마이페이지용 리뷰 리스트 ( 파라미터는 memberNo)
 	public List<Review> selectReviewsMypage(int memberNo){
 		Connection conn = getConnection(); // db 접속 시작
@@ -81,5 +94,7 @@ public class ReviewService {
 		close(conn); // db 접속 종료
 		return list;
 	}
+	
+	
 
 }
