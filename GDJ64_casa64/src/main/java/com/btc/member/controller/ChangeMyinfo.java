@@ -8,19 +8,20 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import com.btc.member.model.dto.Member;
 import com.btc.member.model.service.MemberService;
 
 /**
- * Servlet implementation class EnrollMemberEndServlet
+ * Servlet implementation class ChangeMyinfo
  */
-@WebServlet("/member/enrollMailMember.do")
-public class EnrollMemberSendMailServlet extends HttpServlet {
+@WebServlet("/member/changemyinfo.do")
+public class ChangeMyinfo extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public EnrollMemberSendMailServlet() {
+    public ChangeMyinfo() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -29,26 +30,27 @@ public class EnrollMemberSendMailServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		HttpSession session=request.getSession();
-		session.setAttribute("userName",request.getParameter("userName"));
+		String nickName=request.getParameter("nick");
+		String phone=request.getParameter("phone");
+		String name=request.getParameter("name");
 		String email=request.getParameter("email");
-		session.setAttribute("email",email);
-		session.setAttribute("nickName",request.getParameter("nickName"));
-		session.setAttribute("phone",request.getParameter("phone"));
-		session.setAttribute("password",request.getParameter("password"));
-		VerifyEmail mail=new VerifyEmail();
-		String code=mail.sendMail(email);
+		Member updateMember=new MemberService().updateMember(nickName,phone,name,email);
 		
-		session.setAttribute("code", code);
-		if(code!=null) {
-				request.getRequestDispatcher("/views/LOGIN/signup03-success.jsp").forward(request, response);
+		String msg="",loc="";
+		if(updateMember!=null) {
+			msg="회원정보를 변경하였습니다.";
+			loc="/views/myPage/myPage.jsp";
+			request.setAttribute("msg", msg);
+			request.setAttribute("loc", loc);
+			request.getSession().setAttribute("loginMember", updateMember);
+			
 		}else {
-			String msg="유효하지 않은 이메일입니다";
-			String loc="/views/LOGIN/signup02-input.jsp";
-			request.getAttribute(msg);
-			request.getAttribute(loc);
-			request.getRequestDispatcher("/views/common/msg.jsp").forward(request, response);
+			msg="정보변경에 실패하였습니다.";
+			loc="/views/myPage/myPage.jsp";
+			request.setAttribute("msg", msg);
+			request.setAttribute("loc", loc);
 		}
+		request.getRequestDispatcher("/views/common/msg.jsp").forward(request, response);
 	}
 
 	/**

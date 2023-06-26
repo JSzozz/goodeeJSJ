@@ -8,22 +8,22 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.swing.plaf.synth.SynthOptionPaneUI;
 
-import com.btc.admin.model.dao.AdminMemberDao;
 import com.btc.admin.model.service.AdminMemberService;
 import com.btc.member.model.dto.Member;
 
 /**
- * Servlet implementation class AdminMemberList
+ * Servlet implementation class SearchMember
  */
-@WebServlet("/admin/memberList.do")
-public class AdminMemberList extends HttpServlet {
+@WebServlet("/admin/searchMember.do")
+public class SearchMember extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public AdminMemberList() {
+    public SearchMember() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -32,7 +32,12 @@ public class AdminMemberList extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		String type=request.getParameter("member-search");
+		String search=request.getParameter("keyword");
+		request.setAttribute("type", type);
+		request.setAttribute("search", search);
 
+		
 		int cPage, numPerpage;
 		try {
 			cPage=Integer.parseInt(request.getParameter("cPage"));
@@ -46,7 +51,7 @@ public class AdminMemberList extends HttpServlet {
 		}
 		
 		StringBuffer pageBar=new StringBuffer();
-		int totolData=new AdminMemberService().memberCount();
+		int totolData=new AdminMemberService().searchMemberCount(type, search);
 		int totalPage=(int)Math.ceil((double)totolData/numPerpage);
 		int pageBarSize=5;
 		int pageStart=((cPage-1)/pageBarSize)*pageBarSize+1;
@@ -55,14 +60,14 @@ public class AdminMemberList extends HttpServlet {
 		if(pageStart==1) {
 			pageBar.append("<li class='page-item'><a class='page-link' aria-label='Previous'><span aria-hidden='true'>&laquo;</span></a></li>");
 		}else {
-			pageBar.append("<li class='page-item'><a class='page-link' aria-label='Previous' href='"+request.getRequestURI()+"?cPage="+(pageStart-1)+"&numPerpage="+numPerpage+"'><span aria-hidden='true'>&laquo;</span></a></li>");
+			pageBar.append("<li class='page-item'><a class='page-link' aria-label='Previous' href='"+request.getRequestURI()+"?cPage="+(pageStart-1)+"&numPerpage="+numPerpage+"&member-search="+type+"&keyword="+search+"'><span aria-hidden='true'>&laquo;</span></a></li>");
 		}
 		//현재
 		while(!(pageStart>pageEnd||pageStart>totalPage)) {
 			if(pageStart==cPage) {
 				pageBar.append("<li class='page-item active'><a class='page-link'>"+pageStart+"</a></li>");
 			}else {
-				pageBar.append("<li class='page-item'><a class='page-link' href='"+request.getRequestURI()+"?cPage="+pageStart+"&numPerpage="+numPerpage+"'>"+pageStart+"</a></li>");
+				pageBar.append("<li class='page-item'><a class='page-link' href='"+request.getRequestURI()+"?cPage="+pageStart+"&numPerpage="+numPerpage+"&member-search="+type+"&keyword="+search+"'>"+pageStart+"</a></li>");
 			}
 			pageStart++;
 		}
@@ -70,10 +75,10 @@ public class AdminMemberList extends HttpServlet {
 		if(pageStart>totalPage) {
 			pageBar.append("<li class='page-item'><a class='page-link' aria-label='Next'><span aria-hidden='true'>&raquo;</span></a></li>");
 		}else {
-			pageBar.append("<li class='page-item'><a class='page-link' aria-label='Next' href='"+request.getRequestURI()+"?cPage="+pageStart+"&numPerpage="+numPerpage+"'><span aria-hidden='true'>&raquo;</span></a></li>");
+			pageBar.append("<li class='page-item'><a class='page-link' aria-label='Next' href='"+request.getRequestURI()+"?cPage="+pageStart+"&numPerpage="+numPerpage+"&member-search="+type+"&keyword="+search+"'><span aria-hidden='true'>&raquo;</span></a></li>");
 		}
 		request.setAttribute("pageBar", pageBar);
-		List<Member> list=new AdminMemberService().memberList(cPage,numPerpage);
+		List<Member> list=new AdminMemberService().searchMemberList(cPage, numPerpage, type, search);
 		request.setAttribute("members", list);
 		request.getRequestDispatcher("/views/admin/list-member.jsp").forward(request, response);
 	}

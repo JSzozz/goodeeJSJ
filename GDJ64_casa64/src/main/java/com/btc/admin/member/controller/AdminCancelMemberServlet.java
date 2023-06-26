@@ -33,8 +33,8 @@ public class AdminCancelMemberServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
 		int memberNo=Integer.parseInt(request.getParameter("cancelM"));
+
 		Member m=service.selectMember(memberNo);
 		int insertResult=service.insertCancelMember(m.getMemberName(), m.getNickName(), m.getEmail(), m.getPhone());
 		PrintWriter out=response.getWriter();

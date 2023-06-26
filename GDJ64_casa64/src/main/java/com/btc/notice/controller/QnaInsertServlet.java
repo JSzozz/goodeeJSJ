@@ -10,19 +10,20 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.btc.notice.model.dto.Notice;
-import com.btc.notice.model.service.NoticeService;
+import com.btc.notice.model.dto.Qna;
+import com.btc.notice.model.service.QnaService;
 
 /**
  * Servlet implementation class CategoryInsertNameServlet
  */
-@WebServlet("/notice/insertNotice.do")
-public class NoticeInsertServlet extends HttpServlet {
+@WebServlet("/qna/insertQna.do")
+public class QnaInsertServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public NoticeInsertServlet() {
+    public QnaInsertServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -33,7 +34,7 @@ public class NoticeInsertServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		//주제, 이름을 받아 표시하기
 		request.setAttribute("categoryName", "COMMUNITY");
-		request.setAttribute("communityTitle", "공지사항");
+		request.setAttribute("communityTitle", "QnA");
 		
 		//게시물 & 페이징 처리
 		int cPage; //현재페이지
@@ -49,8 +50,11 @@ public class NoticeInsertServlet extends HttpServlet {
 			numPerpage=5; //없으면 5를 기준으로 설정
 		}
 		String pageBar="";
-		int totalData=new NoticeService().selectNoticeCount(); //전체 게시물 수
-		List<Notice> notices=new NoticeService().selectNotice(cPage,numPerpage); //게시물 가져오기
+		int totalData=new QnaService().selectQnaCount(); //전체 게시물 수
+		List<Qna> Qnas=new QnaService().selectQna(cPage,numPerpage); //게시물 가져오기
+		int memberNo = Qnas.get(0).getMemberNo(); //작성자 번호
+		String memberName = new QnaService().checkName(memberNo); //번호로 이름 가져오기
+		request.setAttribute("memberName", memberName);
 		int totalPage=(int)Math.ceil((double)totalData/numPerpage);
 		int pageBarSize=5; //페이지당 페이징처리할 넘버링 개수
 		int pageNo=((cPage-1)/pageBarSize)*pageBarSize+1; //페이징처리의 시작번호
@@ -84,10 +88,10 @@ public class NoticeInsertServlet extends HttpServlet {
 					+ " <span aria-hidden='true'>&raquo;</span></a></li>";
 		}
 		request.setAttribute("pageBar", pageBar);
-		request.setAttribute("notices",notices);
+		request.setAttribute("Qnas",Qnas);
 
 		
-		request.getRequestDispatcher("/views/board/notice.jsp").forward(request, response);
+		request.getRequestDispatcher("/views/board/qna.jsp").forward(request, response);
 		
 	}
 

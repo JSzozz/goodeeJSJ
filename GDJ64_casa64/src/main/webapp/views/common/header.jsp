@@ -63,7 +63,7 @@
                         </a>
                         <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                             <li><a href="<%=request.getContextPath()%>/notice/insertNotice.do" class="dropdown-item">공지사항</a></li>
-                            <li><a href="<%=request.getContextPath()%>/" class="dropdown-item">QnA</a></li>
+                            <li><a href="<%=request.getContextPath()%>/board/insertQna.do" class="dropdown-item">QnA</a></li>
                             <li><a href="<%=request.getContextPath()%>/review/reviewList" class="dropdown-item">이용후기</a></li>
                         </ul>
                     </li>
@@ -130,7 +130,7 @@
                     </li>            
                 <%}else{%>
                     <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="<%=request.getContextPath()%>/views/myPage/myPageInfo.jsp"">MYPAGE</a>
+                        <a class="nav-link active" aria-current="page" href="<%=request.getContextPath()%>/views/myPage/myPage.jsp"">MYPAGE</a>
                     </li>
                     <li class="nav-item logout">
                         <a class="nav-link logout" onclick="location.replace('<%=request.getContextPath() %>/logout.do')">LOGOUT</a>
