@@ -1,3 +1,4 @@
+<%@page import="com.btc.booking.model.vo.Booking"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!-- 상준css -->
@@ -5,6 +6,8 @@
 		<!-- 헤더 영역 시작 -->
 <%@ include file="/views/common/header.jsp"%>
 		<!-- 헤더 영역 종료 -->
+<%Booking booking=(Booking)request.getAttribute("booking");%>
+<%=booking %><br>
 
 		<!-- 카테고리별 이미지 -->
 		<div class="category-image">
@@ -16,12 +19,17 @@
 		
 	<!-- 컨텐츠/내용 시작 -->
 		<div class="reserve_step4 offset-md-1 col-md-10">
-			<form>
-				<!-- 추호 RESV_NO의 value값 js로 받아오기 필요 -->
-				<input type="hidden" name="RESV_NO" id="RESV_NO" value="#RESEV_NO">
-				<!-- 옵션값 넣어주기  -->
-				<input type="hidden" name="BEEF" id="BEEF" value="N">
-			</form>
+        	<form name="bookFrm" onsubmit="return chkSum();" action="<%=request.getContextPath()%>/booking/bookingList3ToList4.do" method="post">
+				<input type="hidden" name="memberNo" value="<%=loginMember.getMemberNo()%>">
+				<input type="hidden" name="roomNo" value="<%=booking.getRoomNo()%>">
+				<input type="hidden" name="checkin" value="<%=booking.getCheckIn()%>">
+				<input type="hidden" name="checkout" value="<%=booking.getCheckOut()%>">
+				<input type="hidden" name="guestAdult" value="<%=booking.getGuestAdult()%>">
+				<input type="hidden" name="guestChild" value="<%=booking.getGuestChild()%>">
+				<input type="hidden" name="guestInfant" value="<%=booking.getGuestInfant()%>">
+				<input type="hidden" name="bookingPrice" value="<%=booking.getBookingPrice()%>">
+				<input type="hidden" name="bookingComment" value="<%=booking.getBookingComment()%>">
+				<!-- <input type="hidden" name="BEEF" id="BEEF" value="N"> -->
 				<div class="container container-1" style="width: 100%; float: none;">
 					<h3>
 						<span>01</span>
@@ -31,19 +39,19 @@
 						<tbody>
 							<tr>
 								<th>입금금액</th>
-								<td id="totalPrice">#totalPrice</td>
+								<td id="totPirce">#totalPrice</td>
 							</tr>
 							<tr>
-								<th>예약자 성함</th>
-								<td>이전페이지값</td>
+								<th>예약자</th>
+								<td id="RESV_NM">#RESV_NM</td>
 							</tr>
 							<tr>
 								<th>연락처</th>
-								<td>이전페이지값</td>
+								<td id="RESV_PHONE">#RESV_PHONE</td>
 							</tr>
 							<tr>
-								<th>비상연락처</th>
-								<td>이전페이지값</td>
+								<th>요청사항</th>
+								<td id="RESV_COMMENT">#RESV_COMMENT</td>
 							</tr>
 						</tbody>
 					</table>
@@ -99,10 +107,10 @@
 						<p>정상적으로 예약신청이 접수되었습니다.</p>
 					</div> -->
 				</div>
-
-			<div class="buttons">
-				<button class="buttons-1 btn btn btn-outline-dark btn-lg" type="button" id="saveBtn">결제하기</button>
-			</div>
+				<div class="buttons">
+					<button class="buttons-1 btn btn btn-outline-dark btn-lg" id="saveBtn">결제하기</button>
+				</div>
+			</form>
 		</div>
 		<!-- <div class="customLayerPopup" style="display: block;">
 			<p>#point를 정확히 입력하세요</p>
@@ -116,6 +124,18 @@
 	</div>
 	
 </section>
-
+<script>
+	$("#totPirce").text("<%=booking.getBookingPrice()%>원");
+	$("#RESV_NM").text("<%=loginMember.getMemberName() %>");
+	$("#RESV_PHONE").text("<%=loginMember.getPhone() %>");
+	$("#RESV_COMMENT").text("<%=booking.getBookingComment() %>");
+	$(function chkSum() {
+		$(document).on("click","button[id=saveBtn]",e=>{
+		/* 예약정보 post 보내기 */
+			alert("결제API 처리 기능 추가 필요(현재는 버튼 클릭 시 DB에 바로 등록되는 상태임)");
+		});
+		return true;
+	});
+</script>
 		<!-- 푸터 영역 -->
 <%@ include file="/views/common/footer.jsp"%>

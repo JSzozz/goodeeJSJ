@@ -1,8 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ include file="/views/common/header.jsp"%>
-<!-- 카테고리별 이미지 -->
-<%@ include file="/views/common/mypage_categoryImage.jsp"%>
 <!-- 컨텐츠/내용 시작 -->
 <div class="container">
 	<div class="row mt-3 mx-1 border-primary border-bottom border-2"

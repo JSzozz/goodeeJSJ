@@ -5,6 +5,7 @@ import java.util.List;
 
 import static com.btc.common.JDBCTemplate.*;
 import com.btc.admin.model.dao.AdminMemberDao;
+import com.btc.member.model.dto.CancelMember;
 import com.btc.member.model.dto.Member;
 
 public class AdminMemberService {
@@ -44,6 +45,48 @@ public class AdminMemberService {
 		int result=dao.insertCancelMember(conn,name,nickname,email,phone);
 		close(conn);
 		return result;
+	}
+	
+	public int canceledMemberCount(){
+		Connection conn=getConnection();
+		int result=dao.canceledMemberCount(conn);
+		close(conn);
+		return result;
+	}
+	
+	public List<CancelMember> canceledMemberList(int cPage,int numPerpage){
+		Connection conn=getConnection();
+		List<CancelMember> list=dao.canceledMemberList(conn,cPage,numPerpage);
+		close(conn);
+		return list;
+	}
+	
+	public int searchMemberCount(String type, String searchMember) {
+		Connection conn=getConnection();
+		int result=dao.searchMemberCount(conn,type,searchMember);
+		close(conn);
+		return result;
+	}
+	
+	public List<Member> searchMemberList(int cPage, int numPerpage,String type, String searchMember){
+		Connection conn=getConnection();
+		List<Member> members=dao.searchMember(conn,cPage,numPerpage,type,searchMember);
+		close(conn);
+		return members;
+	}
+	
+	public int searchCMemberCount(String type, String searchMember) {
+		Connection conn=getConnection();
+		int result=dao.searchCMemberCount(conn,type,searchMember);
+		close(conn);
+		return result;
+	}
+	
+	public List<CancelMember> searchCMemberList(int cPage, int numPerpage,String type, String searchMember){
+		Connection conn=getConnection();
+		List<CancelMember> members=dao.searchCMember(conn,cPage,numPerpage,type,searchMember);
+		close(conn);
+		return members;
 	}
 }
 

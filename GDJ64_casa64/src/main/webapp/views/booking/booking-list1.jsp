@@ -18,24 +18,21 @@
       <%   }
       }%>    
 --%>
-      
-<%-- <script src="<%=request.getContextPath()%>/js/reserve.js"></script> --%>
 <%@ include file="/views/common/header.jsp"%>
-   
+<% if(loginMember!=null) {%>
+	<%=loginMember %>
+	<%=loginMember.getMemberName() %>   
+	<%=loginMember.getMemberNo() %>
+<%} %>   
       <!-- 카테고리별 이미지 -->
       <div class="category-image">
          <img src="<%=request.getContextPath() %>/images/booking/reservation.png" width="100%" height="200px">
          <div>RESERVATION</div>
       </div>
-      
    <br> 
-   
    <!-- <h3>COSA64 펜션 객실 예약</h3> -->
-   
    <br>
-   
 <section class="p-2 m-0 border-0 bd-example">
-
 <!-- 0. 필터 버튼  --> <!-- 아이콘 출처 : https://tabler-icons.io/  -->
    <span class="btn-group dropend offset-xl-8 offset-md-1 col-md-1">
       <button class="btn btn-outline-dark dropdown-toggle " type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
@@ -60,9 +57,7 @@
           <li><a class="btn btn btn-outline-secondary btn-sm">조회하기</a></li>
       </ul>
    </span>
-   
-     <br><br>
-
+	<br><br>
 <!-- 1. 객실 선택 -->
    <div class="reserve_step1 ">
       <table class="scriptCalendar table w-auto p-3">
@@ -102,18 +97,15 @@
       </table>
    </div>
    
-   
 <!-- 2. 객실 예약정보 입력-->
    <div class="reserve_step2 offset-md-2 col-md-8" id="reserveInput">
       <hr>
-
       <div class="header" id="tempHeader">
             <span>
                 선택한 객실
                 <em id="typeNm" >#typeNm</em>
             </span>
       </div>
-
         <div class="roundbox perio-wrapper" >
             <div class="header">
                 <h3>기간선택</h3>
@@ -145,7 +137,6 @@
                 </div> 
             </div>    
         </div>
-
         <div class="roundbox extra-person-wrapper">
             <div class="header">
                 <h3>인원</h3>
@@ -188,7 +179,6 @@
                 </ul>
             </div>
         </div>
-
         <div class="roundbox options-wrapper">
             <div class="header">
                 <h3>옵션선택</h3>
@@ -219,7 +209,6 @@
                 </ul>
             </div>
         </div>
-
         <div class="roundbox summary-wrapper">
             <div class="header">
                 <h3>금액</h3>
@@ -258,43 +247,34 @@
             </div>
         </div>
 		<hr>
-        </form>
+        <!-- </form> -->
         <div class="buttons">
         	<form name="bookFrm" onsubmit="return chkSum();" action="<%=request.getContextPath()%>/booking/bookingList1ToList2.do" method="post">
            		<p>체크아웃 날짜와 인원(성인, 영유아)을 선택하시면 다음 단계로 넘어가실 수 있습니다.</p>
            		<button class="button-1 btn btn btn-outline-dark btn-lg" id="goNextBtn" <%-- onclick="location.href='<%=request.getContextPath() %>/views/booking/booking-list2.jsp' " --%>>
 					다음단계
            		</button>
-				<input type="hidden" name="typeNm" value="">
-				<input type="hidden" name="checkinDt" value="">
-				<input type="hidden" name="checkoutDt" value="">
-				<input type="hidden" name="adultPers" value="">
-				<input type="hidden" name="kidsPers" value="">
-				<input type="hidden" name="infPers" value="">
-				<input type="hidden" name="totPrice" value="">
+				<input type="hidden" name="memberNo" value="">
+				<input type="hidden" name="roomNm" value="">
+				<input type="hidden" name="checkin" value="">
+				<input type="hidden" name="checkout" value="">
+				<input type="hidden" name="guestAdult" value="">
+				<input type="hidden" name="guestChild" value="">
+				<input type="hidden" name="guestInfant" value="">
+				<input type="hidden" name="bookingPrice" value="">
+				
+				<input type="hidden" name=roomPrice value="">
+				<input type="hidden" name="persePrice" value="">
+				<input type="hidden" name="optnPrice" value="">
 			</form>
 		</div>
     </div>
 </section>
 <script>
-
-     /* ["오션 테라스 101","오션 테라스 201","오션 테라스 301",
-        "썬셋 테라스 101","썬셋 테라스 201","썬셋 테라스 301",
-          "프리미엄스파 101","프리미엄스파 201"]; */
-      // 객실 목록(roomName)
-          
-   /* const roomNo=[]; */
-   const roomName=[];
-   const roomPrce=[];
-   /* const roomSize=[]; */
-   const roomCap=[];
-   const roomMaxCap=[];
-   const bookable=[];
-   /* const roomImage=[]; */
-   /* const dateCreated=[]; */
-   /* const dateModified=[]; */
-   const roomDescription=[];
-   
+   /* const roomNo=[]; *//* const roomSize=[]; */
+   /* const roomImage=[]; *//* const dateCreated=[]; *//* const dateModified=[]; */
+   const roomName=[];const roomPrce=[];const roomCap=[];
+   const roomMaxCap=[];const bookable=[];const roomDescription=[];
    <%for(Room room:rooms) {%>
          roomName.push("<%=room.getRoomName()%>");
          roomPrce.push("<%=room.getRoomPrice()%>");
@@ -303,20 +283,11 @@
          bookable.push("<%=room.getBookable()%>");
          roomDescription.push("<%=room.getRoomDescription()%>");
    <%}%>
-   
-      console.log(roomName);
-      console.log(roomPrce);
-      console.log(roomCap);
-      console.log(roomMaxCap);
-      console.log(bookable);
-      console.log(roomDescription); 
-   
 /*    $("#searchType").change(e=>{
        const type=$(e.target).val();
        $(e.target).parent().find("div").css("display","none");
        $("#search-"+type).css("display","inline-block");
    }); */
-   
    $('.keep-open').click(function(e) {
         if (/input|label/i.test(e.target.tagName)){
           var parent = $(e.target).parent();
@@ -328,462 +299,29 @@
         }
       });
 </script>
-<script>
-   document.addEventListener("DOMContentLoaded", function() {
-       buildCalendar();
-       document.getElementById("btnPrevCalendar").addEventListener("click", function(event) {
-           prevCalendar();
-       });
-       document.getElementById("nextNextCalendar").addEventListener("click", function(event) {
-           nextCalendar();
-       });
-   });
-   
-   var toDay = new Date(); // @param 전역 변수, 오늘 날짜 / 내 컴퓨터 로컬을 기준으로 toDay에 Date 객체를 넣어줌
-   var nowDate = new Date();  // @param 전역 변수, 실제 오늘날짜 고정값
-   
-   /**
-    * @brief   이전달 버튼 클릭시
-    */
-   function prevCalendar() {
-       this.toDay = new Date(toDay.getFullYear(), toDay.getMonth() - 1, toDay.getDate());
-       buildCalendar();    // @param 전월 캘린더 출력 요청
-   }
-   
-   /**
-    * @brief   다음달 버튼 클릭시
-    */
-   function nextCalendar() {
-       this.toDay = new Date(toDay.getFullYear(), toDay.getMonth() + 1, toDay.getDate());
-       buildCalendar();    // @param 명월 캘린더 출력 요청
-   }
-   
-   /**
-    * @brief   캘린더 오픈
-    * @details 날짜 값을 받아 캘린더 폼을 생성하고, 날짜값을 채워넣는다.
-    */
-   function buildCalendar() {
-   
-       let doMonth = new Date(toDay.getFullYear(), toDay.getMonth(), 1);
-       let lastDate = new Date(toDay.getFullYear(), toDay.getMonth() + 1, 0);
-   
-       let tbCalendar = document.querySelector(".scriptCalendar > tbody");
-   
-       document.getElementById("calYear").innerText = toDay.getFullYear();                       // @param YYYY월
-       document.getElementById("calMonth").innerText = autoLeftPad((toDay.getMonth() + 1), 2);   // @param MM월
-       
-   
-       // @details 이전 캘린더의 출력결과가 남아있다면, 이전 캘린더를 삭제한다.
-       while(tbCalendar.rows.length > 0) {
-           tbCalendar.deleteRow(tbCalendar.rows.length - 1);
-       }
-   
-       // @param 첫번째 개행
-       let row = tbCalendar.insertRow();
-   
-       // @param 날짜가 표기될 열의 증가값
-       let dom = 1;
-   
-       // @details 시작일의 요일값( doMonth.getDay() ) + 해당월의 전체일( lastDate.getDate())을  더해준 값에서
-       //               7로 나눈값을 올림( Math.ceil() )하고 다시 시작일의 요일값( doMonth.getDay() )을 빼준다.
-       let daysLength = (Math.ceil((doMonth.getDay() + lastDate.getDate()) / 7) * 7) - doMonth.getDay();
-   
-       // @param 달력 출력
-       // @details 시작값은 1일을 직접 지정하고 요일값( doMonth.getDay() )를 빼서 마이너스( - )로 for문을 시작한다.
-       for(let day = 1 - doMonth.getDay(); daysLength >= day; day++) {
-   
-           let column = row.insertCell();
-           
-           // @param 평일( 전월일과 익월일의 데이터 제외 )
-           if(Math.sign(day) == 1 && lastDate.getDate() >= day) {
-/* 일자 */   
-               // @param 평일 날짜 데이터 삽입 & <hr>
-               const divNode = document.createElement("div");
-               const aNode = document.createElement("a");
-               aNode.textContent = autoLeftPad(day, 2);
-               divNode.appendChild(aNode);
-               column.appendChild(divNode);
-              
-               const hrNode=document.createElement("hr");
-               column.append(hrNode);
-   
-               // @param 일요일인 경우
-               if(dom % 7 == 1) {
-                   column.style.color = "#FF4D4D";
-               }
-   
-               // @param 토요일인 경우
-               if(dom % 7 == 0) {
-                   column.style.color = "#4D4DFF";
-                   row = tbCalendar.insertRow();   // @param 토요일이 지나면 다시 가로 행을 한줄 추가한다.
-               }
-               
-               // 객실 리스트 입력
-               for(let i=0;i<roomName.length;i++){
-                   const divNode = document.createElement("div");
-                   divNode.textContent = roomName[i];
-                   column.appendChild(divNode);
-                   divNode.setAttribute("class",toDay.getFullYear()+"-"+autoLeftPad((toDay.getMonth() + 1), 2)+"-"+autoLeftPad(day, 2));
-                   divNode.setAttribute("bookable","available");
-                   divNode.setAttribute("price",roomPrce[i]);
-               }
-              
-                  column.style.margin="1px 1px 1px 1px";
-                    column.style.padding="1px 1px 1px 1px";
-           }
-   
-           // @param 평일 전월일과 익월일의 데이터 날짜변경
-           else {
-               let exceptDay = new Date(doMonth.getFullYear(), doMonth.getMonth(), day);
-               column.innerText = autoLeftPad(exceptDay.getDate(), 2);
-               column.style.color = "#A9A9A9";
-           }
-   
-           // @brief   전월, 명월 음영처리
-           // @details 현재년과 선택 년도가 같은경우
-           if(toDay.getFullYear() == nowDate.getFullYear()) {
-   
-               // @details 현재월과 선택월이 같은경우
-               if(toDay.getMonth() == nowDate.getMonth()) {
-   
-                   // @details 현재일보다 이전인 경우이면서 현재월에 포함되는 일인경우
-                   if(nowDate.getDate() > day && Math.sign(day) == 1) {
-                       column.style.backgroundColor = "#E5E5E5";
-                       
-                  /* (Tip).children : 자식노드를 배열 형태로 반환 */
-                  for(let i=1;i<column.children.length;i++){
-                     column.children[i].setAttribute("bookable","unavailable");
-                     column.children[i].style.color="gray";
-                     column.children[i].style.fontSize="0.95rem";
-
-                  }
-                   }   
-   
-                   // @details 현재일보다 이후이면서 현재월에 포함되는 일인경우
-                   else if(nowDate.getDate() < day && lastDate.getDate() >= day) {
-                       column.style.backgroundColor = "#FFFFFF";
-                       column.style.cursor = "pointer";
-                       column.onclick = function(){ calendarChoiceDay(this); }
-                   }
-   
-                   // @details 현재일인 경우
-                   else if(nowDate.getDate() == day) {
-                       column.style.backgroundColor = "#FFFFE6";
-                       column.style.cursor = "pointer";
-                       column.onclick = function(){ calendarChoiceDay(this); }
-                   }
-   
-               // @details 현재월보다 이전인경우
-               } else if(toDay.getMonth() < nowDate.getMonth()) {
-                   if(Math.sign(day) == 1 && day <= lastDate.getDate()) {
-                       column.style.backgroundColor = "#E5E5E5";
-                   }
-               }
-   
-               // @details 현재월보다 이후인경우
-               else {
-                   if(Math.sign(day) == 1 && day <= lastDate.getDate()) {
-                       column.style.backgroundColor = "#FFFFFF";
-                       column.style.cursor = "pointer";
-                       column.onclick = function(){ calendarChoiceDay(this); }
-                   }
-               }
-           }
-   
-           // @details 선택한년도가 현재년도보다 작은경우
-           else if(toDay.getFullYear() < nowDate.getFullYear()) {
-               if(Math.sign(day) == 1 && day <= lastDate.getDate()) {
-                   column.style.backgroundColor = "#E5E5E5";
-               }
-           }
-   
-           // @details 선택한년도가 현재년도보다 큰경우
-           else {
-               if(Math.sign(day) == 1 && day <= lastDate.getDate()) {
-                   column.style.backgroundColor = "#FFFFFF";
-                   column.style.cursor = "pointer";
-                   column.onclick = function(){ calendarChoiceDay(this); }
-               }
-           }
-           dom++;
-       }
-   }
-   
-   /**
-    * @brief   날짜 선택
-    * @details 사용자가 선택한 날짜에 체크표시를 남긴다.
-    */
-   function calendarChoiceDay(column) {
-   
-       // @param 기존 선택일이 존재하는 경우 기존 선택일의 표시형식을 초기화 한다.
-       if(document.getElementsByClassName("choiceDay")[0]) {
-           
-           // @see 금일인 경우
-           if(document.getElementById("calMonth").innerText == autoLeftPad((nowDate.getMonth() + 1), 2) && document.getElementsByClassName("choiceDay")[0].innerText == autoLeftPad(toDay.getDate(), 2)) {
-               document.getElementsByClassName("choiceDay")[0].style.backgroundColor = "#FFFFE6";  
-           }
-           
-           // @see 금일이 아닌 경우
-           else {
-               document.getElementsByClassName("choiceDay")[0].style.backgroundColor = "#FFFFFF";
-           }
-           document.getElementsByClassName("choiceDay")[0].classList.remove("choiceDay");
-       }
-   
-       // @param 선택일 체크 표시
-       column.style.backgroundColor = "#FF9999";
-   
-       // @param 선택일 클래스명 변경
-       column.classList.add("choiceDay");
-   }
-   
-   /**
-    * @brief   숫자 두자릿수( 00 ) 변경
-    * @details 자릿수가 한자리인 ( 1, 2, 3등 )의 값을 10, 11, 12등과 같은 두자리수 형식으로 맞추기위해 0을 붙인다.
-    * @param   num     앞에 0을 붙일 숫자 값
-    * @param   digit   글자의 자릿수를 지정 ( 2자릿수인 경우 00, 3자릿수인 경우 000 … )
-    */
-   function autoLeftPad(num, digit) {
-       if(String(num).length < digit) {
-           num = new Array(digit - String(num).length + 1).join("0") + num;
-       }
-       return num;
-   }
-</script>
-<script>
-/* 달력 객실 선택 효과 */
-   $(function() {
-       $(document).on("mouseover","div[bookable=available]",e=> {
-           $(e.target).css("font-weight","bold");
-        });
-       $(document).on("mouseout","div[bookable=available]",e=> {
-           $(e.target).css("font-weight","normal");
-        });   
-   });
-/* 달력에서 객실 클릭 */
-   let totalRoomPrice=0;
-   let totalBookPrice=0; 
-   $(function() {
-      let checkInDt="";//(String)
-      let roomPrice=0;
-       $(document).on("click","div[bookable=available]",e=> {
-             $(".reserve_step2").show();
-/*           console.dir($(e.target));
-             console.log($(e.target).text());
-             console.log($(e.target).parent().attr("class"));
-             console.log($(e.target).attr("class"));
-             console.dir($(e.target).attr("price")); */
-             $(e.target).css("text-decoration","underline");
-
-             $("#typeNm").html($(e.target).text());
-             $("#checkinDt").html($(e.target).attr("class"));
-             
-             checkInDt=$(e.target).attr("class");
-
-             roomPrice = Number($(e.target).attr("price"));// /* 1. 기간선택& 4. 금액 */과 이어짐
-             console.log(roomPrice);
-       });
-/* 이용가능한 객실 선택 _ 예약 정보 받기 */
-      $(function() {
-         $(document).on("change","select[class=availableDays]",e=>{
-/* 1. 기간선택& 4. 금액 */            
-            const stringToDate=new Date(checkInDt);//(Date)
-            /* console.log(checkOut+Number($("select[class=availableDays] option:selected").val())); */
-            stringToDate.setDate(stringToDate.getDate() + Number($("select[class=availableDays] option:selected").val()));
-
-            const year = stringToDate.getFullYear();
-            const month = ('0' + (stringToDate.getMonth() + 1)).slice(-2);
-            const day = ('0' + stringToDate.getDate()).slice(-2);
-              const checkoutDt = year+"-"+month+"-"+day;//(String)
-              // 어떤 날짜여도 'YYYY-DD-YY'형식으로 변환!
-              $("#checkoutDt").html(checkoutDt);
-/*          console.log($("select[class=availableDays] option:selected").val());
-            console.log($("select[class=availableDays] option:selected").attr('price'));
-            console.log($("select[class=availableDays] option:selected").attr('consprice'));
-            console.log($("select[class=availableDays] option:selected").text()); */ 
-              /* totalRoomPrice */
-              let period = Number($("select[class=availableDays] option:selected").val());
-              totalRoomPrice=period*roomPrice;
-              $("#roomPrice").html(totalRoomPrice);
-              if(typeof personPrce=="string"){
-             	 totalBookPrice=totalRoomPrice+OPTprice;
-                 $("#totPrice").html(totalBookPrice);
-              }else{
-                 totalBookPrice=totalRoomPrice+personPrce+OPTprice;
-               	 $("#totPrice").html(totalBookPrice);
-              };
-         });
-      });
-    });
-/* 2. 인원 */
-	let adultPers, kidsPers, infPers, totalPerson;
-   	let personPrce=0;
-   	$(function() {
-      	$(document).on("change","select[class=adultPers]",e=>{
-         	adultPers = Number($("select[class=adultPers] option:selected").attr('value'));
-         	pers=adultPers+kidsPers;
-         	switch(pers){
-            	case 0 : personPrce=0; color="gray"; break;
-            	case 1 : personPrce=0; color="gray"; break;
-            	case 2 : personPrce=0; color="gray"; break;
-	            case 3 : personPrce=0; color="gray"; break;
-	            case 4 : personPrce=0; color="gray"; break;
-	            case 5 : personPrce=20000; color="black"; break;
-	            case 6 : personPrce=40000; color="black"; break;
-	            case 7 : personPrce=60000; color="black"; break;
-	            case 8 : personPrce=80000; color="black"; break;
-	            default: personPrce="'성인', '아동/유아' 인원 수를 선택해주세요"; color="red"; break;
-         	};
-         	$("#persePrice").html(personPrce).css("color",color);
-         	if(typeof personPrce=="string"){
-        	 	totalBookPrice=totalRoomPrice+OPTprice;
-             	$("#totPrice").html(totalBookPrice);
-         	}else{
-           	 	totalBookPrice=totalRoomPrice+personPrce+OPTprice;
-          	 	$("#totPrice").html(totalBookPrice);
-         	};
-      	});
-   	});   
-   	$(function() {
-      	$(document).on("change","select[class=kidsPers]",e=>{
-         	kidsPers = Number($("select[class=kidsPers] option:selected").attr('value'));
-         	pers=adultPers+kidsPers;
-         	switch(pers){
-         		case 0 : personPrce=0; color="gray"; break;
-         		case 1 : personPrce=0; color="gray"; break;
-         		case 2 : personPrce=0; color="gray"; break;
-         		case 3 : personPrce=0; color="gray"; break;
-         		case 4 : personPrce=0; color="gray"; break;
-         		case 5 : personPrce=20000; color="black"; break;
-         		case 6 : personPrce=40000; color="black"; break;
-         		case 7 : personPrce=60000; color="black"; break;
-         		case 8 : personPrce=80000; color="black"; break;
-         		default: personPrce="'성인', '아동/유아' 인원 수를 선택해주세요"; color="red"; break;
-      		};
-      		$("#persePrice").html(personPrce).css("color",color);
-      		if(typeof personPrce=="string"){
-     	  		totalBookPrice=totalRoomPrice+OPTprice;
-          		$("#totPrice").html(totalBookPrice);
-      		}else{
-       	  		totalBookPrice=totalRoomPrice+personPrce+OPTprice;
-       	  		$("#totPrice").html(totalBookPrice);
-      		};
-      	});
-   	});   
-   	$(function() {
-      	$(document).on("change","select[class=infPers]",e=>{
-         	infPers = Number($("select[class=infPers] option:selected").attr('value'));
-         	pers=adultPers+kidsPers;
-         	console.log(pers);
-      	});
-   	});   
-/* 3. 옵션 */
-	let OPTprice=0;
-	$(function() {
-		$(document).on("change","input[id=OPTN1]",e=>{
-			if($(e.target).is(":checked")){
-				OPTprice += Number($("#OPTN1").attr("data-cnt"));
-				/* console.log(OPTprice); */
-				$("#optnPrice").html(OPTprice);
-		      	if(typeof personPrce=="string"){
-		     	  	totalBookPrice=totalRoomPrice+OPTprice;
-		          	$("#totPrice").html(totalBookPrice);
-		      	}else{
-		       	  	totalBookPrice=totalRoomPrice+personPrce+OPTprice;
-		       	  	$("#totPrice").html(totalBookPrice);
-		      	};
-			}else{
-				OPTprice -= Number($("#OPTN1").attr("data-cnt"));
-				/* console.log(OPTprice); */
-				$("#optnPrice").html(OPTprice);
-		      	if(typeof personPrce=="string"){
-		     	  	totalBookPrice=totalRoomPrice+OPTprice;
-		          	$("#totPrice").html(totalBookPrice);
-		      	}else{
-		       	  	totalBookPrice=totalRoomPrice+personPrce+OPTprice;
-		       	  	$("#totPrice").html(totalBookPrice);
-		      	};
-			};
-		});
-	});		
-	$(function() {
-		$(document).on("change","input[id=OPTN2]",e=>{
-			if($(e.target).is(":checked")){
-				OPTprice += Number($("#OPTN2").attr("data-cnt"));
-				$("#optnPrice").html(OPTprice);
-		      	if(typeof personPrce=="string"){
-		     	  	totalBookPrice=totalRoomPrice+OPTprice;
-		          	$("#totPrice").html(totalBookPrice);
-		      	}else{
-		       	  	totalBookPrice=totalRoomPrice+personPrce+OPTprice;
-		       	  	$("#totPrice").html(totalBookPrice);
-		      	};
-			}else{
-				OPTprice -= Number($("#OPTN2").attr("data-cnt"));
-				$("#optnPrice").html(OPTprice);
-		      	if(typeof personPrce=="string"){
-		     	  	totalBookPrice=totalRoomPrice+OPTprice;
-		          	$("#totPrice").html(totalBookPrice);
-		      	}else{
-		       	  	totalBookPrice=totalRoomPrice+personPrce+OPTprice;
-		       	  	$("#totPrice").html(totalBookPrice);
-		      	};
-			};
-		});
-	});		
-	$(function() {
-		$(document).on("change","input[id=OPTN3]",e=>{
-			if($(e.target).is(":checked")){
-				OPTprice += Number($("#OPTN3").attr("data-cnt"));
-				$("#optnPrice").html(OPTprice);
-		      	if(typeof personPrce=="string"){
-		     	  	totalBookPrice=totalRoomPrice+OPTprice;
-		          	$("#totPrice").html(totalBookPrice);
-		      	}else{
-		       	  	totalBookPrice=totalRoomPrice+personPrce+OPTprice;
-		       	  	$("#totPrice").html(totalBookPrice);
-		      	};
-			}else{
-				OPTprice -= Number($("#OPTN3").attr("data-cnt"));
-				$("#optnPrice").html(OPTprice);
-		      	if(typeof personPrce=="string"){
-		     	  	totalBookPrice=totalRoomPrice+OPTprice;
-		          	$("#totPrice").html(totalBookPrice);
-		      	}else{
-		       	  	totalBookPrice=totalRoomPrice+personPrce+OPTprice;
-		       	  	$("#totPrice").html(totalBookPrice);
-		      	};
-			};
-		});
-	});		
-</script>
+<script src="<%=request.getContextPath()%>/js/sj/list1-claendar.js"></script>
+<script src="<%=request.getContextPath()%>/js/sj/list1-clickevent.js"></script>
 <script>
 	$(function chkSum() {
 /* 		const valCk1 = $("select[class=availableDays] option:selected").val());//<option value>머무실 기간 선택</option>
-		const valCk2 = $("select[class=adultPers] option:selected").attr('value'));//<option value=".">선택</option>
-		const valCk3 = $("select[class=kidsPers] option:selected").attr('value'))//<option value=".">선택</option>
-		console.log(typeof valCk2);
-		console.log(typeof valCk3);
-		if(valCk2==".")return false;
-		if(valCk3==".")return false; */
+ */
 		$(document).on("click","button[id=goNextBtn]",e=>{
 		/* 예약정보 post 보내기 */
-		$('input[name=typeNm]').attr('value',$("#typeNm").text());
-		$('input[name=checkinDt]').attr('value',$("#checkinDt").text());
-		$('input[name=checkoutDt]').attr('value',$("#checkoutDt").text());
-		$('input[name=adultPers]').attr('value',Number($("select[class=adultPers] option:selected").attr('value')));
-		$('input[name=kidsPers]').attr('value',Number($("select[class=kidsPers] option:selected").attr('value')));
-		$('input[name=infPers]').attr('value',Number($("select[class=infPers] option:selected").attr('value')));
-		$('input[name=totPrice]').attr('value',Number($("#totPrice").text()));
-	/*  	console.log($("#typeNm").val());
-		console.log($("#typeNm").val());
-		console.log($("#typeNm").val()); */
+		$('input[name=memberNo]').attr('value',"<%=loginMember.getMemberNo()%>");
+		$('input[name=roomNm]').attr('value',$("#typeNm").text());
+		$('input[name=checkin]').attr('value',$("#checkinDt").text());
+		$('input[name=checkout]').attr('value',$("#checkoutDt").text());
+		$('input[name=guestAdult]').attr('value',Number($("select[class=adultPers] option:selected").attr('value')));
+		$('input[name=guestChild]').attr('value',Number($("select[class=kidsPers] option:selected").attr('value')));
+		$('input[name=guestInfant]').attr('value',Number($("select[class=infPers] option:selected").attr('value')));
+		$('input[name=bookingPrice]').attr('value',Number($("#totPrice").text()));
 		console.log($("#totPrice").text());
+		$('input[name=roomPrice]').attr('value',$("#roomPrice").text());
+		$('input[name=persePrice]').attr('value',$("#persePrice").text());
+		$('input[name=optnPrice]').attr('value',$("#optnPrice").text());
 		});
 		return true;
 	});	
-
-	
 </script>
 
 <!-- 결제기능 구현 -->

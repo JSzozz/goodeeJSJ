@@ -2,9 +2,10 @@
 	pageEncoding="UTF-8"%>
 <%@ include file="/views/common/header.jsp"%>
 <link rel="stylesheet" href="<%=request.getContextPath()%>/nara_publish/css/common.css" />
-<%@ page import="java.util.List,com.btc.review.model.vo.Review" %>
+<%@ page import="java.util.List,com.btc.review.model.vo.Review,com.btc.review.model.vo.ReviewImages" %>
 <%
 	Review reviews = (Review)request.getAttribute("review");
+	List<ReviewImages> imgList = (List)request.getAttribute("reviewImages");
 %> 
 
 <!-- 카테고리별 이미지 -->
@@ -46,8 +47,13 @@
 		<div class="row border-bottom">
 			<div class="col board-data">
 				<p class="text-data"><%= reviews.getContents() %></p>
-				<img class="img-data"
-					src="<%=request.getContextPath()%>/nara_publish/images/ex_img.png">
+				<!-- 파일이 있을 경우 보여줘야함 -->
+				<%
+					if(imgList != null && !imgList.isEmpty()){
+						for(ReviewImages ri : imgList){
+				%>
+					<img class="img-data" src="<%= ri.getSaveFileName()%>" style="max-width:300px">
+				<%}} %>
 			</div>
 		</div>
 

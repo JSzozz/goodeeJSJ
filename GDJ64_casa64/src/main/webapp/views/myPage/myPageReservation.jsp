@@ -30,6 +30,7 @@
 						<col width="15%">
 						<col width="25%">
 						<col width="15%">
+						<col width="15%">
 					</colgroup>
 					<thead>
 						<tr>
@@ -38,6 +39,7 @@
 							<th>예약상태</th>
 							<th>이용날짜</th>
 							<th>비고</th>
+							<th>결제일</th>
 						</tr>
 					</thead>
 					<tbody>
@@ -47,15 +49,19 @@
 						<tr>
 							<td><%=b.getBookingNo() %></td>
 							<td><%=b.getRoomName() %></td>
-							<td>결제완료</td>
+							<td><%=b.getBookingState() %></td>
 							<td><%=b.getCheckIn() %> ~ <%=b.getCheckOut() %></td>
-							<td><button type="button" class="btn btn-primary btn-sm">결제취소</button></td>
-<!-- 							결제완료일 경우 결제취소 / 결재대기일경우 결제하기
-							<td><button type="button" class="btn btn-primary btn-sm">결제하기</button></td> -->
+							<td>
+							 if(getBookingState.eqi("결제완료"))
+								<button type="button" class="btn btn-primary btn-sm">결제취소</button>
+							 else  if(getBookingState.eqi("이용완료"))
+							 <button type="button" class="btn btn-primary btn-sm">리뷰작성</button>
+							</td>
+							<td><%=b.getPaymentDate() %></td>
 						</tr>
 						<%} } else { %>
 						<tr>
-							<td colspan="5">예약내역이 없습니다.</td>
+							<td colspan="6">예약내역이 없습니다.</td>
 						</tr>
 						<% } %>
 					</tbody>

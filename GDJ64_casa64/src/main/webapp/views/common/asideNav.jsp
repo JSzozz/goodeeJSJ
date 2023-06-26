@@ -1,9 +1,11 @@
+<%@page import="com.btc.member.model.dto.Member"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%Member m=(Member)session.getAttribute("loginMember"); %>
 <div class="card">
 	<div class="card-body">
 		<p class="card-title align-middle mb-0">
-			<b>나라라라</b> 님의<br> MyPage입니다 :)
+			<b><%=m.getMemberName() %></b> 님의<br> MyPage입니다 :)
 		</p>
 	</div>
 </div>
