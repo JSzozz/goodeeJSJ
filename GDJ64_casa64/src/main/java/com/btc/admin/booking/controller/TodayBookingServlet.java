@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.lang.reflect.Type;
 import java.sql.Date;
 import java.text.SimpleDateFormat;
+import java.time.LocalDate;
 import java.util.List;
 import java.util.Map;
 
@@ -21,11 +22,11 @@ import com.google.gson.JsonPrimitive;
 import com.google.gson.JsonSerializationContext;
 import com.google.gson.JsonSerializer;
 
-@WebServlet("/admin/booking/searchBooking.do")
-public class SearchBookingServlet extends HttpServlet {
+@WebServlet("/admin/booking/todayBooking.do")
+public class TodayBookingServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
-    public SearchBookingServlet() {
+    public TodayBookingServlet() {
         super();
     }
 
@@ -77,15 +78,12 @@ public class SearchBookingServlet extends HttpServlet {
 					+ "onclick=\"ajaxBooking('" + request.getRequestURI() + "','','',''," + startPage + ","+ numPerPage + ");\"><span aria-hidden='true'>&raquo;</span></a></li>");
 		}
 		
-		String state = request.getParameter("state");
-		String type = request.getParameter("type");
-		String value = request.getParameter("value");
-				
-		List<Booking> bookingList = AdminBookingService.getBookingService().searchBookingList(state, type, value, cPage, numPerPage);
+		request.setAttribute("pageBar", pageBar);
 		
-		System.out.println(bookingList);
+		List<Booking> bookingList = AdminBookingService.getBookingService().todayBookingList(cPage, numPerPage);
 		
-		Map<String, Object> responseData = Map.of("bookingList", bookingList);
+
+		Map<String,Object> responseData = Map.of("bookingList",bookingList,"pageBar",pageBar);
 		
 		JsonSerializer<Date> json = new JsonSerializer<Date>() {
 			

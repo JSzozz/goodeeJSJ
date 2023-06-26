@@ -21,11 +21,11 @@ import com.google.gson.JsonPrimitive;
 import com.google.gson.JsonSerializationContext;
 import com.google.gson.JsonSerializer;
 
-@WebServlet("/admin/booking/searchBooking.do")
-public class SearchBookingServlet extends HttpServlet {
+@WebServlet("/admin/booking/conditionBooking.do")
+public class ConditionBookingServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
-    public SearchBookingServlet() {
+    public ConditionBookingServlet() {
         super();
     }
 
@@ -78,12 +78,8 @@ public class SearchBookingServlet extends HttpServlet {
 		}
 		
 		String state = request.getParameter("state");
-		String type = request.getParameter("type");
-		String value = request.getParameter("value");
-				
-		List<Booking> bookingList = AdminBookingService.getBookingService().searchBookingList(state, type, value, cPage, numPerPage);
 		
-		System.out.println(bookingList);
+		List<Booking> bookingList = AdminBookingService.getBookingService().conditionBookingList(state, cPage, numPerPage);
 		
 		Map<String, Object> responseData = Map.of("bookingList", bookingList);
 		
@@ -101,6 +97,7 @@ public class SearchBookingServlet extends HttpServlet {
 		
 		response.setContentType("application/json;charset=utf-8");
 		gson.toJson(responseData, response.getWriter());
+		
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

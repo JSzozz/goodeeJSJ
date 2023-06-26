@@ -21,11 +21,11 @@ import com.google.gson.JsonPrimitive;
 import com.google.gson.JsonSerializationContext;
 import com.google.gson.JsonSerializer;
 
-@WebServlet("/admin/booking/searchBooking.do")
-public class SearchBookingServlet extends HttpServlet {
+@WebServlet("/admin/booking/oneWeekAndMonthBooking.do")
+public class OneWeekAndMonthBookingServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
-    public SearchBookingServlet() {
+    public OneWeekAndMonthBookingServlet() {
         super();
     }
 
@@ -77,15 +77,13 @@ public class SearchBookingServlet extends HttpServlet {
 					+ "onclick=\"ajaxBooking('" + request.getRequestURI() + "','','',''," + startPage + ","+ numPerPage + ");\"><span aria-hidden='true'>&raquo;</span></a></li>");
 		}
 		
-		String state = request.getParameter("state");
-		String type = request.getParameter("type");
-		String value = request.getParameter("value");
-				
-		List<Booking> bookingList = AdminBookingService.getBookingService().searchBookingList(state, type, value, cPage, numPerPage);
+		request.setAttribute("pageBar", pageBar);
 		
-		System.out.println(bookingList);
+		String searchDate = request.getParameter("value");
 		
-		Map<String, Object> responseData = Map.of("bookingList", bookingList);
+		List<Booking> bookingList = AdminBookingService.getBookingService().oneWeekAndMonthBookingList(searchDate, cPage, numPerPage);
+
+		Map<String,Object> responseData = Map.of("bookingList",bookingList,"pageBar",pageBar);
 		
 		JsonSerializer<Date> json = new JsonSerializer<Date>() {
 			
