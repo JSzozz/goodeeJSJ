@@ -105,13 +105,13 @@
 	</div>
 </div>
 <script>
+	/* 수정하기 버튼 클릭 시 댓글 작성 영역 보여주기 */
 	function showUpdateComment(){
 		$('.comment-write-area').show();
 		$('#adminReply').val($('.comment-data').text());
 		$('#adminReply').focus();
-		
 	}
-
+	/* 관리자 댓글 작성, 수정, 삭제 기능 (ajax) */
 	function addComment(isReply){
 		var msg = "댓글이 삭제 되었습니다.";
 		if(isReply > 0) {
@@ -157,7 +157,7 @@
 		    }
 		})
 	}
-	
+	/* 리뷰 삭제 */
 	function reviewDelete(reviewNo) {
 		if(confirm('삭제하시겠습니까?')){
 			$.ajax({

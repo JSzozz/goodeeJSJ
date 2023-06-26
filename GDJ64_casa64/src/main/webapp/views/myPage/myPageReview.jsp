@@ -44,10 +44,11 @@
 					<tbody>
 						<%
 						if(reviews != null && !reviews.isEmpty()) {
+							int count = reviews.size();
 							for (Review r : reviews) {
 						%>
 							<tr>
-								<td><%=r.getNo()%></td>
+								<td><%=count%></td>
 								<td><%=r.getRoomName()%></td>
 								<td><a
 									href="<%=request.getContextPath()%>/review/reviewView?no=<%=r.getNo()%>">
@@ -58,6 +59,7 @@
 								<td><a href="<%=request.getContextPath() %>/review/reviewWrite?no=<%=r.getNo() %>" class="btn btn-primary btn-sm">리뷰수정</a></td>
 							</tr>
 						<%
+							count--;
 							} 
 						} else { %>
 							<tr>

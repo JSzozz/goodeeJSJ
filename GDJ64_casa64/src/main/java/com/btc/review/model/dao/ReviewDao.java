@@ -76,7 +76,7 @@ public class ReviewDao {
 	}
 
 	/**
-	 * 이용후기 뷰
+	 * 이용후기 뷰 페이지 (리뷰번호로 조회)
 	 * 
 	 * @param conn
 	 * @param reviewNo
@@ -153,6 +153,12 @@ public class ReviewDao {
 		return result;
 	}
 
+	/**
+	 * 리뷰 수정 (제목, 내용)
+	 * @param conn
+	 * @param reviews
+	 * @return
+	 */
 	public int updateReviews(Connection conn, Review reviews) {
 		PreparedStatement pstmt = null;
 		int result = 0; // 실패를 기본 값으로
@@ -217,6 +223,11 @@ public class ReviewDao {
 		return list;
 	}
 
+	/**
+	 * 이용후기 리스트에서 객실 검색 위한 객실 리스트
+	 * @param conn
+	 * @return
+	 */
 	public List<Room> selectAllRoom(Connection conn) {
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
@@ -244,6 +255,12 @@ public class ReviewDao {
 		return list;
 	}
 
+	/**
+	 * 이용후기 번호로 저장된 이미지 있으면 불러오기
+	 * @param conn
+	 * @param reviewNo
+	 * @return
+	 */
 	public List<ReviewImages> getReviewImages(Connection conn, int reviewNo) {
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
@@ -274,7 +291,13 @@ public class ReviewDao {
 		return list;
 
 	}
-
+	
+	/**
+	 * 이용후기 작성하기 > 모달 > 작성할 수 있는 예약 내역 리스트
+	 * @param conn
+	 * @param memberNo
+	 * @return
+	 */
 	public List<Booking> getBookingList(Connection conn, int memberNo) {
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
@@ -304,6 +327,13 @@ public class ReviewDao {
 		return bkList;
 	}
 
+	/**
+	 * 이용후기 이미지 업로드
+	 * @param conn
+	 * @param imgList
+	 * @param reviews
+	 * @return
+	 */
 	public int uploadImages(Connection conn, List<ReviewImages> imgList, Review reviews) {
 		PreparedStatement pstmt = null;
 		int result = 0; // 실패를 기본 값으로
@@ -354,6 +384,14 @@ public class ReviewDao {
 		return sum;
 	}
 
+	/**
+	 * 이용후기 페이징 처리 위한 전체 카운트 조회
+	 * @param conn
+	 * @param type
+	 * @param keyword
+	 * @param roomNo
+	 * @return
+	 */
 	public int selectReviewsTotalCount(Connection conn, String type, String keyword, String roomNo) {
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
@@ -390,9 +428,15 @@ public class ReviewDao {
 		return result;
 	}
 
+	/**
+	 * 이용후기 뷰 > 관리자 댓글 작성 / 수정 / 삭제
+	 * @param conn
+	 * @param adminReply
+	 * @param reviewNo
+	 * @param isReply
+	 * @return
+	 */
 	public int updateAdminReply(Connection conn, String adminReply, int reviewNo, int isReply) {
-		// UPDATE REVIEW SET ADMIN_REPLY = ?, IS_REPLY = 1, LAST_REPLY_DATE =
-		// SYSTIMESTAMP WHERE NO = ?
 		PreparedStatement pstmt = null;
 		int result = 0; // 실패를 기본 값으로
 
@@ -421,6 +465,12 @@ public class ReviewDao {
 
 	}
 
+	/**
+	 * 이용후기 삭제 (블라인드)
+	 * @param conn
+	 * @param reviewNo
+	 * @return
+	 */
 	public int deleteReview(Connection conn, int reviewNo) {
 		PreparedStatement pstmt = null;
 		int result = 0; // 실패를 기본 값으로
@@ -448,6 +498,12 @@ public class ReviewDao {
 		return result;
 	}
 
+	/**
+	 * 이용후기 조회수 증가
+	 * @param conn
+	 * @param reviewNo
+	 * @return
+	 */
 	public int reviewCountUpdate(Connection conn, int reviewNo) {
 		PreparedStatement pstmt = null;
 		int result = 0; // 실패를 기본 값으로
@@ -486,11 +542,14 @@ public class ReviewDao {
 				.lastReplyDate(rs.getDate("LAST_REPLY_DATE")).isReply(rs.getInt("IS_REPLY")).build();
 	}
 
+	/**
+	 * 이용후기 조회 시 기본 쿼리
+	 * @return
+	 */
 	public String getBasicQuery() {
-		return "SELECT REVIEW.* , MEMBER.NICKNAME, ROOM.ROOM_NAME " + "	FROM REVIEW "
-				+ " JOIN MEMBER ON MEMBER.MEMBER_NO = REVIEW.MEMBER_NO "
-				+ " JOIN ROOM ON ROOM.ROOM_NO = REVIEW.ROOM_NO " + " WHERE 1=1 AND REVIEW.IS_DELETED = 0 "; // 실행할
-																											// 기본
-																											// 쿼리
+		return " SELECT REVIEW.* , MEMBER.NICKNAME, ROOM.ROOM_NAME "
+			+  " FROM REVIEW "
+			+  " JOIN MEMBER ON MEMBER.MEMBER_NO = REVIEW.MEMBER_NO "
+			+  " JOIN ROOM ON ROOM.ROOM_NO = REVIEW.ROOM_NO WHERE 1=1 AND REVIEW.IS_DELETED = 0 "; // 실행할 기본 쿼리
 	}
 }

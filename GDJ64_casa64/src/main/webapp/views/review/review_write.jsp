@@ -65,9 +65,7 @@
 										%>
 										<div class="td-con d-flex flex-row align-items-center">
 											<div class="add-room-area" >
-												<span class="thumb-area"> <img
-													id="selected_room_img" width="70">
-												</span> <span class="txt-area"><%=reviews.getRoomName() %></span>
+												<span class="txt-area"><%=reviews.getRoomName() %></span>
 											</div>
 											
 										</div>
@@ -105,11 +103,17 @@
 										<div class="td-con">
 											<div class="fileBox addfile">
 												<span class="inputOuter bTp"> 
+												<div class="file-area" id="file-area">
 													<input type="file" name="uploadFiles1" id="uploadFiles1" class="uploadBtn" accept="image/*"  >
+													
+												</div>
+													<!-- 
+													<button type="button" class="btn btn-sm" onclick="addFileArea()">추가</button>
+													<button type="button" class="btn btn-sm" onclick="removeFileArea()">삭제</button>
 													<input type="file" name="uploadFiles2" id="uploadFiles2" class="uploadBtn" accept="image/*"  >
 													<input type="file" name="uploadFiles3" id="uploadFiles3" class="uploadBtn" accept="image/*"  >
 													<input type="file" name="uploadFiles4" id="uploadFiles4" class="uploadBtn" accept="image/*"  >
-													<input type="file" name="uploadFiles5" id="uploadFiles5" class="uploadBtn" accept="image/*"  >
+													<input type="file" name="uploadFiles5" id="uploadFiles5" class="uploadBtn" accept="image/*"  > -->
 												</span>
 											</div>
 										</div>
@@ -241,6 +245,17 @@
 	$(document).ready(function() {
 		smartEditor();
 	});
+	s
+	let idNum = 0;
+	function addFileArea(){
+		const testDiv = document.getElementById('file-area');
+		const newNode = testDiv.cloneNode(true);
+	    // 복사된 Node id 변경하기
+	    idNum++;
+	    newNode.id = 'copyNode' + idNum;
+	    // 복사한 노드 붙여넣기
+	    testDiv.after(newNode);
+	}
 	
 
 </script>

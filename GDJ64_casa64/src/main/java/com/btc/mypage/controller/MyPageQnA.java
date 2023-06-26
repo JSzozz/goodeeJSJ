@@ -26,6 +26,7 @@ public class MyPageQnA extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		// 서비스를 통해 dao 에서 전달 된 리스트 불러와서 화면으로 setAtt해주고 뷰에서는 그걸 활용해서 뿌려줌.
 		request.getRequestDispatcher("/views/myPage/myPageQnA.jsp").forward(request, response);
 	}
 

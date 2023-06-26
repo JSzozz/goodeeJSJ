@@ -57,8 +57,8 @@ public class ReviewList extends HttpServlet {
 		String pageBar = "<div class='page-area'><nav aria-label=\"Page navigation example\"><ul class=\"pagination justify-content-center\">";
 		
 		int totalPage = (int)Math.ceil((double)totalPostCount/POSTS_PER_PAGE);
-		int pageNo = ((page-1)/PAGES_PER_BLOCK)*PAGES_PER_BLOCK+1;
-		int pageEnd = pageNo+PAGES_PER_BLOCK-1;
+		int pageNo = ((page-1)/PAGES_PER_BLOCK) * PAGES_PER_BLOCK+1;
+		int pageEnd = pageNo + PAGES_PER_BLOCK-1;
 		int pageStartRowNum = totalPostCount - (page-1)*POSTS_PER_PAGE;
 
 		if(page > 1) { // 현재 페이지가 1보다 클 경우 이전 버튼

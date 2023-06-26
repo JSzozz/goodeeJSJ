@@ -45,21 +45,29 @@
 					<tbody>
                      
                         <% if(bookings != null && !bookings.isEmpty()) {
+                        	int count = bookings.size();
                   			for(Booking b : bookings){%>
 						<tr>
-							<td><%=b.getBookingNo() %></td>
+							<td><%= count %></td>
 							<td><%=b.getRoomName() %></td>
 							<td><%=b.getBookingState() %></td>
 							<td><%=b.getCheckIn() %> ~ <%=b.getCheckOut() %></td>
 							<td>
-							 if(getBookingState.eqi("결제완료"))
+							<% if(b.getBookingState().equals("예약완료")) { %>
 								<button type="button" class="btn btn-primary btn-sm">결제취소</button>
-							 else  if(getBookingState.eqi("이용완료"))
-							 <button type="button" class="btn btn-primary btn-sm">리뷰작성</button>
+							<% } else if(b.getBookingState().equals("이용완료")) { 
+								if(b.getReviewNo() > 0 ){ %>
+								<a href="<%=request.getContextPath() %>/review/reviewWrite?no=<%=b.getReviewNo() %>" class="btn btn-primary btn-sm">리뷰수정</a>
+							<% } else { %>
+							 	<a href="<%=request.getContextPath() %>/review/reviewWrite" class="btn btn-primary btn-sm">리뷰작성</a>
+							<%}} %>
 							</td>
 							<td><%=b.getPaymentDate() %></td>
 						</tr>
-						<%} } else { %>
+						<%
+							count--;
+							} 
+                  		} else { %>
 						<tr>
 							<td colspan="6">예약내역이 없습니다.</td>
 						</tr>
