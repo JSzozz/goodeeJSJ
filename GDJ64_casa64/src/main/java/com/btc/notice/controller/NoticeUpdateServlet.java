@@ -40,7 +40,6 @@ public class NoticeUpdateServlet extends HttpServlet {
 		String content = request.getParameter("content");
 		String file = request.getParameter("file");
 		int no = Integer.parseInt(request.getParameter("no"));
-		System.out.println("title : "+title+" content : "+content+" file : "+file+" no : "+no);
 		
 		request.setAttribute("categoryName", "COMMUNITY");
 		request.setAttribute("communityTitle", "공지사항 수정");

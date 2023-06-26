@@ -4,9 +4,8 @@
 <link rel="stylesheet" href="<%=request.getContextPath()%>/nara_publish/css/common.css" />
 <script type="text/javascript"
 	src="<%=request.getContextPath()%>/nara_publish/smarteditor2/js/HuskyEZCreator.js" charset="utf-8"></script>
-<%@ page import="java.util.List,com.btc.review.model.vo.Review" %> <!-- Review 클래스를 사용하기 위해 임포트 -->
 <%
-	
+	int no = (request.getParameter("no") != null) ? Integer.parseInt(request.getParameter("no")) : 0;
 %> 
 <!-- 카테고리별 이미지 -->
 <%@ include file="/views/common/categoryImage.jsp"%>
@@ -15,18 +14,16 @@
 <div class="container">
 	<%@ include file="/views/board/board_tab.jsp"%>
 
-<!-- 1.제목 2. 내용 3. 사진  -->
-
 	<!--게시글 작성하기-->
 	<div class="board">
 		<div id="content" class="no-bg">
 			<form action="<%=request.getContextPath()%>/notice/updateNoticeEnd.do" method="post" id="board-form" enctype="multipart/form-data"
 			>
 			<% 
-				int no = (request.getParameter("no") != null) ? Integer.parseInt(request.getParameter("no")) : 0;
-				String type = (no > 0) ? "update" : "write";
+				/* int no = (request.getParameter("no") != null) ? Integer.parseInt(request.getParameter("no")) : 0; */
+                /* String type = (no > 0) ? "update" : "write"; */
 			%>
-			<input type="hidden" name="type" value="<%= type %>">
+			<%-- <input type="hidden" name="type" value="<%= type %>"> --%>
 			<input type="hidden" name="noticeNo" value="<%= no %>">
 			<div class="inner">
 				<div class="inq-write-wrap">
@@ -76,7 +73,6 @@
 						</table>
 					</div>
 					<div class="d-flex justify-content-center mt-4">
-						<!--  만약 생성글이라면 -->
 						<button type="button" class="btn btn-dark btn-sm ms-1">뒤로</button>
 						<button type="submit" class="btn btn-dark btn-sm ms-1">저장</button>
 					</div>
@@ -86,8 +82,9 @@
 		</div>
 	</div>
 </div>
-<script>
 
+
+<script>
 	/* 에디터 설정 */
 	let oEditors = [];
 

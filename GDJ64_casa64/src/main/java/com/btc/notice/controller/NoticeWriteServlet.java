@@ -40,26 +40,9 @@ public class NoticeWriteServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		int memberNo = checkLogin(request, response); //로그인체크 로직
-		if(memberNo > 0){ //로그인 되어있으면
-			String no = request.getParameter("no"); //수정의 목적으로 작성하기를 누르면 생성이 아닌 수정으로 인식하려하기 때문에 수정할 게시물번호를 구하는 과정
-			System.out.println(no);
-			String communityTitle = "공지사항 작성";
-			if(no != null) { // null 이 아닌 건 no 가 있다는거니까 수정하기
-				int reviewNo = Integer.parseInt(no);
-				Review reviews = new ReviewService().getReviewView(reviewNo);
-				request.setAttribute("reviews", reviews);
-				communityTitle = "공지사항 수정";
-				if(reviews.getMemberNo() != memberNo) {
-					String msg="수정 권한이 없습니다.";
-					String loc="/review/reviewList";
-					request.setAttribute("msg", msg);
-					request.setAttribute("loc", loc);
-					request.getRequestDispatcher("/views/common/msg.jsp").forward(request, response);
-				}
-			}
-			
+		if(memberNo > 0){ //로그인 되어있으면(버튼이 보이는 조건이 관리자 로그인이다)
 			request.setAttribute("categoryName", "COMMUNITY");
-			request.setAttribute("communityTitle", communityTitle);
+			request.setAttribute("communityTitle", "공지사항 작성");
 			request.getRequestDispatcher("/views/board/notice_write.jsp").forward(request, response);
 		}
 	}
@@ -116,25 +99,6 @@ public class NoticeWriteServlet extends HttpServlet {
 			int noticeNo = new NoticeService().searchNoticeNo(); //마지막에 만든 공지사항번호 가져오기
 			if(result > 0) result = new NoticeService().insertNoticeImage(image,noticeNo); //생성로직
 			response.sendRedirect(request.getContextPath() + "/notice/insertNotice.do");
-			
-			//구현할 일 : 큰주제는 게시글생성(notice), 첨부파일 빼고 생성하고 pk값 받아와서 이미지 테이블 만들고, 다시 번호와 일치하는(join)
-			//          값을 게시글 테이블에 저장, 이미지 dto, 테이블 만들기 , 파일이름 바꿔저장하는건 나중에하기
-//			if(type.equals("write")) { // 작성하기
-//				result = new NoticeService().insertNotice(n); //공지사항 생성
-//				int noticeNo = new NoticeService().searchNoticeNo(); //마지막에 만든 공지사항번호 가져오기
-//				if(result > 0) result = new NoticeService().insertNoticeImage(image,noticeNo); //생성로직
-//				redirect = "/notice/insertNotice.do"; //응답주소
-//			} else if(type.equals("update")) { // 수정하기
-//				int reviewNo = Integer.parseInt(request.getParameter("reviewNo"));
-//				reviews.setNo(reviewNo);
-//				result = new ReviewService().updateReviews(reviews);
-//				redirect = "/review/reviewView?no="+reviewNo;
-//			}
-//			if(result > 0 ) {
-//				response.sendRedirect(request.getContextPath() + redirect);
-//			} else {
-//				// 작성 실패에 대한 피드백을 return 해주기
-//			}
 		}
 	}
 	public int checkLogin(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
