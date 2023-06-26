@@ -11,9 +11,9 @@ import com.btc.rooms.model.vo.Room;
 
 public class AdminRoomService {
 	private AdminRoomDao dao=new AdminRoomDao();
-	public List<Room> selectAllExistingRooms() {
+	public List<Room> selectAllExistingRooms(int cPage, int numPerPage) {
 		Connection conn=getConnection();
-		List<Room> list=dao.selectAllExistingRoom(conn);
+		List<Room> list=dao.selectAllExistingRoom(conn,cPage,numPerPage);
 		close(conn);
 		return list;
 	}
@@ -31,6 +31,12 @@ public class AdminRoomService {
 		close(conn);
 		return result;
 		
+	}
+	public int selectRoomCount() {
+		Connection conn=getConnection();
+		int result=dao.selectRoomCount(conn);
+		close(conn);
+		return result;
 	}
 
 }

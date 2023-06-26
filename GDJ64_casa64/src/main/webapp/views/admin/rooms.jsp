@@ -15,10 +15,10 @@
 					<div id="select-line" class="float-end">
 						<div class="search-area d-flex justify-content-end mt-2">
 							<select name="notice-search">
-								<option value="room-name">객실명</option>
-							</select> <input type="text" name="keyword" placeholder="검색어를 입력해 주세요"
-								class="ms-1">
-							<button type="button" class="btn btn-primary btn-sm ms-1">검색</button>
+								<option value="roomName">객실명</option>
+							</select> 
+							<input type="text" name="keyword" placeholder="검색어를 입력해 주세요" class="ms-1">
+							<button type="submit" class="btn btn-primary btn-sm ms-1">검색</button>
 						</div>
 					</div>
 				</div>
@@ -47,10 +47,10 @@
 							<td><%=r.getBookable()=='Y'?"공개":"비공개" %></td>
 							<td><%=r.getRoomPrice() %></td>
 							<td>
-								<%--                                <form action="<%=request.getContextPath()%>/admin/room/roomDetail.do?roomNo=<%=r.getRoomNo() %>"> --%>
+								<%--<form action="<%=request.getContextPath()%>/admin/room/roomDetail.do?roomNo=<%=r.getRoomNo() %>"> --%>
 								<button type="submit" class="btn btn-dark btn-sm"
 									onclick="location.assign('<%=request.getContextPath()%>/admin/room/roomDetail.do?roomNo=<%=r.getRoomNo() %>')">상세조회</button>
-								<!--                                </form> -->
+								<!--</form> -->
 							</td>
 						</tr>
 						<%}
@@ -59,28 +59,23 @@
 				</table>
 				<!-- 관리자 버튼 -->
 				<div class="d-flex justify-content-end">
-					<form
-						action="<%=request.getContextPath()%>/admin/room/insertRoom.do">
-						<button type="submit" class="btn btn-dark">객실추가</button>
-					</form>
+					<button type="submit" class="btn btn-dark" onclick="location.assign('<%=request.getContextPath()%>/admin/room/insertRoom.do')">객실추가</button>
 				</div>
 				<!-- 페이지바 -->
-				<nav aria-label="Page navigation">
-					<ul class="pagination justify-content-center">
-						<li class="page-item"><a class="page-link" href="#"
-							aria-label="Previous"> <span aria-hidden="true">&laquo;</span>
-						</a></li>
-						<li class="page-item active"><a class="page-link" href="#">1</a></li>
-						<li class="page-item"><a class="page-link" href="#">2</a></li>
-						<li class="page-item"><a class="page-link" href="#">3</a></li>
-						<li class="page-item"><a class="page-link" href="#"
-							aria-label="Next"> <span aria-hidden="true">&raquo;</span>
-						</a></li>
-					</ul>
-				</nav>
+				<div id="pageBar" class="pagination justify-content-center">
+					<%=request.getAttribute("pageBar") %>
+				</div>
 			</div>
 		</div>
 	</div>
 </section>
+<style>
+	#pageBar a,#pageBar span{
+		text-decoration:none;
+		font-size:1rem;
+		margin-left:1%;
+		margin-right:1%;
+	}
+</style>
 
 <%@ include file="/views/admin/common/footer.jsp"%>

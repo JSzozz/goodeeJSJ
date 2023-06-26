@@ -25,13 +25,31 @@ public class AdminRoomDao {
 			e.printStackTrace();
 		}
 	}
-	public List<Room> selectAllExistingRoom(Connection conn) {
+	public int selectRoomCount(Connection conn) {
+		PreparedStatement pstmt=null;
+		ResultSet rs=null;
+		int result=0;
+		try {
+			pstmt=conn.prepareStatement(sql.getProperty("selectRoomCount"));
+			rs=pstmt.executeQuery();
+			if(rs.next()) result=rs.getInt(1);
+		}catch(SQLException e) {
+			e.printStackTrace();
+		}finally {
+			close(rs);
+			close(pstmt);
+		}return result;
+	}
+	public List<Room> selectAllExistingRoom(Connection conn, int cPage, int numPerPage) {
 		PreparedStatement pstmt=null;
 		ResultSet rs=null;
 		List<Room> list=new ArrayList<Room>();
+		/* Room m=null; */
 		try {
 			String query=sql.getProperty("selectAllExistingRoom");
 			pstmt=conn.prepareStatement(query);
+			pstmt.setInt(1, (cPage-1)*numPerPage+1);
+			pstmt.setInt(2, cPage*numPerPage);
 			rs=pstmt.executeQuery();
 			while(rs.next()) {
 				list.add(getRoom(rs));

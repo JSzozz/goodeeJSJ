@@ -124,6 +124,9 @@
 	const fn_updateRoom=()=>{
 		//form을 전송하기
 		$("roomFrm").attr("action","<%=request.getContextPath()%>/admin/room/updateRoom.do").submit();
+		console.log(r);
+		//r이 정의되어있지 않다고..?
+				
 	}
 </script>
 <%@ include file="/views/admin/common/footer.jsp"%>
