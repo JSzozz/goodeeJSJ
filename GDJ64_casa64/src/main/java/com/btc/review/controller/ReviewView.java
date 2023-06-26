@@ -1,10 +1,12 @@
 package com.btc.review.controller;
 
 import java.io.IOException;
+import java.util.Arrays;
 import java.util.List;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -32,16 +34,33 @@ public class ReviewView extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse
 	 *      response)
 	 */
-	protected void doGet(HttpServletRequest request, HttpServletResponse response)throws ServletException, IOException {
+	protected void doGet(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
 		int reviewNo = Integer.parseInt(request.getParameter("no"));
-		Review reviews = new ReviewService().getReviewView(reviewNo);
-		// reviewNo 로 리뷰이미지 테이블에 있는 데이터 불러오기
 		
+		/* 조회수 영역*/
+		Cookie[] cookies = request.getCookies();
+		String read = Arrays.stream(cookies).filter(c -> c.getName().equals("reviewRead")).findFirst()
+				.orElse(new Cookie("reviewRead", "")).getValue();
+		boolean isRead = read.contains("|" + reviewNo + "|");
+		if (!isRead) {
+			Cookie c = new Cookie("reviewRead", read + "|" + reviewNo + "|");
+			c.setMaxAge(60 * 60 * 24);
+			response.addCookie(c);
+		}
+		int isReadResult = new ReviewService().reviewCountUpdate(isRead, reviewNo); // 조회수 업데이트
+		
+		/* 실제 리뷰 데이터 */
+		Review reviews = new ReviewService().getReviewView(reviewNo);
+
+		/* reviewNo 로 리뷰이미지 데이터  */
 		List<ReviewImages> imgList = new ReviewService().getReviewImages(reviewNo);
+		
 		request.setAttribute("reviewImages", imgList);
 		request.setAttribute("review", reviews);
 		request.setAttribute("categoryName", "COMMUNITY");
 		request.setAttribute("communityTitle", "이용후기");
+		
 		request.getRequestDispatcher("/views/review/review_view.jsp").forward(request, response);
 	}
 

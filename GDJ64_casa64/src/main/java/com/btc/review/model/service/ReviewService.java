@@ -2,6 +2,8 @@ package com.btc.review.model.service;
 
 import static com.btc.common.JDBCTemplate.close;
 import static com.btc.common.JDBCTemplate.getConnection;
+import static com.btc.common.JDBCTemplate.commit;
+import static com.btc.common.JDBCTemplate.rollback;
 
 import java.sql.Connection;
 import java.util.List;
@@ -54,7 +56,7 @@ public class ReviewService {
 		Connection conn = getConnection();
 		int result = dao.uploadImages(conn, imgList, reviews);
 		close(conn);
-		return 0;
+		return result;
 	}
 	
 	public List<ReviewImages> getReviewImages(int reviewNo) {
@@ -62,6 +64,23 @@ public class ReviewService {
 		List<ReviewImages> list = dao.getReviewImages(conn, reviewNo); // conn 생성해서 dao로 전달하는 역할
 		close(conn); // db 접속 종료
 		return list;
+	}
+	
+	public int deleteReview(int reviewNo) {
+		Connection conn = getConnection();
+		int result = dao.deleteReview(conn, reviewNo);
+		close(conn);
+		return result;
+	}
+	
+	public int reviewCountUpdate(boolean isRead, int reviewNo) {
+		Connection conn = getConnection();
+		int result = 0;
+		if(!isRead) {
+			result = dao.reviewCountUpdate(conn, reviewNo);
+		}
+		close(conn);
+		return result;
 	}
 	
 	public List<Booking> getBookingList(int memberNo){
@@ -73,9 +92,9 @@ public class ReviewService {
 	}
 	
 	
-	public int updateAdminReply(String adminReply, int reviewNo) {
+	public int updateAdminReply(String adminReply, int reviewNo, int isReply) {
 		Connection conn = getConnection();
-		int result = dao.updateAdminReply(conn, adminReply, reviewNo);
+		int result = dao.updateAdminReply(conn, adminReply, reviewNo, isReply);
 		close(conn);
 		return result;
 	}

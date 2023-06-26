@@ -1,6 +1,7 @@
 package com.btc.review.controller;
 
 import java.io.IOException;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -10,16 +11,16 @@ import javax.servlet.http.HttpServletResponse;
 import com.btc.review.model.service.ReviewService;
 
 /**
- * Servlet implementation class ReviewReply
+ * Servlet implementation class ReviewDelete
  */
-@WebServlet("/review/reply")
-public class ReviewReply extends HttpServlet {
+@WebServlet("/review/reviewDelete")
+public class ReviewDelete extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public ReviewReply() {
+    public ReviewDelete() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -28,7 +29,8 @@ public class ReviewReply extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
+		// TODO Auto-generated method stub
+		response.getWriter().append("Served at: ").append(request.getContextPath());
 	}
 
 	/**
@@ -36,16 +38,11 @@ public class ReviewReply extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		// 필요한 파라미터
-		// 댓글 내용
-		// 리뷰 번호
-		// 받은 걸 update 해줘야함
-		String reply = request.getParameter("adminReply");
 		int reviewNo = Integer.parseInt(request.getParameter("reviewNo"));
-		int isReply = Integer.parseInt(request.getParameter("isReply"));
-		int result = new ReviewService().updateAdminReply(reply, reviewNo, isReply);
+		int result = new ReviewService().deleteReview(reviewNo);
 		response.setContentType("text/csv;charset=utf-8");
 		response.getWriter().print(result);
 	}
+	
 
 }
