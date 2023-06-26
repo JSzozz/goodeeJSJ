@@ -12,6 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.btc.notice.model.service.NoticeService;
 import com.btc.notice.model.dto.Notice;
+import com.btc.notice.model.dto.Notice_images;
 
 
 @WebServlet("/notice/viewNotice.do")
@@ -32,6 +33,7 @@ public class NoticeViewServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// 선택한 게시물의 번호
 		int no=Integer.parseInt(request.getParameter("no"));
+		request.setAttribute("no",no);
 		//새로고침해도 조회수를 증가하지않게 만드는 로직
 		
 		String categoryName = (String)request.getParameter("categoryName");
@@ -69,9 +71,13 @@ public class NoticeViewServlet extends HttpServlet {
 		}
 		//게시판 상세내용
 		Notice n=new NoticeService().selectNoticeByNo(no,isRead);
+		//게시판 이미지
+		Notice_images image = new NoticeService().selectNoticeImage(no);
+		
 		
 		//게시판 상세내용
 		request.setAttribute("notice", n);
+		request.setAttribute("Notice_images", image);
 		request.getRequestDispatcher("/views/board/notice_view.jsp").forward(request, response);
 	}
 

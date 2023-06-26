@@ -62,7 +62,7 @@
 				</tr>
 			</thead>
 			<tbody>
-			<%if(notices.isEmpty()){ %>
+			<%if(notices.isEmpty()||notices==null){ %>
 				<tr>
 					<td colspan="5">조회된 공지사항이 없습니다.</td>
 				</tr>
@@ -79,6 +79,11 @@
 			} %>
 			</tbody>
 		</table>
+	</div>
+
+	<div class="write-area text-end">
+		<a href="<%=request.getContextPath()%>/notice/noticeWrite.do"
+			class="btn btn-primary btn-sm ms-1">작성하기</a>
 	</div>
 
 	<div class="board-pasing">
