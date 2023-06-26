@@ -18,7 +18,7 @@ import com.btc.rooms.model.vo.Room;
 public class AdminDao {
 	private Properties sql=new Properties();
 	public AdminDao() {
-		String path=AdminDao.class.getResource("/sql/admin/sql_admin.properties").getPath();
+		String path=AdminDao.class.getResource("/sql/admin/sql_adminRoom.properties").getPath();
 		try {
 			sql.load(new FileReader(path));
 		}catch(IOException e) {

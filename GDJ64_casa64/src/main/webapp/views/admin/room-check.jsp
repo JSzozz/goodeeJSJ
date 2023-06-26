@@ -38,32 +38,32 @@
                                         <div class="form-group row mt-3 align-items-center">
                                           <label for="roomName" class="col-sm-1 col-form-label text-center">객실명</label>
                                           <div class="col-sm-4">
-                                            <input type="text" id="roomName" class="form-control" placeholder="<%=r.getRoomName()%>">
+                                            <input type="text" id="roomName" class="form-control" value="<%=r.getRoomName()%>">
                                           </div>
                                         </div>
                                         <!-- 객실정보 -->
                                         <div class="form-group row mt-3 align-items-center">
                                           <label for="roomInfo" class="col-sm-1 col-form-label text-center">객실소개</label>
                                           <div class="col-sm-11">
-                                            <textarea id="roomInfo" class="form-control" rows="4" placeholder="<%=r.getRoomDescription()%>"></textarea>
+                                            <textarea id="roomInfo" class="form-control" rows="4" id="description"><%=r.getRoomDescription()%></textarea>
                                           </div>
                                         </div>
                                         <!-- 인원 -->
                                         <div class="form-group row mt-3 align-items-center">
                                           <label for="capacity" class="col-sm-1 col-form-label text-center">기준인원</label>
                                           <div class="col-sm-2">
-                                            <input type="number" id="capacity" class="form-control" placeholder="<%=r.getRoomCap()%>">
+                                            <input type="number" id="capacity" class="form-control" value="<%=r.getRoomCap()%>">
                                           </div>
                                           <label for="maxCapcity" class="col-sm-1 col-form-label text-center">최대인원</label>
                                           <div class="col-sm-2">
-                                            <input type="number" id="maxCapcity" class="form-control" placeholder="<%=r.getRoomMaxCap()%>">
+                                            <input type="number" id="maxCapcity" class="form-control" value="<%=r.getRoomMaxCap()%>">
                                           </div>
                                         </div>
                                         <!-- 가격 -->
                                         <div class="form-group row mt-3 align-items-center">
                                           <label for="price" class="col-sm-1 col-form-label text-center">가격</label>
                                           <div class="col-sm-3">
-                                            <input type="number" id="price" class="form-control" placeholder="<%=r.getRoomPrice()%>">
+                                            <input type="number" id="price" class="form-control" value="<%=r.getRoomPrice()%>">
                                           </div>
                                         </div>
                                         <!-- 옵션 -->                                            
@@ -84,14 +84,19 @@
                                         <div class="form-group row mt-3 align-items-center">
                                           <label class="col-sm-1 col-form-label text-center">공개설정</label>
                                           <div class="col-sm-11 d-flex align-items-center">
-                                            <div class="form-check form-check-inline">
+                                          <!-- 공개/비공개 라디오 설정. y이면 공개 체크, 아니면 반대 -->
+                                          <input type="radio" name="bookable" value="Y">공개 
+                                          <input type="radio" name="bookable" value="N">비공개
+                                          
+                                          
+                                           <!--  <div class="form-check form-check-inline">
                                               <input class="form-check-input" type="radio" name="room-status" id="public" value="public" />
                                               <label class="form-check-label" for="public">공개</label>
                                             </div>
                                             <div class="form-check form-check-inline">
                                               <input class="form-check-input" type="radio" name="room-status" id="private" value="private" />
                                               <label class="form-check-label" for="private">비공개</label>
-                                            </div>
+                                            </div> -->
                                           </div>
                                         </div>                                
                                       </form>
