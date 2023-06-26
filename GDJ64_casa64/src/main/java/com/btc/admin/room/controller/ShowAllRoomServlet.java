@@ -9,7 +9,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.btc.admin.model.service.AdminService;
+import com.btc.admin.model.service.AdminRoomService;
 import com.btc.rooms.model.vo.Room;
 
 /**
@@ -31,7 +31,7 @@ public class ShowAllRoomServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		List<Room> rooms=new AdminService().selectAllExistingRooms();
+		List<Room> rooms=new AdminRoomService().selectAllExistingRooms();
 		request.setAttribute("rooms",rooms);
 		request.getRequestDispatcher("/views/admin/rooms.jsp").forward(request,response);
 		///views/admin/rooms.jsp로 이동

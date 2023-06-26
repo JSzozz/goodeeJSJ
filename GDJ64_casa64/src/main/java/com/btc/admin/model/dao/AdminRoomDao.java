@@ -15,10 +15,10 @@ import java.util.Properties;
 import com.btc.rooms.model.dao.RoomDao;
 import com.btc.rooms.model.vo.Room;
 
-public class AdminDao {
+public class AdminRoomDao {
 	private Properties sql=new Properties();
-	public AdminDao() {
-		String path=AdminDao.class.getResource("/sql/admin/sql_adminRoom.properties").getPath();
+	public AdminRoomDao() {
+		String path=AdminRoomDao.class.getResource("/sql/admin/sql_adminRoom.properties").getPath();
 		try {
 			sql.load(new FileReader(path));
 		}catch(IOException e) {
@@ -69,6 +69,27 @@ public class AdminDao {
 			close(conn);
 		}
 		return r;
+	}
+	public int updateRoom(Connection conn, Room r) {
+		PreparedStatement pstmt=null;
+		int result=0;
+		try {
+			pstmt=conn.prepareStatement(sql.getProperty("updateRoom"));
+			pstmt.setString(1, r.getRoomName());
+			pstmt.setInt(2, r.getRoomPrice());
+			pstmt.setInt(3,r.getRoomSize());
+			pstmt.setInt(4, r.getRoomCap());
+			pstmt.setInt(5, r.getRoomMaxCap());
+			pstmt.setString(6, String.valueOf(r.getBookable()));
+			pstmt.setString(7,String.join(",", r.getRoomImage()));
+			pstmt.setString(8, r.getRoomDescription());
+			pstmt.setInt(9,r.getRoomNo());
+			result=pstmt.executeUpdate();
+		}catch(SQLException e) {
+			e.printStackTrace();
+		}finally {
+			close(pstmt);
+		}return result;
 	}
 
 }
