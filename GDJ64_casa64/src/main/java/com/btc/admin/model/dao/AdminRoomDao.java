@@ -15,10 +15,10 @@ import java.util.Properties;
 import com.btc.rooms.model.dao.RoomDao;
 import com.btc.rooms.model.vo.Room;
 
-public class AdminDao {
+public class AdminRoomDao {
 	private Properties sql=new Properties();
-	public AdminDao() {
-		String path=AdminDao.class.getResource("/sql/admin/sql_adminRoom.properties").getPath();
+	public AdminRoomDao() {
+		String path=AdminRoomDao.class.getResource("/sql/admin/sql_adminRoom.properties").getPath();
 		try {
 			sql.load(new FileReader(path));
 		}catch(IOException e) {

@@ -6,11 +6,11 @@ import static com.btc.common.JDBCTemplate.getConnection;
 import java.sql.Connection;
 import java.util.List;
 
-import com.btc.admin.model.dao.AdminDao;
+import com.btc.admin.model.dao.AdminRoomDao;
 import com.btc.rooms.model.vo.Room;
 
-public class AdminService {
-	private AdminDao dao=new AdminDao();
+public class AdminRoomService {
+	private AdminRoomDao dao=new AdminRoomDao();
 	public List<Room> selectAllExistingRooms() {
 		Connection conn=getConnection();
 		List<Room> list=dao.selectAllExistingRoom(conn);
