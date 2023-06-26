@@ -22,11 +22,11 @@
 				<!--검색창-->
 				<div class="float-end">
 					<div class="search-area d-flex">
-						<select name="search-type" class="ms-1" >
+						<select name="search-type" id="checkSelect" class="ms-1" >
 							<option value="NOTICE_TITLE" <%= (searchType != null && searchType.equals("title")) ? "selected" : "" %>>제목</option>
 							<option value="NOTICE_CONTENT" <%= (searchType != null && searchType.equals("contents")) ? "selected" : "" %>>내용</option>
 						</select> 
-						<input type="text" name="keyword" class="ms-1" value="<%= (keyword != null ) ? keyword : "" %>">
+						<input type="text" name="keyword" class="ms-1" value="<%= (keyword != null ) ? keyword : "" %>" placeholder="검색어를 입력해 주세요.">
 						<input type="hidden" name="categoryName" value='<%=request.getAttribute("categoryName") %>'>
 						<input type="hidden" name="communityTitle" value='<%=request.getAttribute("communityTitle") %>'>
 						<button type="submit" class="btn btn-primary btn-sm ms-1">검색</button>
@@ -36,26 +36,15 @@
 		</div>
 	</form>
 	<script>
-	$(document).ready(function(){
-		$("#select-line input[type='text']").attr("placeholder","검색어를 입력해 주세요.");
-		const value = $("select.ms-1 option:selected")val();
+	//검색 placeholder변경하기
+	$("#checkSelect").change(function(){
+		const value = $("#checkSelect option:selected").val();
 		if(value == "NOTICE_TITLE"){
 			$("input[name='keyword']").attr("placeholder","검색어를 입력해 주세요.");
 		}else if(value == "NOTICE_CONTENT"){
 			$("input[name='keyword']").attr("placeholder","키워드를 입력해 주세요.");
 		}
 	});
-	/* $(function(){
-		const flag = $("#select-line input[type='text']");
-		alert("flag");
-		$("#select-line input[type='text']").attr("placeholder","검색어를 입력해 주세요.");
-		const value = $("select.ms-1 option:selected")val();
-		if(value == "NOTICE_TITLE"){
-			$("input[name='keyword']").attr("placeholder","검색어를 입력해 주세요.");
-		}else if(value == "NOTICE_CONTENT"){
-			$("input[name='keyword']").attr("placeholder","키워드를 입력해 주세요.");
-		}
-	}); */
 	</script>
 	
 	<!--테이블-->
@@ -86,7 +75,11 @@
 				for(Notice n : notices){%>
 				<tr>
 					<td><%=n.getNoticeNo()%></td>
-					<td><a href="<%=request.getContextPath()%>/notice/viewNotice.do?no=<%=n.getNoticeNo()%>&categoryName=<%=request.getAttribute("categoryName")%>&communityTitle=<%=request.getAttribute("communityTitle")%>"><%=n.getNoticeTitle() %></a></td>
+					<td>
+						<a href="<%=request.getContextPath()%>/notice/viewNotice.do?no=<%=n.getNoticeNo()%>
+						&categoryName=<%=request.getAttribute("categoryName")%>
+						&communityTitle=<%=request.getAttribute("communityTitle")%>"><%=n.getNoticeTitle() %></a>
+					</td>
 					<td>관리자</td>
 					<td><%=n.getNoticeReadCount()%></td>
 					<td><%=n.getDateCreated()%></td>
