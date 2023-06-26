@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import com.btc.member.model.dao.MemberDao;
+import com.btc.member.model.dto.Member;
 import com.btc.member.model.service.MemberService;
 
 /**
@@ -34,10 +35,21 @@ public class PasswordChangeServlet extends HttpServlet {
 		HttpSession session=request.getSession();
 		String pw=request.getParameter("password");
 		String email=(String)session.getAttribute("pwEmail");
+		Member m=(Member)session.getAttribute("loginMember");
+		if(email==null) {
+			email=m.getEmail();
+		}
 		
 		int result=new MemberService().updatePassword(email, pw);
+		
 		String msg="",loc="";
-		if(result>0) {
+		if(result>0&&m!=null) {
+			
+			msg="비밀번호를 변경하였습니다. 다시 로그인해주세요";
+			loc="/logout.do";
+			
+		}
+		else if(result>0) {
 			msg="비밀번호를 변경하였습니다.";
 			loc="/views/LOGIN/login.jsp";
 		}else {
