@@ -12,8 +12,11 @@ import java.util.List;
 import java.util.Properties;
 
 import com.btc.member.model.dao.MemberDao;
+import com.btc.member.model.dto.BlackFile;
 import com.btc.member.model.dto.CancelMember;
 import com.btc.member.model.dto.Member;
+
+import oracle.jdbc.proxy.annotation.Pre;
 
 import static com.btc.common.JDBCTemplate.*;
 
@@ -259,8 +262,40 @@ public class AdminMemberDao {
 				}return result;
 			}
 	
+	public int insertBlackMember(Connection conn,int memberno,String memberName,String nickName,String email,String phone,String reason) {
+		PreparedStatement pstmt=null;
+		int result=0;
+		try {
+			pstmt=conn.prepareStatement(sql.getProperty("insertBlackMember"));
+			pstmt.setInt(1, memberno);
+			pstmt.setString(2, memberName);
+			pstmt.setString(3, nickName);
+			pstmt.setString(4, email);
+			pstmt.setString(5, phone);
+			pstmt.setString(6, reason);
+			result=pstmt.executeUpdate();
+		}catch(SQLException e) {
+			e.printStackTrace();
+		}finally {
+			close(pstmt);
+		}return result;
+	}
 	
-	
+	public int insertBlackFile(Connection conn,int memberno,String fileName,String fileRealName) {
+		PreparedStatement pstmt=null;
+		int result=0;
+		try {
+			pstmt=conn.prepareStatement(sql.getProperty("insertBlackFile"));
+			pstmt.setInt(1, memberno);
+			pstmt.setString(2, fileName);
+			pstmt.setString(3, fileRealName);
+			result=pstmt.executeUpdate();
+		}catch(SQLException e) {
+			e.printStackTrace();
+		}finally {
+			close(pstmt);
+		}return result;
+	}
 	
 	private Member getMember(ResultSet rs) throws SQLException{
 		return Member.builder().memberNo(rs.getInt("member_No")).memberName(rs.getString("member_Name")).email(rs.getString("email")).nickName(rs.getString("nickName"))
@@ -270,6 +305,10 @@ public class AdminMemberDao {
 	private CancelMember getCancelMember(ResultSet rs) throws SQLException{
 		return CancelMember.builder().memberNo(rs.getInt("member_No")).memberName(rs.getString("member_Name")).nickName(rs.getString("nickName")).email(rs.getString("email"))
 				.phone(rs.getString("phone")).cancelDate(rs.getDate("cancel_date")).build();
+	}
+	
+	private BlackFile getBlackFile(ResultSet rs) throws SQLException{
+		return BlackFile.builder().memberNo(rs.getInt("member_no")).fileName(rs.getString("file_name")).fileRealName(rs.getString("file_real_name")).build();
 	}
 	
 }

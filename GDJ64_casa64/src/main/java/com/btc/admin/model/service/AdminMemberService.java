@@ -88,6 +88,24 @@ public class AdminMemberService {
 		close(conn);
 		return members;
 	}
+	
+	public int insertBlackMember(int memberno,String memberName,String nickName,String email,String phone,String reason) {
+		Connection conn=getConnection();
+		int result=dao.insertBlackMember(conn, memberno, memberName, nickName, email, phone,reason);
+		if(result>0) commit(conn);
+		else rollback(conn);
+		close(conn);
+		return result;
+	}
+	
+	public int insertBlackFile(int memberno,String fileName,String fileRealName) {
+		Connection conn=getConnection();
+		int result=dao.insertBlackFile(conn, memberno, fileName, fileRealName);
+		if(result>0) commit(conn);
+		else rollback(conn);
+		close(conn);
+		return result;
+	}
 }
 
 

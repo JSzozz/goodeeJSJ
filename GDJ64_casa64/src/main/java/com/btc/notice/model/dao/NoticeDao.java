@@ -15,6 +15,7 @@ import java.util.Properties;
 
 import com.btc.notice.model.dao.NoticeDao;
 import com.btc.notice.model.dto.Notice;
+import com.btc.notice.model.dto.Notice_images;
 
 public class NoticeDao {
 private Properties sql=new Properties();
@@ -39,6 +40,15 @@ private Properties sql=new Properties();
 				.build();
 	}
 	
+	private Notice_images getNoticeImage(ResultSet rs) throws SQLException{
+		return Notice_images.builder()
+				.fileNo(rs.getInt("file_no"))
+				.saveFilename(rs.getString("save_filename"))
+				.fileName(rs.getString("filename"))
+				.dateCreated(rs.getDate("date_created"))
+				.noticeNo(rs.getInt("notice_no"))
+				.build();
+	}
 	
 	public List<Notice> selectNotice(Connection conn, int cPage, int numPerpage){
 		PreparedStatement pstmt=null;
@@ -149,6 +159,132 @@ private Properties sql=new Properties();
 		int result=0;
 		try {
 			pstmt=conn.prepareStatement(sql.getProperty("updateNoticeReadCount"));
+			pstmt.setInt(1, no);
+			result=pstmt.executeUpdate();
+		}catch(SQLException e) {
+			e.printStackTrace();
+		}finally {
+			close(pstmt);
+		}return result;
+	}
+	
+	public int insertNotice(Connection conn,Notice n) {
+		PreparedStatement pstmt=null;
+		int result=0;
+		try {
+			pstmt=conn.prepareStatement(sql.getProperty("insertNotice"));
+			pstmt.setString(1, n.getNoticeTitle());
+			pstmt.setString(2, n.getNoticeContent());
+			result=pstmt.executeUpdate();
+		}catch(SQLException e) {
+			e.printStackTrace();
+		}finally {
+			close(pstmt);
+		}return result;
+	}
+	
+	public int searchNoticeNo(Connection conn) {
+		PreparedStatement pstmt=null;
+		ResultSet rs=null;
+		int result=0;
+		try {
+			pstmt=conn.prepareStatement(sql.getProperty("searchNoticeNo"));
+			rs=pstmt.executeQuery();
+			if(rs.next()) {
+				result=rs.getInt(1);
+			}
+		}catch(SQLException e) {
+			e.printStackTrace();
+		}finally {
+			close(rs);
+			close(pstmt);
+		}
+		return result;
+	}
+	
+	public int insertNoticeImage(Connection conn,Notice_images image, int noticeNo) {
+		PreparedStatement pstmt=null;
+		int result=0;
+		try {
+			pstmt=conn.prepareStatement(sql.getProperty("insertNoticeImage"));
+			pstmt.setString(1, image.getSaveFilename());
+			pstmt.setString(2, image.getFileName());
+			pstmt.setInt(3, noticeNo);
+			result=pstmt.executeUpdate();
+		}catch(SQLException e) {
+			e.printStackTrace();
+		}finally {
+			close(pstmt);
+		}return result;
+	}
+	
+	public Notice_images selectNoticeImage(Connection conn,int no) {
+		PreparedStatement pstmt=null;
+		ResultSet rs=null;
+		Notice_images image=null;
+		try {
+			pstmt=conn.prepareStatement(sql.getProperty("selectNoticeImage"));
+			pstmt.setInt(1,no);
+			rs=pstmt.executeQuery();
+			if(rs.next()) image=getNoticeImage(rs);
+		}catch(SQLException e) {
+			e.printStackTrace();
+		}finally {
+			close(rs);
+			close(pstmt);
+		}return image;
+	}
+	
+	public int updateNotice(Connection conn , Notice n) {
+		PreparedStatement pstmt = null;
+		int result = 0;
+		try {
+			pstmt=conn.prepareStatement(sql.getProperty("updateNotice"));
+			pstmt.setString(1, n.getNoticeTitle());
+			pstmt.setString(2, n.getNoticeContent());
+			pstmt.setInt(3, n.getNoticeNo());
+			result=pstmt.executeUpdate();
+		}catch(SQLException e) {
+			e.printStackTrace();
+		}finally {
+			close(pstmt);
+		}return result;
+	}
+	public int updateNoticeImage(Connection conn , Notice_images image) {
+		PreparedStatement pstmt = null;
+		int result = 0;
+		try {
+			pstmt=conn.prepareStatement(sql.getProperty("updateNoticeImage"));
+			pstmt.setString(1, image.getSaveFilename());
+			pstmt.setString(2, image.getFileName());
+			pstmt.setInt(3, image.getNoticeNo());
+			result=pstmt.executeUpdate();
+		}catch(SQLException e) {
+			e.printStackTrace();
+		}finally {
+			close(pstmt);
+		}return result;
+	}
+	
+	public int NoticeDelete(Connection conn, int no) {
+		PreparedStatement pstmt = null;
+		int result = 0;
+		try {
+			pstmt=conn.prepareStatement(sql.getProperty("NoticeDelete"));
+			pstmt.setInt(1, no);
+			result=pstmt.executeUpdate();
+		}catch(SQLException e) {
+			e.printStackTrace();
+		}finally {
+			close(pstmt);
+		}return result;
+	}
+	
+	public int NoticeImageDelete(Connection conn, int no) {
+		PreparedStatement pstmt = null;
+		int result = 0;
+		try {
+			pstmt=conn.prepareStatement(sql.getProperty("NoticeImageDelete"));
 			pstmt.setInt(1, no);
 			result=pstmt.executeUpdate();
 		}catch(SQLException e) {

@@ -11,19 +11,17 @@ import javax.servlet.http.HttpSession;
 import com.btc.member.model.dto.Member;
 import com.btc.member.model.service.MemberService;
 
-//import com.web.controller.emailId;
-
 /**
- * Servlet implementation class LoginToHeaderServlet
+ * Servlet implementation class ChangeMyinfo
  */
-@WebServlet( name = "login", urlPatterns = {"/LoginToHeaderServlet.do"})
-public class LoginToHeaderServlet extends HttpServlet {
+@WebServlet("/member/changemyinfo.do")
+public class ChangeMyinfo extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public LoginToHeaderServlet() {
+    public ChangeMyinfo() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -32,31 +30,27 @@ public class LoginToHeaderServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		//아이디값을 받아와서 헤더로 넘기기
-		
-		//아이디 불러오기
+		String nickName=request.getParameter("nick");
+		String phone=request.getParameter("phone");
+		String name=request.getParameter("name");
 		String email=request.getParameter("email");
-		String pw=request.getParameter("password");
-		Member loginMember=new MemberService().login(email,pw);
-		//세션에 저장
-		HttpSession session=request.getSession();//true/flase도 줄 수 있다. 그러나 세션은 (jsp파일에 별도 설정 없는 상태에서는) 기본적으로 존재한다
+		Member updateMember=new MemberService().updateMember(nickName,phone,name,email);
 		
-		
-		
-		//값이 없으면 로그인 금지
-		if(loginMember==null) {
-			//실패 로그 출력
-			String msg="아이디 혹은 비밀번호가 일치하지 않습니다";
-			String loc="/views/LOGIN/login.jsp";
+		String msg="",loc="";
+		if(updateMember!=null) {
+			msg="회원정보를 변경하였습니다.";
+			loc="/views/myPage/myPage.jsp";
 			request.setAttribute("msg", msg);
 			request.setAttribute("loc", loc);
-			request.getRequestDispatcher("/views/common/msg.jsp").forward(request, response);
-		}else{
-			//메인에 보내기
-			session.setAttribute("loginMember", loginMember);
-			response.sendRedirect(request.getContextPath());			
+			request.getSession().setAttribute("loginMember", updateMember);
+			
+		}else {
+			msg="정보변경에 실패하였습니다.";
+			loc="/views/myPage/myPage.jsp";
+			request.setAttribute("msg", msg);
+			request.setAttribute("loc", loc);
 		}
-		
+		request.getRequestDispatcher("/views/common/msg.jsp").forward(request, response);
 	}
 
 	/**

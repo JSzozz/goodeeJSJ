@@ -33,10 +33,10 @@ public class PasswordCheckServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		int memberNo=Integer.parseInt(request.getParameter("memberNo"));
 		String password=request.getParameter("password");
-		System.out.println(memberNo);
-		System.out.println(password);
+		HttpSession session=request.getSession();
+		session.setAttribute("memberNo", memberNo);
 		int result=new MemberService().passwordCk(memberNo, password);
-		System.out.println(result);
+		
 		PrintWriter out=response.getWriter();
 		out.print(result);
 	}

@@ -42,8 +42,6 @@ public class NoticeSearchServlet extends HttpServlet {
 		String categoryName = (String)request.getParameter("categoryName");
 		String communityTitle = (String)request.getParameter("communityTitle");
 		
-		System.out.println(categoryName+", "+communityTitle);
-		
 		request.setAttribute("categoryName", categoryName);
 		request.setAttribute("communityTitle", communityTitle);
 		

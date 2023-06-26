@@ -107,6 +107,51 @@ public class MemberDao {
 		}return result;
 	}
 	
+	public int upadateMember(Connection conn, String nickname, String phone, String name, String email) {
+		PreparedStatement pstmt=null;
+		int result=0;
+		try {
+			pstmt=conn.prepareStatement(sql.getProperty("updateMember"));
+			pstmt.setString(1, nickname);
+			pstmt.setString(2, phone);
+			pstmt.setString(3, name);
+			pstmt.setString(4, email);
+			result=pstmt.executeUpdate();
+		}catch(SQLException e) {
+			e.printStackTrace();
+		}finally {
+			close(pstmt);
+		}return result;
+	}
+	
+	public int deleteMember(Connection conn,int memberNo) {
+		PreparedStatement pstmt=null;
+		int result=0;
+		try {
+			pstmt=conn.prepareStatement(sql.getProperty("deleteMember"));
+			pstmt.setInt(1, memberNo);
+			result=pstmt.executeUpdate();
+		}catch(SQLException e) {
+			e.printStackTrace();
+		}finally {
+			close(pstmt);
+		}return result;
+	}
+	
+	public int updateBlack(Connection conn,int memberNo) {
+		PreparedStatement pstmt=null;
+		int result=0;
+		try {
+			pstmt=conn.prepareStatement(sql.getProperty("updateBlack"));
+			pstmt.setInt(1, memberNo);
+			result=pstmt.executeUpdate();
+		}catch(SQLException e) {
+			e.printStackTrace();
+		}finally {
+			close(pstmt);
+		}return result;
+	}
+	
 	private Member getMember(ResultSet rs) throws SQLException{
 		return Member.builder().memberNo(rs.getInt("member_no")).memberType(rs.getInt("member_type")).memberName(rs.getString("member_name"))
 				.email(rs.getString("email")).nickName(rs.getString("nickname")).phone(rs.getString("phone")).memberBlack(rs.getString("member_black")).build();
