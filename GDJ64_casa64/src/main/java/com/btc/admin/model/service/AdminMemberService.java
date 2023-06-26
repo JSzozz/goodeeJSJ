@@ -5,6 +5,7 @@ import java.util.List;
 
 import static com.btc.common.JDBCTemplate.*;
 import com.btc.admin.model.dao.AdminMemberDao;
+import com.btc.member.model.dto.BlackMember;
 import com.btc.member.model.dto.CancelMember;
 import com.btc.member.model.dto.Member;
 
@@ -105,6 +106,20 @@ public class AdminMemberService {
 		else rollback(conn);
 		close(conn);
 		return result;
+	}
+	
+	public int blackMemberCount() {
+		Connection conn=getConnection();
+		int result=dao.blackMemberCount(conn);
+		close(conn);
+		return result;
+	}
+	
+	public List<BlackMember> blackMemberList(int cPage,int numPerpage){
+		Connection conn=getConnection();
+		List<BlackMember> members=dao.blackMemberList(conn, cPage, numPerpage);
+		close(conn);
+		return members;
 	}
 }
 

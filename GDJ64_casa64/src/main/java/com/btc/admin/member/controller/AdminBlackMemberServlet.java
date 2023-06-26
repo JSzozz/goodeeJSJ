@@ -33,9 +33,8 @@ public class AdminBlackMemberServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 	
-		
+		String msg="",loc="";
 		String path=getServletContext().getRealPath("/upload/member");
-		System.out.println(path);
 		int maxSize=1024*1024*100;
 		String encode="UTF-8";
 		DefaultFileRenamePolicy dfr=new DefaultFileRenamePolicy();
@@ -45,32 +44,37 @@ public class AdminBlackMemberServlet extends HttpServlet {
 		String reason=mr.getParameter("reason");
 		int memberNo= Integer.parseInt(mr.getParameter("memberNo"));
 		Member m=service.selectMember(memberNo);
+		if(m.getMemberBlack().equals("Y")) {
+			msg="이미 블랙된 회원입니다";
+			loc="/views/admin/list-member.jsp";
+			request.getRequestDispatcher("/views/common/msg.jsp").forward(request, response);
+		}
 		int insertResult=service.insertBlackMember(memberNo,m.getMemberName(),m.getNickName(),m.getEmail(),m.getPhone(),reason);
 		int fileResult=service.insertBlackFile(memberNo, fileName, fileRealName);
-		String msg="",loc="";
+		
 		if(insertResult>0&&fileResult>0) {
 			int result=new MemberService().updateBlack(memberNo);
 			if(result>0) {
 				msg="회원블랙성공";
-				loc="/admin/list-member.jsp";
+				loc="/views/admin/list-member.jsp";
 				request.setAttribute("msg", msg);
 				request.setAttribute("loc", loc);
-				request.getRequestDispatcher("/views/common/msg.jsp").forward(request, response);
+				
 			}else {
 				msg="서버오류";
-				loc="/admin/list-member.jsp";
+				loc="/views/admin/list-member.jsp";
 				request.setAttribute("msg", msg);
 				request.setAttribute("loc", loc);
-				request.getRequestDispatcher("/views/common/msg.jsp").forward(request, response);
+				
 			}
 		}else {
 			msg="서버오류";
-			loc="/admin/list-member.jsp";
+			loc="/views/admin/list-member.jsp";
 			request.setAttribute("msg", msg);
 			request.setAttribute("loc", loc);
-			request.getRequestDispatcher("/views/common/msg.jsp").forward(request, response);
+			
 		}
-		
+		request.getRequestDispatcher("/views/common/msg.jsp").forward(request, response);
 	}
 
 	/**

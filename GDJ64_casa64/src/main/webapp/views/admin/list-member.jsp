@@ -75,8 +75,10 @@ String search = (String) request.getAttribute("search");
 				</table>
 				<!-- 관리자 버튼 -->
 				<div class="d-flex justify-content-end">
-					<button type="button" class="btn btn-dark me-2" onclick="blackMember();">블랙처리</button>
-					<button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#cancelMember">회원탈퇴</button>
+					<button type="button" class="btn btn-dark me-2"
+						onclick="blackMember();">블랙처리</button>
+					<button type="button" class="btn btn-danger" data-bs-toggle="modal"
+						data-bs-target="#cancelMember">회원탈퇴</button>
 				</div>
 				<!-- 페이지바 -->
 				<nav aria-label="Page navigation">
@@ -107,7 +109,7 @@ String search = (String) request.getAttribute("search");
 					onclick="checkCancelMember();" data-bs-dismiss="modal">확인</button>
 				<button type="button" class="btn btn-secondary"
 					data-bs-dismiss="modal">닫기</button>
-				
+
 			</div>
 
 		</div>
@@ -124,21 +126,23 @@ String search = (String) request.getAttribute("search");
 				<button type="button" class="btn-close" data-bs-dismiss="modal"
 					aria-label="Close"></button>
 			</div>
-			<form method="post" encType="multipart/form-data" action="<%=request.getContextPath() %>/admin/member/blackMember.do">
-			<div class="modal-body">
-				<h5>회원번호</h5>
-				<input type="text" name="memberNo" value="" readonly>
-				<h5>회원블랙사유</h5>
-				<textarea name="reason" rows="5" cols="50"></textarea><br>
-				<h5>첨부파일</h5>
-				<input type="file" name="fileName">
-			</div>
-			<div class="modal-footer">
-				<button type="submit" class="btn btn-primary">확인</button>
-				<button type="button" class="btn btn-secondary"
-					data-bs-dismiss="modal">닫기</button>
-				
-			</div>
+			<form method="post" encType="multipart/form-data"
+				action="<%=request.getContextPath()%>/admin/member/blackMember.do">
+				<div class="modal-body">
+					<h5>회원번호</h5>
+					<input type="text" name="memberNo" value="" readonly>
+					<h5>회원블랙사유</h5>
+					<textarea name="reason" rows="5" cols="50"></textarea>
+					<br>
+					<h5>첨부파일</h5>
+					<input type="file" name="fileName">
+				</div>
+				<div class="modal-footer">
+					<button type="submit" class="btn btn-primary">확인</button>
+					<button type="button" class="btn btn-secondary"
+						data-bs-dismiss="modal">닫기</button>
+
+				</div>
 			</form>
 		</div>
 	</div>
@@ -167,9 +171,14 @@ String search = (String) request.getAttribute("search");
 		};
 		
 		const blackMember=()=>{
-			const bMember=$("input[name=choice]:checked").val();
-			$(".modal-body input[name=memberNo]").val(bMember);
-			$("#blackMember").modal("show");
+			if($("input[name=choice]").is(":checked")==true){
+				const bMember=$("input[name=choice]:checked").val();
+				$(".modal-body input[name=memberNo]").val(bMember);
+				$("#blackMember").modal("show");
+			}else{
+				alert("블랙할 회원을 체크해주세요");
+			}
+			
 		}
 		
 		const searchMember=()=>{

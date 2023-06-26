@@ -1,5 +1,7 @@
 package com.btc.member.model.dto;
 
+import java.sql.Date;
+
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -17,5 +19,5 @@ public class BlackMember {
 	private String email;
 	private String phone;
 	private String reason;
-	private String blackDate;
+	private Date blackDate;
 }
