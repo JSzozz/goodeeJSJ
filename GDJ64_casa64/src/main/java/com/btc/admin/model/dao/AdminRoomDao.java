@@ -25,13 +25,31 @@ public class AdminRoomDao {
 			e.printStackTrace();
 		}
 	}
-	public List<Room> selectAllExistingRoom(Connection conn) {
+	public int selectRoomCount(Connection conn) {
+		PreparedStatement pstmt=null;
+		ResultSet rs=null;
+		int result=0;
+		try {
+			pstmt=conn.prepareStatement(sql.getProperty("selectRoomCount"));
+			rs=pstmt.executeQuery();
+			if(rs.next()) result=rs.getInt(1);
+		}catch(SQLException e) {
+			e.printStackTrace();
+		}finally {
+			close(rs);
+			close(pstmt);
+		}return result;
+	}
+	public List<Room> selectAllExistingRoom(Connection conn, int cPage, int numPerPage) {
 		PreparedStatement pstmt=null;
 		ResultSet rs=null;
 		List<Room> list=new ArrayList<Room>();
+		/* Room m=null; */
 		try {
 			String query=sql.getProperty("selectAllExistingRoom");
 			pstmt=conn.prepareStatement(query);
+			pstmt.setInt(1, (cPage-1)*numPerPage+1);
+			pstmt.setInt(2, cPage*numPerPage);
 			rs=pstmt.executeQuery();
 			while(rs.next()) {
 				list.add(getRoom(rs));
@@ -69,6 +87,27 @@ public class AdminRoomDao {
 			close(conn);
 		}
 		return r;
+	}
+	public int updateRoom(Connection conn, Room r) {
+		PreparedStatement pstmt=null;
+		int result=0;
+		try {
+			pstmt=conn.prepareStatement(sql.getProperty("updateRoom"));
+			pstmt.setString(1, r.getRoomName());
+			pstmt.setInt(2, r.getRoomPrice());
+			pstmt.setInt(3,r.getRoomSize());
+			pstmt.setInt(4, r.getRoomCap());
+			pstmt.setInt(5, r.getRoomMaxCap());
+			pstmt.setString(6, String.valueOf(r.getBookable()));
+			pstmt.setString(7,String.join(",", r.getRoomImage()));
+			pstmt.setString(8, r.getRoomDescription());
+			pstmt.setInt(9,r.getRoomNo());
+			result=pstmt.executeUpdate();
+		}catch(SQLException e) {
+			e.printStackTrace();
+		}finally {
+			close(pstmt);
+		}return result;
 	}
 
 }
