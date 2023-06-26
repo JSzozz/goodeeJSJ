@@ -3,7 +3,14 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ include file="/views/admin/common/header.jsp"%>
-<% List<Member> members=(List)request.getAttribute("members"); %>
+
+<% 
+	List<Member> members=(List)request.getAttribute("members"); 
+	String type=(String)request.getAttribute("type");
+	String search=(String)request.getAttribute("search");
+
+%>
+
                     <!-- 컨테츠 -->
                     <section>
                         <div class="container-fluid">
@@ -12,16 +19,16 @@
                                     <div class="row pt-md-5 mt-md-3 mb-2">
                                         <h2 class="text-center">회원리스트</h2>
                                         <div id="select-line" class="float-end">
-                                            <form>
+                                            <form action="<%=request.getContextPath()%>/admin/searchMember.do">
                                                 <div class="search-area d-flex justify-content-end mt-2">
-                                                    <select name="notice-search">
-                                                        <option value="user-name">이름</option>
-                                                        <option value="user-nickname">닉네임</option>
-                                                        <option value="user-email">이메일</option>
-                                                        <option value="user-phone">전화번호</option>
+                                                    <select name="member-search">
+                                                        <option value="member_name" <%=type!=null&&type.equals("member_name")?"selected":"" %>>이름</option>
+                                                        <option value="nickname" <%=type!=null&&type.equals("nickname")?"selected":"" %>>닉네임</option>
+                                                        <option value="email" <%=type!=null&&type.equals("email")?"selected":"" %>>이메일</option>
+                                                        <option value="phone" <%=type!=null&&type.equals("phone")?"selected":"" %>>전화번호</option>
                                                     </select>
-                                                    <input type="text" name="keyword" placeholder="검색어를 입력해 주세요" class="ms-1">
-                                                    <button type="button" class="btn btn-primary btn-sm ms-1">검색</button>
+                                                    <input type="text" name="keyword" placeholder="검색어를 입력해 주세요" class="ms-1" value="<%=search!=null?search:""%>">
+                                                    <button type="summit" class="btn btn-primary btn-sm ms-1">검색</button>
                                                 </div>
                                             </form>
                                         </div>
@@ -41,7 +48,7 @@
                                         	<tr>
                                         		<td colspan=6>회원이 없습니다.</td>
                                         	</tr>
-                                        <%}else{ 
+                                        <%}else{
                                         	for(Member m:members){%>
                                             <tr>
                                                 <td>
@@ -53,7 +60,8 @@
                                                 <td><%=m.getEmail() %></td>
                                                 <td><%=m.getPhone() %></td>
                                             </tr>
-                                           <%} }%>
+                                         
+                                        	<%} }%>
                                         </tbody>
                                     </table>
                                     <!-- 관리자 버튼 -->
@@ -109,7 +117,7 @@
 				},
 				success:function(data){
 					if(data==1){
-						alert("삭제성공");
+						alert("탈퇴성공");
 					}else{
 						alert("실패");
 					}
@@ -118,6 +126,14 @@
 				}
 			});
 		};
+		
+		const searchMember=()=>{
+			const type=$("select[name=member-search] option:selected").val();
+			const keyword=$("input[name=keyword]").val();
+			
+			
+		};
+		
 	</script>
                     
                     

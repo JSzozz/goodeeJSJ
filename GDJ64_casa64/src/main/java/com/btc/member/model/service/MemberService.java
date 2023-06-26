@@ -40,4 +40,11 @@ public class MemberService {
 		close(conn);
 		return result;
 	}
+	
+	public int passwordCk(int memberNo,String pw) {
+		Connection conn=getConnection();
+		int result=dao.PasswordCk(conn, memberNo, pw);
+		close(conn);
+		return result;
+	}
 }
