@@ -34,14 +34,14 @@ public class AdminBookingDao {
 	public List<Booking> getAllBookingList(Connection conn) {
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
-		List<Booking> allBookingList = new ArrayList<Booking>();
+		List<Booking> bookingList = new ArrayList<Booking>();
 		
 		try {
 			pstmt = conn.prepareStatement(query.getProperty("showAllBookingList"));
 			rs = pstmt.executeQuery();
 			
 			while(rs.next()) {
-				allBookingList.add(getBooking(rs));
+				bookingList.add(getBooking(rs));
 			}
 			
 		}catch(Exception e) {
@@ -49,7 +49,51 @@ public class AdminBookingDao {
 		}finally {
 			close(rs);
 			close(pstmt);
-		} return allBookingList;
+		}
+		return bookingList;
+	}
+	
+	public Booking getInfoBooking(Connection conn, int bookingNo) {
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		Booking booking = null;
+		
+		try {
+			pstmt = conn.prepareStatement(query.getProperty("infoBooking"));
+			pstmt.setInt(1, bookingNo);
+			rs = pstmt.executeQuery();
+			
+			if(rs.next()) booking = getBooking(rs);
+		}catch(Exception e) {
+			e.printStackTrace();
+		}finally {
+			close(rs);
+			close(pstmt);
+		}
+		return booking;
+	}
+	
+	public List<Booking> getSearchBookingList(Connection conn, String state) {
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		List<Booking> bookingList = new ArrayList<Booking>();
+		
+		try {
+			pstmt = conn.prepareStatement(query.getProperty("searchBookingList"));
+			pstmt.setString(1, state);
+			rs = pstmt.executeQuery();
+			
+			while(rs.next()) {
+				bookingList.add(getBooking(rs));
+			}
+			
+		}catch(Exception e) {
+			e.printStackTrace();
+		}finally {
+			close(rs);
+			close(pstmt);
+		}
+		return bookingList;
 	}
 	
 	private Booking getBooking(ResultSet rs) throws SQLException {
@@ -64,6 +108,8 @@ public class AdminBookingDao {
 				.guestInfant(rs.getInt("GUEST_INFANT"))
 				.bookingPrice(rs.getInt("BOOKING_PRICE"))
 				.bookingComment(rs.getString("BOOKING_COMMENT"))
+				.bookingState(rs.getString("BOOKING_STATE"))
+				.paymentDate(rs.getDate("PAYMENT_DATE"))
 				.build();
 	}
 }

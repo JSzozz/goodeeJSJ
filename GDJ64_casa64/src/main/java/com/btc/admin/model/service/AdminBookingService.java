@@ -16,10 +16,24 @@ public class AdminBookingService {
 		return service;
 	}
 	
-	public List<Booking> allBookingList(){
+	public List<Booking> allBookingList() {
 		Connection conn = getConnection();
-		List<Booking> allBookingList = AdminBookingDao.getBookingDao().getAllBookingList(conn);
+		List<Booking> bookingList = AdminBookingDao.getBookingDao().getAllBookingList(conn);
 		close(conn);
-		return allBookingList;
+		return bookingList;
+	}
+	
+	public Booking infoBooking(int bookingNo) {
+		Connection conn = getConnection();
+		Booking infoBooking = AdminBookingDao.getBookingDao().getInfoBooking(conn, bookingNo);
+		close(conn);
+		return infoBooking;
+	}
+	
+	public List<Booking> searchBookingList(String state) {
+		Connection conn = getConnection();
+		List<Booking> bookingList = AdminBookingDao.getBookingDao().getSearchBookingList(conn, state);
+		close(conn);
+		return bookingList;
 	}
 }

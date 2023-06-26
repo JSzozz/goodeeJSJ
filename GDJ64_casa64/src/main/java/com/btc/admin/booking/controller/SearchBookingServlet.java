@@ -12,25 +12,27 @@ import javax.servlet.http.HttpServletResponse;
 import com.btc.admin.model.service.AdminBookingService;
 import com.btc.booking.model.vo.Booking;
 
-@WebServlet("/admin/booking/showAllBooking.do")
-public class ShowAllBooking extends HttpServlet {
+@WebServlet("/admin/booking/seachBooking.do")
+public class SearchBookingServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
-    public ShowAllBooking() {
+    public SearchBookingServlet() {
         super();
     }
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		List<Booking> allBookingList = AdminBookingService.getBookingService().allBookingList();
+		String state = request.getParameter("state");
+		
+		List<Booking> bookingList = AdminBookingService.getBookingService().searchBookingList(state);
 		
 		String csv = "";
-		for(int i=0; i<allBookingList.size(); i++) {
+		for(int i=0; i<bookingList.size(); i++) {
 			if(i!=0) {
 				csv += "\n";
 			}
-			csv += allBookingList.get(i);
+			csv += bookingList.get(i);
 		}
-		System.out.println(csv);
+		
 		response.getWriter().print(csv);
 	}
 

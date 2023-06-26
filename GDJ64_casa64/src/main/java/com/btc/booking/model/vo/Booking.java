@@ -26,4 +26,9 @@ public class Booking {
    private String bookingState;
    private Date paymentDate;
    
+   @Override
+   public String toString() {
+	   return bookingNo + "," + memberNo + "," + roomNo + "," + checkIn + "," + checkOut + "," + guestAdult + ","
+			   + guestChild + "," + guestInfant + "," + bookingPrice + "," + bookingComment + "," + bookingState + "," + paymentDate;
+   }
 }

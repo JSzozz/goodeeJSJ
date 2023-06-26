@@ -1,135 +1,95 @@
-$(() => {
-  $('#bookingTabs a').click((e) => {
-    activeClassEvent(e);
-  });
-});
+// 검색
+function searchOption() {
 
-function activeClassEvent(tab) {
-  $('#bookingTabs a').each(function (i, e) {
-    $('#bookingTabs').find('a').removeClass('active');
-  });
-
-  $(tab.target).addClass('active text-dark');
 }
 
+// 예약정보가 없을시
 function noSearchBooking() {
-  let noSearchCard = '<div class="d-flex text-center">'
-  noSearchCard += '<div class="col-xl-12 p-5">'
-  noSearchCard += '<h2 class="p-3">예약내역이 없습니다... :(</h2>'
-  noSearchCard += '</div>';
-  noSearchCard += '</div>';
-  return noSearchCard;
+  return '<tr><td colspan="7">예약내역이 없습니다 :(</td></tr>';
 }
 
-function resultBooking(booking) {
-  const userData = booking.split(',');
+// 테이블에 결과 출력
+function resultBooking(data) {
+  const BOOKING_DATA = data.split(",");
 
-  console.log(userData);
+  let result = '<tr>'
+  result += '<td>' + BOOKING_DATA[0] +'</td>'
+  result += '<td>' + BOOKING_DATA[10] +'</td>'
+  result += '<td>' + BOOKING_DATA[2] +'</td>'
+  result += '<td>' + BOOKING_DATA[1] +'</td>'
+  result += '<td>' + BOOKING_DATA[3] +'</td>'
+  result += '<td>' + BOOKING_DATA[4] +'</td>'
+  result += '<td>'
+  result +=
+    '<button type="button" class="btn btn-dark btn-sm" onclick="infoBooking(this)" data-bs-toggle="modal" data-bs-target="#bookingModal">상세조회</button>';
+  result += '</td>'
+  result += '</tr>';
 
-  let resultCard = '<div class="col-sm-12 p-2">';
-
-  resultCard += '<div class="card card-booking">';
-
-  resultCard += '<div class="card-body">';
-
-
-  resultCard += '<p>결제대기</p>';
-  resultCard += '<div class="d-flex text-center">';
-
-  resultCard += '<div class="col-sm-4">';
-  resultCard +=
-    '<img src="<%=request.getContextPath()%>/images/01.jpg" alt="객실사진" class="img-fluid" />';
-  resultCard += '<div class="mt-2 fs-5">객실이름</div>';
-  resultCard += '<div class="mt-2 bg-light">유료옵션</div>';
-  resultCard += '</div>';
-
-  resultCard += '<div class="col-sm-7 ms-5">';
-  
-  resultCard += '<div>';
-  resultCard += '<strong>예약자명:&nbsp;</strong>';
-  resultCard += '<span>예약자이름</span>';
-  resultCard += '</div>';
-
-  resultCard += '<div class="mt-2">';
-  resultCard += '<strong>이메일:&nbsp;</strong>';
-  resultCard += '<span>예약자이메일</span>';
-  resultCard += '</div>';
-
-  resultCard += '<div class="mt-2">';
-  resultCard += '<strong>전화번호:&nbsp;</strong>';
-  resultCard += '<span>예약자전화번호</span>';
-  resultCard += '</div>';
-  
-  resultCard += '<div class="mt-2">';
-  resultCard += '<strong>예약기간:&nbsp;</strong>';
-  resultCard += '<span>'+ userData[3] +'</span>';
-  resultCard += '<span>&#126;</span>';
-  resultCard += '<span>'+ userData[4] +'</span>';
-  resultCard += '</div>';
-  
-  resultCard += '<div class="mt-2">';
-  resultCard += '<strong>인원:&nbsp;</strong>';
-  resultCard += '<span>성인 ' + userData[5] + '명&nbsp;</span>';
-  resultCard += '<span>미성인 ' + userData[6] + '명&nbsp;</span>';
-  resultCard += '<span>유아 ' + userData[7] + '명&nbsp;</span>';
-  resultCard += '</div>';
-  
-  resultCard += '<div class="mt-2">';
-  resultCard += '<strong>요청사항:&nbsp;</strong>';
-  resultCard += '<span>' + userData[9] + '</span>';
-  resultCard += '</div>';
-  
-  resultCard += '<div class="mt-2">';
-  resultCard += '<table class="table">';
-  resultCard += '<thead><th colpan="2" class="fs-5">결제금액</th></thead>';
-  resultCard += '<tbody><td colpan="2" class="fs-5">' + userData[8] + '</td></tbody>';
-  resultCard += '</table>';
-  resultCard += '</div>';
-  
-  resultCard += '<div class="mt-2">';
-  resultCard += '<button type="button" class="btn btn-danger mt-2" style="width:250px;">결제취소</button>';
-  resultCard += '</div>';
-
-  
-  resultCard += '</div>';
-
-  resultCard += '</div>';
-
-  resultCard += '</div>';
-
-  resultCard += '</div>';
-
-  resultCard += '</div>';
-
-  return resultCard;
+  return result;
 }
 
-// 전체 예약
-function showAllBooking(url) {
-  ajaxBooking(url);
+// 상세조회
+function infoBooking(data) {
+  const BOOKING_NO = $(data).parent().parent().find('td').first().text();
+  ajaxShowModal(checkBookingURL, BOOKING_NO);
+}
+
+// 상세조회 AJAX
+function ajaxShowModal(address, no) {
+  $.ajax({
+    url: address,
+    type: 'get',
+    data: {bookingNo:no},
+    dataType: 'text',
+    success: (data) => {
+      if (isEmpty(data)) {
+        alert('상세조회를 할 수 없습니다...');
+        return;
+      }
+
+      const BOOKING_DATA = data.split(',');
+
+      $("#reservationState").html('<em>' + BOOKING_DATA[10] + '</em>');
+      $('#reservationNo').text('No.' + BOOKING_DATA[0]);
+      $('#reservation').text(BOOKING_DATA[1]);
+      $('#reservationEmail').text(BOOKING_DATA[1]);
+      $('#reservationPhone').text(BOOKING_DATA[1]);
+      $('#reservationDate').html(BOOKING_DATA[3] + '&#126;' + BOOKING_DATA[4]);
+      $('#reservationPerson').text('성인: ' + BOOKING_DATA[5] + ' 미성인: ' + BOOKING_DATA[6] + ' 유아: ' + BOOKING_DATA[7]);
+      $('#reservationComment').text(BOOKING_DATA[9]);
+      $('#reservationPayment').text(BOOKING_DATA[8] + '원')
+
+      if (BOOKING_DATA[10] === '결제완료' || '취소요청') {
+        $('#bookingCancelBtn').removeClass('d-none');
+      } else {
+        $('#bookingCancelBtn').addClass('d-none');
+      }
+
+    }
+  })
 }
 
 
 // 예약 AJAX
-function ajaxBooking(address) {
+function ajaxBooking(address, state) {
   $.ajax({
     url: address,
-    data: 'get',
+    type: 'get',
+    data: {state:state},
     dataType: 'text',
     success: (data) => {
-      
+
       if (isEmpty(data)) {
-        $('#result').html(noSearchBooking());
+        $('#resultTable').html(noSearchBooking());
         return;
       }
 
-      const bookingData = data.split('\n');
+      const BOOKING_DATA = data.split('\n');
 
-      // for (let booking of bookingData) {
-      //   $('#result').html(resultBooking(booking));
-      // }
-      for (let i = 0; i < bookingData.length; i++){
-        $("#result").append(resultBooking(bookingData[i]));
+      $('#resultTable').empty();
+
+      for (let i = 0; i < BOOKING_DATA.length; i++) {
+        $('#resultTable').append(resultBooking(BOOKING_DATA[i]));
       }
     }
   })
