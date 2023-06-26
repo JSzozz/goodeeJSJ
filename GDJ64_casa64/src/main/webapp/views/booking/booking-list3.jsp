@@ -7,8 +7,8 @@
 <%@ include file="/views/common/header.jsp"%>
 		<!-- 헤더 영역 종료 -->
 <%Booking booking=(Booking)request.getAttribute("booking");%>
-<%=booking %><br>
-
+<%-- <%=booking %><br>
+ --%>
 		<!-- 카테고리별 이미지 -->
 		<div class="category-image">
 			<img src="<%=request.getContextPath() %>/images/booking/reservation.png" width="100%" height="200px">

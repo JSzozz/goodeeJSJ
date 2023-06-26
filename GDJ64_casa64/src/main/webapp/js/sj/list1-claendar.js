@@ -17,6 +17,7 @@
    function prevCalendar() {
        this.toDay = new Date(toDay.getFullYear(), toDay.getMonth() - 1, toDay.getDate());
        buildCalendar();    // @param 전월 캘린더 출력 요청
+       checkin_checkout();
    }
    
    /**
@@ -25,6 +26,7 @@
    function nextCalendar() {
        this.toDay = new Date(toDay.getFullYear(), toDay.getMonth() + 1, toDay.getDate());
        buildCalendar();    // @param 명월 캘린더 출력 요청
+       checkin_checkout();
    }
    
    /**
@@ -93,8 +95,11 @@
                    divNode.textContent = roomName[i];
                    column.appendChild(divNode);
                    divNode.setAttribute("class",toDay.getFullYear()+"-"+autoLeftPad((toDay.getMonth() + 1), 2)+"-"+autoLeftPad(day, 2));
-                   divNode.setAttribute("bookable","available");
+                   divNode.setAttribute("roomno",roomNo[i]);
+                   divNode.setAttribute("bookable",bookable[i]);
                    divNode.setAttribute("price",roomPrce[i]);
+                   divNode.setAttribute("roomCap",roomCap[i]);
+                   divNode.setAttribute("roomMaxCap",roomMaxCap[i]);
                    divNode.setAttribute("style","font-size:0.81rem");
                }
               

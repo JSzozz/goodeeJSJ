@@ -1,19 +1,20 @@
 /* 달력 객실 선택 효과 */
    $(function() {
-       $(document).on("mouseover","div[bookable=available]",e=> {
+       $(document).on("mouseover","div[bookable=Y]",e=> {
            $(e.target).css("font-weight","bold");
         });
-       $(document).on("mouseout","div[bookable=available]",e=> {
+       $(document).on("mouseout","div[bookable=Y]",e=> {
            $(e.target).css("font-weight","normal");
         });   
    });
 /* 달력에서 객실 클릭 */
    let totalRoomPrice=0;
-   let totalBookPrice=0; 
+   let totalBookPrice=0;
+   
    $(function() {
       let checkInDt="";//(String)
       let roomPrice=0;
-       $(document).on("click","div[bookable=available]",e=> {
+       $(document).on("click","div[bookable=Y]",e=> {
              $(".reserve_step2").show();
 /*           console.dir($(e.target));
              console.log($(e.target).text());
@@ -28,7 +29,9 @@
              checkInDt=$(e.target).attr("class");
 
              roomPrice = Number($(e.target).attr("price"));// /* 1. 기간선택& 4. 금액 */과 이어짐
-             console.log(roomPrice);
+             
+			 const $checkAmountOfLodgment=checkAmountOfLodgment(e);//number
+			 insertSelectTag(e,$checkAmountOfLodgment);
        });
 /* 이용가능한 객실 선택 _ 예약 정보 받기 */
       $(function() {
@@ -41,13 +44,11 @@
             const year = stringToDate.getFullYear();
             const month = ('0' + (stringToDate.getMonth() + 1)).slice(-2);
             const day = ('0' + stringToDate.getDate()).slice(-2);
-              const checkoutDt = year+"-"+month+"-"+day;//(String)
-              // 어떤 날짜여도 'YYYY-DD-YY'형식으로 변환!
+            const checkoutDt = year+"-"+month+"-"+day;//(String)
+            // 어떤 날짜여도 'YYYY-DD-YY'형식으로 변환!
+            
               $("#checkoutDt").html(checkoutDt);
-/*          console.log($("select[class=availableDays] option:selected").val());
-            console.log($("select[class=availableDays] option:selected").attr('price'));
-            console.log($("select[class=availableDays] option:selected").attr('consprice'));
-            console.log($("select[class=availableDays] option:selected").text()); */ 
+
               /* totalRoomPrice */
               let period = Number($("select[class=availableDays] option:selected").val());
               totalRoomPrice=period*roomPrice;

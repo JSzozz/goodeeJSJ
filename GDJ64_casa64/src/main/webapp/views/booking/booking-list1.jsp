@@ -1,23 +1,33 @@
+<%@page import="com.btc.booking.model.vo.Booking"%>
 <%@page import="com.btc.rooms.model.vo.Room"%>
 <%@page import="java.util.List"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
    pageEncoding="UTF-8"%>
 <!-- 상준css -->
 <link rel="stylesheet" href="<%=request.getContextPath()%>/css/sj/style.css"/>
-<%
-   List<Room> rooms=(List<Room>)session.getAttribute("rooms");
-%>
-<%--       
-      <%if(rooms.isEmpty()) {%>
-         <h1>조회된 방이 없습니다.</h1>
+<% List<Room> rooms=(List<Room>)session.getAttribute("rooms");%>
+<% List<Booking> bookings=(List<Booking>)request.getAttribute("bookings");%>
+
+<%--          <%if(rooms.isEmpty()) {%>
+         <h1>조회된 예약목록이 없습니다.</h1>
       <%} else{
          for(Room r:rooms){%>
+         <%=r.getRoomNo() %>
          <%=r.getRoomName() %>
-         <%=r.getRoomPrice() %>
          <br>
       <%   }
-      }%>    
---%>
+      }%>  --%>  
+       <%if(bookings.isEmpty()) {%>
+         <h1>조회된 예약목록이 없습니다.</h1>
+      <%} else{
+         for(Booking b:bookings){%>
+         <%=b.getRoomNo() %>
+         <%=b.getCheckIn() %>
+         <%=b.getCheckOut() %>
+         <br>
+      <%   }
+      }%>   
+
 <%@ include file="/views/common/header.jsp"%>
 <% if(loginMember!=null) {%>
 	<%=loginMember %>
@@ -34,7 +44,7 @@
    <br>
 <section class="p-2 m-0 border-0 bd-example">
 <!-- 0. 필터 버튼  --> <!-- 아이콘 출처 : https://tabler-icons.io/  -->
-   <span class="btn-group dropend offset-xl-8 offset-md-1 col-md-1">
+   <span class="btn-group dropend offset-xl-9 offset-md-1 col-md-1">
       <button class="btn btn-outline-dark dropdown-toggle " type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-funnel-fill" viewBox="0 0 16 16">
            <path d="M1.5 1.5A.5.5 0 0 1 2 1h12a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-.128.334L10 8.692V13.5a.5.5 0 0 1-.342.474l-3 1A.5.5 0 0 1 6 14.5V8.692L1.628 3.834A.5.5 0 0 1 1.5 3.5v-2z"/>
@@ -126,13 +136,13 @@
                 <div>
                     <select class="availableDays">
                         <option value>머무실 기간 선택</option>
-                        <option value="1" price="a" consprice="A">1박</option>
+                        <!-- <option value="1" price="a" consprice="A">1박</option>
                         <option value="2" price="b" consprice="B">2박</option>
                         <option value="3" price="c" consprice="C">3박</option>
                         <option value="4" price="d" consprice="D">4박</option>
                         <option value="5" price="e" consprice="E">5박</option>
                         <option value="6" price="f" consprice="F">6박</option>
-                        <option value="7" price="g" consprice="G">7박</option>
+                        <option value="7" price="g" consprice="G">7박</option> -->
                     </select>
                 </div> 
             </div>    
@@ -249,12 +259,11 @@
 		<hr>
         <!-- </form> -->
         <div class="buttons">
-        	<form name="bookFrm" onsubmit="return chkSum();" action="<%=request.getContextPath()%>/booking/bookingList1ToList2.do" method="post">
+        	<form name="bookFrm" action="<%=request.getContextPath()%>/booking/bookingList1ToList2.do" method="post">
            		<p>체크아웃 날짜와 인원(성인, 영유아)을 선택하시면 다음 단계로 넘어가실 수 있습니다.</p>
-           		<button class="button-1 btn btn btn-outline-dark btn-lg" id="goNextBtn" <%-- onclick="location.href='<%=request.getContextPath() %>/views/booking/booking-list2.jsp' " --%>>
+           		<button  onClick="return chkSum();" class="button-1 btn btn btn-outline-dark btn-lg" id="goNextBtn" <%-- onclick="location.href='<%=request.getContextPath() %>/views/booking/booking-list2.jsp' " --%>>
 					다음단계
            		</button>
-				<input type="hidden" name="memberNo" value="">
 				<input type="hidden" name="roomNm" value="">
 				<input type="hidden" name="checkin" value="">
 				<input type="hidden" name="checkout" value="">
@@ -273,21 +282,37 @@
 <script>
    /* const roomNo=[]; *//* const roomSize=[]; */
    /* const roomImage=[]; *//* const dateCreated=[]; *//* const dateModified=[]; */
-   const roomName=[];const roomPrce=[];const roomCap=[];
+   
+   /* ROOM 정보 받기 */
+   const roomNo=[]; const roomName=[];const roomPrce=[];const roomCap=[];
    const roomMaxCap=[];const bookable=[];const roomDescription=[];
    <%for(Room room:rooms) {%>
-         roomName.push("<%=room.getRoomName()%>");
-         roomPrce.push("<%=room.getRoomPrice()%>");
-         roomCap.push("<%=room.getRoomCap()%>");
-         roomMaxCap.push("<%=room.getRoomMaxCap()%>");
-         bookable.push("<%=room.getBookable()%>");
-         roomDescription.push("<%=room.getRoomDescription()%>");
+   		roomNo.push("<%=room.getRoomNo()%>");
+        roomName.push("<%=room.getRoomName()%>");
+        roomPrce.push("<%=room.getRoomPrice()%>");
+        roomCap.push("<%=room.getRoomCap()%>");
+        roomMaxCap.push("<%=room.getRoomMaxCap()%>");
+        bookable.push("<%=room.getBookable()%>");
+        roomDescription.push("<%=room.getRoomDescription()%>");
    <%}%>
+   console.log();
+   console.log();
+
+   /* 예약된 BOOKING 정보 받기 */
+   	const bookingRoomNo=[]; const checkIn=[]; const checkOut=[];
+	<%for(Booking b:bookings){%>
+		bookingRoomNo.push("<%=b.getRoomNo()%>");
+		checkIn.push("<%=b.getCheckIn()%>");
+		checkOut.push("<%=b.getCheckOut()%>");
+	<%} %>
+	
 /*    $("#searchType").change(e=>{
        const type=$(e.target).val();
        $(e.target).parent().find("div").css("display","none");
        $("#search-"+type).css("display","inline-block");
    }); */
+   
+   
    $('.keep-open').click(function(e) {
         if (/input|label/i.test(e.target.tagName)){
           var parent = $(e.target).parent();
@@ -299,30 +324,142 @@
         }
       });
 </script>
-<script src="<%=request.getContextPath()%>/js/sj/list1-claendar.js"></script>
 <script src="<%=request.getContextPath()%>/js/sj/list1-clickevent.js"></script>
+<script src="<%=request.getContextPath()%>/js/sj/list1-claendar.js"></script>
 <script>
+<%-- 	if(<%=loginMember%>==null){
+	alert("객실 예약은 로그인 후 진행 가능합니다.");
+	} --%>
+
 	$(function chkSum() {
-/* 		const valCk1 = $("select[class=availableDays] option:selected").val());//<option value>머무실 기간 선택</option>
- */
-		$(document).on("click","button[id=goNextBtn]",e=>{
-		/* 예약정보 post 보내기 */
-		$('input[name=memberNo]').attr('value',"<%=loginMember.getMemberNo()%>");
-		$('input[name=roomNm]').attr('value',$("#typeNm").text());
-		$('input[name=checkin]').attr('value',$("#checkinDt").text());
-		$('input[name=checkout]').attr('value',$("#checkoutDt").text());
-		$('input[name=guestAdult]').attr('value',Number($("select[class=adultPers] option:selected").attr('value')));
-		$('input[name=guestChild]').attr('value',Number($("select[class=kidsPers] option:selected").attr('value')));
-		$('input[name=guestInfant]').attr('value',Number($("select[class=infPers] option:selected").attr('value')));
-		$('input[name=bookingPrice]').attr('value',Number($("#totPrice").text()));
-		console.log($("#totPrice").text());
-		$('input[name=roomPrice]').attr('value',$("#roomPrice").text());
-		$('input[name=persePrice]').attr('value',$("#persePrice").text());
-		$('input[name=optnPrice]').attr('value',$("#optnPrice").text());
+/* 		const valCk1 = $("select[class=availableDays] option:selected").val());//<option value>머무실 기간 선택</option>  */
+ 		$(document).on("click","button[id=goNextBtn]",()=>{
+<%--  			if(<%=loginMember%>==null){
+ 				alert("객실 예약은 로그인 후 진행 가능합니다.");
+ 				return false;
+ 			} --%>
+ 			if($("select[class=availableDays] option:selected").val()==""){
+				alert("'숙박기간'을 정해주세요.");
+				$('.availableDays').select().focus();
+				return false;
+			}else if($("select[class=adultPers] option:selected").val()=="."){
+				alert("'(성인)이용인원'을 정해주세요.");
+				$('.adultPers').select().focus();
+				return false;
+			}else if($("select[class=kidsPers] option:selected").val()=="."){
+				alert("'(아동/유아)이용인원'을 정해주세요.");
+				$('.kidsPers').select().focus();
+				return false;
+			};
+			$('input[name=roomNm]').attr('value',$("#typeNm").text());
+			$('input[name=checkin]').attr('value',$("#checkinDt").text());
+			$('input[name=checkout]').attr('value',$("#checkoutDt").text());
+			$('input[name=guestAdult]').attr('value',Number($("select[class=adultPers] option:selected").attr('value')));
+			$('input[name=guestChild]').attr('value',Number($("select[class=kidsPers] option:selected").attr('value')));
+			$('input[name=guestInfant]').attr('value',Number($("select[class=infPers] option:selected").attr('value')));
+			$('input[name=bookingPrice]').attr('value',Number($("#totPrice").text()));
+			$('input[name=roomPrice]').attr('value',$("#roomPrice").text());
+			$('input[name=persePrice]').attr('value',$("#persePrice").text());
+			$('input[name=optnPrice]').attr('value',$("#optnPrice").text());
+			return true;
 		});
-		return true;
+		
 	});	
-</script>
+		
+	
+	//로딩된 화면에서, 예약이 있는 일자의 객실 클릭 비활성화 기능
+ 	$(function() {
+ 		checkin_checkout();
+ 	});
+ 	
+/* checkIn-checkOut 날짜 차이 구하기 
+ (ex. let stringDate = '2022-05-19'; StringToDate(stringDate, 5); //-> 2022-05-24 )*/
+	function StringToDate(date, n) {
+		let yyyy = date.substring(0, 4);
+		let mm = date.substring(5, 7);
+		let dd = date.substring(8, 10);
+		mm = Number(mm) - 1;
+		let stringNewDate = new Date(yyyy, mm, dd);
+		stringNewDate.setDate(stringNewDate.getDate() + n);
+		return stringNewDate.getFullYear() +
+			"-" + ((stringNewDate.getMonth() + 1) > 9 ? (stringNewDate.getMonth() + 1).toString() : "0" + (stringNewDate.getMonth() + 1)) +
+			"-" + (stringNewDate.getDate() > 9 ? stringNewDate.getDate().toString() : "0" + stringNewDate.getDate().toString());
+	};
+	function checkin_checkout(){
+	/* checkIn-checkOut 사이 날짜 구해서 클릭기능 해제하기*/
+		for(let i=0;i<checkIn.length;i++){
+			const checkRoomNo=bookingRoomNo[i];
+			const startDay = new Date(checkIn[i]);
+			const endDay = new Date(checkOut[i]);
+			let diff = Math.abs(endDay.getTime() - startDay.getTime());
+			diff = (Math.ceil(diff / (1000 * 60 * 60 * 24)));
+	/*  	console.log(bookingRoomNo[i]+" :"+diff);//number
+	 		console.log(typeof diff); */
+	 		for(let j=0; j<diff;j++){
+	/* 			console.log(bookingRoomNo[i]+":"+StringToDate(checkIn[i], j));
+	 	 		console.log(typeof StringToDate(checkIn[i], j));//string */
+	 			$('div[roomno='+bookingRoomNo[i]+'][class='+StringToDate(checkIn[i], j)+']')/* .css("text-decoration", "line-through") */
+	 			.attr("bookable","N").css("backgroundColor","pink").css("color","gray");
+			};
+		};
+	};
+	
+	function checkAmountOfLodgment(e){
+    //선택한 날짜와 가장 가까운 다음 체크인 날짜와의 차이 구하기
+	    const checkday=$(e.target).attr("class");//클릭한 객실의 날짜
+	    const checkroom=$(e.target).attr("roomno");//클릭한 객실의 방번호
+	    let availableDay=5;
+	    for(i=0;i<bookingRoomNo.length;i++){
+			 const oldDate = new Date(checkday);//클릭한 객실
+			 const newDate = new Date(checkIn[i]);//예약된 체크인 날짜들
+			 if(bookingRoomNo[i]==checkroom){
+				 if(oldDate<newDate){
+					 let diff = Math.abs(newDate.getTime() - oldDate.getTime());
+					 diff = Math.ceil(diff / (1000 * 60 * 60 * 24));
+					 /* console.log(oldDate);
+					 console.log(newDate);
+					 console.log("날짜 차: "+diff); */
+					 if(availableDay>diff){
+					 	availableDay=diff;// 값
+					 }
+				 };
+			 };
+		 };return availableDay;
+	};
+	
+	function insertSelectTag (e, availableDay){
+		const checkRoomday=$(e.target).attr("class");
+		const checkRoomNo=$(e.target).attr("roomno");
+		const checkRoomPrice=$(e.target).attr("price");
+ 		let date = new Date(checkRoomday);
+		$('select[class=availableDays]').children('option:not(:first)').remove();
+ 		for(i=0; i<availableDay;i++){
+ 			console.log(availableDay);
+ 			date.setDate(date.getDate() + i);
+ 			const $day=dateFormatChange(date);
+			let $roomPrice=$('div[roomno='+checkRoomNo+'][class='+$day+']').attr("price");
+ 			if($roomPrice==undefined){
+ 	 			$roomPrice=$('div[roomno='+checkRoomNo+'][class='+StringToDate($day, -14)+']').attr("price");
+ 				console.log("나가리"+$roomPrice);
+ 			}else{
+ 				console.log("진땡"+$roomPrice);
+ 			};
+ 			const $option= $("<option>"+(i+1)+"박</option>").attr({"value":(i+1),"price":$roomPrice});
+ 			$('select[class=availableDays]').append($option);
+ 		}; 
+	};
+	
+	function dateFormatChange(dateValue){
+	    const year = dateValue.getFullYear();
+	    const month = ('0' + (dateValue.getMonth() + 1)).slice(-2);
+	    const day = ('0' + dateValue.getDate()).slice(-2);
+	    const checkoutDt = year+"-"+month+"-"+day;//(String)
+	    // 어떤 날짜여도 'YYYY-DD-YY'형식으로 변환!
+	    return checkoutDt;
+	};
+	</script>
+	
+	
 
 <!-- 결제기능 구현 -->
 <script src="https://cdn.iamport.kr/v1/iamport.js"></script>

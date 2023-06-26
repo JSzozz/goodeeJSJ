@@ -36,7 +36,6 @@ public class BookingList1ToList2Servlet extends HttpServlet {
 			throws ServletException, IOException {
 		BookingService service = new BookingService();
 
-		int memberNo = Integer.parseInt(request.getParameter("memberNo"));
 		String roomNm = request.getParameter("roomNm");
 		int roomNo = service.searchRoomNo(roomNm);// roomNm->roomNo
 		
@@ -58,7 +57,7 @@ public class BookingList1ToList2Servlet extends HttpServlet {
         price.add(persePrice);
         price.add(optnPrice);
 		
-		Booking b = Booking.builder().memberNo(memberNo).roomNo(roomNo).checkIn(checkIn).checkOut(checkOut).guestAdult(guestAdult)
+		Booking b = Booking.builder().roomNo(roomNo).checkIn(checkIn).checkOut(checkOut).guestAdult(guestAdult)
 				.guestChild(guestChild).guestInfant(guestInfant).bookingPrice(bookingPrice).build();
 		request.setAttribute("booking", b);
 		request.setAttribute("roomNm", roomNm);

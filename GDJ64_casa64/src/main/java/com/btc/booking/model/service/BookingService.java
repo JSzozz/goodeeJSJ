@@ -9,12 +9,21 @@ import java.util.List;
 import com.btc.booking.model.dao.BookingDao;
 import com.btc.booking.model.vo.Booking;
 import com.btc.rooms.model.vo.Room;
+
+
 public class BookingService {
 	private BookingDao dao=new BookingDao();
 	
 	public List<Room> selectAllRoom(){
 		Connection conn=getConnection();
 		List<Room> list=dao.selectAllRoom(conn);
+		close(conn);
+		return list;
+	}
+	
+	public List<Booking> selectAllBooking(){
+		Connection conn=getConnection();
+		List<Booking> list=dao.selectAllBooking(conn);
 		close(conn);
 		return list;
 	}

@@ -32,14 +32,44 @@ public class BookingDao {
 		
 	}
 	private Room getRoom(ResultSet rs) throws SQLException{
-		return Room.builder().roomNo(rs.getInt("room_no")).roomName(rs.getString("room_name"))
-				.roomPrice(rs.getInt("room_price")).roomSize(rs.getInt("room_size"))
-				.roomCap(rs.getInt("room_cap")).roomMaxCap(rs.getInt("room_max_cap"))
-				.bookable(rs.getString("bookable").charAt(0)).roomImage(rs.getString("room_image"))
-				.dateCreated(rs.getDate("date_created")).dateModified(rs.getDate("date_modified"))
-				.roomDescription(rs.getString("room_description")).build();
+		return Room.builder()
+				.roomNo(rs.getInt("room_no"))
+				.roomName(rs.getString("room_name"))
+				.roomPrice(rs.getInt("room_price"))
+				.roomSize(rs.getInt("room_size"))
+				.roomCap(rs.getInt("room_cap"))
+				.roomMaxCap(rs.getInt("room_max_cap"))
+				.bookable(rs.getString("bookable").charAt(0))
+				.roomImage(rs.getString("room_image"))
+				.dateCreated(rs.getDate("date_created"))
+				.dateModified(rs.getDate("date_modified"))
+				.roomDescription(rs.getString("room_description"))
+				.build();
 	}
 	
+	private Booking getBooking(ResultSet rs) throws SQLException {
+		return Booking.builder()
+				.bookingNo(rs.getInt("BOOKING_NO"))
+				.memberNo(rs.getInt("MEMBER_NO"))
+				.roomNo(rs.getInt("ROOM_NO"))
+				.checkIn(rs.getDate("CHECK_IN"))
+				.checkOut(rs.getDate("CHECK_OUT"))
+				.guestAdult(rs.getInt("GUEST_ADULT"))
+				.guestChild(rs.getInt("GUEST_CHILD"))
+				.guestInfant(rs.getInt("GUEST_INFANT"))
+				.bookingPrice(rs.getInt("BOOKING_PRICE"))
+				.bookingComment(rs.getString("BOOKING_COMMENT"))
+				.bookingState(rs.getString("BOOKING_STATE"))
+				.paymentDate(rs.getDate("PAYMENT_DATE"))
+				.build();
+	}
+	private Booking getBookingPart(ResultSet rs) throws SQLException {
+		return Booking.builder()
+				.roomNo(rs.getInt("ROOM_NO"))
+				.checkIn(rs.getDate("CHECK_IN"))
+				.checkOut(rs.getDate("CHECK_OUT"))
+				.build();
+	}
 	
 	public List<Room> selectAllRoom(Connection conn){
 		PreparedStatement pstmt=null;
@@ -58,6 +88,25 @@ public class BookingDao {
 			close(rs);
 			close(pstmt);
 		}return list;	
+	}
+	
+	public List<Booking> selectAllBooking(Connection conn){
+		PreparedStatement pstmt=null;
+		ResultSet rs=null;
+		List<Booking> list=new ArrayList();
+		try {
+			pstmt = conn.prepareStatement(sql.getProperty("selectAllBooking"));
+			//SELECT ROOM_NO, CHECK_IN, CHECK_OUT, BOOKING_STATE FROM BOOKING WHERE BOOKING_STATE='결제완료' OR BOOKING_STATE='취소요청' ORDER BY CHECK_IN
+			rs=pstmt.executeQuery();
+			while(rs.next()) {
+				list.add(getBookingPart(rs));
+			};
+		}catch(SQLException e) {
+			e.printStackTrace();
+		}finally {
+			close(rs);
+			close(pstmt);
+		}return list;
 	}
 	
 	public int searchRoomNo(Connection conn, String roomNm) {
