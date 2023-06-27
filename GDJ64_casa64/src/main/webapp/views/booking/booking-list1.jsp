@@ -8,11 +8,11 @@
 <!-- 상준css -->
 <link rel="stylesheet" href="<%=request.getContextPath()%>/css/sj/style.css"/>
 <% List<Room> rooms=(List<Room>)session.getAttribute("rooms");%>
-<% List<Booking> bookings=(List<Booking>)request.getAttribute("bookings");%>
-<% List<SeasonalPrice> seasons=(List<SeasonalPrice>)request.getAttribute("seasons");%>
-<% List<OptionXtra> xtraOptions=(List<OptionXtra>)request.getAttribute("xtraOptions");%>
+<% List<Booking> bookings=(List<Booking>)session.getAttribute("bookings");%>
+<% List<SeasonalPrice> seasons=(List<SeasonalPrice>)session.getAttribute("seasons");%>
+<% List<OptionXtra> xtraOptions=(List<OptionXtra>)session.getAttribute("xtraOptions");%>
 
-<%--          <%if(rooms.isEmpty()) {%>
+          <%if(rooms.isEmpty()) {%>
          <h1>조회된 예약목록이 없습니다.</h1>
       <%} else{
          for(Room r:rooms){%>
@@ -20,18 +20,19 @@
          <%=r.getRoomName() %>
          <br>
       <%   }
-      }%>  --%>  
-      
-<%--        <%if(bookings.isEmpty()) {%>
+      }%>  
+      <br>
+         <%if(bookings.isEmpty()) {%>
          <h1>조회된 예약목록이 없습니다.</h1>
       <%} else{
          for(Booking b:bookings){%>
-         <%=b.getRoomNo() %>
+         <%=b.getRoom().getRoomNo() %>
          <%=b.getCheckIn() %>
          <%=b.getCheckOut() %>
          <br>
       <%   }
-      }%>   --%> 
+      }%>  
+      <br> 
       <%if(seasons.isEmpty()) {%>
          <h1>조회된 예약목록이 없습니다.</h1>
       <%} else{
@@ -43,8 +44,8 @@
          <%=s.getWeekendRate() %>
          <br>
       <%   }
-      }%>
-<%--       <br>
+      }%> 
+       <br>
             <%if(seasons.isEmpty()) {%>
          <h1>조회된 예약목록이 없습니다.</h1>
       <%} else{
@@ -54,7 +55,7 @@
          <%=o.getXtraExplanation() %>
          <br>
       <%   }
-      }%> --%>
+      }%> 
 
 <%@ include file="/views/common/header.jsp"%>
 <% if(loginMember!=null) {%>
@@ -80,20 +81,24 @@
           객실 조회하기
       </button>
      <!-- modal -->
-      <ul class="dropdown-menu" role="menu">
-         <li class="checkbox keep-open"><label><input type="checkbox">오션 뷰</label></li>
-          <li class="checkbox keep-open"><label><input type="checkbox">시티 뷰</label></li>
-          <li class="checkbox keep-open"><label><input type="checkbox">프리미엄</label></li>
-          <hr>
-          <li class="checkbox keep-open"><label><input type="checkbox">프라이빗 풀</label></li>
-          <li class="checkbox keep-open"><label><input type="checkbox">뮤직룸</label></li>
-          <li class="checkbox keep-open"><label><input type="checkbox">프로젝터</label></li>
-          <hr>
-          <li class="checkbox keep-open"><label><input type="checkbox">커피 머신</label></li>
-          <li class="checkbox keep-open"><label><input type="checkbox">구스다운 베드</label></li>
-          <li class="checkbox keep-open"><label><input type="checkbox">웰컴 드링크</label></li>
-          <center><li><a class="btn btn btn-outline-secondary btn-sm">조회하기</a></li></center>
-      </ul>
+      <form action="<%=request.getContextPath()%>/booking/roomFilterServlet.do" method="post">
+	      <ul class="dropdown-menu fixContainer" role="menu">
+	          <li class="checkbox keep-open"><label><input name="option" type="checkbox" value="오션뷰">오션뷰</label></li>
+	          <li class="checkbox keep-open"><label><input name="option" type="checkbox" value="선셋뷰">선셋뷰</label></li>
+	          <hr>
+	          <li class="checkbox keep-open"><label><input name="option" type="checkbox" value="자쿠지">자쿠지</label></li>
+	          <li class="checkbox keep-open"><label><input name="option" type="checkbox" value="테라스">테라스</label></li>
+	          <li class="checkbox keep-open"><label><input name="option" type="checkbox" value="프라이빗 풀">프라이빗 풀</label></li>
+			  <li class="checkbox keep-open"><label><input name="option" type="checkbox" value="노래방">노래방</label></li>
+	          <li class="checkbox keep-open"><label><input name="option" type="checkbox" value="빔 프로젝터">빔 프로젝터</label></li>
+	          <hr>
+	          <li class="checkbox keep-open"><label><input name="option" type="checkbox" value="커피머신">커피머신</label></li>
+	          <li class="checkbox keep-open"><label><input name="option" type="checkbox" value="웰컴드링크">웰컴드링크</label></li>
+	          <li class="checkbox keep-open"><label><input name="option" type="checkbox" value="구스다운침구">구스다운침구</label></li>
+				<center><button onClick="return chkSum();" class="btn btn btn-outline-secondary btn-sm" id="selectBtn">조회하기</button></center>
+	      </ul>
+      </form>
+      
    </span>
 	<br><br>
 <!-- 1. 객실 선택 -->
@@ -290,7 +295,7 @@
         <div class="buttons">
         	<form name="bookFrm" action="<%=request.getContextPath()%>/booking/bookingList1ToList2.do" method="post">
            		<p>체크아웃 날짜와 인원(성인, 영유아)을 선택하시면 다음 단계로 넘어가실 수 있습니다.</p>
-           		<button  onClick="return chkSum();" class="button-1 btn btn btn-outline-dark btn-lg" id="goNextBtn" <%-- onclick="location.href='<%=request.getContextPath() %>/views/booking/booking-list2.jsp' " --%>>
+           		<button onClick="return chkSum();" class="button-1 btn btn btn-outline-dark btn-lg" id="goNextBtn" <%-- onclick="location.href='<%=request.getContextPath() %>/views/booking/booking-list2.jsp' " --%>>
 					다음단계
            		</button>
 				<input type="hidden" name="roomNm" value="">
@@ -324,9 +329,6 @@
         bookable.push("<%=room.getBookable()%>");
         roomDescription.push("<%=room.getRoomDescription()%>");
    <%}%>
-   console.log();
-   console.log();
-
    /* 예약된 BOOKING 정보 받기 */
    	const bookingRoomNo=[]; const checkIn=[]; const checkOut=[];
 	<%for(Booking b:bookings){%>
@@ -349,8 +351,19 @@
 		XtraExplanation.push(" <%=o.getXtraExplanation() %>");
 	<%} %>
    
-   
-   
+	
+	/* 성수기 시즌 정보 받기 */
+	let $seasonStart; let $seasonEnd;
+    <%for(SeasonalPrice s:seasons){%>
+		seasonStart= Date("<%=s.getStartDate() %>");
+		seasonEnd = Date("<%=s.getEndDate() %>");
+		console.log(seasonEnd);
+	<%}%>
+		  
+	
+	
+	
+	
    $('.keep-open').click(function(e) {
         if (/input|label/i.test(e.target.tagName)){
           var parent = $(e.target).parent();
@@ -358,9 +371,25 @@
             var checkbox = parent.find('input[type=checkbox]');
             checkbox.prop("checked", !checkbox.prop("checked"));
             return false;
-          }
-        }
+          };
+        };
       });
+   
+   let checkedValues = [];
+   $(document).ready(function() {
+	   $('#selectBtn').on('click', function() {
+
+	     $('input[type="checkbox"]').each(function() {
+	       if ($(this).is(':checked')) {
+	         checkedValues.push($(this).val());
+	       };
+	       
+	     });
+	   });
+	 });
+	
+   
+   
 </script>
 <script src="<%=request.getContextPath()%>/js/sj/list1-clickevent.js"></script>
 <script src="<%=request.getContextPath()%>/js/sj/list1-claendar.js"></script>
@@ -369,6 +398,12 @@
 	alert("객실 예약은 로그인 후 진행 가능합니다.");
 	} --%>
 
+/* 	$(".fixContainer").css({
+							"position":"fixed",
+							"top":"10rem",
+							"left":"20"
+							}).; */
+	
 	$(function chkSum() {
 /* 		const valCk1 = $("select[class=availableDays] option:selected").val());//<option value>머무실 기간 선택</option>  */
  		$(document).on("click","button[id=goNextBtn]",()=>{
@@ -502,8 +537,5 @@
 	
 	
 
-<!-- 결제기능 구현 -->
-<script src="https://cdn.iamport.kr/v1/iamport.js"></script>
-<script src="<%=request.getContextPath()%>/js/dj/payment.js"></script>
       <!-- 푸터 영역 -->
 <%@ include file="/views/common/footer.jsp"%>

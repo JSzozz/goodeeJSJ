@@ -93,6 +93,33 @@ public class BookingDao {
 				.xtraExplanation(rs.getString("XTRA_EXPLANATION"))
 				.build();
 	}	
+	
+	private Room getRoomPart(ResultSet rs) throws SQLException{
+		return Room.builder()
+				.roomNo(rs.getInt("room_no"))
+				.roomName(rs.getString("room_name"))
+				.build();
+	}
+	
+	public List<Room> selectFilteringRoom(Connection conn, List<String> optionList){
+		PreparedStatement pstmt=null;
+		ResultSet rs=null;
+		List<Room> list=new ArrayList();
+		try {
+			pstmt=conn.prepareStatement(sql.getProperty("selectFilteringRoom1"));
+			//SELECT * FROM ROOM
+			pstmt.setString(1, optionList.get(0));
+			rs=pstmt.executeQuery();
+			while(rs.next()) {
+				list.add(getRoomPart(rs));
+			}
+		}catch(SQLException e) {
+			e.printStackTrace();
+		}finally {
+			close(rs);
+			close(pstmt);
+		}return list;	
+	}
 
 	public List<OptionXtra> selectAllOption(Connection conn){
 		PreparedStatement pstmt=null;

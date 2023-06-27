@@ -57,6 +57,13 @@ public class BookingService {
 		close(conn);
 		return list;
 	}
+
+	public List<Room> selectFilteringRoom(List<String> optionList){
+		Connection conn=getConnection();
+		List<Room> list=dao.selectFilteringRoom(conn, optionList);
+		close(conn);
+		return list;
+	}
 	
 //	private NoticeDao dao=new NoticeDao();
 //	
