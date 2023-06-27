@@ -129,6 +129,7 @@
 	$("#RESV_NM").text("<%=loginMember.getMemberName() %>");
 	$("#RESV_PHONE").text("<%=loginMember.getPhone() %>");
 	$("#RESV_COMMENT").text("<%=booking.getBookingComment() %>");
+	
 	$(function chkSum() {
 		$(document).on("click","button[id=saveBtn]",e=>{
 		/* 예약정보 post 보내기 */
