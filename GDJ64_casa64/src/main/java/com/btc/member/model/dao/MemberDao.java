@@ -197,7 +197,7 @@ public class MemberDao {
 	}
 	
 	private SNSMember getSNSMember(ResultSet rs) throws SQLException{
-		return SNSMember.builder().memberNo(rs.getInt("member_no")).snsCode(rs.getString("sns_code")).snsType(rs.getString("sns_type")).Name("sns_name")
+		return SNSMember.builder().memberNo(rs.getInt("sns_member_no")).snsCode(rs.getString("sns_code")).snsType(rs.getString("sns_type")).Name(rs.getString("sns_name"))
 				.email(rs.getString("sns_email")).nickName(rs.getString("sns_nickname")).snsConnectDate(rs.getDate("sns_connect_date")).build();
 	}
 }
