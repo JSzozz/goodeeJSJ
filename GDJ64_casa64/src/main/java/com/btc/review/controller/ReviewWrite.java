@@ -119,7 +119,7 @@ public class ReviewWrite extends HttpServlet {
 				result = new ReviewService().insertReviews(reviews);
 				redirect = "/review/reviewList";
 			} else if(type.equals("update")) { // 수정하기
-				int reviewNo = Integer.parseInt(request.getParameter("reviewNo"));
+				int reviewNo = Integer.parseInt(multi.getParameter("reviewNo"));
 				reviews.setNo(reviewNo);
 				result = new ReviewService().updateReviews(reviews);
 				redirect = "/review/reviewView?no="+reviewNo;

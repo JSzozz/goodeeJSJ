@@ -1,6 +1,7 @@
 package com.btc.mypage.model.dao;
 
 import static com.btc.common.JDBCTemplate.close;
+import static com.btc.common.JDBCTemplate.getConnection;
 
 import java.sql.Connection;
 import java.sql.Date;
@@ -48,6 +49,7 @@ public class MyPageDao {
 
 		try {
 			String sql = getQnAQuery(); // 실행할 기본 쿼리
+			sql += " ORDER BY Q.QUESTION_DATE ";
 
 			pstmt = conn.prepareStatement(sql); // 실제 쿼리 들어가고
 			pstmt.setInt(1, memberNo);
@@ -66,6 +68,35 @@ public class MyPageDao {
 		}
 		return list;
 	}
+	
+	public int reservationCancellation (Connection conn, int bookingNo){
+		PreparedStatement pstmt = null;
+		int result = 0; // 실패를 기본 값으로
+
+		try {
+			conn = getConnection(); // DB 접속
+			// 3. 쿼리 작성
+			String sql = " UPDATE BOOKING B SET B.BOOKING_STATE = '취소요청' "
+						+ "	WHERE B.BOOKING_NO = ?";
+			pstmt = conn.prepareStatement(sql); // 실행 준비
+//	         4. 쿼리에 파라미터 셋팅
+			pstmt.setInt(1, bookingNo);
+	
+			result = pstmt.executeUpdate(); // 쿼리 실행
+			if (result > 0) {
+				conn.commit();
+			} else {
+				conn.rollback();
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			close(pstmt);
+		}
+		return result;
+	}
+	
 	
 	public QnA getQnA(ResultSet rs) throws SQLException {
 		return QnA.builder()
@@ -108,7 +139,7 @@ public class MyPageDao {
 	public String getBasicQuery() {
 		return "SELECT B.*, R.ROOM_NAME, RV.NO REVIEW_NO FROM BOOKING B "
 				+ " JOIN ROOM R ON R.ROOM_NO = B.ROOM_NO "
-				+ " LEFT JOIN REVIEW RV ON RV.BOOKING_NO = B.BOOKING_NO "
+				+ " LEFT JOIN REVIEW RV ON RV.BOOKING_NO = B.BOOKING_NO AND RV.IS_DELETED = 0 "
 				+ " WHERE B.MEMBER_NO = ?";
 	}
 	

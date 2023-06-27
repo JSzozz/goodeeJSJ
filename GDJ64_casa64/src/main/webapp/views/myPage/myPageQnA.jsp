@@ -42,23 +42,23 @@ List<QnA> qna = (List) request.getAttribute("MypageQnAList");
 					<tbody>
 						<%
 						if (qna != null && !qna.isEmpty()) {
-							int count = qna.size();
+							int count = 1;
 							for (QnA q : qna) {
 						%>
 						<tr>
 							<td><%=count%></td>
 							<td><%=q.getCategoryName()%></td>
 							<td><a
-								href="<%=request.getContextPath()%>/qna/viewQna.do?no=<%=q.getMemberNo()%>">
+								href="<%=request.getContextPath()%>/qna/viewQna.do?no=<%=q.getQuestionNo()%>&categoryName=COMMUNITY&communityTitle=QnA">
 									<%=q.getQuestionTitle()%>
 							</a></td>
 							<td><%=q.getQuestionDate()%></td>
 							<td><a
-								href="<%=request.getContextPath()%>/qna/viewQna.do?no=<%=q.getMemberNo()%>"
-								class="btn btn-primary btn-sm">문의수정</a></td>
+								href="<%=request.getContextPath()%>/qna/viewQna.do?no=<%=q.getQuestionNo()%>&categoryName=COMMUNITY&communityTitle=QnA"
+								class="">Y</a></td>
 						</tr>
 						<%
-						count--;
+						count++;
 						}
 						} else {
 						%>

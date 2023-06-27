@@ -166,7 +166,7 @@ public class ReviewDao {
 		try {
 			conn = getConnection(); // DB 접속
 			// 3. 쿼리 작성
-			String sql = "UPDATE REVIEW SET TITLE = ?, CONTENTS = ?, DATE_MODIFIED = SYSTIMESTAMP"
+			String sql = "UPDATE REVIEW SET TITLE = ?, CONTENTS = ?, DATE_MODIFIED = SYSTIMESTAMP "
 					+ "WHERE REVIEW.NO = ?";
 			pstmt = conn.prepareStatement(sql); // 실행 준비
 //	         4. 쿼리에 파라미터 셋팅
@@ -203,7 +203,7 @@ public class ReviewDao {
 		try {
 			String sql = getBasicQuery(); // 실행할 기본 쿼리
 			sql += " AND REVIEW.MEMBER_NO = ? ";
-//         sql += " ORDER BY REVIEWS.NO DESC";
+            sql += " ORDER BY REVIEW.DATE_CREATED ";
 
 			pstmt = conn.prepareStatement(sql); // 실제 쿼리 들어가고
 			pstmt.setInt(1, memberNo);
@@ -304,9 +304,11 @@ public class ReviewDao {
 		List<Booking> bkList = new ArrayList();
 
 		try {
-			String sql = "SELECT B.* , RM.ROOM_NAME FROM BOOKING B " + "JOIN MEMBER M ON M.MEMBER_NO = B.MEMBER_NO "
+			String sql = "SELECT B.* , RM.ROOM_NAME, R.NO REVIEW_NO "
+					+ "FROM BOOKING B "
+					+ "JOIN MEMBER M ON M.MEMBER_NO = B.MEMBER_NO "
 					+ "JOIN ROOM RM ON RM.ROOM_NO = B.ROOM_NO "
-					+ "LEFT JOIN REVIEW R ON R.MEMBER_NO = M.MEMBER_NO AND R.BOOKING_NO = B.BOOKING_NO "
+					+ "LEFT JOIN REVIEW R ON R.MEMBER_NO = M.MEMBER_NO AND R.BOOKING_NO = B.BOOKING_NO AND R.IS_DELETED = 0 "
 					+ "WHERE B.MEMBER_NO = ? AND B.BOOKING_STATE = '이용완료' AND R.NO IS NULL"; // 실행할 기본 쿼리
 
 			pstmt = conn.prepareStatement(sql); // 실제 쿼리 들어가고

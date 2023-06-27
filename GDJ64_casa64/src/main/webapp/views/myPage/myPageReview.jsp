@@ -44,7 +44,7 @@
 					<tbody>
 						<%
 						if(reviews != null && !reviews.isEmpty()) {
-							int count = reviews.size();
+							int count = 1;
 							for (Review r : reviews) {
 						%>
 							<tr>
@@ -59,7 +59,7 @@
 								<td><a href="<%=request.getContextPath() %>/review/reviewWrite?no=<%=r.getNo() %>" class="btn btn-primary btn-sm">후기수정</a></td>
 							</tr>
 						<%
-							count--;
+							count++;
 							} 
 						} else { %>
 							<tr>

@@ -45,7 +45,7 @@
 					<tbody>
                      
                         <% if(bookings != null && !bookings.isEmpty()) {
-                        	int count = bookings.size();
+                        	int count = 1;
                   			for(Booking b : bookings){%>
 						<tr>
 							<td><%= count %></td>
@@ -55,17 +55,19 @@
 							<td><%=b.getPaymentDate() %></td>
 							<td>
 							<% if(b.getBookingState().equals("결제완료")) { %>
-								<button type="button" class="btn btn-primary btn-sm">결제취소</button>
+								<button type="button" class="btn btn-primary btn-sm" onclick="cancellation(<%=b.getBookingNo() %>)">결제취소</button>
 							<% } else if(b.getBookingState().equals("이용완료")) { 
-								if(b.getReviewNo() > 0 ){ %>
-								<a href="<%=request.getContextPath() %>/review/reviewWrite?no=<%=b.getReviewNo() %>" class="btn btn-primary btn-sm">후기수정</a>
-							<% } else { %>
-							 	<a href="<%=request.getContextPath() %>/review/reviewWrite" class="btn btn-primary btn-sm">후기작성</a>
-							<%}} %>
+								 if(b.getReviewNo() > 0 ){ %>
+									<a href="<%=request.getContextPath() %>/review/reviewWrite?no=<%=b.getReviewNo() %>" class="btn btn-primary btn-sm">후기수정</a>
+							<% 	} else { %>
+							 		<a href="<%=request.getContextPath() %>/review/reviewWrite" class="btn btn-primary btn-sm">후기작성</a>
+							<%   }
+							  } 
+							%>
 							</td>
 						</tr>
 						<%
-							count--;
+							count++;
 							} 
                   		} else { %>
 						<tr>
@@ -78,5 +80,29 @@
 		</div>
 	</div>
 </div>
-
+<script>
+	function cancellation(bookingNo) {
+		if(bookingNo > 0 && confirm('취소하시겠습니까?')){
+			$.ajax({
+			    type : 'post',           // 타입 (get, post, put 등등)
+			    url : "<%=request.getContextPath()%>/myPage/cancellation",           // 요청할 서버url
+			    dataType : 'json',       // 데이터 타입 (html, xml, json, text 등등)
+			    data : {  // 보낼 데이터 (Object , String, Array)
+			      "bookingNo" : bookingNo,
+			    },
+			    success : function(result) { // 결과 성공 콜백함수
+			    	if(result > 0) {
+			    		alert('결제취소 요청되었습니다.');
+			    		window.location.reload();
+			    	} else {
+			    		alert('취소실패! 관리자에게 문의바랍니다.');
+			    	}
+			    },
+			    error : function(request, status, error) { // 결과 에러 콜백함수
+			        console.log(error)
+			    }
+			})
+		}
+	}
+</script>
 <%@ include file="/views/common/footer.jsp"%>
