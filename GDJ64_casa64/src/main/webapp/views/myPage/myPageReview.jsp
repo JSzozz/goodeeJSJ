@@ -22,7 +22,7 @@
 		<div class="mt-5 col-9 mx-auto">
 
 			<div class="tb">
-				<table class="table table-hover text-center">
+				<table class="table table-hover text-center align-middle">
 					<colgroup>
 						<col width="40px" />
 						<col width="100px" />
@@ -56,7 +56,7 @@
 								</a></td>
 								<td><%=r.getViews()%></td>
 								<td><%=r.getDateCreated()%></td>
-								<td><a href="<%=request.getContextPath() %>/review/reviewWrite?no=<%=r.getNo() %>" class="btn btn-primary btn-sm">리뷰수정</a></td>
+								<td><a href="<%=request.getContextPath() %>/review/reviewWrite?no=<%=r.getNo() %>" class="btn btn-primary btn-sm">수정하기</a></td>
 							</tr>
 						<%
 							count--;

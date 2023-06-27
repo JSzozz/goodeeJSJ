@@ -55,7 +55,7 @@ List<QnA> qna = (List) request.getAttribute("MypageQnAList");
 							<td><%=q.getQuestionDate()%></td>
 							<td><a
 								href="<%=request.getContextPath()%>/review/reviewWrite?no=<%=q.getMemberNo()%>"
-								class="btn btn-primary btn-sm">문의수정</a></td>
+								class="btn btn-primary btn-sm">수정하기</a></td>
 						</tr>
 						<%
 						count--;

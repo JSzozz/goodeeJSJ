@@ -3,10 +3,14 @@
 <%@ include file="/views/common/header.jsp"%>
 <!-- 카테고리별 이미지 -->
 <%@ include file="/views/common/categoryImage.jsp"%>
-<link rel="stylesheet"	href="<%=request.getContextPath()%>/nara_publish/css/about.css" />
-<link rel="stylesheet"	href="<%=request.getContextPath()%>/nara_publish/css/common.css" />
-<link rel="stylesheet"	href="<%=request.getContextPath()%>/nara_publish/css/slidshowstyle.css" />
-<script type="text/javascript" src="/nara_publish/js/travel.js"></script>
+<link rel="stylesheet"
+	href="<%=request.getContextPath()%>/nara_publish/css/about.css" />
+<link rel="stylesheet"
+	href="<%=request.getContextPath()%>/nara_publish/css/common.css" />
+<link rel="stylesheet"
+	href="<%=request.getContextPath()%>/nara_publish/css/slidshowstyle.css" />
+<script type="text/javascript"
+	src="<%=request.getContextPath()%>/nara_publish/js/travel.js"></script>
 
 <!-- 컨텐츠/내용 시작 -->
 <section>
@@ -71,8 +75,9 @@
 							class="w-100">
 					</div>
 
-					<a class="prev" onclick="plusSlides(-1)">❮</a> <a class="next"
-						onclick="plusSlides(1)">❯</a>
+				
+		            <a class="prev" onclick="plusSlides(-1)">❮</a>
+		            <a class="next" onclick="plusSlides(1)">❯</a>
 
 					<div class="caption-container">
 						<p id="caption"></p>
@@ -123,6 +128,7 @@
 				</div>
 			</div>
 		</div>
+	</div>
 </section>
 <!-- 내용 종료 -->
 <%@ include file="/views/common/footer.jsp"%>
