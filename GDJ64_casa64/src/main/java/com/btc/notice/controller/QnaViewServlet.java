@@ -37,51 +37,30 @@ public class QnaViewServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// 선택한 게시물의 번호
-				int no=Integer.parseInt(request.getParameter("no"));
-				request.setAttribute("no",no);
-				
-				String categoryName = (String)request.getParameter("categoryName");
-				String communityTitle = (String)request.getParameter("communityTitle");
-				
-				request.setAttribute("categoryName", categoryName);
-				request.setAttribute("communityTitle", communityTitle);
-				
-//				//쿠키 조회
-//				Cookie[] cookies=request.getCookies();
-//				String noticeRead="";
-//				boolean isRead=false;
-//				if(cookies!=null) {	
-//					for(Cookie c : cookies) {
-//						if(c.getName().equals("noticeRead")) { //쿠키에 key값이 boardRead와 같으면 true
-//							noticeRead=c.getValue(); //해당 key의 value를 저장
-//							if(noticeRead.contains("|"+no+"|")) { //지정한 양식(정확한 조회수 집계를위해 사용)이 있으면
-//								isRead=true;
-//							}
-//							break;
-//						}
-//					}
-//				}
-//				//쿠키 생성 , 쿠키에 지정한 양식이 없으면 true
-//				if(!isRead) {
-//					Cookie c=new Cookie("noticeRead",noticeRead+"|"+no+"|");
-//					c.setMaxAge(60*60*24);
-//					response.addCookie(c);			
-//				}
-				//Qna 게시판
-				Qna qna = new QnaService().selectQnaByNo(no);
-				int memberNo = qna.getMemberNo();
-				//회원번호로 이름 가져오기
-				String memberName = new QnaService().checkName(memberNo);
-				System.out.println("membername : "+memberName+", "+qna);
-				//Qna 댓글 답글
-				List<QnaComment> comments=new QnaService().selectQnaComment(no);
-				System.out.println(comments.get(0).getQnaCommentDate());
-				
-				//게시판 상세내용
-				request.setAttribute("qna",qna);
-				request.setAttribute("memberName", memberName);
-				request.setAttribute("comments", comments);
-				request.getRequestDispatcher("/views/board/qna_view.jsp").forward(request, response);
+		int no=Integer.parseInt(request.getParameter("no"));
+		request.setAttribute("no",no);
+		
+		String categoryName = (String)request.getParameter("categoryName");
+		String communityTitle = (String)request.getParameter("communityTitle");
+		
+		request.setAttribute("categoryName", categoryName);
+		request.setAttribute("communityTitle", communityTitle);
+		
+		//Qna 게시판
+		Qna qna = new QnaService().selectQnaByNo(no);
+		int memberNo = qna.getMemberNo();
+		//회원번호로 이름 가져오기
+		String memberName = new QnaService().checkName(memberNo);
+//				System.out.println("membername : "+memberName+", "+qna);
+		//Qna 댓글 답글
+		List<QnaComment> comments=new QnaService().selectQnaComment(no);
+//				System.out.println(comments.get(0).getQnaCommentDate());
+		
+		//게시판 상세내용
+		request.setAttribute("qna",qna);
+		request.setAttribute("memberName", memberName);
+		request.setAttribute("comments", comments);
+		request.getRequestDispatcher("/views/board/qna_view.jsp").forward(request, response);
 	}
 
 	/**
