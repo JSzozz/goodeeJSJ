@@ -145,17 +145,9 @@
 </section>
 <script>
    $("#totPirce").text("<%=booking.getBookingPrice()%>원");
-   $("#RESV_NM").text("<%=loginMember.getMemberName() %>");
+   $("#RESV_NM").text("<%=loginMember.getMemberName()%>");
    $("#RESV_PHONE").text("<%=loginMember.getPhone() %>");
    $("#RESV_COMMENT").text("<%=booking.getBookingComment() %>");
-   
-   $(function chkSum() {
-      $(document).on("click","button[id=saveBtn]",e=>{
-      /* 예약정보 post 보내기 */
-         alert("결제API 처리 기능 추가 필요(현재는 버튼 클릭 시 DB에 바로 등록되는 상태임)");
-      });
-      return true;
-   });
 </script>
       <!-- 푸터 영역 -->
 <%@ include file="/views/common/footer.jsp"%>
