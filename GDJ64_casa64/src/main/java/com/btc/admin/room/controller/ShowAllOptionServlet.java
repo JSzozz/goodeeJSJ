@@ -12,19 +12,18 @@ import javax.servlet.http.HttpServletResponse;
 import com.btc.admin.model.service.AdminRoomService;
 import com.btc.rooms.model.vo.OptionFree;
 import com.btc.rooms.model.vo.OptionXtra;
-import com.btc.rooms.model.vo.Room;
 
 /**
- * Servlet implementation class RoomDetailByNoServlet
+ * Servlet implementation class ShowAllOptionServlet
  */
-@WebServlet("/admin/room/roomDetail.do")
-public class RoomDetailServlet extends HttpServlet {
+@WebServlet("/admin/room/showAllOption.do")
+public class ShowAllOptionServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public RoomDetailServlet() {
+    public ShowAllOptionServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -33,14 +32,13 @@ public class RoomDetailServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		int roomNo=Integer.parseInt(request.getParameter("roomNo")); 
-		Room r=new AdminRoomService().viewRoom(roomNo);
 		List<OptionFree> frees=new AdminRoomService().selectAllFree();
 		List<OptionXtra> xtras=new AdminRoomService().selectAllXtra();
-		request.setAttribute("room", r);
 		request.setAttribute("frees", frees);
 		request.setAttribute("xtras", xtras);
-		request.getRequestDispatcher("/views/admin/room-check.jsp").forward(request, response);
+		request.getRequestDispatcher("/views/admin/option-manage.jsp").forward(request, response);
+		
+		
 	}
 
 	/**
