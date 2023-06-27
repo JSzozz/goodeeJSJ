@@ -2,7 +2,6 @@ package com.btc.admin.model.dao;
 
 import java.io.FileReader;
 import java.io.IOException;
-import java.lang.module.ModuleDescriptor.Builder;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -19,7 +18,7 @@ import com.btc.member.model.dto.BlackMember;
 import com.btc.member.model.dto.CancelMember;
 import com.btc.member.model.dto.Member;
 
-import oracle.jdbc.proxy.annotation.Pre;
+
 
 import static com.btc.common.JDBCTemplate.*;
 
@@ -334,6 +333,155 @@ public class AdminMemberDao {
 			close(rs);
 			close(pstmt);
 		}return members;
+	}
+	
+	public BlackMember selectBlackMember(Connection conn, int memberNo) {
+		PreparedStatement pstmt=null;
+		ResultSet rs=null;
+		BlackMember m=null;
+		try {
+			pstmt=conn.prepareStatement(sql.getProperty("selectBlackMember"));
+			pstmt.setInt(1, memberNo);
+			rs=pstmt.executeQuery();
+			if(rs.next()) m=getBlackMember(rs);
+		}catch(SQLException e) {
+			e.printStackTrace();
+		}finally {
+			close(rs);
+			close(pstmt);
+		}return m;
+	}
+	
+	public BlackFile selectBlackFile(Connection conn, int memberNo) {
+		PreparedStatement pstmt=null;
+		ResultSet rs=null;
+		BlackFile m=null;
+		try {
+			pstmt=conn.prepareStatement(sql.getProperty("selectBlackFile"));
+			pstmt.setInt(1, memberNo);
+			rs=pstmt.executeQuery();
+			if(rs.next()) m=getBlackFile(rs);
+		}catch(SQLException e) {
+			e.printStackTrace();
+		}finally {
+			close(rs);
+			close(pstmt);
+		}return m;
+	}
+	
+	public int deleteBlackMember(Connection conn, int memberNo) {
+		PreparedStatement pstmt=null;
+		int result=0;
+		try {
+			pstmt=conn.prepareStatement(sql.getProperty("deleteBlackMember"));
+			pstmt.setInt(1, memberNo);
+			result=pstmt.executeUpdate();
+		}catch(SQLException e) {
+			e.printStackTrace();
+		}finally {
+			close(pstmt);
+			
+		}return result;
+	}
+	
+	public int deleteBlackFile(Connection conn, int memberNo) {
+		PreparedStatement pstmt=null;
+		int result=0;
+		try {
+			pstmt=conn.prepareStatement(sql.getProperty("deleteBlackFile"));
+			pstmt.setInt(1, memberNo);
+			result=pstmt.executeUpdate();
+		}catch(SQLException e) {
+			e.printStackTrace();
+		}finally {
+			close(pstmt);
+			
+		}return result;
+	}
+	
+	public List<BlackMember> searchBMember(Connection conn,int cPage,int numPerpage,String type ,String searchMember){
+		PreparedStatement pstmt=null;
+		ResultSet rs=null;
+		List<BlackMember> members=new ArrayList<>();
+		String query="";
+		if(type.equals("member_name")) query=sql.getProperty("searchBMemberByName");
+		else if(type.equals("nickname")) query=sql.getProperty("searchBMemberByNickname");
+		else if(type.equals("email")) query=sql.getProperty("searchBMemberByEmail");
+		else query=sql.getProperty("searchBMemberByPhone");
+		try {
+			pstmt=conn.prepareStatement(query);
+			pstmt.setString(1, searchMember);
+			pstmt.setInt(2, (cPage-1)*numPerpage+1);
+			pstmt.setInt(3, cPage*numPerpage);
+			rs=pstmt.executeQuery();
+			while(rs.next()) {
+				members.add(getBlackMember(rs));
+			}
+			System.out.println(members);
+			}catch(SQLException e) {
+				e.printStackTrace();
+			}finally {
+				close(rs);
+				close(pstmt);
+			}return members;
+		}
+		
+		public int searchBMemberCount(Connection conn, String type,String searchMember) {
+			PreparedStatement pstmt=null;
+			int result=0;
+			ResultSet rs=null;
+			String query="";
+			if(type.equals("member_name")) query=sql.getProperty("searchBMemberByNameCount");
+			else if(type.equals("nickname")) query=sql.getProperty("searchBMemberByNicknameCount");
+			else if(type.equals("email")) query=sql.getProperty("searchBMemberByEmailCount");
+			else query=sql.getProperty("searchBMemberByPhoneCount");
+			try {
+				pstmt=conn.prepareStatement(query);
+				pstmt.setString(1, searchMember);
+				rs=pstmt.executeQuery();
+				if(rs.next()) {
+					result=rs.getInt(1);
+				}
+			}catch(SQLException e) {
+				e.printStackTrace();
+			}finally {
+				close(rs);
+				close(pstmt);
+			}return result;
+		}
+		
+	public CancelMember selectCMember(Connection conn,String email) {
+		PreparedStatement pstmt=null;
+		CancelMember m=null;
+		ResultSet rs=null;
+		try {
+			pstmt=conn.prepareStatement(sql.getProperty("selectCMember"));
+			pstmt.setString(1, email);
+			rs=pstmt.executeQuery();
+			if(rs.next()) {
+				m=getCancelMember(rs);
+			}
+		}catch(SQLException e) {
+			e.printStackTrace();
+		}finally {
+			close(rs);
+			close(pstmt);
+		}return m;
+	}
+	
+	public int deleteCMember(Connection conn, String email) {
+		PreparedStatement pstmt=null;
+		int result=0;
+		try {
+			pstmt=conn.prepareStatement(sql.getProperty("deleteCMember"));
+			pstmt.setString(1, email);
+			result=pstmt.executeUpdate();
+		}catch(SQLException e) {
+			e.printStackTrace();
+		}finally {
+			close(pstmt);
+			
+		}return result;
 	}
 	
 	private Member getMember(ResultSet rs) throws SQLException{
