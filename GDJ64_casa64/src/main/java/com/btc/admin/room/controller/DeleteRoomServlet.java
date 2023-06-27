@@ -1,7 +1,6 @@
 package com.btc.admin.room.controller;
 
 import java.io.IOException;
-import java.util.List;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -10,21 +9,18 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.btc.admin.model.service.AdminRoomService;
-import com.btc.rooms.model.vo.OptionFree;
-import com.btc.rooms.model.vo.OptionXtra;
-import com.btc.rooms.model.vo.Room;
 
 /**
- * Servlet implementation class RoomDetailByNoServlet
+ * Servlet implementation class DeleteRoomServlet
  */
-@WebServlet("/admin/room/roomDetail.do")
-public class RoomDetailServlet extends HttpServlet {
+@WebServlet("/admin/room/deleteRoom.do")
+public class DeleteRoomServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public RoomDetailServlet() {
+    public DeleteRoomServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -33,14 +29,13 @@ public class RoomDetailServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		int roomNo=Integer.parseInt(request.getParameter("roomNo")); 
-		Room r=new AdminRoomService().viewRoom(roomNo);
-		List<OptionFree> frees=new AdminRoomService().selectAllFree();
-		List<OptionXtra> xtras=new AdminRoomService().selectAllXtra();
-		request.setAttribute("room", r);
-		request.setAttribute("frees", frees);
-		request.setAttribute("xtras", xtras);
-		request.getRequestDispatcher("/views/admin/room-check.jsp").forward(request, response);
+		int roomNo=Integer.parseInt(request.getParameter("roomNo"));
+		int result=new AdminRoomService().deleteRoom(roomNo);
+		request.setAttribute("result", result);
+		//msg와 loc
+		//성공시 "객실을 성공적으로 삭제했습니다", room.jsp로 이동
+		//실패시 "객실 삭제에 실패했습니다., room-check.jsp로 이동
+		
 	}
 
 	/**

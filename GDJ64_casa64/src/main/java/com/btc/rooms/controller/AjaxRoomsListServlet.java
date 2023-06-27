@@ -1,4 +1,4 @@
-package com.btc.admin.room.controller;
+package com.btc.rooms.controller;
 
 import java.io.IOException;
 import java.util.List;
@@ -9,22 +9,21 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.btc.admin.model.service.AdminRoomService;
-import com.btc.rooms.model.vo.OptionFree;
-import com.btc.rooms.model.vo.OptionXtra;
+import com.btc.rooms.model.service.RoomService;
 import com.btc.rooms.model.vo.Room;
+import com.google.gson.Gson;
 
 /**
- * Servlet implementation class RoomDetailByNoServlet
+ * Servlet implementation class AjaxRoomsListServlet
  */
-@WebServlet("/admin/room/roomDetail.do")
-public class RoomDetailServlet extends HttpServlet {
+@WebServlet("/rooms/roomlist.do")
+public class AjaxRoomsListServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public RoomDetailServlet() {
+    public AjaxRoomsListServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -33,14 +32,13 @@ public class RoomDetailServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		int roomNo=Integer.parseInt(request.getParameter("roomNo")); 
-		Room r=new AdminRoomService().viewRoom(roomNo);
-		List<OptionFree> frees=new AdminRoomService().selectAllFree();
-		List<OptionXtra> xtras=new AdminRoomService().selectAllXtra();
-		request.setAttribute("room", r);
-		request.setAttribute("frees", frees);
-		request.setAttribute("xtras", xtras);
-		request.getRequestDispatcher("/views/admin/room-check.jsp").forward(request, response);
+		// TODO Auto-generated method stub
+
+		List<Room> rooms=new RoomService().selectAllRoom();
+		
+		response.setContentType("application/json;charset=utf-8");
+		new Gson().toJson(rooms,response.getWriter());
+		
 	}
 
 	/**
