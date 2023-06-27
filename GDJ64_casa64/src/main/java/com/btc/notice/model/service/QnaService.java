@@ -54,6 +54,8 @@ public class QnaService {
 		close(conn);
 		return list;
 	}
+	
+
 //	public List<Notice> searchNotice(Map pagemap,Map map) {
 //		Connection conn=getConnection();
 //		List<Notice> result=dao.searchNotice(conn,pagemap,map);

@@ -1,6 +1,6 @@
 package com.btc.notice.model.dao;
 
-import static com.btc.common.JDBCTemplate.*;
+import static com.btc.common.JDBCTemplate.close;
 
 import java.io.FileReader;
 import java.io.IOException;
@@ -8,12 +8,11 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
 import java.util.Properties;
 
-import com.btc.notice.model.dao.QnaDao;
 import com.btc.notice.model.dto.Qna;
 import com.btc.notice.model.dto.QnaComment;
 public class QnaDao {
@@ -41,6 +40,7 @@ private Properties sql=new Properties();
 				.build();
 	}
 	private QnaComment getQnaComment (ResultSet rs)throws SQLException{
+		SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd kk:mm:ss");
 		return QnaComment.builder()
 				.QnaCommentNo(rs.getInt("qna_comment_no"))
 				.QnaCommentLevel(rs.getInt("qna_comment_level"))

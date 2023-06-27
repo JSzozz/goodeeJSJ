@@ -44,7 +44,7 @@
 					<b><%=q.getQuestionTitle()%></b>
 				</p>
 				<p class="writer">
-					<%=q.getMemberNo()%><span class="date-created"><%=q.getQuestionDate()%></span>
+					<%=request.getAttribute("memberName")%><span class="date-created">&nbsp;&nbsp;<%=q.getQuestionDate()%></span>
 				</p>
 			</div>
 			<!-- <div class="count-inner col-2">
@@ -58,8 +58,66 @@
 				<p class="text-data"><%=q.getQuestionContent()%></p>
 			</div>
 		</div>
-
-		<div class="comment-inner"></div>
+		
+		<!-- 댓글 로직 -->
+		<div class="row comment-inner">
+			<form action="<%=request.getContextPath()%>/qna/viewQna.do" method="post" >
+				<input type="hidden" name="QnaRef" value="<%=q.getQuestionNo()%>"> <!-- 질문의 번호 -->
+				<input type="hidden" name="QnaCommentLevel" value="1"> <!-- 댓글,답글여부 -->
+				<input type="hidden" name="QnaCommentWriter" value="<%=loginMember!=null?loginMember.getMemberName():""%>"> <!-- 로그인되어있으면=>지금아이디 -->
+				<div class="row">
+					<div class="col-11">
+						<textarea class="comment form-control w-100" name="QnaCommentContent"
+							id="exampleFormControlTextarea1" rows="3"></textarea> <!-- 댓글내용 -->
+					</div>
+					<div class="col-1 float-end">
+						<input type="submit" class="comment-btn btn btn-dark" value="등록">
+					</div>
+				</div>
+			</form>
+				<!-- 답글 로직 (없으면 안보여야됨)-->
+				<%if(comments!=null) {
+				for(QnaComment qc: comments){
+					if(qc.getQnaCommentLevel()==1){%>
+						<div class="col-12 admin-comment border-bottom level1">
+							<div class="row">
+								<div class="col-11">
+									<p class="writer">
+										<%=comments.get(0).getQnaCommentWriter()%><span class="date-created">&nbsp;&nbsp;<%=comments.get(0).getQnaCommentDate()%></span>
+									</p>
+									<p class="comment-data"><%=comments.get(0).getQnaCommentContent() %></p>
+								</div>
+								<div class="delete-btn col-2 float-end">
+									<button class="btn btn-dark btn-sm ms-1">답글</button>
+									<%if(loginMember!=null&&(loginMember.getMemberName().equals("admin")
+									||loginMember.getMemberName().equals(comments.get(0).getQnaCommentWriter()))) {%>
+										<button class="btn btn-dark btn-sm ms-1">수정</button>
+										<button class="btn btn-dark btn-sm ms-1">삭제</button>
+									<%} %>							
+								</div>
+							</div>
+						</div>
+				<%}else{ %>
+					<div class="col-12 admin-comment border-bottom level2">
+							<div class="row">
+								<div class="col-11">
+									<p class="writer">
+										<%=comments.get(0).getQnaCommentWriter()%><span class="date-created">&nbsp;&nbsp;<%=comments.get(0).getQnaCommentDate()%></span>
+									</p>
+									<p class="comment-data"><%=comments.get(0).getQnaCommentContent() %></p>
+								</div>
+								<div class="delete-btn col-2 float-end">
+									<button class="btn btn-dark btn-sm ms-1">답글</button>
+									<%if(loginMember!=null&&(loginMember.getMemberName().equals("admin")
+									||loginMember.getMemberName().equals(comments.get(0).getQnaCommentWriter()))) {%>
+										<button class="btn btn-dark btn-sm ms-1">수정</button>
+										<button class="btn btn-dark btn-sm ms-1">삭제</button>
+									<%} %>							
+								</div>
+							</div>
+						</div>
+				<%} %>
+		</div>
 
 	</div>
 </div>
