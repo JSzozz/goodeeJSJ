@@ -83,7 +83,7 @@
 					<td><%=q.getQuestionNo() %></td>
 					<td><%=q.getCategoryName() %></td>
 					<td>
-						<a href="<%=request.getContextPath()%>/notice/viewNotice.do?no=<%=q.getQuestionNo()%>
+						<a href="<%=request.getContextPath()%>/qna/viewQna.do?no=<%=q.getQuestionNo()%>
 						&categoryName=<%=request.getAttribute("categoryName")%>
 						&communityTitle=<%=request.getAttribute("communityTitle")%>"><%=q.getQuestionTitle()%></a>
 					</td>

@@ -15,7 +15,7 @@ import java.util.Properties;
 
 import com.btc.notice.model.dao.QnaDao;
 import com.btc.notice.model.dto.Qna;
-
+import com.btc.notice.model.dto.QnaComment;
 public class QnaDao {
 private Properties sql=new Properties();
 	
@@ -40,16 +40,19 @@ private Properties sql=new Properties();
 				.questionTitle(rs.getString("question_title"))
 				.build();
 	}
-//	
-//	private Qna_images getQnaImage(ResultSet rs) throws SQLException{
-//		return Qna_images.builder()
-//				.fileNo(rs.getInt("file_no"))
-//				.saveFilename(rs.getString("save_filename"))
-//				.fileName(rs.getString("filename"))
-//				.dateCreated(rs.getDate("date_created"))
-//				.QnaNo(rs.getInt("Qna_no"))
-//				.build();
-//	}
+	private QnaComment getQnaComment (ResultSet rs)throws SQLException{
+		return QnaComment.builder()
+				.QnaCommentNo(rs.getInt("qna_comment_no"))
+				.QnaCommentLevel(rs.getInt("qna_comment_level"))
+				.QnaCommentWriter(rs.getString("qna_comment_writer"))
+				.QnaCommentContent(rs.getString("qna_comment_content"))
+				.QnaCommentDate(rs.getDate("qna_comment_date"))
+				.QnaCommentRef(rs.getInt("qna_comment_ref"))
+				.QnaRef(rs.getInt("qna_ref"))
+				.build();
+	}
+	
+	
 	
 	public List<Qna> selectQna(Connection conn, int cPage, int numPerpage){
 		PreparedStatement pstmt=null;
@@ -110,6 +113,41 @@ private Properties sql=new Properties();
 		return result;
 	}
 	
+	public Qna selectQnaByNo(Connection conn, int no){
+		PreparedStatement pstmt=null;
+		ResultSet rs=null;
+		Qna q=null;
+		try {
+			pstmt=conn.prepareStatement(sql.getProperty("selectQnaByNo"));
+			pstmt.setInt(1,no);
+			rs=pstmt.executeQuery();
+			if(rs.next()) q=getQna(rs);
+		}catch(SQLException e) {
+			e.printStackTrace();
+		}finally {
+			close(rs);
+			close(pstmt);
+		}return q;
+	}
+	
+	public List<QnaComment> selectQnaComment(Connection conn, int no){
+		PreparedStatement pstmt=null;
+		ResultSet rs=null;
+		List<QnaComment> list=new ArrayList();
+		try {
+			pstmt=conn.prepareStatement(sql.getProperty("selectQnaComment"));
+			pstmt.setInt(1,no);
+			rs=pstmt.executeQuery();
+			while(rs.next()) {
+				list.add(getQnaComment(rs));
+			}
+		}catch(SQLException e) {
+			e.printStackTrace();
+		}finally {
+			close(rs);
+			close(pstmt);
+		}return list;
+	}
 //	public List<Qna> searchQna(Connection conn,Map pagemap, Map map){
 //		PreparedStatement pstmt=null;
 //		ResultSet rs=null;
@@ -158,22 +196,6 @@ private Properties sql=new Properties();
 //		return result;
 //	}
 //	
-//	public Qna selectQnaByNo(Connection conn, int no){
-//		PreparedStatement pstmt=null;
-//		ResultSet rs=null;
-//		Qna b=null;
-//		try {
-//			pstmt=conn.prepareStatement(sql.getProperty("selectQnaByNo"));
-//			pstmt.setInt(1,no);
-//			rs=pstmt.executeQuery();
-//			if(rs.next()) b=getQna(rs);
-//		}catch(SQLException e) {
-//			e.printStackTrace();
-//		}finally {
-//			close(rs);
-//			close(pstmt);
-//		}return b;
-//	}
 //	
 //	public int updateQnaReadCount(Connection conn, int no) {
 //		PreparedStatement pstmt=null;
