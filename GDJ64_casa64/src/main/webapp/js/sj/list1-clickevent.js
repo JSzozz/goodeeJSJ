@@ -1,10 +1,15 @@
 /* 달력 객실 선택 효과 */
    $(function() {
+	   let roomName;
        $(document).on("mouseover","div[bookable=Y]",e=> {
+		   roomName=$(e.target).text();
            $(e.target).css("font-weight","bold");
+           $(e.target).text("객실 가격 : "+$(e.target).attr("price")+"원");
+           
         });
        $(document).on("mouseout","div[bookable=Y]",e=> {
            $(e.target).css("font-weight","normal");
+           $(e.target).text(roomName);
         });   
    });
 /* 달력에서 객실 클릭 */
@@ -16,14 +21,9 @@
       let roomPrice=0;
        $(document).on("click","div[bookable=Y]",e=> {
              $(".reserve_step2").show();
-/*           console.dir($(e.target));
-             console.log($(e.target).text());
-             console.log($(e.target).parent().attr("class"));
-             console.log($(e.target).attr("class"));
-             console.dir($(e.target).attr("price")); */
              $(e.target).css("text-decoration","underline");
 
-             $("#typeNm").html($(e.target).text());
+             $("#typeNm").html($(e.target).attr("roomName"));
              $("#checkinDt").html($(e.target).attr("class"));
              
              checkInDt=$(e.target).attr("class");

@@ -1,3 +1,4 @@
+<%@page import="com.btc.booking.model.vo.SeasonalPrice"%>
 <%@page import="com.btc.booking.model.vo.Booking"%>
 <%@page import="com.btc.rooms.model.vo.Room"%>
 <%@page import="java.util.List"%>
@@ -7,6 +8,8 @@
 <link rel="stylesheet" href="<%=request.getContextPath()%>/css/sj/style.css"/>
 <% List<Room> rooms=(List<Room>)session.getAttribute("rooms");%>
 <% List<Booking> bookings=(List<Booking>)request.getAttribute("bookings");%>
+<% List<SeasonalPrice> seasons=(List<SeasonalPrice>)request.getAttribute("seasons");%>
+
 
 <%--          <%if(rooms.isEmpty()) {%>
          <h1>조회된 예약목록이 없습니다.</h1>
@@ -17,7 +20,8 @@
          <br>
       <%   }
       }%>  --%>  
-       <%if(bookings.isEmpty()) {%>
+      
+<%--        <%if(bookings.isEmpty()) {%>
          <h1>조회된 예약목록이 없습니다.</h1>
       <%} else{
          for(Booking b:bookings){%>
@@ -26,7 +30,19 @@
          <%=b.getCheckOut() %>
          <br>
       <%   }
-      }%>   
+      }%>   --%> 
+      <%if(seasons.isEmpty()) {%>
+         <h1>조회된 예약목록이 없습니다.</h1>
+      <%} else{
+         for(SeasonalPrice s:seasons){%>
+         <%=s.getSeason() %>
+         <%=s.getStartDate() %>
+         <%=s.getEndDate() %>
+         <%=s.getWeekdayRate() %>
+         <%=s.getWeekendRate() %>
+         <br>
+      <%   }
+      }%>
 
 <%@ include file="/views/common/header.jsp"%>
 <% if(loginMember!=null) {%>

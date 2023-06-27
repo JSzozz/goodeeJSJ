@@ -193,6 +193,7 @@
 	</div>
 </section>
 <script>
+
 	
 	$("#typeNm").text("<%=roomNm %>");
 	$("#period").text("<%=booking.getCheckIn()%> ~ <%=booking.getCheckOut()%>")

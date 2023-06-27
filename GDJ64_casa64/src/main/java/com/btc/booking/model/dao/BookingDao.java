@@ -5,6 +5,7 @@ import static com.btc.common.JDBCTemplate.close;
 import java.io.FileReader;
 import java.io.IOException;
 import java.sql.Connection;
+import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -13,6 +14,7 @@ import java.util.List;
 import java.util.Properties;
 
 import com.btc.booking.model.vo.Booking;
+import com.btc.booking.model.vo.SeasonalPrice;
 import com.btc.rooms.model.vo.Room;
 
 
@@ -71,13 +73,42 @@ public class BookingDao {
 				.build();
 	}
 	
+	private SeasonalPrice getSeasonalPrice(ResultSet rs) throws SQLException {
+		return SeasonalPrice.builder()
+				.season(rs.getString("SEASON"))
+				.startDate(rs.getDate("START_DATE"))
+				.endDate(rs.getDate("END_DATE"))
+				.weekdayRate(rs.getFloat("WEEKDAY_RATE"))
+				.weekendRate(rs.getFloat("WEEKEND_RATE"))
+				.build();
+	}	
+	
+	public List<SeasonalPrice> selectAllSeason(Connection conn){
+		PreparedStatement pstmt=null;
+		ResultSet rs=null;
+		List<SeasonalPrice> list=new ArrayList();
+		try {
+			pstmt=conn.prepareStatement(sql.getProperty("selectAllSeason"));
+			//SELECT * FROM ROOM
+			rs=pstmt.executeQuery();
+			while(rs.next()) {
+				list.add(getSeasonalPrice(rs));
+			}
+		}catch(SQLException e) {
+			e.printStackTrace();
+		}finally {
+			close(rs);
+			close(pstmt);
+		}return list;	
+	}
+	
 	public List<Room> selectAllRoom(Connection conn){
 		PreparedStatement pstmt=null;
 		ResultSet rs=null;
 		List<Room> list=new ArrayList();
 		try {
 			pstmt=conn.prepareStatement(sql.getProperty("selectAllRoom"));
-			//SELECT * FROM ROOM
+			//SELECT * FROM SEASONAL_PRICE
 			rs=pstmt.executeQuery();
 			while(rs.next()) {
 				list.add(getRoom(rs));
