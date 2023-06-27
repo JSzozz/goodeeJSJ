@@ -5,6 +5,7 @@ import java.sql.Connection;
 
 import com.btc.member.model.dao.MemberDao;
 import com.btc.member.model.dto.Member;
+import com.btc.member.model.dto.SNSMember;
 
 public class MemberService {
 
@@ -70,15 +71,30 @@ public class MemberService {
 		return result;
 	}
 	
-	public int updateBlack(int memberNo) {
+	public int updateBlack(int memberNo,String black) {
 		Connection conn=getConnection();
-		int result=dao.updateBlack(conn, memberNo);
+		int result=dao.updateBlack(conn, memberNo,black);
 		if(result>0) commit(conn);
 		else rollback(conn);
 		close(conn);
 		return result;
 	}
 	
+	public int insertSNSMember(String code,String type,String name,String email,String nickname) {
+		Connection conn=getConnection();
+		int result=dao.insertSNSMember(conn, code, type, name, email, nickname);
+		if(result>0) commit(conn);
+		else rollback(conn);
+		close(conn);
+		return result;
+	}
+	
+	public SNSMember selectSNSMember(String code) {
+		Connection conn=getConnection();
+		SNSMember m=dao.selectSNSMember(conn, code);
+		close(conn);
+		return m;
+	}
 
 }
 

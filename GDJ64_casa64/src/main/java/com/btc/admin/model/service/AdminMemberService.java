@@ -5,6 +5,7 @@ import java.util.List;
 
 import static com.btc.common.JDBCTemplate.*;
 import com.btc.admin.model.dao.AdminMemberDao;
+import com.btc.member.model.dto.BlackFile;
 import com.btc.member.model.dto.BlackMember;
 import com.btc.member.model.dto.CancelMember;
 import com.btc.member.model.dto.Member;
@@ -121,6 +122,69 @@ public class AdminMemberService {
 		close(conn);
 		return members;
 	}
+	
+	public BlackMember selectBlackMember(int memberNo) {
+		Connection conn=getConnection();
+		BlackMember m=dao.selectBlackMember(conn, memberNo);
+		close(conn);
+		return m;
+	}
+	
+	public BlackFile selectBlackFile(int memberNo) {
+		Connection conn=getConnection();
+		BlackFile m=dao.selectBlackFile(conn, memberNo);
+		close(conn);
+		return m;
+	}
+	
+	public int deleteBlackMember(int memberNo) {
+		Connection conn=getConnection();
+		int result=dao.deleteBlackMember(conn, memberNo);
+		if(result>0) commit(conn);
+		else rollback(conn);
+		close(conn);
+		return result;
+	}
+	
+	public int deleteBlackFile(int memberNo) {
+		Connection conn=getConnection();
+		int result=dao.deleteBlackFile(conn, memberNo);
+		if(result>0) commit(conn);
+		else rollback(conn);
+		close(conn);
+		return result;
+	}
+	
+	public int searchBMemberCount(String type, String searchMember) {
+		Connection conn=getConnection();
+		int result=dao.searchBMemberCount(conn,type,searchMember);
+		close(conn);
+		return result;
+	}
+	
+	public List<BlackMember> searchBMemberList(int cPage, int numPerpage,String type, String searchMember){
+		Connection conn=getConnection();
+		List<BlackMember> members=dao.searchBMember(conn,cPage,numPerpage,type,searchMember);
+		close(conn);
+		return members;
+	}
+	
+	public CancelMember selectCMember(String email) {
+		Connection conn=getConnection();
+		CancelMember m=dao.selectCMember(conn, email);
+		close(conn);
+		return m;
+	}
+	
+	public int deleteCMember(String email) {
+		Connection conn=getConnection();
+		int result=dao.deleteCMember(conn, email);
+		if(result>0) commit(conn);
+		else rollback(conn);
+		close(conn);
+		return result;
+	}
+	
 }
 
 
