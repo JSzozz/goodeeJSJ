@@ -6,7 +6,7 @@
 	Room r=(Room)request.getAttribute("room");
 	List<OptionFree> frees=(List<OptionFree>)request.getAttribute("frees");
 	List<OptionXtra> xtras=(List<OptionXtra>)request.getAttribute("xtras");
-	/* List<> */
+	List<RoomOption> options=(List<RoomOption>)request.getAttribute("options");
 %>
 <!-- 삭제 모달 -->
 <div class="modal fade" id="removeRoom" tabindex="-1"
@@ -134,8 +134,6 @@
 	const fn_updateRoom=()=>{
 		//form을 전송하기
 		$("roomFrm").attr("action","<%=request.getContextPath()%>/admin/room/updateRoom.do").submit();
-		console.log(r);
-		//r이 정의되어있지 않다고..?
 				
 	}
 </script>
