@@ -22,6 +22,7 @@
 			<div class="modal-footer">
 				<button type="button" class="btn btn-danger" onclick="location.href='<%=request.getContextPath()%>/admin/room/deleteRoom.do?roomNo='<%=r.getRoomNo()%>">삭제</button>
 				<button type="button" class="btn btn-dark" data-bs-dismiss="modal">취소</button>
+				<!-- 취소는 어디다 연결해? 모달 닫고 방금 그 객실 디테일로 -->
 			</div>
 		</div>
 	</div>
@@ -36,7 +37,7 @@
 					<h2 class="text-center">상세조회</h2>
 				</div>
 				<div class="col-12">
-					<form id="roomFrm" method="post" class="mt-5">
+					<form id="roomFrm" method="post" class="mt-5" enctype="multipart/form-data">
 						<input type="hidden" name="roomNo" value="<%=r.getRoomNo() %>">
 						<!-- 객실명 -->
 						<div class="form-group row mt-3 align-items-center">
@@ -88,13 +89,19 @@
 						<div class="form-group row mt-3 align-items-center">
 							<label for="option" class="col-sm-1 col-form-label text-center">옵션</label>
 							<div class="col-sm-8">
-								<!-- <button type="button" name="option" class="btn btn-dark">옵션설정</button> -->
-								<!-- 체크박스 형식으로 기본 옵션/유료 옵션 선택. 옵션설정에서 옵션 추가 삭제 가능 -->
 								<%if(frees==null||frees.isEmpty()){ %>
 									<p>설정된 기본 옵션이 없습니다. 옵션관리에서 옵션을 추가해 주세요</p>
 								<%}else{
-									for(OptionFree of:frees){%>
-										<input type="checkbox" name="optionFree" value="<%=of.getFreeName() %>" ><%=of.getFreeName() %>
+									for(OptionFree of:frees){
+										boolean check=false;
+										for(RoomOption ro : options){
+											if(ro.getOptionName().equals(of.getFreeName())){
+												check=true;
+												break;
+											}%>
+										<%}%>
+										<input type="checkbox" name="optionFree" value="<%=of.getFreeName() %>" 
+										<%=check?"checked":"" %>><%=of.getFreeName() %>
 										<!-- room_option에 해당 방번호와 함께 옵션번호가 있다면 checked로 표시 -->
 									<%}
 								}%>
