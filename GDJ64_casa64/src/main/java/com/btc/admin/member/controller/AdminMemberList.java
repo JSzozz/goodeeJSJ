@@ -32,6 +32,7 @@ public class AdminMemberList extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+
 		int cPage, numPerpage;
 		try {
 			cPage=Integer.parseInt(request.getParameter("cPage"));

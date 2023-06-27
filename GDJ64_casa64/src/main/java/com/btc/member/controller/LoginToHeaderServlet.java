@@ -46,11 +46,13 @@ public class LoginToHeaderServlet extends HttpServlet {
 		//값이 없으면 로그인 금지
 		if(loginMember==null) {
 			//실패 로그 출력
-			
-			request.getRequestDispatcher("/views/LOGIN/login.jsp").forward(request, response);
+			String msg="아이디 혹은 비밀번호가 일치하지 않습니다";
+			String loc="/views/LOGIN/login.jsp";
+			request.setAttribute("msg", msg);
+			request.setAttribute("loc", loc);
+			request.getRequestDispatcher("/views/common/msg.jsp").forward(request, response);
 		}else{
 			//메인에 보내기
-			
 			session.setAttribute("loginMember", loginMember);
 			response.sendRedirect(request.getContextPath());			
 		}

@@ -1,17 +1,25 @@
 package com.btc.review.controller;
 
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Enumeration;
+import java.util.List;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+
+import org.apache.tomcat.util.http.fileupload.servlet.ServletFileUpload;
 
 import com.btc.member.model.dto.Member;
 import com.btc.review.model.service.ReviewService;
 import com.btc.review.model.vo.Review;
-import javax.servlet.http.HttpSession;
+import com.btc.review.model.vo.ReviewImages;
+import com.oreilly.servlet.MultipartRequest;
+import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
 /**
  * Servlet implementation class ReviewWrite
  */
@@ -60,14 +68,30 @@ public class ReviewWrite extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		int memberNo = checkLogin(request, response);
 		if(memberNo > 0){
-			int result = 0;
+			int result = 1;
+			if(!ServletFileUpload.isMultipartContent(request)) {
+				request.setAttribute("msg", "잘못된 접근입니다. 관리자에게 문의하세요 :(");
+				request.setAttribute("loc","/");
+				request.getRequestDispatcher("/views/common/msg.jsp").forward(request, response);
+				return;
+			}
+			String path = getServletContext().getRealPath("/upload/review");
+			System.out.println(path);
+			//최대파일크기설정
+			int maxSize=1024*1024*100;
+			//인코딩설정
+			String encode="UTF-8";
+			//리네임클래스 생성
+			DefaultFileRenamePolicy dfr = new DefaultFileRenamePolicy();
+			
+			MultipartRequest multi = new MultipartRequest(request,path,maxSize,encode,dfr);
 			String redirect = "/";
-			String type = request.getParameter("type");
+			String type = multi.getParameter("type");
 			
 			// 1. 넣어줘야할 값을 파라미터로 받기
-			String title = request.getParameter("title"); // 제목
-			String contents = request.getParameter("contents"); // 내용
-			int roomNo = Integer.parseInt(request.getParameter("roomNo")); // 선택한 객실 번호
+			String title = multi.getParameter("title"); // 제목
+			String contents = multi.getParameter("contents"); // 내용
+			int roomNo = Integer.parseInt(multi.getParameter("roomNo")); // 선택한 객실 번호
 			int bookingNo = 1; // 원래는 선택한 객실 번호와 함께 셋팅 되어야 함
 			
 			Review reviews = Review.builder()
@@ -90,6 +114,26 @@ public class ReviewWrite extends HttpServlet {
 				redirect = "/review/reviewView?no="+reviewNo;
 			}
 			if(result > 0 ) {
+				// 파일을 담을 수 있는 multi 라는 변수를 준비
+		 		Enumeration files = multi.getFileNames();
+		 		// files 라는 변수는 오브젝트를 배열형식으로 담겨져있음
+		 		List<ReviewImages> imgList = new ArrayList();
+		 		while (files.hasMoreElements()) {
+		 			String file = (String) files.nextElement();
+		 			String saveFileName = multi.getFilesystemName(file);
+		 			String saveFilePath = request.getContextPath() + "/upload/review/" + saveFileName;
+		 			// 업로드된 파일명 -> 중복된 파일을 업로드할 경우 파일명이 바뀜
+		 			String fileName = multi.getOriginalFileName(file);
+		 			ReviewImages ri = ReviewImages.builder().fileName(fileName).saveFileName(saveFilePath).build();
+//		 			ri.setFileName(fileName);
+//		 			ri.setSaveFileName(saveFileName);
+		 			if(fileName != null) {
+		 				imgList.add(ri);
+		 			}
+		 		}
+		 		
+		 		int uploadResult = new ReviewService().uploadImages(imgList, reviews);
+		 	
 				response.sendRedirect(request.getContextPath() + redirect);
 			} else {
 				// 작성 실패에 대한 피드백을 return 해주기

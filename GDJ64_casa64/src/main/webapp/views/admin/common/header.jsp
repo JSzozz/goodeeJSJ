@@ -1,5 +1,8 @@
+<%@page import="com.btc.member.model.dto.Member"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -38,7 +41,7 @@
                                 <a href="<%=request.getContextPath()%>/admin/memberList.do" class="nav-link text-white admin-link sidebar-link"><i class="bi bi-person-fill me-2"></i>회원관리</a>
                             </li>
                             <li class="nav-item mb-1">
-                                <a href="<%=request.getContextPath()%>/views/admin/black-member.jsp" class="nav-link text-white admin-link sidebar-link"><i class="bi bi-person-fill-lock me-2"></i>블랙회원</a>
+                                <a href="<%=request.getContextPath()%>/admin/member/blackList.do" class="nav-link text-white admin-link sidebar-link"><i class="bi bi-person-fill-lock me-2"></i>블랙회원</a>
                             </li>
                             <li class="nav-item mb-1">
                                 <a href="<%=request.getContextPath() %>/admin/room/showAllRoom.do" class="nav-link sidebar-link text-white"><i class="bi bi-houses-fill me-2"></i>객실관리</a>
@@ -53,7 +56,7 @@
                                 <a href="<%=request.getContextPath()%>/admin/booking/showBookingTab.do" class="nav-link sidebar-link text-white"><i class="bi bi-calendar-fill me-2"></i>예약관리</a>
                             </li>
                             <li class="nav-item mb-1">
-                                <a href="<%=request.getContextPath()%>/views/admin/leave-member.jsp" class="nav-link text-white admin-link sidebar-link"><i class="bi bi-person-fill-dash me-2"></i>탈퇴회원</a>
+                                <a href="<%=request.getContextPath()%>/admin/cancelMemberList.do" class="nav-link text-white admin-link sidebar-link"><i class="bi bi-person-fill-dash me-2"></i>탈퇴회원</a>
                             </li>
                         </ul>
                     </div>

@@ -1,8 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ include file="/views/common/header.jsp"%>
-<!-- 카테고리별 이미지 -->
-<%@ include file="/views/common/mypage_categoryImage.jsp"%>
 <!-- 컨텐츠/내용 시작 -->
 <div class="container">
 	<div class="row mt-3 mx-1 border-primary border-bottom border-2"
@@ -21,33 +19,33 @@
 			<div
 				class="p-5 mt-4 bg-white border border-secondary rounded text-center">
 
-				<form action="" class="form-floating">
+				<form action="<%=request.getContextPath() %>/member/changemyinfo.do" class="form-floating">
 					<div class="input-group mb-3">
 
-						<input type="text" class="form-control" id="email"
-							placeholder="기존이메일" disabled>
+						<input type="text" class="form-control"
+							 value="<%=m.getEmail() %>" name="email" readonly>
 
 					</div>
 					<div class="input-group mb-3">
-						<span class="input-group-text" id="nick">닉네임</span> <input
-							type="text" class="form-control" id="password1"
-							placeholder="기존닉네임">
+						<span class="input-group-text" >닉네임</span> <input
+							type="text" class="form-control" name="nick"
+							value="<%=m.getNickName() %>">
 					</div>
 
 
 
 					<div class="input-group mb-3">
 						<span class="input-group-text">전화번호</span> <input type="text"
-							class="form-control" id="phone" placeholder="기존전화번호">
+							class="form-control" name="phone" value="<%=m.getPhone() %>">
 					</div>
 
 					<div class="input-group mb-3">
 						<span class="input-group-text">이름</span> <input type="text"
-							class="form-control" id="phone" placeholder="">
+							class="form-control" name="name" value="<%=m.getMemberName() %>">
 					</div>
 					<div class="d-grid gap-2">
-						<button class="btn btn-primary" type="button">확인</button>
-						<button class="btn btn-secondary" type="button">취소</button>
+						<button class="btn btn-primary" type="submit">확인</button>
+						<button class="btn btn-secondary" type="reset" onclick="location.href='<%=request.getContextPath()%>/views/myPage/myPageInfo.jsp'">취소</button>
 					</div>
 
 				</form>

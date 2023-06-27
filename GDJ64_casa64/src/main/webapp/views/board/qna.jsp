@@ -1,6 +1,13 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ page import="java.util.List,com.btc.notice.model.dto.Qna" %>
 <%@ include file="/views/common/header.jsp"%>
+<%
+	List<Qna> Qnas = (List)request.getAttribute("Qnas");
+	String searchType = request.getParameter("search-type");
+	String keyword = request.getParameter("keyword");
+%> 
+
 <!-- 카테고리별 이미지 -->
 <%@ include file="/views/common/categoryImage.jsp"%>
 
@@ -52,8 +59,7 @@
 			<colgroup>
 				<col width="40px" />
 				<col width="90px" />
-				<col width="200px" />
-				<col width="70px" />
+				<col width="250px" />
 				<col width="50px" />
 				<col width="70px" />
 			</colgroup>
@@ -63,101 +69,29 @@
 					<th>구분</th>
 					<th>제목</th>
 					<th>작성자</th>
-					<th>조회수</th>
 					<th>작성일</th>
 				</tr>
 			</thead>
 			<tbody>
+				<%if(Qnas.isEmpty()||Qnas==null){ %>
 				<tr>
-					<td>1</td>
-					<td>회원가입/정보</td>
-					<td><a href="<%=request.getContextPath()%>/board/qnaView.do">질문
-							제목입니다.</a></td>
-					<td>윤나라</td>
-					<td>999</td>
-					<td>2023-05-31</td>
+					<td colspan="5">조회된 공지사항이 없습니다.</td>
 				</tr>
+			<%} else { 
+				for(Qna q : Qnas){%>
 				<tr>
-					<td>2</td>
-					<td>회원가입/정보</td>
-					<td><a href="<%=request.getContextPath()%>/board/qnaView.do">질문
-							제목입니다.</a></td>
-					<td>윤나라</td>
-					<td>999</td>
-					<td>2023-05-31</td>
+					<td><%=q.getQuestionNo() %></td>
+					<td><%=q.getCategoryName() %></td>
+					<td>
+						<a href="<%=request.getContextPath()%>/qna/viewQna.do?no=<%=q.getQuestionNo()%>
+						&categoryName=<%=request.getAttribute("categoryName")%>
+						&communityTitle=<%=request.getAttribute("communityTitle")%>"><%=q.getQuestionTitle()%></a>
+					</td>
+					<td><%=request.getAttribute("memberName")%></td>
+					<td><%=q.getQuestionDate()%></td>
 				</tr>
-				<tr>
-					<td>3</td>
-					<td>회원가입/정보</td>
-					<td><a href="<%=request.getContextPath()%>/board/qnaView.do">질문
-							제목입니다.</a></td>
-					<td>윤나라</td>
-					<td>999</td>
-					<td>2023-05-31</td>
-				</tr>
-				<tr>
-					<td>4</td>
-					<td>회원가입/정보</td>
-					<td><a href="<%=request.getContextPath()%>/board/qnaView.do">질문
-							제목입니다.</a></td>
-					<td>윤나라</td>
-					<td>999</td>
-					<td>2023-05-31</td>
-				</tr>
-				<tr>
-					<td>5</td>
-					<td>회원가입/정보</td>
-					<td><a href="<%=request.getContextPath()%>/board/qnaView.do">질문
-							제목입니다.</a></td>
-					<td>윤나라</td>
-					<td>999</td>
-					<td>2023-05-31</td>
-				</tr>
-				<tr>
-					<td>6</td>
-					<td>회원가입/정보</td>
-					<td><a href="<%=request.getContextPath()%>/board/qnaView.do">질문
-							제목입니다.</a></td>
-					<td>윤나라</td>
-					<td>999</td>
-					<td>2023-05-31</td>
-				</tr>
-				<tr>
-					<td>7</td>
-					<td>회원가입/정보</td>
-					<td><a href="<%=request.getContextPath()%>/board/qnaView.do">질문
-							제목입니다.</a></td>
-					<td>윤나라</td>
-					<td>999</td>
-					<td>2023-05-31</td>
-				</tr>
-				<tr>
-					<td>8</td>
-					<td>회원가입/정보</td>
-					<td><a href="<%=request.getContextPath()%>/board/qnaView.do">질문
-							제목입니다.</a></td>
-					<td>윤나라</td>
-					<td>999</td>
-					<td>2023-05-31</td>
-				</tr>
-				<tr>
-					<td>9</td>
-					<td>회원가입/정보</td>
-					<td><a href="<%=request.getContextPath()%>/board/qnaView.do">질문
-							제목입니다.</a></td>
-					<td>윤나라</td>
-					<td>999</td>
-					<td>2023-05-31</td>
-				</tr>
-				<tr>
-					<td>10</td>
-					<td>회원가입/정보</td>
-					<td><a href="<%=request.getContextPath()%>/board/qnaView.do">질문
-							제목입니다.</a></td>
-					<td>윤나라</td>
-					<td>999</td>
-					<td>2023-05-31</td>
-				</tr>
+			<% }		
+			} %>
 			</tbody>
 		</table>
 	</div>
@@ -169,17 +103,7 @@
 	<div class="">
 		<nav aria-label="Page navigation example">
 			<ul class="pagination justify-content-center">
-				<li class="page-item"><a class="page-link" href="#"
-					aria-label="Previous"> <span aria-hidden="true">&laquo;</span>
-				</a></li>
-				<li class="page-item active"><a class="page-link" href="#">1</a></li>
-				<li class="page-item"><a class="page-link" href="#">2</a></li>
-				<li class="page-item"><a class="page-link" href="#">3</a></li>
-				<li class="page-item"><a class="page-link" href="#">4</a></li>
-				<li class="page-item"><a class="page-link" href="#">5</a></li>
-				<li class="page-item"><a class="page-link " href="#"
-					aria-label="Next"> <span aria-hidden="true">&raquo;</span>
-				</a></li>
+				<%=request.getAttribute("pageBar") %>
 			</ul>
 		</nav>
 	</div>

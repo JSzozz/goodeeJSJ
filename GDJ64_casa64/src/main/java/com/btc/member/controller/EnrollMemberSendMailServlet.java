@@ -32,7 +32,7 @@ public class EnrollMemberSendMailServlet extends HttpServlet {
 		HttpSession session=request.getSession();
 		session.setAttribute("userName",request.getParameter("userName"));
 		String email=request.getParameter("email");
-		session.setAttribute("email",request.getParameter("email"));
+		session.setAttribute("email",email);
 		session.setAttribute("nickName",request.getParameter("nickName"));
 		session.setAttribute("phone",request.getParameter("phone"));
 		session.setAttribute("password",request.getParameter("password"));

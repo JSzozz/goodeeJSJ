@@ -23,7 +23,9 @@ public class Booking {
    private int guestChild;
    private int guestInfant;
    private int bookingPrice;
-   private String paid;
+   private String bookingComment;
+   private String bookingState;
+   private Date paymentDate;
    private String roomName;
    
    
