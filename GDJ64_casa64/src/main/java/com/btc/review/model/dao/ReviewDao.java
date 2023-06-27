@@ -478,7 +478,7 @@ public class ReviewDao {
 		try {
 			conn = getConnection(); // DB 접속
 			// 3. 쿼리 작성
-			String sql = "UPDATE REVIEW SET IS_DELETED = 1, DATE_DELETED = TO_DATE(SYSDATE,'YYYY-MM-DD HH24:mi:SS')"
+			String sql = "UPDATE REVIEW SET IS_DELETED = 1, DATE_DELETED = SYSTIMESTAMP"
 					+ "		WHERE REVIEW.NO = ?";
 			pstmt = conn.prepareStatement(sql); // 실행 준비
 //	         4. 쿼리에 파라미터 셋팅

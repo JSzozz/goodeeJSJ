@@ -12,7 +12,7 @@
 	<div class="row mt-3 mx-1 border-primary border-bottom border-2"
 		style="height: 5rem">
 		<div class="col  text-center ">
-			<h2>예약내역</h2>
+			<h2>나의 예약내역</h2>
 		</div>
 	</div>
 	<div class="row text-dark min-vh-100">
@@ -58,9 +58,9 @@
 								<button type="button" class="btn btn-primary btn-sm">결제취소</button>
 							<% } else if(b.getBookingState().equals("이용완료")) { 
 								if(b.getReviewNo() > 0 ){ %>
-								<a href="<%=request.getContextPath() %>/review/reviewWrite?no=<%=b.getReviewNo() %>" class="btn btn-primary btn-sm">리뷰수정</a>
+								<a href="<%=request.getContextPath() %>/review/reviewWrite?no=<%=b.getReviewNo() %>" class="btn btn-primary btn-sm">후기수정</a>
 							<% } else { %>
-							 	<a href="<%=request.getContextPath() %>/review/reviewWrite" class="btn btn-primary btn-sm">리뷰작성</a>
+							 	<a href="<%=request.getContextPath() %>/review/reviewWrite" class="btn btn-primary btn-sm">후기작성</a>
 							<%}} %>
 							</td>
 						</tr>

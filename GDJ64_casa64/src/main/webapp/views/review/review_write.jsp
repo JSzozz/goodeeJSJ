@@ -173,7 +173,7 @@
 							</a>
 						</label>
 						<%} } else { %>
-							리뷰 작성 가능한 예약 내역이 없습니다.
+							선택 가능한 예약 내역이 없습니다.
 						<%}%>
 					</div>
 				</div>
@@ -245,6 +245,8 @@
 	$(document).ready(function() {
 		smartEditor();
 	});
+	
+
 	
 
 </script>

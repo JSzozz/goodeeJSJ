@@ -56,7 +56,7 @@
 								</a></td>
 								<td><%=r.getViews()%></td>
 								<td><%=r.getDateCreated()%></td>
-								<td><a href="<%=request.getContextPath() %>/review/reviewWrite?no=<%=r.getNo() %>" class="btn btn-primary btn-sm">수정하기</a></td>
+								<td><a href="<%=request.getContextPath() %>/review/reviewWrite?no=<%=r.getNo() %>" class="btn btn-primary btn-sm">후기수정</a></td>
 							</tr>
 						<%
 							count--;

@@ -34,7 +34,7 @@ List<QnA> qna = (List) request.getAttribute("MypageQnAList");
 							<th>카테고리</th>
 							<th>제목</th>
 							<th>작성일</th>
-							<th>비고</th>
+							<th>답글여부</th>
 
 						</tr>
 					</thead>
@@ -49,13 +49,13 @@ List<QnA> qna = (List) request.getAttribute("MypageQnAList");
 							<td><%=count%></td>
 							<td><%=q.getCategoryName()%></td>
 							<td><a
-								href="<%=request.getContextPath()%>/review/reviewView?no=<%=q.getMemberNo()%>">
+								href="<%=request.getContextPath()%>/qna/viewQna.do?no=<%=q.getMemberNo()%>">
 									<%=q.getQuestionTitle()%>
 							</a></td>
 							<td><%=q.getQuestionDate()%></td>
 							<td><a
-								href="<%=request.getContextPath()%>/review/reviewWrite?no=<%=q.getMemberNo()%>"
-								class="btn btn-primary btn-sm">수정하기</a></td>
+								href="<%=request.getContextPath()%>/qna/viewQna.do?no=<%=q.getMemberNo()%>"
+								class="btn btn-primary btn-sm">문의수정</a></td>
 						</tr>
 						<%
 						count--;
