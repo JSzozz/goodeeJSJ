@@ -102,6 +102,7 @@
                    divNode.setAttribute("roomCap",roomCap[i]);
                    divNode.setAttribute("roomMaxCap",roomMaxCap[i]);
                    divNode.setAttribute("style","font-size:0.81rem");
+                   divNode.style.cursor = "pointer";
                }
               
                   column.style.margin="1px 1px 1px 1px";

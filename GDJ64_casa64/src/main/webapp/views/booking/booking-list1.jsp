@@ -1,3 +1,4 @@
+<%@page import="com.btc.booking.model.vo.OptionXtra"%>
 <%@page import="com.btc.booking.model.vo.SeasonalPrice"%>
 <%@page import="com.btc.booking.model.vo.Booking"%>
 <%@page import="com.btc.rooms.model.vo.Room"%>
@@ -9,7 +10,7 @@
 <% List<Room> rooms=(List<Room>)session.getAttribute("rooms");%>
 <% List<Booking> bookings=(List<Booking>)request.getAttribute("bookings");%>
 <% List<SeasonalPrice> seasons=(List<SeasonalPrice>)request.getAttribute("seasons");%>
-
+<% List<OptionXtra> xtraOptions=(List<OptionXtra>)request.getAttribute("xtraOptions");%>
 
 <%--          <%if(rooms.isEmpty()) {%>
          <h1>조회된 예약목록이 없습니다.</h1>
@@ -43,6 +44,17 @@
          <br>
       <%   }
       }%>
+<%--       <br>
+            <%if(seasons.isEmpty()) {%>
+         <h1>조회된 예약목록이 없습니다.</h1>
+      <%} else{
+         for(OptionXtra o:xtraOptions){%>
+         <%=o.getXtraName() %>
+         <%=o.getXtraPrice() %>
+         <%=o.getXtraExplanation() %>
+         <br>
+      <%   }
+      }%> --%>
 
 <%@ include file="/views/common/header.jsp"%>
 <% if(loginMember!=null) {%>
@@ -80,7 +92,7 @@
           <li class="checkbox keep-open"><label><input type="checkbox">커피 머신</label></li>
           <li class="checkbox keep-open"><label><input type="checkbox">구스다운 베드</label></li>
           <li class="checkbox keep-open"><label><input type="checkbox">웰컴 드링크</label></li>
-          <li><a class="btn btn btn-outline-secondary btn-sm">조회하기</a></li>
+          <center><li><a class="btn btn btn-outline-secondary btn-sm">조회하기</a></li></center>
       </ul>
    </span>
 	<br><br>
@@ -165,7 +177,8 @@
         </div>
         <div class="roundbox extra-person-wrapper">
             <div class="header">
-                <h3>인원</h3>
+                <h3 >인원</h3>
+                <h5 class="capCheck"></h2>
             </div>
             <div class="content" id="countPerson">
                 <ul>
@@ -211,10 +224,10 @@
             </div>
             <div class="content">
                 <ul id="optnList">
-                    <li>                 
-                        <input type="checkbox"  id="OPTN1"  data-cnt="30000"  class="optCode op_name" value="101" data-tooltip >
-                        <lable class="op_la">온수옵션(30,000원)</lable>
-                        <button type="button" class="btn btn btn-outline-dark btn-sm" data-bs-toggle="tooltip" data-bs-placement="right" title="예약시간 준수 및 사용시간 2시간 제한 있습니다. 이용 금액 : n0,000원">
+                   <!-- <li>                 
+                        <input type="checkbox" id="OPTN1" OptionPrice="30000" value="101" >
+                        <lable>온수옵션(30,000원)</lable>
+                        <button type="button" class="btn btn-outline-dark btn-sm" title="예약시간 준수 및 사용시간 2시간 제한 있습니다. 이용 금액 : n0,000원">
                             상세설명
                         </button>
                     </li>
@@ -231,7 +244,7 @@
                         <button type="button" class="btn btn btn btn-outline-dark btn-sm" data-bs-toggle="tooltip" data-bs-placement="right" title="예약시간 준수 및 사용시간 2시간 제한 있습니다. 이용  금액 : n0,000원">
                             상세설명
                         </button>
-                    </li>               
+                    </li>   -->           
                 </ul>
             </div>
         </div>
@@ -253,7 +266,7 @@
                             </tr>
                             <tr>
                                 <th>옵 션 금 액  &nbsp;&nbsp;&nbsp;: </th>
-                                <td><span id="optnPrice">0</span> 원&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(연박 할인가능)</td>
+                                <td><span id="optnPrice">0</span> 원&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<!-- (연박 할인가능) --></td>
                             </tr>
                             <tr id="consApply" style="display:none">
                                 <th>연 박 할 인 &nbsp;&nbsp;&nbsp;: </th>
@@ -327,6 +340,15 @@
        $(e.target).parent().find("div").css("display","none");
        $("#search-"+type).css("display","inline-block");
    }); */
+   
+   /* 유료 옵션 정보 받기 */
+  	const XtraName=[]; const XtraPrice=[]; const XtraExplanation=[];
+	<%for(OptionXtra o:xtraOptions){%>
+		XtraName.push("<%=o.getXtraName() %>");
+		XtraPrice.push("<%=o.getXtraPrice() %>");
+		XtraExplanation.push(" <%=o.getXtraExplanation() %>");
+	<%} %>
+   
    
    
    $('.keep-open').click(function(e) {
@@ -415,7 +437,7 @@
 	/* 			console.log(bookingRoomNo[i]+":"+StringToDate(checkIn[i], j));
 	 	 		console.log(typeof StringToDate(checkIn[i], j));//string */
 	 			$('div[roomno='+bookingRoomNo[i]+'][class='+StringToDate(checkIn[i], j)+']')/* .css("text-decoration", "line-through") */
-	 			.attr("bookable","N").css("backgroundColor","pink").css("color","gray");
+	 			.attr("bookable","N").css("backgroundColor","pink").css("color","gray").css("cursor","default");
 			};
 		};
 	};
@@ -473,6 +495,9 @@
 	    // 어떤 날짜여도 'YYYY-DD-YY'형식으로 변환!
 	    return checkoutDt;
 	};
+	
+
+
 	</script>
 	
 	
