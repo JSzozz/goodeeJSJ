@@ -154,7 +154,6 @@ public class AdminBookingDao {
 				}else if(type.equals("user-phone")) {
 					searchQuery = "searchMemberPhone";
 				}
-				System.out.println(searchQuery);
 				pstmt = conn.prepareStatement(query.getProperty(searchQuery));
 				pstmt.setInt(1, (cPage-1)*numPerPage+1);
 				pstmt.setInt(2, cPage*numPerPage);

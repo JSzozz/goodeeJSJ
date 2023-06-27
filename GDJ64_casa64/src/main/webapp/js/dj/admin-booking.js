@@ -39,6 +39,8 @@ $('#selectType').change((e) => {
 function searchBooking(address) {
   const SEARCH_VALUE = $('#selectInput').val();
   
+  $('.dateSearchBtns').removeClass('btn-dark');
+
   if (isEmpty(SEARCH_VALUE)) {
     alert('검색하실 내용을 입력해주세요.');
   }
@@ -144,8 +146,6 @@ function ajaxBooking(address, state, type ,value, cPage=1, numPerPage=10) {
         return;
       }
 
-      //const BOOKING_DATA = data.split('\n');
-
       $('#resultTable').empty();
       console.log(data.bookingList);
       $('#pagination').empty();
@@ -154,10 +154,6 @@ function ajaxBooking(address, state, type ,value, cPage=1, numPerPage=10) {
       data.bookingList.forEach((booking) => {
         $('#resultTable').append(resultBooking(booking));
       });
-
-      // for (let i = 0; i < BOOKING_DATA.length; i++) {
-      //   $('#resultTable').append(resultBooking(BOOKING_DATA[i]));
-      // }
 
       $('#pagination').html(data.pageBar);
     }

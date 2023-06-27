@@ -83,8 +83,6 @@ public class SearchBookingServlet extends HttpServlet {
 				
 		List<Booking> bookingList = AdminBookingService.getBookingService().searchBookingList(state, type, value, cPage, numPerPage);
 		
-		System.out.println(bookingList);
-		
 		Map<String, Object> responseData = Map.of("bookingList", bookingList);
 		
 		JsonSerializer<Date> json = new JsonSerializer<Date>() {
