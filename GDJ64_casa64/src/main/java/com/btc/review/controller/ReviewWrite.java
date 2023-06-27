@@ -94,10 +94,16 @@ public class ReviewWrite extends HttpServlet {
 			String type = multi.getParameter("type");
 			
 			// 1. 넣어줘야할 값을 파라미터로 받기
-			String title = multi.getParameter("title"); // 제목
-			String contents = multi.getParameter("contents"); // 내용
-			int roomNo = Integer.parseInt(multi.getParameter("roomNo")); // 선택한 객실 번호
-			int bookingNo = Integer.parseInt(multi.getParameter("bookingNo"));; // 원래는 선택한 객실 번호와 함께 셋팅 되어야 함
+	        String title = multi.getParameter("title"); // 제목
+	        String contents = multi.getParameter("contents"); // 내용
+	         
+	        System.out.println(multi.getParameter("roomNo"));
+	        System.out.println(multi.getParameter("bookingNo"));
+
+	        int roomNo = Integer.parseInt(multi.getParameter("roomNo")); // 선택한 객실 번호
+	        int bookingNo = Integer.parseInt(multi.getParameter("bookingNo")); // 원래는 선택한 객실 번호와 함께 셋팅 되어야 함
+			System.out.println(roomNo);
+			System.out.println(bookingNo);
 			
 			Review reviews = Review.builder()
 					.title(title)

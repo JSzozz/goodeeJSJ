@@ -26,11 +26,11 @@
 				<table class="table table-hover text-center align-middle">
 					<colgroup>
 						<col width="10%">
-						<col width="20%">
+						<col width="25%">
 						<col width="15%">
 						<col width="25%">
 						<col width="15%">
-						<col width="15%">
+						<col width="10%">
 					</colgroup>
 					<thead>
 						<tr>
@@ -38,8 +38,8 @@
 							<th>객실명</th>
 							<th>예약상태</th>
 							<th>이용날짜</th>
-							<th>비고</th>
 							<th>결제일</th>
+							<th>비고</th>
 						</tr>
 					</thead>
 					<tbody>
@@ -52,8 +52,9 @@
 							<td><%=b.getRoomName() %></td>
 							<td><%=b.getBookingState() %></td>
 							<td><%=b.getCheckIn() %> ~ <%=b.getCheckOut() %></td>
+							<td><%=b.getPaymentDate() %></td>
 							<td>
-							<% if(b.getBookingState().equals("예약완료")) { %>
+							<% if(b.getBookingState().equals("결제완료")) { %>
 								<button type="button" class="btn btn-primary btn-sm">결제취소</button>
 							<% } else if(b.getBookingState().equals("이용완료")) { 
 								if(b.getReviewNo() > 0 ){ %>
@@ -62,7 +63,6 @@
 							 	<a href="<%=request.getContextPath() %>/review/reviewWrite" class="btn btn-primary btn-sm">리뷰작성</a>
 							<%}} %>
 							</td>
-							<td><%=b.getPaymentDate() %></td>
 						</tr>
 						<%
 							count--;

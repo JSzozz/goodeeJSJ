@@ -245,17 +245,6 @@
 	$(document).ready(function() {
 		smartEditor();
 	});
-	s
-	let idNum = 0;
-	function addFileArea(){
-		const testDiv = document.getElementById('file-area');
-		const newNode = testDiv.cloneNode(true);
-	    // 복사된 Node id 변경하기
-	    idNum++;
-	    newNode.id = 'copyNode' + idNum;
-	    // 복사한 노드 붙여넣기
-	    testDiv.after(newNode);
-	}
 	
 
 </script>
