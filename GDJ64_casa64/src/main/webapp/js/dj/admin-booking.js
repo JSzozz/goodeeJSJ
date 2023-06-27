@@ -120,7 +120,7 @@ function cancelBooking(address, no) {
         alert('예약을 취소했습니다.');
         return;
       } else {
-        alert('취소 실패했습니다.');
+        alert('예약 취소를 실패했습니다.');
         return;
       }
     }
