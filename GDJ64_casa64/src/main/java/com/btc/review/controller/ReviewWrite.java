@@ -15,6 +15,7 @@ import javax.servlet.http.HttpSession;
 import org.apache.tomcat.util.http.fileupload.servlet.ServletFileUpload;
 
 import com.btc.member.model.dto.Member;
+import com.btc.mypage.model.vo.Booking;
 import com.btc.review.model.service.ReviewService;
 import com.btc.review.model.vo.Review;
 import com.btc.review.model.vo.ReviewImages;
@@ -42,6 +43,11 @@ public class ReviewWrite extends HttpServlet {
 		if(memberNo > 0){
 			String no = request.getParameter("no");
 			String communityTitle = "이용후기 작성";
+			
+			// select, 예약-이용완료 리스트 불러오기.
+			List<Booking> bkList = new ReviewService().getBookingList(memberNo);
+			request.setAttribute("bkList", bkList);
+			
 			if(no != null) { // null 이 아닌 건 no 가 있다는거니까 수정하기
 				int reviewNo = Integer.parseInt(no);
 				Review reviews = new ReviewService().getReviewView(reviewNo);
@@ -76,7 +82,6 @@ public class ReviewWrite extends HttpServlet {
 				return;
 			}
 			String path = getServletContext().getRealPath("/upload/review");
-			System.out.println(path);
 			//최대파일크기설정
 			int maxSize=1024*1024*100;
 			//인코딩설정
@@ -89,10 +94,16 @@ public class ReviewWrite extends HttpServlet {
 			String type = multi.getParameter("type");
 			
 			// 1. 넣어줘야할 값을 파라미터로 받기
-			String title = multi.getParameter("title"); // 제목
-			String contents = multi.getParameter("contents"); // 내용
-			int roomNo = Integer.parseInt(multi.getParameter("roomNo")); // 선택한 객실 번호
-			int bookingNo = 1; // 원래는 선택한 객실 번호와 함께 셋팅 되어야 함
+	        String title = multi.getParameter("title"); // 제목
+	        String contents = multi.getParameter("contents"); // 내용
+	         
+	        System.out.println(multi.getParameter("roomNo"));
+	        System.out.println(multi.getParameter("bookingNo"));
+
+	        int roomNo = Integer.parseInt(multi.getParameter("roomNo")); // 선택한 객실 번호
+	        int bookingNo = Integer.parseInt(multi.getParameter("bookingNo")); // 원래는 선택한 객실 번호와 함께 셋팅 되어야 함
+			System.out.println(roomNo);
+			System.out.println(bookingNo);
 			
 			Review reviews = Review.builder()
 					.title(title)
@@ -108,7 +119,7 @@ public class ReviewWrite extends HttpServlet {
 				result = new ReviewService().insertReviews(reviews);
 				redirect = "/review/reviewList";
 			} else if(type.equals("update")) { // 수정하기
-				int reviewNo = Integer.parseInt(request.getParameter("reviewNo"));
+				int reviewNo = Integer.parseInt(multi.getParameter("reviewNo"));
 				reviews.setNo(reviewNo);
 				result = new ReviewService().updateReviews(reviews);
 				redirect = "/review/reviewView?no="+reviewNo;

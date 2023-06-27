@@ -1,6 +1,7 @@
+
 package com.btc.notice.model.dao;
 
-import static com.btc.common.JDBCTemplate.*;
+import static com.btc.common.JDBCTemplate.close;
 
 import java.io.FileReader;
 import java.io.IOException;
@@ -8,12 +9,12 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
 import java.util.Properties;
 
-import com.btc.notice.model.dao.QnaDao;
+import com.btc.notice.model.dto.Notice;
 import com.btc.notice.model.dto.Qna;
 import com.btc.notice.model.dto.QnaComment;
 public class QnaDao {
@@ -41,6 +42,7 @@ private Properties sql=new Properties();
 				.build();
 	}
 	private QnaComment getQnaComment (ResultSet rs)throws SQLException{
+		SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd kk:mm:ss");
 		return QnaComment.builder()
 				.QnaCommentNo(rs.getInt("qna_comment_no"))
 				.QnaCommentLevel(rs.getInt("qna_comment_level"))
@@ -148,193 +150,58 @@ private Properties sql=new Properties();
 			close(pstmt);
 		}return list;
 	}
-//	public List<Qna> searchQna(Connection conn,Map pagemap, Map map){
-//		PreparedStatement pstmt=null;
-//		ResultSet rs=null;
-//		List<Qna> result=new ArrayList();
-//		int cPage=(int)pagemap.get("cPage");
-//		int numPerpage=(int)pagemap.get("numPerpage");
-//		try {
-//			String sqlc=sql.getProperty("searchType");
-//			sqlc=sqlc.replace("#type", (String)map.get("type"));
-//			pstmt=conn.prepareStatement(sqlc);
-//			pstmt.setString(1, "%"+(String)map.get("keyword")+"%");
-//			pstmt.setInt(2, (cPage-1)*numPerpage+1);
-//			pstmt.setInt(3, cPage*numPerpage);
-//			rs=pstmt.executeQuery();
-//			while(rs.next()) {
-//				result.add(getQna(rs));
-//			}
-//		}catch(SQLException e) {
-//			e.printStackTrace();
-//		}finally {
-//			close(rs);
-//			close(pstmt);
-//		}
-//		return result;
-//	}
-//	
-//	public int selectQnaSearchCount(Connection conn, Map map) {
-//		PreparedStatement pstmt=null;
-//		ResultSet rs=null;
-//		int result=0;
-//		try {
-//			String sqlc=sql.getProperty("selectQnaSearchCount");
-//			sqlc=sqlc.replace("#type", (String)map.get("type"));
-//			pstmt=conn.prepareStatement(sqlc);
-//			pstmt.setString(1, map.get("type").equals("gender")? (String)map.get("keyword"):"%"+(String)map.get("keyword")+"%");
-//			rs=pstmt.executeQuery();
-//			if(rs.next()) {
-//				result=rs.getInt(1);
-//			}
-//		}catch(SQLException e) {
-//			e.printStackTrace();
-//		}finally {
-//			close(rs);
-//			close(pstmt);
-//		}
-//		return result;
-//	}
-//	
-//	
-//	public int updateQnaReadCount(Connection conn, int no) {
-//		PreparedStatement pstmt=null;
-//		int result=0;
-//		try {
-//			pstmt=conn.prepareStatement(sql.getProperty("updateQnaReadCount"));
-//			pstmt.setInt(1, no);
-//			result=pstmt.executeUpdate();
-//		}catch(SQLException e) {
-//			e.printStackTrace();
-//		}finally {
-//			close(pstmt);
-//		}return result;
-//	}
-//	
-//	public int insertQna(Connection conn,Qna n) {
-//		PreparedStatement pstmt=null;
-//		int result=0;
-//		try {
-//			pstmt=conn.prepareStatement(sql.getProperty("insertQna"));
-//			pstmt.setString(1, n.getQnaTitle());
-//			pstmt.setString(2, n.getQnaContent());
-//			result=pstmt.executeUpdate();
-//		}catch(SQLException e) {
-//			e.printStackTrace();
-//		}finally {
-//			close(pstmt);
-//		}return result;
-//	}
-//	
-//	public int searchQnaNo(Connection conn) {
-//		PreparedStatement pstmt=null;
-//		ResultSet rs=null;
-//		int result=0;
-//		try {
-//			pstmt=conn.prepareStatement(sql.getProperty("searchQnaNo"));
-//			rs=pstmt.executeQuery();
-//			if(rs.next()) {
-//				result=rs.getInt(1);
-//			}
-//		}catch(SQLException e) {
-//			e.printStackTrace();
-//		}finally {
-//			close(rs);
-//			close(pstmt);
-//		}
-//		return result;
-//	}
-//	
-//	public int insertQnaImage(Connection conn,Qna_images image, int QnaNo) {
-//		PreparedStatement pstmt=null;
-//		int result=0;
-//		try {
-//			pstmt=conn.prepareStatement(sql.getProperty("insertQnaImage"));
-//			pstmt.setString(1, image.getSaveFilename());
-//			pstmt.setString(2, image.getFileName());
-//			pstmt.setInt(3, QnaNo);
-//			result=pstmt.executeUpdate();
-//		}catch(SQLException e) {
-//			e.printStackTrace();
-//		}finally {
-//			close(pstmt);
-//		}return result;
-//	}
-//	
-//	public Qna_images selectQnaImage(Connection conn,int no) {
-//		PreparedStatement pstmt=null;
-//		ResultSet rs=null;
-//		Qna_images image=null;
-//		try {
-//			pstmt=conn.prepareStatement(sql.getProperty("selectQnaImage"));
-//			pstmt.setInt(1,no);
-//			rs=pstmt.executeQuery();
-//			if(rs.next()) image=getQnaImage(rs);
-//		}catch(SQLException e) {
-//			e.printStackTrace();
-//		}finally {
-//			close(rs);
-//			close(pstmt);
-//		}return image;
-//	}
-//	
-//	public int updateQna(Connection conn , Qna n) {
-//		PreparedStatement pstmt = null;
-//		int result = 0;
-//		try {
-//			pstmt=conn.prepareStatement(sql.getProperty("updateQna"));
-//			pstmt.setString(1, n.getQnaTitle());
-//			pstmt.setString(2, n.getQnaContent());
-//			pstmt.setInt(3, n.getQnaNo());
-//			result=pstmt.executeUpdate();
-//		}catch(SQLException e) {
-//			e.printStackTrace();
-//		}finally {
-//			close(pstmt);
-//		}return result;
-//	}
-//	public int updateQnaImage(Connection conn , Qna_images image) {
-//		PreparedStatement pstmt = null;
-//		int result = 0;
-//		try {
-//			pstmt=conn.prepareStatement(sql.getProperty("updateQnaImage"));
-//			pstmt.setString(1, image.getSaveFilename());
-//			pstmt.setString(2, image.getFileName());
-//			pstmt.setInt(3, image.getQnaNo());
-//			result=pstmt.executeUpdate();
-//		}catch(SQLException e) {
-//			e.printStackTrace();
-//		}finally {
-//			close(pstmt);
-//		}return result;
-//	}
-//	
-//	public int QnaDelete(Connection conn, int no) {
-//		PreparedStatement pstmt = null;
-//		int result = 0;
-//		try {
-//			pstmt=conn.prepareStatement(sql.getProperty("QnaDelete"));
-//			pstmt.setInt(1, no);
-//			result=pstmt.executeUpdate();
-//		}catch(SQLException e) {
-//			e.printStackTrace();
-//		}finally {
-//			close(pstmt);
-//		}return result;
-//	}
-//	
-//	public int QnaImageDelete(Connection conn, int no) {
-//		PreparedStatement pstmt = null;
-//		int result = 0;
-//		try {
-//			pstmt=conn.prepareStatement(sql.getProperty("QnaImageDelete"));
-//			pstmt.setInt(1, no);
-//			result=pstmt.executeUpdate();
-//		}catch(SQLException e) {
-//			e.printStackTrace();
-//		}finally {
-//			close(pstmt);
-//		}return result;
-//	}
 	
+	public int insertQnaComment(Connection conn, QnaComment qc) {
+		PreparedStatement pstmt=null;
+		int result=0;
+		System.out.println("test : "+qc);
+		try {
+			pstmt=conn.prepareStatement(sql.getProperty("insertQnaComment"));
+			pstmt.setInt(1, qc.getQnaCommentLevel());
+			pstmt.setString(2, qc.getQnaCommentWriter());
+			pstmt.setString(3, qc.getQnaCommentContent());
+			pstmt.setInt(4, qc.getQnaRef());
+			pstmt.setString(5, qc.getQnaCommentRef()==0?null:String.valueOf(qc.getQnaCommentRef()));
+			result=pstmt.executeUpdate();
+		}catch(SQLException e) {
+			e.printStackTrace();
+		}finally {
+			close(pstmt);
+		}return result;
+	}
+	
+	public int insertQna(Connection conn, Qna q) {
+		PreparedStatement pstmt=null;
+		int result=0;
+		try {
+			pstmt=conn.prepareStatement(sql.getProperty("insertQna"));
+			pstmt.setInt(1, q.getMemberNo());
+			pstmt.setString(2, q.getCategoryName());
+			pstmt.setString(3, q.getQuestionContent());
+			pstmt.setString(4, q.getQuestionTitle());
+			result=pstmt.executeUpdate();
+		}catch(SQLException e) {
+			e.printStackTrace();
+		}finally {
+			close(pstmt);
+		}return result;
+	}
+	
+	public int updateQna(Connection conn , Qna q) {
+		PreparedStatement pstmt = null;
+		int result = 0;
+		try {
+			pstmt=conn.prepareStatement(sql.getProperty("updateQna"));
+			pstmt.setInt(1, q.getMemberNo());
+			pstmt.setString(2, q.getCategoryName());
+			pstmt.setString(3, q.getQuestionTitle());
+			pstmt.setString(4, q.getQuestionContent());
+			pstmt.setInt(5, q.getMemberNo());
+			result=pstmt.executeUpdate();
+		}catch(SQLException e) {
+			e.printStackTrace();
+		}finally {
+			close(pstmt);
+		}return result;
+	}
 }

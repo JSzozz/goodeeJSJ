@@ -14,6 +14,7 @@ import java.util.List;
 import java.util.Properties;
 
 import com.btc.booking.model.vo.Booking;
+import com.btc.booking.model.vo.OptionXtra;
 import com.btc.booking.model.vo.SeasonalPrice;
 import com.btc.member.model.dto.Member;
 import com.btc.rooms.model.vo.Room;
@@ -83,6 +84,62 @@ public class BookingDao {
 				.weekendRate(rs.getFloat("WEEKEND_RATE"))
 				.build();
 	}	
+	
+	private OptionXtra getOptionXtra(ResultSet rs) throws SQLException {
+		return OptionXtra.builder()
+				.xtraNo(rs.getInt("XTRA_NO"))
+				.xtraName(rs.getString("XTRA_NAME"))
+				.xtraPrice(rs.getInt("XTRA_PRICE"))
+				.xtraExplanation(rs.getString("XTRA_EXPLANATION"))
+				.build();
+	}	
+	
+	private Room getRoomPart(ResultSet rs) throws SQLException{
+		return Room.builder()
+				.roomNo(rs.getInt("room_no"))
+				.roomName(rs.getString("room_name"))
+				.build();
+	}
+	
+	public List<Room> selectFilteringRoom(Connection conn, List<String> optionList){
+		PreparedStatement pstmt=null;
+		ResultSet rs=null;
+		List<Room> list=new ArrayList();
+		try {
+			pstmt=conn.prepareStatement(sql.getProperty("selectFilteringRoom1"));
+			//SELECT * FROM ROOM
+			pstmt.setString(1, optionList.get(0));
+			rs=pstmt.executeQuery();
+			while(rs.next()) {
+				list.add(getRoomPart(rs));
+			}
+		}catch(SQLException e) {
+			e.printStackTrace();
+		}finally {
+			close(rs);
+			close(pstmt);
+		}return list;	
+	}
+
+	public List<OptionXtra> selectAllOption(Connection conn){
+		PreparedStatement pstmt=null;
+		ResultSet rs=null;
+		List<OptionXtra> list=new ArrayList();
+		try {
+			pstmt=conn.prepareStatement(sql.getProperty("selectAllOption"));
+			//SELECT * FROM ROOM
+			rs=pstmt.executeQuery();
+			while(rs.next()) {
+				list.add(getOptionXtra(rs));
+			}
+		}catch(SQLException e) {
+			e.printStackTrace();
+		}finally {
+			close(rs);
+			close(pstmt);
+		}return list;	
+	}
+	
 	
 	public List<SeasonalPrice> selectAllSeason(Connection conn){
 		PreparedStatement pstmt=null;
