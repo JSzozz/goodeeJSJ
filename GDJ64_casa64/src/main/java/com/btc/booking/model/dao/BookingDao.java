@@ -15,6 +15,7 @@ import java.util.Properties;
 
 import com.btc.booking.model.vo.Booking;
 import com.btc.booking.model.vo.SeasonalPrice;
+import com.btc.member.model.dto.Member;
 import com.btc.rooms.model.vo.Room;
 
 
@@ -52,8 +53,8 @@ public class BookingDao {
 	private Booking getBooking(ResultSet rs) throws SQLException {
 		return Booking.builder()
 				.bookingNo(rs.getInt("BOOKING_NO"))
-				.memberNo(rs.getInt("MEMBER_NO"))
-				.roomNo(rs.getInt("ROOM_NO"))
+				.member(Member.builder().memberNo(rs.getInt("MEMBER_NO")).build())
+				.room(Room.builder().roomNo(rs.getInt("ROOM_NO")).build())
 				.checkIn(rs.getDate("CHECK_IN"))
 				.checkOut(rs.getDate("CHECK_OUT"))
 				.guestAdult(rs.getInt("GUEST_ADULT"))
@@ -67,7 +68,7 @@ public class BookingDao {
 	}
 	private Booking getBookingPart(ResultSet rs) throws SQLException {
 		return Booking.builder()
-				.roomNo(rs.getInt("ROOM_NO"))
+				.room(Room.builder().roomNo(rs.getInt("ROOM_NO")).build())
 				.checkIn(rs.getDate("CHECK_IN"))
 				.checkOut(rs.getDate("CHECK_OUT"))
 				.build();
@@ -166,8 +167,8 @@ public class BookingDao {
 	try{
 		pstmt=conn.prepareStatement(sql.getProperty("insertBooking"));
 //INSERT INTO BOOKING VALUES(SEQ_BOOKING_NO.NEXTVAL,?,?,?,?,?,?,?,?,?,?,DEFAULT)
-		pstmt.setInt(1, b.getMemberNo());
-		pstmt.setInt(2, b.getRoomNo());
+		pstmt.setInt(1, b.getMember().getMemberNo());
+		pstmt.setInt(2, b.getRoom().getRoomNo());
 		pstmt.setDate(3, b.getCheckIn());
 		pstmt.setDate(4, b.getCheckOut());
 		pstmt.setInt(5, b.getGuestAdult());

@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.btc.booking.model.service.BookingService;
 import com.btc.booking.model.vo.Booking;
+import com.btc.rooms.model.vo.Room;
 
 /**
  * Servlet implementation class ReserveList1ToList2Servlet
@@ -57,8 +58,9 @@ public class BookingList1ToList2Servlet extends HttpServlet {
         price.add(persePrice);
         price.add(optnPrice);
 		
-		Booking b = Booking.builder().roomNo(roomNo).checkIn(checkIn).checkOut(checkOut).guestAdult(guestAdult)
+		Booking b = Booking.builder().room(Room.builder().roomNo(roomNo).build()).checkIn(checkIn).checkOut(checkOut).guestAdult(guestAdult)
 				.guestChild(guestChild).guestInfant(guestInfant).bookingPrice(bookingPrice).build();
+		
 		request.setAttribute("booking", b);
 		request.setAttribute("roomNm", roomNm);
 		request.setAttribute("roomNo", roomNo);

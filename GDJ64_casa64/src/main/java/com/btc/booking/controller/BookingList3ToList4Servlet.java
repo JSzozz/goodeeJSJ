@@ -12,6 +12,8 @@ import javax.servlet.http.HttpSession;
 
 import com.btc.booking.model.service.BookingService;
 import com.btc.booking.model.vo.Booking;
+import com.btc.member.model.dto.Member;
+import com.btc.rooms.model.vo.Room;
 
 /**
  * Servlet implementation class ReserveList1ToList2Servlet
@@ -46,7 +48,7 @@ public class BookingList3ToList4Servlet extends HttpServlet {
 		int bookingPrice = Integer.parseInt(request.getParameter("bookingPrice"));
 		String bookingComment = request.getParameter("bookingComment");
 		
-		Booking b = Booking.builder().memberNo(memberNo).roomNo(roomNo).checkIn(checkIn).checkOut(checkOut).guestAdult(guestAdult)
+		Booking b = Booking.builder().member(Member.builder().memberNo(memberNo).build()).room(Room.builder().roomNo(roomNo).build()).checkIn(checkIn).checkOut(checkOut).guestAdult(guestAdult)
 				.guestChild(guestChild).guestInfant(guestInfant).bookingPrice(bookingPrice).bookingComment(bookingComment).build();
 		HttpSession session=request.getSession();
 		session.setAttribute("booking",b);		

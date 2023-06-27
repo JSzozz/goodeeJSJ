@@ -21,7 +21,7 @@
 		<div class="reserve_step4 offset-md-1 col-md-10">
         	<form name="bookFrm" onsubmit="return chkSum();" action="<%=request.getContextPath()%>/booking/bookingList3ToList4.do" method="post">
 				<input type="hidden" name="memberNo" value="<%=loginMember.getMemberNo()%>">
-				<input type="hidden" name="roomNo" value="<%=booking.getRoomNo()%>">
+				<input type="hidden" name="roomNo" value="<%=booking.getRoom().getRoomNo()%>">
 				<input type="hidden" name="checkin" value="<%=booking.getCheckIn()%>">
 				<input type="hidden" name="checkout" value="<%=booking.getCheckOut()%>">
 				<input type="hidden" name="guestAdult" value="<%=booking.getGuestAdult()%>">

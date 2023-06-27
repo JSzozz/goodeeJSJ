@@ -317,7 +317,7 @@
    /* 예약된 BOOKING 정보 받기 */
    	const bookingRoomNo=[]; const checkIn=[]; const checkOut=[];
 	<%for(Booking b:bookings){%>
-		bookingRoomNo.push("<%=b.getRoomNo()%>");
+		bookingRoomNo.push("<%=b.getRoom().getRoomNo()%>");
 		checkIn.push("<%=b.getCheckIn()%>");
 		checkOut.push("<%=b.getCheckOut()%>");
 	<%} %>
