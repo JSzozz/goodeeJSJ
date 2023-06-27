@@ -178,7 +178,7 @@
         <div class="roundbox extra-person-wrapper">
             <div class="header">
                 <h3 >인원</h3>
-                <h5 class="capCheck"></h2>
+                <h5 class="capCheck"></h5>
             </div>
             <div class="content" id="countPerson">
                 <ul>
