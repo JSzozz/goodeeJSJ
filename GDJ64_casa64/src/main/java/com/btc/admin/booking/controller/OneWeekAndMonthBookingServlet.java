@@ -30,6 +30,8 @@ public class OneWeekAndMonthBookingServlet extends HttpServlet {
     }
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		String searchDate = request.getParameter("value");
+		
 		int cPage, numPerPage;
 		
 		try {
@@ -45,7 +47,7 @@ public class OneWeekAndMonthBookingServlet extends HttpServlet {
 		}
 		
 		StringBuffer pageBar = new StringBuffer();
-		int totalData = AdminBookingService.getBookingService().bookingCount();
+		int totalData = AdminBookingService.getBookingService().oneWeekAndMonthBookingCount(searchDate);
 		int totalPage = (int)Math.ceil((double)totalData/numPerPage);
 		int pageBarSize = 5;
 		int startPage = ((cPage-1)/pageBarSize) * pageBarSize + 1;
@@ -78,9 +80,7 @@ public class OneWeekAndMonthBookingServlet extends HttpServlet {
 		}
 		
 		request.setAttribute("pageBar", pageBar);
-		
-		String searchDate = request.getParameter("value");
-		
+				
 		List<Booking> bookingList = AdminBookingService.getBookingService().oneWeekAndMonthBookingList(searchDate, cPage, numPerPage);
 
 		Map<String,Object> responseData = Map.of("bookingList",bookingList,"pageBar",pageBar);

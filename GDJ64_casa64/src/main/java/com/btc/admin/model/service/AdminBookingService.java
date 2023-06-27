@@ -78,4 +78,17 @@ public class AdminBookingService {
 		return bookingList;
 	}
 	
+	public int todayBookingCount() {
+		Connection conn = getConnection();
+		int count = AdminBookingDao.getBookingDao().getTodayBookingCount(conn);
+		close(conn);
+		return count;
+	}
+	
+	public int oneWeekAndMonthBookingCount(String searchDate) {
+		Connection conn = getConnection();
+		int count = AdminBookingDao.getBookingDao().getOneWeekAndMonthBookingCount(conn, searchDate);
+		close(conn);
+		return count;
+	}
 }

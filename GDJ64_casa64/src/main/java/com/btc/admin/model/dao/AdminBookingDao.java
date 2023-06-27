@@ -128,7 +128,7 @@ public class AdminBookingDao {
 		ResultSet rs = null;
 		String searchQuery = "";
 		List<Booking> bookingList = new ArrayList<Booking>();
-
+		
 		try {
 			if(state.equals("전체")) {
 				if(type.equals("user-name")) {
@@ -141,9 +141,9 @@ public class AdminBookingDao {
 					searchQuery = "searchAllMemberPhone";
 				}
 				pstmt = conn.prepareStatement(query.getProperty(searchQuery));
-				pstmt.setInt(1, (cPage-1)*numPerPage+1);
-				pstmt.setInt(2, cPage*numPerPage);
-				pstmt.setString(3, value);
+				pstmt.setString(1, value);
+				pstmt.setInt(2, (cPage-1)*numPerPage+1);
+				pstmt.setInt(3, cPage*numPerPage);
 			}else {
 				if(type.equals("user-name")) {
 					searchQuery = "searchMemberName";
@@ -155,10 +155,10 @@ public class AdminBookingDao {
 					searchQuery = "searchMemberPhone";
 				}
 				pstmt = conn.prepareStatement(query.getProperty(searchQuery));
-				pstmt.setInt(1, (cPage-1)*numPerPage+1);
-				pstmt.setInt(2, cPage*numPerPage);
-				pstmt.setString(3, state);
-				pstmt.setString(4, "%" + value + "%");
+				pstmt.setString(1, state);
+				pstmt.setString(2, "%" + value + "%");
+				pstmt.setInt(3, (cPage-1)*numPerPage+1);
+				pstmt.setInt(4, cPage*numPerPage);
 			}
 
 
@@ -244,6 +244,54 @@ public class AdminBookingDao {
 			close(rs);
 			close(pstmt);
 		}return bookingList;
+	}
+	
+	public int getOneWeekAndMonthBookingCount(Connection conn, String searchDate) {
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		
+		String searchQuery = "";
+		int result = 0;
+		try {
+			if(searchDate.equals("week")) {
+				searchQuery = "oneWeekBookingCount";
+			}else if(searchDate.equals("month")) {
+				searchQuery = "oneMonthBookingCount";
+			}
+			
+			pstmt = conn.prepareStatement(query.getProperty(searchQuery));
+			rs = pstmt.executeQuery();
+			
+			if(rs.next()) result=rs.getInt(1);
+			
+		}catch(Exception e) {
+			e.printStackTrace();
+		}finally {
+			close(rs);
+			close(pstmt);
+		}
+		return result;
+	}
+	
+	public int getTodayBookingCount(Connection conn) {
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		
+		int result = 0;
+		try {
+			
+			pstmt = conn.prepareStatement(query.getProperty("todayBookingCount"));
+			rs = pstmt.executeQuery();
+			
+			if(rs.next()) result=rs.getInt(1);
+			
+		}catch(Exception e) {
+			e.printStackTrace();
+		}finally {
+			close(rs);
+			close(pstmt);
+		}
+		return result;
 	}
 	
 	private Booking getBooking(ResultSet rs) throws SQLException {

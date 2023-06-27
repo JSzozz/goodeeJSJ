@@ -46,7 +46,7 @@ public class TodayBookingServlet extends HttpServlet {
 		}
 		
 		StringBuffer pageBar = new StringBuffer();
-		int totalData = AdminBookingService.getBookingService().bookingCount();
+		int totalData = AdminBookingService.getBookingService().todayBookingCount();
 		int totalPage = (int)Math.ceil((double)totalData/numPerPage);
 		int pageBarSize = 5;
 		int startPage = ((cPage-1)/pageBarSize) * pageBarSize + 1;
