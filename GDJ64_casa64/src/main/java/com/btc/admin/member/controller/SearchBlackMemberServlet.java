@@ -8,22 +8,22 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.swing.plaf.synth.SynthOptionPaneUI;
 
 import com.btc.admin.model.service.AdminMemberService;
-import com.btc.member.model.dto.Member;
+import com.btc.member.model.dto.BlackMember;
+
 
 /**
- * Servlet implementation class SearchMember
+ * Servlet implementation class SearchBlackMemberServlet
  */
-@WebServlet("/admin/searchMember.do")
-public class SearchMember extends HttpServlet {
+@WebServlet("/admin/searchBMember.do")
+public class SearchBlackMemberServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public SearchMember() {
+    public SearchBlackMemberServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -51,7 +51,7 @@ public class SearchMember extends HttpServlet {
 		}
 		
 		StringBuffer pageBar=new StringBuffer();
-		int totolData=new AdminMemberService().searchMemberCount(type, search);
+		int totolData=new AdminMemberService().searchBMemberCount(type, search);
 		int totalPage=(int)Math.ceil((double)totolData/numPerpage);
 		int pageBarSize=5;
 		int pageStart=((cPage-1)/pageBarSize)*pageBarSize+1;
@@ -78,9 +78,9 @@ public class SearchMember extends HttpServlet {
 			pageBar.append("<li class='page-item'><a class='page-link' aria-label='Next' href='"+request.getRequestURI()+"?cPage="+pageStart+"&numPerpage="+numPerpage+"&member-search="+type+"&keyword="+search+"'><span aria-hidden='true'>&raquo;</span></a></li>");
 		}
 		request.setAttribute("pageBar", pageBar);
-		List<Member> list=new AdminMemberService().searchMemberList(cPage, numPerpage, type, search);
+		List<BlackMember> list=new AdminMemberService().searchBMemberList(cPage, numPerpage, type, search);
 		request.setAttribute("members", list);
-		request.getRequestDispatcher("/views/admin/list-member.jsp").forward(request, response);
+		request.getRequestDispatcher("/views/admin/black-member.jsp").forward(request, response);
 	}
 
 	/**

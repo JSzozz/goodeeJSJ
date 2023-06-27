@@ -53,23 +53,23 @@ public class AdminBlackMemberServlet extends HttpServlet {
 		int fileResult=service.insertBlackFile(memberNo, fileName, fileRealName);
 		
 		if(insertResult>0&&fileResult>0) {
-			int result=new MemberService().updateBlack(memberNo);
+			int result=new MemberService().updateBlack(memberNo,"Y");
 			if(result>0) {
 				msg="회원블랙성공";
-				loc="/views/admin/list-member.jsp";
+				loc="/admin/memberList.do";
 				request.setAttribute("msg", msg);
 				request.setAttribute("loc", loc);
 				
 			}else {
 				msg="서버오류";
-				loc="/views/admin/list-member.jsp";
+				loc="/admin/memberList.do";
 				request.setAttribute("msg", msg);
 				request.setAttribute("loc", loc);
 				
 			}
 		}else {
 			msg="서버오류";
-			loc="/views/admin/list-member.jsp";
+			loc="/admin/memberList.do";
 			request.setAttribute("msg", msg);
 			request.setAttribute("loc", loc);
 			

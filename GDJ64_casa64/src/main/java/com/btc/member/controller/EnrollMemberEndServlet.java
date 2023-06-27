@@ -8,6 +8,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import com.btc.admin.model.service.AdminMemberService;
 import com.btc.member.model.service.MemberService;
 
 /**
@@ -38,7 +39,9 @@ public class EnrollMemberEndServlet extends HttpServlet {
 		String code=(String)session.getAttribute("code");
 
 		String inputCode=request.getParameter("code");
-
+		if(new AdminMemberService().selectCMember(email)!=null) {
+			new AdminMemberService().deleteCMember(email);
+		}
 		
 		String msg="",loc="";
 		if(code.equals(inputCode)) {
