@@ -11,6 +11,8 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import com.btc.booking.model.service.BookingService;
+import com.btc.booking.model.vo.Booking;
+import com.btc.booking.model.vo.SeasonalPrice;
 import com.btc.rooms.model.vo.Room;
 
 /**
@@ -35,9 +37,15 @@ public class BookingListServlet extends HttpServlet {
 
 		List<Room> rooms=new BookingService().selectAllRoom();
 //		System.out.println(rooms);
-		
 		HttpSession session=request.getSession();
 		session.setAttribute("rooms", rooms);
+		
+		List<Booking> bookings=new BookingService().selectAllBooking();
+		request.setAttribute("bookings", bookings);
+
+		List<SeasonalPrice> seasons=new BookingService().selectAllSeason();
+		request.setAttribute("seasons", seasons);
+		System.out.println(seasons);
 		
 		request.getRequestDispatcher("/views/booking/booking-list1.jsp")
 		.forward(request, response);

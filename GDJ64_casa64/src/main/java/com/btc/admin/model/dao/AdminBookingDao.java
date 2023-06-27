@@ -7,11 +7,14 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Properties;
 
 import com.btc.booking.model.vo.Booking;
+import com.btc.member.model.dto.Member;
+import com.btc.rooms.model.vo.Room;
 
 public class AdminBookingDao {
 	private static AdminBookingDao dao = new AdminBookingDao();
@@ -31,17 +34,19 @@ public class AdminBookingDao {
 		}
 	}
 	
-	public List<Booking> getAllBookingList(Connection conn) {
+	public List<Booking> getAllBookingList(Connection conn,int cPage,int numPerPage) {
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
-		List<Booking> allBookingList = new ArrayList<Booking>();
+		List<Booking> bookingList = new ArrayList<Booking>();
 		
 		try {
 			pstmt = conn.prepareStatement(query.getProperty("showAllBookingList"));
+			pstmt.setInt(1, (cPage-1)*numPerPage+1);
+			pstmt.setInt(2, cPage*numPerPage);
 			rs = pstmt.executeQuery();
 			
 			while(rs.next()) {
-				allBookingList.add(getBooking(rs));
+				bookingList.add(getBooking(rs));
 			}
 			
 		}catch(Exception e) {
@@ -49,14 +54,256 @@ public class AdminBookingDao {
 		}finally {
 			close(rs);
 			close(pstmt);
-		} return allBookingList;
+		}
+		return bookingList;
+	}
+	
+	public Booking getInfoBooking(Connection conn, int bookingNo) {
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		Booking booking = null;
+		
+		try {
+			pstmt = conn.prepareStatement(query.getProperty("infoBooking"));
+			pstmt.setInt(1, bookingNo);
+			rs = pstmt.executeQuery();
+			
+			if(rs.next()) booking = getBooking(rs);
+		}catch(Exception e) {
+			e.printStackTrace();
+		}finally {
+			close(rs);
+			close(pstmt);
+		}
+		return booking;
+	}
+	
+	public List<Booking> getConditionBookingList(Connection conn, String state, int cPage, int numPerPage) {
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		List<Booking> bookingList = new ArrayList<Booking>();
+		
+		try {
+			pstmt = conn.prepareStatement(query.getProperty("conditionBookingList"));
+			pstmt.setInt(1, (cPage-1)*numPerPage+1);
+			pstmt.setInt(2, cPage*numPerPage);
+			pstmt.setString(3, state);
+			rs = pstmt.executeQuery();
+			
+			while(rs.next()) {
+				bookingList.add(getBooking(rs));
+			}
+			
+		}catch(Exception e) {
+			e.printStackTrace();
+		}finally {
+			close(rs);
+			close(pstmt);
+		}
+		return bookingList;
+	}
+	
+	public int getBookingCount(Connection conn) {
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		int result = 0;
+		
+		try {
+			pstmt = conn.prepareStatement(query.getProperty("bookingCount"));
+			rs = pstmt.executeQuery();
+			
+			if(rs.next()) result=rs.getInt(1);
+			
+		}catch(Exception e) {
+			e.printStackTrace();
+		}finally {
+			close(rs);
+			close(pstmt);
+		}
+		return result;
+	}
+	
+	public List<Booking> getSearchBookingList(Connection conn, String state, String type, String value, int cPage, int numPerPage) {
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		String searchQuery = "";
+		List<Booking> bookingList = new ArrayList<Booking>();
+		
+		try {
+			if(state.equals("전체")) {
+				if(type.equals("user-name")) {
+					searchQuery = "searchAllMemberName";
+				}else if(type.equals("room-name")) {
+					searchQuery = "searchAllRoomName";
+				}else if(type.equals("user-email")) {
+					searchQuery = "searchAllMemberEmail";
+				}else if(type.equals("user-phone")) {
+					searchQuery = "searchAllMemberPhone";
+				}
+				pstmt = conn.prepareStatement(query.getProperty(searchQuery));
+				pstmt.setString(1, value);
+				pstmt.setInt(2, (cPage-1)*numPerPage+1);
+				pstmt.setInt(3, cPage*numPerPage);
+			}else {
+				if(type.equals("user-name")) {
+					searchQuery = "searchMemberName";
+				}else if(type.equals("room-name")) {
+					searchQuery = "searchRoomName";
+				}else if(type.equals("user-email")) {
+					searchQuery = "searchMemberEmail";
+				}else if(type.equals("user-phone")) {
+					searchQuery = "searchMemberPhone";
+				}
+				pstmt = conn.prepareStatement(query.getProperty(searchQuery));
+				pstmt.setString(1, state);
+				pstmt.setString(2, "%" + value + "%");
+				pstmt.setInt(3, (cPage-1)*numPerPage+1);
+				pstmt.setInt(4, cPage*numPerPage);
+			}
+
+
+			rs = pstmt.executeQuery();
+			
+			while(rs.next()) {
+				bookingList.add(getBooking(rs));
+			}
+			
+		}catch(Exception e) {
+			e.printStackTrace();
+		}finally {
+			close(rs);
+			close(pstmt);
+		}
+		return bookingList;
+	}
+	
+	public int getCancelBookingResult(Connection conn, int bookingNo) {
+		PreparedStatement pstmt = null;
+		int result = 0;
+		
+		try {
+			pstmt = conn.prepareStatement(query.getProperty("cancelBooking"));
+			pstmt.setInt(1, bookingNo);			
+			result = pstmt.executeUpdate();
+		}catch(SQLException e) {
+			e.printStackTrace();
+		}finally {
+			close(pstmt);
+		}return result;
+	}
+	
+	public List<Booking> getTodayBookingList(Connection conn, int cPage, int numPerPage) {
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		List<Booking> bookingList = new ArrayList<Booking>();
+		
+		try {
+			pstmt = conn.prepareStatement(query.getProperty("todayBookingList"));
+			pstmt.setInt(1, (cPage-1)*numPerPage+1);
+			pstmt.setInt(2, cPage*numPerPage);
+			// pstmt.setDate(3, java.sql.Date.valueOf(java.time.LocalDate.now()));
+			rs = pstmt.executeQuery();
+			
+			while(rs.next()) {
+				bookingList.add(getBooking(rs));
+			}
+			
+		}catch(SQLException e) {
+			e.printStackTrace();
+		}finally {
+			close(rs);
+			close(pstmt);
+		}return bookingList;
+	}
+	
+	public List<Booking> getOneWeekAndMonthBookingList(Connection conn, String searchDate, int cPage, int numPerPage) {
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		String searchQuery = "";
+		List<Booking> bookingList = new ArrayList<Booking>();
+		
+		try {
+			if(searchDate.equals("week")) {
+				searchQuery = "oneWeekBooking";
+			}else if(searchDate.equals("month")) {
+				searchQuery = "oneMonthBooking";
+			}
+			
+			pstmt = conn.prepareStatement(query.getProperty(searchQuery));
+			pstmt.setInt(1, (cPage-1)*numPerPage+1);
+			pstmt.setInt(2, cPage*numPerPage);
+			rs = pstmt.executeQuery();
+			
+			while(rs.next()) {
+				bookingList.add(getBooking(rs));
+			}
+			
+		}catch(SQLException e) {
+			e.printStackTrace();
+		}finally {
+			close(rs);
+			close(pstmt);
+		}return bookingList;
+	}
+	
+	public int getOneWeekAndMonthBookingCount(Connection conn, String searchDate) {
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		
+		String searchQuery = "";
+		int result = 0;
+		try {
+			if(searchDate.equals("week")) {
+				searchQuery = "oneWeekBookingCount";
+			}else if(searchDate.equals("month")) {
+				searchQuery = "oneMonthBookingCount";
+			}
+			
+			pstmt = conn.prepareStatement(query.getProperty(searchQuery));
+			rs = pstmt.executeQuery();
+			
+			if(rs.next()) result=rs.getInt(1);
+			
+		}catch(Exception e) {
+			e.printStackTrace();
+		}finally {
+			close(rs);
+			close(pstmt);
+		}
+		return result;
+	}
+	
+	public int getTodayBookingCount(Connection conn) {
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		
+		int result = 0;
+		try {
+			
+			pstmt = conn.prepareStatement(query.getProperty("todayBookingCount"));
+			rs = pstmt.executeQuery();
+			
+			if(rs.next()) result=rs.getInt(1);
+			
+		}catch(Exception e) {
+			e.printStackTrace();
+		}finally {
+			close(rs);
+			close(pstmt);
+		}
+		return result;
 	}
 	
 	private Booking getBooking(ResultSet rs) throws SQLException {
 		return Booking.builder()
 				.bookingNo(rs.getInt("BOOKING_NO"))
-				.memberNo(rs.getInt("MEMBER_NO"))
-				.roomNo(rs.getInt("ROOM_NO"))
+				.member(Member.builder().memberName(rs.getString("member_name"))
+						.email(rs.getString("email"))
+						.phone(rs.getString("phone"))
+						.build())
+				.room(Room.builder()
+						.roomName(rs.getString("ROOM_NAME"))
+						.build())
 				.checkIn(rs.getDate("CHECK_IN"))
 				.checkOut(rs.getDate("CHECK_OUT"))
 				.guestAdult(rs.getInt("GUEST_ADULT"))
@@ -64,6 +311,8 @@ public class AdminBookingDao {
 				.guestInfant(rs.getInt("GUEST_INFANT"))
 				.bookingPrice(rs.getInt("BOOKING_PRICE"))
 				.bookingComment(rs.getString("BOOKING_COMMENT"))
+				.bookingState(rs.getString("BOOKING_STATE"))
+				.paymentDate(rs.getDate("PAYMENT_DATE"))
 				.build();
 	}
 }

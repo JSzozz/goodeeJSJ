@@ -13,7 +13,10 @@ import java.util.List;
 import java.util.Properties;
 
 import com.btc.rooms.model.dao.RoomDao;
+import com.btc.rooms.model.vo.OptionFree;
+import com.btc.rooms.model.vo.OptionXtra;
 import com.btc.rooms.model.vo.Room;
+import com.btc.rooms.model.vo.RoomOption;
 
 public class AdminRoomDao {
 	private Properties sql=new Properties();
@@ -25,6 +28,7 @@ public class AdminRoomDao {
 			e.printStackTrace();
 		}
 	}
+
 	public int selectRoomCount(Connection conn) {
 		PreparedStatement pstmt=null;
 		ResultSet rs=null;
@@ -58,7 +62,7 @@ public class AdminRoomDao {
 			e.printStackTrace();
 		}finally{
 			close(rs);
-			close(conn);
+			close(pstmt);
 		}
 		return list;
 	}
@@ -84,7 +88,7 @@ public class AdminRoomDao {
 			e.printStackTrace();
 		}finally{
 			close(rs);
-			close(conn);
+			close(pstmt);
 		}
 		return r;
 	}
@@ -108,6 +112,133 @@ public class AdminRoomDao {
 		}finally {
 			close(pstmt);
 		}return result;
+
+	}
+	public int deleteRoom(Connection conn, int roomNo) {
+		PreparedStatement pstmt=null;
+		int result=0;
+		try {
+			pstmt=conn.prepareStatement(sql.getProperty("deleteRoom"));
+			pstmt.setInt(1, roomNo);
+			result=pstmt.executeUpdate();
+		}catch(SQLException e) {
+			e.printStackTrace();
+		}finally {
+			close(pstmt);
+		}return result;
+	}
+	public List<OptionFree> selectAllFree(Connection conn) {
+		PreparedStatement pstmt=null;
+		ResultSet rs=null;
+		List<OptionFree> list=new ArrayList();
+		try {
+			pstmt=conn.prepareStatement(sql.getProperty("selectAllFree"));
+			rs=pstmt.executeQuery();
+			while(rs.next()) {
+				list.add(getFree(rs));
+			}
+		}catch(SQLException e) {
+			e.printStackTrace();
+		}finally {
+			close(rs);
+			close(pstmt);
+		}return list;
+	}
+	private OptionFree getFree(ResultSet rs) throws SQLException{
+		return OptionFree.builder().freeNo(rs.getInt("free_no")).freeName(rs.getString("free_name")).build();
+	}
+	public List<OptionXtra> selectAllXtra(Connection conn) {
+		PreparedStatement pstmt=null;
+		ResultSet rs=null;
+		List<OptionXtra> list=new ArrayList();
+		try {
+			pstmt=conn.prepareStatement(sql.getProperty("selectAllXtra"));
+			rs=pstmt.executeQuery();
+			while(rs.next()) {
+				list.add(getXtra(rs));
+			}
+		}catch(SQLException e) {
+			e.printStackTrace();
+		}finally {
+			close(rs);
+			close(pstmt);
+		}return list;
+	}
+	private OptionXtra getXtra(ResultSet rs) throws SQLException{
+		return OptionXtra.builder().xtraNo(rs.getInt("xtra_no")).xtraName(rs.getString("xtra_name"))
+				.xtraPrice(rs.getInt("xtra_price")).xtraExplanation(rs.getString("xtra_explanation")).build();
+	}
+	public List<RoomOption> selectCheckedOption(Connection conn, int roomNo) {
+		PreparedStatement pstmt=null;
+		ResultSet rs=null;
+		List<RoomOption> options=new ArrayList();
+		try {
+			pstmt=conn.prepareStatement(sql.getProperty("selectCheckedOption"));
+			pstmt.setInt(1, roomNo);
+			rs=pstmt.executeQuery();
+			while(rs.next()) {
+				options.add(getChecked(rs));
+			}
+		}catch(SQLException e) {
+			e.printStackTrace();
+		}finally {
+			close(rs);
+			close(pstmt);
+		}return options;
+	}
+	private RoomOption getChecked(ResultSet rs) throws SQLException{
+		return RoomOption.builder().freeNo(rs.getInt("free_no")).roomNo(rs.getInt("room_no")).optionName(rs.getString("free_name")).build();
+	}
+	public List<Room> selectRoomByKeyword(Connection conn, String keyword, int cPage, int numPerpage) {
+		PreparedStatement pstmt=null;
+		ResultSet rs=null;
+		String query=sql.getProperty("selectRoomByKeyword");
+		List<Room> rooms=new ArrayList();
+		try {
+			pstmt=conn.prepareStatement(query);
+			pstmt.setString(1, "%"+keyword+"%");
+			pstmt.setInt(2, (cPage-1)*numPerpage+1);
+			pstmt.setInt(3, cPage*numPerpage);
+			rs=pstmt.executeQuery();
+			while(rs.next()) {
+				rooms.add(getRoom(rs));
+			}
+		}catch(SQLException e) {
+			e.printStackTrace();
+		}finally {
+			close(rs);
+			close(pstmt);
+		}return rooms;
+	}
+	public int selectRoomByKeywordCount(Connection conn, String keyword) {
+		PreparedStatement pstmt=null;
+		ResultSet rs=null;
+		String query=sql.getProperty("selectRoomByKeywordCount");
+		int count=0;
+		try {
+			pstmt=conn.prepareStatement(query);
+			pstmt.setString(1, "%"+keyword+"%");
+			rs=pstmt.executeQuery();
+			if(rs.next()) count=rs.getInt(1);
+		}catch(SQLException e) {
+			e.printStackTrace();
+		}finally {
+			close(rs);
+			close(pstmt);
+		}return count;
 	}
 
+	public int insertInquiry(Connection conn, Room r) {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	public int insetUpfiles(Connection conn, String string) {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+
+
 }
+

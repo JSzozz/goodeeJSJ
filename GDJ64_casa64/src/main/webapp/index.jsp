@@ -12,6 +12,9 @@
             flex-direction: column;
             justify-content: space-between;
         }
+        div.swiper, div.swiper-wrapper,div.swiper div.swiper-slide,div.swiper img {
+        	z-index:1 !important;
+        }
     </style>
     <!-- /css -->
     
@@ -131,6 +134,6 @@
         </div>
         <!-- Slider main container -->
     </section>
-    
+
     <!-- 푸터 영역 -->
     <%@ include file="/views/common/footer.jsp" %>
