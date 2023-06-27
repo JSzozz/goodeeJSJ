@@ -1,6 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ include file="/views/common/header.jsp"%>
+<%@ page import="java.util.List,com.btc.mypage.model.vo.QnA"%>
+<%
+List<QnA> qna = (List) request.getAttribute("MypageQnAList");
+%>
 <!-- 컨텐츠/내용 시작 -->
 <div class="container">
 	<div class="row mt-3 mx-1 border-primary border-bottom border-2"
@@ -18,11 +22,11 @@
 			<div class="tb">
 				<table class="table table-hover text-center align-middle">
 					<colgroup>
-						<col width="10%">
-						<col width="10%">
-						<col width="25%">
-						<col width="15%">
-						<col width="15%">
+						<col width="40px" />
+						<col width="100px" />
+						<col width="150px" />
+						<col width="50px" />
+						<col width="60px" />
 					</colgroup>
 					<thead>
 						<tr>
@@ -30,56 +34,40 @@
 							<th>카테고리</th>
 							<th>제목</th>
 							<th>작성일</th>
-							<th>답변여부</th>
+							<th>답글여부</th>
 
 						</tr>
 					</thead>
 					<tbody>
+					<tbody>
+						<%
+						if (qna != null && !qna.isEmpty()) {
+							int count = 1;
+							for (QnA q : qna) {
+						%>
 						<tr>
-							<td>1</td>
-							<td>카테고리1</td>
-							<td>제목1</td>
-							<td>2023-01-12</td>
-							<td>Y</td>
+							<td><%=count%></td>
+							<td><%=q.getCategoryName()%></td>
+							<td><a
+								href="<%=request.getContextPath()%>/qna/viewQna.do?no=<%=q.getQuestionNo()%>&categoryName=COMMUNITY&communityTitle=QnA">
+									<%=q.getQuestionTitle()%>
+							</a></td>
+							<td><%=q.getQuestionDate()%></td>
+							<td><a
+								href="<%=request.getContextPath()%>/qna/viewQna.do?no=<%=q.getQuestionNo()%>&categoryName=COMMUNITY&communityTitle=QnA"
+								class="">Y</a></td>
 						</tr>
-
+						<%
+						count++;
+						}
+						} else {
+						%>
 						<tr>
-							<td>2</td>
-							<td>카테고리2</td>
-							<td>제목3</td>
-							<td>2023-01-13</td>
-							<td>Y</td>
+							<td colspan="6">작성된 게시물이 없습니다.</td>
 						</tr>
-
-						<tr>
-							<td>3</td>
-							<td>카테고리3</td>
-							<td>제목3</td>
-							<td>2023-01-15</td>
-							<td>N</td>
-						</tr>
-
-						<tr>
-							<td>4</td>
-							<td>카테고리4</td>
-							<td>제목4</td>
-							<td>2023-01-22</td>
-							<td>N</td>
-						</tr>
-
-
-						<!-- 문의내역 없을 때  -->
-						<!-- <tr>
-                              <td colspan="5" >
-                                작성한 문의가 없습니다
-                              </td>
-                            </tr>
-                            <tr>
-                              <td colspan="5">
-                                <button type="button" class="btn btn-primary">문의하기</button>
-                              </td>
-                            </tr> -->
-
+						<%
+						}
+						%>
 					</tbody>
 				</table>
 			</div>
