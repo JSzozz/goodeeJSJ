@@ -40,4 +40,56 @@ public class MemberService {
 		close(conn);
 		return result;
 	}
+	
+	public int passwordCk(int memberNo,String pw) {
+		Connection conn=getConnection();
+		int result=dao.PasswordCk(conn, memberNo, pw);
+		close(conn);
+		return result;
+	}
+	
+	public Member updateMember(String nick,String phone,String name,String email) {
+		Connection conn=getConnection();
+		int result=dao.upadateMember(conn, nick, phone, name, email);
+		Member updateMember=null;
+		if(result>0) {
+			commit(conn);
+			updateMember=dao.selectEmail(conn, email);
+		}
+		else rollback(conn);
+		close(conn);
+		return updateMember;
+	}
+	
+	public int deleteMember(int memberNo) {
+		Connection conn=getConnection();
+		int result=dao.deleteMember(conn, memberNo);
+		if(result>0) commit(conn);
+		else rollback(conn);
+		close(conn);
+		return result;
+	}
+	
+	public int updateBlack(int memberNo) {
+		Connection conn=getConnection();
+		int result=dao.updateBlack(conn, memberNo);
+		if(result>0) commit(conn);
+		else rollback(conn);
+		close(conn);
+		return result;
+	}
+	
+
 }
+
+
+
+
+
+
+
+
+
+
+
+

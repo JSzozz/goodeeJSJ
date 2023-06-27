@@ -26,10 +26,7 @@ public class InsertRoomServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		response.getWriter().append("Served at: ").append(request.getContextPath());
-		
-		// /views/admin/room-insert.jsp로 이동, roomNo가지고가는거
+		request.getRequestDispatcher("/views/admin/room-insert.jsp").forward(request, response);
 	}
 
 	/**

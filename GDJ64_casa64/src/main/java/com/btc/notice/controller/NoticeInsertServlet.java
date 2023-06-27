@@ -31,9 +31,7 @@ public class NoticeInsertServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		//주제, 이름을 받아 표시하기(categoryimage , board_tab)
-//		String categoryName = request.getParameter("categoryName");
-//		String communityTitle = request.getParameter("communityTitle");
+		//주제, 이름을 받아 표시하기
 		request.setAttribute("categoryName", "COMMUNITY");
 		request.setAttribute("communityTitle", "공지사항");
 		
