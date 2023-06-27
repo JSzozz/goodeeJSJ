@@ -11,6 +11,7 @@ import java.util.Map;
 
 import com.btc.notice.model.dao.QnaDao;
 import com.btc.notice.model.dto.Qna;
+import com.btc.notice.model.dto.QnaComment;
 import com.btc.notice.model.dto.Notice_images;
 
 
@@ -40,6 +41,19 @@ public class QnaService {
 		return name;
 	}
 	
+	public Qna selectQnaByNo(int no){
+		Connection conn=getConnection();
+		Qna n=dao.selectQnaByNo(conn, no);
+		close(conn);
+		return n;
+	}
+	
+	public List<QnaComment> selectQnaComment(int no) {
+		Connection conn=getConnection();
+		List<QnaComment> list=dao.selectQnaComment(conn,no);			
+		close(conn);
+		return list;
+	}
 //	public List<Notice> searchNotice(Map pagemap,Map map) {
 //		Connection conn=getConnection();
 //		List<Notice> result=dao.searchNotice(conn,pagemap,map);
@@ -54,21 +68,6 @@ public class QnaService {
 //		return result;
 //	}
 //	
-//	public Notice selectNoticeByNo(int no,boolean isRead){
-//		Connection conn=getConnection();
-//		//번호로 게시물 상세내용 불러오기
-//		Notice n=dao.selectNoticeByNo(conn, no);
-//		if(n!=null&&!isRead) { //isRead가 false면 값이 없는 것이니 들어간 적이 없다는 의미이고, 그때는 증가 메소드 실행||isRead가 true면 방문한 적 있기 때문에 실행을 막음
-//			int result=dao.updateNoticeReadCount(conn,no);
-//			if(result>0) {
-//				commit(conn);
-//				n.setNoticeReadCount(n.getNoticeReadCount()+1);
-//			}
-//			else rollback(conn);			
-//		}
-//		close(conn);
-//		return n;
-//	}
 //	
 //	public int insertNotice(Notice n) {
 //		Connection conn=getConnection();

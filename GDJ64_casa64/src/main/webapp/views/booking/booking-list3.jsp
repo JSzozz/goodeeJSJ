@@ -7,8 +7,8 @@
 <%@ include file="/views/common/header.jsp"%>
 		<!-- 헤더 영역 종료 -->
 <%Booking booking=(Booking)request.getAttribute("booking");%>
-<%=booking %><br>
-
+<%-- <%=booking %><br>
+ --%>
 		<!-- 카테고리별 이미지 -->
 		<div class="category-image">
 			<img src="<%=request.getContextPath() %>/images/booking/reservation.png" width="100%" height="200px">
@@ -21,7 +21,7 @@
 		<div class="reserve_step4 offset-md-1 col-md-10">
         	<form name="bookFrm" onsubmit="return chkSum();" action="<%=request.getContextPath()%>/booking/bookingList3ToList4.do" method="post">
 				<input type="hidden" name="memberNo" value="<%=loginMember.getMemberNo()%>">
-				<input type="hidden" name="roomNo" value="<%=booking.getRoomNo()%>">
+				<input type="hidden" name="roomNo" value="<%=booking.getRoom().getRoomNo()%>">
 				<input type="hidden" name="checkin" value="<%=booking.getCheckIn()%>">
 				<input type="hidden" name="checkout" value="<%=booking.getCheckOut()%>">
 				<input type="hidden" name="guestAdult" value="<%=booking.getGuestAdult()%>">
@@ -129,6 +129,7 @@
 	$("#RESV_NM").text("<%=loginMember.getMemberName() %>");
 	$("#RESV_PHONE").text("<%=loginMember.getPhone() %>");
 	$("#RESV_COMMENT").text("<%=booking.getBookingComment() %>");
+	
 	$(function chkSum() {
 		$(document).on("click","button[id=saveBtn]",e=>{
 		/* 예약정보 post 보내기 */

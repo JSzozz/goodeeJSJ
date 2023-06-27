@@ -27,6 +27,7 @@ public class AdminRoomDao {
 			e.printStackTrace();
 		}
 	}
+
 	public int selectRoomCount(Connection conn) {
 		PreparedStatement pstmt=null;
 		ResultSet rs=null;
@@ -110,6 +111,7 @@ public class AdminRoomDao {
 		}finally {
 			close(pstmt);
 		}return result;
+
 	}
 	public int deleteRoom(Connection conn, int roomNo) {
 		PreparedStatement pstmt=null;
@@ -205,3 +207,4 @@ public class AdminRoomDao {
 	}
 
 }
+

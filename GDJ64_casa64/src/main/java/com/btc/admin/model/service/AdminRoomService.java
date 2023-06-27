@@ -39,7 +39,6 @@ public class AdminRoomService {
 		int result=dao.selectRoomCount(conn);
 		close(conn);
 		return result;
-
 	}
 	public int deleteRoom(int roomNo) {
 		Connection conn=getConnection();
@@ -74,3 +73,4 @@ public class AdminRoomService {
 	}
 
 }
+
