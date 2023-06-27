@@ -50,7 +50,8 @@ function searchBooking(address) {
   switch (selectState) {
     case '전체': $('.tabBtns:first').addClass('btn-dark'); break;
     case '취소요청': $('.tabBtns:eq(1)').addClass('btn-dark'); break;
-    case '결제완료': $('.tabBtns:eq(2)').addClass('btn-dark'); break;
+    case '취소완료': $('.tabBtns:eq(2)').addClass('btn-dark'); break;
+    case '결제완료': $('.tabBtns:eq(3)').addClass('btn-dark'); break;
     case '이용완료': $('.tabBtns:last').addClass('btn-dark'); break;
   }
 
@@ -117,8 +118,10 @@ function cancelBooking(address, no) {
     success: (data) => {
       if (data > 0) {
         alert('예약을 취소했습니다.');
+        return;
       } else {
-        alert('취소 실패했습니다.');
+        alert('예약 취소를 실패했습니다.');
+        return;
       }
     }
   })
@@ -147,9 +150,8 @@ function ajaxBooking(address, state, type ,value, cPage=1, numPerPage=10) {
       }
 
       $('#resultTable').empty();
-      console.log(data.bookingList);
       $('#pagination').empty();
-
+      console.log(data.bookingList);
       
       data.bookingList.forEach((booking) => {
         $('#resultTable').append(resultBooking(booking));

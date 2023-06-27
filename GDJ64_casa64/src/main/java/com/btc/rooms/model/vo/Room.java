@@ -23,6 +23,12 @@ public class Room {
 	private Date dateCreated;
 	private Date dateModified;
 	private String roomDescription;
+	
+	@Override
+	public String toString() {
+		return roomNo + "," + roomName + "," + roomPrice + "," + roomSize + "," + roomCap + "," + roomMaxCap + "," + bookable
+				+ "," + roomImage + "," + dateCreated + "," + dateModified + "," + roomDescription;
+	}
 }
 /*
  * ROOM_NO NUMBER, ROOM_NAME VARCHAR2(50), ROOM_PRICE NUMBER, ROOM_SIZE
