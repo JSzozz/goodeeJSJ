@@ -12,4 +12,5 @@ import lombok.NoArgsConstructor;
 public class RoomOption {
 	private int roomNo;
 	private int freeNo;
+	private String optionName;
 }

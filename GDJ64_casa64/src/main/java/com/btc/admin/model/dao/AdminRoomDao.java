@@ -187,7 +187,7 @@ public class AdminRoomDao {
 		}return options;
 	}
 	private RoomOption getChecked(ResultSet rs) throws SQLException{
-		return RoomOption.builder().freeNo(rs.getInt("free_no")).roomNo(rs.getInt("room_no")).build();
+		return RoomOption.builder().freeNo(rs.getInt("free_no")).roomNo(rs.getInt("room_no")).optionName(rs.getString("free_name")).build();
 	}
 	public List<Room> selectRoomByKeyword(Connection conn, String keyword, int cPage, int numPerpage) {
 		PreparedStatement pstmt=null;

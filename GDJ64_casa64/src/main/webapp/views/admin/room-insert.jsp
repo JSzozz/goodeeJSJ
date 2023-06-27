@@ -18,7 +18,7 @@
 				<div class="col-12">
 					<form
 						action="<%=request.getContextPath()%>/admin/room/insertRoomEnd.do"
-						class="mt-5" method="get" enctype="multipart/form-data">
+						class="mt-5" method="post" enctype="multipart/form-data">
 						<!-- multipart폼으로 만들어서 -->
 						<!-- 객실명 -->
 						<div class="form-group row mt-3 align-items-center">
