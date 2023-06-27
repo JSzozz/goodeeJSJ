@@ -3,15 +3,10 @@
 <%@ include file="/views/common/header.jsp"%>
 <!-- 카테고리별 이미지 -->
 <%@ include file="/views/common/categoryImage.jsp"%>
-<link rel="stylesheet"
-	href="<%=request.getContextPath()%>/nara_publish/css/about.css" />
-<%-- <link rel="stylesheet"
-	href="<%=request.getContextPath()%>/publish/css/slidshowstyle.css" />
-<link rel="stylesheet"
-	href="<%=request.getContextPath()%>/publish/css/id-verification.css" />
-<link rel="stylesheet"
-	href="<%=request.getContextPath()%>/publish/css/indexSlider.css" />
-<script type="text/javascript" src="/publish/js/travel.js"></script> --%>
+<link rel="stylesheet"	href="<%=request.getContextPath()%>/nara_publish/css/about.css" />
+<link rel="stylesheet"	href="<%=request.getContextPath()%>/nara_publish/css/common.css" />
+<link rel="stylesheet"	href="<%=request.getContextPath()%>/nara_publish/css/slidshowstyle.css" />
+<script type="text/javascript" src="/nara_publish/js/travel.js"></script>
 
 <!-- 컨텐츠/내용 시작 -->
 <section>
