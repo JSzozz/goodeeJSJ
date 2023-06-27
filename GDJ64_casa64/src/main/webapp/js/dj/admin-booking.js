@@ -147,9 +147,8 @@ function ajaxBooking(address, state, type ,value, cPage=1, numPerPage=10) {
       }
 
       $('#resultTable').empty();
-      console.log(data.bookingList);
       $('#pagination').empty();
-
+      console.log(data.bookingList);
       
       data.bookingList.forEach((booking) => {
         $('#resultTable').append(resultBooking(booking));

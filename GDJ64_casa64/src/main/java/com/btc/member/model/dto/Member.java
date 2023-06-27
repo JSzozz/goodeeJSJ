@@ -19,4 +19,9 @@ public class Member {
 	private String password;
 	private String phone;
 	private String memberBlack;
+	
+	@Override
+	public String toString() {
+		return memberNo + "," + memberType + "," + memberName + "," + email + "," + nickName + "," + password + "," + phone + "," + memberBlack;
+	}
 }

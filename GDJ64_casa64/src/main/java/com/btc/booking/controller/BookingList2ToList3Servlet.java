@@ -8,6 +8,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import com.btc.booking.model.service.BookingService;
 import com.btc.booking.model.vo.Booking;
@@ -49,6 +50,9 @@ public class BookingList2ToList3Servlet extends HttpServlet {
 		Booking b = Booking.builder().room(Room.builder().roomNo(roomNo).build()).checkIn(checkIn).checkOut(checkOut).guestAdult(guestAdult)
 				.guestChild(guestChild).guestInfant(guestInfant).bookingPrice(bookingPrice).bookingComment(bookingComment).build();
 		request.setAttribute("booking", b);
+		
+	    HttpSession session=request.getSession();
+	    session.setAttribute("rooms", service.selectAllRoom());
 
 		request.getRequestDispatcher("/views/booking/booking-list3.jsp").forward(request, response);
 
