@@ -114,6 +114,7 @@
                                                 <select id="selectState" class="form-control me-1" style="width:100px">
                                                     <option value="전체">전체</option>
                                                     <option value="취소요청">취소요청</option>
+                                                    <option value="취소완료">취소완료</option>
                                                     <option value="결제완료">결제완료</option>
                                                     <option value="이용완료">이용완료</option>
                                                 </select>
@@ -136,6 +137,9 @@
                                                 </li>
                                                 <li class="nav-item">
                                                     <button type="button" class="btn btn-default tabBtns" onclick="ajaxBooking('<%=request.getContextPath()%>/admin/booking/conditionBooking.do', '취소요청')">취소요청</button>
+                                                </li>
+                                                <li class="nav-item">
+                                                    <button type="button" class="btn btn-default tabBtns" onclick="ajaxBooking('<%=request.getContextPath()%>/admin/booking/conditionBooking.do', '취소완료')">취소완료</button>
                                                 </li>
                                                 <li class="nav-item">
                                                     <button type="button" class="btn btn-default tabBtns" onclick="ajaxBooking('<%=request.getContextPath()%>/admin/booking/conditionBooking.do', '결제완료')">결제완료</button>
