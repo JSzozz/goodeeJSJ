@@ -13,6 +13,7 @@ import com.btc.admin.model.service.AdminRoomService;
 import com.btc.rooms.model.vo.OptionFree;
 import com.btc.rooms.model.vo.OptionXtra;
 import com.btc.rooms.model.vo.Room;
+import com.btc.rooms.model.vo.RoomOption;
 
 /**
  * Servlet implementation class RoomDetailByNoServlet
@@ -37,9 +38,11 @@ public class RoomDetailServlet extends HttpServlet {
 		Room r=new AdminRoomService().viewRoom(roomNo);
 		List<OptionFree> frees=new AdminRoomService().selectAllFree();
 		List<OptionXtra> xtras=new AdminRoomService().selectAllXtra();
+		List<RoomOption> options=new AdminRoomService().selectCheckedOption(roomNo);
 		request.setAttribute("room", r);
 		request.setAttribute("frees", frees);
 		request.setAttribute("xtras", xtras);
+		request.setAttribute("options", options);
 		request.getRequestDispatcher("/views/admin/room-check.jsp").forward(request, response);
 	}
 

@@ -1,6 +1,12 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ include file="/views/admin/common/header.jsp"%>
+<%@ page import="com.btc.rooms.model.vo.*,java.util.List" %>
+<%
+	
+	List<OptionFree> frees=(List<OptionFree>)request.getAttribute("frees");
+	
+%>
 <!-- 컨테츠 -->
 <section>
 	<div class="container-fluid">
@@ -10,7 +16,10 @@
 					<h2 class="text-center">객실추가</h2>
 				</div>
 				<div class="col-12">
-					<form action="#" class="mt-5">
+					<form
+						action="<%=request.getContextPath()%>/admin/room/insertRoomEnd.do"
+						class="mt-5" method="post" enctype="multipart/form-data">
+						<!-- multipart폼으로 만들어서 -->
 						<!-- 객실명 -->
 						<div class="form-group row mt-3 align-items-center">
 							<label for="roomName" class="col-sm-1 col-form-label text-center">객실명</label>
@@ -53,7 +62,13 @@
 						<div class="form-group row mt-3 align-items-center">
 							<label for="option" class="col-sm-1 col-form-label text-center">옵션</label>
 							<div class="col-sm-2">
-								<button type="button" id="option" class="btn btn-dark">옵션설정</button>
+								<%if(frees==null||frees.isEmpty()){ %>
+									<p>설정된 기본 옵션이 없습니다. 옵션관리에서 옵션을 추가해 주세요</p>
+								<%}else{
+									for(OptionFree of:frees){%>
+										<input type="checkbox" name="optionFree" value="<%=of.getFreeName() %>" ><%=of.getFreeName() %>
+									<%}
+								}%>
 							</div>
 						</div>
 						<!-- 객실 사진 -->
@@ -80,16 +95,23 @@
 								</div>
 							</div>
 						</div>
-					</form>
-				</div>
-				<!-- 관리자 버튼 -->
-				<div class="d-flex justify-content-end mt-2">
-					<form action="#">
-						<button type="submit" class="btn btn-dark">객실추가</button>
-					</form>
-				</div>
+						<div class="d-flex justify-content-end mt-2">
+							<button type="submit" class="btn btn-dark">객실추가</button>					
+						</div>
+					</div>
+				</form>
 			</div>
 		</div>
 	</div>
+	<!-- <div class="modal fade" id="addOption" tabindex="-1" aria-labelledby="addOptionModalLabel" aria-hidden="true">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h5 class="modal-title" id="addOptionModalLabel">객실 내 기본옵션 추가</h5>
+					<table>
+						
+					</table>
+					
+					 -->
 </section>
 <%@ include file="/views/admin/common/footer.jsp"%>

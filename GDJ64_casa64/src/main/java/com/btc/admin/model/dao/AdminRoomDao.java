@@ -16,6 +16,7 @@ import com.btc.rooms.model.dao.RoomDao;
 import com.btc.rooms.model.vo.OptionFree;
 import com.btc.rooms.model.vo.OptionXtra;
 import com.btc.rooms.model.vo.Room;
+import com.btc.rooms.model.vo.RoomOption;
 
 public class AdminRoomDao {
 	private Properties sql=new Properties();
@@ -167,6 +168,27 @@ public class AdminRoomDao {
 		return OptionXtra.builder().xtraNo(rs.getInt("xtra_no")).xtraName(rs.getString("xtra_name"))
 				.xtraPrice(rs.getInt("xtra_price")).xtraExplanation(rs.getString("xtra_explanation")).build();
 	}
+	public List<RoomOption> selectCheckedOption(Connection conn, int roomNo) {
+		PreparedStatement pstmt=null;
+		ResultSet rs=null;
+		List<RoomOption> options=new ArrayList();
+		try {
+			pstmt=conn.prepareStatement(sql.getProperty("selectCheckedOption"));
+			pstmt.setInt(1, roomNo);
+			rs=pstmt.executeQuery();
+			while(rs.next()) {
+				options.add(getChecked(rs));
+			}
+		}catch(SQLException e) {
+			e.printStackTrace();
+		}finally {
+			close(rs);
+			close(pstmt);
+		}return options;
+	}
+	private RoomOption getChecked(ResultSet rs) throws SQLException{
+		return RoomOption.builder().freeNo(rs.getInt("free_no")).roomNo(rs.getInt("room_no")).optionName(rs.getString("free_name")).build();
+	}
 	public List<Room> selectRoomByKeyword(Connection conn, String keyword, int cPage, int numPerpage) {
 		PreparedStatement pstmt=null;
 		ResultSet rs=null;
@@ -205,6 +227,18 @@ public class AdminRoomDao {
 			close(pstmt);
 		}return count;
 	}
+
+	public int insertInquiry(Connection conn, Room r) {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	public int insetUpfiles(Connection conn, String string) {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+
 
 }
 
