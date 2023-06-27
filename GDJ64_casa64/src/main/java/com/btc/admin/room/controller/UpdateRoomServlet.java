@@ -32,7 +32,8 @@ public class UpdateRoomServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		//객실정보 수정
 		Room r=Room.builder().roomNo(Integer.parseInt(request.getParameter("roomNo"))).roomName(request.getParameter("roomName")).roomSize(Integer.parseInt(request.getParameter("roomSize"))).roomPrice(Integer.parseInt(request.getParameter("roomPrice")))
-				.bookable(request.getParameter("bookable").charAt(0)).roomCap(Integer.parseInt(request.getParameter("roomCap"))).roomMaxCap(Integer.parseInt(request.getParameter("roomMaxCap"))).roomDescription(getServletInfo()).roomImage(getServletInfo()).build();
+				.bookable(request.getParameter("bookable").charAt(0)).roomCap(Integer.parseInt(request.getParameter("roomCap"))).roomMaxCap(Integer.parseInt(request.getParameter("roomMaxCap"))).roomDescription(request.getParameter("roomMDescription")).build();
+		//roomImage임의로 뺴둔 상태
 		int result=new AdminRoomService().updateRoom(r);
 		String msg="",loc="";
 		if(result>0) {

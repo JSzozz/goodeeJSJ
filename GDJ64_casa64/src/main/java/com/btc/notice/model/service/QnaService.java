@@ -1,3 +1,4 @@
+
 package com.btc.notice.model.service;
 
 import static com.btc.common.JDBCTemplate.close;
@@ -83,3 +84,4 @@ public class QnaService {
 		return result;
 	}
 }
+

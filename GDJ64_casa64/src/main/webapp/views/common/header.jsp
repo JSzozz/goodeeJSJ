@@ -1,4 +1,4 @@
-<%@page import="com.btc.member.model.dto.Member"%>
+<%@ page import="com.btc.member.model.dto.Member"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 
 <%-- <link rel="stylesheet" href="<%=request.getContextPath()%>/css/custom.css" /> --%>
@@ -29,6 +29,27 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 	<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;700&display=swap" rel="stylesheet">
+	<script>
+    	$.get("<%=request.getContextPath()%>/rooms/roomlist.do",data=>{
+    		console.log(data);
+    		$("#roomsMenu").html('<li><a href="<%=request.getContextPath() %>/RoomListServlet.do" class="dropdown-item">전체 객실 보기</a></li>');
+    		//가져온데이터 출력
+    		data.forEach(e=>{
+<%--     			<li><a href="<%=request.getContextPath() %>/RoomViewServlet.do?no=2" class="dropdown-item">오션테라스 201</a></li> --%>
+				const $li=$("<li>");
+				const $a=$("<a>").attr({'href':'<%=request.getContextPath()%>/RoomViewServlet.do?no='+e.roomNo,
+						"class":"dropdown-item"}).text(e.roomName);
+				$li.append($a);
+				$("#roomsMenu").append($li);
+    		});
+    	});
+    
+    </script>
+    <style>
+    	ul.navbar-nav,ul.navbar-nav li, ul.navbar-nav a{
+    		z-index:999 !important;
+    	} 
+    </style>
 </head>
 
 <body>
@@ -72,7 +93,7 @@
                             data-bs-toggle="dropdown" aria-expanded="false">
                             ROOMS
                         </a>
-                        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <ul id="roomsMenu" class="dropdown-menu" aria-labelledby="navbarDropdown">
                             <li><a href="<%=request.getContextPath() %>/RoomListServlet.do" class="dropdown-item">전체 객실 보기</a></li>
 <%--                             <%
                            	if(rooms != null){ 

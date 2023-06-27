@@ -11,14 +11,14 @@
 <%int roomNo=(int)request.getAttribute("roomNo");%>
 <%Booking booking=(Booking)request.getAttribute("booking");%>
 <%List<String> price=(List<String>)request.getAttribute("price");%>
-<%=loginMember %><br>
+<%-- <%=loginMember %><br>
 <%=roomNm %><br>
 <%=roomNo %><br>
 <%=booking %><br>
 <%=price.get(0) %><br>
 <%=price.get(1) %><br>
 <%=price.get(2) %>
-		<!-- 카테고리별 이미지 -->
+ --%>		<!-- 카테고리별 이미지 -->
 		<div class="category-image">
 			<img src="<%=request.getContextPath() %>/images/booking/reservation.png" width="100%" height="200px">
 			<div>RESERVATION</div>
@@ -27,7 +27,6 @@
 		<!-- 컨텐츠/내용 시작 -->
 		<div class="reserve_step3 offset-md-1 col-md-10">
         	<form name="bookFrm" onsubmit="return chkSum();" action="<%=request.getContextPath()%>/booking/bookingList2ToList3.do" method="post">
-				<input type="hidden" name="memberNo" value="<%=loginMember.getMemberNo()%>">
 				<input type="hidden" name="roomNo" value="<%=roomNo%>">
 				<input type="hidden" name="checkin" value="<%=booking.getCheckIn()%>">
 				<input type="hidden" name="checkout" value="<%=booking.getCheckOut()%>">
@@ -194,6 +193,8 @@
 	</div>
 </section>
 <script>
+
+	
 	$("#typeNm").text("<%=roomNm %>");
 	$("#period").text("<%=booking.getCheckIn()%> ~ <%=booking.getCheckOut()%>")
 	$("#person").text("성인 = <%=booking.getGuestAdult()%>명, 아동/유아 = <%=booking.getGuestChild()%>명, 영아(24개월 미만) = <%=booking.getGuestInfant()%>명")
@@ -215,9 +216,5 @@
 <%-- <%=price.get(0) %><br>
  --%>
 </script>
-<!-- 결제기능 구현 -->
-<script src="https://cdn.iamport.kr/v1/iamport.js"></script>
-<script src="<%=request.getContextPath()%>/js/dj/payment.js"></script>
-
 		<!-- 푸터 영역 -->
 <%@ include file="/views/common/footer.jsp"%>
