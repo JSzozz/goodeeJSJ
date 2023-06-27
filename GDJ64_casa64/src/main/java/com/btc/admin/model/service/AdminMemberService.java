@@ -5,6 +5,7 @@ import java.util.List;
 
 import static com.btc.common.JDBCTemplate.*;
 import com.btc.admin.model.dao.AdminMemberDao;
+import com.btc.member.model.dto.BlackMember;
 import com.btc.member.model.dto.CancelMember;
 import com.btc.member.model.dto.Member;
 
@@ -85,6 +86,38 @@ public class AdminMemberService {
 	public List<CancelMember> searchCMemberList(int cPage, int numPerpage,String type, String searchMember){
 		Connection conn=getConnection();
 		List<CancelMember> members=dao.searchCMember(conn,cPage,numPerpage,type,searchMember);
+		close(conn);
+		return members;
+	}
+	
+	public int insertBlackMember(int memberno,String memberName,String nickName,String email,String phone,String reason) {
+		Connection conn=getConnection();
+		int result=dao.insertBlackMember(conn, memberno, memberName, nickName, email, phone,reason);
+		if(result>0) commit(conn);
+		else rollback(conn);
+		close(conn);
+		return result;
+	}
+	
+	public int insertBlackFile(int memberno,String fileName,String fileRealName) {
+		Connection conn=getConnection();
+		int result=dao.insertBlackFile(conn, memberno, fileName, fileRealName);
+		if(result>0) commit(conn);
+		else rollback(conn);
+		close(conn);
+		return result;
+	}
+	
+	public int blackMemberCount() {
+		Connection conn=getConnection();
+		int result=dao.blackMemberCount(conn);
+		close(conn);
+		return result;
+	}
+	
+	public List<BlackMember> blackMemberList(int cPage,int numPerpage){
+		Connection conn=getConnection();
+		List<BlackMember> members=dao.blackMemberList(conn, cPage, numPerpage);
 		close(conn);
 		return members;
 	}

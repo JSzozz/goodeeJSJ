@@ -39,6 +39,7 @@ public class ShowAllRoomServlet extends HttpServlet {
 			cPage=1;
 		}
 		List<Room> rooms=new AdminRoomService().selectAllExistingRooms(cPage,numPerPage);
+
 		request.setAttribute("rooms",rooms);
 		
 		int totalData=new AdminRoomService().selectRoomCount();

@@ -37,6 +37,7 @@ public class AdminRoomService {
 		int result=dao.selectRoomCount(conn);
 		close(conn);
 		return result;
+
 	}
 
 }
