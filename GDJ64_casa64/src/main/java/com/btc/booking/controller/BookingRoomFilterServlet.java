@@ -1,6 +1,7 @@
 package com.btc.booking.controller;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.ServletException;
@@ -11,22 +12,19 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import com.btc.booking.model.service.BookingService;
-import com.btc.booking.model.vo.Booking;
-import com.btc.booking.model.vo.OptionXtra;
-import com.btc.booking.model.vo.SeasonalPrice;
 import com.btc.rooms.model.vo.Room;
 
 /**
- * Servlet implementation class NoticeListServlet
+ * Servlet implementation class BookingRoomFilterServlet
  */
-@WebServlet("/booking/booking-list1.do")
-public class BookingListServlet extends HttpServlet {
+@WebServlet("/booking/roomFilterServlet.do")
+public class BookingRoomFilterServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public BookingListServlet() {
+    public BookingRoomFilterServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -35,27 +33,27 @@ public class BookingListServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
-		List<Room> rooms=new BookingService().selectAllRoom();
-//		System.out.println(rooms);
+		String[] options=request.getParameterValues("option");
+//		System.out.println("options : "+Arrays.toString(options));
+		List<String> optionList = new ArrayList();
+		
+		// for문을 이용한 split -> list 변환
+		for(int i=0; i<options.length; i++){
+			optionList.add(options[i]);
+//			System.out.println(options[i]);
+		}
+		
+		List<Room> rooms= new BookingService().selectFilteringRoom(optionList);
+		System.out.println(rooms);
 		HttpSession session=request.getSession();
 		session.setAttribute("rooms", rooms);
 		
-		List<Booking> bookings=new BookingService().selectAllBooking();
-//		request.setAttribute("bookings", bookings);
-		session.setAttribute("bookings", bookings);
-
-
-		List<SeasonalPrice> seasons=new BookingService().selectAllSeason();
-//		request.setAttribute("seasons", seasons);
-		session.setAttribute("seasons", seasons);
-		
-		List<OptionXtra> xtraOptions= new BookingService().selectAllOption();
-//		request.setAttribute("xtraOptions", xtraOptions);
-		session.setAttribute("xtraOptions", xtraOptions);
-		
 		request.getRequestDispatcher("/views/booking/booking-list1.jsp")
 		.forward(request, response);
+		
+		
+		// Array.asList를 이용한 변환 ( 위에 방법보다 빠름 )
+		// List<String> list = Arrays.asList(str.split(","));
 	}
 
 	/**
