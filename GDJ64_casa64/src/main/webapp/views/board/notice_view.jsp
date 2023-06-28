@@ -33,7 +33,7 @@
 		<button type="button" class="btn btn-primary btn-sm ms-1" 
 			onclick="location.assign('<%=request.getContextPath()%>/notice/insertNotice.do')" >목록</button>
 	</form>
-	</div>
+	</div> $("<form>").submit()
 
 	<!--  수정정보 보내기 -->
 	<!--게시판 상세보기-->

@@ -73,15 +73,12 @@ public class NoticeWriteServlet extends HttpServlet {
 			MultipartRequest mr = new MultipartRequest(request,path,maxSize,encode,dfr);
 			
 			//나머지 문자열은 MultipartRequest객체를 이용해야 된다.
-			int result = 0; //생성,수정 결과를 받는 변수
-			String redirect = "/";
-			String type = mr.getParameter("type"); //생성인지 수정인지 받아오는 값
+			String type = mr.getParameter("type"); //???
 			
-			// 1. 넣어줘야할 값을 파라미터로 받기
+			//넣어줘야할 값을 파라미터로 받기
 			String title = mr.getParameter("title"); // 제목
 			String contents = mr.getParameter("contents"); // 내용
-//			String uploadFile = mr.getParameter("uploadFile"); // 파일
-			String fileName = mr.getOriginalFileName("uploadFile");
+			String fileName = mr.getOriginalFileName("uploadFile"); //파일
 			String saveFilename = mr.getFilesystemName("uploadFile");
 			
 			Notice n = Notice.builder()
@@ -95,7 +92,7 @@ public class NoticeWriteServlet extends HttpServlet {
 					.noticeNo(memberNo)
 					.build();
 			
-			result = new NoticeService().insertNotice(n); //공지사항 생성
+			int result = new NoticeService().insertNotice(n); //공지사항 생성
 			int noticeNo = new NoticeService().searchNoticeNo(); //마지막에 만든 공지사항번호 가져오기
 			if(result > 0) result = new NoticeService().insertNoticeImage(image,noticeNo); //생성로직
 			response.sendRedirect(request.getContextPath() + "/notice/insertNotice.do");

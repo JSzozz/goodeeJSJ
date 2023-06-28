@@ -17,6 +17,7 @@ import javax.servlet.http.HttpSession;
 import org.apache.tomcat.util.json.JSONParser;
 import org.json.simple.JSONObject;
 
+import com.btc.admin.model.service.AdminMemberService;
 import com.btc.member.model.dto.Member;
 import com.btc.member.model.service.MemberService;
 
@@ -45,7 +46,7 @@ public class NaverLoginServlet extends HttpServlet {
 		String clientSecret = "E7kmS6A2oz";// 애플리케이션 클라이언트 시크릿값";
 		String code = request.getParameter("code");
 		String state = request.getParameter("state");
-		String redirectURI = URLEncoder.encode("http://127.0.0.1:8080/GDJ64_casa64/index.jsp", "UTF-8");
+		String redirectURI = URLEncoder.encode("http://localhost:8080/GDJ64_casa64/index.jsp", "UTF-8");
 		String apiURL;
 		apiURL = "https://nid.naver.com/oauth2.0/token?grant_type=authorization_code&";
 		apiURL += "client_id=" + clientId;
@@ -125,15 +126,20 @@ public class NaverLoginServlet extends HttpServlet {
 				String nickName=(String)resObj.get("nickname");
 				String phone=(String)resObj.get("mobile");
 				HttpSession session=request.getSession();
+				System.out.println(nCode);
+				//회원가입
 				if(service.selectSNSMember(nCode)==null) {
 					int inMemberResult=service.insertMember(name, email, nickName, phone,null);
+					if(new AdminMemberService().selectCMember(email)!=null) {
+						new AdminMemberService().deleteCMember(email);
+					}
 					int inSnsMemberResult=service.insertSNSMember(nCode, "naver", name, email, nickName);
 					if(inMemberResult>0&&inSnsMemberResult>0) {
 						Member loginMember=service.selectEmail(email);
 						session.setAttribute("loginMember", loginMember);
 						request.getRequestDispatcher("/index.jsp").forward(request, response);
 					}
-				}else {
+				}else {//로그인
 					Member loginMember=service.selectEmail(email);
 					session.setAttribute("loginMember", loginMember);
 					request.getRequestDispatcher("/index.jsp").forward(request, response);
