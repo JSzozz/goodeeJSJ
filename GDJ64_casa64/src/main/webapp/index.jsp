@@ -39,7 +39,9 @@
 	                        <div id="booking-info">
 	                            <table>
 	                                <tbody>
+	                                <%if(recentBooking!=null){ %>
 	                                    <tr class="resize">
+	                                    
 	                                        <th>예약자&nbsp;</th>
 	                                        <td><%=loginMember.getMemberName() %><br>성인 <%=recentBooking.getGuestAdult() %>명, 아동/유아 <%=recentBooking.getGuestChild() %>명, 영아(24개월 미만) <%=recentBooking.getGuestInfant() %>명</td>
 	                                    </tr>
@@ -55,6 +57,7 @@
 	                                        <th>예약상태&nbsp;</th>
 	                                        <td><%=recentBooking.getBookingState() %>(결제일 : <%=recentBooking.getPaymentDate() %>) </td><br>
 	                                    </tr>
+	                                    <%} %>
 	                                </tbody>
 	                            </table>
 	                            <button type="button" class="btn btn-dark"
