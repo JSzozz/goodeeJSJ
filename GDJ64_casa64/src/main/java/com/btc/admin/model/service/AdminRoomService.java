@@ -86,32 +86,7 @@ public class AdminRoomService {
 		close(conn);
 		return count;
 	}
-//	public int insertInquiry(String memberId, String boardType, String boardTitle, String boardContent, List<String> files) {
-//	       Connection conn = getConnection();
-//	       int result = dao.InsertInquiry(conn, memberId, boardType, boardTitle, boardContent); 파일없이 게시글만 등록하는
-//	       
-//	       if (result > 0) {
-//	           int fileResult = 0;
-//	           if (files != null && !files.isEmpty()) {
-//	               for (int i = 0; i < files.size(); i++) {
-//	                   fileResult = dao.Insertupfiles(conn, files.get(i));
-//	                   if (fileResult <= 0) {
-//	                       break; 
-//	                   }
-//	               }
-//	           }
-//	           
-//	           if (fileResult > 0 || (files != null && files.isEmpty())) { 
-//	               commit(conn);
-//	           } else {
-//	               rollback(conn);
-//	           }
-//	       } else {
-//	           rollback(conn);
-//	       }
-//	       
-//	       return result;
-//	   }
+
 	public int insertInquiry(Room r, List<RoomImage> files, String[] frees) {
 		Connection conn=getConnection();
 		int result=dao.insertRoom(conn, r);
