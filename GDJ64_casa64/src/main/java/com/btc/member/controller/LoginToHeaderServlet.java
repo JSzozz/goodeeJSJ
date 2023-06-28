@@ -1,6 +1,7 @@
 package com.btc.member.controller;
 
 import java.io.IOException;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -8,6 +9,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import com.btc.booking.model.service.BookingService;
+import com.btc.booking.model.vo.Booking;
 import com.btc.member.model.dto.Member;
 import com.btc.member.model.service.MemberService;
 
@@ -41,6 +44,8 @@ public class LoginToHeaderServlet extends HttpServlet {
 		//세션에 저장
 		HttpSession session=request.getSession();//true/flase도 줄 수 있다. 그러나 세션은 (jsp파일에 별도 설정 없는 상태에서는) 기본적으로 존재한다
 		
+		int loginMemberNo= loginMember.getMemberNo();
+		Booking recentBooking = new BookingService().searchBookingByMemberNo(loginMemberNo);
 		
 		
 		//값이 없으면 로그인 금지
@@ -54,6 +59,8 @@ public class LoginToHeaderServlet extends HttpServlet {
 		}else{
 			//메인에 보내기
 			session.setAttribute("loginMember", loginMember);
+			//최근 예약내역 추가함-sj
+			session.setAttribute("recentBooking", recentBooking);
 			response.sendRedirect(request.getContextPath());			
 		}
 		

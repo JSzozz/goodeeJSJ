@@ -101,21 +101,34 @@ public class BookingDao {
 				.build();
 	}
 	
+	public Booking searchBookingByMemberNo(Connection conn, int loginMemberNo) {
+		PreparedStatement pstmt=null;
+		ResultSet rs=null;
+		Booking booking=null;
+		try {
+			pstmt=conn.prepareStatement(sql.getProperty("searchBookingByMemberNo"));
+			pstmt.setInt(1, loginMemberNo);
+			rs=pstmt.executeQuery();
+			if(rs.next()) booking=getBooking(rs);
+		}catch(SQLException e) {
+			e.printStackTrace();
+		}finally {
+			close(rs);
+			close(pstmt);
+		}return booking;
+	}
+	
 	
 	public int searchOptNo(Connection conn, String Optname) {
 		PreparedStatement pstmt= null;
 		ResultSet rs=null;
 		int roomNo=0;
 		try {
-			System.out.println("dao1"+Optname);
 			pstmt=conn.prepareStatement(sql.getProperty("searchOptNo"));
 			//SELECT FREE_NO FROM OPTION_FREE WHERE FREE_NAME = ?
 			pstmt.setString(1, Optname);
 			rs=pstmt.executeQuery();
-			System.out.println("dao2"+rs);
 			if(rs.next()) roomNo=rs.getInt(1);
-			System.out.println("dao3"+roomNo);
-
 		}catch(SQLException e) {
 			e.printStackTrace();
 		}finally {
