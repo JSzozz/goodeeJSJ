@@ -21,14 +21,14 @@ import com.btc.rooms.model.vo.Room;
 /**
  * Servlet implementation class BookingRoomFilterServlet
  */
-@WebServlet("/booking/roomFilterServlet2.do")
-public class BookingRoomFilterFromMainpageServlet extends HttpServlet {
+@WebServlet("/booking/roomFilterByMainServlet.do")
+public class BookingRoomFilterByMainServlet extends HttpServlet {
    private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public BookingRoomFilterFromMainpageServlet() {
+    public BookingRoomFilterByMainServlet() {
         super();
         // TODO Auto-generated constructor stub
     }

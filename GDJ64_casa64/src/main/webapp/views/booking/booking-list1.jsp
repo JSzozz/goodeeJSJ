@@ -12,7 +12,7 @@
 <% List<SeasonalPrice> seasons=(List<SeasonalPrice>)session.getAttribute("seasons");%>
 <% List<OptionXtra> xtraOptions=(List<OptionXtra>)session.getAttribute("xtraOptions");%>
 
-          <%if(rooms.isEmpty()) {%>
+<%--           <%if(rooms.isEmpty()) {%>
          <h1>조회된 예약목록이 없습니다.</h1>
       <%} else{
          for(Room r:rooms){%>
@@ -22,7 +22,7 @@
       <%   }
       }%>  
       <br>
-<%--          <%if(bookings.isEmpty()) {%>
+          <%if(bookings.isEmpty()) {%>
          <h1>조회된 예약목록이 없습니다.</h1>
       <%} else{
          for(Booking b:bookings){%>
@@ -32,8 +32,19 @@
          <br>
       <%   }
       }%>  
-      <br>  --%>
-      <%if(seasons.isEmpty()) {%>
+      <br>  
+          <%if(xtraOptions.isEmpty()) {%>
+         <h1>조회된 예약목록이 없습니다.</h1>
+      <%} else{
+         for(OptionXtra o:xtraOptions){%>
+         <%=o.getXtraName() %>
+         <%=o.getXtraPrice() %>
+         <%=o.getXtraExplanation() %>
+         <br>
+      <%   }
+      }%> 
+      <br> 
+         <%if(seasons.isEmpty()) {%>
          <h1>조회된 예약목록이 없습니다.</h1>
       <%} else{
          for(SeasonalPrice s:seasons){%>
@@ -45,17 +56,7 @@
          <br>
       <%   }
       }%> 
-       <br>
-            <%if(seasons.isEmpty()) {%>
-         <h1>조회된 예약목록이 없습니다.</h1>
-      <%} else{
-         for(OptionXtra o:xtraOptions){%>
-         <%=o.getXtraName() %>
-         <%=o.getXtraPrice() %>
-         <%=o.getXtraExplanation() %>
-         <br>
-      <%   }
-      }%> 
+       <br> --%>
 
 <%@ include file="/views/common/header.jsp"%>
 <% if(loginMember!=null) {%>
@@ -95,7 +96,7 @@
 	          <li class="checkbox keep-open"><label><input name="option" type="checkbox" value="5">커피머신</label></li>
 	          <li class="checkbox keep-open"><label><input name="option" type="checkbox" value="4">웰컴드링크</label></li>
 	          <li class="checkbox keep-open"><label><input name="option" type="checkbox" value="1">구스다운침구</label></li>
-				<center><button onClick="return chkSum();" class="btn btn btn-outline-secondary btn-sm" id="selectBtn">조회하기</button></center>
+				<center><button onClick="return chkSum2();" class="btn btn btn-outline-secondary btn-sm" id="selectBtn">조회하기</button></center>
 	      </ul>
       </form>
       
@@ -369,23 +370,33 @@
             return false;
           };
         };
-      });
+	});
    
    let checkedValues = [];
+   console.log(checkedValues.length==0);
    $(document).ready(function() {
-	   $('#selectBtn').on('click', function() {
-
-	     $('input[type="checkbox"]').each(function() {
-	       if ($(this).is(':checked')) {
-	         checkedValues.push($(this).val());
-	       };
-	       
-	     });
+		$('#selectBtn').on('click', function() {
+			$('input[type="checkbox"]').each(function() {
+				if ($(this).is(':checked')) {
+					checkedValues.push($(this).val());
+					console.log($(this).is(':checked'))
+				};
+				console.log(checkedValues);
+			});
 	   });
-	 });
-	
-/*    <li class="checkbox keep-open"><label><input name="option" type="checkbox" value="오션뷰">오션뷰</label></li> */
-		
+   });
+   
+   //필터 체크 안되는 경우 체크
+	$(function chkSum2() {
+/* 		const valCk1 = $("select[class=availableDays] option:selected").val());//<option value>머무실 기간 선택</option>  */
+ 		$(document).on("click","button[id=selectBtn]",()=>{
+ 			if(checkedValues.length==0){
+				alert("'필터 조건'을 선택해주세요.");
+				return false;
+			};
+			return true;
+		});
+	});		
    
 </script>
 <script src="<%=request.getContextPath()%>/js/sj/list1-clickevent.js"></script>
@@ -436,7 +447,6 @@
 		
 	});	
 		
-	
 	//로딩된 화면에서, 예약이 있는 일자의 객실 클릭 비활성화 기능
  	$(function() {
  		checkin_checkout();

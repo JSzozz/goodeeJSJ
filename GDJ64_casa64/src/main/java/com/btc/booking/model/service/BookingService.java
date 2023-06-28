@@ -72,6 +72,14 @@ public class BookingService {
 		return roomNo;
 	}
 	
+	public Booking searchBookingByMemberNo(int loginMemberNo) {
+		Connection conn=getConnection();
+		Booking booking=dao.searchBookingByMemberNo(conn, loginMemberNo);
+		close(conn);
+		return booking;
+	}
+	
+	
 //	private NoticeDao dao=new NoticeDao();
 //	
 //	public List<Notice> selectNotice(int cPage, int numPerpage){
