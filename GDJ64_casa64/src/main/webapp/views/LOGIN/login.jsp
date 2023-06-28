@@ -7,7 +7,7 @@
 
   <%
     String clientId = "ogN8S_IYucSd1upGMoFq";//애플리케이션 클라이언트 아이디값";
-    String redirectURI = URLEncoder.encode("http://localhost:8080/GDJ64_casa64/naverLogin.do", "UTF-8");
+    String redirectURI = URLEncoder.encode("http://localhost:9090/GDJ64_casa64/naverLogin.do", "UTF-8");
     SecureRandom random = new SecureRandom();
     String state = new BigInteger(130, random).toString();
     String apiURL = "https://nid.naver.com/oauth2.0/authorize?response_type=code";
@@ -51,8 +51,7 @@
                             <a href="<%=request.getContextPath()%>/member/enrollMember.do" class="login__signin login__signin--signup" id="sign-up">회원가입</a>
                         </div>
                         <div id="sns-login">
-                            <span><img src="<%=request.getContextPath()%>/images/icon/kakao-talk-icon.png" alt="" width="50px"></span>
-                            <span><a href="<%=apiURL%>"><img src="<%=request.getContextPath()%>/images/icon/btnG_아이콘사각.png" alt="" width="50px"></a></span>
+                            <span><a href="<%=apiURL%>"><img src="<%=request.getContextPath()%>/images/icon/btnW_완성형.png" alt="" width="200px" height="60px"></a></span>
                         </div>
                     </form>
                 </div>

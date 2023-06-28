@@ -137,7 +137,7 @@
                 <ul class=navbar-nav>
                 
                     <li class="nav-item">
-                        <a class="nav-link" href="<%=request.getContextPath()%>/views/admin/admin-page.jsp">ADMIN</a>
+                        <a class="nav-link" href="<%=request.getContextPath()%>/admin/adminMainPage.do">ADMIN</a>
                     </li>            
                     
                 </ul>
@@ -151,7 +151,7 @@
                     </li>            
                 <%}else{%>
                     <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="<%=request.getContextPath()%>/views/myPage/myPage.jsp"">MYPAGE</a>
+                        <a class="nav-link active" aria-current="page" href="<%=request.getContextPath()%>/views/myPage/myPageInfo.jsp">MYPAGE</a>
                     </li>
                     <li class="nav-item logout">
                         <a class="nav-link logout" onclick="location.replace('<%=request.getContextPath() %>/logout.do')">LOGOUT</a>
