@@ -137,7 +137,7 @@
                 <ul class=navbar-nav>
                 
                     <li class="nav-item">
-                        <a class="nav-link" href="<%=request.getContextPath()%>/views/admin/admin-page.jsp">ADMIN</a>
+                        <a class="nav-link" href="<%=request.getContextPath()%>/admin/adminMainPage.do">ADMIN</a>
                     </li>            
                     
                 </ul>
