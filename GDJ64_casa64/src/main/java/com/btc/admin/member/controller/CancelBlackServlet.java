@@ -38,7 +38,11 @@ public class CancelBlackServlet extends HttpServlet {
 		int no=Integer.parseInt(request.getParameter("memberNo"));
 		new MemberService().updateBlack(no, "N");
 		BlackFile bf=service.selectBlackFile(no);
-		String bfName=bf.getFileName();
+		String bfName=null;
+		if(bf!=null) {
+			bfName=bf.getFileName();
+		}
+		
 		String path=getServletContext().getRealPath("/upload/member/");
 		File file=new File(path+bfName);
 		

@@ -130,9 +130,9 @@ String search = (String) request.getAttribute("search");
 							
 </section>
 <script>
-	$(".info").on("click",function(){
+	$(".info").on("click",function(e){
 		
-		const tr = $(this).closest("tr");
+		const tr = $(e.target).closest("tr");
 		const td=tr.children();
 		const no=td.eq(0).text()
 		
@@ -161,8 +161,8 @@ String search = (String) request.getAttribute("search");
 		
 	});
 	
-	$(".info2").on("click",function(){
-		const tr = $(this).closest("tr");
+	$(".info2").on("click",function(e){
+		const tr = $(e.target).closest("tr");
 		const td=tr.children();
 		no2=td.eq(0).text();
 	
