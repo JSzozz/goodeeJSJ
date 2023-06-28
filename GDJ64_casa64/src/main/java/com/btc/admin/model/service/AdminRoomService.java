@@ -5,6 +5,7 @@ import static com.btc.common.JDBCTemplate.commit;
 import static com.btc.common.JDBCTemplate.getConnection;
 import static com.btc.common.JDBCTemplate.rollback;
 
+import java.nio.file.Files;
 import java.sql.Connection;
 import java.util.List;
 
@@ -108,28 +109,67 @@ public class AdminRoomService {
 //	       
 //	       return result;
 //	   }
-	public int insertInquiry(Room r, List<String> files) {
+	public int insertInquiry(Room r, List<String> files, String[] frees) {
 		Connection conn=getConnection();
-		int result=dao.insertInquiry(conn,r);
+		int result=dao.insertRoom(conn, r);
 		if(result>0) {
-			int fileResult=0;
 			if(files!=null&&!files.isEmpty()) {
 				for(int i=0;i<files.size();i++) {
-					fileResult=dao.insetUpfiles(conn, files.get(i));
-					if(fileResult<=0) {
+					result=dao.insertUpfiles(conn, files.get(i));
+					if(result<=0) {
+						rollback(conn);
 						break;
 					}
 				}
+				if(result>0) {
+					result=dao.updateRoomOption(conn,r.getRoomNo(),frees);
+					if(result>0) commit(conn);
+					else rollback(conn);
+				}else {
+					rollback(conn);
+				}
 			}
-			if(fileResult>0||(files!=null&&files.isEmpty())) {
-				commit(conn);
-				
-			}else {
-				rollback(conn);
-			}
-		}rollback(conn);
+		}
 		return result;
 	}
+	public int updateInquiry(Room r, List<String> filesName,String[] frees) {
+		Connection conn=getConnection();
+		int result=dao.updateRoom(conn, r);
+		if(result>0) {
+			if(filesName!=null&&!filesName.isEmpty()) {
+				for(int i=0;i<filesName.size();i++) {
+					result=dao.insertUpfiles(conn, filesName.get(i));
+					if(result<=0) {
+						rollback(conn);
+						break;
+					}
+				}
+				result=dao.deleteOldOption(conn, r.getRoomNo());
+				if(result>0) {
+					result=dao.updateRoomOption(conn,r.getRoomNo(),frees);
+					if(result>0) commit(conn);
+					else rollback(conn);
+				}else {
+					rollback(conn);
+				}
+			}
+		}
+		return result;
+		
+	}
+//	public int updateRoomOption(int roomNo, String[] frees) {
+//		Connection conn=getConnection();
+//		int result=dao.updateRoomOption(conn,roomNo,frees);
+//		close(conn);
+//		return result;
+//		
+//	}
+//	public int deleteOldOption(int roomNo) {
+//		Connection conn=getConnection();
+//		int result=dao.deleteOldOption(conn, roomNo);
+//		close(conn);
+//		return result;
+//	}
 
 
 }

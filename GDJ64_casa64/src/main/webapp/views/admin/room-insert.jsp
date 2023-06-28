@@ -24,7 +24,7 @@
 						<div class="form-group row mt-3 align-items-center">
 							<label for="roomName" class="col-sm-1 col-form-label text-center">객실명</label>
 							<div class="col-sm-4">
-								<input type="text" id="roomName" class="form-control"
+								<input type="text" name="roomName" class="form-control"
 									placeholder="객실명을 입력해주세요.">
 							</div>
 						</div>
@@ -32,43 +32,50 @@
 						<div class="form-group row mt-3 align-items-center">
 							<label for="roomInfo" class="col-sm-1 col-form-label text-center">객실소개</label>
 							<div class="col-sm-11">
-								<textarea id="roomInfo" class="form-control" rows="4"
-									placeholder="객실정보를 입력해주세요."></textarea>
+								<textarea id="roomInfo" class="form-control" rows="4" name="roomDescription" placeholder="객실정보를 입력해주세요."></textarea>
 							</div>
 						</div>
 						<!-- 인원 -->
 						<div class="form-group row mt-3 align-items-center">
 							<label for="capacity" class="col-sm-1 col-form-label text-center">기준인원</label>
 							<div class="col-sm-2">
-								<input type="number" id="capacity" class="form-control"
-									placeholder="기준인원">
+								<input type="number" id="capacity" class="form-control" name="roomCap" placeholder="기준인원">
 							</div>
 							<label for="maxCapcity"
 								class="col-sm-1 col-form-label text-center">최대인원</label>
 							<div class="col-sm-2">
-								<input type="number" id="maxCapcity" class="form-control"
-									placeholder="최대인원">
+								<input type="number" id="maxCapcity" class="form-control" name="roomMaxCap" placeholder="최대인원">
+							</div>
+						</div>
+						<!-- 크기 -->
+						<div class="form-group row mt-3 align-items-center">
+							<label for="size" class="col-sm-1 col-form-label text-center">사이즈(m^2)</label>
+							<div class="col-sm-3">
+								<input type="number" name="roomSize" class="form-control">
 							</div>
 						</div>
 						<!-- 가격 -->
 						<div class="form-group row mt-3 align-items-center">
 							<label for="price" class="col-sm-1 col-form-label text-center">가격</label>
 							<div class="col-sm-3">
-								<input type="number" id="price" class="form-control"
-									placeholder="가격을 입력해주세요.">
+								<input type="number" id="price" class="form-control" name="roomPrice" placeholder="가격을 입력해주세요.">
 							</div>
 						</div>
 						<!-- 옵션 -->
 						<div class="form-group row mt-3 align-items-center">
 							<label for="option" class="col-sm-1 col-form-label text-center">옵션</label>
-							<div class="col-sm-2">
+							<div class="col-sm-8">
+								
 								<%if(frees==null||frees.isEmpty()){ %>
 									<p>설정된 기본 옵션이 없습니다. 옵션관리에서 옵션을 추가해 주세요</p>
 								<%}else{
 									for(OptionFree of:frees){%>
-										<input type="checkbox" name="optionFree" value="<%=of.getFreeName() %>" ><%=of.getFreeName() %>
+									<label>
+										<input type="checkbox" name="optionFree" value="<%=of.getFreeNo() %>" ><%=of.getFreeName() %>
+									</label>
 									<%}
 								}%>
+								
 							</div>
 						</div>
 						<!-- 객실 사진 -->
@@ -76,7 +83,16 @@
 							<label for="attachment"
 								class="col-sm-1 col-form-label text-center">객실사진</label>
 							<div class="col-sm-4">
-								<input type="file" id="attachment" class="form-control" multiple>
+								<input type="file" id="attachment" class="form-control" name="roomImage">
+								<input type="file" id="attachment" class="form-control" name="roomImage">
+								<input type="file" id="attachment" class="form-control" name="roomImage">
+								<input type="file" id="attachment" class="form-control" name="roomImage">
+								<input type="file" id="attachment" class="form-control" name="roomImage">
+								<input type="file" id="attachment" class="form-control" name="roomImage">
+								<input type="file" id="attachment" class="form-control" name="roomImage">
+								<input type="file" id="attachment" class="form-control" name="roomImage">
+								<input type="file" id="attachment" class="form-control" name="roomImage">
+								<input type="file" id="attachment" class="form-control" name="roomImage">
 							</div>
 						</div>
 						<!-- 객실 공개 -->
@@ -84,14 +100,17 @@
 							<label class="col-sm-1 col-form-label text-center">공개설정</label>
 							<div class="col-sm-11 d-flex align-items-center">
 								<div class="form-check form-check-inline">
-									<input class="form-check-input" type="radio" name="room-status"
-										id="public" value="public" /> <label class="form-check-label"
-										for="public">공개</label>
+								<label>
+									<input class="form-check-input" type="radio" name="bookable"
+										id="public" value='Y' />공개<!--  <label class="form-check-label"
+										for="public">공개</label> -->
+								</label>
 								</div>
 								<div class="form-check form-check-inline">
-									<input class="form-check-input" type="radio" name="room-status"
-										id="private" value="private" /> <label
-										class="form-check-label" for="private">비공개</label>
+								<label>
+									<input class="form-check-input" type="radio" name="bookable"
+										id="private" value='N' />비공개
+								</label>
 								</div>
 							</div>
 						</div>
