@@ -114,7 +114,6 @@ public class AdminMainPageDao {
 		int result = 0;
 		
 		String countQuery = "";
-		
 		switch(cardName) {
 			case "가입회원": countQuery = "memberCount"; break;
 			case "객실": countQuery = "roomCount"; break;
