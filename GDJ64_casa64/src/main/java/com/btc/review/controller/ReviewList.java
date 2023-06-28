@@ -97,7 +97,7 @@ public class ReviewList extends HttpServlet {
 		request.setAttribute("pageBar", pageBar);
 		request.setAttribute("pageStartRowNum", pageStartRowNum);
 
-        List<Review> list = new ReviewService().selectReviews(type, keyword, roomNo, page, POSTS_PER_PAGE); // Review 클래스에 있는 값만 담길 list를 생성
+        List<Review> list = new ReviewService().selectReviews(type, keyword, roomNo, page, POSTS_PER_PAGE); 
 		request.setAttribute("ReviewList", list);
 		request.setAttribute("selectRooms", rooms);
 		request.setAttribute("categoryName", "COMMUNITY");

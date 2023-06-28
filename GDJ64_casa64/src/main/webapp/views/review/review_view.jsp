@@ -128,7 +128,7 @@
 		
 		$.ajax({
 		    type : 'post',           // 타입 (get, post, put 등등)
-		    url : "<%=request.getContextPath()%>/review/reply",           // 요청할 서버url
+		    url : "<%=request.getContextPath()%>/review/reply",        
 		    dataType : 'json',       // 데이터 타입 (html, xml, json, text 등등)
 		    data : {  // 보낼 데이터 (Object , String, Array)
 		      "adminReply" : $('#adminReply').val(),

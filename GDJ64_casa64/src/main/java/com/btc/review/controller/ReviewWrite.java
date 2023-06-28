@@ -147,7 +147,7 @@ public class ReviewWrite extends HttpServlet {
 		 	
 				response.sendRedirect(request.getContextPath() + redirect);
 			} else {
-				// 작성 실패에 대한 피드백을 return 해주기
+				// 작성 실패에 대한 피드백을 return
 			}
 		}
 	}
