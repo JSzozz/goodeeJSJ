@@ -67,8 +67,8 @@ div#filterBox{ text-align:center;}
 /* 객실 조회하기 */
 li.checkbox > label > input{margin : 0.5rem;}
 ul > li > .btn{ margin-top:0.6rem; /* text-decoration: underline;  */ font-size:1.05rem;}
-.fixContainer{position :fixed !important;padding-top:10rem;left:10%; transform: translateX( -50% ); }
-/* 예약하기 */
+/* .fixContainer{position :fixed !important;padding-top:10rem;left:10%; transform: translateX( -50% ); }
+ *//* 예약하기 */
 table.scriptCalendar{margin-left:auto;margin-right:auto;}
 div.reserve_step2{display:none;}
 

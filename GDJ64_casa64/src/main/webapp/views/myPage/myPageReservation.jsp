@@ -85,7 +85,7 @@
 		if(bookingNo > 0 && confirm('취소하시겠습니까?')){
 			$.ajax({
 			    type : 'post',           // 타입 (get, post, put 등등)
-			    url : "<%=request.getContextPath()%>/myPage/cancellation",           // 요청할 서버url
+			    url : "<%=request.getContextPath()%>/myPage/cancellation",           
 			    dataType : 'json',       // 데이터 타입 (html, xml, json, text 등등)
 			    data : {  // 보낼 데이터 (Object , String, Array)
 			      "bookingNo" : bookingNo,

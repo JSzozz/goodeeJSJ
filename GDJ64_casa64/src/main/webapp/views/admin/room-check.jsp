@@ -9,7 +9,7 @@
 	List<RoomOption> options=(List<RoomOption>)request.getAttribute("options");
 %>
 <!-- 삭제 모달 -->
-<div class="modal fade" id="removeRoom" tabindex="-1"
+<div class="modal" id="removeRoom" tabindex="-1"
 	aria-labelledby="removeRoomModalLabel" aria-hidden="true">
 	<div class="modal-dialog">
 		<div class="modal-content">
@@ -20,8 +20,9 @@
 			</div>
 			<div class="modal-body">객실을 정말 삭제합니까?</div>
 			<div class="modal-footer">
-				<button type="button" class="btn btn-danger" onclick="location.href='<%=request.getContextPath()%>/admin/room/deleteRoom.do?roomNo='<%=r.getRoomNo()%>">삭제</button>
-				<button type="button" class="btn btn-dark" data-bs-dismiss="modal">취소</button>
+				<button type="button" class="btn btn-danger" id="confirmDelete">삭제</button>
+<%-- 				onclick="location.href='<%=request.getContextPath()%>/admin/room/deleteRoom.do?roomNo='<%=r.getRoomNo()%>"
+ --%>				<button type="button" class="btn btn-dark" data-bs-dismiss="modal">취소</button>
 				<!-- 취소는 어디다 연결해? 모달 닫고 방금 그 객실 디테일로 -->
 			</div>
 		</div>
@@ -43,7 +44,7 @@
 						<div class="form-group row mt-3 align-items-center">
 							<label for="roomName" class="col-sm-1 col-form-label text-center">객실명</label>
 							<div class="col-sm-4">
-								<input type="text" id="roomName" class="form-control" value="<%=r.getRoomName()%>">
+								<input type="text" id="roomName" name="roomName" class="form-control" value="<%=r.getRoomName()%>">
 							</div>
 						</div>
 						<!-- 객실정보 -->
@@ -100,8 +101,10 @@
 												break;
 											}%>
 										<%}%>
-										<input type="checkbox" name="optionFree" value="<%=of.getFreeName() %>" 
+										<label>
+										<input type="checkbox" name="optionFree" value="<%=of.getFreeNo() %>" 
 										<%=check?"checked":"" %>><%=of.getFreeName() %>
+										</label>
 										<!-- room_option에 해당 방번호와 함께 옵션번호가 있다면 checked로 표시 -->
 									<%}
 								}%>
@@ -113,8 +116,17 @@
 							<label for="attachment"
 								class="col-sm-1 col-form-label text-center">객실사진</label>
 							<div class="col-sm-4">
-								<input type="file" name="roomImage" class="form-control"
-									multiple>
+								<input type="file" name="roomImage" class="form-control" >
+								<input type="file" name="roomImage" class="form-control" >
+								<input type="file" name="roomImage" class="form-control" >
+								<input type="file" name="roomImage" class="form-control" >
+								<input type="file" name="roomImage" class="form-control" >
+								<input type="file" name="roomImage" class="form-control" >
+								<input type="file" name="roomImage" class="form-control" >
+								<input type="file" name="roomImage" class="form-control" >
+								<input type="file" name="roomImage" class="form-control" >
+								<input type="file" name="roomImage" class="form-control" >
+								
 							</div>
 						</div>
 						<!-- 객실 공개 -->
@@ -130,7 +142,7 @@
 				<!-- 관리자 버튼 -->
 				<div class="d-flex justify-content-end mt-2">
 					<input type="button" class="btn btn-dark me-2" onclick="fn_updateRoom();" value="수정">
-					<button type="submit" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#removeRoom">삭제</button>
+					<button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#removeRoom" id="tryDelete">삭제</button>
 				</div>
 				</form>
 			</div>
@@ -140,8 +152,12 @@
 <script>
 	const fn_updateRoom=()=>{
 		//form을 전송하기
-		$("roomFrm").attr("action","<%=request.getContextPath()%>/admin/room/updateRoom.do").submit();
+		$("#roomFrm").attr("action","<%=request.getContextPath()%>/admin/room/updateRoom.do").submit();
 				
 	}
+	$("#confirmDelete").click(e=>{
+		console.log("삭제버튼");
+		location.href='<%=request.getContextPath()%>/admin/room/deleteRoom.do?roomNo=<%=r.getRoomNo()%>';
+	})
 </script>
 <%@ include file="/views/admin/common/footer.jsp"%>

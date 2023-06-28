@@ -31,6 +31,19 @@ public class DeleteRoomServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		int roomNo=Integer.parseInt(request.getParameter("roomNo"));
 		int result=new AdminRoomService().deleteRoom(roomNo);
+		String msg="";
+		String loc="";
+		if(result>0) {
+			msg="객실이 성공적으로 삭제되었습니다.";
+			loc="/admin/room/showAllRoom.do";
+		}else {
+			msg="객실 삭제에 실패했습니다.";
+			loc="/admin/room/roomDetail.do?roomNo="+roomNo;
+		}
+		request.setAttribute("msg", msg);
+		request.setAttribute("loc", loc);
+		request.getRequestDispatcher("/views/common/msg.jsp").forward(request, response);
+		
 		request.setAttribute("result", result);
 		//msg와 loc
 		//성공시 "객실을 성공적으로 삭제했습니다", room.jsp로 이동

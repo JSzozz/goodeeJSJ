@@ -26,9 +26,9 @@ public class ReviewService {
 	 * @return
 	 */
 	public List<Review> selectReviews(String type, String keyword, String roomNo, int page, int postsPerPage){
-		Connection conn = getConnection(); // db 접속 시작
-		List<Review> list = dao.selectReviews(conn, type, keyword, roomNo, page, postsPerPage); // conn 생성해서 dao로 전달하는 역할
-		close(conn); // db 접속 종료
+		Connection conn = getConnection(); 
+		List<Review> list = dao.selectReviews(conn, type, keyword, roomNo, page, postsPerPage);
+		close(conn); 
 		return list;
 	}
 	/**
@@ -39,9 +39,9 @@ public class ReviewService {
 	 * @return
 	 */
 	public int selectReviewsTotalCount(String type, String keyword, String roomNo){
-		Connection conn = getConnection(); // db 접속 시작
+		Connection conn = getConnection(); 
 		int totalCount = dao.selectReviewsTotalCount(conn, type, keyword, roomNo); // conn 생성해서 dao로 전달하는 역할
-		close(conn); // db 접속 종료
+		close(conn); 
 		return totalCount;
 	}
 	/**
@@ -96,9 +96,9 @@ public class ReviewService {
 	 * @return
 	 */
 	public List<ReviewImages> getReviewImages(int reviewNo) {
-		Connection conn = getConnection(); // db 접속 시작
-		List<ReviewImages> list = dao.getReviewImages(conn, reviewNo); // conn 생성해서 dao로 전달하는 역할
-		close(conn); // db 접속 종료
+		Connection conn = getConnection(); 
+		List<ReviewImages> list = dao.getReviewImages(conn, reviewNo); 
+		close(conn); 
 		return list;
 	}
 	/**
@@ -133,9 +133,9 @@ public class ReviewService {
 	 * @return
 	 */
 	public List<Booking> getBookingList(int memberNo){
-		Connection conn = getConnection(); // db 접속 시작
-		List<Booking> list = dao.getBookingList(conn, memberNo); // conn 생성해서 dao로 전달하는 역할
-		close(conn); // db 접속 종료
+		Connection conn = getConnection(); 
+		List<Booking> list = dao.getBookingList(conn, memberNo); 
+		close(conn); 
 		return list;
 		
 	}
@@ -159,9 +159,9 @@ public class ReviewService {
 	 * @return
 	 */
 	public List<Review> selectReviewsMypage(int memberNo){
-		Connection conn = getConnection(); // db 접속 시작
-		List<Review> list = dao.selectReviewsMypage(conn, memberNo); // conn 생성해서 dao로 전달하는 역할
-		close(conn); // db 접속 종료
+		Connection conn = getConnection();
+		List<Review> list = dao.selectReviewsMypage(conn, memberNo); 
+		close(conn);
 		return list;
 	}
 	/**
@@ -169,9 +169,9 @@ public class ReviewService {
 	 * @return
 	 */
 	public List<Room> selectAllRoom() {
-		Connection conn = getConnection(); // db 접속 시작
-		List<Room> list = dao.selectAllRoom(conn); // conn 생성해서 dao로 전달하는 역할
-		close(conn); // db 접속 종료
+		Connection conn = getConnection(); 
+		List<Room> list = dao.selectAllRoom(conn); 
+		close(conn); 
 		return list;
 	}
 	
