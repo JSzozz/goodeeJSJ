@@ -9,10 +9,13 @@ import java.nio.file.Files;
 import java.sql.Connection;
 import java.util.List;
 
+import org.apache.tomcat.jni.File;
+
 import com.btc.admin.model.dao.AdminRoomDao;
 import com.btc.rooms.model.vo.OptionFree;
 import com.btc.rooms.model.vo.OptionXtra;
 import com.btc.rooms.model.vo.Room;
+import com.btc.rooms.model.vo.RoomImage;
 import com.btc.rooms.model.vo.RoomOption;
 
 public class AdminRoomService {
@@ -109,12 +112,14 @@ public class AdminRoomService {
 //	       
 //	       return result;
 //	   }
-	public int insertInquiry(Room r, List<String> files, String[] frees) {
+	public int insertInquiry(Room r, List<RoomImage> files, String[] frees) {
 		Connection conn=getConnection();
 		int result=dao.insertRoom(conn, r);
+		int roomNo=dao.selectRoomNo(conn);
 		if(result>0) {
 			if(files!=null&&!files.isEmpty()) {
 				for(int i=0;i<files.size();i++) {
+					files.get(i).setRoomNo(roomNo);
 					result=dao.insertUpfiles(conn, files.get(i));
 					if(result<=0) {
 						rollback(conn);
@@ -130,27 +135,35 @@ public class AdminRoomService {
 				}
 			}
 		}
-		return result;
+		return roomNo;
 	}
-	public int updateInquiry(Room r, List<String> filesName,String[] frees) {
+	public int updateInquiry(Room r, List<RoomImage> filesName, String[] frees) {
 		Connection conn=getConnection();
 		int result=dao.updateRoom(conn, r);
-		if(result>0) {
-			if(filesName!=null&&!filesName.isEmpty()) {
-				for(int i=0;i<filesName.size();i++) {
-					result=dao.insertUpfiles(conn, filesName.get(i));
-					if(result<=0) {
-						rollback(conn);
-						break;
+		//이전 파일삭제하는 구문 작성 -> 방번호를 기준으로....
+		int deleteImageResult=dao.deleteOldRoomImage(conn,r);
+		if(deleteImageResult<0) {
+			//예전 이미지 삭제 실패
+			rollback(conn);
+		}else {
+			//예전 이미지 삭제 성공->새로운 내용 등록
+			if(result>0) {
+				if(filesName!=null&&!filesName.isEmpty()) {
+					for(int i=0;i<filesName.size();i++) {
+						result=dao.insertUpfiles(conn, filesName.get(i));
+						if(result<=0) {
+							rollback(conn);
+							break;
+						}
 					}
-				}
-				result=dao.deleteOldOption(conn, r.getRoomNo());
-				if(result>0) {
-					result=dao.updateRoomOption(conn,r.getRoomNo(),frees);
-					if(result>0) commit(conn);
-					else rollback(conn);
-				}else {
-					rollback(conn);
+					result=dao.deleteOldOption(conn, r.getRoomNo());
+					if(result>0) {
+						result=dao.updateRoomOption(conn,r.getRoomNo(),frees);
+						if(result>0) commit(conn);
+						else rollback(conn);
+					}else {
+						rollback(conn);
+					}
 				}
 			}
 		}
