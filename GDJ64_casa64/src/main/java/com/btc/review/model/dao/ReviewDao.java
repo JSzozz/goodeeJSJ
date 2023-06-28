@@ -54,12 +54,12 @@ public class ReviewDao {
 			String query = "SELECT * FROM (SELECT ROWNUM AS RNUM, R.* FROM (" + sql
 					+ ") R ) WHERE RNUM BETWEEN ? AND ?";
 
-			pstmt = conn.prepareStatement(query); // 실제 쿼리 들어가고
+			pstmt = conn.prepareStatement(query);
 			pstmt.setInt(1, (page - 1) * postsPerPage + 1);
 			pstmt.setInt(2, page * postsPerPage);
-			rs = pstmt.executeQuery(); // 쿼리 실행
+			rs = pstmt.executeQuery(); 
 
-			while (rs.next()) { // rs 다음 값이 있을 경우
+			while (rs.next()) {
 				Review reviews = getReviews(rs);
 				list.add(reviews); //
 			}
@@ -119,16 +119,14 @@ public class ReviewDao {
 	 */
 	public int insertReviews(Connection conn, Review reviews) {
 		PreparedStatement pstmt = null;
-		int result = 0; // 실패를 기본 값으로
+		int result = 0; 
 
 		try {
-			conn = getConnection(); // DB 접속
-			// 3. 쿼리 작성
+			conn = getConnection(); 
 			String sql = "INSERT INTO REVIEW (NO,TITLE,CONTENTS,VIEWS,IS_DELETED,ROOM_NO,MEMBER_NO,BOOKING_NO, DATE_CREATED, DATE_MODIFIED) "
-					+ "VALUES (REVIEW_SEQ.NEXTVAL,?,?,?,?,?,?,?, SYSTIMESTAMP, SYSTIMESTAMP)"; // 실행할
-																								// 쿼리
+					+ "VALUES (REVIEW_SEQ.NEXTVAL,?,?,?,?,?,?,?, SYSTIMESTAMP, SYSTIMESTAMP)";
 
-			pstmt = conn.prepareStatement(sql); // 실행 준비
+			pstmt = conn.prepareStatement(sql); 
 //         4. 쿼리에 파라미터 셋팅
 			pstmt.setString(1, reviews.getTitle());
 			pstmt.setString(2, reviews.getContents());
@@ -138,14 +136,13 @@ public class ReviewDao {
 			pstmt.setInt(6, reviews.getMemberNo());
 			pstmt.setInt(7, reviews.getBookingNo());
 
-			result = pstmt.executeUpdate(); // 쿼리 실행
+			result = pstmt.executeUpdate(); 
 			if (result > 0) {
 				conn.commit();
 			} else {
 				conn.rollback();
 			}
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		} finally {
 			close(pstmt);
@@ -161,26 +158,23 @@ public class ReviewDao {
 	 */
 	public int updateReviews(Connection conn, Review reviews) {
 		PreparedStatement pstmt = null;
-		int result = 0; // 실패를 기본 값으로
+		int result = 0; 
 
 		try {
-			conn = getConnection(); // DB 접속
-			// 3. 쿼리 작성
+			conn = getConnection(); 
 			String sql = "UPDATE REVIEW SET TITLE = ?, CONTENTS = ?, DATE_MODIFIED = SYSTIMESTAMP "
 					+ "WHERE REVIEW.NO = ?";
-			pstmt = conn.prepareStatement(sql); // 실행 준비
-//	         4. 쿼리에 파라미터 셋팅
+			pstmt = conn.prepareStatement(sql); 
 			pstmt.setString(1, reviews.getTitle());
 			pstmt.setString(2, reviews.getContents());
 			pstmt.setInt(3, reviews.getNo());
-			result = pstmt.executeUpdate(); // 쿼리 실행
+			result = pstmt.executeUpdate();
 			if (result > 0) {
 				conn.commit();
 			} else {
 				conn.rollback();
 			}
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		} finally {
 			close(pstmt);
@@ -205,11 +199,11 @@ public class ReviewDao {
 			sql += " AND REVIEW.MEMBER_NO = ? ";
             sql += " ORDER BY REVIEW.DATE_CREATED ";
 
-			pstmt = conn.prepareStatement(sql); // 실제 쿼리 들어가고
+			pstmt = conn.prepareStatement(sql); 
 			pstmt.setInt(1, memberNo);
-			rs = pstmt.executeQuery(); // 쿼리 실행
+			rs = pstmt.executeQuery(); 
 
-			while (rs.next()) { // rs 다음 값이 있을 경우
+			while (rs.next()) { 
 				Review reviews = getReviews(rs);
 				list.add(reviews); //
 			}
@@ -236,10 +230,10 @@ public class ReviewDao {
 		try {
 			String sql = "SELECT R.ROOM_NO, R.ROOM_NAME FROM ROOM R " + "WHERE R.BOOKABLE='Y'"; // 실행할 기본 쿼리
 
-			pstmt = conn.prepareStatement(sql); // 실제 쿼리 들어가고
-			rs = pstmt.executeQuery(); // 쿼리 실행
+			pstmt = conn.prepareStatement(sql); 
+			rs = pstmt.executeQuery();
 
-			while (rs.next()) { // rs 다음 값이 있을 경우
+			while (rs.next()) { 
 				Room rooms = new Room();
 				rooms.setRoomNo(rs.getInt("ROOM_NO"));
 				rooms.setRoomName(rs.getString("ROOM_NAME"));
@@ -267,13 +261,13 @@ public class ReviewDao {
 		List<ReviewImages> list = new ArrayList();
 
 		try {
-			String sql = "SELECT * FROM REVIEW_IMAGES RI WHERE RI.REVIEW_NO = ?"; // 실행할 기본 쿼리
+			String sql = "SELECT * FROM REVIEW_IMAGES RI WHERE RI.REVIEW_NO = ?";
 
-			pstmt = conn.prepareStatement(sql); // 실제 쿼리 들어가고
+			pstmt = conn.prepareStatement(sql); 
 			pstmt.setInt(1, reviewNo);
-			rs = pstmt.executeQuery(); // 쿼리 실행
+			rs = pstmt.executeQuery(); 
 
-			while (rs.next()) { // rs 다음 값이 있을 경우
+			while (rs.next()) { 
 				ReviewImages ri = new ReviewImages();
 				ri.setNo(rs.getInt("NO"));
 				ri.setFileName(rs.getString("FILENAME"));
@@ -311,11 +305,11 @@ public class ReviewDao {
 					+ "LEFT JOIN REVIEW R ON R.MEMBER_NO = M.MEMBER_NO AND R.BOOKING_NO = B.BOOKING_NO AND R.IS_DELETED = 0 "
 					+ "WHERE B.MEMBER_NO = ? AND B.BOOKING_STATE = '이용완료' AND R.NO IS NULL"; // 실행할 기본 쿼리
 
-			pstmt = conn.prepareStatement(sql); // 실제 쿼리 들어가고
+			pstmt = conn.prepareStatement(sql); 
 			pstmt.setInt(1, memberNo);
-			rs = pstmt.executeQuery(); // 쿼리 실행
+			rs = pstmt.executeQuery(); 
 
-			while (rs.next()) { // rs 다음 값이 있을 경우
+			while (rs.next()) { 
 				Booking bookings = new MyPageDao().getBooking(rs);
 				bkList.add(bookings);
 			}
@@ -338,7 +332,7 @@ public class ReviewDao {
 	 */
 	public int uploadImages(Connection conn, List<ReviewImages> imgList, Review reviews) {
 		PreparedStatement pstmt = null;
-		int result = 0; // 실패를 기본 값으로
+		int result = 0;
 		int reviewNo = 0;
 		int sum = 0;
 		// 1. reivew_images 에 insert
@@ -352,19 +346,19 @@ public class ReviewDao {
 			// 반복문으로 insert 쿼리 작성 및 실행
 			// 3. 쿼리 작성
 
-			pstmt = conn.prepareStatement(sql); // 실행 준비
+			pstmt = conn.prepareStatement(sql); 
 //	         4. 쿼리에 파라미터 셋팅
 
 			pstmt.setInt(1, reviews.getBookingNo());
 			pstmt.setInt(2, reviews.getMemberNo());
-			ResultSet rs = pstmt.executeQuery(); // 쿼리 실행
+			ResultSet rs = pstmt.executeQuery(); 
 			while (rs.next()) {
 				reviewNo = rs.getInt("NO");
 			}
 			if (reviewNo > 0) {
 				sql = "INSERT INTO REVIEW_IMAGES VALUES(REVIEW_IMAGES_SEQ.NEXTVAL, ?, ?, ?, SYSTIMESTAMP)";
 				for (ReviewImages ri : imgList) {
-					pstmt = conn.prepareStatement(sql); // 실행 준비
+					pstmt = conn.prepareStatement(sql); 
 					pstmt.setInt(1, reviewNo);
 					pstmt.setString(2, ri.getFileName());
 					pstmt.setString(3, ri.getSaveFileName());
@@ -378,7 +372,6 @@ public class ReviewDao {
 				conn.rollback();
 			}
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		} finally {
 			close(pstmt);
@@ -440,25 +433,22 @@ public class ReviewDao {
 	 */
 	public int updateAdminReply(Connection conn, String adminReply, int reviewNo, int isReply) {
 		PreparedStatement pstmt = null;
-		int result = 0; // 실패를 기본 값으로
+		int result = 0; 
 
 		try {
-			conn = getConnection(); // DB 접속
-			// 3. 쿼리 작성
+			conn = getConnection(); 
 			String sql = "UPDATE REVIEW SET ADMIN_REPLY = ?, IS_REPLY = ?, LAST_REPLY_DATE = SYSTIMESTAMP WHERE NO = ?";
-			pstmt = conn.prepareStatement(sql); // 실행 준비
-//	         4. 쿼리에 파라미터 셋팅
+			pstmt = conn.prepareStatement(sql); 
 			pstmt.setString(1, adminReply);
 			pstmt.setInt(2, isReply);
 			pstmt.setInt(3, reviewNo);
-			result = pstmt.executeUpdate(); // 쿼리 실행
+			result = pstmt.executeUpdate(); 
 			if (result > 0) {
 				conn.commit();
 			} else {
 				conn.rollback();
 			}
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		} finally {
 			close(pstmt);
@@ -475,24 +465,21 @@ public class ReviewDao {
 	 */
 	public int deleteReview(Connection conn, int reviewNo) {
 		PreparedStatement pstmt = null;
-		int result = 0; // 실패를 기본 값으로
+		int result = 0; 
 
 		try {
-			conn = getConnection(); // DB 접속
-			// 3. 쿼리 작성
+			conn = getConnection(); 
 			String sql = "UPDATE REVIEW SET IS_DELETED = 1, DATE_DELETED = SYSTIMESTAMP"
 					+ "		WHERE REVIEW.NO = ?";
-			pstmt = conn.prepareStatement(sql); // 실행 준비
-//	         4. 쿼리에 파라미터 셋팅
+			pstmt = conn.prepareStatement(sql);
 			pstmt.setInt(1, reviewNo);
-			result = pstmt.executeUpdate(); // 쿼리 실행
+			result = pstmt.executeUpdate(); 
 			if (result > 0) {
 				conn.commit();
 			} else {
 				conn.rollback();
 			}
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		} finally {
 			close(pstmt);
@@ -508,16 +495,14 @@ public class ReviewDao {
 	 */
 	public int reviewCountUpdate(Connection conn, int reviewNo) {
 		PreparedStatement pstmt = null;
-		int result = 0; // 실패를 기본 값으로
+		int result = 0;
 
 		try {
-			conn = getConnection(); // DB 접속
-			// 3. 쿼리 작성
+			conn = getConnection();
 			String sql = "UPDATE REVIEW SET VIEWS = VIEWS+1 WHERE NO = ?";
-			pstmt = conn.prepareStatement(sql); // 실행 준비
-//	         4. 쿼리에 파라미터 셋팅
+			pstmt = conn.prepareStatement(sql);
 			pstmt.setInt(1, reviewNo);
-			result = pstmt.executeUpdate(); // 쿼리 실행
+			result = pstmt.executeUpdate();
 			if (result > 0) {
 				conn.commit();
 			} else {

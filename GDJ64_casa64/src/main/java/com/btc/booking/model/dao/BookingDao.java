@@ -101,14 +101,39 @@ public class BookingDao {
 				.build();
 	}
 	
-	public List<Room> selectFilteringRoom(Connection conn, List<String> optionList){
+	
+	public int searchOptNo(Connection conn, String Optname) {
+		PreparedStatement pstmt= null;
+		ResultSet rs=null;
+		int roomNo=0;
+		try {
+			System.out.println("dao1"+Optname);
+			pstmt=conn.prepareStatement(sql.getProperty("searchOptNo"));
+			//SELECT FREE_NO FROM OPTION_FREE WHERE FREE_NAME = ?
+			pstmt.setString(1, Optname);
+			rs=pstmt.executeQuery();
+			System.out.println("dao2"+rs);
+			if(rs.next()) roomNo=rs.getInt(1);
+			System.out.println("dao3"+roomNo);
+
+		}catch(SQLException e) {
+			e.printStackTrace();
+		}finally {
+			close(rs);
+			close(pstmt);
+		}
+		return roomNo;
+	}
+	
+	public List<Room> selectFilteringRoom(Connection conn, String optionList){
 		PreparedStatement pstmt=null;
 		ResultSet rs=null;
+		String query= sql.getProperty("selectFilteringRoom1");
 		List<Room> list=new ArrayList();
 		try {
-			pstmt=conn.prepareStatement(sql.getProperty("selectFilteringRoom1"));
+			query=query.replace("#COL", optionList);//v : 컬럼명을 문자열로 인식하기 때문에 필요한 작업
 			//SELECT * FROM ROOM
-			pstmt.setString(1, optionList.get(0));
+			pstmt=conn.prepareStatement(query);
 			rs=pstmt.executeQuery();
 			while(rs.next()) {
 				list.add(getRoomPart(rs));
@@ -216,6 +241,7 @@ public class BookingDao {
 		}
 		return roomNo;
 	}
+	
 	
 	public int insertBooking(Connection conn, Booking b	) {
 	PreparedStatement pstmt=null;
