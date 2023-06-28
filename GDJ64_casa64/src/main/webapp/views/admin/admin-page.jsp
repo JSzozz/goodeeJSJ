@@ -1,11 +1,17 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ page import="java.util.List"%>
+<%@ page import="com.btc.admin.model.vo.Chart"%>
+<%@ page import="com.google.gson.Gson" %>  
 <%@ include file="/views/admin/common/header.jsp" %>
 <%
 	int memberCount = (int)request.getAttribute("memberCount");
 	int roomCount = (int)request.getAttribute("roomCount");
 	int bookingRoomCount = (int)request.getAttribute("bookingRoomCount");
 	int requestCancelRoomCount = (int)request.getAttribute("requestCancelRoomCount");
+	
+	List<Chart> chartBookingCount = (List<Chart>)request.getAttribute("chartBookingCount");
+	List<Chart> chartBookingPayment = (List<Chart>)request.getAttribute("chartBookingPayment");
 %>
                     <!-- 컨테츠 -->
                     <section>
@@ -86,12 +92,16 @@
                                             </div>
                                         </div>
                                     </div>
+                                    <!-- 차트 -->
+                                    <canvas id="adminChart"></canvas>
                                 </div>
                             </div>
                         </div>
                     </section>
 <script>
-    const PATH = "<%=request.getContextPath()%>/admin/updateCard.do"
+    const PATH = "<%=request.getContextPath()%>/admin/updateCard.do";
+    const CHART_BOOKING_COUNT = <%=new Gson().toJson(chartBookingCount)%>;
+    const CHART_BOOKING_PAYMENT = <%=new Gson().toJson(chartBookingPayment)%>;
 </script>
 <script src="<%=request.getContextPath() %>/js/dj/admin-page.js"></script>                    
 <%@ include file="/views/admin/common/footer.jsp"%>

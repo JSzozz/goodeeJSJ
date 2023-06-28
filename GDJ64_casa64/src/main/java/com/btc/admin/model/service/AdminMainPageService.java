@@ -1,10 +1,15 @@
 package com.btc.admin.model.service;
 
+import static com.btc.common.JDBCTemplate.close;
+import static com.btc.common.JDBCTemplate.getConnection;
+
 import java.sql.Connection;
+import java.util.List;
 
 import com.btc.admin.model.dao.AdminMainPageDao;
-
-import static com.btc.common.JDBCTemplate.*;
+import com.btc.admin.model.vo.Chart;
+import com.btc.booking.model.vo.Booking;
+import com.btc.rooms.model.vo.Room;
 
 public class AdminMainPageService {
 	private static AdminMainPageService service = new AdminMainPageService();
@@ -47,4 +52,27 @@ public class AdminMainPageService {
 		close(conn);
 		return result;
 	}
+	
+	public List<Room> roomList() {
+		Connection conn = getConnection();
+		List<Room> list = AdminMainPageDao.getMainPageDao().getRoomList(conn);
+		close(conn);
+		return list;
+	}
+	
+	public List<Chart> chartBookingCount() {
+		Connection conn = getConnection();
+		List<Chart> chart = AdminMainPageDao.getMainPageDao().getChartBookingCount(conn);
+		close(conn);
+		return chart;
+	}
+	
+	public List<Chart> chartBookingPayment() {
+		Connection conn = getConnection();
+		List<Chart> chart = AdminMainPageDao.getMainPageDao().getChartBookingPayment(conn);
+		close(conn);
+		return chart;
+	}
+	
+	
 }
