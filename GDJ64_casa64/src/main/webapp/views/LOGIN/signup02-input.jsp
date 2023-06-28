@@ -38,7 +38,7 @@
                         </div>
                         <div class="login__box">
                             <i class='bx bx-phone login__icon'></i>
-                            <input type="text" placeholder="phone" class="login__input" name="phone" required>
+                            <input type="text" placeholder="phone" class="login__input" name="phone">
                         </div>
                         
                         <div id="pw-box">
@@ -129,6 +129,7 @@
 	    $(".pwcheck").append($("<p>").text(msg).css("color",color));
 	});
 	
+
 		
 	</script>
 

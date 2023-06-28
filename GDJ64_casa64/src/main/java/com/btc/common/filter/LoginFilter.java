@@ -10,26 +10,20 @@ import javax.servlet.ServletResponse;
 import javax.servlet.annotation.WebFilter;
 import javax.servlet.http.HttpFilter;
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import com.btc.member.model.dto.Member;
 
 /**
- * Servlet Filter implementation class AdminFilter
+ * Servlet Filter implementation class LoginFilter
  */
-@WebFilter(urlPatterns = {"/admin/*"})
-public class AdminFilter extends HttpFilter implements Filter {
+@WebFilter(urlPatterns = {"/member/*","/myPage/*"})
+public class LoginFilter extends HttpFilter implements Filter {
        
     /**
-	 * 
-	 */
-	private static final long serialVersionUID = -3624672988505139264L;
-
-	/**
      * @see HttpFilter#HttpFilter()
      */
-    public AdminFilter() {
+    public LoginFilter() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -48,20 +42,16 @@ public class AdminFilter extends HttpFilter implements Filter {
 		HttpSession session=((HttpServletRequest)request).getSession();
 		Member m=(Member)session.getAttribute("loginMember");
 		
-		if(m==null||m.getMemberType()!=1) {
+		if(m==null) {
 			String msg="잘못된 접근입니다", loc="/";
 			request.setAttribute("msg",msg);
 			request.setAttribute("loc", loc);
-			request.getRequestDispatcher("/views/common/msg.jsp").forward(request, response);
-//			throw new RuntimeException("잘못된 접근입니다.");
+			request.getRequestDispatcher("/views/LOGIN/login.jsp").forward(request, response);
 	
 		}else {
 			chain.doFilter(request, response);
 		}
-			
-		
-		
-		
+	
 	}
 
 	/**

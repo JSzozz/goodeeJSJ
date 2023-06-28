@@ -61,10 +61,10 @@ String search = (String) request.getAttribute("search");
 							<td><%=m.getPhone() %></td>
 							<td><%=m.getBlackDate() %></td>
 							<td>
-								<button type="button" class="btn btn-dark btn-sm" onclick="memberInfo();" name="info" value="<%=m.getMemberNo()%>">상세조회</button>
+								<button type="button" class="btn btn-dark btn-sm info"  >상세조회</button>
 							</td>
 							<td>
-								<button type="button" class="btn btn-dark btn-sm" data-bs-toggle="modal" data-bs-target="#cancelBlackMember" name="info2" value="<%=m.getMemberNo()%>">블랙해제</button>
+								<button type="button" class="btn btn-dark btn-sm info2" data-bs-toggle="modal" data-bs-target="#cancelBlackMember" >블랙해제</button>
 							</td>
 						</tr>
 						<%} }%>
@@ -91,7 +91,7 @@ String search = (String) request.getAttribute("search");
 											<button type="button" class="btn-close"
 												data-bs-dismiss="modal" aria-label="Close"></button>
 										</div>
-										<div class="modal-body">
+										<div class="modal-body infobody">
 											
 											
 										</div>
@@ -115,12 +115,12 @@ String search = (String) request.getAttribute("search");
 												data-bs-dismiss="modal" aria-label="Close"></button>
 										</div>
 										<div class="modal-body">
-											<p>정말 블랙을 해제하겠습니까?</p>
+											<p> 정말 블랙을 해제하겠습니까?</p>
 											
 										</div>
 										<div class="modal-footer">
 											<button type="button" class="btn btn-dark" data-bs-dismiss="modal">취소</button>
-											<button type="button" class="btn btn-dark" data-bs-dismiss="modal" onclick="cancelBlack();">확인</button>
+											<button type="button" class="btn btn-dark cbutton" data-bs-dismiss="modal">확인</button>
 										</div>
 
 									</div>
@@ -130,38 +130,51 @@ String search = (String) request.getAttribute("search");
 							
 </section>
 <script>
-	const memberInfo=()=>{
-		const nov=$("button[name=info]").val();
+	$(".info").on("click",function(){
+		
+		const tr = $(this).closest("tr");
+		const td=tr.children();
+		const no=td.eq(0).text()
+		
 		
 		$.ajax({
 			url: "<%=request.getContextPath()%>/admin/member/blackView.do",
 			type:"post",
 			data:{
-				memberNo:nov
+				memberNo:no
 			},
 			success:function(data){
 				var obj=JSON.parse(data);
-					$(".modal-body").html("");
+					$(".infobody").html("");
+					if(obj.imgs!=null){
+						$(".infobody").append("<img src='<%=request.getContextPath()%>/upload/member/"+obj.imgs+"' width='400' height='300'><br><br>");
+					}
 					
-					$(".modal-body").append("<img src='<%=request.getContextPath()%>/upload/member/"+obj.imgs+"' width='400' height='300'><br><br>");
-					$(".modal-body").append(obj.reason+"<br>");
+					$(".infobody").append(obj.reason+"<br>");
 				
 				
 			},error:function(){
 				alert("서버통신실패");
 			}
 		});
-		$("#blackMemberInfo").modal("show");
+		$("#blackMemberInfo").modal("show"); 
 		
-	};
+	});
 	
-	const cancelBlack=()=>{
-		const nov=$("button[name=info2]").val();
+	$(".info2").on("click",function(){
+		const tr = $(this).closest("tr");
+		const td=tr.children();
+		no2=td.eq(0).text();
+	
+		
+	});
+	
+		$(".cbutton").on("click",function(){
 		$.ajax({
 			url: "<%=request.getContextPath()%>/admin/member/cancelblack.do",
 			type:"post",
 			data:{
-				memberNo:nov
+				memberNo:no2
 			},
 			success:function(data){
 				if(data==1){
@@ -176,9 +189,7 @@ String search = (String) request.getAttribute("search");
 				alert("서버통신실패");
 			}
 		});
-		
-	};
-	
+		});
 </script>
 
 
