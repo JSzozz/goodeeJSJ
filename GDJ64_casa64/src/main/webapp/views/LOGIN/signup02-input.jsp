@@ -38,7 +38,7 @@
                         </div>
                         <div class="login__box">
                             <i class='bx bx-phone login__icon'></i>
-                            <input type="text" placeholder="phone" class="login__input" name="phone">
+                            <input type="text" placeholder="phone" class="login__input" name="phone" required>
                         </div>
                         
                         <div id="pw-box">
