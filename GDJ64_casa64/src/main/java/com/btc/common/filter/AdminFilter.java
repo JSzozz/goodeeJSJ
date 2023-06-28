@@ -49,11 +49,17 @@ public class AdminFilter extends HttpFilter implements Filter {
 		Member m=(Member)session.getAttribute("loginMember");
 		
 		if(m==null||m.getMemberType()!=1) {
-			
-			((HttpServletResponse)response).sendRedirect("/");
+			String msg="잘못된 접근입니다", loc="/";
+			request.setAttribute("msg",msg);
+			request.setAttribute("loc", loc);
+			request.getRequestDispatcher("/views/common/msg.jsp").forward(request, response);
+//			throw new RuntimeException("잘못된 접근입니다.");
+	
+		}else {
+			chain.doFilter(request, response);
 		}
 			
-			chain.doFilter(request, response);
+		
 		
 		
 	}
