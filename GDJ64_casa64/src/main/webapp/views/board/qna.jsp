@@ -82,7 +82,7 @@
 			<%} else { 
 				for(int i=0;i<Qnas.size();i++){%>
 				<tr>
-					<td><%=Qnas.get(i).getMemberNo()%></td>
+					<td><%=Qnas.get(i).getQuestionNo()%></td>
 					<td><%=Qnas.get(i).getCategoryName()%></td>
 					<td>
 						<a href="<%=request.getContextPath()%>/qna/viewQna.do?no=<%=Qnas.get(i).getQuestionNo()%>

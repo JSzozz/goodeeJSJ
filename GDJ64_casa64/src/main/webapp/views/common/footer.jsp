@@ -18,6 +18,6 @@
 </footer>
 </div>
     <!-- js파일 -->
-    <script src="<%=request.getContextPath()%>/js/sw/test.js"></script>
+<%--     <script src="<%=request.getContextPath()%>/js/sw/test.js"></script> --%>
 </body>
 </html>

@@ -16,7 +16,7 @@ import com.btc.notice.model.service.QnaService;
 /**
  * Servlet implementation class CategoryInsertNameServlet
  */
-@WebServlet("/qna/insertQna.do")
+@WebServlet("/qna/insertQna.do") //qna.jsp로이동하는 서블릿
 public class QnaInsertServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
@@ -51,11 +51,16 @@ public class QnaInsertServlet extends HttpServlet {
 		}
 		String pageBar="";
 		int totalData=new QnaService().selectQnaCount(); //전체 게시물 수
+		System.out.println("전체 개수 : "+totalData);
 		List<Qna> Qnas=new QnaService().selectQna(cPage,numPerpage); //게시물 가져오기
-		List<String>$memberName=new ArrayList();
-		for(int i=0; i<totalData;i++) {
+		System.out.println("게시물 개수 : "+Qnas);
+		List<String>$memberName = new ArrayList<String>();
+		for(int i=0; i<totalData;i++) { //처음에는 1~5까지 하고, 그다음은 6~10까지
+			System.out.println(i);
+			System.out.println(Qnas.get(i).getMemberNo());
 			String memberName= new QnaService().checkName(Qnas.get(i).getMemberNo()); //번호로 이름 가져오기
 			$memberName.add(memberName);
+			System.out.println("memberName : "+memberName+"\nQnas.get(i).getMemberNo() : "+Qnas.get(i).getMemberNo()+"\n$memberName : "+$memberName);
 		}
 //		System.out.println($memberName);
 			request.setAttribute("memberName", $memberName);
