@@ -115,7 +115,8 @@
 							</div>
 						</div>
 						<div class="d-flex justify-content-end mt-2">
-							<button type="submit" class="btn btn-dark">객실추가</button>					
+							<button type="submit" class="btn btn-dark" id="addRoom">객실추가</button>		
+							<!-- 넘어가서 빈페이지나오네-->			
 						</div>
 					</div>
 				</form>
@@ -133,4 +134,7 @@
 					
 					 -->
 </section>
+<script>
+
+</script>
 <%@ include file="/views/admin/common/footer.jsp"%>
