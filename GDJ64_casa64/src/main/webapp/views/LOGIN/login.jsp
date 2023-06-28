@@ -51,7 +51,7 @@
                             <a href="<%=request.getContextPath()%>/member/enrollMember.do" class="login__signin login__signin--signup" id="sign-up">회원가입</a>
                         </div>
                         <div id="sns-login">
-                            <span><a href="<%=apiURL%>"><img src="<%=request.getContextPath()%>/images/icon/btnW_완성형.png" alt="" width="200px" height="60px"></a></span>
+                            <span><a href="<%=apiURL%>"><img src="<%=request.getContextPath()%>/images/icon/btnW_완성형.png" alt="" width="200px"></a></span>
                         </div>
                     </form>
                 </div>
