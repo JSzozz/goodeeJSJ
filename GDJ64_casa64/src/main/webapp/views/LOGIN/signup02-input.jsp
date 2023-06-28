@@ -120,15 +120,18 @@
 	        if(i.length==j.length&&i==j){
 	            msg='*비밀번호가 일치합니다.';
 	            color='green';
+	            $(".login__button").attr("disabled",false);
 	        }else{
 	            msg='*비밀번호가 일치하지 않습니다.';
 	            color='red';
+	            $(".login__button").attr("disabled",true);
 	        }
 	    }
 	    $(".pwcheck").html("");
 	    $(".pwcheck").append($("<p>").text(msg).css("color",color));
 	});
 	
+
 		
 	</script>
 
