@@ -81,10 +81,11 @@
                         <div>
                             <h3 id="KeywordSection">취향저격! 키워드로 객실 찾기</h3>
                         	<form action="<%=request.getContextPath()%>/booking/roomFilterServlet2.do" method="post">
+                        	<!-- BookingRoomFilterFromMainpageServlet -->
 	                            <input name="options" class="filter-search-value" type="hidden" placeholder=" 키워드 선택하기" readonly>
 	                            <div id="filter-header">
-	                                <span id="filter-search-button">
-	                                	<button onClick="return chkSum();"  id="selectBtn">
+	                                <span id="filter-search-button" onClick="return chkSum();" >
+	                                	<button onClick="return chkSum();"  id="selectBtn" style="background-color:#212529;">
 		                                	<img src="<%=request.getContextPath()%>/images/icon/search-3-24.png" alt="">
 	                                	</button>
 	                                </span>
