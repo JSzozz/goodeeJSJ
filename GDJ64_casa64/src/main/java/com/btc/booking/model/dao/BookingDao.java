@@ -101,14 +101,15 @@ public class BookingDao {
 				.build();
 	}
 	
-	public List<Room> selectFilteringRoom(Connection conn, List<String> optionList){
+	public List<Room> selectFilteringRoom(Connection conn, String optionList){
 		PreparedStatement pstmt=null;
 		ResultSet rs=null;
+		String query= sql.getProperty("selectFilteringRoom1");
 		List<Room> list=new ArrayList();
 		try {
-			pstmt=conn.prepareStatement(sql.getProperty("selectFilteringRoom1"));
+			query=query.replace("#COL", optionList);//v : 컬럼명을 문자열로 인식하기 때문에 필요한 작업
 			//SELECT * FROM ROOM
-			pstmt.setString(1, optionList.get(0));
+			pstmt=conn.prepareStatement(query);
 			rs=pstmt.executeQuery();
 			while(rs.next()) {
 				list.add(getRoomPart(rs));
