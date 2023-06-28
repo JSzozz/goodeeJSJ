@@ -68,7 +68,9 @@ public class AdminBookingDao {
 			pstmt.setInt(1, bookingNo);
 			rs = pstmt.executeQuery();
 			
-			if(rs.next()) booking = getBooking(rs);
+			if(rs.next()) {
+				booking = getBooking(rs);
+			}
 		}catch(Exception e) {
 			e.printStackTrace();
 		}finally {
@@ -112,8 +114,9 @@ public class AdminBookingDao {
 			pstmt = conn.prepareStatement(query.getProperty("bookingCount"));
 			rs = pstmt.executeQuery();
 			
-			if(rs.next()) result=rs.getInt(1);
-			
+			if(rs.next()) {
+				result=rs.getInt(1);
+			}
 		}catch(Exception e) {
 			e.printStackTrace();
 		}finally {
@@ -161,7 +164,6 @@ public class AdminBookingDao {
 				pstmt.setInt(4, cPage*numPerPage);
 			}
 
-
 			rs = pstmt.executeQuery();
 			
 			while(rs.next()) {
@@ -201,7 +203,6 @@ public class AdminBookingDao {
 			pstmt = conn.prepareStatement(query.getProperty("todayBookingList"));
 			pstmt.setInt(1, (cPage-1)*numPerPage+1);
 			pstmt.setInt(2, cPage*numPerPage);
-			// pstmt.setDate(3, java.sql.Date.valueOf(java.time.LocalDate.now()));
 			rs = pstmt.executeQuery();
 			
 			while(rs.next()) {
@@ -237,7 +238,6 @@ public class AdminBookingDao {
 			while(rs.next()) {
 				bookingList.add(getBooking(rs));
 			}
-			
 		}catch(SQLException e) {
 			e.printStackTrace();
 		}finally {
@@ -262,8 +262,9 @@ public class AdminBookingDao {
 			pstmt = conn.prepareStatement(query.getProperty(searchQuery));
 			rs = pstmt.executeQuery();
 			
-			if(rs.next()) result=rs.getInt(1);
-			
+			if(rs.next()) {
+				result=rs.getInt(1);
+			}
 		}catch(Exception e) {
 			e.printStackTrace();
 		}finally {
@@ -283,8 +284,9 @@ public class AdminBookingDao {
 			pstmt = conn.prepareStatement(query.getProperty("todayBookingCount"));
 			rs = pstmt.executeQuery();
 			
-			if(rs.next()) result=rs.getInt(1);
-			
+			if(rs.next()) {
+				result=rs.getInt(1);
+			}
 		}catch(Exception e) {
 			e.printStackTrace();
 		}finally {

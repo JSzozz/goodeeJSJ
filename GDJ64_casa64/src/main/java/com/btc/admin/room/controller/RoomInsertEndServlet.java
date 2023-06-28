@@ -56,15 +56,16 @@ public class RoomInsertEndServlet extends HttpServlet {
 		while (files.hasMoreElements()) {
 
 			String fileName = files.nextElement();
+			System.out.println(fileName);
 			filesName.add(mr.getFilesystemName(fileName));
 
 		}
 
-		int result = new AdminRoomService().insertInquiry(r,filesName);
-		System.out.println(result);
-
-		response.setContentType("application/json;charset=utf-8");
-		new Gson().toJson(result > 0 ? true : false, response.getWriter());
+//		int result = new AdminRoomService().insertInquiry(r,filesName);
+//		System.out.println(result);
+//
+//		response.setContentType("application/json;charset=utf-8");
+//		new Gson().toJson(result > 0 ? true : false, response.getWriter());
 
 	}
 
