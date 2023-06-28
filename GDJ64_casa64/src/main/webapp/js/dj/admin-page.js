@@ -32,7 +32,7 @@ let bookingPayment = [];
 
 CHART_BOOKING_COUNT.forEach((e) => {
   roomNames.push(e.roomName);
-  bookingCount.push(e.roomInfo);
+  bookingCount.push(e.roomInfo * 300000);
 });
 
 CHART_BOOKING_PAYMENT.forEach((e) => {
@@ -44,20 +44,20 @@ const CHART_DATA = {
   labels: roomNames,
   datasets: [
     {
-      label: '예약횟수',
-      data: bookingCount,
-      backgroundColor: chartColors(),
-      borderColor: chartLineColors(),
-      stack: 'combined',
-      type: 'line',
-    },
-    {
       label: '결제금액',
       data: bookingPayment,
       backgroundColor: chartColors(),
       borderColor: chartLineColors(),
       stack: 'combined',
       type: 'bar'
+    },
+    {
+      label: '예약횟수',
+      data: bookingCount,
+      backgroundColor: chartColors(),
+      borderColor: chartLineColors(),
+      stack: 'combined',
+      type: 'line',
     }
   ]
 }

@@ -80,7 +80,7 @@ public class SearchBookingServlet extends HttpServlet {
 		String state = request.getParameter("state");
 		String type = request.getParameter("type");
 		String value = request.getParameter("value");
-				
+						
 		List<Booking> bookingList = AdminBookingService.getBookingService().searchBookingList(state, type, value, cPage, numPerPage);
 		
 		Map<String, Object> responseData = Map.of("bookingList", bookingList);

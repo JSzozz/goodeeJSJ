@@ -87,9 +87,9 @@ public class AdminBookingDao {
 		
 		try {
 			pstmt = conn.prepareStatement(query.getProperty("conditionBookingList"));
-			pstmt.setInt(1, (cPage-1)*numPerPage+1);
-			pstmt.setInt(2, cPage*numPerPage);
-			pstmt.setString(3, state);
+			pstmt.setString(1, state);
+			pstmt.setInt(2, (cPage-1)*numPerPage+1);
+			pstmt.setInt(3, cPage*numPerPage);
 			rs = pstmt.executeQuery();
 			
 			while(rs.next()) {

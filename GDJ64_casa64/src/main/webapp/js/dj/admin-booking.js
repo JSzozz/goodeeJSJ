@@ -137,7 +137,7 @@ function cancelBooking(address, no) {
 
 // 예약 AJAX
 function ajaxBooking(address, state, type, value, cPage = 1, numPerPage = 10) {
-  console.log(address, state, type, value, cPage, numPerPage);
+
   $.ajax({
     url: address,
     type: 'get',
