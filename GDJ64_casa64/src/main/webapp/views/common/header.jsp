@@ -1,4 +1,4 @@
-<%@page import="com.btc.member.model.dto.Member"%>
+<%@ page import="com.btc.member.model.dto.Member"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 
 <%-- <link rel="stylesheet" href="<%=request.getContextPath()%>/css/custom.css" /> --%>
@@ -137,7 +137,7 @@
                 <ul class=navbar-nav>
                 
                     <li class="nav-item">
-                        <a class="nav-link" href="<%=request.getContextPath()%>/views/admin/admin-page.jsp">ADMIN</a>
+                        <a class="nav-link" href="<%=request.getContextPath()%>/admin/adminMainPage.do">ADMIN</a>
                     </li>            
                     
                 </ul>

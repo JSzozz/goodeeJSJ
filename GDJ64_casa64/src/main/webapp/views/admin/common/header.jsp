@@ -68,9 +68,9 @@
                         <div class="row d-flex justify-content-end align-items-center">
                             <div class="col-auto">
                                 <ul class="navbar-nav ms-auto">
-                                    <li class="nav-item"><a href="<%=request.getContextPath()%>/views/admin/admin-page.jsp" class="nav-link top-link">메인으로</a></li>
+                                    <li class="nav-item"><a href="<%=request.getContextPath()%>/admin/adminMainPage.do" class="nav-link top-link">메인으로</a></li>
                                     <li class="nav-item"><a href="<%=request.getContextPath()%>/" class="nav-link top-link">홈페이지</a></li>
-                                    <li class="nav-item"><a href="#" class="nav-link top-link" data-bs-toggle="modal" data-bs-target="#logout">로그아웃</a></li>
+                                    <li class="nav-item"><a href="<%=request.getContextPath()%>/admin/adminLogout.do" class="nav-link top-link">로그아웃</a></li>
                                 </ul>
                             </div>
                         </div>

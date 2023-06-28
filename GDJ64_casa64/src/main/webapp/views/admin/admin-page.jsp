@@ -1,6 +1,12 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ include file="/views/admin/common/header.jsp" %>
+<%
+	int memberCount = (int)request.getAttribute("memberCount");
+	int roomCount = (int)request.getAttribute("roomCount");
+	int bookingRoomCount = (int)request.getAttribute("bookingRoomCount");
+	int requestCancelRoomCount = (int)request.getAttribute("requestCancelRoomCount");
+%>
                     <!-- 컨테츠 -->
                     <section>
                         <div class="container-fluid">
@@ -15,11 +21,11 @@
                                                         <i class="bi bi-people-fill fs-1 text-info"></i>
                                                         <div class="text-end">
                                                             <h5>가입회원</h5>
-                                                            <h3>0명</h3>
+                                                            <h3><%=memberCount %>명</h3>
                                                         </div>
                                                     </div>
                                                 </div>
-                                                <div class="card-footer text-end">
+                                                <div class="card-footer text-end repeat-buttons">
                                                     <i class="bi bi-arrow-repeat"></i>
                                                     <span>업데이트</span>
                                                 </div>
@@ -33,11 +39,11 @@
                                                         <i class="bi bi-house-up-fill fs-1 text-warning"></i>
                                                         <div class="text-end">
                                                             <h5>객실</h5>
-                                                            <h3>0개</h3>
+                                                            <h3><%=roomCount %>개</h3>
                                                         </div>
                                                     </div>
                                                 </div>
-                                                <div class="card-footer text-end">
+                                                <div class="card-footer text-end repeat-buttons">
                                                     <i class="bi bi-arrow-repeat"></i>
                                                     <span>업데이트</span>
                                                 </div>
@@ -51,11 +57,11 @@
                                                         <i class="bi bi-house-check-fill fs-1 text-success"></i>
                                                         <div class="text-end">
                                                             <h5>예약객실</h5>
-                                                            <h3>0개</h3>
+                                                            <h3><%=bookingRoomCount %>개</h3>
                                                         </div>
                                                     </div>
                                                 </div>
-                                                <div class="card-footer text-end">
+                                                <div class="card-footer text-end repeat-buttons">
                                                     <i class="bi bi-arrow-repeat"></i>
                                                     <span>업데이트</span>
                                                 </div>
@@ -69,11 +75,11 @@
                                                         <i class="bi bi-house-x-fill fs-1 text-danger"></i>
                                                         <div class="text-end">
                                                             <h5>예약취소</h5>
-                                                            <h3>0개</h3>
+                                                            <h3><%=requestCancelRoomCount %>개</h3>
                                                         </div>
                                                     </div>
                                                 </div>
-                                                <div class="card-footer text-end">
+                                                <div class="card-footer text-end repeat-buttons">
                                                     <i class="bi bi-arrow-repeat"></i>
                                                     <span>업데이트</span>
                                                 </div>
@@ -84,4 +90,8 @@
                             </div>
                         </div>
                     </section>
+<script>
+    const PATH = "<%=request.getContextPath()%>/admin/updateCard.do"
+</script>
+<script src="<%=request.getContextPath() %>/js/dj/admin-page.js"></script>                    
 <%@ include file="/views/admin/common/footer.jsp"%>

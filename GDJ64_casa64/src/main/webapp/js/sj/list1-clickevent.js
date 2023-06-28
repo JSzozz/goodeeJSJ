@@ -27,8 +27,10 @@
              $("#checkinDt").html($(e.target).attr("class"));
              
              checkInDt=$(e.target).attr("class");
-
+			
              roomPrice = Number($(e.target).attr("price"));// /* 1. 기간선택& 4. 금액 */과 이어짐
+             
+			$(".capCheck").text("*기본 "+$(e.target).attr("roomcap")+"인, 최대 "+$(e.target).attr("roommaxcap")+"인 [기본 인원 초과 비용은 인당 20,000원입니다.]");
              
 			 const $checkAmountOfLodgment=checkAmountOfLodgment(e);//number
 			 insertSelectTag(e,$checkAmountOfLodgment);
@@ -47,19 +49,19 @@
             const checkoutDt = year+"-"+month+"-"+day;//(String)
             // 어떤 날짜여도 'YYYY-DD-YY'형식으로 변환!
             
-              $("#checkoutDt").html(checkoutDt);
-
-              /* totalRoomPrice */
-              let period = Number($("select[class=availableDays] option:selected").val());
-              totalRoomPrice=period*roomPrice;
-              $("#roomPrice").html(totalRoomPrice);
-              if(typeof personPrce=="string"){
-             	 totalBookPrice=totalRoomPrice+OPTprice;
-                 $("#totPrice").html(totalBookPrice);
-              }else{
-                 totalBookPrice=totalRoomPrice+personPrce+OPTprice;
-               	 $("#totPrice").html(totalBookPrice);
-              };
+            $("#checkoutDt").html(checkoutDt);
+			
+            /* totalRoomPrice */
+            let period = Number($("select[class=availableDays] option:selected").val());
+            totalRoomPrice=period*roomPrice;
+            $("#roomPrice").html(totalRoomPrice);
+            if(typeof personPrce=="string"){
+            	totalBookPrice=totalRoomPrice+OPTprice;
+             	$("#totPrice").html(totalBookPrice);
+            }else{
+                totalBookPrice=totalRoomPrice+personPrce+OPTprice;
+               	$("#totPrice").html(totalBookPrice);
+            };
          });
       });
     });
@@ -126,12 +128,25 @@
       	});
    	});   
 /* 3. 옵션 */
+// 3-1.옵션 생성하기
+	for(let i=0;i<XtraName.length;i++){
+		const $option= $("<input>").attr({"type":"checkbox","id":"OPTN"+(i+1),"OptionPrice":XtraPrice[i],"value":XtraPrice[i]}); 
+		const $lable= $("<lable>").text(" "+XtraName[i]+"["+XtraPrice[i]+"원] ");
+		const $input= $("<button>").attr({"type":"button","class":"btn btn-outline-dark btn-sm","title":XtraExplanation[i]}).text("상세설명"); 
+		$("#optnList").append($("<li>")).append($option).append($lable).append($input);	
+	}
+	
 	let OPTprice=0;
-	$(function() {
-		$(document).on("change","input[id=OPTN1]",e=>{
+//  '옵션선택'에 체크한 비용을 '금액'의 옵션금액과 총 금액에 반영하는 기능	
+	for(let i=0;i<XtraName.length;i++){
+		optionCheck(i);
+	};
+	
+	function optionCheck(i){
+		$(document).on("change","input[id=OPTN"+(i+1)+"]",e=>{
 			if($(e.target).is(":checked")){
-				OPTprice += Number($("#OPTN1").attr("data-cnt"));
-				/* console.log(OPTprice); */
+				OPTprice += Number($("#OPTN"+(i+1)).attr("optionprice"));
+				console.log(OPTprice);
 				$("#optnPrice").html(OPTprice);
 		      	if(typeof personPrce=="string"){
 		     	  	totalBookPrice=totalRoomPrice+OPTprice;
@@ -141,8 +156,35 @@
 		       	  	$("#totPrice").html(totalBookPrice);
 		      	};
 			}else{
-				OPTprice -= Number($("#OPTN1").attr("data-cnt"));
-				/* console.log(OPTprice); */
+				OPTprice -= Number($("#OPTN"+(i+1)).attr("optionprice"));
+				console.log(OPTprice);
+				$("#optnPrice").html(OPTprice);
+		      	if(typeof personPrce=="string"){
+		     	  	totalBookPrice=totalRoomPrice+OPTprice;
+		          	$("#totPrice").html(totalBookPrice);
+		      	}else{
+		       	  	totalBookPrice=totalRoomPrice+personPrce+OPTprice;
+		       	  	$("#totPrice").html(totalBookPrice);
+		      	};
+			};
+		});
+	};	
+	/*$(function() {
+		$(document).on("change","input[id=OPTN1]",e=>{
+			if($(e.target).is(":checked")){
+				OPTprice += Number($("#OPTN1").attr("optionprice"));
+				console.log(OPTprice);
+				$("#optnPrice").html(OPTprice);
+		      	if(typeof personPrce=="string"){
+		     	  	totalBookPrice=totalRoomPrice+OPTprice;
+		          	$("#totPrice").html(totalBookPrice);
+		      	}else{
+		       	  	totalBookPrice=totalRoomPrice+personPrce+OPTprice;
+		       	  	$("#totPrice").html(totalBookPrice);
+		      	};
+			}else{
+				OPTprice -= Number($("#OPTN1").attr("optionprice"));
+				console.log(OPTprice);
 				$("#optnPrice").html(OPTprice);
 		      	if(typeof personPrce=="string"){
 		     	  	totalBookPrice=totalRoomPrice+OPTprice;
@@ -154,10 +196,11 @@
 			};
 		});
 	});		
+	
 	$(function() {
 		$(document).on("change","input[id=OPTN2]",e=>{
 			if($(e.target).is(":checked")){
-				OPTprice += Number($("#OPTN2").attr("data-cnt"));
+				OPTprice += Number($("#OPTN2").attr("optionprice"));
 				$("#optnPrice").html(OPTprice);
 		      	if(typeof personPrce=="string"){
 		     	  	totalBookPrice=totalRoomPrice+OPTprice;
@@ -167,7 +210,7 @@
 		       	  	$("#totPrice").html(totalBookPrice);
 		      	};
 			}else{
-				OPTprice -= Number($("#OPTN2").attr("data-cnt"));
+				OPTprice -= Number($("#OPTN2").attr("optionprice"));
 				$("#optnPrice").html(OPTprice);
 		      	if(typeof personPrce=="string"){
 		     	  	totalBookPrice=totalRoomPrice+OPTprice;
@@ -181,8 +224,9 @@
 	});		
 	$(function() {
 		$(document).on("change","input[id=OPTN3]",e=>{
+
 			if($(e.target).is(":checked")){
-				OPTprice += Number($("#OPTN3").attr("data-cnt"));
+				OPTprice += Number($("#OPTN3").attr("optionprice"));
 				$("#optnPrice").html(OPTprice);
 		      	if(typeof personPrce=="string"){
 		     	  	totalBookPrice=totalRoomPrice+OPTprice;
@@ -192,7 +236,7 @@
 		       	  	$("#totPrice").html(totalBookPrice);
 		      	};
 			}else{
-				OPTprice -= Number($("#OPTN3").attr("data-cnt"));
+				OPTprice -= Number($("#OPTN3").attr("optionprice"));
 				$("#optnPrice").html(OPTprice);
 		      	if(typeof personPrce=="string"){
 		     	  	totalBookPrice=totalRoomPrice+OPTprice;
@@ -203,4 +247,4 @@
 		      	};
 			};
 		});
-	});
+	});*/

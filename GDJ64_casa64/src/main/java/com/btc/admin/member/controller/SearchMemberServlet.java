@@ -8,22 +8,22 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.swing.plaf.synth.SynthOptionPaneUI;
 
 import com.btc.admin.model.service.AdminMemberService;
-import com.btc.member.model.dto.CancelMember;
 import com.btc.member.model.dto.Member;
 
 /**
- * Servlet implementation class SearchCanceledMember
+ * Servlet implementation class SearchMember
  */
-@WebServlet("/admin/searchCMember.do")
-public class SearchCanceledMember extends HttpServlet {
+@WebServlet("/admin/searchMember.do")
+public class SearchMemberServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public SearchCanceledMember() {
+    public SearchMemberServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -51,7 +51,7 @@ public class SearchCanceledMember extends HttpServlet {
 		}
 		
 		StringBuffer pageBar=new StringBuffer();
-		int totolData=new AdminMemberService().searchCMemberCount(type, search);
+		int totolData=new AdminMemberService().searchMemberCount(type, search);
 		int totalPage=(int)Math.ceil((double)totolData/numPerpage);
 		int pageBarSize=5;
 		int pageStart=((cPage-1)/pageBarSize)*pageBarSize+1;
@@ -78,9 +78,9 @@ public class SearchCanceledMember extends HttpServlet {
 			pageBar.append("<li class='page-item'><a class='page-link' aria-label='Next' href='"+request.getRequestURI()+"?cPage="+pageStart+"&numPerpage="+numPerpage+"&member-search="+type+"&keyword="+search+"'><span aria-hidden='true'>&raquo;</span></a></li>");
 		}
 		request.setAttribute("pageBar", pageBar);
-		List<CancelMember> list=new AdminMemberService().searchCMemberList(cPage, numPerpage, type, search);
+		List<Member> list=new AdminMemberService().searchMemberList(cPage, numPerpage, type, search);
 		request.setAttribute("members", list);
-		request.getRequestDispatcher("/views/admin/leave-member.jsp").forward(request, response);
+		request.getRequestDispatcher("/views/admin/list-member.jsp").forward(request, response);
 	}
 
 	/**

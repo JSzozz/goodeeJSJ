@@ -132,7 +132,7 @@ String search = (String) request.getAttribute("search");
 					<h5>회원번호</h5>
 					<input type="text" name="memberNo" value="" readonly>
 					<h5>회원블랙사유</h5>
-					<textarea name="reason" rows="5" cols="50"></textarea>
+					<textarea name="reason" rows="5" cols="50" maxlength="100"></textarea>
 					<br>
 					<h5>첨부파일</h5>
 					<input type="file" name="fileName">

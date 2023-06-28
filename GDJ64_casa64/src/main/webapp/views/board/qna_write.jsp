@@ -13,77 +13,77 @@
 
 	<div class="board">
 		<div id="content" class="no-bg">
-			<div class="inner">
-				<div class="inq-write-wrap">
-					<div class="board">
-						<form>
-							<table class="table">
-								<colgroup>
-									<col style="width: 180px">
-									<col style="width: 1020px">
-								</colgroup>
-								<tbody>
-									<tr>
-										<th class="text-center align-middle"><span>작성자</span></th>
-										<td>
-											<div class="td-con">
-												<p class="writer">윤나라</p>
-											</div>
-										</td>
-									</tr>
-									<tr>
-										<th class="text-center align-middle">
-											구분
-										</th>
-										<td>
-											<div class="td-con">
-												<select class="form-select w-15">
-												  <option selected>선택</option>
-												  <option value="1">회원가입/정보</option>
-												  <option value="2">예약/결제</option>
-												  <option value="3">취소/환불</option>
-												  <option value="4">기타</option>
-												</select>
-											</div>
-										</td>
-									</tr>
-									<tr>
-										<th class="text-center align-middle"><span>제목</span></th>
-										<td>
-											<div class="td-con">
-												<div class="input-area">
-													<input type="text" class="form-control w-50">
+			<form action="<%=request.getContextPath()%>/qna/qnaWrite.do" method="post">
+			<input type="hidden" name="MEMBER_NO" value="<%=loginMember.getMemberNo()%>"> <!-- 회원번호 -->
+				<div class="inner">
+					<div class="inq-write-wrap">
+						<div class="board">
+							<form>
+								<table class="table">
+									<colgroup>
+										<col style="width: 180px">
+										<col style="width: 1020px">
+									</colgroup>
+									<tbody>
+										<tr>
+											<th class="text-center align-middle"><span>작성자</span></th>
+											<td>
+												<div class="td-con">
+													<p class="writer"><%=loginMember.getMemberName()%></p>
 												</div>
-											</div>
-										</td>
-									</tr>
-									<tr>
-										<th class="text-center align-middle"><span>내용</span></th>
-										<td>
-											<div class="td-con">
-												<div class="editor-wrap">
-													<div class="editor-area">
-														<!--에디터가 들어가는 영역입니다.-->
-														<textarea class="form-control w-100 h-100 review-contents"></textarea>
+											</td>
+										</tr>
+										<tr>
+											<th class="text-center align-middle">
+												구분
+											</th>
+											<td>
+												<div class="td-con">
+													<select class="form-select w-15" name="CATEGORY_NAME">
+													  <option selected>선택</option>
+													  <option value="회원가입/정보">회원가입/정보</option>
+													  <option value="예약/결제">예약/결제</option>
+													  <option value="취소/환불">취소/환불</option>
+													  <option value="기타">기타</option>
+													</select>
+												</div>
+											</td>
+										</tr>
+										<tr>
+											<th class="text-center align-middle"><span>제목</span></th>
+											<td>
+												<div class="td-con">
+													<div class="input-area">
+														<input type="text" class="form-control w-50" name="QUESTION_TITLE">
 													</div>
 												</div>
-											</div>
-										</td>
-									</tr>
-								</tbody>
-							</table>
-						</form>
-					</div>
-					<div class="d-flex justify-content-center mt-4">
-						<!--  만약 생성글이라면 -->
-						<a class="btn btn-dark btn-sm ms-1" href="<%=request.getContextPath()%>/board/qnaList.do">뒤로</a>
-						<button class="btn btn-dark btn-sm ms-1">등록</button>
-						<!-- 수정글일 경우 아래 버튼을 보여주면 됨 -->
-						<!-- <button class="btn btn-dark btn-sm ms-1">수정</button> -->
-						<!-- <button class="btn btn-dark btn-sm ms-1">삭제</button> -->
+											</td>
+										</tr>
+										<tr>
+											<th class="text-center align-middle"><span>내용</span></th>
+											<td>
+												<div class="td-con">
+													<div class="editor-wrap">
+														<div class="editor-area">
+															<!--에디터가 들어가는 영역입니다.-->
+															<textarea class="form-control w-100 h-100 review-contents" name="QUESTION_CONTENT"></textarea>
+														</div>
+													</div>
+												</div>
+											</td>
+										</tr>
+									</tbody>
+								</table>
+							</form>
+						</div>
+						<div class="d-flex justify-content-center mt-4">
+							<button type="button" class="btn btn-dark btn-sm ms-1"
+								onclick="location.assign('<%=request.getContextPath()%>/qna/insertQna.do')">뒤로</button>
+							<button type="submit" class="btn btn-dark btn-sm ms-1">등록</button>
+						</div>
 					</div>
 				</div>
-			</div>
+			</form>
 		</div>
 	</div>
 </div>
