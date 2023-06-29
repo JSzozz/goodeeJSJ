@@ -154,7 +154,6 @@
 	});
 	$(".removeCheck").on("click", function(e){
  		const i = $(e.target).attr("class");
- 		alert(i);
 		 if (confirm("정말 삭제하시겠습니까??") == true){
 			 if($(e.target).hasClass("deleteComment") == true ){ //댓글지우는 로직
 				alert("댓글을 제거하시겠습니까?");
