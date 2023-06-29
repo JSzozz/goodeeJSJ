@@ -21,7 +21,7 @@
                                             <th>종료시즌</th>
                                             <th>삭제</th>
                                         </thead>
-                                        <tbody id="seasonTableBody">
+                                        <tbody id="seasonTableBody" class="align-middle">
                                             <tr>
                                                 <td colspan="6">
                                                     <button type="button" id="insertSeasonBtn" class="btn btn-dark">+ 시즌추가</button>
