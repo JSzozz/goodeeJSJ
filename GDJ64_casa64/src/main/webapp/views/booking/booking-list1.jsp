@@ -99,7 +99,7 @@
 				<center><button onClick="return chkSum2();" class="btn btn btn-outline-secondary btn-sm" id="selectBtn">조회하기</button></center>
 	      </ul>
       </form>
-      
+      <button class=qwer>.qwer</button>
    </span>
 	<br><br>
 <!-- 1. 객실 선택 -->
@@ -406,11 +406,12 @@
 	alert("객실 예약은 로그인 후 진행 가능합니다.");
 	} --%>
 
-/* 	$(".fixContainer").css({
-							"position":"fixed",
-							"top":"10rem",
-							"left":"20"
-							}).; */
+	$(".qwer").click(e=>{
+	       <%if(loginMember == null) {%>
+	          alert("로그인 후 이용가능");
+	         location.assign("<%=request.getContextPath()%>/views/LOGIN/login.jsp");
+	       <%}%>
+	   });
 	
 	$(function chkSum() {
 /* 		const valCk1 = $("select[class=availableDays] option:selected").val());//<option value>머무실 기간 선택</option>  */
@@ -419,6 +420,11 @@
  				alert("객실 예약은 로그인 후 진행 가능합니다.");
  				return false;
  			} --%>
+ 			<%if(loginMember == null) {%>
+	          alert("로그인 후 이용가능");
+	         location.assign("<%=request.getContextPath()%>/views/LOGIN/login.jsp");
+	         return false;
+	       <%}%>
  			if($("select[class=availableDays] option:selected").val()==""){
 				alert("'숙박기간'을 정해주세요.");
 				$('.availableDays').select().focus();

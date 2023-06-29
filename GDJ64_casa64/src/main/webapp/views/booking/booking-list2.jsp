@@ -36,6 +36,9 @@
 				<input type="hidden" name="bookingPrice" value="<%=booking.getBookingPrice()%>">
 				<input type="hidden" name="bookingComment" value="">
 
+				<%-- <%if(loginMember==null){%>
+					비로그인
+				<%} %> --%>
 				<div class="roundbox">
 	<!-- 01 예약정보 확인 -->
 					<div class="container container-1">
@@ -187,24 +190,26 @@
 				<div class="buttons">
 					<button class="buttons-1 btn btn btn-outline-dark btn-lg" id="saveBtn">객실 예약하기</button>
 				</div>
+				<%-- <%} %> --%>
 			</form>
 		</div>
 		<!-- 내용 종료 -->
 	</div>
 </section>
 <script>
-
 	
-	$("#typeNm").text("<%=roomNm %>");
-	$("#period").text("<%=booking.getCheckIn()%> ~ <%=booking.getCheckOut()%>")
-	$("#person").text("성인 = <%=booking.getGuestAdult()%>명, 아동/유아 = <%=booking.getGuestChild()%>명, 영아(24개월 미만) = <%=booking.getGuestInfant()%>명")
-	$("#optionList").text("개발중");
-	$("#roomPirce").text("<%=price.get(0)%>");
-	$("#persPirce").text("<%=price.get(1)%>");
-	$("#optnPrice").text("<%=price.get(2)%>");
-	$("#totPirce").text("<%=booking.getBookingPrice()%>");
-	$("#RESV_NM").val("<%=loginMember.getMemberName() %>");
-	$("#RESV_PHONE").val("<%=loginMember.getPhone() %>");
+	if(loginMember!=null){
+		$("#typeNm").text("<%=roomNm %>");
+		$("#period").text("<%=booking.getCheckIn()%> ~ <%=booking.getCheckOut()%>")
+		$("#person").text("성인 = <%=booking.getGuestAdult()%>명, 아동/유아 = <%=booking.getGuestChild()%>명, 영아(24개월 미만) = <%=booking.getGuestInfant()%>명")
+		$("#optionList").text("개발중");
+		$("#roomPirce").text("<%=price.get(0)%>");
+		$("#persPirce").text("<%=price.get(1)%>");
+		$("#optnPrice").text("<%=price.get(2)%>");
+		$("#totPirce").text("<%=booking.getBookingPrice()%>");
+		$("#RESV_NM").val("<%=loginMember.getMemberName() %>");
+		$("#RESV_PHONE").val("<%=loginMember.getPhone() %>");
+	};
 	
 	$(function chkSum() {
 		$(document).on("click","button[id=saveBtn]",e=>{
