@@ -79,6 +79,14 @@ public class BookingService {
 		return booking;
 	}
 	
+
+	public Room selectRoomByRoomNo(int roomNo) {
+		// TODO Auto-generated method stub
+		Connection conn=getConnection();
+		Room $room = dao.selectRoomByRoomNo(conn, roomNo);
+		close(conn);
+		return $room;
+	}
 	
 //	private NoticeDao dao=new NoticeDao();
 //	
