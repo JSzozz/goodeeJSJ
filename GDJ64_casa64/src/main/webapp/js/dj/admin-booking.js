@@ -1,3 +1,9 @@
+// 공백, null, undefined, 빈값 처리 함수
+function isEmpty(value) {
+  return typeof value === 'undefined' || (typeof value === 'object' && !Object.keys(value).length) ||
+    value === null || value === "" || value === null || value.length === 0 ? true : false;
+}
+
 // == 상태조회 == //
 
 $(function () {
@@ -50,7 +56,8 @@ function searchBooking(address) {
   switch (selectState) {
     case '전체': $('.tabBtns:first').addClass('btn-dark'); break;
     case '취소요청': $('.tabBtns:eq(1)').addClass('btn-dark'); break;
-    case '결제완료': $('.tabBtns:eq(2)').addClass('btn-dark'); break;
+    case '취소완료': $('.tabBtns:eq(2)').addClass('btn-dark'); break;
+    case '결제완료': $('.tabBtns:eq(3)').addClass('btn-dark'); break;
     case '이용완료': $('.tabBtns:last').addClass('btn-dark'); break;
   }
 
@@ -117,8 +124,10 @@ function cancelBooking(address, no) {
     success: (data) => {
       if (data > 0) {
         alert('예약을 취소했습니다.');
+        return;
       } else {
-        alert('취소 실패했습니다.');
+        alert('예약 취소를 실패했습니다.');
+        return;
       }
     }
   })
@@ -127,7 +136,8 @@ function cancelBooking(address, no) {
 // == 공용 예약 AJAX == //
 
 // 예약 AJAX
-function ajaxBooking(address, state, type ,value, cPage=1, numPerPage=10) {
+function ajaxBooking(address, state, type, value, cPage = 1, numPerPage = 10) {
+
   $.ajax({
     url: address,
     type: 'get',
@@ -141,15 +151,14 @@ function ajaxBooking(address, state, type ,value, cPage=1, numPerPage=10) {
       $('html').css('cursor', 'auto');
     },
     success: (data) => {
+
       if (isEmpty(data)) {
         $('#resultTable').html(noSearchBooking());
         return;
       }
 
       $('#resultTable').empty();
-      console.log(data.bookingList);
       $('#pagination').empty();
-
       
       data.bookingList.forEach((booking) => {
         $('#resultTable').append(resultBooking(booking));
@@ -180,10 +189,4 @@ function resultBooking(data) {
   result += '</td>'
   result += '</tr>';
   return result;
-}
-
-// 공백, null, undefined, 빈값 처리 함수
-function isEmpty(value) {
-  return typeof value === 'undefined' || (typeof value === 'object' && !Object.keys(value).length) ||
-    value === null || value === "" || value === null || value.length === 0 ? true : false;
 }

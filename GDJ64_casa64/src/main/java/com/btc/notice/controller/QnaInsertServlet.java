@@ -1,6 +1,7 @@
 package com.btc.notice.controller;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.ServletException;
@@ -9,14 +10,13 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.btc.notice.model.dto.Notice;
 import com.btc.notice.model.dto.Qna;
 import com.btc.notice.model.service.QnaService;
 
 /**
  * Servlet implementation class CategoryInsertNameServlet
  */
-@WebServlet("/qna/insertQna.do")
+@WebServlet("/qna/insertQna.do") //qna.jsp로이동하는 서블릿
 public class QnaInsertServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
@@ -51,10 +51,19 @@ public class QnaInsertServlet extends HttpServlet {
 		}
 		String pageBar="";
 		int totalData=new QnaService().selectQnaCount(); //전체 게시물 수
+		System.out.println("전체 개수 : "+totalData);
 		List<Qna> Qnas=new QnaService().selectQna(cPage,numPerpage); //게시물 가져오기
-		int memberNo = Qnas.get(0).getMemberNo(); //작성자 번호
-		String memberName = new QnaService().checkName(memberNo); //번호로 이름 가져오기
-		request.setAttribute("memberName", memberName);
+		System.out.println("게시물 개수 : "+Qnas);
+		List<String>$memberName = new ArrayList<String>();
+		for(int i=0; i<totalData;i++) { //처음에는 1~5까지 하고, 그다음은 6~10까지
+			System.out.println(i);
+			System.out.println(Qnas.get(i).getMemberNo());
+			String memberName= new QnaService().checkName(Qnas.get(i).getMemberNo()); //번호로 이름 가져오기
+			$memberName.add(memberName);
+			System.out.println("memberName : "+memberName+"\nQnas.get(i).getMemberNo() : "+Qnas.get(i).getMemberNo()+"\n$memberName : "+$memberName);
+		}
+//		System.out.println($memberName);
+			request.setAttribute("memberName", $memberName);
 		int totalPage=(int)Math.ceil((double)totalData/numPerpage);
 		int pageBarSize=5; //페이지당 페이징처리할 넘버링 개수
 		int pageNo=((cPage-1)/pageBarSize)*pageBarSize+1; //페이징처리의 시작번호

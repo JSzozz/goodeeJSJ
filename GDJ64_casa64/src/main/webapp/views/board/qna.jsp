@@ -1,11 +1,13 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<%@ page import="java.util.List,com.btc.notice.model.dto.Qna" %>
+<%@page import="java.util.List"%>
+<%@page import="com.btc.notice.model.dto.Qna" %>
 <%@ include file="/views/common/header.jsp"%>
 <%
 	List<Qna> Qnas = (List)request.getAttribute("Qnas");
 	String searchType = request.getParameter("search-type");
 	String keyword = request.getParameter("keyword");
+	List<String> members = (List)request.getAttribute("memberName");
 %> 
 
 <!-- 카테고리별 이미지 -->
@@ -75,29 +77,31 @@
 			<tbody>
 				<%if(Qnas.isEmpty()||Qnas==null){ %>
 				<tr>
-					<td colspan="5">조회된 공지사항이 없습니다.</td>
+					<td colspan="5">조회된 QnA가 없습니다.</td>
 				</tr>
 			<%} else { 
-				for(Qna q : Qnas){%>
+				for(int i=0;i<Qnas.size();i++){%>
 				<tr>
-					<td><%=q.getQuestionNo() %></td>
-					<td><%=q.getCategoryName() %></td>
+					<td><%=Qnas.get(i).getQuestionNo()%></td>
+					<td><%=Qnas.get(i).getCategoryName()%></td>
 					<td>
-						<a href="<%=request.getContextPath()%>/qna/viewQna.do?no=<%=q.getQuestionNo()%>
+						<a href="<%=request.getContextPath()%>/qna/viewQna.do?no=<%=Qnas.get(i).getQuestionNo()%>
 						&categoryName=<%=request.getAttribute("categoryName")%>
-						&communityTitle=<%=request.getAttribute("communityTitle")%>"><%=q.getQuestionTitle()%></a>
+						&communityTitle=<%=request.getAttribute("communityTitle")%>"><%=Qnas.get(i).getQuestionTitle()%></a>
 					</td>
-					<td><%=request.getAttribute("memberName")%></td>
-					<td><%=q.getQuestionDate()%></td>
+					<td><%=members.get(i)%></td>					
+					<td><%=Qnas.get(i).getQuestionDate()%></td>
 				</tr>
-			<% }		
+			<% }
 			} %>
 			</tbody>
 		</table>
 	</div>
 	<div class="write-area text-end">
-		<a href="<%=request.getContextPath()%>/board/qnaWrite.do"
+		<%if(loginMember!=null) {%>
+			<a href="<%=request.getContextPath()%>/qna/qnaWrite.do"
 			class="btn btn-primary btn-sm ms-1">작성하기</a>
+		<%}%>
 	</div>
 
 	<div class="">

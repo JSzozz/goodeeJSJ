@@ -14,6 +14,7 @@ import java.util.List;
 import java.util.Properties;
 
 import com.btc.booking.model.vo.Booking;
+import com.btc.booking.model.vo.OptionXtra;
 import com.btc.booking.model.vo.SeasonalPrice;
 import com.btc.member.model.dto.Member;
 import com.btc.rooms.model.vo.Room;
@@ -83,6 +84,100 @@ public class BookingDao {
 				.weekendRate(rs.getFloat("WEEKEND_RATE"))
 				.build();
 	}	
+	
+	private OptionXtra getOptionXtra(ResultSet rs) throws SQLException {
+		return OptionXtra.builder()
+				.xtraNo(rs.getInt("XTRA_NO"))
+				.xtraName(rs.getString("XTRA_NAME"))
+				.xtraPrice(rs.getInt("XTRA_PRICE"))
+				.xtraExplanation(rs.getString("XTRA_EXPLANATION"))
+				.build();
+	}	
+	
+	private Room getRoomPart(ResultSet rs) throws SQLException{
+		return Room.builder()
+				.roomNo(rs.getInt("room_no"))
+				.roomName(rs.getString("room_name"))
+				.build();
+	}
+	
+	public Booking searchBookingByMemberNo(Connection conn, int loginMemberNo) {
+		PreparedStatement pstmt=null;
+		ResultSet rs=null;
+		Booking booking=null;
+		try {
+			pstmt=conn.prepareStatement(sql.getProperty("searchBookingByMemberNo"));
+			pstmt.setInt(1, loginMemberNo);
+			rs=pstmt.executeQuery();
+			if(rs.next()) booking=getBooking(rs);
+		}catch(SQLException e) {
+			e.printStackTrace();
+		}finally {
+			close(rs);
+			close(pstmt);
+		}return booking;
+	}
+	
+	
+	public int searchOptNo(Connection conn, String Optname) {
+		PreparedStatement pstmt= null;
+		ResultSet rs=null;
+		int roomNo=0;
+		try {
+			pstmt=conn.prepareStatement(sql.getProperty("searchOptNo"));
+			//SELECT FREE_NO FROM OPTION_FREE WHERE FREE_NAME = ?
+			pstmt.setString(1, Optname);
+			rs=pstmt.executeQuery();
+			if(rs.next()) roomNo=rs.getInt(1);
+		}catch(SQLException e) {
+			e.printStackTrace();
+		}finally {
+			close(rs);
+			close(pstmt);
+		}
+		return roomNo;
+	}
+	
+	public List<Room> selectFilteringRoom(Connection conn, String optionList){
+		PreparedStatement pstmt=null;
+		ResultSet rs=null;
+		String query= sql.getProperty("selectFilteringRoom1");
+		List<Room> list=new ArrayList();
+		try {
+			query=query.replace("#COL", optionList);//v : 컬럼명을 문자열로 인식하기 때문에 필요한 작업
+			//SELECT * FROM ROOM
+			pstmt=conn.prepareStatement(query);
+			rs=pstmt.executeQuery();
+			while(rs.next()) {
+				list.add(getRoomPart(rs));
+			}
+		}catch(SQLException e) {
+			e.printStackTrace();
+		}finally {
+			close(rs);
+			close(pstmt);
+		}return list;	
+	}
+
+	public List<OptionXtra> selectAllOption(Connection conn){
+		PreparedStatement pstmt=null;
+		ResultSet rs=null;
+		List<OptionXtra> list=new ArrayList();
+		try {
+			pstmt=conn.prepareStatement(sql.getProperty("selectAllOption"));
+			//SELECT * FROM ROOM
+			rs=pstmt.executeQuery();
+			while(rs.next()) {
+				list.add(getOptionXtra(rs));
+			}
+		}catch(SQLException e) {
+			e.printStackTrace();
+		}finally {
+			close(rs);
+			close(pstmt);
+		}return list;	
+	}
+	
 	
 	public List<SeasonalPrice> selectAllSeason(Connection conn){
 		PreparedStatement pstmt=null;
@@ -159,6 +254,7 @@ public class BookingDao {
 		}
 		return roomNo;
 	}
+	
 	
 	public int insertBooking(Connection conn, Booking b	) {
 	PreparedStatement pstmt=null;

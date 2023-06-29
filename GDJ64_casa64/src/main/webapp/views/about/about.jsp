@@ -26,7 +26,7 @@
 					</dl>
 					<dl class="horizen-sort">
 						<dt class="w150px">연락처</dt>
-						<dd>010-4578-1245</dd>
+						<dd>054-9512-4236</dd>
 					</dl>
 					<dl class="horizen-sort">
 						<dt class="w150px">자가용 이용</dt>

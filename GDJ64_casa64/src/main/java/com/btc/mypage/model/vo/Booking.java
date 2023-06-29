@@ -27,6 +27,7 @@ public class Booking {
    private String bookingState;
    private Date paymentDate;
    private String roomName;
+   private int reviewNo;
    
    
 }

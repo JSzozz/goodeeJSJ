@@ -1,12 +1,14 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ page import="java.util.List,com.btc.review.model.vo.Review" %>
-<%@ page import="java.util.List,com.btc.rooms.model.vo.Room" %>
+<%@ page import="java.util.Map,com.btc.rooms.model.vo.Room" %>
 <%@ include file="/views/common/header.jsp"%>
 <link rel="stylesheet" href="<%=request.getContextPath()%>/nara_publish/css/common.css" />
 <%
-	List<Review> reviews = (List)request.getAttribute("ReviewList");
-	List<Room> roomsList = (List)request.getAttribute("selectRooms");
+	List<Review> reviews = (List) request.getAttribute("ReviewList");
+	List<Room> roomsList = (List) request.getAttribute("selectRooms");
+	String pageBar = (String) request.getAttribute("pageBar");
+	int pageStartRowNum = (int) request.getAttribute("pageStartRowNum");
 %> 
 	
 <!-- 카테고리별 이미지 -->
@@ -69,9 +71,11 @@
 				</tr>
 			</thead>
 			<tbody>
-			<% for(Review r : reviews){%>
+			<% 
+				int number = pageStartRowNum;
+				for(Review r : reviews){%>
 				<tr>
-					<td><%= r.getNo() %></td>
+					<td><%= number %></td>
 					<td><%= r.getRoomName() %></td>
 					<td>
 						<a href="<%=request.getContextPath()%>/review/reviewView?no=<%= r.getNo() %>">
@@ -82,32 +86,15 @@
 					<td><%= r.getViews() %></td>
 					<td><%= r.getDateCreated() %></td>
 				</tr>
-				<% }%>
+				<% number--;
+				}%>
 			</tbody>
 		</table>
 	</div>
 	<div class="write-area text-end">
-		<a href="<%=request.getContextPath()%>/review/reviewWrite"
-			class="btn btn-primary btn-sm ms-1">작성하기</a>
+		<a href="<%=request.getContextPath()%>/review/reviewWrite" class="btn btn-primary btn-sm ms-1">작성하기</a>
 	</div>
-
-	<div class="">
-		<nav aria-label="Page navigation example">
-			<ul class="pagination justify-content-center">
-				<li class="page-item"><a class="page-link" href="#"
-					aria-label="Previous"> <span aria-hidden="true">&laquo;</span>
-				</a></li>
-				<li class="page-item active"><a class="page-link" href="#">1</a></li>
-				<li class="page-item"><a class="page-link" href="#">2</a></li>
-				<li class="page-item"><a class="page-link" href="#">3</a></li>
-				<li class="page-item"><a class="page-link" href="#">4</a></li>
-				<li class="page-item"><a class="page-link" href="#">5</a></li>
-				<li class="page-item"><a class="page-link " href="#"
-					aria-label="Next"> <span aria-hidden="true">&raquo;</span>
-				</a></li>
-			</ul>
-		</nav>
-	</div>
+	<%=pageBar%>
 </div>
 <!-- 내용 종료 -->
 <%@ include file="/views/common/footer.jsp"%>

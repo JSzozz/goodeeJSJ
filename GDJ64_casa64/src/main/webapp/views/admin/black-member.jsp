@@ -17,7 +17,7 @@ String search = (String) request.getAttribute("search");
 				<div class="row pt-md-5 mt-md-3 mb-2">
 					<h2 class="text-center">블랙회원리스트</h2>
 					<div id="select-line" class="float-end">
-						<form>
+						<form action="<%=request.getContextPath()%>/admin/searchBMember.do">
 							<div class="search-area d-flex justify-content-end mt-2">
 								<select name="member-search">
 									<option value="member_name"
@@ -44,12 +44,13 @@ String search = (String) request.getAttribute("search");
 						<th>전화번호</th>
 						<th>블랙날짜</th>
 						<th>사유</th>
+						<th>비고</th>
 					</tr>
 					</thead>
 					<tbody class="align-middle">
 					<%if (members.isEmpty()) {%>
 						<tr>
-							<td colspan="6">블랙된 회원이 없습니다</td>
+							<td colspan="7">블랙된 회원이 없습니다</td>
 						</tr>
 					<%}else{
 						for(BlackMember m:members){%>
@@ -60,7 +61,10 @@ String search = (String) request.getAttribute("search");
 							<td><%=m.getPhone() %></td>
 							<td><%=m.getBlackDate() %></td>
 							<td>
-								<button type="button" class="btn btn-dark btn-sm">상세조회</button>
+								<button type="button" class="btn btn-dark btn-sm info"  >상세조회</button>
+							</td>
+							<td>
+								<button type="button" class="btn btn-dark btn-sm info2" data-bs-toggle="modal" data-bs-target="#cancelBlackMember" >블랙해제</button>
 							</td>
 						</tr>
 						<%} }%>
@@ -76,5 +80,120 @@ String search = (String) request.getAttribute("search");
 			</div>
 		</div>
 	</div>
+	
+						<div class="modal fade" id="blackMemberInfo"
+								data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+								aria-labelledby="staticBackdropLabel" aria-hidden="true">
+								<div class="modal-dialog">
+									<div class="modal-content">
+										<div class="modal-header">
+											<h5 class="modal-title">블랙회원 상세정보</h5>
+											<button type="button" class="btn-close"
+												data-bs-dismiss="modal" aria-label="Close"></button>
+										</div>
+										<div class="modal-body infobody">
+											
+											
+										</div>
+										<div class="modal-footer">
+											
+											<button type="button" class="btn btn-dark" data-bs-dismiss="modal">확인</button>
+										</div>
+
+									</div>
+								</div>
+							</div>
+							
+							<div class="modal fade" id="cancelBlackMember"
+								data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+								aria-labelledby="staticBackdropLabel" aria-hidden="true">
+								<div class="modal-dialog">
+									<div class="modal-content">
+										<div class="modal-header">
+											<h5 class="modal-title">블랙회원 해제확인</h5>
+											<button type="button" class="btn-close"
+												data-bs-dismiss="modal" aria-label="Close"></button>
+										</div>
+										<div class="modal-body">
+											<p> 정말 블랙을 해제하겠습니까?</p>
+											
+										</div>
+										<div class="modal-footer">
+											<button type="button" class="btn btn-dark" data-bs-dismiss="modal">취소</button>
+											<button type="button" class="btn btn-dark cbutton" data-bs-dismiss="modal">확인</button>
+										</div>
+
+									</div>
+								</div>
+							</div>
+							
+							
 </section>
+<script>
+	$(".info").on("click",function(e){
+		
+		const tr = $(e.target).closest("tr");
+		const td=tr.children();
+		const no=td.eq(0).text()
+		
+		
+		$.ajax({
+			url: "<%=request.getContextPath()%>/admin/member/blackView.do",
+			type:"post",
+			data:{
+				memberNo:no
+			},
+			success:function(data){
+				var obj=JSON.parse(data);
+					$(".infobody").html("");
+					if(obj.imgs!=null){
+						$(".infobody").append("<img src='<%=request.getContextPath()%>/upload/member/"+obj.imgs+"' width='400' height='300'><br><br>");
+					}
+					
+					$(".infobody").append(obj.reason+"<br>");
+				
+				
+			},error:function(){
+				alert("서버통신실패");
+			}
+		});
+		$("#blackMemberInfo").modal("show"); 
+		
+	});
+	
+	$(".info2").on("click",function(e){
+		const tr = $(e.target).closest("tr");
+		const td=tr.children();
+		no2=td.eq(0).text();
+	
+		
+	});
+	
+		$(".cbutton").on("click",function(){
+		$.ajax({
+			url: "<%=request.getContextPath()%>/admin/member/cancelblack.do",
+			type:"post",
+			data:{
+				memberNo:no2
+			},
+			success:function(data){
+				if(data==1){
+					alert("블랙해제성공");
+					location.replace("<%=request.getContextPath()%>/admin/member/blackList.do");
+				}else{
+					alert("해제실패");
+				}
+				
+				
+			},error:function(){
+				alert("서버통신실패");
+			}
+		});
+		});
+</script>
+
+
+
+
+
 <%@ include file="/views/admin/common/footer.jsp"%>

@@ -34,7 +34,7 @@
 							<th>닉네임</th>
 							<td><%=m.getNickName()%></td>
 							<td><button type="button" class="btn btn-primary btn-sm"
-									data-bs-toggle="modal" data-bs-target="#passwordcheckMyinfo">수정</button></td>
+									data-bs-toggle="modal" data-bs-target="#passwordcheckinfo">수정</button></td>
 						</tr>
 						<tr>
 							<th>이메일</th>
@@ -51,11 +51,11 @@
 							<!-- Modal -->
 							<div class="modal fade" id="staticBackdrop"
 								data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
-								aria-labelledby="staticBackdropLabel" aria-hidden="true">
+								aria-labelledby="staticl" aria-hidden="true">
 								<div class="modal-dialog">
 									<div class="modal-content">
 										<div class="modal-header">
-											<h5 class="modal-title" id="staticBackdropLabel">비밀번호 확인</h5>
+											<h5 class="modal-title" id="static">비밀번호 확인</h5>
 											<button type="button" class="btn-close"
 												data-bs-dismiss="modal" aria-label="Close"></button>
 										</div>
@@ -74,7 +74,7 @@
 								</div>
 							</div>
 
-							<div class="modal fade" id="passwordcheckMyinfo"
+							<div class="modal fade" id="passwordcheckinfo"
 								data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
 								aria-labelledby="staticBackdropLabel" aria-hidden="true">
 								<div class="modal-dialog">
@@ -104,7 +104,7 @@
 							<th>전화번호</th>
 							<td><%=m.getPhone()%></td>
 							<td><button type="button" class="btn btn-primary btn-sm"
-									data-bs-toggle="modal" data-bs-target="#passwordcheckMyinfo">수정</button></td>
+									data-bs-toggle="modal" data-bs-target="#passwordcheckinfo">수정</button></td>
 						</tr>
 					</tbody>
 				</table>
@@ -133,14 +133,16 @@
 			}
 		});
 	};
-	const passwordCheck2=()=>{
-		let pw=$("#passwordCK2").val();
-		let memberno=<%=m.getMemberNo()%>
+	 const passwordCheck2=()=>{ 
+		let pw2=$("#passwordCK2").val();
+		console.log(pw2);
+		let memberno2=<%=m.getMemberNo()%>
+		console.log(memberno2);
 		$.ajax({
 			url:"<%=request.getContextPath()%>/member/passwordcheck.do",
 			type:"POST",
-			data:{password:pw,
-				  memberNo:memberno},
+			data:{password:pw2,
+				  memberNo:memberno2},
 			success:function(data){
 				if(data>0){
 					location.replace("<%=request.getContextPath()%>/views/myPage/changeMyInfo.jsp");

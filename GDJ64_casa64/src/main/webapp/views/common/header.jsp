@@ -1,4 +1,4 @@
-<%@page import="com.btc.member.model.dto.Member"%>
+<%@ page import="com.btc.member.model.dto.Member"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 
 <%-- <link rel="stylesheet" href="<%=request.getContextPath()%>/css/custom.css" /> --%>
@@ -31,7 +31,7 @@
 	<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;700&display=swap" rel="stylesheet">
 	<script>
     	$.get("<%=request.getContextPath()%>/rooms/roomlist.do",data=>{
-    		console.log(data);
+    		/* console.log(data); */
     		$("#roomsMenu").html('<li><a href="<%=request.getContextPath() %>/RoomListServlet.do" class="dropdown-item">전체 객실 보기</a></li>');
     		//가져온데이터 출력
     		data.forEach(e=>{
@@ -82,9 +82,9 @@
                             data-bs-toggle="dropdown" aria-expanded="false">
                             COMMUNITY
                         </a>
-                        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <ul class="dropdown-menu" aria-labelledby="navbarDropdown"> 
                             <li><a href="<%=request.getContextPath()%>/notice/insertNotice.do" class="dropdown-item">공지사항</a></li>
-                            <li><a href="<%=request.getContextPath()%>/board/insertQna.do" class="dropdown-item">QnA</a></li>
+                            <li><a href="<%=request.getContextPath()%>/qna/insertQna.do" class="dropdown-item">QnA</a></li>
                             <li><a href="<%=request.getContextPath()%>/review/reviewList" class="dropdown-item">이용후기</a></li>
                         </ul>
                     </li>
@@ -137,7 +137,7 @@
                 <ul class=navbar-nav>
                 
                     <li class="nav-item">
-                        <a class="nav-link" href="<%=request.getContextPath()%>/views/admin/admin-page.jsp">ADMIN</a>
+                        <a class="nav-link" href="<%=request.getContextPath()%>/admin/adminMainPage.do">ADMIN</a>
                     </li>            
                     
                 </ul>
@@ -151,7 +151,7 @@
                     </li>            
                 <%}else{%>
                     <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="<%=request.getContextPath()%>/views/myPage/myPage.jsp"">MYPAGE</a>
+                        <a class="nav-link active" aria-current="page" href="<%=request.getContextPath()%>/views/myPage/myPageInfo.jsp">MYPAGE</a>
                     </li>
                     <li class="nav-item logout">
                         <a class="nav-link logout" onclick="location.replace('<%=request.getContextPath() %>/logout.do')">LOGOUT</a>

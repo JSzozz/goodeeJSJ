@@ -58,7 +58,7 @@ public class OneWeekAndMonthBookingServlet extends HttpServlet {
 		}else {
 			pageBar.append("<li class='page-item'>"
 					+ "<a class='page-link' aria-label='Previous' href='javascript:void(0);'" 
-					+ "onclick=\"ajaxBooking('" + request.getRequestURI() + "','','',''," + (startPage - 1) + "," + numPerPage + ");\">" + numPerPage + "<span aria-hidden='true'>&laquo;</span></a></li>");
+					+ "onclick=\"ajaxBooking('" + request.getRequestURI() + "','','','" + searchDate + "'," + (startPage - 1) + "," + numPerPage + ");\">" + numPerPage + "<span aria-hidden='true'>&laquo;</span></a></li>");
 		}
 		
 		while(!(startPage > endPage || startPage > totalPage)) {
@@ -67,7 +67,7 @@ public class OneWeekAndMonthBookingServlet extends HttpServlet {
 			}else {
 				pageBar.append("<li class='page-item'>"
 						+ "<a class='page-link' href='javascript:void(0);'"
-						+ "onclick=\"ajaxBooking('" + request.getRequestURI() + "','','',''," + startPage + "," + numPerPage + ");\">" +startPage + "</a></li>");
+						+ "onclick=\"ajaxBooking('" + request.getRequestURI() + "','','','" + searchDate + "'," + startPage + "," + numPerPage + ");\">" +startPage + "</a></li>");
 			} startPage++;
 		}
 		
@@ -76,7 +76,7 @@ public class OneWeekAndMonthBookingServlet extends HttpServlet {
 		}else {
 			pageBar.append("<li class='page-item'>"
 					+ "<a class='page-link' aria-label='Next' href='javascript:void(0);'"
-					+ "onclick=\"ajaxBooking('" + request.getRequestURI() + "','','',''," + startPage + ","+ numPerPage + ");\"><span aria-hidden='true'>&raquo;</span></a></li>");
+					+ "onclick=\"ajaxBooking('" + request.getRequestURI() + "','','','" + searchDate + "'," + startPage + ","+ numPerPage + ");\"><span aria-hidden='true'>&raquo;</span></a></li>");
 		}
 		
 		request.setAttribute("pageBar", pageBar);

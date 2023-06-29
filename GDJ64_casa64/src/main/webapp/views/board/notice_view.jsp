@@ -17,22 +17,22 @@
 
 	<!--목록버튼-->
 	<div class="list-btn">
-	<form action="<%=request.getContextPath()%>/notice/updateNotice.do" method="post"> <!-- 수정하기 누르면 기존 값 이동 -->
-		<input type="hidden" name="title" value="<%=n.getNoticeTitle() %>">
-		<input type="hidden" name="content" value="<%=n.getNoticeContent() %>">
-		<%if(i==null) {%>
-		<%}else {%>
-			<input type="hidden" name="file" value="<%=i.getFileName()%>">
-		<%} %>
-		<input type="hidden" name="no" value="<%=request.getAttribute("no")%>">
-		<%if (loginMember!=null && loginMember.getMemberName().equals("admin")) {%>
-				<button type="submit" class="btn btn-primary btn-sm ms-1" >수정하기</button>
-				<button type="button" class="btn btn-primary btn-sm ms-1" 
-					onclick="removeCheck()">삭제하기</button>
-		<%} %>
-		<button type="button" class="btn btn-primary btn-sm ms-1" 
-			onclick="location.assign('<%=request.getContextPath()%>/notice/insertNotice.do')" >목록</button>
-	</form>
+		<form action="<%=request.getContextPath()%>/notice/updateNotice.do" method="post"> <!-- 수정하기 누르면 기존 값 이동 -->
+			<input type="hidden" name="title" value="<%=n.getNoticeTitle() %>">
+			<input type="hidden" name="content" value="<%=n.getNoticeContent() %>">
+			<%if(i==null) {%>
+			<%}else {%>
+				<input type="hidden" name="file" value="<%=i.getFileName()%>">
+			<%} %>
+			<input type="hidden" name="no" value="<%=request.getAttribute("no")%>">
+			<%if (loginMember!=null && loginMember.getMemberName().equals("admin")) {%>
+					<button type="submit" class="btn btn-primary btn-sm ms-1" >수정하기</button>
+					<button type="button" class="btn btn-primary btn-sm ms-1" 
+						onclick="removeCheck()">삭제하기</button>
+			<%} %>
+			<button type="button" class="btn btn-primary btn-sm ms-1" 
+				onclick="location.assign('<%=request.getContextPath()%>/notice/insertNotice.do')" >목록</button>
+		</form>
 	</div>
 
 	<!--  수정정보 보내기 -->

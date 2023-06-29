@@ -13,8 +13,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.btc.admin.model.service.AdminRoomService;
 import com.btc.rooms.model.vo.Room;
-import com.btc.rooms.model.vo.RoomOption;
-import com.google.gson.Gson;
+import com.btc.rooms.model.vo.RoomImage;
 import com.oreilly.servlet.MultipartRequest;
 import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
 
@@ -51,12 +50,17 @@ public class UpdateRoomServlet extends HttpServlet {
 		
 		Room r=Room.builder().roomNo(roomNo).roomName(roomName).roomPrice(roomPrice).roomSize(roomSize).roomCap(roomCap).roomMaxCap(roomMaxCap).bookable(bookable).roomDescription(roomDescription).build();
 		Enumeration<String> files=mr.getFileNames();
-		List<String> filesName=new ArrayList();
+		List<RoomImage> filesName=new ArrayList();
 		while(files.hasMoreElements()) {
 			String fileName=files.nextElement();
-			filesName.add(mr.getFilesystemName(fileName));
+			filesName.add(
+					RoomImage.builder()
+					.roomNo(roomNo)
+					.saveFilename(mr.getFilesystemName(fileName))
+					.oriFilename(mr.getOriginalFileName(fileName))
+					.build());
 		}
-		int result=new AdminRoomService().updateInquiry(r,filesName,frees);
+		int result=new AdminRoomService().updateRoom(r,filesName,frees);
 //		int deleteRO=new AdminRoomService().deleteOldOption(roomNo);
 //		int num=new AdminRoomService().updateRoomOption(roomNo,frees);
 		

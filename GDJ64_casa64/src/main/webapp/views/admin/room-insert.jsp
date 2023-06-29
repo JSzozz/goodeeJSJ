@@ -83,16 +83,16 @@
 							<label for="attachment"
 								class="col-sm-1 col-form-label text-center">객실사진</label>
 							<div class="col-sm-4">
-								<input type="file" id="attachment" class="form-control" name="roomImage">
-								<input type="file" id="attachment" class="form-control" name="roomImage">
-								<input type="file" id="attachment" class="form-control" name="roomImage">
-								<input type="file" id="attachment" class="form-control" name="roomImage">
-								<input type="file" id="attachment" class="form-control" name="roomImage">
-								<input type="file" id="attachment" class="form-control" name="roomImage">
-								<input type="file" id="attachment" class="form-control" name="roomImage">
-								<input type="file" id="attachment" class="form-control" name="roomImage">
-								<input type="file" id="attachment" class="form-control" name="roomImage">
-								<input type="file" id="attachment" class="form-control" name="roomImage">
+								<input type="file" id="attachment" class="form-control" name="roomImage1">
+								<input type="file" id="attachment" class="form-control" name="roomImage2">
+								<input type="file" id="attachment" class="form-control" name="roomImage3">
+								<input type="file" id="attachment" class="form-control" name="roomImage4">
+								<input type="file" id="attachment" class="form-control" name="roomImage5">
+								<input type="file" id="attachment" class="form-control" name="roomImage6">
+								<input type="file" id="attachment" class="form-control" name="roomImage7">
+								<input type="file" id="attachment" class="form-control" name="roomImage8">
+								<input type="file" id="attachment" class="form-control" name="roomImage9">
+								<input type="file" id="attachment" class="form-control" name="roomImage10">
 							</div>
 						</div>
 						<!-- 객실 공개 -->
@@ -115,7 +115,8 @@
 							</div>
 						</div>
 						<div class="d-flex justify-content-end mt-2">
-							<button type="submit" class="btn btn-dark">객실추가</button>					
+							<button type="submit" class="btn btn-dark" id="addRoom">객실추가</button>		
+							<!-- 넘어가서 빈페이지나오네-->			
 						</div>
 					</div>
 				</form>
@@ -133,4 +134,7 @@
 					
 					 -->
 </section>
+<script>
+
+</script>
 <%@ include file="/views/admin/common/footer.jsp"%>

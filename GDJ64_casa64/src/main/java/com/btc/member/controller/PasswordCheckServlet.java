@@ -36,7 +36,7 @@ public class PasswordCheckServlet extends HttpServlet {
 		HttpSession session=request.getSession();
 		session.setAttribute("memberNo", memberNo);
 		int result=new MemberService().passwordCk(memberNo, password);
-		
+		System.out.println(result);
 		PrintWriter out=response.getWriter();
 		out.print(result);
 	}

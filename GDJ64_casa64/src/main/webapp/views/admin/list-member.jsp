@@ -132,7 +132,7 @@ String search = (String) request.getAttribute("search");
 					<h5>회원번호</h5>
 					<input type="text" name="memberNo" value="" readonly>
 					<h5>회원블랙사유</h5>
-					<textarea name="reason" rows="5" cols="50"></textarea>
+					<textarea name="reason" rows="5" cols="50" maxlength="100"></textarea>
 					<br>
 					<h5>첨부파일</h5>
 					<input type="file" name="fileName">
@@ -161,6 +161,7 @@ String search = (String) request.getAttribute("search");
 				success:function(data){
 					if(data==1){
 						alert("탈퇴성공");
+						location.replace("<%=request.getContextPath()%>/admin/memberList.do");
 					}else{
 						alert("실패");
 					}

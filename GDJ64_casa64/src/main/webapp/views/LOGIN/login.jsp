@@ -1,5 +1,24 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 
+<%@ page import="java.net.URLEncoder" %>
+<%@ page import="java.security.SecureRandom" %>
+<%@ page import="java.math.BigInteger" %>
+
+
+  <%
+    String clientId = "ogN8S_IYucSd1upGMoFq";//애플리케이션 클라이언트 아이디값";
+    String redirectURI = URLEncoder.encode("http://14.36.141.71:10005/GDJ64_casa64_semi/naverLogin.do", "UTF-8");
+    SecureRandom random = new SecureRandom();
+    String state = new BigInteger(130, random).toString();
+    String apiURL = "https://nid.naver.com/oauth2.0/authorize?response_type=code";
+    apiURL += "&client_id=" + clientId;
+    apiURL += "&redirect_uri=" + redirectURI;
+    apiURL += "&state=" + state;
+    session.setAttribute("state", state);
+ %>
+
+
+
     <!-- 헤더 영역 시작 -->
     <%@ include file="/views/common/header.jsp" %>
     <!-- 헤더 영역 종료 -->
@@ -32,8 +51,7 @@
                             <a href="<%=request.getContextPath()%>/member/enrollMember.do" class="login__signin login__signin--signup" id="sign-up">회원가입</a>
                         </div>
                         <div id="sns-login">
-                            <span><img src="<%=request.getContextPath()%>/images/icon/kakao-talk-icon.png" alt="" width="50px"></span>
-                            <span><img src="<%=request.getContextPath()%>/images/icon/btnG_아이콘사각.png" alt="" width="50px"></span>
+                            <span><a href="<%=apiURL%>"><img src="<%=request.getContextPath()%>/images/icon/btnW_완성형.png" alt="" width="200px"></a></span>
                         </div>
                     </form>
                 </div>

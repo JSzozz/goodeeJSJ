@@ -8,6 +8,7 @@ import java.util.List;
 
 import com.btc.booking.model.dao.BookingDao;
 import com.btc.booking.model.vo.Booking;
+import com.btc.booking.model.vo.OptionXtra;
 import com.btc.booking.model.vo.SeasonalPrice;
 import com.btc.rooms.model.vo.Room;
 
@@ -49,6 +50,36 @@ public class BookingService {
 		close(conn);
 		return list;
 	}
+	
+	public List<OptionXtra> selectAllOption(){
+		Connection conn=getConnection();
+		List<OptionXtra> list=dao.selectAllOption(conn);
+		close(conn);
+		return list;
+	}
+
+	public List<Room> selectFilteringRoom(String optionList){
+		Connection conn=getConnection();
+		List<Room> list=dao.selectFilteringRoom(conn, optionList);
+		close(conn);
+		return list;
+	}
+	
+	public int searchOptNo(String Optname) {
+		Connection conn=getConnection();
+		int roomNo=dao.searchOptNo(conn, Optname);
+		close(conn);
+		return roomNo;
+	}
+	
+	public Booking searchBookingByMemberNo(int loginMemberNo) {
+		Connection conn=getConnection();
+		Booking booking=dao.searchBookingByMemberNo(conn, loginMemberNo);
+		close(conn);
+		return booking;
+	}
+	
+	
 //	private NoticeDao dao=new NoticeDao();
 //	
 //	public List<Notice> selectNotice(int cPage, int numPerpage){

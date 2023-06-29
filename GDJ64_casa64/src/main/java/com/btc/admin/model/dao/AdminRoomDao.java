@@ -16,6 +16,7 @@ import com.btc.rooms.model.dao.RoomDao;
 import com.btc.rooms.model.vo.OptionFree;
 import com.btc.rooms.model.vo.OptionXtra;
 import com.btc.rooms.model.vo.Room;
+import com.btc.rooms.model.vo.RoomImage;
 import com.btc.rooms.model.vo.RoomOption;
 
 public class AdminRoomDao {
@@ -138,6 +139,7 @@ public class AdminRoomDao {
 			while(rs.next()) {
 				list.add(getFree(rs));
 			}
+			System.out.println(list);
 		}catch(SQLException e) {
 			e.printStackTrace();
 		}finally {
@@ -230,13 +232,26 @@ public class AdminRoomDao {
 	}
 
 	public int insertInquiry(Connection conn, Room r) {
-		// TODO Auto-generated method stub
+		
 		return 0;
+		
 	}
 
-	public int insertUpfiles(Connection conn, String string) {
-		// TODO Auto-generated method stub
-		return 0;
+	public int insertUpfiles(Connection conn, RoomImage roomimage) {
+		PreparedStatement pstmt=null;
+		int result=0;
+		String query=sql.getProperty("insertRoomImage");
+		try {
+			pstmt=conn.prepareStatement(query);
+			pstmt.setInt(1, roomimage.getRoomNo());
+			pstmt.setString(2, roomimage.getSaveFilename());
+			pstmt.setString(3, roomimage.getOriFilename());
+			result=pstmt.executeUpdate();
+		}catch(SQLException e) {
+			e.printStackTrace();
+		}finally {
+			close(pstmt);
+		}return result;
 	}
 	public int deleteOldOption(Connection conn,int roomNo) {
 		PreparedStatement pstmt=null;
@@ -273,6 +288,7 @@ public class AdminRoomDao {
 		PreparedStatement pstmt=null;
 		int result=0;
 		String query=sql.getProperty("addNewRoom");
+		System.out.println(String.valueOf(r.getBookable()));
 		try {
 			pstmt=conn.prepareStatement(query);
 			pstmt.setString(1,r.getRoomName());
@@ -280,9 +296,9 @@ public class AdminRoomDao {
 			pstmt.setInt(3,r.getRoomSize());
 			pstmt.setInt(4,r.getRoomCap());
 			pstmt.setInt(5,r.getRoomMaxCap());
-			pstmt.setString(6,String.valueOf(r.getBookable()));
-			pstmt.setString(7,String.join(",", r.getRoomImage()));
-			pstmt.setString(8,r.getRoomDescription());	
+//			pstmt.setString(6,String.valueOf(r.getBookable()));
+			pstmt.setString(6,r.getRoomImage());
+			pstmt.setString(7,r.getRoomDescription());	
 			result=pstmt.executeUpdate();
 		}catch(SQLException e) {
 			e.printStackTrace();
@@ -291,7 +307,37 @@ public class AdminRoomDao {
 		}return result;
 	}
 
+	public int selectRoomNo(Connection conn) {
+		PreparedStatement pstmt=null;
+		ResultSet rs=null;
+		String query=sql.getProperty("selectRoomNo");
+		int count=0;
+		try {
+			pstmt=conn.prepareStatement(query);
+			rs=pstmt.executeQuery();
+			if(rs.next()) count=rs.getInt(1);
+		}catch(SQLException e) {
+			e.printStackTrace();
+		}finally {
+			close(rs);
+			close(pstmt);
+		}return count;
+	}
 
+	public int deleteOldRoomImage(Connection conn, Room r) {
+		PreparedStatement pstmt=null;
+		int result=0;
+		try {
+			pstmt=conn.prepareStatement(sql.getProperty("deleteOldRoomImage"));
+			pstmt.setInt(1,r.getRoomNo());
+			result=pstmt.executeUpdate();
+		}catch(SQLException e) {
+			e.printStackTrace();
+		}finally {
+			close(pstmt);
+		}return result;
+		
+	}
 
 }
 
