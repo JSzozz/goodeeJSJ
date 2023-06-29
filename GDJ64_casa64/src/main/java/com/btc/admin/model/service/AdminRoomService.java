@@ -9,10 +9,13 @@ import java.nio.file.Files;
 import java.sql.Connection;
 import java.util.List;
 
+import org.apache.tomcat.jni.File;
+
 import com.btc.admin.model.dao.AdminRoomDao;
 import com.btc.rooms.model.vo.OptionFree;
 import com.btc.rooms.model.vo.OptionXtra;
 import com.btc.rooms.model.vo.Room;
+import com.btc.rooms.model.vo.RoomImage;
 import com.btc.rooms.model.vo.RoomOption;
 
 public class AdminRoomService {
@@ -83,46 +86,25 @@ public class AdminRoomService {
 		close(conn);
 		return count;
 	}
-//	public int insertInquiry(String memberId, String boardType, String boardTitle, String boardContent, List<String> files) {
-//	       Connection conn = getConnection();
-//	       int result = dao.InsertInquiry(conn, memberId, boardType, boardTitle, boardContent); 파일없이 게시글만 등록하는
-//	       
-//	       if (result > 0) {
-//	           int fileResult = 0;
-//	           if (files != null && !files.isEmpty()) {
-//	               for (int i = 0; i < files.size(); i++) {
-//	                   fileResult = dao.Insertupfiles(conn, files.get(i));
-//	                   if (fileResult <= 0) {
-//	                       break; 
-//	                   }
-//	               }
-//	           }
-//	           
-//	           if (fileResult > 0 || (files != null && files.isEmpty())) { 
-//	               commit(conn);
-//	           } else {
-//	               rollback(conn);
-//	           }
-//	       } else {
-//	           rollback(conn);
-//	       }
-//	       
-//	       return result;
-//	   }
-	public int insertInquiry(Room r, List<String> files, String[] frees) {
+
+	public int insertRoom(Room r, List<RoomImage> files, String[] frees) {
 		Connection conn=getConnection();
 		int result=dao.insertRoom(conn, r);
+		int roomNo=dao.selectRoomNo(conn);
+        System.out.println("result :" + result);
+        System.out.println("roomNo :" + roomNo);
 		if(result>0) {
 			if(files!=null&&!files.isEmpty()) {
 				for(int i=0;i<files.size();i++) {
+					files.get(i).setRoomNo(roomNo);
 					result=dao.insertUpfiles(conn, files.get(i));
 					if(result<=0) {
 						rollback(conn);
-						break;
+						return -1;
 					}
 				}
 				if(result>0) {
-					result=dao.updateRoomOption(conn,r.getRoomNo(),frees);
+					result=dao.updateRoomOption(conn,roomNo,frees);
 					if(result>0) commit(conn);
 					else rollback(conn);
 				}else {
@@ -130,46 +112,44 @@ public class AdminRoomService {
 				}
 			}
 		}
-		return result;
+
+        close(conn);
+		return roomNo;
 	}
-	public int updateInquiry(Room r, List<String> filesName,String[] frees) {
+	public int updateRoom(Room r, List<RoomImage> filesName, String[] frees) {
 		Connection conn=getConnection();
 		int result=dao.updateRoom(conn, r);
-		if(result>0) {
-			if(filesName!=null&&!filesName.isEmpty()) {
-				for(int i=0;i<filesName.size();i++) {
-					result=dao.insertUpfiles(conn, filesName.get(i));
-					if(result<=0) {
-						rollback(conn);
-						break;
+		//이전 파일삭제하는 구문 작성 -> 방번호를 기준으로....
+		int deleteImageResult=dao.deleteOldRoomImage(conn,r);
+		if(deleteImageResult<0) {
+			//예전 이미지 삭제 실패
+			rollback(conn);
+		}else {
+			//예전 이미지 삭제 성공->새로운 내용 등록
+			if(result>0) {
+				if(filesName!=null&&!filesName.isEmpty()) {
+					for(int i=0;i<filesName.size();i++) {
+						result=dao.insertUpfiles(conn, filesName.get(i));
+						if(result<=0) {
+							rollback(conn);
+							break;
+						}
 					}
-				}
-				result=dao.deleteOldOption(conn, r.getRoomNo());
-				if(result>0) {
-					result=dao.updateRoomOption(conn,r.getRoomNo(),frees);
-					if(result>0) commit(conn);
-					else rollback(conn);
-				}else {
-					rollback(conn);
+					result=dao.deleteOldOption(conn, r.getRoomNo());
+					if(result>0) {
+						result=dao.updateRoomOption(conn,r.getRoomNo(),frees);
+						if(result>0) commit(conn);
+						else rollback(conn);
+					}else {
+						rollback(conn);
+					}
 				}
 			}
 		}
 		return result;
 		
 	}
-//	public int updateRoomOption(int roomNo, String[] frees) {
-//		Connection conn=getConnection();
-//		int result=dao.updateRoomOption(conn,roomNo,frees);
-//		close(conn);
-//		return result;
-//		
-//	}
-//	public int deleteOldOption(int roomNo) {
-//		Connection conn=getConnection();
-//		int result=dao.deleteOldOption(conn, roomNo);
-//		close(conn);
-//		return result;
-//	}
+
 
 
 }
