@@ -12,6 +12,7 @@ import java.util.List;
 import org.apache.tomcat.jni.File;
 
 import com.btc.admin.model.dao.AdminRoomDao;
+import com.btc.booking.model.vo.SeasonalPrice;
 import com.btc.rooms.model.vo.OptionFree;
 import com.btc.rooms.model.vo.OptionXtra;
 import com.btc.rooms.model.vo.Room;
@@ -159,6 +160,12 @@ public class AdminRoomService {
 		RoomImage image=dao.selectRoomImage(conn,roomNo);
 		close(conn);
 		return image;
+	}
+	public List<SeasonalPrice> allSeason() {
+		Connection conn=getConnection();
+		List<SeasonalPrice> prices=dao.allSeason(conn);
+		close(conn);
+		return prices;
 	}
 
 

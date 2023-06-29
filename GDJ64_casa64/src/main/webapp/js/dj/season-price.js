@@ -8,7 +8,6 @@ $(() => {
   });
 
   $(document).on('click', '#insertRowBtn', function () {
-    console.log($(this).parent().parent());
     const $tbody = $(this).parent().parent().parent();
     const $seasonName = $tbody.find('.season-name').val();
     const $weekdayPrice = $tbody.find('.season-week-day').val();
@@ -39,7 +38,7 @@ function createSeasonRow() {
     '<td><input type="number" class="form-control season-weekend" name="weekendRate"/></td>' +
     '<td><input type="date" class="form-control season-start" name="startDate" /></td>' +
     '<td><input type="date" class="form-control season-end" name="endDate"/></td>' +
-    '<td><button type="button" id="insertRowBtn" class="btn btn-dark">추가</button></td > ' +
+    '<td><button type="button" id="insertRowBtn" class="btn btn-dark" onclick="insertSeason();">추가</button></td > ' +
     '</tr>'
   );
 }
@@ -55,6 +54,10 @@ function insertSeasonRow(name, weekPrice, weekEndPrice, start, end) {
     '<td><button type="button" id="removeRowBtn" class="btn btn-dark">삭제</button></td > ' +
     '</tr>'
   );
+}
+
+function insertSeason() {
+	location.assign(URL + "?=" + $());
 }
 
 // 공백, null, undefined, 빈값 처리 함수
