@@ -42,15 +42,16 @@ public class ReviewDao {
 			// 검색 타입과 검색어가 있을 경우
 			if (type != null && type != "" && keyword != null && keyword != "" && !type.equals("rooms")) {
 				if (type.equals("title")) { // 검색 타입이 제목일 경우
-					sql += " AND LOWER(REVIEW.TITLE) ";
+					sql += " AND LOWER(REVIEW.TITLE) "; // LOWER 소문자로
 				} else if (type.equals("contents")) { // 검색 타입이 내용일 경우
 					sql += " AND LOWER(REVIEW.CONTENTS) ";
-				} else if (type.equals("writer")) { // 검색 타입이 작성자 일 경우
+				} else if (type.equals("writer")) { // 검색 타입이 작성자일 경우
 					sql += " AND LOWER(MEMBER.NICKNAME) ";
 				}
-				sql += " LIKE '%" + keyword.toLowerCase() + "%' ";
+				sql += " LIKE '%" + keyword.toLowerCase() + "%' "; // 문자를 소문자로 toLowerCase
 			}
-			sql += " ORDER BY REVIEW.NO DESC";
+			sql += " ORDER BY REVIEW.NO DESC"; 
+			
 			String query = "SELECT * FROM (SELECT ROWNUM AS RNUM, R.* FROM (" + sql
 					+ ") R ) WHERE RNUM BETWEEN ? AND ?";
 
@@ -124,7 +125,7 @@ public class ReviewDao {
 		try {
 			conn = getConnection(); 
 			String sql = "INSERT INTO REVIEW (NO,TITLE,CONTENTS,VIEWS,IS_DELETED,ROOM_NO,MEMBER_NO,BOOKING_NO, DATE_CREATED, DATE_MODIFIED) "
-					+ "VALUES (REVIEW_SEQ.NEXTVAL,?,?,?,?,?,?,?, SYSTIMESTAMP, SYSTIMESTAMP)";
+						+ "VALUES (REVIEW_SEQ.NEXTVAL,?,?,?,?,?,?,?, SYSTIMESTAMP, SYSTIMESTAMP)";
 
 			pstmt = conn.prepareStatement(sql); 
 //         4. 쿼리에 파라미터 셋팅
@@ -163,7 +164,7 @@ public class ReviewDao {
 		try {
 			conn = getConnection(); 
 			String sql = "UPDATE REVIEW SET TITLE = ?, CONTENTS = ?, DATE_MODIFIED = SYSTIMESTAMP "
-					+ "WHERE REVIEW.NO = ?";
+						+ "WHERE REVIEW.NO = ?";
 			pstmt = conn.prepareStatement(sql); 
 			pstmt.setString(1, reviews.getTitle());
 			pstmt.setString(2, reviews.getContents());
@@ -197,7 +198,7 @@ public class ReviewDao {
 		try {
 			String sql = getBasicQuery(); // 실행할 기본 쿼리
 			sql += " AND REVIEW.MEMBER_NO = ? ";
-            sql += " ORDER BY REVIEW.DATE_CREATED ";
+            sql += " ORDER BY REVIEW.DATE_CREATED DESC ";
 
 			pstmt = conn.prepareStatement(sql); 
 			pstmt.setInt(1, memberNo);
@@ -250,7 +251,7 @@ public class ReviewDao {
 	}
 
 	/**
-	 * 이용후기 번호로 저장된 이미지 있으면 불러오기
+	 * 이용후기 번호로 저장된 이미지 파일있으면 불러오기
 	 * @param conn
 	 * @param reviewNo
 	 * @return
@@ -273,7 +274,7 @@ public class ReviewDao {
 				ri.setFileName(rs.getString("FILENAME"));
 				ri.setSaveFileName(rs.getString("SAVE_FILENAME"));
 				ri.setDateCreated(rs.getDate("DATE_CREATED"));
-				list.add(ri); //
+				list.add(ri);
 			}
 
 		} catch (SQLException e) {
@@ -299,11 +300,11 @@ public class ReviewDao {
 
 		try {
 			String sql = "SELECT B.* , RM.ROOM_NAME, R.NO REVIEW_NO "
-					+ "FROM BOOKING B "
-					+ "JOIN MEMBER M ON M.MEMBER_NO = B.MEMBER_NO "
-					+ "JOIN ROOM RM ON RM.ROOM_NO = B.ROOM_NO "
-					+ "LEFT JOIN REVIEW R ON R.MEMBER_NO = M.MEMBER_NO AND R.BOOKING_NO = B.BOOKING_NO AND R.IS_DELETED = 0 "
-					+ "WHERE B.MEMBER_NO = ? AND B.BOOKING_STATE = '이용완료' AND R.NO IS NULL"; // 실행할 기본 쿼리
+						+ "FROM BOOKING B "
+						+ "JOIN MEMBER M ON M.MEMBER_NO = B.MEMBER_NO "
+						+ "JOIN ROOM RM ON RM.ROOM_NO = B.ROOM_NO "
+						+ "LEFT JOIN REVIEW R ON R.MEMBER_NO = M.MEMBER_NO AND R.BOOKING_NO = B.BOOKING_NO AND R.IS_DELETED = 0 "
+						+ "WHERE B.MEMBER_NO = ? AND B.BOOKING_STATE = '이용완료' AND R.NO IS NULL"; // 실행할 기본 쿼리
 
 			pstmt = conn.prepareStatement(sql); 
 			pstmt.setInt(1, memberNo);

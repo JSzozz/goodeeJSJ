@@ -71,9 +71,11 @@
 				if(loginMember != null && loginMember.getMemberType() == 1 && reviews.getIsReply() < 1) {
 					isWriteShowClass = "show";
 				}
+				// 작성된 댓글
 				if( reviews.getIsReply() == 1 ) {
 					isCommentShowClass = "show";
 				}
+				// 삭제수정 버튼 (admin인 경우에만, 멤버타입 1)
 				if(loginMember != null && loginMember.getMemberType() == 1 && reviews.getIsReply() == 1) {
 					isAdmin = "show";
 				}

@@ -79,7 +79,7 @@ public class ReviewService {
 		return result;
 	}
 	/**
-	 * 이용후기 이미지 업로드
+	 * 이용후기 이미지 파일 업로드
 	 * @param imgList
 	 * @param reviews
 	 * @return
