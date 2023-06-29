@@ -43,9 +43,13 @@ public class LoginToHeaderServlet extends HttpServlet {
 		Member loginMember=new MemberService().login(email,pw);
 		//세션에 저장
 		HttpSession session=request.getSession();//true/flase도 줄 수 있다. 그러나 세션은 (jsp파일에 별도 설정 없는 상태에서는) 기본적으로 존재한다
+		int loginMemberNo=0;
+		Booking recentBooking=null;
+		if(loginMember!=null) {
+			loginMemberNo= loginMember.getMemberNo();
+			recentBooking = new BookingService().searchBookingByMemberNo(loginMemberNo);
+		}
 		
-		int loginMemberNo= loginMember.getMemberNo();
-		Booking recentBooking = new BookingService().searchBookingByMemberNo(loginMemberNo);
 		
 		
 		//값이 없으면 로그인 금지
