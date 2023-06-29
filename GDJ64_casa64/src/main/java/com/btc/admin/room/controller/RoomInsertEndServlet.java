@@ -48,31 +48,41 @@ public class RoomInsertEndServlet extends HttpServlet {
         int roomMaxCap = Integer.parseInt(mr.getParameter("roomMaxCap"));
         char bookable = mr.getParameter("bookable").charAt(0);
         String roomDescription = mr.getParameter("roomDescription");
+        //선택된 기본 옵션 정보 가져오
         String[] options=mr.getParameterValues("optionFree");
-        Room r=Room.builder().roomName(roomName).roomPrice(roomPrice).roomSize(roomSize).roomCap(roomCap).roomMaxCap(roomMaxCap).bookable(bookable).roomDescription(roomDescription).build();
-        Enumeration<String> files = mr.getFileNames();// 인풋에서 넣은 파일들의 이름
-        List<RoomImage> filesName = new ArrayList();
-		while (files.hasMoreElements()) {
-
-			String fileName = files.nextElement();
-			if (mr.getFilesystemName(fileName) != null) {
-				filesName.add(RoomImage.builder().saveFilename(mr.getFilesystemName(fileName))
-						.oriFilename(mr.getOriginalFileName(fileName)).build());
-				System.out.println(mr.getFilesystemName(fileName) + mr.getOriginalFileName(fileName));
-			}
-		}
         
-        System.out.println("r :" + r);
-        /* int result=new AdminRoomService().; */
-        int roomNo=new AdminRoomService().insertRoom(r,filesName,options);
+        Room r=Room.builder().roomName(roomName).roomPrice(roomPrice).roomSize(roomSize).roomCap(roomCap).roomMaxCap(roomMaxCap).bookable(bookable).roomDescription(roomDescription).build();
+        
+//        Enumeration<String> files = mr.getFileNames();// 인풋에서 넣은 파일들의 이름
+//        List<RoomImage> riList = new ArrayList();
+//		while (files.hasMoreElements()) {
+//
+//			String file = files.nextElement();
+//			String saveFilename=mr.getFilesystemName(file)
+//			
+//				filesName.add(RoomImage.builder().saveFilename(mr.getFilesystemName(fileName))
+//						.oriFilename(mr.getOriginalFileName(fileName)).build());
+//				System.out.println(mr.getFilesystemName(fileName) + mr.getOriginalFileName(fileName));
+//			
+//		}
+        
+        String fileName=mr.getOriginalFileName("roomImage");
+        String saveFilename=mr.getFilesystemName("roomImage");
+        
+        RoomImage image=RoomImage.builder().saveFilename(saveFilename).oriFilename(fileName).build();
+        int result=new AdminRoomService().insertRoom(r,image,options);
+        
+        int roomNo=new AdminRoomService().selectRoomNo();
         System.out.println("roomNo :" + roomNo);
 //        int result = new AdminRoomService().insertInquiry(r,filesName);
 //        System.out.println(result);
   //
 //        response.setContentType("application/json;charset=utf-8");
 //        new Gson().toJson(result > 0 ? true : false, response.getWriter());
+        
         String msg="",loc="";
-        if(roomNo!=0) {
+        if(result>0) {
+        
            msg="객실 등록이 성공적으로 완료되었습니다.";
            loc="/admin/room/showAllRoom.do";
         }else {

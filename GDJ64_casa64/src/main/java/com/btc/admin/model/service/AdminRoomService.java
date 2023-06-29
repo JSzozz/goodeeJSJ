@@ -87,33 +87,30 @@ public class AdminRoomService {
 		return count;
 	}
 
-	public int insertRoom(Room r, List<RoomImage> files, String[] frees) {
+	public int insertRoom(Room r, RoomImage image, String[] frees) {
 		Connection conn=getConnection();
 		int result=dao.insertRoom(conn, r);
 		int roomNo=dao.selectRoomNo(conn);
         System.out.println("result :" + result);
         System.out.println("roomNo :" + roomNo);
 		if(result>0) {
-			if(files!=null&&!files.isEmpty()) {
-				for(int i=0;i<files.size();i++) {
-					files.get(i).setRoomNo(roomNo);
-					result=dao.insertUpfiles(conn, files.get(i));
-					if(result<=0) {
-						rollback(conn);
-						return -1;
-					}
-				}
-				if(result>0) {
-					result=dao.updateRoomOption(conn,roomNo,frees);
-					if(result>0) commit(conn);
-					else rollback(conn);
-				}else {
+			if(image!=null) {
+				image.setRoomNo(roomNo);
+				result=dao.insertUpfiles(conn, image);
+				if(result<=0) {
 					rollback(conn);
+					return -1;
 				}
 			}
+			if(result>0) {
+				result=dao.updateRoomOption(conn,roomNo,frees);
+				if(result>0) commit(conn);
+				else rollback(conn);
+			}else {
+				rollback(conn);
+			}
 		}
-
-        close(conn);
+		close(conn);
 		return roomNo;
 	}
 	public int updateRoom(Room r, List<RoomImage> filesName, String[] frees) {
@@ -148,6 +145,18 @@ public class AdminRoomService {
 		}
 		return result;
 		
+	}
+	public int selectRoomNo() {
+		Connection conn=getConnection();
+		int roomNo=dao.selectRoomNo(conn);
+		close(conn);
+		return roomNo;
+	}
+	public RoomImage selectRoomImage(int roomNo) {
+		Connection conn=getConnection();
+		RoomImage image=dao.selectRoomImage(conn,roomNo);
+		close(conn);
+		return image;
 	}
 
 
