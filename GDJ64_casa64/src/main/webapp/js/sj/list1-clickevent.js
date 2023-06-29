@@ -15,11 +15,16 @@
 /* 달력에서 객실 클릭 */
    let totalRoomPrice=0;
    let totalBookPrice=0;
-   
+   let alertCountOfLogin=0;
    $(function() {
       let checkInDt="";//(String)
       let roomPrice=0;
        $(document).on("click","div[bookable=Y]",e=> {
+			 if(alertCountOfLogin==0){
+			 	checkLogin();
+			 	alertCountOfLogin=1;
+			 	console.log(alertCountOfLogin);
+			 };
              $(".reserve_step2").show();
              $(e.target).css("text-decoration","underline");
 

@@ -39,34 +39,36 @@ public class BookingRoomFilterByMainServlet extends HttpServlet {
    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 	BookingService service = new BookingService();
     String[] options=request.getParameterValues("options");//#oo#oo#oo
-    System.out.println("options : "+Arrays.toString(options));
+//    System.out.println("options : "+Arrays.toString(options));
     String optionList="";
     for(int i=0;i<options.length;i++) {
-    	System.out.println(options[i]);
+//    	System.out.println(options[i]);
     	optionList = options[i].substring(1, options[i].length());//oo#oo#oo
     }
     List<String> list = Arrays.asList(optionList.split("#"));//{oo,oo,oo}
     
     String OptionNumbers="";
     for(int i=0;i<list.size();i++) {
-    	System.out.println(list.get(i).getClass().getName());//string
-    	System.out.println(list.get(i));
+//    	System.out.println(list.get(i).getClass().getName());//string
+//    	System.out.println(list.get(i));
 		int roomNo = service.searchOptNo(list.get(i));// FREE_NAME->FREE_NO
 		OptionNumbers+=roomNo+",";
-		System.out.println(OptionNumbers);
+//		System.out.println(OptionNumbers);
     }
     OptionNumbers = OptionNumbers.substring(0, OptionNumbers.length() - 1);
 
     List<Room> filterRooms= new BookingService().selectFilteringRoom(OptionNumbers);
-    List<Room> oriRooms=new BookingService().selectAllRoom();
     List<Room> rooms=new ArrayList();
-//    System.out.println("gd"+filterRooms.get(0).getRoomNo());
+//  System.out.println("gd"+filterRooms.get(0).getRoomNo());
     for(int i=0;i<filterRooms.size();i++) {
-//       System.out.println(filterRooms.get(i).getRoomNo());
-       int roomNo=filterRooms.get(i).getRoomNo()-1;//룸번호=get(i)-1 
-       rooms.add(oriRooms.get(roomNo));
+//     System.out.println(filterRooms.get(i).getRoomNo());
+    	int $roomNo=filterRooms.get(i).getRoomNo();//룸번호=get(i)-1 
+//     System.out.println(roomNo);
+    	Room $room= new BookingService().selectRoomByRoomNo($roomNo);
+    	rooms.add($room);
     }
-//    System.out.println(rooms);
+//  System.out.println(rooms);
+  
     HttpSession session=request.getSession();
     session.setAttribute("rooms", rooms);
     

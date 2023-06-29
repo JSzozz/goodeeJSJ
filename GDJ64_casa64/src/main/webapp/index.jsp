@@ -20,7 +20,6 @@
         }
     </style>
     <!-- /css -->
-    
     <section>
         <!-- Slider main container -->
         <div class="swiper">
@@ -56,6 +55,10 @@
 	                                    <tr class="resize">
 	                                        <th>예약상태&nbsp;</th>
 	                                        <td><%=recentBooking.getBookingState() %>(결제일 : <%=recentBooking.getPaymentDate() %>) </td><br>
+	                                    </tr>
+	                                    <tr class="resize">
+	                                        <th>요청사항&nbsp;</th>
+	                                        <td><%=recentBooking.getBookingComment() %></td><br>
 	                                    </tr>
 	                                    <%} %>
 	                                </tbody>
