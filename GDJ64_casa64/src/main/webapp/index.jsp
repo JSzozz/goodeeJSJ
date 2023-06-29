@@ -139,7 +139,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="swiper-slide"><img src="<%=request.getContextPath()%>/images/rooms image/no.1 rooms/04.jpg"></div>
+                <div class="swiper-slide"><img src="<%=request.getContextPath()%>/images/room/04.jpg"></div>
             </div>
             <!-- If we need pagination -->
             <div class="swiper-pagination"></div>

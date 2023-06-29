@@ -71,7 +71,7 @@ function searchBooking(address) {
 function infoBooking(data) {
   const BOOKING_NO = $(data).parent().parent().find('td').first().text();
   ajaxShowModal(checkBookingURL, BOOKING_NO);
-  $("#bookingModal").modal("show");
+  $('#bookingModal').modal('show');
 }
 
 // 상세조회 AJAX
@@ -94,7 +94,6 @@ function ajaxShowModal(address, no) {
         	$('#cancelBookingBtn').click((e) => {
 			  cancelBooking(cancelBookingURL, data.bookingNo);
 			  e.stopPropagation();
-			  return;
 			});
       } else {
         $('#isBookingCancelBtn').addClass('d-none'); 
@@ -128,7 +127,7 @@ function cancelBooking(address, no) {
     type: 'get',
     data: { bookingNo: no },
     success: (data) => {
-      $("#alertModal").modal("show");
+      $('#alertModal').modal('show');
       $('.select').click();
     }
   })
