@@ -1,8 +1,8 @@
 package com.btc.notice.controller;
 
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -14,16 +14,16 @@ import com.btc.notice.model.dto.Qna;
 import com.btc.notice.model.service.QnaService;
 
 /**
- * Servlet implementation class CategoryInsertNameServlet
+ * Servlet implementation class QnaSearchServlet
  */
-@WebServlet("/qna/insertQna.do") //qna.jsp로이동하는 서블릿
-public class QnaInsertServlet extends HttpServlet {
+@WebServlet("/qna/searchQna.do")
+public class QnaSearchServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public QnaInsertServlet() {
+    public QnaSearchServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -32,37 +32,59 @@ public class QnaInsertServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		//주제, 이름을 받아 표시하기
-		request.setAttribute("categoryName", "COMMUNITY");
-		request.setAttribute("communityTitle", "QnA");
+		//클라이언트가 보낸 데이터를 기준으로 member테이블에서 해당하는 데이터를 보내줌(입력타입과 입력값을 이용해서 회원필터기능을 만드는 로직)
+    	//header 관리자상태로 회원조회누르면 여기로와서 입력타입,입력값가지고 리스트를 멤버로 저장 저장한걸 기존 서블릿으로 이동
+    	//1. 입력타입과 입력값을 받아오기
+    	String searchType=request.getParameter("search-type");
+		String keyword=request.getParameter("keyword");
 		
-		//게시물 & 페이징 처리
+		String categoryName = (String)request.getParameter("categoryName");
+		String communityTitle = (String)request.getParameter("communityTitle");
+		
+		request.setAttribute("categoryName", categoryName);
+		request.setAttribute("communityTitle", communityTitle);
+		
+		//searchType에 따른 searchKeyword값을 map방식으로 저장
+		Map map=Map.of("type",searchType,"keyword",keyword);
+		
+		//DB의 member테이블에 저장된 전체 회원을 가져와 화면에 출력해주는 기능
+		//페이징처리하기
 		int cPage; //현재페이지
 		try {
-			cPage=Integer.parseInt(request.getParameter("cPage")); //받아온 현재페이지가 있으면 가져온다.
+			cPage=Integer.parseInt(request.getParameter("cPage"));
 		}catch(NumberFormatException e) {
-			cPage=1; //없으면 1을 기준으로 설정
+			cPage=1;
 		}
 		int numPerpage; //페이지당 출력될 데이터 수
 		try {
-			numPerpage=Integer.parseInt(request.getParameter("numPerpage")); //받아온 페이지당 출력수가 있으면 가져온다.
+			numPerpage=Integer.parseInt(request.getParameter("numPerpage"));
 		}catch(NumberFormatException e) {
-			numPerpage=5; //없으면 5를 기준으로 설정
+			numPerpage=5;
 		}
-		String pageBar="";
-		int totalData=new QnaService().selectQnaCount(); //전체 게시물 수
-		List<Qna> Qnas=new QnaService().selectQna(cPage,numPerpage); //게시물 가져오기
+		//cPage에 따른 numPerpage값을 map방식으로 저장
+		Map pagemap=Map.of("cPage",cPage,"numPerpage",numPerpage);
+		//1. DB에서 member테이블에 있는 데이터 가져오기
+		List<Qna> Qnas=new QnaService().searchQna(pagemap,map); //게시물 가져오기
+		//2. DB에서 가져온 데이터 저장(화면출력)
+		request.setAttribute("Qnas", Qnas);
+		//3. 페이지바를 구성
+		// 1) DB에 저장된 테이블에서 조건에 해당하는 데이터의 수를 가져오기
+		int totalData=new QnaService().selectQnaSearchCount(map);
+//		System.out.println("totalData : "+totalData);
+		// 2) 전체페이지수를 계산하기 * 소수점 주의!
 		int totalPage=(int)Math.ceil((double)totalData/numPerpage);
-		int pageBarSize=5; //페이지당 페이징처리할 넘버링 개수
-		int pageNo=((cPage-1)/pageBarSize)*pageBarSize+1; //페이징처리의 시작번호
-		int pageEnd=pageNo+pageBarSize-1; //페이징처리의 끝번호
-		
+		int pageBarSize=5;
+		// 3) 페이지바 시작번호 계산하기
+		int pageNo=((cPage-1)/pageBarSize)*pageBarSize+1;
+		int pageEnd=pageNo+pageBarSize-1;
+		//4. 페이지바를 구성하는 html저장하기
+		String pageBar="";
 		//이전페이지
 		if(pageNo==1) { //===현재페이지가 1이면===
 			pageBar+="<li class='page-item'><a class='page-link' aria-label='Previous'> <span aria-hidden='true'>&laquo;</span></a></li>";
 		}else {
 			pageBar+="<li class='page-item'>"
-			+ "<a class='page-link' href='"+request.getRequestURI()+"?cPage="+(cPage-1)+"&numPerpage="+numPerpage
+			+ "<a class='page-link' href='"+request.getRequestURI()+"?cPage="+(cPage-1)+"&numPerpage="+numPerpage+"&search-type="+searchType+"&keyword="+keyword
 			+ "' aria-label='Previous'> <span aria-hidden='true'>&laquo;</span></a></li>";
 		}
 		//페이징 번호 (현재페이지=1, 페이징처리의 시작번호=1 다음pageNo는 6이므로 6까지 증가하면서 증가시킨 pageNo별 주소 할당)
@@ -72,7 +94,7 @@ public class QnaInsertServlet extends HttpServlet {
 			}else {
 				//pageNo 증가 로직
 				pageBar+="<li class='page-item'><a class='page-link' href='"+request.getRequestURI()
-						+"?cPage="+pageNo+"&numPerpage="+numPerpage+"'>"
+						+"?cPage="+pageNo+"&numPerpage="+numPerpage+"&search-type="+searchType+"&keyword="+keyword+"'>"
 						+pageNo+"</a></li>";
 			}pageNo++;
 		}
@@ -81,15 +103,12 @@ public class QnaInsertServlet extends HttpServlet {
 			pageBar+="<li class='page-item'><a class='page-link' aria-label='Next'> <span aria-hidden='true'>&raquo;</span></a></li>"; //클릭 비활성화
 		}else {
 			pageBar+="<li class='page-item'><a class='page-link' href='"+request.getRequestURI()
-			+"?cPage="+pageNo+"&numPerpage="+numPerpage+"'aria-label='Next'>"
+			+"?cPage="+pageNo+"&numPerpage="+numPerpage+"&search-type="+searchType+"&keyword="+keyword+"'aria-label='Next'>"
 					+ " <span aria-hidden='true'>&raquo;</span></a></li>";
 		}
 		request.setAttribute("pageBar", pageBar);
-		request.setAttribute("Qnas",Qnas);
-
-		
-		request.getRequestDispatcher("/views/board/qna.jsp").forward(request, response);
-		
+		//3. 출력할 화면을 선택(이동)
+		request.getRequestDispatcher("/views/board/qna.jsp").forward(request, response);	
 	}
 
 	/**

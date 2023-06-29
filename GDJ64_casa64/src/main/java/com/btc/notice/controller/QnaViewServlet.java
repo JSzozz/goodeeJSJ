@@ -49,17 +49,11 @@ public class QnaViewServlet extends HttpServlet {
 		
 		//Qna 게시판
 		Qna qna = new QnaService().selectQnaByNo(no);
-		int memberNo = qna.getMemberNo();
-		//회원번호로 이름 가져오기
-		String memberName = new QnaService().checkName(memberNo);
-//				System.out.println("membername : "+memberName+", "+qna);
 		//Qna 댓글 답글
 		List<QnaComment> comments=new QnaService().selectQnaComment(no);
-//				System.out.println(comments.get(0).getQnaCommentDate());
 		
 		//게시판 상세내용
 		request.setAttribute("qna",qna);
-		request.setAttribute("memberName", memberName);
 		request.setAttribute("comments", comments);
 		request.getRequestDispatcher("/views/board/qna_view.jsp").forward(request, response);
 	}

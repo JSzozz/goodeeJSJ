@@ -23,7 +23,7 @@
 		<input type="hidden" name="memberNo" value="<%=q.getMemberNo()%>">
 		<input type="hidden" name="questionContent" value="<%=q.getQuestionContent()%>">
 		<input type="hidden" name="no" value="<%=request.getAttribute("no")%>">
-		<%if (loginMember!=null && loginMember.getMemberName().equals(request.getAttribute("memberName"))) {%>
+		<%if (loginMember!=null && loginMember.getMemberName().equals(q.getMemberName())) {%>
 				<button type="submit" class="btn btn-primary btn-sm ms-1" >수정하기</button>
 				<button type="button" class="btn btn-primary btn-sm ms-1 deleteQnaList removeCheck" 
 					onclick="removeCheck()">삭제하기</button>
@@ -45,7 +45,7 @@
 					<b><%=q.getQuestionTitle()%></b>
 				</p>
 				<p class="writer">
-					<%=request.getAttribute("memberName")%><span class="date-created">&nbsp;&nbsp;<%=q.getQuestionDate()%></span>
+					<%=q.getMemberName()%><span class="date-created">&nbsp;&nbsp;<%=q.getQuestionDate()%></span>
 				</p>
 			</div>
 		</div>
@@ -86,7 +86,7 @@
 								<%=qc.getQnaCommentWriter()%>
 								<span class="date-created">&nbsp;&nbsp;<%=new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(qc.getQnaCommentDate())%></span>
 							</p>
-							<p class="comment-data"><%=qc.getQnaCommentContent() %></p> <!-- 답글내용 -->
+							<p class="comment-data" style="word-wrap: break-word"><%=qc.getQnaCommentContent() %></p> <!-- 답글내용 -->
 						</div>
 						<div class="commentContainer delete-btn col-2 float-end">
 							<%if(loginMember!=null) {%>
@@ -134,7 +134,9 @@
 		console.log(update.text());
 		const form = $(".comment-inner>form").clone();
 		form.attr("action",'<%=request.getContextPath()%>/qna/updateQnaComment.do');
-		form.find("textarea").val(update.text());
+		form.css("height","60");
+		form.find("input[type=submit]").css("height","40");
+		form.find("textarea").css("height","40").val(update.text());
 		/* const no = $("<input>").attr({"type":"hidden","name":"QnaCommentNo"}).val($(e.target).val());
 		const categoryName = $("<input>").attr({"type":"hidden","name":"categoryName"}).val($(e.target).val());
 		const communityTitle = $("<input>").attr({"type":"hidden","name":"communityTitle"}).val($(e.target).val()); */
