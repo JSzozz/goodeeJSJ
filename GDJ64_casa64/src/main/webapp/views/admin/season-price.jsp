@@ -1,6 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ include file="/views/admin/common/header.jsp"%>
+<%@ page import="java.util.List,com.btc.booking.model.vo.*"%>
+<%
+	List<SeasonalPrice> prices=(List)request.getAttribute("prices");
+%>
                     <!-- 컨테츠 -->
                     <section>
                         <div class="container-fluid">
@@ -22,6 +26,16 @@
                                             <th>삭제</th>
                                         </thead>
                                         <tbody id="seasonTableBody" class="align-middle">
+                                        <%for(SeasonalPrice sp:prices){ %>
+                                        	<tr>
+                                        		<td><%=sp.getSeason() %></td>
+                                        		<td><%=sp.getWeekdayRate() %></td>
+                                        		<td><%=sp.getWeekendRate()%></td>
+                                        		<td><%=sp.getStartDate() %></td>
+                                        		<td><%=sp.getEndDate()%></td>
+                                        		<td><button type="button" id="deleteSeason" class="btn">삭제</button></td>
+                                        	</tr>
+                                        <%} %>
                                             <tr>
                                                 <td colspan="6">
                                                     <button type="button" id="insertSeasonBtn" class="btn btn-dark">+ 시즌추가</button>
@@ -36,6 +50,8 @@
                     </section>
 <script src="<%=request.getContextPath()%>/js/dj/season-price.js"></script>
 <script>
+
 	const ROOT = '<%=request.getContextPath()%>/addSeason.do';
+
 </script>
 <%@ include file="/views/admin/common/footer.jsp"%>

@@ -71,6 +71,7 @@ function insertSeasonRow(name, weekPrice, weekEndPrice, start, end) {
   );
 }
 
+
 // function addSeason() {
 //   const $tbody = $('#insertRowBtn').parent().parent().parent();
 //   location.assign(
@@ -87,6 +88,7 @@ function insertSeasonRow(name, weekPrice, weekEndPrice, start, end) {
 //     $tbody.find(".season-end").val()
 //   );
 // }
+
 
 // 공백, null, undefined, 빈값 처리 함수
 function isEmpty(value) {

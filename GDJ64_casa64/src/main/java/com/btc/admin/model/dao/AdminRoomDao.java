@@ -13,6 +13,9 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Properties;
 
+import javax.naming.spi.DirStateFactory.Result;
+
+import com.btc.rooms.model.vo.SeasonalPrice;
 import com.btc.rooms.model.dao.RoomDao;
 import com.btc.rooms.model.vo.OptionFree;
 import com.btc.rooms.model.vo.OptionXtra;
@@ -390,5 +393,25 @@ public class AdminRoomDao {
 		}return result;
 	}
 
+	public List<SeasonalPrice> allSeason(Connection conn) {
+		PreparedStatement pstmt=null;
+		ResultSet rs=null;
+		List<SeasonalPrice> prices=new ArrayList();
+		try {
+			pstmt=conn.prepareStatement("SELECT * FROM SEASONAL_PRICE");
+			rs=pstmt.executeQuery();
+			while(rs.next()) {
+				prices.add(getSeason(rs));
+			}
+		}catch(SQLException e) {
+			e.printStackTrace();
+		}finally {
+			close(rs);
+			close(pstmt);
+		}return prices;
+	}
+	private SeasonalPrice getSeason(ResultSet rs) throws SQLException{
+		return SeasonalPrice.builder().season(rs.getString("season")).weekdayRate(rs.getDouble("weekday_rate")).weekendRate(rs.getDouble("weekend_rate")).startDate(rs.getDate("start_date")).endDate(rs.getDate("end_date")).build();
+	}
 }
 

@@ -40,8 +40,8 @@ public class RoomDao {
 		ResultSet rs=null;
 		List<Room> list=new ArrayList();
 		try {
-			String query=sql.getProperty("selectAllRoom");
-			pstmt=conn.prepareStatement(query);
+//			String query=sql.getProperty("selectAllRoom");
+			pstmt=conn.prepareStatement("SELECT * FROM ROOM WHERE BOOKABLE='Y'");
 			rs=pstmt.executeQuery();
 			while(rs.next()) {
 				list.add(getRoom(rs));
