@@ -31,7 +31,7 @@
 				<table class="table text-center">
 					<thead>
 						<th>No</th>
-						<th>객실대표사진</th>
+					<!-- 	<th>객실대표사진</th> -->
 						<th>객실명</th>
 						<th>공개여부</th>
 						<th>가격</th>
@@ -51,8 +51,8 @@
 
 						<tr>
 							<td><%=r.getRoomNo()%></td>
-							<td><img src="#" alt="객실사진" width="150" height="100">
-							</td>
+							<!-- <td><img src="#" alt="객실사진" width="150" height="100">
+							</td> -->
 							<td><%=r.getRoomName()%></td>
 							<td><%=r.getBookable() == 'Y' ? "공개" : "비공개"%></td>
 							<td><%=r.getRoomPrice()%></td>
