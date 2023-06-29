@@ -21,4 +21,5 @@ public class Qna {
 	private String questionContent;
 	private char visibleCk;
 	private String questionTitle;
+	private String memberName;
 }

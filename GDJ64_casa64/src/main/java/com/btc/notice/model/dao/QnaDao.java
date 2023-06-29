@@ -12,6 +12,7 @@ import java.sql.SQLException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 import java.util.Properties;
 
 import com.btc.notice.model.dto.Notice;
@@ -34,11 +35,12 @@ private Properties sql=new Properties();
 				.questionNo(rs.getInt("question_no"))
 				.memberNo(rs.getInt("member_no"))
 				.categoryName(rs.getString("category_name"))
+				.questionTitle(rs.getString("question_title"))
+				.memberName(rs.getString("member_name"))
 				.questionDate(rs.getDate("question_date"))
 				.answer(rs.getString("answer"))
 				.questionContent(rs.getString("question_content"))
 				.visibleCk(rs.getString("visible_ck").charAt(0))
-				.questionTitle(rs.getString("question_title"))
 				.build();
 	}
 	private QnaComment getQnaComment (ResultSet rs)throws SQLException{
@@ -94,27 +96,7 @@ private Properties sql=new Properties();
 			close(pstmt);
 		}return result;
 	}
-	
-	public String checkName(Connection conn, int memberNo) {
-		PreparedStatement pstmt=null;
-		ResultSet rs=null;
-		String result = "";
-		try {
-			pstmt=conn.prepareStatement(sql.getProperty("checkName"));
-			pstmt.setInt(1,memberNo);
-			rs=pstmt.executeQuery();
-			while(rs.next()) {
-				result=rs.getString("MEMBER_NAME");
-			}
-		}catch(SQLException e) {
-			e.printStackTrace();
-		}finally {
-			close(rs);
-			close(pstmt);
-		}
-		System.out.println("flag : "+result);
-		return result;
-	}
+
 	
 	public Qna selectQnaByNo(Connection conn, int no){
 		PreparedStatement pstmt=null;
@@ -249,6 +231,54 @@ private Properties sql=new Properties();
 		}finally {
 			close(pstmt);
 		}return result;
+	}
+	
+	public List<Qna> searchQna(Connection conn,Map pagemap, Map map){
+		PreparedStatement pstmt=null;
+		ResultSet rs=null;
+		List<Qna> result=new ArrayList();
+		int cPage=(int)pagemap.get("cPage");
+		int numPerpage=(int)pagemap.get("numPerpage");
+		try {
+			String sqlc=sql.getProperty("searchQna");
+			sqlc=sqlc.replace("#type", (String)map.get("type")); //search type
+			pstmt=conn.prepareStatement(sqlc);
+			pstmt.setString(1, "%"+(String)map.get("keyword")+"%"); //keyword
+			pstmt.setInt(2, (cPage-1)*numPerpage+1); //cPage
+			pstmt.setInt(3, cPage*numPerpage); //numPerPage
+			rs=pstmt.executeQuery();
+			while(rs.next()) {
+				result.add(getQna(rs));
+			}
+		}catch(SQLException e) {
+			e.printStackTrace();
+		}finally {
+			close(rs);
+			close(pstmt);
+		}
+		return result;
+	}
+	
+	public int selectQnaSearchCount(Connection conn, Map map) {
+		PreparedStatement pstmt=null;
+		ResultSet rs=null;
+		int result=0;
+		try {
+			String sqlc=sql.getProperty("selectQnaSearchCount");
+			sqlc=sqlc.replace("#type", (String)map.get("type"));
+			pstmt=conn.prepareStatement(sqlc);
+			pstmt.setString(1, "%"+(String)map.get("keyword")+"%");
+			rs=pstmt.executeQuery();
+			if(rs.next()) {
+				result=rs.getInt(1);
+			}
+		}catch(SQLException e) {
+			e.printStackTrace();
+		}finally {
+			close(rs);
+			close(pstmt);
+		}
+		return result;
 	}
 	
 }

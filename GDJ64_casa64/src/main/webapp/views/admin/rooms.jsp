@@ -1,11 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ include file="/views/admin/common/header.jsp"%>
-<%@ page import="java.util.List,com.btc.rooms.model.vo.Room"%>
+<%@ page import="java.util.List,com.btc.rooms.model.vo.*"%>
 <%
 	List<Room> rooms=(List<Room>)request.getAttribute("rooms");
 	String keyword=request.getParameter("keyword");
-
+/* 	List<RoomImage> images=(List<RoomImage>)request.getAttribute("images"); */
 %>
 <!-- 컨테츠 -->
 <section>
@@ -31,7 +31,7 @@
 				<table class="table text-center">
 					<thead>
 						<th>No</th>
-						<th>객실대표사진</th>
+						<!-- <th>객실대표사진</th> -->
 						<th>객실명</th>
 						<th>공개여부</th>
 						<th>가격</th>
@@ -51,8 +51,7 @@
 
 						<tr>
 							<td><%=r.getRoomNo()%></td>
-							<td><img src="#" alt="객실사진" width="150" height="100">
-							</td>
+							<%-- <td><img src="<%=request.getContextPath()%>/upload/room/<%=r.getRoomImage().getSaveFilename() %>" alt="객실사진" width="150" height="100"></td> --%>
 							<td><%=r.getRoomName()%></td>
 							<td><%=r.getBookable() == 'Y' ? "공개" : "비공개"%></td>
 							<td><%=r.getRoomPrice()%></td>

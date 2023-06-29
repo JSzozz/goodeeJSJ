@@ -13,6 +13,7 @@ import com.btc.admin.model.service.AdminRoomService;
 import com.btc.rooms.model.vo.OptionFree;
 import com.btc.rooms.model.vo.OptionXtra;
 import com.btc.rooms.model.vo.Room;
+import com.btc.rooms.model.vo.RoomImage;
 import com.btc.rooms.model.vo.RoomOption;
 
 /**
@@ -39,6 +40,8 @@ public class RoomDetailServlet extends HttpServlet {
 		List<OptionFree> frees=new AdminRoomService().selectAllFree();
 		List<OptionXtra> xtras=new AdminRoomService().selectAllXtra();
 		List<RoomOption> options=new AdminRoomService().selectCheckedOption(roomNo);
+		RoomImage image=new AdminRoomService().selectRoomImage(roomNo);
+		request.setAttribute("image", image);
 		request.setAttribute("room", r);
 		request.setAttribute("frees", frees);
 		request.setAttribute("xtras", xtras);

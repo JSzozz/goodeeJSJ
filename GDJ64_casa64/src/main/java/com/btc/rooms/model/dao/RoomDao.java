@@ -28,7 +28,7 @@ public class RoomDao {
 		return Room.builder().roomNo(rs.getInt("room_no")).roomName(rs.getString("room_name"))
 				.roomPrice(rs.getInt("room_price")).roomSize(rs.getInt("room_size"))
 				.roomCap(rs.getInt("room_cap")).roomMaxCap(rs.getInt("room_max_cap"))
-				.bookable(rs.getString("bookable").charAt(0)).roomImage(rs.getString("room_image"))
+				.bookable(rs.getString("bookable").charAt(0))
 				.dateCreated(rs.getDate("date_created")).dateModified(rs.getDate("date_modified"))
 				.roomDescription(rs.getString("room_description")).build();
 	}

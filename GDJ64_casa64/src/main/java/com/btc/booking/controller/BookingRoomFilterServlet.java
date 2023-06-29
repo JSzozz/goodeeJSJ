@@ -13,6 +13,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import com.btc.booking.model.service.BookingService;
+import com.btc.booking.model.vo.Booking;
 import com.btc.rooms.model.vo.Room;
 
 /**
@@ -35,8 +36,7 @@ public class BookingRoomFilterServlet extends HttpServlet {
     */
    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
       String[] options=request.getParameterValues("option");
-      System.out.println(options);
-//      System.out.println("options : "+Arrays.toString(options));
+      System.out.println("options : "+Arrays.toString(options));
 //      List<String> optionList = new ArrayList();
       String optionList = "";
       
@@ -47,18 +47,22 @@ public class BookingRoomFilterServlet extends HttpServlet {
 //         System.out.println(optionList);
       }
       optionList = optionList.substring(0, optionList.length() - 1);
-//      System.out.println(optionList);
+      System.out.println(optionList);
       
       List<Room> filterRooms= new BookingService().selectFilteringRoom(optionList);
-      List<Room> oriRooms=new BookingService().selectAllRoom();
+//      filterRooms.stream().forEach(System.out::println);
+      
       List<Room> rooms=new ArrayList();
 //      System.out.println("gd"+filterRooms.get(0).getRoomNo());
       for(int i=0;i<filterRooms.size();i++) {
 //         System.out.println(filterRooms.get(i).getRoomNo());
-         int roomNo=filterRooms.get(i).getRoomNo()-1;//룸번호=get(i)-1 
-         rooms.add(oriRooms.get(roomNo));
+         int $roomNo=filterRooms.get(i).getRoomNo();//룸번호=get(i)-1 
+//         System.out.println(roomNo);
+         Room $room= new BookingService().selectRoomByRoomNo($roomNo);
+         rooms.add($room);
       }
 //      System.out.println(rooms);
+      
       HttpSession session=request.getSession();
       session.setAttribute("rooms", rooms);
       

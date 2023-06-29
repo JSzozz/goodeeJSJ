@@ -55,6 +55,9 @@ public class BookingList3ToList4Servlet extends HttpServlet {
 
       int result = new BookingService().insertBooking(b);
       
+      Booking recentBooking = new BookingService().searchBookingByMemberNo(memberNo);
+      session.setAttribute("recentBooking",recentBooking);      
+
       String msg = "", loc = "";
       if(result>0) {
     	  msg = "예약에 성공했습니다!";
