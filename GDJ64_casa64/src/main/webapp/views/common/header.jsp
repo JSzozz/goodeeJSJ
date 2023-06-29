@@ -82,7 +82,7 @@
                             data-bs-toggle="dropdown" aria-expanded="false">
                             COMMUNITY
                         </a>
-                        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <ul class="dropdown-menu" aria-labelledby="navbarDropdown"> 
                             <li><a href="<%=request.getContextPath()%>/notice/insertNotice.do" class="dropdown-item">공지사항</a></li>
                             <li><a href="<%=request.getContextPath()%>/qna/insertQna.do" class="dropdown-item">QnA</a></li>
                             <li><a href="<%=request.getContextPath()%>/review/reviewList" class="dropdown-item">이용후기</a></li>
