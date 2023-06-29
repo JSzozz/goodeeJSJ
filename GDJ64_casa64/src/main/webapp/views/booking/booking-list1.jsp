@@ -549,14 +549,25 @@
 	}
 
 	
-	
-	
-	
-	
 	</script>
 	
 	
-	
+	<script>
+      let filterDB="";
+          $(document).ready(function(){
+              $('input[name="xtraOption"]').change(function(){
+                  if($(this).is(":checked")) {
+                      filterDB+=this.value+",";
+                  }else{
+                      filterDB=filterDB.replace(this.value+",",'');
+                  }
+                     /* filterDB = filterDB.substr(0, filterDB.length-1); */
+                  console.log(filterDB);
+/*                      $("input[name='QnaFilter']").val(filterDB);
+                     $(".filterQna").submit();
+ */              });
+          });
+      </script>
 	
 	
 

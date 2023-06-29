@@ -135,7 +135,7 @@
 /* 3. 옵션 */
 // 3-1.옵션 생성하기
 	for(let i=0;i<XtraName.length;i++){
-		const $option= $("<input>").attr({"type":"checkbox","id":"OPTN"+(i+1),"OptionPrice":XtraPrice[i],"value":XtraPrice[i],"name":"optionList"}); 
+		const $option= $("<input>").attr({"type":"checkbox","id":"OPTN"+(i+1),"OptionPrice":XtraPrice[i],"value":XtraPrice[i],"name":"xtraOption"}); 
 		const $lable= $("<lable>").text(" "+XtraName[i]+"["+XtraPrice[i]+"원] ");
 		const $input= $("<button>").attr({"type":"button","class":"btn btn-outline-dark btn-sm","title":XtraExplanation[i]}).text("상세설명"); 
 		$("#optnList").append($("<li>")).append($option).append($lable).append($input);	
