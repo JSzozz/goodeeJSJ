@@ -63,13 +63,7 @@
                                 <a href="<%=request.getContextPath()%>/views/admin/season-price.jsp" class="nav-link sidebar-link text-white"><i class="bi bi-currency-exchange me-2"></i>요금관리</a>
                             </li> -->
                             <li class="nav-item mb-1">
-                                <a href="#" class="nav-link sidebar-link text-white position-relative">
-                                    <i class="bi bi-megaphone-fill me-2"></i>게시판
-                                    <!-- <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
-                                        99+
-                                        <span class="visually-hidden">unread messages</span>
-                                    </span> -->
-                                </a>
+                                <a href="#" class="nav-link sidebar-link text-white position-relative"><i class="bi bi-megaphone-fill me-2"></i>게시판</a>
                             </li>
                             <li class="nav-item mb-1">
                                 <a href="<%=request.getContextPath()%>/admin/booking/showBookingTab.do" class="nav-link sidebar-link text-white"><i class="bi bi-calendar-fill me-2"></i>예약관리</a>
