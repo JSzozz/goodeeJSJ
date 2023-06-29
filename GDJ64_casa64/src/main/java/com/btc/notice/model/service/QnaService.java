@@ -83,5 +83,32 @@ public class QnaService {
 		close(conn);
 		return result;
 	}
+	
+	public int QnaDelete(int no) {
+		Connection conn=getConnection();
+		int result=dao.QnaDelete(conn,no);
+		if(result>0) commit(conn);
+		else rollback(conn);
+		close(conn);
+		return result;
+	}
+	
+	public int updateQnaComment(QnaComment qc) {
+		Connection conn=getConnection();
+		int result=dao.updateQnaComment(conn,qc);
+		if(result>0) commit(conn);
+		else rollback(conn);			
+		close(conn);
+		return result;
+	}
+	
+	public int QnaCommentDelete(int no) {
+		Connection conn=getConnection();
+		int result=dao.QnaCommentDelete(conn,no);
+		if(result>0) commit(conn);
+		else rollback(conn);
+		close(conn);
+		return result;
+	}
 }
 

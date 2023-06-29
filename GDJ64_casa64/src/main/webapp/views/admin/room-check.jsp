@@ -4,9 +4,8 @@
 <%@ page import="com.btc.rooms.model.vo.*,java.util.List" %>
 <%
 	Room r=(Room)request.getAttribute("room");
-	List<OptionFree> frees=(List<OptionFree>)request.getAttribute("frees");
-	List<OptionXtra> xtras=(List<OptionXtra>)request.getAttribute("xtras");
-	List<RoomOption> options=(List<RoomOption>)request.getAttribute("options");
+	List<OptionFree> frees=(List<OptionFree>)request.getAttribute("frees");//가능한 전체 기본 옵션
+	List<RoomOption> options=(List<RoomOption>)request.getAttribute("options");//객실에 선택된 옵션사항
 %>
 <!-- 삭제 모달 -->
 <div class="modal" id="removeRoom" tabindex="-1"
@@ -21,9 +20,8 @@
 			<div class="modal-body">객실을 정말 삭제합니까?</div>
 			<div class="modal-footer">
 				<button type="button" class="btn btn-danger" id="confirmDelete">삭제</button>
-<%-- 				onclick="location.href='<%=request.getContextPath()%>/admin/room/deleteRoom.do?roomNo='<%=r.getRoomNo()%>"
- --%>				<button type="button" class="btn btn-dark" data-bs-dismiss="modal">취소</button>
-				<!-- 취소는 어디다 연결해? 모달 닫고 방금 그 객실 디테일로 -->
+				<button type="button" class="btn btn-dark" data-bs-dismiss="modal">취소</button>
+
 			</div>
 		</div>
 	</div>

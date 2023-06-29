@@ -1,7 +1,6 @@
 package com.btc.notice.controller;
 
 import java.io.IOException;
-
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -12,16 +11,16 @@ import com.btc.notice.model.dto.QnaComment;
 import com.btc.notice.model.service.QnaService;
 
 /**
- * Servlet implementation class QnaCommentInsertServlet
+ * Servlet implementation class QnaCommentUpdateServlet
  */
-@WebServlet("/qna/insertQnaComment.do") //댓글등록하는 서블릿
-public class QnaCommentInsertServlet extends HttpServlet {
+@WebServlet("/qna/updateQnaComment.do")
+public class QnaCommentUpdateServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public QnaCommentInsertServlet() {
+    public QnaCommentUpdateServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -30,36 +29,38 @@ public class QnaCommentInsertServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
-		int no=Integer.parseInt(request.getParameter("no"));
+		
+//		int no=Integer.parseInt(request.getParameter("no"));
 		String categoryName = (String)request.getParameter("categoryName");
 		String communityTitle = (String)request.getParameter("communityTitle");
 		
+		System.out.println("categoryName : "+categoryName+"communityTitle : "+communityTitle);
 //		request.setAttribute("no",no);
-		request.setAttribute("categoryName",categoryName);
-		request.setAttribute("communityTitle",communityTitle);
+//		request.setAttribute("categoryName",categoryName);
+//		request.setAttribute("communityTitle",communityTitle);
 		
 		QnaComment qc = QnaComment.builder()
+				.QnaCommentNo(Integer.parseInt(request.getParameter("QnaCommentNo"))) //pk구분자 
 				.QnaRef(Integer.parseInt(request.getParameter("QnaRef")))
 				.QnaCommentLevel(Integer.parseInt(request.getParameter("QnaCommentLevel")))
 				.QnaCommentWriter(request.getParameter("QnaCommentWriter"))
 				.QnaCommentContent(request.getParameter("QnaCommentContent"))
 				.build();
-		//댓글 등록
-		int result=new QnaService().insertQnaComment(qc);
-		String view;
+		
+		//댓글 수정
+		int result=new QnaService().updateQnaComment(qc);
+
+		String msg,loc;
 		if(result>0) {
-			//등록가능->등록값을 전송
-			view=request.getContextPath()+"/qna/viewQna.do?no="+no+"&categoryName="+categoryName+"&communityTitle="+communityTitle;
-			//기존에 남아있는 insertComment값이 남아있기때문에 버리기위해 sendRedirect
-			response.sendRedirect(view);
+			msg = "정상적으로 수정되었습니다.";
 		}else {
-			//등록불가능->등록실패결과출력후 boardView로 이동
-			request.setAttribute("msg", "댓글등록실패");
-			request.setAttribute("loc", "/qna/viewQna.do?no="+no+"&categoryName="+categoryName+"&communityTitle="+communityTitle);
-			view="/views/common/msg.jsp";
-			request.getRequestDispatcher(view).forward(request,response);
+			msg = "수정 실패";
 		}
+		int no=qc.getQnaRef();
+		/* String loc = "/board/boardView.do?no=" */
+		request.setAttribute("msg", msg);
+		request.setAttribute("loc", "/qna/viewQna.do?no="+no+"&categoryName="+categoryName+"&communityTitle"+communityTitle);
+		request.getRequestDispatcher("/views/common/msg.jsp").forward(request,response);
 	}
 
 	/**

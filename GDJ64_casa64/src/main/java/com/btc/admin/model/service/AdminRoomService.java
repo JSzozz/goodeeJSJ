@@ -87,10 +87,12 @@ public class AdminRoomService {
 		return count;
 	}
 
-	public int insertInquiry(Room r, List<RoomImage> files, String[] frees) {
+	public int insertRoom(Room r, List<RoomImage> files, String[] frees) {
 		Connection conn=getConnection();
 		int result=dao.insertRoom(conn, r);
 		int roomNo=dao.selectRoomNo(conn);
+        System.out.println("result :" + result);
+        System.out.println("roomNo :" + roomNo);
 		if(result>0) {
 			if(files!=null&&!files.isEmpty()) {
 				for(int i=0;i<files.size();i++) {
@@ -98,11 +100,11 @@ public class AdminRoomService {
 					result=dao.insertUpfiles(conn, files.get(i));
 					if(result<=0) {
 						rollback(conn);
-						break;
+						return -1;
 					}
 				}
 				if(result>0) {
-					result=dao.updateRoomOption(conn,r.getRoomNo(),frees);
+					result=dao.updateRoomOption(conn,roomNo,frees);
 					if(result>0) commit(conn);
 					else rollback(conn);
 				}else {
@@ -110,9 +112,11 @@ public class AdminRoomService {
 				}
 			}
 		}
+
+        close(conn);
 		return roomNo;
 	}
-	public int updateInquiry(Room r, List<RoomImage> filesName, String[] frees) {
+	public int updateRoom(Room r, List<RoomImage> filesName, String[] frees) {
 		Connection conn=getConnection();
 		int result=dao.updateRoom(conn, r);
 		//이전 파일삭제하는 구문 작성 -> 방번호를 기준으로....
@@ -145,19 +149,7 @@ public class AdminRoomService {
 		return result;
 		
 	}
-//	public int updateRoomOption(int roomNo, String[] frees) {
-//		Connection conn=getConnection();
-//		int result=dao.updateRoomOption(conn,roomNo,frees);
-//		close(conn);
-//		return result;
-//		
-//	}
-//	public int deleteOldOption(int roomNo) {
-//		Connection conn=getConnection();
-//		int result=dao.deleteOldOption(conn, roomNo);
-//		close(conn);
-//		return result;
-//	}
+
 
 
 }
