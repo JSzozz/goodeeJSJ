@@ -45,12 +45,12 @@ public class ReviewDao {
 					sql += " AND LOWER(REVIEW.TITLE) ";
 				} else if (type.equals("contents")) { // 검색 타입이 내용일 경우
 					sql += " AND LOWER(REVIEW.CONTENTS) ";
-				} else if (type.equals("writer")) { // 검색 타입이 작성자 일 경우
+				} else if (type.equals("writer")) { // 검색 타입이 작성자일 경우
 					sql += " AND LOWER(MEMBER.NICKNAME) ";
 				}
 				sql += " LIKE '%" + keyword.toLowerCase() + "%' ";
 			}
-			sql += " ORDER BY REVIEW.NO DESC";
+			sql += " ORDER BY REVIEW.NO DESC"; 
 			String query = "SELECT * FROM (SELECT ROWNUM AS RNUM, R.* FROM (" + sql
 					+ ") R ) WHERE RNUM BETWEEN ? AND ?";
 
@@ -197,7 +197,7 @@ public class ReviewDao {
 		try {
 			String sql = getBasicQuery(); // 실행할 기본 쿼리
 			sql += " AND REVIEW.MEMBER_NO = ? ";
-            sql += " ORDER BY REVIEW.DATE_CREATED ";
+            sql += " ORDER BY REVIEW.DATE_CREATED DESC ";
 
 			pstmt = conn.prepareStatement(sql); 
 			pstmt.setInt(1, memberNo);
