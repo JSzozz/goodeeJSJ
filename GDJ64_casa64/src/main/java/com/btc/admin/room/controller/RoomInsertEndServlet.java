@@ -13,7 +13,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.btc.admin.model.service.AdminRoomService;
 import com.btc.rooms.model.vo.Room;
-import com.google.gson.Gson;
+import com.btc.rooms.model.vo.RoomImage;
 import com.oreilly.servlet.MultipartRequest;
 import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
 
@@ -50,21 +50,34 @@ public class RoomInsertEndServlet extends HttpServlet {
 		String roomDescription = mr.getParameter("roomDescription");
 		String[] options=mr.getParameterValues("optionFree");
 		Room r=Room.builder().roomName(roomName).roomPrice(roomPrice).roomSize(roomSize).roomCap(roomCap).roomMaxCap(roomMaxCap).bookable(bookable).roomDescription(roomDescription).build();
-
+		//이 room r은 누가받고잇니?
 		Enumeration<String> files = mr.getFileNames();// 인풋에서 넣은 파일들의 이름
-		List<String> filesName = new ArrayList();
+		List<RoomImage> filesName = new ArrayList();
 		while (files.hasMoreElements()) {
 
 			String fileName = files.nextElement();
-			filesName.add(mr.getFilesystemName(fileName));
+			System.out.println(fileName);
+			filesName.add(
+					RoomImage.builder()
+					.saveFilename(mr.getFilesystemName(fileName))
+					.oriFilename(mr.getOriginalFileName(fileName))
+					.build());
 
 		}
+		int roomNo = new AdminRoomService().insertInquiry(r,filesName,options);
+		
+		//새로생긴 룸의 번호 리턴받아서, 생성 완료 후에는 room-check.jsp(/admin/room/roomDetail.do)에 방번호와 함께 넘겨줘야해
+		request.setAttribute("roomNo", roomNo);
+		request.getRequestDispatcher("/views/admin/room-check.jsp").forward(request, response);
+		
+		
+		
 
-		int result = new AdminRoomService().insertInquiry(r,filesName);
-		System.out.println(result);
-
-		response.setContentType("application/json;charset=utf-8");
-		new Gson().toJson(result > 0 ? true : false, response.getWriter());
+//		int result = new AdminRoomService().insertInquiry(r,filesName);
+//		System.out.println(result);
+//
+//		response.setContentType("application/json;charset=utf-8");
+//		new Gson().toJson(result > 0 ? true : false, response.getWriter());
 
 	}
 

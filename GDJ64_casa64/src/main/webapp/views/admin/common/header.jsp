@@ -19,6 +19,10 @@
 
 <!-- 제이쿼리 -->
 <script src="<%=request.getContextPath()%>/js/jquery-3.7.0.min.js"></script>
+
+<!-- Chart.js -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.3.0/chart.min.js" integrity="sha512-mlz/Fs1VtBou2TrUkGzX4VoGvybkD9nkeXWJm3rle0DPHssYYx4j+8kIS15T78ttGfmOjH0lLaBXGcShaVkdkg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 <body>
 
@@ -68,9 +72,9 @@
                         <div class="row d-flex justify-content-end align-items-center">
                             <div class="col-auto">
                                 <ul class="navbar-nav ms-auto">
-                                    <li class="nav-item"><a href="<%=request.getContextPath()%>/views/admin/admin-page.jsp" class="nav-link top-link">메인으로</a></li>
+                                    <li class="nav-item"><a href="<%=request.getContextPath()%>/admin/adminMainPage.do" class="nav-link top-link">메인으로</a></li>
                                     <li class="nav-item"><a href="<%=request.getContextPath()%>/" class="nav-link top-link">홈페이지</a></li>
-                                    <li class="nav-item"><a href="#" class="nav-link top-link" data-bs-toggle="modal" data-bs-target="#logout">로그아웃</a></li>
+                                    <li class="nav-item"><a href="<%=request.getContextPath()%>/admin/adminLogout.do" class="nav-link top-link">로그아웃</a></li>
                                 </ul>
                             </div>
                         </div>

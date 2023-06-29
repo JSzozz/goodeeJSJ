@@ -36,23 +36,27 @@ public class CancelBlackServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 		int no=Integer.parseInt(request.getParameter("memberNo"));
-		int updateResult=new MemberService().updateBlack(no, "N");
+		new MemberService().updateBlack(no, "N");
 		BlackFile bf=service.selectBlackFile(no);
-		String bfName=bf.getFileName();
+		String bfName=null;
+		if(bf!=null) {
+			bfName=bf.getFileName();
+		}
+		
 		String path=getServletContext().getRealPath("/upload/member/");
 		File file=new File(path+bfName);
-		int fileDeleteResult=0;
+		
 		PrintWriter out=response.getWriter();
 		if(file.exists()) {
 			file.delete();
-			fileDeleteResult=service.deleteBlackFile(no);
+			service.deleteBlackFile(no);
 		}
-		if(fileDeleteResult>0) {
-			int deleteBlackResult=service.deleteBlackMember(no);
-			if(deleteBlackResult>0) {
-				out.print(1+"");
-			}
+		
+		int deleteBlackResult=service.deleteBlackMember(no);
+		if(deleteBlackResult>0) {
+			out.print(1+"");
 		}
+		
 		
 		
 		

@@ -1,3 +1,9 @@
+// 공백, null, undefined, 빈값 처리 함수
+function isEmpty(value) {
+  return typeof value === 'undefined' || (typeof value === 'object' && !Object.keys(value).length) ||
+    value === null || value === "" || value === null || value.length === 0 ? true : false;
+}
+
 // == 상태조회 == //
 
 $(function () {
@@ -130,7 +136,8 @@ function cancelBooking(address, no) {
 // == 공용 예약 AJAX == //
 
 // 예약 AJAX
-function ajaxBooking(address, state, type ,value, cPage=1, numPerPage=10) {
+function ajaxBooking(address, state, type, value, cPage = 1, numPerPage = 10) {
+
   $.ajax({
     url: address,
     type: 'get',
@@ -144,6 +151,7 @@ function ajaxBooking(address, state, type ,value, cPage=1, numPerPage=10) {
       $('html').css('cursor', 'auto');
     },
     success: (data) => {
+
       if (isEmpty(data)) {
         $('#resultTable').html(noSearchBooking());
         return;
@@ -151,7 +159,6 @@ function ajaxBooking(address, state, type ,value, cPage=1, numPerPage=10) {
 
       $('#resultTable').empty();
       $('#pagination').empty();
-      console.log(data.bookingList);
       
       data.bookingList.forEach((booking) => {
         $('#resultTable').append(resultBooking(booking));
@@ -182,10 +189,4 @@ function resultBooking(data) {
   result += '</td>'
   result += '</tr>';
   return result;
-}
-
-// 공백, null, undefined, 빈값 처리 함수
-function isEmpty(value) {
-  return typeof value === 'undefined' || (typeof value === 'object' && !Object.keys(value).length) ||
-    value === null || value === "" || value === null || value.length === 0 ? true : false;
 }

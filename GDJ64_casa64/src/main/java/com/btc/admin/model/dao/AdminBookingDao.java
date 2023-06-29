@@ -68,7 +68,9 @@ public class AdminBookingDao {
 			pstmt.setInt(1, bookingNo);
 			rs = pstmt.executeQuery();
 			
-			if(rs.next()) booking = getBooking(rs);
+			if(rs.next()) {
+				booking = getBooking(rs);
+			}
 		}catch(Exception e) {
 			e.printStackTrace();
 		}finally {
@@ -85,9 +87,9 @@ public class AdminBookingDao {
 		
 		try {
 			pstmt = conn.prepareStatement(query.getProperty("conditionBookingList"));
-			pstmt.setInt(1, (cPage-1)*numPerPage+1);
-			pstmt.setInt(2, cPage*numPerPage);
-			pstmt.setString(3, state);
+			pstmt.setString(1, state);
+			pstmt.setInt(2, (cPage-1)*numPerPage+1);
+			pstmt.setInt(3, cPage*numPerPage);
 			rs = pstmt.executeQuery();
 			
 			while(rs.next()) {
@@ -112,8 +114,9 @@ public class AdminBookingDao {
 			pstmt = conn.prepareStatement(query.getProperty("bookingCount"));
 			rs = pstmt.executeQuery();
 			
-			if(rs.next()) result=rs.getInt(1);
-			
+			if(rs.next()) {
+				result=rs.getInt(1);
+			}
 		}catch(Exception e) {
 			e.printStackTrace();
 		}finally {
@@ -129,38 +132,35 @@ public class AdminBookingDao {
 		String searchQuery = "";
 		List<Booking> bookingList = new ArrayList<Booking>();
 		
+		if(state.equals("전체")) {
+			switch(type) {
+				case "user-name": searchQuery = "searchAllMemberName"; break;
+				case "room-name": searchQuery = "searchAllRoomName"; break;
+				case "user-email": searchQuery = "searchAllMemberEmail"; break;
+				case "user-phone": searchQuery = "searchAllMemberPhone"; break;
+			}
+		}else {
+			switch(type) {
+				case "user-name": searchQuery = "searchMemberName"; break;
+				case "room-name": searchQuery = "searchRoomName"; break;
+				case "user-email": searchQuery = "searchMemberEmail"; break;
+				case "user-phone": searchQuery = "searchMemberPhone"; break;
+			}
+		}
+		
 		try {
 			if(state.equals("전체")) {
-				if(type.equals("user-name")) {
-					searchQuery = "searchAllMemberName";
-				}else if(type.equals("room-name")) {
-					searchQuery = "searchAllRoomName";
-				}else if(type.equals("user-email")) {
-					searchQuery = "searchAllMemberEmail";
-				}else if(type.equals("user-phone")) {
-					searchQuery = "searchAllMemberPhone";
-				}
 				pstmt = conn.prepareStatement(query.getProperty(searchQuery));
-				pstmt.setString(1, value);
+				pstmt.setString(1, "%" + value + "%");
 				pstmt.setInt(2, (cPage-1)*numPerPage+1);
 				pstmt.setInt(3, cPage*numPerPage);
 			}else {
-				if(type.equals("user-name")) {
-					searchQuery = "searchMemberName";
-				}else if(type.equals("room-name")) {
-					searchQuery = "searchRoomName";
-				}else if(type.equals("user-email")) {
-					searchQuery = "searchMemberEmail";
-				}else if(type.equals("user-phone")) {
-					searchQuery = "searchMemberPhone";
-				}
 				pstmt = conn.prepareStatement(query.getProperty(searchQuery));
 				pstmt.setString(1, state);
 				pstmt.setString(2, "%" + value + "%");
 				pstmt.setInt(3, (cPage-1)*numPerPage+1);
 				pstmt.setInt(4, cPage*numPerPage);
 			}
-
 
 			rs = pstmt.executeQuery();
 			
@@ -201,7 +201,6 @@ public class AdminBookingDao {
 			pstmt = conn.prepareStatement(query.getProperty("todayBookingList"));
 			pstmt.setInt(1, (cPage-1)*numPerPage+1);
 			pstmt.setInt(2, cPage*numPerPage);
-			// pstmt.setDate(3, java.sql.Date.valueOf(java.time.LocalDate.now()));
 			rs = pstmt.executeQuery();
 			
 			while(rs.next()) {
@@ -222,12 +221,12 @@ public class AdminBookingDao {
 		String searchQuery = "";
 		List<Booking> bookingList = new ArrayList<Booking>();
 		
+		if(searchDate.equals("week")) {
+			searchQuery = "oneWeekBooking";
+		}else if(searchDate.equals("month")) {
+			searchQuery = "oneMonthBooking";
+		}
 		try {
-			if(searchDate.equals("week")) {
-				searchQuery = "oneWeekBooking";
-			}else if(searchDate.equals("month")) {
-				searchQuery = "oneMonthBooking";
-			}
 			
 			pstmt = conn.prepareStatement(query.getProperty(searchQuery));
 			pstmt.setInt(1, (cPage-1)*numPerPage+1);
@@ -237,7 +236,6 @@ public class AdminBookingDao {
 			while(rs.next()) {
 				bookingList.add(getBooking(rs));
 			}
-			
 		}catch(SQLException e) {
 			e.printStackTrace();
 		}finally {
@@ -252,18 +250,20 @@ public class AdminBookingDao {
 		
 		String searchQuery = "";
 		int result = 0;
+		
+		if(searchDate.equals("week")) {
+			searchQuery = "oneWeekBookingCount";
+		}else if(searchDate.equals("month")) {
+			searchQuery = "oneMonthBookingCount";
+		}
+		
 		try {
-			if(searchDate.equals("week")) {
-				searchQuery = "oneWeekBookingCount";
-			}else if(searchDate.equals("month")) {
-				searchQuery = "oneMonthBookingCount";
-			}
-			
 			pstmt = conn.prepareStatement(query.getProperty(searchQuery));
 			rs = pstmt.executeQuery();
 			
-			if(rs.next()) result=rs.getInt(1);
-			
+			if(rs.next()) {
+				result=rs.getInt(1);
+			}			
 		}catch(Exception e) {
 			e.printStackTrace();
 		}finally {
@@ -283,8 +283,9 @@ public class AdminBookingDao {
 			pstmt = conn.prepareStatement(query.getProperty("todayBookingCount"));
 			rs = pstmt.executeQuery();
 			
-			if(rs.next()) result=rs.getInt(1);
-			
+			if(rs.next()) {
+				result=rs.getInt(1);
+			}
 		}catch(Exception e) {
 			e.printStackTrace();
 		}finally {
@@ -297,7 +298,8 @@ public class AdminBookingDao {
 	private Booking getBooking(ResultSet rs) throws SQLException {
 		return Booking.builder()
 				.bookingNo(rs.getInt("BOOKING_NO"))
-				.member(Member.builder().memberName(rs.getString("member_name"))
+				.member(Member.builder()
+						.memberName(rs.getString("member_name"))
 						.email(rs.getString("email"))
 						.phone(rs.getString("phone"))
 						.build())

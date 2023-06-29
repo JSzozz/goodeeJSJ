@@ -39,14 +39,14 @@ public class ChangeMyinfo extends HttpServlet {
 		String msg="",loc="";
 		if(updateMember!=null) {
 			msg="회원정보를 변경하였습니다.";
-			loc="/views/myPage/myPage.jsp";
+			loc="/views/myPage/myPageInfo.jsp";
 			request.setAttribute("msg", msg);
 			request.setAttribute("loc", loc);
 			request.getSession().setAttribute("loginMember", updateMember);
 			
 		}else {
 			msg="정보변경에 실패하였습니다.";
-			loc="/views/myPage/myPage.jsp";
+			loc="/views/myPage/myPageInfo.jsp";
 			request.setAttribute("msg", msg);
 			request.setAttribute("loc", loc);
 		}

@@ -47,11 +47,15 @@ public class BlackMemberInfo extends HttpServlet {
 		BlackMember m=service.selectBlackMember(memberNo);
 		String reason=m.getReason();
 		BlackFile mf=service.selectBlackFile(memberNo);
+		String imgs=null;
+		if(mf!=null) {
+			imgs=mf.getFileName();
+		}
 		
-		String imgs=mf.getFileName();
 		JSONObject data=new JSONObject();
 		data.put("imgs", imgs);
 		data.put("reason", reason);
+		
 		
 		
 		
