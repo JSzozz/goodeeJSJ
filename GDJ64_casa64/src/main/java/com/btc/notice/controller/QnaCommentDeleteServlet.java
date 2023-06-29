@@ -29,14 +29,7 @@ public class QnaCommentDeleteServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		response.getWriter().append("Served at: ").append(request.getContextPath());
-	}
-
-	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
-	 */
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
+		System.out.println("flag");
 		int no = Integer.parseInt(request.getParameter("no")); //question_no
 		int result = new QnaService().QnaCommentDelete(no);
 		
@@ -48,12 +41,19 @@ public class QnaCommentDeleteServlet extends HttpServlet {
 		}else {
 			//등록불가능->등록실패결과출력후 qna-view.jsp로 이동
 			/* request.setAttribute("no", no); */
-			msg = "QnA 삭제실패";
+			msg = "댓글 삭제실패";
 			loc = "/qna/viewQna.do?no="+no;
 		}
 		request.setAttribute("msg", msg);
 		request.setAttribute("loc", loc);
 		request.getRequestDispatcher("/views/common/msg.jsp").forward(request,response);
+	}
+
+	/**
+	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
+	 */
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		doGet(request, response);
 	}
 
 }

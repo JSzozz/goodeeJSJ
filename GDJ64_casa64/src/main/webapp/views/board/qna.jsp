@@ -77,7 +77,7 @@
 			<tbody>
 				<%if(Qnas.isEmpty()||Qnas==null){ %>
 				<tr>
-					<td colspan="5">조회된 공지사항이 없습니다.</td>
+					<td colspan="5">조회된 QnA가 없습니다.</td>
 				</tr>
 			<%} else { 
 				for(int i=0;i<Qnas.size();i++){%>

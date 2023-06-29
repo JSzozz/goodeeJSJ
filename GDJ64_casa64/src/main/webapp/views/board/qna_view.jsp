@@ -156,13 +156,12 @@
  		const i = $(e.target).attr("class");
  		alert(i);
 		 if (confirm("정말 삭제하시겠습니까??") == true){
-			 if($("button").hasClass("deleteComment") == true ){ //댓글지우는 로직
+			 if($(e.target).hasClass("deleteComment") == true ){ //댓글지우는 로직
 				alert("댓글을 제거하시겠습니까?");
-			    location.assign('<%=request.getContextPath()%>/qna/deleteQnaComment.do?no=<%=request.getAttribute("no")%>');
-			 }
-			 if($("button").hasClass("deleteQnaList") == true ){
+				location.assign('<%=request.getContextPath()%>/qna/deleteQnaComment.do?no=<%=request.getAttribute("no")%>');
+			 }else{
 				alert("리스트를 제거하시겠습니까?");
-			    location.assign('<%=request.getContextPath()%>/qna/deleteQnaView.do?no=<%=request.getAttribute("no")%>');
+			    location.assign('<%=request.getContextPath()%>/qna/deleteQnaView.do?no=<%=request.getAttribute("no")%>');				 
 			 }
 		 }else{
 		     return false;
