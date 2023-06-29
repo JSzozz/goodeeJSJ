@@ -20,7 +20,7 @@
 	<br><br>
 	<div class="row">
 		<!-- 이미지로 버튼만들어서 클릭하면 아래 사진위의버튼이 트리거 되도록 -->
-		<button class="mini sm-btn" data-bs-target="#rooms-carousel" data-bs-slide-to="0"><img class="mini" alt="" src="<%=request.getContextPath() %>/images/room/01.jpg"></button>
+		<button class="mini sm-btn" data-bs-target="#rooms-carousel" data-bs-slide-to="0"><img class="mini" alt="" src="<%=request.getContextPath() %>/upload/rooms/<%=image.getSaveFilename() %>"></button>
 		<button class="mini sm-btn" data-bs-target="#rooms-carousel" data-bs-slide-to="1"><img class="mini" alt="" src="<%=request.getContextPath() %>/images/room/02.jpg"></button>
 		<button class="mini sm-btn" data-bs-target="#rooms-carousel" data-bs-slide-to="2"><img class="mini" alt="" src="<%=request.getContextPath() %>/images/room/03.jpg"></button>
 		<button class="mini sm-btn" data-bs-target="#rooms-carousel" data-bs-slide-to="3"><img class="mini" alt="" src="<%=request.getContextPath() %>/images/room/04.jpg"></button>
@@ -59,7 +59,7 @@
   		<div class="carousel-inner">
   		<!-- 어차피 이미지는 DB에서 for문 돌려서 불러올거잖아~? -->
     		<div class="carousel-item active">
-      			<img src="<%=request.getContextPath() %>/images/room/01.jpg" class="d-block w-100" alt="..." width="80%">
+      			<img src="<%=request.getContextPath() %>/upload/rooms/<%=image.getSaveFilename() %>" class="d-block w-100" alt="..." width="80%">
     		</div>
     		<div class="carousel-item">
       			<img src="<%=request.getContextPath() %>/images/room/02.jpg" class="d-block w-100" alt="..." width="80%">
