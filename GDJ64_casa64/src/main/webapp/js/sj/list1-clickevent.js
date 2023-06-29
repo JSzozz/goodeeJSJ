@@ -23,8 +23,8 @@
 			 if(alertCountOfLogin==0){
 			 	checkLogin();
 			 	alertCountOfLogin=1;
-			 	console.log(alertCountOfLogin);
-			 };
+/*			 	console.log(alertCountOfLogin);
+*/			 };
              $(".reserve_step2").show();
              $(e.target).css("text-decoration","underline");
 
@@ -129,8 +129,8 @@
       	$(document).on("change","select[class=infPers]",e=>{
          	infPers = Number($("select[class=infPers] option:selected").attr('value'));
          	pers=adultPers+kidsPers;
-         	console.log(pers);
-      	});
+/*         	console.log(pers);
+*/      	});
    	});   
 /* 3. 옵션 */
 // 3-1.옵션 생성하기
@@ -151,8 +151,8 @@
 		$(document).on("change","input[id=OPTN"+(i+1)+"]",e=>{
 			if($(e.target).is(":checked")){
 				OPTprice += Number($("#OPTN"+(i+1)).attr("optionprice"));
-				console.log(OPTprice);
-				$("#optnPrice").html(OPTprice);
+/*				console.log(OPTprice);
+*/				$("#optnPrice").html(OPTprice);
 		      	if(typeof personPrce=="string"){
 		     	  	totalBookPrice=totalRoomPrice+OPTprice;
 		          	$("#totPrice").html(totalBookPrice);
@@ -162,8 +162,8 @@
 		      	};
 			}else{
 				OPTprice -= Number($("#OPTN"+(i+1)).attr("optionprice"));
-				console.log(OPTprice);
-				$("#optnPrice").html(OPTprice);
+/*				console.log(OPTprice);
+*/				$("#optnPrice").html(OPTprice);
 		      	if(typeof personPrce=="string"){
 		     	  	totalBookPrice=totalRoomPrice+OPTprice;
 		          	$("#totPrice").html(totalBookPrice);

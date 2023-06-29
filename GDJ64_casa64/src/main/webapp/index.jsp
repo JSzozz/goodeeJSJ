@@ -5,7 +5,7 @@
     <%@ include file="/views/common/header.jsp" %>
     <!-- 헤더 영역 종료 -->
 <%
-	Booking recentBooking=(Booking)session.getAttribute("recentBooking");
+   Booking recentBooking=(Booking)session.getAttribute("recentBooking");
 %>   
     <!-- css -->
     <style>
@@ -26,49 +26,49 @@
             <!-- Additional required wrapper -->
             <div class="swiper-wrapper">
                 <!-- Slides -->
-                <div class="swiper-slide"><img src="<%=request.getContextPath()%>/images/rooms image/no.1 rooms/02.jpg"></div>
-                <%if(loginMember!=null) {%>
-	                <div class="swiper-slide">
-	                    <div id="booking-complete">
-	                        <div id="booking-image">
-	                            <h3><%=loginMember.getMemberName() %>님의 예약현황</h3>
-	                            <br><br>
-	                            <img src="<%=request.getContextPath()%>/images/rooms image/no.1 rooms/03.jpg" width="600" height="400">
-	                        </div>
-	                        <div id="booking-info">
-	                            <table>
-	                                <tbody>
-	                                <%if(recentBooking!=null){ %>
-	                                    <tr class="resize">
-	                                    
-	                                        <th>예약자&nbsp;</th>
-	                                        <td><%=loginMember.getMemberName() %><br>성인 <%=recentBooking.getGuestAdult() %>명, 아동/유아 <%=recentBooking.getGuestChild() %>명, 영아(24개월 미만) <%=recentBooking.getGuestInfant() %>명</td>
-	                                    </tr>
-	                                    <tr class="resize">
-	                                        <th>객실 이용일&nbsp;</th>
-	                                        <td><%=recentBooking.getCheckIn() %> ~ <%=recentBooking.getCheckOut() %></td>
-	                                    </tr>
-	                                    <tr class="resize">
-	                                        <th>결제금액&nbsp;</th>
-	                                        <td><%=recentBooking.getBookingPrice() %>원</td>
-	                                    </tr>
-	                                    <tr class="resize">
-	                                        <th>예약상태&nbsp;</th>
-	                                        <td><%=recentBooking.getBookingState() %>(결제일 : <%=recentBooking.getPaymentDate() %>) </td><br>
-	                                    </tr>
-	                                    <tr class="resize">
-	                                        <th>요청사항&nbsp;</th>
-	                                        <td><%=recentBooking.getBookingComment() %></td><br>
-	                                    </tr>
-	                                    <%} %>
-	                                </tbody>
-	                            </table>
-	                            <button type="button" class="btn btn-dark"
-	                            onclick = "location.href = '<%=request.getContextPath()%>/myPage/myPageReservation' "
-	                            >예약내역</button>
-	                        </div>
-	                    </div>
-	                </div>
+                <div class="swiper-slide"><img src="<%=request.getContextPath()%>/images/room/02.jpg"></div>
+                <%if(loginMember!=null&&recentBooking!=null) {%>
+                   <div class="swiper-slide">
+                       <div id="booking-complete">
+                           <div id="booking-image">
+                               <h3><%=loginMember.getMemberName() %>님의 예약현황</h3>
+                               <br><br>
+                               <img src="<%=request.getContextPath()%>/images/room/01.jpg" width="600" height="400">
+                           </div>
+                           <div id="booking-info">
+                               <table>
+                                   <tbody>
+                                   <%if(recentBooking!=null){ %>
+                                       <tr class="resize">
+                                       
+                                           <th>예약자&nbsp;</th>
+                                           <td><%=loginMember.getMemberName() %><br>성인 <%=recentBooking.getGuestAdult() %>명, 아동/유아 <%=recentBooking.getGuestChild() %>명, 영아(24개월 미만) <%=recentBooking.getGuestInfant() %>명</td>
+                                       </tr>
+                                       <tr class="resize">
+                                           <th>객실 이용일&nbsp;</th>
+                                           <td><%=recentBooking.getCheckIn() %> ~ <%=recentBooking.getCheckOut() %></td>
+                                       </tr>
+                                       <tr class="resize">
+                                           <th>결제금액&nbsp;</th>
+                                           <td><%=recentBooking.getBookingPrice() %>원</td>
+                                       </tr>
+                                       <tr class="resize">
+                                           <th>예약상태&nbsp;</th>
+                                           <td><%=recentBooking.getBookingState() %>(결제일 : <%=recentBooking.getPaymentDate() %>) </td><br>
+                                       </tr>
+                                       <tr class="resize">
+                                           <th>요청사항&nbsp;</th>
+                                           <td><%=recentBooking.getBookingComment() %></td><br>
+                                       </tr>
+                                       <%} %>
+                                   </tbody>
+                               </table>
+                               <button type="button" class="btn btn-dark"
+                               onclick = "location.href = '<%=request.getContextPath()%>/myPage/myPageReservation' "
+                               >예약내역</button>
+                           </div>
+                       </div>
+                   </div>
                 <%} %>
                 <div class="swiper-slide">
                     <div id="booking-status">
@@ -90,18 +90,18 @@
                     <div id="booking-filter">
                         <div>
                             <h3 id="KeywordSection">취향저격! 키워드로 객실 찾기</h3>
-                        	<form action="<%=request.getContextPath()%>/booking/roomFilterByMainServlet.do" method="post">
-                        	<!-- BookingRoomFilterFromMainpageServlet -->
-	                            <input name="options" class="filter-search-value" type="hidden" placeholder=" 키워드 선택하기" readonly>
-	                            <div id="filter-header">
-	                                <span id="filter-search-button"  >
-	                                	<button onClick="return chkSum2();"  id="selectBtn" style="background-color:#212529;">
-		                                	<img src="<%=request.getContextPath()%>/images/icon/search-3-24.png" alt="">
-	                                	</button>
-	                                </span>
-	                                <input class="filter-search" type="text" placeholder=" 키워드 선택하기" readonly>
-	                            </div>
-	                        </form>
+                           <form action="<%=request.getContextPath()%>/booking/roomFilterByMainServlet.do" method="post">
+                           <!-- BookingRoomFilterFromMainpageServlet -->
+                               <input name="options" class="filter-search-value" type="hidden" placeholder=" 키워드 선택하기" readonly>
+                               <div id="filter-header">
+                                   <span id="filter-search-button"  >
+                                      <button onClick="return chkSum2();"  id="selectBtn" style="background-color:#212529;">
+                                         <img src="<%=request.getContextPath()%>/images/icon/search-3-24.png" alt="">
+                                      </button>
+                                   </span>
+                                   <input class="filter-search" type="text" placeholder=" 키워드 선택하기" readonly>
+                               </div>
+                           </form>
                         </div>
                         <div id="filter-button">
                         
@@ -139,7 +139,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="swiper-slide"><img src="<%=request.getContextPath()%>/images/rooms image/no.1 rooms/04.jpg"></div>
+                <div class="swiper-slide"><img src="<%=request.getContextPath()%>/images/room/04.jpg"></div>
             </div>
             <!-- If we need pagination -->
             <div class="swiper-pagination"></div>
@@ -217,17 +217,17 @@
        });
        
        //필터 체크 안되는 경우 체크
-   	$(function chkSum2() {
-   /* 		const valCk1 = $("select[class=availableDays] option:selected").val());//<option value>머무실 기간 선택</option>  */
-    		$(document).on("click","button[id=selectBtn]",()=>{
-    			if(filterDB==""){
-   				alert("'키워드'를 선택해주세요.");
-   				return false;
-   			};
-   			return true;
-   		});
-   	});	
-   	
+      $(function chkSum2() {
+   /*       const valCk1 = $("select[class=availableDays] option:selected").val());//<option value>머무실 기간 선택</option>  */
+          $(document).on("click","button[id=selectBtn]",()=>{
+             if(filterDB==""){
+               alert("'키워드'를 선택해주세요.");
+               return false;
+            };
+            return true;
+         });
+      });   
+      
    </script>
    
     <!-- 푸터 영역 -->
