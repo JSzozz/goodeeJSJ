@@ -22,24 +22,25 @@ public class AddSeasonServlet extends HttpServlet {
     }
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String name = request.getParameter("seasonName");
-		double weekdayPrice = Double.parseDouble(request.getParameter("weekdayPrice"));
-		double weekendPrice = Double.parseDouble(request.getParameter("weekendPrice"));
-		String seasonStartStr = request.getParameter("seasonStart");
-		String seasonEndStr = request.getParameter("seasonEnd");
+		String season = request.getParameter("seasonName");
+		String seasonStart = request.getParameter("seasonStart");
+		String seasonEnd = request.getParameter("seasonEnd");
+		Double weekdayPrice = Double.parseDouble(request.getParameter("weekdayPrice"));
+		Double weekEndPrice = Double.parseDouble(request.getParameter("weekEndPrice"));
 		
-		SimpleDateFormat seasonSimple = new SimpleDateFormat("yyyy년 MM월 dd일");
-		Date seasonStart = null;
-		Date seasonEnd = null;
-		try {
-			seasonEnd = (Date) seasonSimple.parse(seasonEndStr);
-			seasonStart = (Date) seasonSimple.parse(seasonStartStr);
-		} catch (ParseException e) {
-			e.printStackTrace();
+		int result = new AdminRoomService().insertSeason(season, weekdayPrice, weekEndPrice, seasonStart, seasonEnd);
+		
+		String msg="",loc ="";
+		if(result == 0) {
+			msg="추가 실패!";
+			loc="/allSeason.do";
+		}else {
+			msg="추가 성공!";
+			loc="/allSeason.do";
 		}
-		System.out.println(seasonStart);
-		System.out.println(seasonEnd); 
-		int result = new AdminRoomService().insertSeason(name, weekdayPrice, weekendPrice, seasonStart, seasonEnd);
+		request.setAttribute("msg", msg);
+		request.setAttribute("loc", loc);
+		request.getRequestDispatcher("/views/common/msg.jsp").forward(request, response);
 	}
 
 	/**

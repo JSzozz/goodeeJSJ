@@ -11,7 +11,7 @@ import lombok.NoArgsConstructor;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class SeasonPrice {
+public class SeasonalPrice {
 	private String season;
 	private Date startDate;
 	private Date endDate;

@@ -370,22 +370,22 @@ public class AdminRoomDao {
 		return RoomImage.builder().roomNo(rs.getInt("room_no")).saveFilename(rs.getString("save_filename")).oriFilename(rs.getString("ori_filename")).fileNo(rs.getInt("file_no")).build();
 	}
 	
-	public int insertSeason(Connection conn, String name, double weekdayPrice, double weekendPrice, Date seasonStart, Date seasonEnd) {
+	public int insertSeason(Connection conn, String name, double weekdayPrice, double weekendPrice, String seasonStart, String seasonEnd) {
 		PreparedStatement pstmt = null;
-		ResultSet rs = null;
-		int result = 0;
 		
+		int result = 0;
 		try {
-			pstmt = conn.prepareStatement("INSERT INTO SEASONAL_PRICE VALUES (?, ?, ?, ?, ?)");
+			pstmt = conn.prepareStatement("INSERT INTO SEASONAL_PRICE VALUES (?, TO_CHAR(?), TO_CHAR(?), ?, ?)");
 			pstmt.setString(1, name);
-			pstmt.setDate(2, seasonStart);
-			pstmt.setDate(3, seasonEnd);
+			pstmt.setString(2, seasonStart);
+			pstmt.setString(3, seasonEnd);
 			pstmt.setDouble(4, weekdayPrice);
 			pstmt.setDouble(5, weekendPrice);
+			
+			result = pstmt.executeUpdate();
 		}catch(SQLException e) {
 			e.printStackTrace();
 		}finally {
-			close(rs);
 			close(pstmt);
 		}return result;
 	}

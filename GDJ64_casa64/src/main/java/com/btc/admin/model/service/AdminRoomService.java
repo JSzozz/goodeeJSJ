@@ -159,7 +159,7 @@ public class AdminRoomService {
 		return image;
 	}
 
-	public int insertSeason(String name, double weekdayPrice, double weekendPrice, Date seasonStart, Date seasonEnd) {
+	public int insertSeason(String name, double weekdayPrice, double weekendPrice, String seasonStart, String seasonEnd) {
 		Connection conn = getConnection();
 		int result = dao.insertSeason(conn, name, weekdayPrice, weekendPrice, seasonStart, seasonEnd);
 		close(conn);
