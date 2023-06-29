@@ -50,9 +50,8 @@
                     </section>
 <script src="<%=request.getContextPath()%>/js/dj/season-price.js"></script>
 <script>
-	$("#insertRowBtn").click(e=>{
-		console.log($(".seaason-name"));
-	});
-	const URL = "<%=request.getContextPath()%>/addSeason.do";
+
+	const ROOT = '<%=request.getContextPath()%>/addSeason.do';
+
 </script>
 <%@ include file="/views/admin/common/footer.jsp"%>

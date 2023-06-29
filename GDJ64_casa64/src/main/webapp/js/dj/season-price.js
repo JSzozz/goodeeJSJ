@@ -20,6 +20,21 @@ $(() => {
       alert('추가하실 시즌에 입력하지 않은 값이 있습니다!');
       return;
     }
+
+    location.assign(
+      ROOT +
+        "?seasonName=" +
+        $seasonName +
+        "&weekdayPrice=" +
+        $weekdayPrice +
+        "&weekEndPrice=" +
+        $weekendPrice +
+        "&seasonStart=" +
+        $seasonStart +
+        "&seasonEnd=" +
+        $seasonEnd
+    );
+
     $tbody.append(insertSeasonRow($seasonName, $weekdayPrice, $weekendPrice, $seasonStart, $seasonEnd));
     $(this).parent().parent().remove();
     isCreate = false;
@@ -38,7 +53,7 @@ function createSeasonRow() {
     '<td><input type="number" class="form-control season-weekend" name="weekendRate"/></td>' +
     '<td><input type="date" class="form-control season-start" name="startDate" /></td>' +
     '<td><input type="date" class="form-control season-end" name="endDate"/></td>' +
-    '<td><button type="button" id="insertRowBtn" class="btn btn-dark" onclick="insertSeason();">추가</button></td > ' +
+    '<td><button type="button" id="insertRowBtn" class="btn btn-dark" onclick=\"addSeason()\">추가</button></td > ' +
     '</tr>'
   );
 }
@@ -56,9 +71,24 @@ function insertSeasonRow(name, weekPrice, weekEndPrice, start, end) {
   );
 }
 
-function insertSeason() {
-	location.assign(URL + "?=" + $());
-}
+
+// function addSeason() {
+//   const $tbody = $('#insertRowBtn').parent().parent().parent();
+//   location.assign(
+//     ROOT +
+//     "?seasonName=" +
+//     $tbody.find(".season-name").val() +
+//     ",weekdayPrice=" +
+//     $tbody.find(".season-week-day").val() +
+//     ",weekEndPrice=" +
+//     $tbody.find(".season-weekend").val() +
+//     ",seasonStart=" +
+//     $tbody.find(".season-start").val() +
+//     ",seasonEnd=" +
+//     $tbody.find(".season-end").val()
+//   );
+// }
+
 
 // 공백, null, undefined, 빈값 처리 함수
 function isEmpty(value) {

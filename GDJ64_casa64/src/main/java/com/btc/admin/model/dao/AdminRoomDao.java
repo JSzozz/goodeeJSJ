@@ -5,6 +5,7 @@ import static com.btc.common.JDBCTemplate.close;
 import java.io.FileReader;
 import java.io.IOException;
 import java.sql.Connection;
+import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -14,7 +15,7 @@ import java.util.Properties;
 
 import javax.naming.spi.DirStateFactory.Result;
 
-import com.btc.booking.model.vo.SeasonalPrice;
+import com.btc.rooms.model.vo.SeasonalPrice;
 import com.btc.rooms.model.dao.RoomDao;
 import com.btc.rooms.model.vo.OptionFree;
 import com.btc.rooms.model.vo.OptionXtra;
@@ -371,6 +372,26 @@ public class AdminRoomDao {
 	private RoomImage getRoomImage(ResultSet rs) throws SQLException{
 		return RoomImage.builder().roomNo(rs.getInt("room_no")).saveFilename(rs.getString("save_filename")).oriFilename(rs.getString("ori_filename")).fileNo(rs.getInt("file_no")).build();
 	}
+	
+	public int insertSeason(Connection conn, String name, double weekdayPrice, double weekendPrice, Date seasonStart, Date seasonEnd) {
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		int result = 0;
+		
+		try {
+			pstmt = conn.prepareStatement("INSERT INTO SEASONAL_PRICE VALUES (?, ?, ?, ?, ?)");
+			pstmt.setString(1, name);
+			pstmt.setDate(2, seasonStart);
+			pstmt.setDate(3, seasonEnd);
+			pstmt.setDouble(4, weekdayPrice);
+			pstmt.setDouble(5, weekendPrice);
+		}catch(SQLException e) {
+			e.printStackTrace();
+		}finally {
+			close(rs);
+			close(pstmt);
+		}return result;
+	}
 
 	public List<SeasonalPrice> allSeason(Connection conn) {
 		PreparedStatement pstmt=null;
@@ -390,7 +411,7 @@ public class AdminRoomDao {
 		}return prices;
 	}
 	private SeasonalPrice getSeason(ResultSet rs) throws SQLException{
-		return SeasonalPrice.builder().season(rs.getString("season")).weekdayRate(rs.getFloat("weekday_rate")).weekendRate(rs.getFloat("weekend_rate")).startDate(rs.getDate("start_date")).endDate(rs.getDate("end_date")).build();
+		return SeasonalPrice.builder().season(rs.getString("season")).weekdayRate(rs.getDouble("weekday_rate")).weekendRate(rs.getDouble("weekend_rate")).startDate(rs.getDate("start_date")).endDate(rs.getDate("end_date")).build();
 	}
 }
 

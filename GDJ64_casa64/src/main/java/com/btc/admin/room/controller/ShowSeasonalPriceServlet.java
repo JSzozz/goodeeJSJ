@@ -10,7 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.btc.admin.model.service.AdminRoomService;
-import com.btc.booking.model.vo.SeasonalPrice;
+import com.btc.rooms.model.vo.SeasonalPrice;
 
 /**
  * Servlet implementation class ShowSeasonalPriceServlet
@@ -45,3 +45,4 @@ public class ShowSeasonalPriceServlet extends HttpServlet {
 	}
 
 }
+
