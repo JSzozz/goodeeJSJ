@@ -60,7 +60,7 @@ public class UpdateRoomServlet extends HttpServlet {
 					.oriFilename(mr.getOriginalFileName(fileName))
 					.build());
 		}
-		int result=new AdminRoomService().updateInquiry(r,filesName,frees);
+		int result=new AdminRoomService().updateRoom(r,filesName,frees);
 //		int deleteRO=new AdminRoomService().deleteOldOption(roomNo);
 //		int num=new AdminRoomService().updateRoomOption(roomNo,frees);
 		
