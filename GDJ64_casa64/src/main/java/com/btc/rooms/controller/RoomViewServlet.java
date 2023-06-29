@@ -14,6 +14,7 @@ import com.btc.booking.model.service.BookingService;
 import com.btc.booking.model.vo.SeasonalPrice;
 import com.btc.rooms.model.service.RoomService;
 import com.btc.rooms.model.vo.Room;
+import com.btc.rooms.model.vo.RoomImage;
 import com.btc.rooms.model.vo.RoomOption;
 
 /**
@@ -36,6 +37,8 @@ public class RoomViewServlet extends HttpServlet {
 		 Room r=new RoomService().viewRoom(roomNo);
 		 List<RoomOption> options=new AdminRoomService().selectCheckedOption(roomNo);
 		 List<SeasonalPrice> prices=new BookingService().selectAllSeason();
+		 RoomImage image=new AdminRoomService().selectRoomImage(roomNo);
+		 request.setAttribute("image", image);
 		 request.setAttribute("prices", prices);
 		 request.setAttribute("options", options);
 		 request.setAttribute("room", r);

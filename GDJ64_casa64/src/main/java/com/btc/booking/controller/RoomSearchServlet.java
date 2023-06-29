@@ -39,7 +39,7 @@ public class RoomSearchServlet extends HttpServlet {
 		// TODO Auto-generated method stub
 		response.getWriter().append("Served at: ").append(request.getContextPath());
 		int roomNo=Integer.parseInt(request.getParameter("roomNo"));
-		System.out.println("GD"+roomNo);
+//		System.out.println(roomNo);
 		
 		HttpSession session= request.getSession();
 	

@@ -3,7 +3,6 @@ package com.btc.rooms.controller;
 import java.io.IOException;
 import java.util.List;
 import java.util.Map;
-import java.util.Set;
 import java.util.stream.Collectors;
 
 import javax.servlet.ServletException;
@@ -14,6 +13,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.btc.rooms.model.service.RoomService;
 import com.btc.rooms.model.vo.Room;
+import com.btc.rooms.model.vo.RoomImage;
 
 /**
  * Servlet implementation class RoomListServlet
@@ -41,9 +41,10 @@ public class RoomListServlet extends HttpServlet {
 			else if(r.getRoomName().contains("SPA")) return "spa";
 			else return "etc";
 		},Collectors.toList()));
-		System.out.println(groupRoom.get("ocean"));
-		System.out.println(groupRoom.get("sunset"));
-		System.out.println(groupRoom.get("spa"));
+		
+		List<RoomImage> images=new RoomService().selectAllImages();
+		
+		request.setAttribute("images", images);
 		request.setAttribute("rooms", rooms);
 		request.setAttribute("ocean", groupRoom.get("ocean"));
 		request.setAttribute("sunset", groupRoom.get("sunset"));

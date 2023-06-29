@@ -28,8 +28,14 @@
          		for (Room r : allRooms) {%>
                     <div class="card col-md-6 b" style="width: 20rem;">
                         <a href="<%= request.getContextPath() %>/RoomViewServlet.do?no=<%= r.getRoomNo() %>" class="text-decoration-none">
-                            <img src="<%= request.getContextPath() %>/upload/rooms/<%=images %>" class="card-img-top" alt="...">
-                            <!-- 패스가 어떻게 되는거야,, -->
+                          <%--   <img src="<%= request.getContextPath() %>/upload/rooms/<%=images %>" class="card-img-top" alt="..."> --%>
+                            <%for(int i=0;i<images.size();i++){
+                            	if(r.getRoomNo()==images.get(i).getRoomNo()){%>
+                            	<img src="<%= request.getContextPath() %>/upload/rooms/<%=images.get(i).getSaveFilename() %>" class="card-img-top" alt="...">
+							
+                            <%} 
+                            }%>
+                   
                             <div class="card-body">
                                 <h5 class="card-title"><%= r.getRoomName() %></h5>
                                 <p class="card-text">MIN CAP <%= r.getRoomCap() %>PPL/MAX CAP <%= r.getRoomMaxCap() %>PPL</p>
