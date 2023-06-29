@@ -71,6 +71,7 @@ function searchBooking(address) {
 function infoBooking(data) {
   const BOOKING_NO = $(data).parent().parent().find('td').first().text();
   ajaxShowModal(checkBookingURL, BOOKING_NO);
+  $('#bookingModal').modal('show');
 }
 
 // 상세조회 AJAX
@@ -87,19 +88,21 @@ function ajaxShowModal(address, no) {
 
       insertModal(data);
 
+
       if (data.bookingState === '결제완료' || data.bookingState === '취소요청') {
         $('#isBookingCancelBtn').removeClass('d-none');
-          $('#cancelBookingBtn').click((e) => {
-            cancelBooking(cancelBookingURL, data.bookingNo);
-            return;
-          });
+        	$('#cancelBookingBtn').click((e) => {
+			  cancelBooking(cancelBookingURL, data.bookingNo);
+			  e.stopPropagation();
+			});
       } else {
         $('#isBookingCancelBtn').addClass('d-none'); 
       }
-
+      
     }
   })
 }
+
 
 // 상세조회 Modal에 데이터 넣기
 function insertModal(data) {
@@ -124,7 +127,7 @@ function cancelBooking(address, no) {
     type: 'get',
     data: { bookingNo: no },
     success: (data) => {
-      alert(data);
+      $('#alertModal').modal('show');
       $('.select').click();
     }
   })
@@ -182,7 +185,7 @@ function resultBooking(data) {
   result += '<td>' + data.checkOut +'</td>'
   result += '<td>'
   result +=
-    '<button type="button" class="btn btn-dark btn-sm" onclick="infoBooking(this)" data-bs-toggle="modal" data-bs-target="#bookingModal">상세조회</button>';
+    '<button type="button" class="btn btn-dark btn-sm" onclick="infoBooking(this)" >상세조회</button>';
   result += '</td>'
   result += '</tr>';
   return result;
