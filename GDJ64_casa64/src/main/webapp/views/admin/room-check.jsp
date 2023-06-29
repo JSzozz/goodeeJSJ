@@ -6,6 +6,7 @@
 	Room r=(Room)request.getAttribute("room");
 	List<OptionFree> frees=(List<OptionFree>)request.getAttribute("frees");//가능한 전체 기본 옵션
 	List<RoomOption> options=(List<RoomOption>)request.getAttribute("options");//객실에 선택된 옵션사항
+	RoomImage image=(RoomImage)request.getAttribute("image");
 %>
 <!-- 삭제 모달 -->
 <div class="modal" id="removeRoom" tabindex="-1"
@@ -115,16 +116,11 @@
 								class="col-sm-1 col-form-label text-center">객실사진</label>
 							<div class="col-sm-4">
 								<input type="file" name="roomImage" class="form-control" >
-								<input type="file" name="roomImage" class="form-control" >
-								<input type="file" name="roomImage" class="form-control" >
-								<input type="file" name="roomImage" class="form-control" >
-								<input type="file" name="roomImage" class="form-control" >
-								<input type="file" name="roomImage" class="form-control" >
-								<input type="file" name="roomImage" class="form-control" >
-								<input type="file" name="roomImage" class="form-control" >
-								<input type="file" name="roomImage" class="form-control" >
-								<input type="file" name="roomImage" class="form-control" >
-								
+								<%if(image!=null){ %>
+								<img src="<%=request.getContextPath()%>/upload/room/<%=image.getSaveFilename() %>" height="150" width="210">
+								<%}else{ %>
+								<p>등록된 객실 사진이 없습니다.</p>
+								<%} %>
 							</div>
 						</div>
 						<!-- 객실 공개 -->

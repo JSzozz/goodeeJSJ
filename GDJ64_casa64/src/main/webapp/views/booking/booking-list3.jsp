@@ -22,7 +22,6 @@
 	}
 %>
 
- --%>
 <!-- 결제 API -->
 <script type="text/javascript" src="https://cdn.iamport.kr/js/iamport.payment-1.2.0.js"></script>
 <!-- 동제 JS -->
@@ -35,8 +34,6 @@
       
 <br><br><br>
 
-<%=room %>
-      
    <!-- 컨텐츠/내용 시작 -->
       <div class="reserve_step4 offset-md-1 col-md-10">
            <form name="bookFrm" id="paymentForm" action="<%=request.getContextPath()%>/booking/bookingList3ToList4.do" method="post">
