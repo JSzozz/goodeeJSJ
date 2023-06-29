@@ -54,7 +54,7 @@ const CHART_DATA = {
     {
       label: '예약횟수',
       data: bookingCount,
-      backgroundColor: chartColors(),
+      backgroundColor: chartColorsTwo(),
       borderColor: chartLineColors(),
       stack: 'combined',
       type: 'line',
@@ -63,7 +63,7 @@ const CHART_DATA = {
 }
 
 new Chart(CHART, {
-  type: "line",
+  type: 'line',
   data: CHART_DATA,
   options: {
     scales: {
@@ -115,6 +115,10 @@ new Chart(CHART, {
 // == 색상 배열 == //
 function chartColors() {
   return ['#ade8f4', '#90e0ef', '#48cae4', '#00b4d8', '#0096c7', '#0077b6', '#023e8a'];
+}
+
+function chartColorsTwo() {
+  return ['#ff8800', '#ff9500', '#ffa200', '#ffaa00', '#ffb700', '#ffc300', '#ffd000', '#ffea00', '#ff7b00'];
 }
 
 // == 경계선 색상 배열 == //

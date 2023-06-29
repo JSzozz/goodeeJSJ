@@ -51,7 +51,7 @@
                                 <a href="<%=request.getContextPath() %>/admin/room/showAllRoom.do" class="nav-link sidebar-link text-white"><i class="bi bi-houses-fill me-2"></i>객실관리</a>
                             </li>
                             <li class="nav-item mb-1">
-                                <a href="<%=request.getContextPath() %>/admin/room/showAllOption.do" class="nav-link sidebar-link text-white"><i class="bi bi-houses-fill me-2"></i>옵션관리</a>
+                                <a href="<%=request.getContextPath() %>/admin/room/showAllOption.do" class="nav-link sidebar-link text-white"><i class="bi bi-emoji-smile-fill me-2"></i>옵션관리</a>
                             </li>
                             <li class="nav-item mb-1">
                                 <a href="<%=request.getContextPath()%>/views/admin/season-price.jsp" class="nav-link sidebar-link text-white"><i class="bi bi-currency-exchange me-2"></i>요금관리</a>
