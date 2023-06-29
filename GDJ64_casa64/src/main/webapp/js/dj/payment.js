@@ -8,7 +8,7 @@ function requestPay(member, room, booking) {
   IMP.request_pay({
     pg: 'kakaopay',
     pay_method: 'card',
-    merchant_uid: 'casa64' + new Date().getTime(), //예약번호
+    merchant_uid: 'casa64' + new Date().getTime(),
     name: ROOM[1],
     amount: BOOKING[18],
     buyer_email: MEMBER[3],
