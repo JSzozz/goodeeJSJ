@@ -23,8 +23,8 @@
 				<div class="float-end">
 					<div class="search-area d-flex">
 						<select name="search-type" id="checkSelect" class="ms-1" >
-							<option value="NOTICE_TITLE" <%= (searchType != null && searchType.equals("title")) ? "selected" : "" %>>제목</option>
-							<option value="NOTICE_CONTENT" <%= (searchType != null && searchType.equals("contents")) ? "selected" : "" %>>내용</option>
+							<option value="NOTICE_TITLE" <%= (searchType != null && searchType.equals("NOTICE_TITLE")) ? "selected" : "" %>>제목</option>
+							<option value="NOTICE_CONTENT" <%= (searchType != null && searchType.equals("NOTICE_CONTENT")) ? "selected" : "" %>>내용</option>
 						</select> 
 						<input type="text" name="keyword" class="ms-1" value="<%= (keyword != null ) ? keyword : "" %>" placeholder="검색어를 입력해 주세요.">
 						<input type="hidden" name="categoryName" value='<%=request.getAttribute("categoryName") %>'>
@@ -32,7 +32,7 @@
 						<button type="submit" class="btn btn-primary btn-sm ms-1">검색</button>
 					</div>
 				</div>
-			</div>
+			</div>  
 		</div>
 	</form>
 	<script>

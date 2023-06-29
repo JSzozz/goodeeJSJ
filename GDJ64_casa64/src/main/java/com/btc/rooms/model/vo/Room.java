@@ -19,7 +19,6 @@ public class Room {
 	private int roomCap;
 	private int roomMaxCap;
 	private char bookable;
-	private String roomImage;
 	private Date dateCreated;
 	private Date dateModified;
 	private String roomDescription;
@@ -27,7 +26,7 @@ public class Room {
 	@Override
 	public String toString() {
 		return roomNo + "," + roomName + "," + roomPrice + "," + roomSize + "," + roomCap + "," + roomMaxCap + "," + bookable
-				+ "," + roomImage + "," + dateCreated + "," + dateModified + "," + roomDescription;
+				+ "," + dateCreated + "," + dateModified + "," + roomDescription;
 	}
 }
 /*

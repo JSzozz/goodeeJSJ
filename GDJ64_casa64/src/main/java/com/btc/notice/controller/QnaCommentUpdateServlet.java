@@ -59,7 +59,7 @@ public class QnaCommentUpdateServlet extends HttpServlet {
 		int no=qc.getQnaRef();
 		/* String loc = "/board/boardView.do?no=" */
 		request.setAttribute("msg", msg);
-		request.setAttribute("loc", "/qna/viewQna.do?no="+no+"&categoryName="+categoryName+"&communityTitle"+communityTitle);
+		request.setAttribute("loc", "/qna/viewQna.do?no="+no+"&categoryName="+categoryName+"&communityTitle="+communityTitle);
 		request.getRequestDispatcher("/views/common/msg.jsp").forward(request,response);
 	}
 

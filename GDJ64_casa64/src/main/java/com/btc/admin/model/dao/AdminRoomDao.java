@@ -110,7 +110,6 @@ public class AdminRoomDao {
 			pstmt.setInt(4, r.getRoomCap());
 			pstmt.setInt(5, r.getRoomMaxCap());
 			pstmt.setString(6, String.valueOf(r.getBookable()));
-	
 			pstmt.setString(7, r.getRoomDescription());
 			pstmt.setInt(8,r.getRoomNo());
 			result=pstmt.executeUpdate();
