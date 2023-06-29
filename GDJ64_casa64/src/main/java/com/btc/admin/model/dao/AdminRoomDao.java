@@ -5,7 +5,6 @@ import static com.btc.common.JDBCTemplate.close;
 import java.io.FileReader;
 import java.io.IOException;
 import java.sql.Connection;
-import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -13,15 +12,12 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Properties;
 
-import javax.naming.spi.DirStateFactory.Result;
-
-import com.btc.rooms.model.vo.SeasonalPrice;
-import com.btc.rooms.model.dao.RoomDao;
 import com.btc.rooms.model.vo.OptionFree;
 import com.btc.rooms.model.vo.OptionXtra;
 import com.btc.rooms.model.vo.Room;
 import com.btc.rooms.model.vo.RoomImage;
 import com.btc.rooms.model.vo.RoomOption;
+import com.btc.rooms.model.vo.SeasonalPrice;
 
 public class AdminRoomDao {
 	private Properties sql=new Properties();
@@ -412,6 +408,21 @@ public class AdminRoomDao {
 	}
 	private SeasonalPrice getSeason(ResultSet rs) throws SQLException{
 		return SeasonalPrice.builder().season(rs.getString("season")).weekdayRate(rs.getDouble("weekday_rate")).weekendRate(rs.getDouble("weekend_rate")).startDate(rs.getDate("start_date")).endDate(rs.getDate("end_date")).build();
+	}
+	
+	public int removeSeasonal(Connection conn, String name) {
+		PreparedStatement pstmt = null;
+		int result = 0;
+		
+		try {
+			pstmt = conn.prepareStatement("DELETE FROM SEASONAL_PRICE WHERE SEASON = ?");
+			pstmt.setString(1, name);
+			result = pstmt.executeUpdate();
+		}catch(SQLException e) {
+			e.printStackTrace();
+		}finally {
+			close(pstmt);
+		}return result;
 	}
 }
 

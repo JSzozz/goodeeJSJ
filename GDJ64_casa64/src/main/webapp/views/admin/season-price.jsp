@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ include file="/views/admin/common/header.jsp"%>
-<%@ page import="java.util.List,com.btc.booking.model.vo.*"%>
+<%@ page import="java.util.List,com.btc.rooms.model.vo.*"%>
 <%
 	List<SeasonalPrice> prices=(List)request.getAttribute("prices");
 %>
@@ -33,7 +33,7 @@
                                         		<td><%=sp.getWeekendRate()%></td>
                                         		<td><%=sp.getStartDate() %></td>
                                         		<td><%=sp.getEndDate()%></td>
-                                        		<td><button type="button" id="deleteSeason" class="btn">삭제</button></td>
+                                        		<td><button type="button" id="deleteSeason" onclick="removeSeason('<%=sp.getSeason() %>')" class="btn">삭제</button></td>
                                         	</tr>
                                         <%} %>
                                             <tr>
@@ -52,6 +52,7 @@
 <script>
 
 	const ROOT = '<%=request.getContextPath()%>/addSeason.do';
+    const REMOVE_ROOT = '<%=request.getContextPath()%>/removeSeason.do'
 
 </script>
 <%@ include file="/views/admin/common/footer.jsp"%>

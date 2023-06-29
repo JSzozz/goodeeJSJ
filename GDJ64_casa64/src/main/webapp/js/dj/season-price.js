@@ -53,7 +53,7 @@ function createSeasonRow() {
     '<td><input type="number" class="form-control season-weekend" name="weekendRate"/></td>' +
     '<td><input type="date" class="form-control season-start" name="startDate" /></td>' +
     '<td><input type="date" class="form-control season-end" name="endDate"/></td>' +
-    '<td><button type="button" id="insertRowBtn" class="btn btn-dark" onclick=\"addSeason()\">추가</button></td > ' +
+    '<td><button type="button" id="insertRowBtn" class="btn btn-dark">추가</button></td > ' +
     '</tr>'
   );
 }
@@ -66,28 +66,16 @@ function insertSeasonRow(name, weekPrice, weekEndPrice, start, end) {
     '<td>'+ weekEndPrice +'</td>' +
     '<td>'+ start +'</td>' +
     '<td>'+ end +'</td>' +
-    '<td><button type="button" id="removeRowBtn" class="btn btn-dark">삭제</button></td > ' +
+    '<td><button type="button" id="removeRowBtn" class="btn btn-dark" onclick=\"removeSeason('+name+')\">삭제</button></td> ' +
     '</tr>'
   );
 }
 
+function removeSeason(name) {
+  location.assign(REMOVE_ROOT + "?removeName=" + name);
+}
 
-// function addSeason() {
-//   const $tbody = $('#insertRowBtn').parent().parent().parent();
-//   location.assign(
-//     ROOT +
-//     "?seasonName=" +
-//     $tbody.find(".season-name").val() +
-//     ",weekdayPrice=" +
-//     $tbody.find(".season-week-day").val() +
-//     ",weekEndPrice=" +
-//     $tbody.find(".season-weekend").val() +
-//     ",seasonStart=" +
-//     $tbody.find(".season-start").val() +
-//     ",seasonEnd=" +
-//     $tbody.find(".season-end").val()
-//   );
-// }
+
 
 
 // 공백, null, undefined, 빈값 처리 함수

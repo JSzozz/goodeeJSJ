@@ -169,6 +169,17 @@ public class AdminRoomService {
 	public int insertSeason(String name, double weekdayPrice, double weekendPrice, String seasonStart, String seasonEnd) {
 		Connection conn = getConnection();
 		int result = dao.insertSeason(conn, name, weekdayPrice, weekendPrice, seasonStart, seasonEnd);
+		if(result>0) commit(conn);
+		else rollback(conn);
+		close(conn);
+		return result;
+	}
+	
+	public int removeSeasonal(String name) {
+		Connection conn = getConnection();
+		int result = dao.removeSeasonal(conn, name);
+		if(result>0) commit(conn);
+		else rollback(conn);
 		close(conn);
 		return result;
 	}
