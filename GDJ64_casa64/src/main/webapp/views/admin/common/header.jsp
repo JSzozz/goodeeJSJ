@@ -59,9 +59,9 @@
 
                             <!-- 요금관리 -->
                             <!-- 시즌별 객실 금액 추가 & 삭제 -->
-                            <!-- <li class="nav-item mb-1">
+                            <li class="nav-item mb-1">
                                 <a href="<%=request.getContextPath()%>/views/admin/season-price.jsp" class="nav-link sidebar-link text-white"><i class="bi bi-currency-exchange me-2"></i>요금관리</a>
-                            </li> -->
+                            </li>
                             <li class="nav-item mb-1">
                                 <a href="<%=request.getContextPath()%>/notice/insertNotice.do" class="nav-link sidebar-link text-white position-relative"><i class="bi bi-megaphone-fill me-2"></i>게시판</a>
                             </li>

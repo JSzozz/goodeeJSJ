@@ -5,11 +5,9 @@ import static com.btc.common.JDBCTemplate.commit;
 import static com.btc.common.JDBCTemplate.getConnection;
 import static com.btc.common.JDBCTemplate.rollback;
 
-import java.nio.file.Files;
 import java.sql.Connection;
+import java.sql.Date;
 import java.util.List;
-
-import org.apache.tomcat.jni.File;
 
 import com.btc.admin.model.dao.AdminRoomDao;
 import com.btc.rooms.model.vo.OptionFree;
@@ -161,7 +159,12 @@ public class AdminRoomService {
 		return image;
 	}
 
-
+	public int insertSeason(String name, double weekdayPrice, double weekendPrice, Date seasonStart, Date seasonEnd) {
+		Connection conn = getConnection();
+		int result = dao.insertSeason(conn, name, weekdayPrice, weekendPrice, seasonStart, seasonEnd);
+		close(conn);
+		return result;
+	}
 
 }
 
