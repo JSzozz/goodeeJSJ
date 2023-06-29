@@ -406,8 +406,8 @@
 	} --%>
 
 	<%if(loginMember == null) {%>
-    alert("로그인 후 이용가능");
-	 <%}%>
+    alert("예약은 로그인 후 이용가능합니다.");
+	<%}%>
 	
 	$(function chkSum() {
 /* 		const valCk1 = $("select[class=availableDays] option:selected").val());//<option value>머무실 기간 선택</option>  */
