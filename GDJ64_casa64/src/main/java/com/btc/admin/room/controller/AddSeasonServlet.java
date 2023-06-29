@@ -38,7 +38,7 @@ public class AddSeasonServlet extends HttpServlet {
 			e.printStackTrace();
 		}
 		System.out.println(seasonStart);
-		System.out.println(seasonEnd);
+		System.out.println(seasonEnd); 
 		int result = new AdminRoomService().insertSeason(name, weekdayPrice, weekendPrice, seasonStart, seasonEnd);
 	}
 
