@@ -71,7 +71,7 @@ public class AdminRoomDao {
 		return Room.builder().roomNo(rs.getInt("room_no")).roomName(rs.getString("room_name"))
 				.roomPrice(rs.getInt("room_price")).roomSize(rs.getInt("room_size"))
 				.roomCap(rs.getInt("room_cap")).roomMaxCap(rs.getInt("room_max_cap"))
-				.bookable(rs.getString("bookable").charAt(0)).roomImage(rs.getString("room_image"))
+				.bookable(rs.getString("bookable").charAt(0))
 				.dateCreated(rs.getDate("date_created")).dateModified(rs.getDate("date_modified"))
 				.roomDescription(rs.getString("room_description")).build();
 	}
@@ -105,9 +105,8 @@ public class AdminRoomDao {
 			pstmt.setInt(4, r.getRoomCap());
 			pstmt.setInt(5, r.getRoomMaxCap());
 			pstmt.setString(6, String.valueOf(r.getBookable()));
-			pstmt.setString(7,String.join(",", r.getRoomImage()));
-			pstmt.setString(8, r.getRoomDescription());
-			pstmt.setInt(9,r.getRoomNo());
+			pstmt.setString(7, r.getRoomDescription());
+			pstmt.setInt(8,r.getRoomNo());
 			result=pstmt.executeUpdate();
 		}catch(SQLException e) {
 			e.printStackTrace();
