@@ -160,11 +160,17 @@
     					</dl>
   					</dd>
 				</dl>
-				<div class="row">
-					<div class="col-4"></div>
-					<button onclick="" style="cursor:pointer" class="col-5 btn btn-dark"><h4>이 객실 예약하러 가기</h4></button>
-				</div>
-				
+				<form action="<%=request.getContextPath()%>/booking/roomSearchFilterServlet.do" method="post">
+					<div class="row">
+						<div class="col-4"></div>
+						<button onclick="" style="cursor:pointer" class="col-5 btn btn-dark">
+							<h4>
+								이 객실 예약하러 가기
+							</h4>
+						</button>
+					</div>
+					<input name="roomNo" type="hidden" value="<%=r.getRoomNo()%>">
+				</form>
 			</div>
 			<style>
 				.btn-dark:hover{
@@ -184,6 +190,8 @@
 	<br><br><br><br>
 </section>
 <script>
+console.log(typeof <%=r.getRoomNo()%>);
+
 	/* $(".btn").onclick(e=>{
 		//해당 객실 이름 가지고
 		//캘린더로 페이지 이동
