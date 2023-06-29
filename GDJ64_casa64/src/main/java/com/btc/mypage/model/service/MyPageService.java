@@ -29,7 +29,7 @@ public class MyPageService {
 		return list;
 	}
 	
-	// 예약취소
+	// 마이페이지 예약취소
 	public int reservationCancellation(int bookingNo){
 		Connection conn = getConnection(); 
 		int result = dao.reservationCancellation(conn, bookingNo); 

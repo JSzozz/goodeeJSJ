@@ -16,6 +16,7 @@ import com.btc.mypage.model.vo.QnA;
 
 public class MyPageDao {
 	
+	// 마이페이지 예약내역 조회
 	public List<Booking> selectBookingMyPage(Connection conn, int memberNo) {
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
@@ -42,6 +43,7 @@ public class MyPageDao {
 		return list;
 	}
 	
+	// 마이페이지 문의사항 조회
 	public List<QnA> selectQnAMyPage(Connection conn, int memberNo){
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
