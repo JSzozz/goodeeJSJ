@@ -9,17 +9,18 @@ function isEmpty(value) {
 $(function () {
   $('.tabBtns').click((e) => {
     $('.dateSearchBtns').addClass('btn-outline-dark').removeClass('btn-dark');
-    $('.tabBtns').removeClass('btn-dark');
-    $(e.target).addClass('btn-dark');
+    $('.tabBtns').removeClass('btn-dark select');
+    $(e.target).addClass('btn-dark select');
   })
   
   $('.dateSearchBtns').click((e) => {
     $('.dateSearchBtns').addClass('btn-outline-dark').removeClass('btn-dark');
-    $('.tabBtns').removeClass('btn-dark');
+    $('.tabBtns').removeClass('btn-dark select');
     $(e.target).addClass('btn-dark').removeClass('btn-outline-dark');
   })
 
   // == 검색 == //
+
   $('#selectInput').keyup((e) => {
     if (e.keyCode === 13) {
       $('#searchSelectBtn').click();
@@ -90,6 +91,7 @@ function ajaxShowModal(address, no) {
         $('#isBookingCancelBtn').removeClass('d-none');
           $('#cancelBookingBtn').click((e) => {
             cancelBooking(cancelBookingURL, data.bookingNo);
+            return;
           });
       } else {
         $('#isBookingCancelBtn').addClass('d-none'); 
@@ -122,13 +124,8 @@ function cancelBooking(address, no) {
     type: 'get',
     data: { bookingNo: no },
     success: (data) => {
-      if (data > 0) {
-        alert('예약을 취소했습니다.');
-        return;
-      } else {
-        alert('예약 취소를 실패했습니다.');
-        return;
-      }
+      alert(data);
+      $('.select').click();
     }
   })
 }

@@ -155,7 +155,6 @@
         <!-- Slider main container -->
     </section>
     
-
    <!-- swiper.js -->
    <script>
    const swiper = new Swiper('.swiper', {
