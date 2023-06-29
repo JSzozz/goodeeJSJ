@@ -16,7 +16,6 @@ function requestPay(member, room, booking) {
     buyer_tel: MEMBER[6],
   }, function (rsp) {
     if (rsp.success) {
-      alert('예약에 성공했습니다.');
       $('#paymentForm').submit();
       return;
     } else {
