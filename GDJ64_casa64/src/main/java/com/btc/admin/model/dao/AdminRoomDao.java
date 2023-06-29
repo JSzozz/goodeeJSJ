@@ -68,11 +68,16 @@ public class AdminRoomDao {
 		return list;
 	}
 	private Room getRoom(ResultSet rs) throws SQLException{
-		return Room.builder().roomNo(rs.getInt("room_no")).roomName(rs.getString("room_name"))
-				.roomPrice(rs.getInt("room_price")).roomSize(rs.getInt("room_size"))
-				.roomCap(rs.getInt("room_cap")).roomMaxCap(rs.getInt("room_max_cap"))
-				.bookable(rs.getString("bookable").charAt(0)).roomImage(rs.getString("room_image"))
-				.dateCreated(rs.getDate("date_created")).dateModified(rs.getDate("date_modified"))
+		return Room.builder()
+				.roomNo(rs.getInt("room_no"))
+				.roomName(rs.getString("room_name"))
+				.roomPrice(rs.getInt("room_price"))
+				.roomSize(rs.getInt("room_size"))
+				.roomCap(rs.getInt("room_cap"))
+				.roomMaxCap(rs.getInt("room_max_cap"))
+				.bookable(rs.getString("bookable").charAt(0))
+				.dateCreated(rs.getDate("date_created"))
+				.dateModified(rs.getDate("date_modified"))
 				.roomDescription(rs.getString("room_description")).build();
 	}
 	public Room viewRoom(Connection conn, int roomNo) {
@@ -105,9 +110,9 @@ public class AdminRoomDao {
 			pstmt.setInt(4, r.getRoomCap());
 			pstmt.setInt(5, r.getRoomMaxCap());
 			pstmt.setString(6, String.valueOf(r.getBookable()));
-			pstmt.setString(7,String.join(",", r.getRoomImage()));
-			pstmt.setString(8, r.getRoomDescription());
-			pstmt.setInt(9,r.getRoomNo());
+	
+			pstmt.setString(7, r.getRoomDescription());
+			pstmt.setInt(8,r.getRoomNo());
 			result=pstmt.executeUpdate();
 		}catch(SQLException e) {
 			e.printStackTrace();
@@ -150,6 +155,7 @@ public class AdminRoomDao {
 	private OptionFree getFree(ResultSet rs) throws SQLException{
 		return OptionFree.builder().freeNo(rs.getInt("free_no")).freeName(rs.getString("free_name")).build();
 	}
+	
 	public List<OptionXtra> selectAllXtra(Connection conn) {
 		PreparedStatement pstmt=null;
 		ResultSet rs=null;
@@ -171,6 +177,8 @@ public class AdminRoomDao {
 		return OptionXtra.builder().xtraNo(rs.getInt("xtra_no")).xtraName(rs.getString("xtra_name"))
 				.xtraPrice(rs.getInt("xtra_price")).xtraExplanation(rs.getString("xtra_explanation")).build();
 	}
+	
+	
 	public List<RoomOption> selectCheckedOption(Connection conn, int roomNo) {
 		PreparedStatement pstmt=null;
 		ResultSet rs=null;
@@ -192,6 +200,8 @@ public class AdminRoomDao {
 	private RoomOption getChecked(ResultSet rs) throws SQLException{
 		return RoomOption.builder().freeNo(rs.getInt("free_no")).roomNo(rs.getInt("room_no")).optionName(rs.getString("free_name")).build();
 	}
+	
+	
 	public List<Room> selectRoomByKeyword(Connection conn, String keyword, int cPage, int numPerpage) {
 		PreparedStatement pstmt=null;
 		ResultSet rs=null;
@@ -296,8 +306,8 @@ public class AdminRoomDao {
 			pstmt.setInt(3,r.getRoomSize());
 			pstmt.setInt(4,r.getRoomCap());
 			pstmt.setInt(5,r.getRoomMaxCap());
-//			pstmt.setString(6,String.valueOf(r.getBookable()));
-			pstmt.setString(6,r.getRoomImage());
+			pstmt.setString(6,String.valueOf(r.getBookable()));
+	
 			pstmt.setString(7,r.getRoomDescription());	
 			result=pstmt.executeUpdate();
 		}catch(SQLException e) {
@@ -337,6 +347,26 @@ public class AdminRoomDao {
 			close(pstmt);
 		}return result;
 		
+	}
+
+	public RoomImage selectRoomImage(Connection conn, int roomNo) {
+		PreparedStatement pstmt=null;
+		ResultSet rs=null;
+		RoomImage result=new RoomImage();
+		try {
+			pstmt=conn.prepareStatement("SELECT * FROM ROOM_IMAGE WHERE ROOM_NO=?");
+			pstmt.setInt(1, roomNo);
+			rs=pstmt.executeQuery();
+			if(rs.next()) result=getRoomImage(rs);
+		}catch(SQLException e) {
+			e.printStackTrace();
+		}finally {
+			close(rs);
+			close(pstmt);
+		}return result;
+	}
+	private RoomImage getRoomImage(ResultSet rs) throws SQLException{
+		return RoomImage.builder().roomNo(rs.getInt("room_no")).saveFilename(rs.getString("save_filename")).oriFilename(rs.getString("ori_filename")).fileNo(rs.getInt("file_no")).build();
 	}
 
 }
