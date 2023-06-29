@@ -50,12 +50,10 @@ public class BookingList3ToList4Servlet extends HttpServlet {
       
       Booking b = Booking.builder().member(Member.builder().memberNo(memberNo).build()).room(Room.builder().roomNo(roomNo).build()).checkIn(checkIn).checkOut(checkOut).guestAdult(guestAdult)
             .guestChild(guestChild).guestInfant(guestInfant).bookingPrice(bookingPrice).bookingComment(bookingComment).build();
-      HttpSession session=request.getSession();
-      session.setAttribute("booking",b);      
 
       int result = new BookingService().insertBooking(b);
       
-      request.getRequestDispatcher("/views/common/msg.jsp").forward(request, response);
+      response.sendRedirect("/views/myPageReservation.jsp");
 
    }
 
