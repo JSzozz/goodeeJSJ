@@ -116,6 +116,7 @@ public class AdminRoomService {
 	public int updateRoom(Room r, List<RoomImage> filesName, String[] frees) {
 		Connection conn=getConnection();
 		int result=dao.updateRoom(conn, r);
+		
 		//이전 파일삭제하는 구문 작성 -> 방번호를 기준으로....
 		int deleteImageResult=dao.deleteOldRoomImage(conn,r);
 		if(deleteImageResult<0) {
@@ -142,6 +143,7 @@ public class AdminRoomService {
 					}
 				}
 			}
+			close(conn);
 		}
 		return result;
 		

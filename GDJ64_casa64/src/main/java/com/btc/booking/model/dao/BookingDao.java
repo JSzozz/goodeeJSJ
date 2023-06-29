@@ -44,7 +44,6 @@ public class BookingDao {
 				.roomCap(rs.getInt("room_cap"))
 				.roomMaxCap(rs.getInt("room_max_cap"))
 				.bookable(rs.getString("bookable").charAt(0))
-				.roomImage(rs.getString("room_image"))
 				.dateCreated(rs.getDate("date_created"))
 				.dateModified(rs.getDate("date_modified"))
 				.roomDescription(rs.getString("room_description"))

@@ -21,7 +21,7 @@ import com.btc.rooms.model.vo.Room;
 @WebServlet("/review/reviewList")
 public class ReviewList extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-	private static final Integer POSTS_PER_PAGE = 10; // 한 페이지에서 보여지는 게시글 개수
+	private static final Integer POSTS_PER_PAGE = 5; // 한 페이지에서 보여지는 게시글 개수
     private static final Integer PAGES_PER_BLOCK = 5; // 페이지바에서 보여줄 페이지 개수
 
 	/**
@@ -68,7 +68,7 @@ public class ReviewList extends HttpServlet {
 					+ "&keyword="+keyword
 					+ "&room-no="+roomNo
 					+ "&page="+(page-1)
-					+ "'><span aria-hidden='true'>&lt;</span></a></li>";
+					+ "'><span aria-hidden='true'>&laquo;</span></a></li>";
 		}
 		
 		while(!(pageNo>pageEnd||pageNo>totalPage)) {
@@ -91,7 +91,7 @@ public class ReviewList extends HttpServlet {
 			+"&keyword="+keyword
 			+"&room-no="+roomNo
 			+"&page="+(page+1)
-			+"'><span aria-hidden=\"true\">&gt;</span></a></li>";
+			+"'><span aria-hidden=\"true\">&raquo;</span></a></li>";
 		}
 		pageBar+= "</ul></nav></div>";
 		request.setAttribute("pageBar", pageBar);

@@ -11,6 +11,7 @@
 <%int roomNo=(int)request.getAttribute("roomNo");%>
 <%Booking booking=(Booking)request.getAttribute("booking");%>
 <%List<String> price=(List<String>)request.getAttribute("price");%>
+<%String optionList=(String)request.getAttribute("optionList");%>
 <%-- <%=loginMember %><br>
 <%=roomNm %><br>
 <%=roomNo %><br>
@@ -198,7 +199,7 @@
 	$("#typeNm").text("<%=roomNm %>");
 	$("#period").text("<%=booking.getCheckIn()%> ~ <%=booking.getCheckOut()%>")
 	$("#person").text("성인 = <%=booking.getGuestAdult()%>명, 아동/유아 = <%=booking.getGuestChild()%>명, 영아(24개월 미만) = <%=booking.getGuestInfant()%>명")
-	$("#optionList").text("개발중");
+	$("#optionList").text("<%=optionList%>");
 	$("#roomPirce").text("<%=price.get(0)%>");
 	$("#persPirce").text("<%=price.get(1)%>");
 	$("#optnPrice").text("<%=price.get(2)%>");

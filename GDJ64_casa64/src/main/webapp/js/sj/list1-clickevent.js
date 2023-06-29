@@ -23,8 +23,8 @@
 			 if(alertCountOfLogin==0){
 			 	checkLogin();
 			 	alertCountOfLogin=1;
-			 	console.log(alertCountOfLogin);
-			 };
+/*			 	console.log(alertCountOfLogin);
+*/			 };
              $(".reserve_step2").show();
              $(e.target).css("text-decoration","underline");
 
@@ -129,13 +129,13 @@
       	$(document).on("change","select[class=infPers]",e=>{
          	infPers = Number($("select[class=infPers] option:selected").attr('value'));
          	pers=adultPers+kidsPers;
-         	console.log(pers);
-      	});
+/*         	console.log(pers);
+*/      	});
    	});   
 /* 3. 옵션 */
 // 3-1.옵션 생성하기
 	for(let i=0;i<XtraName.length;i++){
-		const $option= $("<input>").attr({"type":"checkbox","id":"OPTN"+(i+1),"OptionPrice":XtraPrice[i],"value":XtraPrice[i]}); 
+		const $option= $("<input>").attr({"type":"checkbox","id":"OPTN"+(i+1),"OptionPrice":XtraPrice[i],"value":XtraPrice[i],"name":"xtraOption"}); 
 		const $lable= $("<lable>").text(" "+XtraName[i]+"["+XtraPrice[i]+"원] ");
 		const $input= $("<button>").attr({"type":"button","class":"btn btn-outline-dark btn-sm","title":XtraExplanation[i]}).text("상세설명"); 
 		$("#optnList").append($("<li>")).append($option).append($lable).append($input);	
@@ -151,8 +151,8 @@
 		$(document).on("change","input[id=OPTN"+(i+1)+"]",e=>{
 			if($(e.target).is(":checked")){
 				OPTprice += Number($("#OPTN"+(i+1)).attr("optionprice"));
-				console.log(OPTprice);
-				$("#optnPrice").html(OPTprice);
+/*				console.log(OPTprice);
+*/				$("#optnPrice").html(OPTprice);
 		      	if(typeof personPrce=="string"){
 		     	  	totalBookPrice=totalRoomPrice+OPTprice;
 		          	$("#totPrice").html(totalBookPrice);
@@ -162,8 +162,8 @@
 		      	};
 			}else{
 				OPTprice -= Number($("#OPTN"+(i+1)).attr("optionprice"));
-				console.log(OPTprice);
-				$("#optnPrice").html(OPTprice);
+/*				console.log(OPTprice);
+*/				$("#optnPrice").html(OPTprice);
 		      	if(typeof personPrce=="string"){
 		     	  	totalBookPrice=totalRoomPrice+OPTprice;
 		          	$("#totPrice").html(totalBookPrice);

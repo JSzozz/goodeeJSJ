@@ -50,14 +50,20 @@
                             <li class="nav-item mb-1">
                                 <a href="<%=request.getContextPath() %>/admin/room/showAllRoom.do" class="nav-link sidebar-link text-white"><i class="bi bi-houses-fill me-2"></i>객실관리</a>
                             </li>
-                            <li class="nav-item mb-1">
+
+                            <!-- 옵션관리 -->
+                            <!-- 기본옵션 & 유료옵션을 구분해 추가 & 삭제 -->
+                            <!-- <li class="nav-item mb-1">
                                 <a href="<%=request.getContextPath() %>/admin/room/showAllOption.do" class="nav-link sidebar-link text-white"><i class="bi bi-emoji-smile-fill me-2"></i>옵션관리</a>
-                            </li>
-                            <li class="nav-item mb-1">
+                            </li> -->
+
+                            <!-- 요금관리 -->
+                            <!-- 시즌별 객실 금액 추가 & 삭제 -->
+                            <!-- <li class="nav-item mb-1">
                                 <a href="<%=request.getContextPath()%>/views/admin/season-price.jsp" class="nav-link sidebar-link text-white"><i class="bi bi-currency-exchange me-2"></i>요금관리</a>
-                            </li>
+                            </li> -->
                             <li class="nav-item mb-1">
-                                <a href="#" class="nav-link sidebar-link text-white"><i class="bi bi-megaphone-fill me-2"></i>게시판</a>
+                                <a href="<%=request.getContextPath()%>/notice/insertNotice.do" class="nav-link sidebar-link text-white position-relative"><i class="bi bi-megaphone-fill me-2"></i>게시판</a>
                             </li>
                             <li class="nav-item mb-1">
                                 <a href="<%=request.getContextPath()%>/admin/booking/showBookingTab.do" class="nav-link sidebar-link text-white"><i class="bi bi-calendar-fill me-2"></i>예약관리</a>

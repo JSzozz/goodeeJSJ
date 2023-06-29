@@ -305,6 +305,7 @@
 				<input type="hidden" name="guestChild" value="">
 				<input type="hidden" name="guestInfant" value="">
 				<input type="hidden" name="bookingPrice" value="">
+				<input type="hidden" name="optionList" value="">
 				
 				<input type="hidden" name=roomPrice value="">
 				<input type="hidden" name="persePrice" value="">
@@ -357,8 +358,8 @@
     <%for(SeasonalPrice s:seasons){%>
 		seasonStart= Date("<%=s.getStartDate() %>");
 		seasonEnd = Date("<%=s.getEndDate() %>");
-		console.log(seasonEnd);
-	<%}%>
+/* 		console.log(seasonEnd);
+ */	<%}%>
 	
    $('.keep-open').click(function(e) {
         if (/input|label/i.test(e.target.tagName)){
@@ -441,6 +442,7 @@
 			$('input[name=guestChild]').attr('value',Number($("select[class=kidsPers] option:selected").attr('value')));
 			$('input[name=guestInfant]').attr('value',Number($("select[class=infPers] option:selected").attr('value')));
 			$('input[name=bookingPrice]').attr('value',Number($("#totPrice").text()));
+			
 			$('input[name=roomPrice]').attr('value',$("#roomPrice").text());
 			$('input[name=persePrice]').attr('value',$("#persePrice").text());
 			$('input[name=optnPrice]').attr('value',$("#optnPrice").text());
@@ -516,16 +518,16 @@
  		let date = new Date(checkRoomday);
 		$('select[class=availableDays]').children('option:not(:first)').remove();
  		for(i=0; i<availableDay;i++){
- 			console.log(availableDay);
- 			date.setDate(date.getDate() + i);
+/*  			console.log(availableDay);
+ */ 			date.setDate(date.getDate() + i);
  			const $day=dateFormatChange(date);
 			let $roomPrice=$('div[roomno='+checkRoomNo+'][class='+$day+']').attr("price");
  			if($roomPrice==undefined){
  	 			$roomPrice=$('div[roomno='+checkRoomNo+'][class='+StringToDate($day, -14)+']').attr("price");
- 				console.log("나가리"+$roomPrice);
- 			}else{
- 				console.log("진땡"+$roomPrice);
- 			};
+/*  				console.log("나가리"+$roomPrice);
+ */ 			}else{
+/*  				console.log("진땡"+$roomPrice);
+ */ 			};
  			const $option= $("<option>"+(i+1)+"박</option>").attr({"value":(i+1),"price":$roomPrice});
  			$('select[class=availableDays]').append($option);
  		}; 
@@ -546,7 +548,27 @@
 		<%}%> 
 	}
 
+	
 	</script>
+	
+	
+	<script>
+      let filterDB="";
+          $(document).ready(function(){
+              $('input[name="xtraOption"]').change(function(){
+                  if($(this).is(":checked")) {
+                      filterDB+=$(this).next().html()+",";
+                  }else{
+                      filterDB=filterDB.replace($(this).next().html()+",",'');
+                  }
+                     /* filterDB = filterDB.substr(0, filterDB.length-1); */
+                  /* console.log(filterDB); */
+      			  $('input[name=optionList]').attr('value',filterDB);
+/*                      $("input[name='QnaFilter']").val(filterDB);
+                     $(".filterQna").submit();
+ */              });
+          });
+      </script>
 	
 	
 

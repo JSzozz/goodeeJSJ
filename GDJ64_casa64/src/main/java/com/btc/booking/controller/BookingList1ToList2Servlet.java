@@ -49,7 +49,6 @@ public class BookingList1ToList2Servlet extends HttpServlet {
 		int guestInfant = Integer.parseInt(request.getParameter("guestInfant"));
 		int bookingPrice = Integer.parseInt(request.getParameter("bookingPrice"));
 
-
 		String roomPrice = request.getParameter("roomPrice");
 		String persePrice = request.getParameter("persePrice");
 		String optnPrice = request.getParameter("optnPrice");
@@ -58,14 +57,20 @@ public class BookingList1ToList2Servlet extends HttpServlet {
         price.add(persePrice);
         price.add(optnPrice);
 		
-		Booking b = Booking.builder().room(Room.builder().roomNo(roomNo).build()).checkIn(checkIn).checkOut(checkOut).guestAdult(guestAdult)
+        String optionList = request.getParameter("optionList");
+//        System.out.println(optionList.length());
+        if(optionList.length()!=0) {
+        	optionList = optionList.substring(0, optionList.length()-1);
+        }
+
+        Booking b = Booking.builder().room(Room.builder().roomNo(roomNo).build()).checkIn(checkIn).checkOut(checkOut).guestAdult(guestAdult)
 				.guestChild(guestChild).guestInfant(guestInfant).bookingPrice(bookingPrice).build();
 		
 		request.setAttribute("booking", b);
 		request.setAttribute("roomNm", roomNm);
 		request.setAttribute("roomNo", roomNo);
 		request.setAttribute("price", price);
-
+		request.setAttribute("optionList", optionList);
 
 		request.getRequestDispatcher("/views/booking/booking-list2.jsp").forward(request, response);
 

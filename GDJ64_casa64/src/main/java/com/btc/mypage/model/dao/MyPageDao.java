@@ -24,6 +24,7 @@ public class MyPageDao {
 
 		try {
 			String sql = getBasicQuery();
+			sql += " ORDER BY B.PAYMENT_DATE DESC"; // 최근 결제일부터 조회
 
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setInt(1, memberNo);
@@ -51,7 +52,7 @@ public class MyPageDao {
 
 		try {
 			String sql = getQnAQuery(); 
-			sql += " ORDER BY Q.QUESTION_DATE ";
+			sql += " ORDER BY Q.QUESTION_DATE DESC"; // 최근 작성일부터 조회
 
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setInt(1, memberNo);
@@ -71,13 +72,14 @@ public class MyPageDao {
 		return list;
 	}
 	
+	// 마이페이지 예약내역에서 예약취소하기
 	public int reservationCancellation (Connection conn, int bookingNo){
 		PreparedStatement pstmt = null;
 		int result = 0; 
 
 		try {
 			conn = getConnection(); 
-			
+			// 예약상태를 취소요청으로 변경하기
 			String sql = " UPDATE BOOKING B SET B.BOOKING_STATE = '취소요청' "
 						+ "	WHERE B.BOOKING_NO = ?";
 			pstmt = conn.prepareStatement(sql);
@@ -134,18 +136,19 @@ public class MyPageDao {
 				.build();
 	}
 
-
+	// 마이페이지 예약, 리뷰 기본쿼리
 	public String getBasicQuery() {
 		return "SELECT B.*, R.ROOM_NAME, RV.NO REVIEW_NO FROM BOOKING B "
 				+ " JOIN ROOM R ON R.ROOM_NO = B.ROOM_NO "
-				+ " LEFT JOIN REVIEW RV ON RV.BOOKING_NO = B.BOOKING_NO AND RV.IS_DELETED = 0 "
-				+ " WHERE B.MEMBER_NO = ?";
+				+ " LEFT JOIN REVIEW RV ON RV.BOOKING_NO = B.BOOKING_NO AND RV.IS_DELETED = 0 " // 블라인드 되지 않은 리뷰 -> 0 미삭제 1 삭제
+				+ " WHERE B.MEMBER_NO = ? ";
 	}
 	
+	// 마이페이지 문의사항 기본쿼리
 	public String getQnAQuery() {
 		return "SELECT Q.*, M.NICKNAME FROM QNA Q "
 				+ " JOIN MEMBER M ON Q.MEMBER_NO = M.MEMBER_NO "
-				+ " WHERE Q.MEMBER_NO = ?";
+				+ " WHERE Q.MEMBER_NO = ? ";
 	}
 
 }

@@ -8,9 +8,9 @@ function requestPay(member, room, booking) {
   IMP.request_pay({
     pg: 'kakaopay',
     pay_method: 'card',
-    merchant_uid: 'casa64' + new Date().getTime(), //예약번호
+    merchant_uid: 'casa64' + new Date().getTime(),
     name: ROOM[1],
-    amount: BOOKING[18],
+    amount: BOOKING[17],
     buyer_email: MEMBER[3],
     buyer_name: MEMBER[2],
     buyer_tel: MEMBER[6],
@@ -18,8 +18,6 @@ function requestPay(member, room, booking) {
     if (rsp.success) {
       $('#paymentForm').submit();
       return;
-    } else {
-      alert('예약에 실패했습니다. 다시 시도해주세요.');
     }
   })
 }

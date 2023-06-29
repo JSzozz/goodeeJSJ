@@ -11,7 +11,7 @@
             <div class="login__content">
             <div class="login__img">
                 <!-- <img src="../images/객실사진/10번 객실/05.jpg" alt="user login"> -->
-                <img src="<%=request.getContextPath()%>/images/rooms image/no.1 rooms/08.jpg"  alt="user login">
+                <img src="<%=request.getContextPath()%>/images/room/08.jpg"  alt="user login">
             </div>
             <div class="login__forms">
             <form action="<%=request.getContextPath() %>/views/LOGIN/pw-create.jsp" class="login__register login-in">

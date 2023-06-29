@@ -110,7 +110,6 @@ public class AdminRoomDao {
 			pstmt.setInt(4, r.getRoomCap());
 			pstmt.setInt(5, r.getRoomMaxCap());
 			pstmt.setString(6, String.valueOf(r.getBookable()));
-	
 			pstmt.setString(7, r.getRoomDescription());
 			pstmt.setInt(8,r.getRoomNo());
 			result=pstmt.executeUpdate();
@@ -338,7 +337,8 @@ public class AdminRoomDao {
 		PreparedStatement pstmt=null;
 		int result=0;
 		try {
-			pstmt=conn.prepareStatement(sql.getProperty("deleteOldRoomImage"));
+			pstmt=conn.prepareStatement("DELETE FROM ROOM_IMAGE WHERE ROOM_NO=?");
+//			sql.getProperty("deleteOldRoomImage")
 			pstmt.setInt(1,r.getRoomNo());
 			result=pstmt.executeUpdate();
 		}catch(SQLException e) {

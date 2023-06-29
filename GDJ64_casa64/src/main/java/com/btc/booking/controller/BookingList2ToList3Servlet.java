@@ -50,7 +50,7 @@ public class BookingList2ToList3Servlet extends HttpServlet {
 		Booking b = Booking.builder().room(Room.builder().roomNo(roomNo).build()).checkIn(checkIn).checkOut(checkOut).guestAdult(guestAdult)
 				.guestChild(guestChild).guestInfant(guestInfant).bookingPrice(bookingPrice).bookingComment(bookingComment).build();
 		request.setAttribute("booking", b);
-		
+				
 	    HttpSession session=request.getSession();
 	    session.setAttribute("rooms", service.selectAllRoom());
 

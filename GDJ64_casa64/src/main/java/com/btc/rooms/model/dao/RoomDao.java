@@ -11,6 +11,8 @@ import java.util.List;
 import java.util.Properties;
 
 import com.btc.rooms.model.vo.Room;
+import com.btc.rooms.model.vo.RoomImage;
+
 import static com.btc.common.JDBCTemplate.*;
 
 public class RoomDao {
@@ -70,5 +72,26 @@ public class RoomDao {
 		}
 		return r;
 	}
-	
+	public List<RoomImage> selectAllImages(Connection conn) {
+		PreparedStatement pstmt=null;
+		ResultSet rs=null;
+		List<RoomImage> result=new ArrayList();
+		try {
+			pstmt=conn.prepareStatement("SELECT * FROM ROOM_IMAGE");
+			rs=pstmt.executeQuery();
+			while(rs.next()) {
+				result.add(getRoomImage(rs));
+			}
+			System.out.println(result);
+		}catch(SQLException e) {
+			e.printStackTrace();
+		}finally {
+			close(rs);
+			close(pstmt);
+		}return result;
+		
+	}
+	private RoomImage getRoomImage(ResultSet rs) throws SQLException{
+		return RoomImage.builder().roomNo(rs.getInt("room_no")).saveFilename(rs.getString("save_filename")).oriFilename(rs.getString("ori_filename")).fileNo(rs.getInt("file_no")).build();
+	}
 }
