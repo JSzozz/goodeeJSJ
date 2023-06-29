@@ -21,8 +21,16 @@ public class CancelBookingServlet extends HttpServlet {
 		int bookingNo = Integer.parseInt(request.getParameter("bookingNo"));
 		
 		int result = AdminBookingService.getBookingService().cancelBooking(bookingNo);
+				
+		String message = "";
 		
-		response.getWriter().print(result);
+		if(result == 0){
+			message = "취소 실패했습니다.";
+		}else {
+			message = "취소 성공했습니다.";
+		}
+		
+		response.getWriter().print(message);			
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
