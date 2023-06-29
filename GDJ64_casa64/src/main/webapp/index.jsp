@@ -26,14 +26,14 @@
             <!-- Additional required wrapper -->
             <div class="swiper-wrapper">
                 <!-- Slides -->
-                <div class="swiper-slide"><img src="<%=request.getContextPath()%>/images/rooms image/no.1 rooms/02.jpg"></div>
+                <div class="swiper-slide"><img src="<%=request.getContextPath()%>/images/room/02.jpg"></div>
                 <%if(loginMember!=null) {%>
 	                <div class="swiper-slide">
 	                    <div id="booking-complete">
 	                        <div id="booking-image">
 	                            <h3><%=loginMember.getMemberName() %>님의 예약현황</h3>
 	                            <br><br>
-	                            <img src="<%=request.getContextPath()%>/images/rooms image/no.1 rooms/03.jpg" width="600" height="400">
+	                            <img src="<%=request.getContextPath()%>/images/room/01.jpg" width="600" height="400">
 	                        </div>
 	                        <div id="booking-info">
 	                            <table>
