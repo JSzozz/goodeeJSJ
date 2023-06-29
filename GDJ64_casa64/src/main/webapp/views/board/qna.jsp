@@ -8,6 +8,7 @@
 	String searchType = request.getParameter("search-type");
 	String keyword = request.getParameter("keyword");
 	/* List<String> members = (List)request.getAttribute("memberName"); */
+	String filter = (String)request.getAttribute("filter");
 %> 
 
 <!-- 카테고리별 이미지 -->
@@ -20,27 +21,44 @@
 	<!--검색창-->
 	<div id="select-line">
 		<form action="<%=request.getContextPath()%>/qna/filterQna.do" class="filterQna">
+			<input type="hidden" name="QnaFilter" value="">
+			<input type="hidden" name="categoryName" value='<%=request.getAttribute("categoryName") %>'>
+			<input type="hidden" name="communityTitle" value='<%=request.getAttribute("communityTitle") %>'>
 			<div class="select-rooms text-center mt-5 mb-5">
 				<div>
-					<input type="checkbox" class="btn-check" id="btn-check-outlined-1"
-						autocomplete="off" name="search-type" value="전체보기" checked> 
+					<input type="text" class="btn-check" id="btn-check-outlined-1"
+						autocomplete="off" name="search-type" onclick="location.assign('<%=request.getContextPath()%>/qna/insertQna.do')" > 
 						<label class="btn btn-outline-primary me-2" for="btn-check-outlined-1">전체보기</label>
-					<input type="checkbox" class="btn-check" id="btn-check-outlined-2"
+					<input type="checkbox" class="btn-check" id="btn-check-outlined-2" <%= filter.contains("회원가입/정보") ? "checked" : "" %>
 						autocomplete="off" name="search-type" value="회원가입/정보"> 
-						<label class="btn btn-outline-primary me-2" for="btn-check-outlined-2">회원가입/정보</label>
-					<input type="checkbox" class="btn-check" id="btn-check-outlined-3"
+						<label class="btn btn-outline-primary me-2" for="btn-check-outlined-2" >회원가입/정보</label>
+					<input type="checkbox" class="btn-check" id="btn-check-outlined-3"  <%= filter.contains("예약/결제") ? "checked" : "" %>
 						autocomplete="off" name="search-type" value="예약/결제"> 
 						<label class="btn btn-outline-primary me-2" for="btn-check-outlined-3">예약/결제</label>
-					<input type="checkbox" class="btn-check" id="btn-check-outlined-4"
+					<input type="checkbox" class="btn-check" id="btn-check-outlined-4"  <%= filter.contains("취소/환불") ? "checked" : "" %>
 						autocomplete="off" name="search-type" value="취소/환불"> 
 						<label class="btn btn-outline-primary me-2" for="btn-check-outlined-4">취소/환불</label>
-					<input type="checkbox" class="btn-check" id="btn-check-outlined-5"
-						autocomplete="off" name="search-type" value="기타문의"> 
+					<input type="checkbox" class="btn-check" id="btn-check-outlined-5"  <%= filter.contains("기타문의") ? "checked" : "" %>
+						autocomplete="off" name="search-type" value="기타"> 
 						<label class="btn btn-outline-primary me-2" for="btn-check-outlined-5">기타문의</label>
 				</div>
 		</form>
 		<script>
-
+		let filterDB="";
+	       $(document).ready(function(){
+	           $('.btn-check').change(function(){
+				   filterDB = $("input[name='QnaFilter']").val();
+	               if($(this).is(":checked")) {
+	                   filterDB+="'"+this.value+"',";
+	               }else{
+	            	   alert("false");
+	                   filterDB=filterDB.replace("'"+this.value+"',","");
+	               }
+               	   /* filterDB = filterDB.substr(0, filterDB.length-1); */
+               	   $("input[name='QnaFilter']").val(filterDB);
+               	   $(".filterQna").submit();
+	           });
+	       });
 		</script>
 
 		<!--검색창-->
@@ -64,17 +82,6 @@
 				</div>  
 			</div>
 		</form>
-		<!-- <div class="float-end mt-5">
-			<div class="search-area d-flex">
-				<select name="search-type" aria-label="">
-					<option value="QUESTION_TITLE">제목</option>
-					<option value="QUESTION_CONTENT">내용</option>
-					<option value="MEMBER_NAME">작성자</option>
-				</select> <input type="text" name="keyword" placeholder="검색어를 입력해 주세요"
-					class="ms-1">
-				<button type="button" class="btn btn-primary btn-sm ms-1">검색</button>
-			</div>
-		</div> -->
 	</div>
 
 

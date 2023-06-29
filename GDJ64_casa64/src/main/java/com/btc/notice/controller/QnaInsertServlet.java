@@ -35,6 +35,7 @@ public class QnaInsertServlet extends HttpServlet {
 		//주제, 이름을 받아 표시하기
 		request.setAttribute("categoryName", "COMMUNITY");
 		request.setAttribute("communityTitle", "QnA");
+		request.setAttribute("filter", "");
 		
 		//게시물 & 페이징 처리
 		int cPage; //현재페이지

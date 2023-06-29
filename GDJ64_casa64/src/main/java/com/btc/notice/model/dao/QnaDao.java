@@ -232,7 +232,7 @@ private Properties sql=new Properties();
 			close(pstmt);
 		}return result;
 	}
-	
+
 	public List<Qna> searchQna(Connection conn,Map pagemap, Map map){
 		PreparedStatement pstmt=null;
 		ResultSet rs=null;
@@ -258,7 +258,7 @@ private Properties sql=new Properties();
 		}
 		return result;
 	}
-	
+
 	public int selectQnaSearchCount(Connection conn, Map map) {
 		PreparedStatement pstmt=null;
 		ResultSet rs=null;
@@ -272,6 +272,55 @@ private Properties sql=new Properties();
 			if(rs.next()) {
 				result=rs.getInt(1);
 			}
+		}catch(SQLException e) {
+			e.printStackTrace();
+		}finally {
+			close(rs);
+			close(pstmt);
+		}
+		return result;
+	}
+	
+	public List<Qna> searchQnaFilter(String filter,Connection conn,Map pagemap){
+		PreparedStatement pstmt=null;
+		ResultSet rs=null;
+		List<Qna> result=new ArrayList();
+		int cPage=(int)pagemap.get("cPage");
+		int numPerpage=(int)pagemap.get("numPerpage");
+		try {
+			String sqlc=sql.getProperty("searchQnaFilter");
+			sqlc=sqlc.replace("#WHERE", filter.isEmpty()?"":"WHERE CATEGORY_NAME IN (" + filter + ")");
+			System.out.println(filter);
+			pstmt=conn.prepareStatement(sqlc);
+			pstmt.setInt(1, (cPage-1)*numPerpage+1); //cPage
+			pstmt.setInt(2, cPage*numPerpage); //numPerPage
+			rs=pstmt.executeQuery();
+			while(rs.next()) {
+				result.add(getQna(rs));
+			}
+		}catch(SQLException e) {
+			e.printStackTrace();
+		}finally {
+			close(rs);
+			close(pstmt);
+		}
+		System.out.println("dao: "+result);
+		return result;
+	}
+	
+	public int selectQnaFilterCount(Connection conn, String filter) {
+		PreparedStatement pstmt=null;
+		ResultSet rs=null;
+		int result=0;
+		try {
+			String sqlc=sql.getProperty("selectQnaFilterCount");
+			sqlc=sqlc.replace("#WHERE", filter.isEmpty()?"":"WHERE CATEGORY_NAME IN (" + filter + ")");
+			pstmt=conn.prepareStatement(sqlc);
+			rs=pstmt.executeQuery();
+			if(rs.next()) {
+				result=rs.getInt(1);
+			}
+			System.out.println("테스트" + result);
 		}catch(SQLException e) {
 			e.printStackTrace();
 		}finally {

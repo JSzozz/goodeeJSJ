@@ -117,5 +117,19 @@ public class QnaService {
 		close(conn);
 		return result;
 	}
+	
+	public List<Qna> searchQnaFilter(String filter,Map pagemap) {
+		Connection conn=getConnection();
+		List<Qna> result=dao.searchQnaFilter(filter,conn,pagemap);
+		close(conn);
+		return result;
+	}
+	
+	public int selectQnaFilterCount(String filter) {
+		Connection conn=getConnection();
+		int result=dao.selectQnaFilterCount(conn,filter);
+		close(conn);
+		return result;
+	}
 }
 
