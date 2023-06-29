@@ -125,7 +125,7 @@
                         </a>
                         <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                             <li><a href="<%=request.getContextPath()%>/booking/booking-list1.do" class="dropdown-item">예약하기</a></li>
-                            <li><a href="#" class="dropdown-item">예약 관련 정보</a></li>
+                            <li><a href="<%=request.getContextPath()%>/views/booking/booking-info.jsp" class="dropdown-item">예약 관련 정보</a></li>
                         </ul>
                     </li>
     
