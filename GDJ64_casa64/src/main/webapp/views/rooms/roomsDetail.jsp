@@ -6,6 +6,7 @@
 	Room r=(Room)request.getAttribute("room");
 	List<RoomOption> options=(List<RoomOption>)request.getAttribute("options");//객실에 선택된 옵션사항
 	List<SeasonalPrice> prices=(List)request.getAttribute("prices");
+	RoomImage image=(RoomImage)request.getAttribute("image");
 %>
 <section>
 	<div class="category-image">
@@ -128,20 +129,7 @@
   					<dt class="col-sm-3">가격 안내</dt>
   					<dd class="col-sm-9">
     					<dl class="row">
-      			<%-- 			<dt class="col-sm-4">비수기 평일</dt>
-      						<dd class="col-sm-8"><%=r.getRoomPrice() %></dd>
-      						<dt class="col-sm-4">비수기 주말</dt>
-      						<dd class="col-sm-8">150,000</dd>
-      						<dt class="col-sm-4">성수기 평일</dt>
-      						<dd class="col-sm-8">200,000</dd>
-      						<dt class="col-sm-4">성수기 주말</dt>
-      						<dd class="col-sm-8">250,000</dd> --%>
-      						<table>
-      							<%-- <tr>
-      								<td>기본요금</td>
-      								<td><%=r.getRoomPrice() %>원</td>
-      							</tr> --%>
-      							
+      						<table>     					
       							<tr>
       								<th>시즌</th>
       								<th>주말요금</th>
@@ -174,7 +162,7 @@
 			</style>
 
 		<div class="col-6">
-			<img class="z-0" src="<%=request.getContextPath() %>/images/ocean1/layout1.png">		
+			<img class="z-0" src="<%=request.getContextPath() %>/images/room/layout.png">		
 		</div>
 	</div>
 	<br><br><br><br>

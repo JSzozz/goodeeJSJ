@@ -44,7 +44,7 @@ public class RoomListServlet extends HttpServlet {
 		System.out.println(groupRoom.get("ocean"));
 		System.out.println(groupRoom.get("sunset"));
 		System.out.println(groupRoom.get("spa"));
-		/* request.setAttribute("rooms", rooms); */
+		request.setAttribute("rooms", rooms);
 		request.setAttribute("ocean", groupRoom.get("ocean"));
 		request.setAttribute("sunset", groupRoom.get("sunset"));
 		request.setAttribute("spa", groupRoom.get("spa"));
