@@ -305,6 +305,7 @@
 				<input type="hidden" name="guestChild" value="">
 				<input type="hidden" name="guestInfant" value="">
 				<input type="hidden" name="bookingPrice" value="">
+				<input type="hidden" name="optionList" value="">
 				
 				<input type="hidden" name=roomPrice value="">
 				<input type="hidden" name="persePrice" value="">
@@ -441,6 +442,7 @@
 			$('input[name=guestChild]').attr('value',Number($("select[class=kidsPers] option:selected").attr('value')));
 			$('input[name=guestInfant]').attr('value',Number($("select[class=infPers] option:selected").attr('value')));
 			$('input[name=bookingPrice]').attr('value',Number($("#totPrice").text()));
+			
 			$('input[name=roomPrice]').attr('value',$("#roomPrice").text());
 			$('input[name=persePrice]').attr('value',$("#persePrice").text());
 			$('input[name=optnPrice]').attr('value',$("#optnPrice").text());
@@ -546,7 +548,15 @@
 		<%}%> 
 	}
 
+	
+	
+	
+	
+	
 	</script>
+	
+	
+	
 	
 	
 
