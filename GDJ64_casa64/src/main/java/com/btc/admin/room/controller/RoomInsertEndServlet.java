@@ -35,51 +35,66 @@ public class RoomInsertEndServlet extends HttpServlet {
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		/* int roomNo=Integer.parseInt(request.getParameter("roomNo")); */
-		String path = getServletContext().getRealPath("/upload/rooms/");// 실제 사진을 저장할 장소
+    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        /* int roomNo=Integer.parseInt(request.getParameter("roomNo")); */
+        String path = getServletContext().getRealPath("/upload/rooms/");// 실제 사진을 저장할 장소
 
-		MultipartRequest mr = new MultipartRequest(request, path, 1024 * 1024 * 500, "utf-8",
-				new DefaultFileRenamePolicy());
-		String roomName = mr.getParameter("roomName");//mr이야 request야
-		int roomPrice = Integer.parseInt(mr.getParameter("roomPrice"));
-		int roomSize = Integer.parseInt(mr.getParameter("roomSize"));
-		int roomCap = Integer.parseInt(mr.getParameter("roomCap"));
-		int roomMaxCap = Integer.parseInt(mr.getParameter("roomMaxCap"));
-		char bookable = mr.getParameter("bookable").charAt(0);
-		String roomDescription = mr.getParameter("roomDescription");
-		String[] options=mr.getParameterValues("optionFree");
-		Room r=Room.builder().roomName(roomName).roomPrice(roomPrice).roomSize(roomSize).roomCap(roomCap).roomMaxCap(roomMaxCap).bookable(bookable).roomDescription(roomDescription).build();
-		//이 room r은 누가받고잇니?
-		Enumeration<String> files = mr.getFileNames();// 인풋에서 넣은 파일들의 이름
-		List<RoomImage> filesName = new ArrayList();
-		while (files.hasMoreElements()) {
-
-			String fileName = files.nextElement();
-			System.out.println(fileName);
-			filesName.add(
-					RoomImage.builder()
-					.saveFilename(mr.getFilesystemName(fileName))
-					.oriFilename(mr.getOriginalFileName(fileName))
-					.build());
-
-		}
-		int roomNo = new AdminRoomService().insertInquiry(r,filesName,options);
-		
-		//새로생긴 룸의 번호 리턴받아서, 생성 완료 후에는 room-check.jsp(/admin/room/roomDetail.do)에 방번호와 함께 넘겨줘야해
-		request.setAttribute("roomNo", roomNo);
-		request.getRequestDispatcher("/views/admin/room-check.jsp").forward(request, response);
-		
-		
-		
-
-//		int result = new AdminRoomService().insertInquiry(r,filesName);
-//		System.out.println(result);
+        MultipartRequest mr = new MultipartRequest(request, path, 1024 * 1024 * 500, "utf-8",
+              new DefaultFileRenamePolicy());
+        String roomName = mr.getParameter("roomName");//mr이야 request야
+        int roomPrice = Integer.parseInt(mr.getParameter("roomPrice"));
+        int roomSize = Integer.parseInt(mr.getParameter("roomSize"));
+        int roomCap = Integer.parseInt(mr.getParameter("roomCap"));
+        int roomMaxCap = Integer.parseInt(mr.getParameter("roomMaxCap"));
+        char bookable = mr.getParameter("bookable").charAt(0);
+        String roomDescription = mr.getParameter("roomDescription");
+        //선택된 기본 옵션 정보 가져오
+        String[] options=mr.getParameterValues("optionFree");
+        
+        Room r=Room.builder().roomName(roomName).roomPrice(roomPrice).roomSize(roomSize).roomCap(roomCap).roomMaxCap(roomMaxCap).bookable(bookable).roomDescription(roomDescription).build();
+        
+//        Enumeration<String> files = mr.getFileNames();// 인풋에서 넣은 파일들의 이름
+//        List<RoomImage> riList = new ArrayList();
+//		while (files.hasMoreElements()) {
 //
-//		response.setContentType("application/json;charset=utf-8");
-//		new Gson().toJson(result > 0 ? true : false, response.getWriter());
+//			String file = files.nextElement();
+//			String saveFilename=mr.getFilesystemName(file)
+//			
+//				filesName.add(RoomImage.builder().saveFilename(mr.getFilesystemName(fileName))
+//						.oriFilename(mr.getOriginalFileName(fileName)).build());
+//				System.out.println(mr.getFilesystemName(fileName) + mr.getOriginalFileName(fileName));
+//			
+//		}
+        
+        String fileName=mr.getOriginalFileName("roomImage");
+        String saveFilename=mr.getFilesystemName("roomImage");
+        
+        RoomImage image=RoomImage.builder().saveFilename(saveFilename).oriFilename(fileName).build();
+        int result=new AdminRoomService().insertRoom(r,image,options);
+        
+        int roomNo=new AdminRoomService().selectRoomNo();
+        System.out.println("roomNo :" + roomNo);
+//        int result = new AdminRoomService().insertInquiry(r,filesName);
+//        System.out.println(result);
+  //
+//        response.setContentType("application/json;charset=utf-8");
+//        new Gson().toJson(result > 0 ? true : false, response.getWriter());
+        
+        String msg="",loc="";
+        if(result>0) {
+        
+           msg="객실 등록이 성공적으로 완료되었습니다.";
+           loc="/admin/room/showAllRoom.do";
+        }else {
+           msg="객실 등록에 실패했습니다. 객실관리 화면으로 돌아갑니다.";
+           loc="/admin/room/showAllRoom.do";
+        }
+        request.setAttribute("msg", msg);
+        request.setAttribute("loc", loc);
+        request.getRequestDispatcher("/views/common/msg.jsp").forward(request,response);
+        
 
-	}
+     }
 
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)

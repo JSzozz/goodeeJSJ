@@ -495,7 +495,7 @@ public class AdminMemberDao {
 	}
 	
 	private BlackMember getBlackMember(ResultSet rs) throws SQLException{
-		return BlackMember.builder().memberNo(rs.getInt("member_no")).memberName(rs.getString("member_name")).email(rs.getString("email")).phone(rs.getString("phone"))
+		return BlackMember.builder().memberNo(rs.getInt("member_no")).memberName(rs.getString("member_name")).nickName((rs.getString("nickname"))).email(rs.getString("email")).phone(rs.getString("phone"))
 				.reason(rs.getString("reason")).blackDate(rs.getDate("black_date")).build();
 	}
 	

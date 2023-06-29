@@ -34,11 +34,11 @@ $(() => {
 function createSeasonRow() {
   return (
     '<tr>' +
-    '<td><input type="text" class="form-control season-name" /></td>' +
-    '<td><input type="text" class="form-control season-week-day" /></td>' +
-    '<td><input type="number" class="form-control season-weekend" /></td>' +
-    '<td><input type="date" class="form-control season-start" /></td>' +
-    '<td><input type="date" class="form-control season-end" /></td>' +
+    '<td><input type="text" class="form-control season-name" name="season"/></td>' +
+    '<td><input type="text" class="form-control season-week-day" name="weekdayRate"/></td>' +
+    '<td><input type="number" class="form-control season-weekend" name="weekendRate"/></td>' +
+    '<td><input type="date" class="form-control season-start" name="startDate" /></td>' +
+    '<td><input type="date" class="form-control season-end" name="endDate"/></td>' +
     '<td><button type="button" id="insertRowBtn" class="btn btn-dark">추가</button></td > ' +
     '</tr>'
   );

@@ -214,7 +214,6 @@ public class AdminMainPageDao {
 				.roomCap(rs.getInt("ROOM_CAP"))
 				.roomMaxCap(rs.getInt("ROOM_MAX_CAP"))
 				.bookable(rs.getString("BOOKABLE").charAt(0))
-				.roomImage(rs.getString("ROOM_IMAGE"))
 				.dateCreated(rs.getDate("DATE_CREATED"))
 				.dateModified(rs.getDate("DATE_MODIFIED"))
 				.roomDescription(rs.getString("ROOM_DESCRIPTION"))

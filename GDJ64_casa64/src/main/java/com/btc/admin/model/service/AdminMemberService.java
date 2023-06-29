@@ -45,6 +45,8 @@ public class AdminMemberService {
 	public int insertCancelMember(String name, String nickname, String email, String phone) {
 		Connection conn=getConnection();
 		int result=dao.insertCancelMember(conn,name,nickname,email,phone);
+		if(result>0)commit(conn);
+		else rollback(conn);
 		close(conn);
 		return result;
 	}

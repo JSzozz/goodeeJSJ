@@ -84,15 +84,7 @@
 								class="col-sm-1 col-form-label text-center">객실사진</label>
 							<div class="col-sm-4">
 								<input type="file" id="attachment" class="form-control" name="roomImage">
-								<input type="file" id="attachment" class="form-control" name="roomImage">
-								<input type="file" id="attachment" class="form-control" name="roomImage">
-								<input type="file" id="attachment" class="form-control" name="roomImage">
-								<input type="file" id="attachment" class="form-control" name="roomImage">
-								<input type="file" id="attachment" class="form-control" name="roomImage">
-								<input type="file" id="attachment" class="form-control" name="roomImage">
-								<input type="file" id="attachment" class="form-control" name="roomImage">
-								<input type="file" id="attachment" class="form-control" name="roomImage">
-								<input type="file" id="attachment" class="form-control" name="roomImage">
+								<div id="imagePreview"></div>
 							</div>
 						</div>
 						<!-- 객실 공개 -->
@@ -135,6 +127,21 @@
 					 -->
 </section>
 <script>
+	$("#attachment").change(e=>{
+		$("#imagePreview").html('');
+		const files=e.target.files;
+		$.each(files,(i,f))=>{
+			const reader=new FileReader();
+			reader.onload=e=>{
+				const img=$("<img>").attr({
+					"src":e.target.result,
+					"width":"210",
+					"height":"100"
+				}}
+			$("#imagePreview").append(img);
+		}
+		reader.readAsDataURL(f);
+	})
 
 </script>
 <%@ include file="/views/admin/common/footer.jsp"%>

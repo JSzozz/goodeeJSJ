@@ -21,7 +21,7 @@
                                             <th>종료시즌</th>
                                             <th>삭제</th>
                                         </thead>
-                                        <tbody id="seasonTableBody">
+                                        <tbody id="seasonTableBody" class="align-middle">
                                             <tr>
                                                 <td colspan="6">
                                                     <button type="button" id="insertSeasonBtn" class="btn btn-dark">+ 시즌추가</button>
@@ -35,4 +35,9 @@
                         </div>
                     </section>
 <script src="<%=request.getContextPath()%>/js/dj/season-price.js"></script>
+<script>
+	$("#insertRowBtn").click(e=>{
+		console.log($(".seaason-name"));
+	});
+</script>
 <%@ include file="/views/admin/common/footer.jsp"%>

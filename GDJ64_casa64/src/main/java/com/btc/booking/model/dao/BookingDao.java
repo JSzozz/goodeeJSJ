@@ -101,6 +101,23 @@ public class BookingDao {
 				.build();
 	}
 	
+	public Room selectRoomByRoomNo(Connection conn, int RoomNo) {
+		PreparedStatement pstmt=null;
+		ResultSet rs=null;
+		Room $room=null;
+		try {
+			pstmt=conn.prepareStatement(sql.getProperty("selectRoomByRoomNo"));
+			pstmt.setInt(1, RoomNo);
+			rs=pstmt.executeQuery();
+			if(rs.next())$room=getRoom(rs);
+		}catch(SQLException e) {
+			e.printStackTrace();
+		}finally {
+			close(rs);
+			close(pstmt);
+		}return $room;
+	}
+	
 	public Booking searchBookingByMemberNo(Connection conn, int loginMemberNo) {
 		PreparedStatement pstmt=null;
 		ResultSet rs=null;

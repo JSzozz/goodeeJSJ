@@ -11,7 +11,7 @@
 <% List<Booking> bookings=(List<Booking>)session.getAttribute("bookings");%>
 <% List<SeasonalPrice> seasons=(List<SeasonalPrice>)session.getAttribute("seasons");%>
 <% List<OptionXtra> xtraOptions=(List<OptionXtra>)session.getAttribute("xtraOptions");%>
-
+ 
 <%--           <%if(rooms.isEmpty()) {%>
          <h1>조회된 예약목록이 없습니다.</h1>
       <%} else{
@@ -59,11 +59,11 @@
        <br> --%>
 
 <%@ include file="/views/common/header.jsp"%>
-<% if(loginMember!=null) {%>
+<%-- <% if(loginMember!=null) {%>
 	<%=loginMember %>
 	<%=loginMember.getMemberName() %>   
 	<%=loginMember.getMemberNo() %>
-<%} %>   
+<%} %> --%>   
       <!-- 카테고리별 이미지 -->
       <div class="category-image">
          <img src="<%=request.getContextPath() %>/images/booking/reservation.png" width="100%" height="200px">
@@ -99,7 +99,6 @@
 				<center><button onClick="return chkSum2();" class="btn btn btn-outline-secondary btn-sm" id="selectBtn">조회하기</button></center>
 	      </ul>
       </form>
-      
    </span>
 	<br><br>
 <!-- 1. 객실 선택 -->
@@ -406,11 +405,9 @@
 	alert("객실 예약은 로그인 후 진행 가능합니다.");
 	} --%>
 
-/* 	$(".fixContainer").css({
-							"position":"fixed",
-							"top":"10rem",
-							"left":"20"
-							}).; */
+	<%-- <%if(loginMember == null) {%>
+    alert("예약은 로그인 후 이용가능합니다.");
+	<%}%>  --%>
 	
 	$(function chkSum() {
 /* 		const valCk1 = $("select[class=availableDays] option:selected").val());//<option value>머무실 기간 선택</option>  */
@@ -419,6 +416,11 @@
  				alert("객실 예약은 로그인 후 진행 가능합니다.");
  				return false;
  			} --%>
+ 			<%if(loginMember == null) {%>
+	          alert("로그인 후 이용가능");
+	         location.assign("<%=request.getContextPath()%>/views/LOGIN/login.jsp");
+	         return false;
+	       <%}%>
  			if($("select[class=availableDays] option:selected").val()==""){
 				alert("'숙박기간'을 정해주세요.");
 				$('.availableDays').select().focus();
@@ -538,7 +540,11 @@
 	    return checkoutDt;
 	};
 	
-
+	function checkLogin(){
+		<%if(loginMember == null) {%>
+	    alert("예약은 로그인 후 이용가능합니다.");
+		<%}%> 
+	}
 
 	</script>
 	
