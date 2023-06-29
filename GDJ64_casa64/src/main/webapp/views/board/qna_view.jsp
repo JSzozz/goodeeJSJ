@@ -153,18 +153,16 @@
 		 <%}%>
 	});
 	$(".removeCheck").on("click", function(e){
- 		const i = $(e.target).attr("class");
-		 if (confirm("정말 삭제하시겠습니까??") == true){
-			 if($(e.target).hasClass("deleteComment") == true ){ //댓글지우는 로직
-				alert("댓글을 제거하시겠습니까?");
-				location.assign('<%=request.getContextPath()%>/qna/deleteQnaComment.do?no=<%=request.getAttribute("no")%>');
-			 }else{
-				alert("리스트를 제거하시겠습니까?");
-			    location.assign('<%=request.getContextPath()%>/qna/deleteQnaView.do?no=<%=request.getAttribute("no")%>');				 
-			 }
+ 		const i = $(e.target);
+		if(i.hasClass("deleteComment") == true ){ //댓글지우는 로직
+				if (confirm("댓글을 제거하시겠습니까?") == true){
+					location.assign('<%=request.getContextPath()%>/qna/deleteQnaComment.do?no=<%=request.getAttribute("no")%>');
+				}
 		 }else{
-		     return false;
-		 }		
+			 if (confirm("리스트를 제거하시겠습니까?") == true){
+			    location.assign('<%=request.getContextPath()%>/qna/deleteQnaView.do?no=<%=request.getAttribute("no")%>');				 					 
+			 }
+		 }	
 	});
 /*  	const removeCheck=()=> {
 	}; */
