@@ -21,7 +21,7 @@ import com.btc.notice.model.service.QnaService;
 /**
  * Servlet implementation class QnaViewServlet
  */
-@WebServlet("/qna/viewQna.do")
+@WebServlet("/qna/viewQna.do") //qna_view.jsp로 이동하는 서블릿
 public class QnaViewServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        

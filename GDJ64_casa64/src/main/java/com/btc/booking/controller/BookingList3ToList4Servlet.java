@@ -54,17 +54,7 @@ public class BookingList3ToList4Servlet extends HttpServlet {
       session.setAttribute("booking",b);      
 
       int result = new BookingService().insertBooking(b);
-      String msg="";
-      String loc="";
-      if(result>0) {
-          msg="예약이 완료되었습니다.";
-          loc="/views/booking/booking-list4.jsp";
-      }else{
-          msg="예약이 실패하였습니다. \n 다시 시도헤주세요.";
-          loc="/booking/booking-list1.do";
-      }
-      request.setAttribute("loc", loc);
-      request.setAttribute("msg", msg);
+      
       request.getRequestDispatcher("/views/common/msg.jsp").forward(request, response);
 
    }

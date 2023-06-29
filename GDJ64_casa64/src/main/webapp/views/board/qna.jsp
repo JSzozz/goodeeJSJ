@@ -77,12 +77,12 @@
 			<tbody>
 				<%if(Qnas.isEmpty()||Qnas==null){ %>
 				<tr>
-					<td colspan="5">조회된 공지사항이 없습니다.</td>
+					<td colspan="5">조회된 QnA가 없습니다.</td>
 				</tr>
 			<%} else { 
 				for(int i=0;i<Qnas.size();i++){%>
 				<tr>
-					<td><%=Qnas.get(i).getMemberNo()%></td>
+					<td><%=Qnas.get(i).getQuestionNo()%></td>
 					<td><%=Qnas.get(i).getCategoryName()%></td>
 					<td>
 						<a href="<%=request.getContextPath()%>/qna/viewQna.do?no=<%=Qnas.get(i).getQuestionNo()%>

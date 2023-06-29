@@ -112,6 +112,7 @@ private Properties sql=new Properties();
 			close(rs);
 			close(pstmt);
 		}
+		System.out.println("flag : "+result);
 		return result;
 	}
 	
@@ -154,7 +155,6 @@ private Properties sql=new Properties();
 	public int insertQnaComment(Connection conn, QnaComment qc) {
 		PreparedStatement pstmt=null;
 		int result=0;
-		System.out.println("test : "+qc);
 		try {
 			pstmt=conn.prepareStatement(sql.getProperty("insertQnaComment"));
 			pstmt.setInt(1, qc.getQnaCommentLevel());
@@ -204,4 +204,51 @@ private Properties sql=new Properties();
 			close(pstmt);
 		}return result;
 	}
+	
+	public int QnaDelete(Connection conn, int no) {
+		PreparedStatement pstmt = null;
+		int result = 0;
+		try {
+			pstmt=conn.prepareStatement(sql.getProperty("QnaDelete"));
+			pstmt.setInt(1, no);
+			result=pstmt.executeUpdate();
+		}catch(SQLException e) {
+			e.printStackTrace();
+		}finally {
+			close(pstmt);
+		}return result;
+	}
+	
+	public int updateQnaComment(Connection conn, QnaComment qc) {
+		PreparedStatement pstmt=null;
+		int result=0;
+		try {
+			pstmt=conn.prepareStatement(sql.getProperty("updateQnaComment"));
+			pstmt.setInt(1, qc.getQnaCommentLevel());
+			pstmt.setString(2, qc.getQnaCommentWriter());
+			pstmt.setString(3, qc.getQnaCommentContent());
+			pstmt.setInt(4, qc.getQnaRef());
+			pstmt.setInt(5, qc.getQnaCommentNo());
+			result=pstmt.executeUpdate();
+		}catch(SQLException e) {
+			e.printStackTrace();
+		}finally {
+			close(pstmt);
+		}return result;
+	}
+	
+	public int QnaCommentDelete(Connection conn, int no) {
+		PreparedStatement pstmt = null;
+		int result = 0;
+		try {
+			pstmt=conn.prepareStatement(sql.getProperty("QnaCommentDelete"));
+			pstmt.setInt(1, no);
+			result=pstmt.executeUpdate();
+		}catch(SQLException e) {
+			e.printStackTrace();
+		}finally {
+			close(pstmt);
+		}return result;
+	}
+	
 }

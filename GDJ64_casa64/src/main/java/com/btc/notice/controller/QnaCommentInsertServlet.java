@@ -14,7 +14,7 @@ import com.btc.notice.model.service.QnaService;
 /**
  * Servlet implementation class QnaCommentInsertServlet
  */
-@WebServlet("/qna/insertQnaComment.do")
+@WebServlet("/qna/insertQnaComment.do") //댓글등록하는 서블릿
 public class QnaCommentInsertServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
@@ -35,7 +35,7 @@ public class QnaCommentInsertServlet extends HttpServlet {
 		String categoryName = (String)request.getParameter("categoryName");
 		String communityTitle = (String)request.getParameter("communityTitle");
 		
-		request.setAttribute("no",no);
+//		request.setAttribute("no",no);
 		request.setAttribute("categoryName",categoryName);
 		request.setAttribute("communityTitle",communityTitle);
 		
@@ -50,13 +50,13 @@ public class QnaCommentInsertServlet extends HttpServlet {
 		String view;
 		if(result>0) {
 			//등록가능->등록값을 전송
-			view=request.getContextPath()+"/qna/viewQna.do?no="+qc.getQnaRef();
+			view=request.getContextPath()+"/qna/viewQna.do?no="+no+"&categoryName="+categoryName+"&communityTitle="+communityTitle;
 			//기존에 남아있는 insertComment값이 남아있기때문에 버리기위해 sendRedirect
 			response.sendRedirect(view);
 		}else {
 			//등록불가능->등록실패결과출력후 boardView로 이동
 			request.setAttribute("msg", "댓글등록실패");
-			request.setAttribute("loc", "/qna/viewQna.do?no="+qc.getQnaRef());
+			request.setAttribute("loc", "/qna/viewQna.do?no="+no+"&categoryName="+categoryName+"&communityTitle="+communityTitle);
 			view="/views/common/msg.jsp";
 			request.getRequestDispatcher(view).forward(request,response);
 		}

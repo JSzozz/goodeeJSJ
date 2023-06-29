@@ -1,11 +1,13 @@
 package com.btc.member.controller;
 
 import java.io.BufferedReader;
+import java.io.FileReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.net.URLEncoder;
+import java.util.Properties;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -18,6 +20,9 @@ import org.apache.tomcat.util.json.JSONParser;
 import org.json.simple.JSONObject;
 
 import com.btc.admin.model.service.AdminMemberService;
+import com.btc.booking.model.service.BookingService;
+import com.btc.booking.model.vo.Booking;
+import com.btc.member.model.dao.MemberDao;
 import com.btc.member.model.dto.Member;
 import com.btc.member.model.service.MemberService;
 
@@ -28,6 +33,15 @@ import com.btc.member.model.service.MemberService;
 public class NaverLoginServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	private MemberService service=new MemberService();
+	Properties sql=new Properties();
+	{
+		String path=MemberDao.class.getResource("/sql/member/naverLogin.properties").getPath();
+		try {
+		sql.load(new FileReader(path));
+		}catch(IOException e) {
+			e.printStackTrace();
+		}
+	}
 	/**
 	 * @see HttpServlet#HttpServlet()
 	 */
@@ -42,8 +56,8 @@ public class NaverLoginServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		String clientId = "ogN8S_IYucSd1upGMoFq";// 애플리케이션 클라이언트 아이디값";
-		String clientSecret = "E7kmS6A2oz";// 애플리케이션 클라이언트 시크릿값";
+		String clientId = sql.getProperty("nId");// 애플리케이션 클라이언트 아이디값";
+		String clientSecret = sql.getProperty("nPw");// 애플리케이션 클라이언트 시크릿값";
 		String code = request.getParameter("code");
 		String state = request.getParameter("state");
 		String redirectURI = URLEncoder.encode("http://14.36.141.71:10005/GDJ64_casa64_semi/index.jsp", "UTF-8");
@@ -128,6 +142,7 @@ public class NaverLoginServlet extends HttpServlet {
 				HttpSession session=request.getSession();
 				System.out.println(nCode);
 				//회원가입
+				Member loginMember=null;
 				if(service.selectSNSMember(nCode)==null) {
 					int inMemberResult=service.insertMember(name, email, nickName, phone,null);
 					if(new AdminMemberService().selectCMember(email)!=null) {
@@ -135,16 +150,17 @@ public class NaverLoginServlet extends HttpServlet {
 					}
 					int inSnsMemberResult=service.insertSNSMember(nCode, "naver", name, email, nickName);
 					if(inMemberResult>0&&inSnsMemberResult>0) {
-						Member loginMember=service.selectEmail(email);
-						session.setAttribute("loginMember", loginMember);
-						request.getRequestDispatcher("/index.jsp").forward(request, response);
+						loginMember=service.selectEmail(email);
+
 					}
 				}else {//로그인
-					Member loginMember=service.selectEmail(email);
-					session.setAttribute("loginMember", loginMember);
-					request.getRequestDispatcher("/index.jsp").forward(request, response);
+					loginMember=service.selectEmail(email);
+
 				}
-				
+				session.setAttribute("loginMember", loginMember);
+				Booking recentBooking = new BookingService().searchBookingByMemberNo(loginMember.getMemberNo());
+				session.setAttribute("recentBooking", recentBooking);
+				request.getRequestDispatcher("/index.jsp").forward(request, response);
 				
 				
 			} catch (Exception e) {

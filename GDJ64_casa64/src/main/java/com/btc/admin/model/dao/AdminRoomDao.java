@@ -139,6 +139,7 @@ public class AdminRoomDao {
 			while(rs.next()) {
 				list.add(getFree(rs));
 			}
+			System.out.println(list);
 		}catch(SQLException e) {
 			e.printStackTrace();
 		}finally {
