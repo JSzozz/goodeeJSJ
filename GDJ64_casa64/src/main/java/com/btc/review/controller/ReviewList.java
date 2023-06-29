@@ -68,7 +68,7 @@ public class ReviewList extends HttpServlet {
 					+ "&keyword="+keyword
 					+ "&room-no="+roomNo
 					+ "&page="+(page-1)
-					+ "'><span aria-hidden='true'>&lt;</span></a></li>";
+					+ "'><span aria-hidden='true'>&laquo;</span></a></li>";
 		}
 		
 		while(!(pageNo>pageEnd||pageNo>totalPage)) {
@@ -91,7 +91,7 @@ public class ReviewList extends HttpServlet {
 			+"&keyword="+keyword
 			+"&room-no="+roomNo
 			+"&page="+(page+1)
-			+"'><span aria-hidden=\"true\">&gt;</span></a></li>";
+			+"'><span aria-hidden=\"true\">&raquo;</span></a></li>";
 		}
 		pageBar+= "</ul></nav></div>";
 		request.setAttribute("pageBar", pageBar);
