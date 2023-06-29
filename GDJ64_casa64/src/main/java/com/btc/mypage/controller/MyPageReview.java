@@ -58,7 +58,7 @@ public class MyPageReview extends HttpServlet {
 			throws ServletException, IOException {
 		HttpSession session = request.getSession();
 		Member loginMember = (Member) session.getAttribute("loginMember");
-		if (loginMember == null) { // 로그인 해야함
+		if (loginMember == null) { // 마이페이지 로그인 해야함
 			String msg = "로그인이 필요합니다.";
 			String loc = "/views/LOGIN/login.jsp";
 			request.setAttribute("msg", msg);

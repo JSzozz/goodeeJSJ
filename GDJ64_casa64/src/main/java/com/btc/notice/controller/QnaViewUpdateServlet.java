@@ -10,14 +10,14 @@ import javax.servlet.http.HttpServletResponse;
 /**
  * Servlet implementation class QnaUpdateServlet
  */
-@WebServlet("/qna/updateQna.do")
-public class QnaUpdateServlet extends HttpServlet {
+@WebServlet("/qna/updateQnaView.do")
+public class QnaViewUpdateServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public QnaUpdateServlet() {
+    public QnaViewUpdateServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
