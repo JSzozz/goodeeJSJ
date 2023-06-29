@@ -100,7 +100,7 @@
 <%@ include file="/views/common/footer.jsp"%>
 <script>
 	$(function(){ // ready function => 페이지 로드 시 실행하는 함수
-		searchType('<%= request.getParameter("search-type")%>'); // 검색 타입이 객실명이면 객실리트가 보여지도록
+		searchType('<%= request.getParameter("search-type")%>'); // 검색 타입이 객실명이면 객실리스트가 보여지도록
 	});
 	function searchType(value){
 		if(value=="rooms"){
