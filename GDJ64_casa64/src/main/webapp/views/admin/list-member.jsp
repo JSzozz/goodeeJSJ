@@ -161,6 +161,7 @@ String search = (String) request.getAttribute("search");
 				success:function(data){
 					if(data==1){
 						alert("탈퇴성공");
+						location.replace("<%=request.getContextPath()%>/admin/memberList.do");
 					}else{
 						alert("실패");
 					}
