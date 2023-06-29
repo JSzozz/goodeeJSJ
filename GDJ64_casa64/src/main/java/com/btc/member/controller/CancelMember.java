@@ -34,13 +34,14 @@ public class CancelMember extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		HttpSession session = request.getSession();
-		int memberNo = (int) session.getAttribute("memberNo");
-		Member m = new AdminMemberService().selectMember(memberNo);
-		int insertResult = new AdminMemberService().insertCancelMember(m.getMemberName(), m.getNickName(), m.getEmail(),m.getPhone());
+		//int memberNo = (int) session.getAttribute("memberNo");
+		Member loginMember=(Member)session.getAttribute("loginMember");
+		//Member m = new AdminMemberService().selectMember(memberNo);
+		int insertResult = new AdminMemberService().insertCancelMember(loginMember.getMemberName(), loginMember.getNickName(), loginMember.getEmail(),loginMember.getPhone());
 		int result = 0;
 		String msg = "", loc = "";
 		if (insertResult > 0) {
-			result = new MemberService().deleteMember(memberNo);
+			result = new MemberService().deleteMember(loginMember.getMemberNo());
 			
 			if (result > 0) {
 				msg = "회원탈퇴가 완료되었습니다";

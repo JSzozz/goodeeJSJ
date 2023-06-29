@@ -36,13 +36,6 @@ public class QnaService {
 		return result;
 	}
 	
-	public String checkName(int memberNo) {
-		Connection conn=getConnection();
-		String name=dao.checkName(conn,memberNo);
-		close(conn);
-		return name;
-	}
-	
 	public Qna selectQnaByNo(int no){
 		Connection conn=getConnection();
 		Qna n=dao.selectQnaByNo(conn, no);
@@ -107,6 +100,20 @@ public class QnaService {
 		int result=dao.QnaCommentDelete(conn,no);
 		if(result>0) commit(conn);
 		else rollback(conn);
+		close(conn);
+		return result;
+	}
+	
+	public List<Qna> searchQna(Map pagemap,Map map) {
+		Connection conn=getConnection();
+		List<Qna> result=dao.searchQna(conn,pagemap,map);
+		close(conn);
+		return result;
+	}
+	
+	public int selectQnaSearchCount(Map map) {
+		Connection conn=getConnection();
+		int result=dao.selectQnaSearchCount(conn,map);
 		close(conn);
 		return result;
 	}
