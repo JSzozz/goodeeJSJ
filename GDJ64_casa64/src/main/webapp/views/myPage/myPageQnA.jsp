@@ -23,10 +23,10 @@ List<QnA> qna = (List) request.getAttribute("MypageQnAList");
 				<table class="table table-hover text-center align-middle">
 					<colgroup>
 						<col width="40px" />
-						<col width="100px" />
+						<col width="80px" />
 						<col width="150px" />
-						<col width="50px" />
 						<col width="60px" />
+						<col width="80px" />
 					</colgroup>
 					<thead>
 						<tr>
@@ -34,7 +34,7 @@ List<QnA> qna = (List) request.getAttribute("MypageQnAList");
 							<th>카테고리</th>
 							<th>제목</th>
 							<th>작성일</th>
-							<th>답글여부</th>
+							<th>비고</th>
 
 						</tr>
 					</thead>
@@ -55,7 +55,7 @@ List<QnA> qna = (List) request.getAttribute("MypageQnAList");
 							<td><%=q.getQuestionDate()%></td>
 							<td><a
 								href="<%=request.getContextPath()%>/qna/viewQna.do?no=<%=q.getQuestionNo()%>&categoryName=COMMUNITY&communityTitle=QnA"
-								class="">Y</a></td>
+								class="btn btn-primary btn-sm">답변확인</a></td>
 						</tr>
 						<%
 						count++;

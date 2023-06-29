@@ -22,13 +22,13 @@ public class MyPageDao {
 		List<Booking> list = new ArrayList();
 
 		try {
-			String sql = getBasicQuery(); // 실행할 기본 쿼리
+			String sql = getBasicQuery();
 
-			pstmt = conn.prepareStatement(sql); // 실제 쿼리 들어가고
+			pstmt = conn.prepareStatement(sql);
 			pstmt.setInt(1, memberNo);
-			rs = pstmt.executeQuery(); // 쿼리 실행
+			rs = pstmt.executeQuery();
 
-			while (rs.next()) { // rs 다음 값이 있을 경우
+			while (rs.next()) {
 				Booking bookings = getBooking(rs);
 				list.add(bookings); //
 			}
@@ -48,14 +48,14 @@ public class MyPageDao {
 		List<QnA> list = new ArrayList();
 
 		try {
-			String sql = getQnAQuery(); // 실행할 기본 쿼리
+			String sql = getQnAQuery(); 
 			sql += " ORDER BY Q.QUESTION_DATE ";
 
-			pstmt = conn.prepareStatement(sql); // 실제 쿼리 들어가고
+			pstmt = conn.prepareStatement(sql);
 			pstmt.setInt(1, memberNo);
-			rs = pstmt.executeQuery(); // 쿼리 실행
+			rs = pstmt.executeQuery(); 
 
-			while (rs.next()) { // rs 다음 값이 있을 경우
+			while (rs.next()) {
 				QnA qna = getQnA(rs);
 				list.add(qna); //
 			}
@@ -71,25 +71,24 @@ public class MyPageDao {
 	
 	public int reservationCancellation (Connection conn, int bookingNo){
 		PreparedStatement pstmt = null;
-		int result = 0; // 실패를 기본 값으로
+		int result = 0; 
 
 		try {
-			conn = getConnection(); // DB 접속
-			// 3. 쿼리 작성
+			conn = getConnection(); 
+			
 			String sql = " UPDATE BOOKING B SET B.BOOKING_STATE = '취소요청' "
 						+ "	WHERE B.BOOKING_NO = ?";
-			pstmt = conn.prepareStatement(sql); // 실행 준비
-//	         4. 쿼리에 파라미터 셋팅
+			pstmt = conn.prepareStatement(sql);
+//	         
 			pstmt.setInt(1, bookingNo);
 	
-			result = pstmt.executeUpdate(); // 쿼리 실행
+			result = pstmt.executeUpdate(); 
 			if (result > 0) {
 				conn.commit();
 			} else {
 				conn.rollback();
 			}
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		} finally {
 			close(pstmt);
@@ -129,12 +128,10 @@ public class MyPageDao {
 				.paymentDate(rs.getDate("PAYMENT_DATE"))
 				.roomName(rs.getString("ROOM_NAME"))
 				.reviewNo(rs.getInt("REVIEW_NO"))
-				// 이용상태(결제대기, 결제완료, 예약완료, 사용완료, 취소요청, 취소완료) 컬럼 추가해야함
+				
 				.build();
 	}
-//				   private String bookingComment;
-//				   private String bookingState;
-//				   private Date paymentDate;
+
 
 	public String getBasicQuery() {
 		return "SELECT B.*, R.ROOM_NAME, RV.NO REVIEW_NO FROM BOOKING B "

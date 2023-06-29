@@ -13,25 +13,27 @@ import com.btc.mypage.model.vo.QnA;
 public class MyPageService {
 	private  MyPageDao dao = new MyPageDao();
 	
+	// 마이페이지 예약내역 조회
 	public List<Booking> selectBookingMyPage(int memberNo){
 		Connection conn = getConnection(); 
 		List<Booking> list = dao.selectBookingMyPage(conn, memberNo);
-		close(conn); // db 접속 종료
+		close(conn); 
 		return list;
 	}
 	
+	// 마이페이지 문의사항 조회
 	public List<QnA> selectQnAMypage(int memberNo){
 		Connection conn = getConnection(); 
 		List<QnA> list = dao.selectQnAMyPage(conn, memberNo); 
-		close(conn); // db 접속 종료
+		close(conn); 
 		return list;
 	}
 	
-	
+	// 예약취소
 	public int reservationCancellation(int bookingNo){
 		Connection conn = getConnection(); 
 		int result = dao.reservationCancellation(conn, bookingNo); 
-		close(conn); // db 접속 종료
+		close(conn);
 		return result;
 	}
 
