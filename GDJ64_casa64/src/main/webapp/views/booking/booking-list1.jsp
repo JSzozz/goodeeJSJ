@@ -11,7 +11,7 @@
 <% List<Booking> bookings=(List<Booking>)session.getAttribute("bookings");%>
 <% List<SeasonalPrice> seasons=(List<SeasonalPrice>)session.getAttribute("seasons");%>
 <% List<OptionXtra> xtraOptions=(List<OptionXtra>)session.getAttribute("xtraOptions");%>
-
+ 
 <%--           <%if(rooms.isEmpty()) {%>
          <h1>조회된 예약목록이 없습니다.</h1>
       <%} else{
