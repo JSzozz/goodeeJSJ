@@ -117,7 +117,9 @@
 							<div class="col-sm-4">
 								<input type="file" name="roomImage" class="form-control" >
 								<%if(image!=null){ %>
-								<img src="<%=request.getContextPath()%>/upload/room/<%=image.getSaveFilename() %>" height="150" width="210">
+								
+								<img src="<%=request.getContextPath()%>/upload/rooms/<%=image.getSaveFilename() %>" height="150" width="210">
+								
 								<%}else{ %>
 								<p>등록된 객실 사진이 없습니다.</p>
 								<%} %>
