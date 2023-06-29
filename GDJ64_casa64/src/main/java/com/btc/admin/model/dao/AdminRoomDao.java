@@ -287,6 +287,7 @@ public class AdminRoomDao {
 		PreparedStatement pstmt=null;
 		int result=0;
 		String query=sql.getProperty("addNewRoom");
+		System.out.println(String.valueOf(r.getBookable()));
 		try {
 			pstmt=conn.prepareStatement(query);
 			pstmt.setString(1,r.getRoomName());
@@ -294,9 +295,9 @@ public class AdminRoomDao {
 			pstmt.setInt(3,r.getRoomSize());
 			pstmt.setInt(4,r.getRoomCap());
 			pstmt.setInt(5,r.getRoomMaxCap());
-			pstmt.setString(6,String.valueOf(r.getBookable()));
-			pstmt.setString(7,String.join(",", r.getRoomImage()));
-			pstmt.setString(8,r.getRoomDescription());	
+//			pstmt.setString(6,String.valueOf(r.getBookable()));
+			pstmt.setString(6,r.getRoomImage());
+			pstmt.setString(7,r.getRoomDescription());	
 			result=pstmt.executeUpdate();
 		}catch(SQLException e) {
 			e.printStackTrace();
