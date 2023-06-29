@@ -129,6 +129,7 @@
                <button class="buttons-1 btn btn btn-outline-dark btn-lg" onclick="requestPay('<%=loginMember%>', '<%=room%>', '<%=booking%>')">결제하기</button>
             </div>
       </div>
+      
       <!-- <div class="customLayerPopup" style="display: block;">
          <p>#point를 정확히 입력하세요</p>
          <div style="width: 5rem;">

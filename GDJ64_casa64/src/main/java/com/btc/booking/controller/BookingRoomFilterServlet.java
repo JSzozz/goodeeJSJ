@@ -36,7 +36,7 @@ public class BookingRoomFilterServlet extends HttpServlet {
     */
    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
       String[] options=request.getParameterValues("option");
-      System.out.println("options : "+Arrays.toString(options));
+//      System.out.println("options : "+Arrays.toString(options));
 //      List<String> optionList = new ArrayList();
       String optionList = "";
       
@@ -47,7 +47,7 @@ public class BookingRoomFilterServlet extends HttpServlet {
 //         System.out.println(optionList);
       }
       optionList = optionList.substring(0, optionList.length() - 1);
-      System.out.println(optionList);
+//      System.out.println(optionList);
       
       List<Room> filterRooms= new BookingService().selectFilteringRoom(optionList);
 //      filterRooms.stream().forEach(System.out::println);

@@ -358,8 +358,8 @@
     <%for(SeasonalPrice s:seasons){%>
 		seasonStart= Date("<%=s.getStartDate() %>");
 		seasonEnd = Date("<%=s.getEndDate() %>");
-		console.log(seasonEnd);
-	<%}%>
+/* 		console.log(seasonEnd);
+ */	<%}%>
 	
    $('.keep-open').click(function(e) {
         if (/input|label/i.test(e.target.tagName)){
@@ -518,16 +518,16 @@
  		let date = new Date(checkRoomday);
 		$('select[class=availableDays]').children('option:not(:first)').remove();
  		for(i=0; i<availableDay;i++){
- 			console.log(availableDay);
- 			date.setDate(date.getDate() + i);
+/*  			console.log(availableDay);
+ */ 			date.setDate(date.getDate() + i);
  			const $day=dateFormatChange(date);
 			let $roomPrice=$('div[roomno='+checkRoomNo+'][class='+$day+']').attr("price");
  			if($roomPrice==undefined){
  	 			$roomPrice=$('div[roomno='+checkRoomNo+'][class='+StringToDate($day, -14)+']').attr("price");
- 				console.log("나가리"+$roomPrice);
- 			}else{
- 				console.log("진땡"+$roomPrice);
- 			};
+/*  				console.log("나가리"+$roomPrice);
+ */ 			}else{
+/*  				console.log("진땡"+$roomPrice);
+ */ 			};
  			const $option= $("<option>"+(i+1)+"박</option>").attr({"value":(i+1),"price":$roomPrice});
  			$('select[class=availableDays]').append($option);
  		}; 
@@ -549,14 +549,26 @@
 	}
 
 	
-	
-	
-	
-	
 	</script>
 	
 	
-	
+	<script>
+      let filterDB="";
+          $(document).ready(function(){
+              $('input[name="xtraOption"]').change(function(){
+                  if($(this).is(":checked")) {
+                      filterDB+=$(this).next().html()+",";
+                  }else{
+                      filterDB=filterDB.replace($(this).next().html()+",",'');
+                  }
+                     /* filterDB = filterDB.substr(0, filterDB.length-1); */
+                  /* console.log(filterDB); */
+      			  $('input[name=optionList]').attr('value',filterDB);
+/*                      $("input[name='QnaFilter']").val(filterDB);
+                     $(".filterQna").submit();
+ */              });
+          });
+      </script>
 	
 	
 
