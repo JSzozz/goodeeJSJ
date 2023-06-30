@@ -10,6 +10,10 @@
 <!DOCTYPE html>
 <html lang="ko">
 <head>
+	<!-- 파비콘 -->
+	 <link rel="shortcut icon" type="image/x-icon" href="http://14.36.141.71:10005/GDJ64_casa64_semi/favicon.ico" />
+	 <link rel="shortcut icon" type="image/x-icon" href="http://14.36.141.71:10005/GDJ64_casa64_semi/admin/favicon.ico" />
+
     <!-- <meta charset="UTF-8"> -->
     <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,minimum-scale=1.0,user-scalable=no">
     <meta name="format-detection" content="telephone=yes">
