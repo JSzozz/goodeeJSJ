@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE configuration PUBLIC "-//mybatis.org//DTD config 3.0//EN" "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+	<!-- 
+		연결할 DB에 대한 정보를 설정하는 태그 
+		1개 이상의 DB연결 정보를 설정할 수 있다.
+		environment태그를 이용한다.
+	-->
+	<environments default="mybatis">
+		<environment id="mybatis">
+			<transactionManager type="JDBC"/>
+			<!-- 트렌젝션 처리하는 방법 설정 -->
+
+			<dataSource type="POOLED">
+			<!-- DB 연결에 필요한 정보를 등록하는 태그 -->
+			<!-- driver, url, id, password -->
+				<property name="driver" value="oracle.jdbc.driver.OracleDriver"/>
+				<property name="url" value="jdbc:oracle:thin:@localhost:1521:xe"/>
+				<property name="username" value="mybatis"/>
+				<property name="password" value="MYBATIS"/>
+			</dataSource>
+		</environment>
+	</environments>
+	<!-- 실행할 sql문을 설정한 mapper를 등록 -->
+	<mappers>
+		<mapper resource="/mappers/student-mapper.xml"/>
+	</mappers>
+
+</configuration>
