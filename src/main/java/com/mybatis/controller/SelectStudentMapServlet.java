@@ -1,26 +1,27 @@
 package com.mybatis.controller;
 
 import java.io.IOException;
+import java.util.Map;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.mybatis.model.dto.Student;
 import com.mybatis.model.service.StudentService;
 
 /**
- * Servlet implementation class DeleteStudentServlet
+ * Servlet implementation class SelectStudentMapServlet
  */
-@WebServlet("/DeleteStudent.do")
-public class DeleteStudentServlet extends HttpServlet {
+@WebServlet("/student/selectStudentMap")
+public class SelectStudentMapServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public DeleteStudentServlet() {
+    public SelectStudentMapServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -29,16 +30,11 @@ public class DeleteStudentServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		
-		request.setCharacterEncoding("utf-8");
-		
 		int no=Integer.parseInt(request.getParameter("no"));
-		
-		int result= new StudentService().deleteStudent(no);
-		response.setContentType("text/html;charset=utf-8");
-		
-		response.getWriter().append(result>0?"<h2>성공</h2>":"<h2>실패</h2>");
+		Map data=new StudentService().selectStudentMap(no);
+		System.out.println(data);
+		request.setAttribute("s", data);
+		request.getRequestDispatcher("/views/student.jsp").forward(request, response);
 	}
 
 	/**

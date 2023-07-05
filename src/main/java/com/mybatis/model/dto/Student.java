@@ -15,8 +15,8 @@ public class Student {
 	private int studentNo;
 	private String studentName;
 	private String studentTel;
-	private String studentEmail;
 	private String studentAddress;
+	private String studentEmail;
 	private Date reg_date;
 	
 }

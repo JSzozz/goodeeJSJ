@@ -1,6 +1,8 @@
 package com.mybatis.controller;
 
 import java.io.IOException;
+import java.util.List;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -11,16 +13,16 @@ import com.mybatis.model.dto.Student;
 import com.mybatis.model.service.StudentService;
 
 /**
- * Servlet implementation class DeleteStudentServlet
+ * Servlet implementation class SelectStudentByNameServlet
  */
-@WebServlet("/DeleteStudent.do")
-public class DeleteStudentServlet extends HttpServlet {
+@WebServlet("/student/selectStudentByName.do")
+public class SelectStudentByNameServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public DeleteStudentServlet() {
+    public SelectStudentByNameServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -29,16 +31,18 @@ public class DeleteStudentServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		
+	
 		request.setCharacterEncoding("utf-8");
+
+		String name="%"+request.getParameter("name")+"%";
+		List<Student> students= new StudentService().selectStudentByName(name);
+		students.stream().forEach(System.out::println);
+		request.setAttribute("students", students);
 		
-		int no=Integer.parseInt(request.getParameter("no"));
-		
-		int result= new StudentService().deleteStudent(no);
 		response.setContentType("text/html;charset=utf-8");
 		
-		response.getWriter().append(result>0?"<h2>성공</h2>":"<h2>실패</h2>");
+		request.getRequestDispatcher("/views/student.jsp").forward(request, response);
+		
 	}
 
 	/**
