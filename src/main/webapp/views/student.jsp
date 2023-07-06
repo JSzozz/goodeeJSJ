@@ -8,7 +8,7 @@
 <meta charset="UTF-8">
 <title>학생조회결과</title>
 </head>
-<body>
+<body> 
 	
 	<h2>학생정보</h2>
 	<c:if test="${count!=null }">
