@@ -32,6 +32,17 @@
 				class : 대상이 되는 클래스지정(패키지명.클래스명)
 		 -->
 	<!--  Animal클래스를 default생성자로 생성해서 bean으로 등록  -->
-	 <beans:bean id="bbo" class="com.bs.spring.beantest.Animal"/>
+	 <!-- <beans:bean id="bbo" class="com.bs.spring.beantest.Animal">
+	 	<beans:property name="name" value="뽀숑"></beans:property>
+	 	<beans:property name="age" value="3"></beans:property>
+	 	<beans:property name="height" value="50.4"></beans:property>
+	 </beans:bean> -->
+	 
+	 <!-- 매개변수가 있는 생성자를 이용해서 생성시키기 -->
+	  <beans:bean id="bbo" class="com.bs.spring.beantest.Animal">
+	  	<beans:constructor-arg index="0" value="뽀숑"/>
+	  	<beans:constructor-arg index="1" value="3"/>
+	  	<!-- <beans:constructor-arg index="2" value="50.4"/> -->
+	  </beans:bean>
 	 
 </beans:beans>

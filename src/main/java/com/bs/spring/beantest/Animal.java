@@ -14,7 +14,11 @@ public class Animal {
 
 	private String name;
 	private int age;
-	private double weight;
+	private double height;
 
+	public Animal(String name, int age) {
+		this.name=name;
+		this.age=age;
+	}
 	
 }
