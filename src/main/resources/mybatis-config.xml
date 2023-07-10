@@ -10,6 +10,11 @@
 	<typeAliases>
 		<typeAlias type="com.mybatis.model.dto.Employee" alias="emp"/>
 		<typeAlias type="com.mybatis.model.dto.Department" alias="department"/>
+		<typeAlias type="com.mybatis.model.dto.Board" alias="board"/>
+		<typeAlias type="com.mybatis.model.dto.BoardComment" alias="boardComment"/>
+		<typeAlias type="com.mybatis.model.dto.Member" alias="member"/>
+		<typeAlias type="com.mybatis.common.StringArrTypeHandler" alias="strArrType"/>
+
 	</typeAliases>
 	<environments default="mybatis">
 		<environment id="mybatis">
@@ -39,6 +44,7 @@
 	
 	<mappers>
 		<mapper resource="/mappers/employee-mapper.xml"/>
-		<mapper resource="/mappers/webmember-mapper.xml"/>
+		<mapper resource="/mappers/webMember-mapper.xml"/>
+		<mapper resource="/mappers/webBoard-mapper.xml"/>
 	</mappers>
 </configuration>

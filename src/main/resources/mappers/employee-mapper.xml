@@ -28,7 +28,7 @@
   <!-- (유의)association, collection이 들어가는 순간 (DB컬럼명과 필드 변수명이 같은 경우) 
   		자동 매칭되던 부분이 매칭이 안되게됨 따라서 빼먹는 부분 없이 모두 작성이 필요함 -->
   		
-  <resultMap id="departmentMap" type="department" ><!-- id : Alias -->
+  <resultMap type="department" id="departmentMap"><!-- type : Alias -->
   	<id property="deptId" column="DEPT_ID"/>
   	<result property="deptTitle" column="DEPT_TITLE"/>
   	<result property="locationId" column="LOCATION_ID"/>
