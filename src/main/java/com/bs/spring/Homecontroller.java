@@ -64,7 +64,7 @@ public class Homecontroller {
 	@Autowired
 	private Test test;
 	
-	@RequestMapping("/")
+	@RequestMapping("/test")
 	public String hone() {
 		System.out.println(bbo+"(*Homecontroller1)");//Animal(name=null, age=0, weight=0.0)(*Homecontroller)
 		System.out.println(dog+"(*Homecontroller2)");
