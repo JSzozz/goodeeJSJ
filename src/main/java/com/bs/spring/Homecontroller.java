@@ -1,12 +1,16 @@
 package com.bs.spring;
 
 import java.io.IOException;
+import java.nio.charset.Charset;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 import java.util.List;
 import java.util.Properties;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.core.io.ClassPathResource;
+import org.springframework.core.io.FileSystemResource;
 import org.springframework.core.io.Resource;
 import org.springframework.core.io.support.PropertiesLoaderUtils;
 import org.springframework.stereotype.Controller;
@@ -77,6 +81,9 @@ public class Homecontroller {
 		try {
 			Properties prop=PropertiesLoaderUtils.loadProperties(resource);
 			System.out.println(prop+"(*Homecontroller9)");
+			resource=new FileSystemResource("C:\\servlet\\springwork\\spring\\src\\main\\resources\\test.txt");
+			Files.lines(Paths.get(resource.getURI()),Charset.forName("UTF-8"))
+			.forEach(System.out::println);
 		}catch(IOException e){
 			e.printStackTrace();
 		}
