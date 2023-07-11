@@ -1,5 +1,6 @@
 package com.bs.spring.config;
 
+import org.apache.tomcat.dbcp.dbcp2.BasicDataSource;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -45,4 +46,13 @@ public class BeanTestConfiguration {
 				.build();
 	}
 	
+	@Bean
+	public BasicDataSource getDataSource() {
+		BasicDataSource source = new BasicDataSource();
+		source.setDriverClassName("oracle.jdbc.driver.OracleDriver");
+		source.setUrl("jdbc:oracle:thin:@localhost:1521:xe");
+		source.setUsername("spring");
+		source.setPassword("spring");
+		return source;
+	}
 }
