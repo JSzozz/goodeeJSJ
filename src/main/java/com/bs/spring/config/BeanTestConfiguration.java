@@ -4,6 +4,7 @@ import org.apache.tomcat.dbcp.dbcp2.BasicDataSource;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.core.annotation.Order;
 
 import com.bs.spring.beantest.Animal;
 import com.bs.spring.beantest.Department;
@@ -21,6 +22,7 @@ public class BeanTestConfiguration {
 	//@Bean어노테이션을 이용
 	//메소드선언을 통해 등록함.
 	@Bean
+	@Order(1)
 	public Animal ani() {
 		return Animal.builder().name("킥킥").age(5).height(80).build();
 	}
@@ -60,4 +62,5 @@ public class BeanTestConfiguration {
 //	public Gson gson() {
 //		return new Gson();
 //	}
+	
 }

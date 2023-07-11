@@ -1,5 +1,7 @@
 package com.bs.spring;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
@@ -36,6 +38,9 @@ public class Homecontroller {
 	@Qualifier("sol")
 	private Employee sol;
 	
+	@Autowired
+	List<Animal> animals;
+	
 	@RequestMapping("/")
 	public String hone() {
 		System.out.println(bbo+"(*Homecontroller1)");//Animal(name=null, age=0, weight=0.0)(*Homecontroller)
@@ -44,6 +49,8 @@ public class Homecontroller {
 		System.out.println(emp2+"(*Homecontroller4)");
 		System.out.println(c+"(*Homecontroller5)");
 		System.out.println(sol+"(*Homecontroller6)");
+		
+		animals.forEach(System.out::println);
 
 		return "index";
 	}
