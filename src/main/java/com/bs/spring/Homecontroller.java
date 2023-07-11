@@ -1,9 +1,14 @@
 package com.bs.spring;
 
+import java.io.IOException;
 import java.util.List;
+import java.util.Properties;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.core.io.ClassPathResource;
+import org.springframework.core.io.Resource;
+import org.springframework.core.io.support.PropertiesLoaderUtils;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
@@ -66,6 +71,16 @@ public class Homecontroller {
 		System.out.println(ft+"(*Homecontroller8-1)");//com.bs.spring.beantest.FuntionalTest@24dfa151(ToString 오버라이드 안되어있어서 나옴)
 		System.out.println(ft.getA()+"(*Homecontroller8-2)");
 
+		//spring에서 파일을 불러올 수 있는 Resource객체를 제공
+		Resource resource=new ClassPathResource("mydata.properties");
+		//import org.springframework.core.io.Resource;
+		try {
+			Properties prop=PropertiesLoaderUtils.loadProperties(resource);
+			System.out.println(prop+"(*Homecontroller9)");
+		}catch(IOException e){
+			e.printStackTrace();
+		}
+		
 		return "index";
 	}
 	
