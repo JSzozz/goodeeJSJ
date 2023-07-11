@@ -43,4 +43,9 @@ public class DemoController {
 	//12) Model : request와 비슷하게 데이터를 key/value형식으로 저장할 수 있는 객체(경량화)
 	//13) ModelAndView :  model과 view를 동시에 저장하는 객체
 	
+	//메소드 어노테이션
+	//@ResponseBody -> Rest방식으로 클래스를 json으로 전송할 때
+	//@RequestBody  -> json방식으로 전송된 parameter를 클래스로 받을 때 사용
+	// + @GetMapping, @PostMapping, @DeleteMapping...
+	
 }
