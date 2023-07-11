@@ -1,6 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<c:set var="path" value="${pageContext.request.contextPath }"/>
+
 <jsp:include page="/WEB-INF/views/common/header.jsp"/>
+
 <section id="content">
 	<div id="demo-container">
 		<form id="devFrm" method="post">
@@ -52,11 +56,25 @@
 					</div>
 				</div>
 			</div>
+			<div class="form-group row">
+				<div class="col-sm-12">
+					<button type="button" class="col-sm-12 btn btn-outline-primary"
+					onclick="requestSend('demo/demo1.do')">
+						spring메소드 서블릿처럼 이용하기
+					</button>
+				</div>
+			</div>
 		</form>
 	</div>
 </section>
 <jsp:include page="/WEB-INF/views/common/footer.jsp"/>
 
+<script>
+	const requestSend=(url)=>{
+		$("#devFrm").attr("action","${path}/"+url);
+		$("#devFrm").submit();
+	}
+</script>
 <style>
 div#demo-container{
 		width:50%;

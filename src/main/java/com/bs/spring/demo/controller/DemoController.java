@@ -1,7 +1,16 @@
 package com.bs.spring.demo.controller;
 
+import java.io.IOException;
+import java.io.PrintWriter;
+
+import javax.servlet.ServletException;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+
+import com.bs.spring.demo.model.dto.Demo;
 
 @Controller
 public class DemoController {
@@ -48,4 +57,32 @@ public class DemoController {
 	//@RequestBody  -> json방식으로 전송된 parameter를 클래스로 받을 때 사용
 	// + @GetMapping, @PostMapping, @DeleteMapping...
 	
+	//서블릿 방식으로 매핑매소드 이용하기
+	@RequestMapping("demo/demo1.do")
+	public void demo1(HttpServletRequest req, HttpServletResponse res) throws IOException, ServletException {
+		System.out.println(req);
+		System.out.println(res);
+		String devName=req.getParameter("devName");
+		int devAge=Integer.parseInt(req.getParameter("devAge"));
+		String devEmail=req.getParameter("devEmail");
+		String devGender=req.getParameter("devGender");
+		String[] devLang=req.getParameterValues("devLang");
+		System.out.println(devName+devAge+devEmail+devGender);
+		for(String l : devLang) {
+			System.out.println(l);
+		}
+		
+		Demo d=Demo.builder()
+				.devName(devName)
+				.devAge(devAge)
+				.devEmail(devEmail)
+				.devGender(devGender)
+				.devLang(devLang).build();
+		req.setAttribute("demo", d);
+		req.getRequestDispatcher("/WEB-INF/views/demo/demoResult.jsp").forward(req, res);
+		
+//		res.setContentType("text/html;charset=utf-8");
+//		PrintWriter out = res.getWriter();
+//		out.print("<h2>"+devName+devAge+devEmail+devGender+"</h2>");
+	}
 }
