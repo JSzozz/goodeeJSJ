@@ -23,13 +23,16 @@ public class Homecontroller {
 	@Autowired(required = false)
 	private Employee emp;
 	
+	@Autowired
+	private Employee emp2;
 
 	@RequestMapping("/")
 	public String hone() {
-		System.out.println(bbo+"(*Homecontroller)");//Animal(name=null, age=0, weight=0.0)(*Homecontroller)
-		System.out.println(dog+"(*Homecontroller)");
-		System.out.println(emp+"(*Homecontroller)");
-
+		System.out.println(bbo+"(*Homecontroller1)");//Animal(name=null, age=0, weight=0.0)(*Homecontroller)
+		System.out.println(dog+"(*Homecontroller2)");
+		System.out.println(emp+"(*Homecontroller3)");
+		System.out.println(emp2+"(*Homecontroller4)");
+		
 		return "index";
 	}
 	
