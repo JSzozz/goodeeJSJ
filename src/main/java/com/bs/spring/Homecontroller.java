@@ -31,6 +31,11 @@ public class Homecontroller {
 	@Qualifier("ani")
 	private Animal c;
 	
+	@Autowired
+	//@Qualifier("getEmployee")
+	@Qualifier("sol")
+	private Employee sol;
+	
 	@RequestMapping("/")
 	public String hone() {
 		System.out.println(bbo+"(*Homecontroller1)");//Animal(name=null, age=0, weight=0.0)(*Homecontroller)
@@ -38,6 +43,7 @@ public class Homecontroller {
 		System.out.println(emp+"(*Homecontroller3)");
 		System.out.println(emp2+"(*Homecontroller4)");
 		System.out.println(c+"(*Homecontroller5)");
+		System.out.println(sol+"(*Homecontroller6)");
 
 		return "index";
 	}
