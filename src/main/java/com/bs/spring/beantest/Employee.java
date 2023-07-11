@@ -24,4 +24,13 @@ public class Employee {
 	public Employee(Department dept) {
 		this.dept=dept;
 	}
+	
+	
+	public void initialMethod() {
+		System.out.println(this.getClass().getName()+"클래스 생성했다(*Employee)");
+	}
+	
+	public void destroyMethod() {
+		System.out.println(this.getClass().getName()+"클래스 소멸했다(*Employee)");
+	}
 }
