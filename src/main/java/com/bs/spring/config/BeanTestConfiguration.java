@@ -55,4 +55,9 @@ public class BeanTestConfiguration {
 		source.setPassword("spring");
 		return source;
 	}
+	
+//	@Bean 
+//	public Gson gson() {
+//		return new Gson();
+//	}
 }
