@@ -1,6 +1,7 @@
 package com.bs.spring;
 
 import java.io.IOException;
+import java.io.InputStream;
 import java.nio.charset.Charset;
 import java.nio.file.Files;
 import java.nio.file.Paths;
@@ -12,6 +13,7 @@ import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.core.io.ClassPathResource;
 import org.springframework.core.io.FileSystemResource;
 import org.springframework.core.io.Resource;
+import org.springframework.core.io.UrlResource;
 import org.springframework.core.io.support.PropertiesLoaderUtils;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -84,6 +86,17 @@ public class Homecontroller {
 			resource=new FileSystemResource("C:\\servlet\\springwork\\spring\\src\\main\\resources\\test.txt");
 			Files.lines(Paths.get(resource.getURI()),Charset.forName("UTF-8"))
 			.forEach(System.out::println);
+			
+			resource=new UrlResource("https://gdu.co.kr");
+			InputStream is=resource.getInputStream();
+			int d=0;
+			StringBuffer sb=new StringBuffer();
+			while((d=is.read())!=-1) {
+				sb.append((char)d);
+			}
+			System.out.println(sb);
+
+		
 		}catch(IOException e){
 			e.printStackTrace();
 		}
