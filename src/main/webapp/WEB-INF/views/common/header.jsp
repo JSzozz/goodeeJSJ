@@ -33,6 +33,7 @@
 	<div id="container">
 		<header>
 			<div id="header-container">
+				<h2>${param.title }</h2>
 			</div>
 			<nav class="navbar navbar-expand-lg navbar-light bg-light">
 				<a class="navbar-brand" href="#">
@@ -47,7 +48,10 @@
 				<div class="collapse navbar-collapse" id="navbarNav">
 					<ul	class="navbar-nav mr-auto">	
 						<li class="nav-item active">
-							<a class="nav-link" href="">HOME</a>
+							<a class="nav-link" href="${path }">HOME</a>
+						</li>
+						<li class="nav-item">
+							<a class="nav-link" href="${path }/demo/demo.do">ControllerTest</a>
 						</li>
 					</ul>
 						<button class="btn btn-outline-success my-2 my-sm-0"
