@@ -27,14 +27,22 @@ public class BeanTestConfiguration {
 	@Bean
 	//등록된 bean에 특정 id값 부여하기
 	@Qualifier("sol")
-	public Employee getEmployee(Department dept) {
+	public Employee getEmployee(@Qualifier("sal") Department d) {
 		return Employee.builder()
 				.name("최솔")
 				.age(27)
 				.address("경기도 안양시")
-				.dept(dept)
+				.dept(d)
 				.salary(200).build();
 	}
 	
+	@Bean
+	public Department sal() {
+		return Department.builder()
+				.deptCode(2L)
+				.deptTitle("영업부")
+				.deptLocation("서울")
+				.build();
+	}
 	
 }
