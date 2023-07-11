@@ -3,7 +3,10 @@ package com.bs.spring.config;
 import org.apache.tomcat.dbcp.dbcp2.BasicDataSource;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.FilterType;
+import org.springframework.context.annotation.Import;
 import org.springframework.core.annotation.Order;
 
 import com.bs.spring.beantest.Animal;
@@ -15,6 +18,16 @@ import com.bs.spring.beantest.Employee;
 // -> @Configuration 어노테이션 이용
 
 @Configuration
+@ComponentScan(basePackages = "com.bs.spring",
+		includeFilters = {
+				@ComponentScan.Filter(
+						type=FilterType.REGEX,
+						pattern = {"com.bs.spring.include.*"}
+						)},//어노테이션 표시가 없더라도 해당이 되면 bean으로 등록함.
+		excludeFilters = {}
+		)
+
+@Import()//다른 configuration을 가져와 처리하는 것
 public class BeanTestConfiguration {
 	//springbeanconfiguration.xml과 동일한 기능
 	

@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.bs.spring.beantest.Animal;
 import com.bs.spring.beantest.Employee;
+import com.bs.spring.include.TargetComponent;
 
 @Controller
 public class Homecontroller {
@@ -41,6 +42,9 @@ public class Homecontroller {
 	@Autowired
 	List<Animal> animals;
 	
+	@Autowired
+	private TargetComponent tc;
+	
 	@RequestMapping("/")
 	public String hone() {
 		System.out.println(bbo+"(*Homecontroller1)");//Animal(name=null, age=0, weight=0.0)(*Homecontroller)
@@ -49,8 +53,8 @@ public class Homecontroller {
 		System.out.println(emp2+"(*Homecontroller4)");
 		System.out.println(c+"(*Homecontroller5)");
 		System.out.println(sol+"(*Homecontroller6)");
-		
 		animals.forEach(System.out::println);
+		System.out.println(tc+"(*Homecontroller7)");
 
 		return "index";
 	}
