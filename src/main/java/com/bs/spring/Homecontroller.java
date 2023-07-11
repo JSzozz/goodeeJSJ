@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.bs.spring.beantest.Animal;
 import com.bs.spring.beantest.Employee;
+import com.bs.spring.beantest.FuntionalTest;
 import com.bs.spring.include.TargetComponent;
 
 @Controller
@@ -45,6 +46,13 @@ public class Homecontroller {
 	@Autowired
 	private TargetComponent tc;
 	
+	@Autowired
+	private FuntionalTest ft;
+	
+	//basepackage 외부에 있는 @Component
+	@Autowired
+	private Test test;
+	
 	@RequestMapping("/")
 	public String hone() {
 		System.out.println(bbo+"(*Homecontroller1)");//Animal(name=null, age=0, weight=0.0)(*Homecontroller)
@@ -55,6 +63,8 @@ public class Homecontroller {
 		System.out.println(sol+"(*Homecontroller6)");
 		animals.forEach(System.out::println);
 		System.out.println(tc+"(*Homecontroller7)");
+		System.out.println(ft+"(*Homecontroller8-1)");//com.bs.spring.beantest.FuntionalTest@24dfa151(ToString 오버라이드 안되어있어서 나옴)
+		System.out.println(ft.getA()+"(*Homecontroller8-2)");
 
 		return "index";
 	}

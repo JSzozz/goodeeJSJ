@@ -27,7 +27,7 @@ import com.bs.spring.beantest.Employee;
 		excludeFilters = {}
 		)
 
-@Import()//다른 configuration을 가져와 처리하는 것
+//@Import()//다른 configuration을 가져와 처리하는 것
 public class BeanTestConfiguration {
 	//springbeanconfiguration.xml과 동일한 기능
 	
