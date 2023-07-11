@@ -82,10 +82,10 @@ public class Homecontroller {
 		//import org.springframework.core.io.Resource;
 		try {
 			Properties prop=PropertiesLoaderUtils.loadProperties(resource);
-			System.out.println(prop+"(*Homecontroller9)");
+//			System.out.println(prop+"(*Homecontroller9)");
 			resource=new FileSystemResource("C:\\servlet\\springwork\\spring\\src\\main\\resources\\test.txt");
-			Files.lines(Paths.get(resource.getURI()),Charset.forName("UTF-8"))
-			.forEach(System.out::println);
+//			Files.lines(Paths.get(resource.getURI()),Charset.forName("UTF-8"))
+//			.forEach(System.out::println);
 			
 			resource=new UrlResource("https://gdu.co.kr");
 			InputStream is=resource.getInputStream();
@@ -94,7 +94,7 @@ public class Homecontroller {
 			while((d=is.read())!=-1) {
 				sb.append((char)d);
 			}
-			System.out.println(sb);
+//			System.out.println(sb);
 
 		
 		}catch(IOException e){
