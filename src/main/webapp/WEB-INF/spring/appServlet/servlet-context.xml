@@ -49,5 +49,10 @@
 	 	<beans:property name="name" value="뽀삐"/>
 	 </beans:bean>
 	 
-	 
+	 <beans:bean id="emp" class="com.bs.spring.beantest.Employee">
+	 	<beans:property name="name" value="최주영"/>
+	 	<beans:property name="age" value="24"/>
+	 	<beans:property name="address" value="경기도 안양시"/>
+	 	<beans:property name="salary" value="100"></beans:property>
+	 </beans:bean>
 </beans:beans>

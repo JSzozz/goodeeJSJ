@@ -6,6 +6,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.bs.spring.beantest.Animal;
+import com.bs.spring.beantest.Employee;
 
 @Controller
 public class Homecontroller {
@@ -18,13 +19,17 @@ public class Homecontroller {
 	@Autowired
 	@Qualifier("bbo")
 	private Animal dog;
-
+	//springBean으로 등록되지 않은 객체를 Autowired하면 에러 발생!
+	@Autowired(required = false)
+	private Employee emp;
 	
 
 	@RequestMapping("/")
 	public String hone() {
 		System.out.println(bbo+"(*Homecontroller)");//Animal(name=null, age=0, weight=0.0)(*Homecontroller)
 		System.out.println(dog+"(*Homecontroller)");
+		System.out.println(emp+"(*Homecontroller)");
+
 		return "index";
 	}
 	
