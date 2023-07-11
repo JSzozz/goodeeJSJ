@@ -26,13 +26,19 @@ public class Homecontroller {
 	@Autowired
 	private Employee emp2;
 
+	//java로 등록한  bean 가져오기
+	@Autowired
+	@Qualifier("ani")
+	private Animal c;
+	
 	@RequestMapping("/")
 	public String hone() {
 		System.out.println(bbo+"(*Homecontroller1)");//Animal(name=null, age=0, weight=0.0)(*Homecontroller)
 		System.out.println(dog+"(*Homecontroller2)");
 		System.out.println(emp+"(*Homecontroller3)");
 		System.out.println(emp2+"(*Homecontroller4)");
-		
+		System.out.println(c+"(*Homecontroller5)");
+
 		return "index";
 	}
 	
