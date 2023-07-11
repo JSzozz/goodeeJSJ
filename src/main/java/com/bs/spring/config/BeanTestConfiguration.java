@@ -5,6 +5,7 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
 import com.bs.spring.beantest.Animal;
+import com.bs.spring.beantest.Department;
 import com.bs.spring.beantest.Employee;
 
 //클래식 방식으로 bean등록해서 사용하기
@@ -26,11 +27,12 @@ public class BeanTestConfiguration {
 	@Bean
 	//등록된 bean에 특정 id값 부여하기
 	@Qualifier("sol")
-	public Employee getEmployee() {
+	public Employee getEmployee(Department dept) {
 		return Employee.builder()
 				.name("최솔")
 				.age(27)
 				.address("경기도 안양시")
+				.dept(dept)
 				.salary(200).build();
 	}
 	
