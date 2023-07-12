@@ -3,5 +3,12 @@
 <mapper namespace="dev">
 
 
+	<insert id="insertDemo" parameterType="demo"> 
+		INSERT INTO DEV VALUES(SEQ_DEV_NO.NEXTVAL, #{devName},#{devAge}
+		,#{devEmail},#{devGender},#{devLang, typeHandler=strArr})
+		<!-- <foreach collection="devLang" open="'" close="'" separator=",">${l}</foreach> -->
+	</insert>
+
+	
 
 </mapper>

@@ -135,6 +135,14 @@
 						get/post 방식에 따라 요청 처리하기
 					</button>
 				</div>
+			</div>
+			<div class="form-group row">
+				<div class="col-sm-12">
+					<button type="button" class="col-sm-12 btn btn-outline-primary"
+					onclick="insertDemo();">
+						dev테이블에 값 넣기
+					</button>
+				</div>
 			</div>			
 		</form>
 	</div>
@@ -142,6 +150,10 @@
 <jsp:include page="/WEB-INF/views/common/footer.jsp"/>
 
 <script>
+	const insertDemo=()=>{
+		$("#devFrm").attr("action","${path}/demo/insertDemo.do");
+		${"#devFrm"}.submit();
+	}
 	const requestSend=(url)=>{
 		$("#devFrm").attr("action","${path}/"+url);
 		$("#devFrm").submit();
