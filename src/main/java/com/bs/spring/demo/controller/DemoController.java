@@ -1,14 +1,13 @@
 package com.bs.spring.demo.controller;
 
 import java.io.IOException;
-import java.io.PrintWriter;
-import java.util.Arrays;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.bs.spring.demo.model.dto.Demo;
@@ -92,10 +91,20 @@ public class DemoController {
 	//매개변수의 타입은 사용할 타입으로 설정 *변경이 가능해야함
 	@RequestMapping("demo/demo2.do")
 	public String demo2(String devName, int devAge,
-			String devGender, String devEmail, String[] devLang) {
-		System.out.println(devName+devAge+devEmail+devGender+Arrays.toString(devLang));
+			String devGender, String devEmail, String[] devLang, /*double weight,*/ Model model) {
+//		System.out.println(devName+devAge+devEmail+devGender+Arrays.toString(devLang));
 		
-
+		//페이지에 생성한 데이터를 전송하려면... request.session, servletContext
+		//Spring에서 데이터전송하는 객체를 만들어둠 -> Model
+		//Model에 데이터 저장하기 -> model.addAttribute("key", value);
+		Demo d= Demo.builder()
+					.devName(devName)
+					.devAge(devAge)
+					.devGender(devGender)
+					.devEmail(devEmail)
+					.devLang(devLang)
+					.build();
+		model.addAttribute("demo", d);
 		
 		
 		
