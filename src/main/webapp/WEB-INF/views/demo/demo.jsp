@@ -4,7 +4,7 @@
 <c:set var="path" value="${pageContext.request.contextPath }"/>
 
 <jsp:include page="/WEB-INF/views/common/header.jsp"/>
-
+ 
 <section id="content">
 	<div id="demo-container">
 		<form id="devFrm" method="post">
