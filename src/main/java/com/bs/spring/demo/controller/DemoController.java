@@ -12,6 +12,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.CookieValue;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestHeader;
@@ -228,8 +229,15 @@ public class DemoController {
 	//	@DeleteMapping
 	//	@PutMapping
 	
-
-	
+	//mapping주소를 설정할 때 {}를 사용할 수 있음
+	// /board/boardView?no=1
+	// ㄴ> /board/1 [method=GET]
+	// ㄴ> /board [method=GET]
+	@GetMapping("/demo/{no}")
+	public String searchDemo(@PathVariable(value="no") int no) {
+		System.out.println(no);
+		return "demo/demoResult";
+	}
 	
 	
 }
