@@ -14,10 +14,12 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @Builder
 public class Demo {
+	private Long devNo;
 	private String devName;
 	private int devAge;
 	private String devGender;
 	private String devEmail;
 	private String[] devLang;
 	private Date birthDay;
+	
 }

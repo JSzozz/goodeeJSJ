@@ -140,10 +140,18 @@
 				<div class="col-sm-12">
 					<button type="button" class="col-sm-12 btn btn-outline-primary"
 					onclick="insertDemo();">
-						dev테이블에 값 넣기
+						저장하기
 					</button>
 				</div>
-			</div>			
+			</div>	
+			<div class="form-group row">
+				<div class="col-sm-12">
+					<button type="button" class="col-sm-12 btn btn-outline-primary"
+					onclick="requestSend('demo/demoList.do')">
+						dev테이블 값 출력하기
+					</button>
+				</div>
+			</div>					
 		</form>
 	</div>
 </section>
@@ -152,7 +160,7 @@
 <script>
 	const insertDemo=()=>{
 		$("#devFrm").attr("action","${path}/demo/insertDemo.do");
-		${"#devFrm"}.submit();
+		$("#devFrm").submit();
 	}
 	const requestSend=(url)=>{
 		$("#devFrm").attr("action","${path}/"+url);

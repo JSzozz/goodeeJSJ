@@ -1,6 +1,7 @@
 package com.bs.spring.demo.controller;
 
 import java.io.IOException;
+import java.util.List;
 import java.util.Map;
 
 import javax.servlet.ServletException;
@@ -250,5 +251,14 @@ public class DemoController {
 		
 		return "demo/demo";
 	}	
+	
+	@RequestMapping("/demo/demoList.do")
+	public String selectList(Model m) {
+		List<Demo> demos=service.selectDemoAll();
+		demos.stream().forEach(System.out::println);
+		m.addAttribute("demos",demos);
+		
+		return "demo/demoList";
+	}
 	
 }
