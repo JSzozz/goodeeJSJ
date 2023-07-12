@@ -90,23 +90,21 @@ public class DemoController {
 	//매핑메소드의 매개변수에 파라미터로 전송되는 name과 동일한 이름의 변수를 선언
 	//매개변수의 타입은 사용할 타입으로 설정 *변경이 가능해야함
 	@RequestMapping("demo/demo2.do")
-	public String demo2(String devName, int devAge,
-			String devGender, String devEmail, String[] devLang, /*double weight,*/ Model model) {
+	public String demo2(String name, int devAge,
+			String gender, String devEmail, String[] devLang, /*double weight,*/ Model model) {
 //		System.out.println(devName+devAge+devEmail+devGender+Arrays.toString(devLang));
 		
 		//페이지에 생성한 데이터를 전송하려면... request.session, servletContext
 		//Spring에서 데이터전송하는 객체를 만들어둠 -> Model
 		//Model에 데이터 저장하기 -> model.addAttribute("key", value);
 		Demo d= Demo.builder()
-					.devName(devName)
+					.devName(name)
 					.devAge(devAge)
-					.devGender(devGender)
+					.devGender(gender)
 					.devEmail(devEmail)
 					.devLang(devLang)
 					.build();
 		model.addAttribute("demo", d);
-		
-		
 		
 		return "demo/demoResult";
 	}
