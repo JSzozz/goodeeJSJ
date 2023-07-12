@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServletResponse;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.bs.spring.demo.model.dto.Demo;
 
@@ -90,17 +91,17 @@ public class DemoController {
 	//매핑메소드의 매개변수에 파라미터로 전송되는 name과 동일한 이름의 변수를 선언
 	//매개변수의 타입은 사용할 타입으로 설정 *변경이 가능해야함
 	@RequestMapping("demo/demo2.do")
-	public String demo2(String name, int devAge,
-			String gender, String devEmail, String[] devLang, /*double weight,*/ Model model) {
+	public String demo2(String devName, int devAge,
+			String devGender, String devEmail, String[] devLang, /*double weight,*/ Model model) {
 //		System.out.println(devName+devAge+devEmail+devGender+Arrays.toString(devLang));
 		
 		//페이지에 생성한 데이터를 전송하려면... request.session, servletContext
 		//Spring에서 데이터전송하는 객체를 만들어둠 -> Model
 		//Model에 데이터 저장하기 -> model.addAttribute("key", value);
 		Demo d= Demo.builder()
-					.devName(name)
+					.devName(devName)
 					.devAge(devAge)
-					.devGender(gender)
+					.devGender(devGender)
 					.devEmail(devEmail)
 					.devLang(devLang)
 					.build();
@@ -108,4 +109,28 @@ public class DemoController {
 		
 		return "demo/demoResult";
 	}
+	
+	//파라미터데이터를 받을 때 @RequestParam어노테이션을 이용해서
+	//옵션을 설정할 수 있다
+	@RequestMapping("/demo/demo3.do")
+	public String requestParamUse(
+			@RequestParam(value="devName", defaultValue="아무개" ) String name, 
+			@RequestParam(value="devAge", defaultValue="10") int age,
+			@RequestParam(value="devGender") String gender, 
+			@RequestParam(value="devEmail", required =true) String email,
+			String[] devLang, Model model) {
+	
+	Demo d= Demo.builder()
+				.devName(name)
+				.devAge(age)
+				.devGender(gender)
+				.devEmail(email)
+				.devLang(devLang)
+				.build();
+	
+	model.addAttribute("demo", d);
+	
+	return "demo/demoResult";
+	}
+
 }
