@@ -64,6 +64,14 @@
 					</button>
 				</div>
 			</div>
+			<div class="form-group row">
+				<div class="col-sm-12">
+					<button type="button" class="col-sm-12 btn btn-outline-primary"
+					onclick="requestSend('demo/demo2.do')">
+						1:1로 매칭해서 데이터를 받기
+					</button>
+				</div>
+			</div>			
 		</form>
 	</div>
 </section>

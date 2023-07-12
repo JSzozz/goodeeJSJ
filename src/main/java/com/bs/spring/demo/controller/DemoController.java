@@ -2,6 +2,7 @@ package com.bs.spring.demo.controller;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.Arrays;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
@@ -84,5 +85,20 @@ public class DemoController {
 //		res.setContentType("text/html;charset=utf-8");
 //		PrintWriter out = res.getWriter();
 //		out.print("<h2>"+devName+devAge+devEmail+devGender+"</h2>");
+	}
+	
+	//1:1 매칭하여 데이터 받기
+	//매핑메소드의 매개변수에 파라미터로 전송되는 name과 동일한 이름의 변수를 선언
+	//매개변수의 타입은 사용할 타입으로 설정 *변경이 가능해야함
+	@RequestMapping("demo/demo2.do")
+	public String demo2(String devName, int devAge,
+			String devGender, String devEmail, String[] devLang) {
+		System.out.println(devName+devAge+devEmail+devGender+Arrays.toString(devLang));
+		
+
+		
+		
+		
+		return "demo/demoResult";
 	}
 }
