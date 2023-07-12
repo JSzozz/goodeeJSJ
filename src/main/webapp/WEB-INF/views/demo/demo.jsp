@@ -119,6 +119,14 @@
 						ModelAndView이용하기
 					</button>
 				</div>
+			</div>
+			<div class="form-group row">
+				<div class="col-sm-12">
+					<button type="button" class="col-sm-12 btn btn-outline-primary"
+					onclick="requestSend('demo/demo8.do')">
+						@ResponseBody이용하기
+					</button>
+				</div>
 			</div>			
 		</form>
 	</div>

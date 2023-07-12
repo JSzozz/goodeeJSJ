@@ -1,6 +1,7 @@
 package com.bs.spring.demo.controller;
 
 import java.io.IOException;
+import java.util.List;
 import java.util.Map;
 
 import javax.servlet.ServletException;
@@ -13,6 +14,7 @@ import org.springframework.web.bind.annotation.CookieValue;
 import org.springframework.web.bind.annotation.RequestHeader;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.SessionAttribute;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -198,5 +200,12 @@ public class DemoController {
 		return mv;
 	}
 	
-	
+	//자료형에 대해 반환하기 ->  Data만 응답할 때 사용 -> jackson라이브러리를 이용해서 처리
+	//매소드 선언부 @ResponseBody어노테이션 사용
+	//Restful하게 메소드를 구현했을 때 사용
+	@RequestMapping("/demo/demo8.do")
+	@ResponseBody
+	public String dataReturn(){
+		return "a b c d e f ㄱ ㄴ ㄷ";
+	}
 }
