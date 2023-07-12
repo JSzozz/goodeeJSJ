@@ -132,5 +132,15 @@ public class DemoController {
 	
 	return "demo/demoResult";
 	}
+	
+	@RequestMapping("/demo/demo4.do")
+	public String commandMapping(Demo demo, Model m) {
+		System.out.println(demo);
+		System.out.println(m);
+
+		m.addAttribute("demo",demo);
+		
+		return "demo/demoResult";
+	}
 
 }

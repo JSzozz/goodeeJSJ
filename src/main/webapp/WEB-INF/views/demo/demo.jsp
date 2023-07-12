@@ -79,7 +79,15 @@
 						@RequestParam이용해서 데이터 받기
 					</button>
 				</div>
-			</div>				
+			</div>
+			<div class="form-group row">
+				<div class="col-sm-12">
+					<button type="button" class="col-sm-12 btn btn-outline-primary"
+					onclick="requestSend('demo/demo4.do')">
+						Vo(command)를 이용해서 데이터를 받기
+					</button>
+				</div>
+			</div>					
 		</form>
 	</div>
 </section>
