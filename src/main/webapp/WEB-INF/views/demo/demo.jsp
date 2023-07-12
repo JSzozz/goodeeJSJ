@@ -56,6 +56,14 @@
 					</div>
 				</div>
 			</div>
+			
+			<div class="form-group row">
+				<label for="birthDay" class="col-sm-2 col-form-label">생년월일</label>
+				<div class="col-sm-10">
+					<input type="date" class="form-control" id="birthDay" name="birthDay">
+				</div>
+			</div>
+			
 			<div class="form-group row">
 				<div class="col-sm-12">
 					<button type="button" class="col-sm-12 btn btn-outline-primary"

@@ -133,14 +133,21 @@ public class DemoController {
 	return "demo/demoResult";
 	}
 	
+	//DTO/Vo 객체로 직접 parameter값 받기
+	// 매개변수로 전달된 parameter 이름과 동일한 필드를 갖는 객체를 선언함
+	// * 주의할 점은 클래스 타입 Date를 전달받을 때는 java.sql.Date로 하자
 	@RequestMapping("/demo/demo4.do")
 	public String commandMapping(Demo demo, Model m) {
-		System.out.println(demo);
+		System.out.println(demo);//Demo(devName=1, devAge=1, devGender=M, devEmail=1, devLang=[Java], birthDay=2023-07-13)
 		System.out.println(m);
+		//{demo=Demo(devName=1, devAge=1, devGender=M, devEmail=1, devLang=[Java], birthDay=2023-07-13),
+		//org.springframework.validation.BindingResult.demo=org.springframework.validation.BeanPropertyBindingResult: 0 errors}
 
 		m.addAttribute("demo",demo);
 		
 		return "demo/demoResult";
 	}
+
+	
 
 }
