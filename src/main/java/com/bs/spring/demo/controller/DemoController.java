@@ -9,8 +9,11 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.CookieValue;
+import org.springframework.web.bind.annotation.RequestHeader;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.SessionAttribute;
 
 import com.bs.spring.demo.model.dto.Demo;
 
@@ -152,10 +155,10 @@ public class DemoController {
 	// Map으로 parameter데이터 받아오기
 	//@RequestParam어노테이션 설정 Map
 	@RequestMapping("/demo/demo5.do")
-	 public String mapPapping(@RequestParam Map param, String[] devLang, Model m) {
+	 public String mapPapping(@RequestParam Map<String, String[]> param, String[] devLang, Model m) {
 		 System.out.println(param);
 		 //{devName=정상준, devAge=1, devEmail=1, devGender=M, devLang=Java, birthDay=2023-07-19}
-		 // 맵으로 받았을 때는 배열처리를 못해준다 : 단일값으로만 나온다
+		 // 맵으로 받았을 때는 배열처리를 못해준다 : 단일값으로만 나온다 (*별도로 String[] 매개변수 추가해서 값 받아오기가 필요)
 		 
 		 param.put("devLang", devLang);
 		 m.addAttribute("demo", param);
@@ -163,4 +166,26 @@ public class DemoController {
 		 return "demo/demoResult";
 	 }
 
+	//추가데이터 받아오기
+	//Cookie, Header, Session
+	//Cookie : @CookieValue("value="key", required=T/F) String data
+	//Header : @RequestHeader(value="헤더이름") String header
+	//Session : @SessionAttribute(value="세션key값") String sessionId
+	@RequestMapping("/demo/demo6.do")
+	public String extraData(
+			@CookieValue(value="testData", required = false, defaultValue="rest-time") String data,
+			@RequestHeader(value="User-agent") String header,
+			@SessionAttribute(value="sessionId", required = false) String sessionId,
+			@RequestHeader(value="Referer") String referer
+			) {
+		
+		System.out.println("쿠키"+data);
+		System.out.println("헤더"+header);
+		System.out.println("세션"+sessionId);
+		System.out.println("이전페이지"+referer);
+		
+		return "index";
+	}
+	
+	
 }
