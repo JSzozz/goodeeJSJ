@@ -29,7 +29,7 @@
 			<tr>
 				<th scope="col">이름</th>
 				<td><c:out value="${demo.devName }"/> </td>
-			<tr>
+			<tr> 
 			<tr>
 				<th>나이</th>
 				<td><c:out value="${demo.devAge }"/></td>
