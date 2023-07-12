@@ -244,12 +244,23 @@ public class DemoController {
 	
 	@RequestMapping(value="/demo/insertDemo.do", 
 			method=RequestMethod.POST)
-	public String insertDemo(Demo demo) {
+	public String insertDemo(Demo demo, Model m) {
 		
 		int result=service.insertDemo(demo);
 		System.out.println(result);
 		
-		return "demo/demo";
+		m.addAttribute("msg",result>0?"저장성공":"저장실패");
+		m.addAttribute("loc","/demo/demo.do");
+		
+
+		//sendRedirect로 변경하는 방법
+		//(*default로 새로고침 시 동일한 로직처리가 이뤄짐 -DB에 중복값이 들어가는 현상도 발생 가능)
+		//prefix redirect: 요청할 주소(매핑주소)
+
+		//return "demo/demo";
+		//return "redirect:/";
+		//return "redirect:/demo/demo.do";
+		return "common/msg";
 	}	
 	
 	@RequestMapping("/demo/demoList.do")
