@@ -1,7 +1,6 @@
 package com.bs.spring.demo.controller;
 
 import java.io.IOException;
-import java.util.List;
 import java.util.Map;
 
 import javax.servlet.ServletException;
@@ -13,6 +12,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.CookieValue;
 import org.springframework.web.bind.annotation.RequestHeader;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.SessionAttribute;
@@ -207,5 +207,13 @@ public class DemoController {
 	@ResponseBody
 	public String dataReturn(){
 		return "a b c d e f ㄱ ㄴ ㄷ";
+	}
+	
+	//Request요청 메소드(GET, POST)를 필터링하기
+	//@RequestMapping(value="url", method=RequestMethod.GET||RequestMethod.POST)
+	@RequestMapping(value="/demo/demo9.do", method=RequestMethod.POST)
+	public String method(Demo d, Model m) {
+		m.addAttribute("demo", d);
+		return "demo/demoResult";
 	}
 }

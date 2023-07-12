@@ -127,6 +127,14 @@
 						@ResponseBody이용하기
 					</button>
 				</div>
+			</div>	
+			<div class="form-group row">
+				<div class="col-sm-12">
+					<button type="button" class="col-sm-12 btn btn-outline-primary"
+					onclick="requestSend('demo/demo9.do')">
+						get/post 방식에 따라 요청 처리하기
+					</button>
+				</div>
 			</div>			
 		</form>
 	</div>
