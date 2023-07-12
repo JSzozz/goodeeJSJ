@@ -10,6 +10,10 @@ import javax.servlet.http.HttpServletResponse;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.CookieValue;
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestHeader;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -211,9 +215,21 @@ public class DemoController {
 	
 	//Request요청 메소드(GET, POST)를 필터링하기
 	//@RequestMapping(value="url", method=RequestMethod.GET||RequestMethod.POST)
-	@RequestMapping(value="/demo/demo9.do", method=RequestMethod.POST)
+	//@RequestMapping(value="/demo/demo9.do", method=RequestMethod.POST)
+	//@PostMapping("/demo/demo9.do")
+	@GetMapping("/demo/demo9.do")// 오류 메세지 : Request method 'POST' not supported 
 	public String method(Demo d, Model m) {
 		m.addAttribute("demo", d);
 		return "demo/demoResult";
 	}
+	// ㄴ 간편하게 사용할 수 있게 Mapping어노테이션을 지원 (*@RequestMapping 대체)
+	//	@GetMapping
+	//	@PostMapping
+	//	@DeleteMapping
+	//	@PutMapping
+	
+
+	
+	
+	
 }
