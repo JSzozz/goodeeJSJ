@@ -1,6 +1,7 @@
 package com.bs.spring.demo.controller;
 
 import java.io.IOException;
+import java.util.Map;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
@@ -148,6 +149,18 @@ public class DemoController {
 		return "demo/demoResult";
 	}
 
-	
+	// Map으로 parameter데이터 받아오기
+	//@RequestParam어노테이션 설정 Map
+	@RequestMapping("/demo/demo5.do")
+	 public String mapPapping(@RequestParam Map param, String[] devLang, Model m) {
+		 System.out.println(param);
+		 //{devName=정상준, devAge=1, devEmail=1, devGender=M, devLang=Java, birthDay=2023-07-19}
+		 // 맵으로 받았을 때는 배열처리를 못해준다 : 단일값으로만 나온다
+		 
+		 param.put("devLang", devLang);
+		 m.addAttribute("demo", param);
+		 
+		 return "demo/demoResult";
+	 }
 
 }
