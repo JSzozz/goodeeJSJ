@@ -8,6 +8,8 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -27,6 +29,8 @@ import com.bs.spring.demo.service.DemoService;
 
 @Controller
 public class DemoController {
+
+	private Logger logger=LoggerFactory.getLogger(DemoController.class);
 
 	@Autowired
 	private DemoService service;
@@ -76,16 +80,18 @@ public class DemoController {
 	//서블릿 방식으로 매핑매소드 이용하기
 	@RequestMapping("demo/demo1.do")
 	public void demo1(HttpServletRequest req, HttpServletResponse res) throws IOException, ServletException {
-		System.out.println(req);
-		System.out.println(res);
+		logger.debug("request : {}",req);
+		logger.debug("response : {}",res);
+		
 		String devName=req.getParameter("devName");
 		int devAge=Integer.parseInt(req.getParameter("devAge"));
 		String devEmail=req.getParameter("devEmail");
 		String devGender=req.getParameter("devGender");
 		String[] devLang=req.getParameterValues("devLang");
-		System.out.println(devName+devAge+devEmail+devGender);
+		//System.out.println(devName+devAge+devEmail+devGender);
 		for(String l : devLang) {
-			System.out.println(l);
+			//System.out.println(l);
+			logger.debug(l);
 		}
 		
 		Demo d=Demo.builder()
