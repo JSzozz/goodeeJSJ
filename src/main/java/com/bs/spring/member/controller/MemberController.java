@@ -57,8 +57,11 @@ public class MemberController {
 		Member m= service.selectMemberById(param);
 		System.out.println(m);
 		
-		if(m!=null&&m.getPassword().equals(param.get("password"))) {
-			
+		//암호화된 값을 비교하기 위해서는 제공되는 passwordEncoder가 제공하는 메소드를 이용해야한다
+		if(m!=null&&
+			passwordEncoder.matches((String)param.get("password"), m.getPassword())
+//			m.getPassword().equals(param.get("password"))
+				) {
 //			session.setAttribute("loginMember", m);
 			model.addAttribute("loginMember", m);//@SessionAttributes({"loginMember"}) 덕분임
 			
