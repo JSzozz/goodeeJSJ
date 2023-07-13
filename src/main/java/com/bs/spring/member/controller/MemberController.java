@@ -2,7 +2,6 @@ package com.bs.spring.member.controller;
 
 import java.util.Map;
 
-import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.SessionAttributes;
+import org.springframework.web.bind.support.SessionStatus;
 
 import com.bs.spring.member.model.dto.Member;
 import com.bs.spring.member.service.MemberService;
@@ -61,12 +61,15 @@ public class MemberController {
 	}
 	
 	@RequestMapping("/logout.do")
-	public String logout(HttpServletRequest request) {
+	//public String loginout(HttpSession session) {
+	//@SessionAttributes로 등록된 내용삭제하기
+	//SessionStatus객체를 이용해서 삭제
+	public String logout(SessionStatus status) {
+//		if(session!=null)
+//			session.invalidate();
 		
-		HttpSession session=request.getSession(false);
-		if(session!=null) {
-			session.invalidate();
-		}
+		if(!status.isComplete()) status.setComplete();
+		
 		return "redirect:/";
 	}
 	
