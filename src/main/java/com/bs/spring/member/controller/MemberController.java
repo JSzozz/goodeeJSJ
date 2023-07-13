@@ -18,9 +18,12 @@ import org.springframework.web.bind.support.SessionStatus;
 import com.bs.spring.member.model.dto.Member;
 import com.bs.spring.member.service.MemberService;
 
+import lombok.extern.slf4j.Slf4j;
+
 @Controller
 @RequestMapping("/member")
 @SessionAttributes({"loginMember"})
+@Slf4j
 public class MemberController {
 
 	@Autowired
@@ -41,7 +44,9 @@ public class MemberController {
 
 		//패스워드를 암호화 처리하자
 		String oriPassword=member.getPassword();
+		log.debug(oriPassword);
 		String encodePassword=passwordEncoder.encode(oriPassword);
+		log.debug(encodePassword);
 		member.setPassword(encodePassword);
 		System.out.println(member.getPassword());
 		//$2a$10$6vOZQaomQvT/fBZ.wJXUnuW/hrbm083btZFyOwopDYhQSxTvyWxCi
