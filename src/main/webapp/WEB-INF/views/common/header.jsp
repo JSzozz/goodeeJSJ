@@ -53,6 +53,9 @@
 						<li class="nav-item">
 							<a class="nav-link" href="${path }/demo/demo.do">ControllerTest</a>
 						</li>
+						<li class="nav-item">
+							<a class="nav-link" href="${path }/demo/demoList.do">searchAll</a>
+						</li>
 					</ul>
 						<button class="btn btn-outline-success my-2 my-sm-0"
 						data-toggle="modal" data-target="#loginModal">로그인</button>

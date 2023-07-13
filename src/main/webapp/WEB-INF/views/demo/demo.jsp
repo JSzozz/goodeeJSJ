@@ -139,7 +139,7 @@
 			<div class="form-group row">
 				<div class="col-sm-12">
 					<button type="button" class="col-sm-12 btn btn-outline-primary"
-					onclick="insertDemo();">
+					onclick="requestSend('demo/insertDemo.do');">
 						저장하기
 					</button>
 				</div>
@@ -158,10 +158,6 @@
 <jsp:include page="/WEB-INF/views/common/footer.jsp"/>
 
 <script>
-	const insertDemo=()=>{
-		$("#devFrm").attr("action","${path}/demo/insertDemo.do");
-		$("#devFrm").submit();
-	}
 	const requestSend=(url)=>{
 		$("#devFrm").attr("action","${path}/"+url);
 		$("#devFrm").submit();

@@ -11,5 +11,5 @@ public interface DemoService {
 	
 	List<Demo> selectDemoAll();
 	
-	
+	Demo devByDevNo(int devNo);
 }

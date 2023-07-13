@@ -11,4 +11,6 @@ public interface DemoDao {
 	int insertDemo(SqlSessionTemplate session ,Demo m);
 	
 	List<Demo> selectDemoAll(SqlSessionTemplate session);
+	
+	Demo devByDevNo(SqlSessionTemplate session, int devNo);
 }

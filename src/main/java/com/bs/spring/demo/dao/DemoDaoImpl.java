@@ -21,5 +21,9 @@ public class DemoDaoImpl implements DemoDao {
 		// TODO Auto-generated method stub
 		return session.selectList("dev.selectDemoAll");
 	}
-
+	
+	@Override
+	public Demo devByDevNo(SqlSessionTemplate session, int devNo) {
+		return session.selectOne("dev.devByDevNo", devNo);
+	}
 }

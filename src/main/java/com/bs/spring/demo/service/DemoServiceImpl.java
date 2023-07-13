@@ -30,4 +30,9 @@ public class DemoServiceImpl implements DemoService {
 		return dao.selectDemoAll(session);
 	}
 
+	@Override
+	public Demo devByDevNo(int devNo) {
+		return dao.devByDevNo(session, devNo);
+	}
+	
 }

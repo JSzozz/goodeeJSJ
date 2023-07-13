@@ -21,5 +21,9 @@
 	<select id="selectDemoAll" resultMap="demoMap" >
 		SELECT * FROM DEV
 	</select>
-
+	
+	<select id="devByDevNo" parameterType="_int" resultMap="demoMap">
+		SELECT * FROM DEV WHERE DEVNO=#{devNo}
+	</select>
+	
 </mapper>

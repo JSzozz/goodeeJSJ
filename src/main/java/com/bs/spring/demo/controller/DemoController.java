@@ -266,10 +266,28 @@ public class DemoController {
 	@RequestMapping("/demo/demoList.do")
 	public String selectList(Model m) {
 		List<Demo> demos=service.selectDemoAll();
-		demos.stream().forEach(System.out::println);
+		//demos.stream().forEach(System.out::println);
 		m.addAttribute("demos",demos);
 		
 		return "demo/demoList";
+	}
+	
+	@RequestMapping("/demo/devUpdate.do")
+	public String devUpdate( @RequestParam(value="devNo") int devNo, Model m ) {
+		Demo demo=service.devByDevNo(devNo);
+//		System.out.println(demo);
+		
+		Demo d = Demo.builder()
+						.devName(demo.getDevName())
+						.devAge(demo.getDevAge())
+						.devGender(demo.getDevGender())
+						.devEmail(demo.getDevEmail())
+						.devLang(demo.getDevLang())
+						.build();
+		
+		m.addAttribute("demo", d);
+		
+		return "demo/updateDemo";
 	}
 	
 }
