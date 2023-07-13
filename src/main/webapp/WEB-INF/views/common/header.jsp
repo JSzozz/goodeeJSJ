@@ -58,12 +58,20 @@
 						</li>
 					</ul>
 						<button class="btn btn-outline-success my-2 my-sm-0"
-						data-toggle="modal" data-target="#loginModal">로그인</button>
+						data-toggle="modal" data-target="#loginModal">
+							로그인
+						</button>
 						&nbsp;
 						<button class="btn btn-outline-primary my-2 my-sm-0"
-						onclick="">
+						onclick="location.href='${path}/member/enrollMember.do';">
 							회원가입
 						</button>
 				</div>
 			</nav>	
 		</header>
+
+<script>
+	const requestSend=(url)=>{
+		
+	}
+</script>

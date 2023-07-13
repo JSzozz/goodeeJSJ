@@ -19,7 +19,7 @@
 	</resultMap>
 	
 	<select id="selectDemoAll" resultMap="demoMap" >
-		SELECT * FROM DEV
+		SELECT * FROM DEV ORDER BY DEVNO
 	</select>
 	
 	<select id="devByDevNo" parameterType="_int" resultMap="demoMap">
