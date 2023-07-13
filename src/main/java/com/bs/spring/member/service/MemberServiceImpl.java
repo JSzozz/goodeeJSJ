@@ -1,5 +1,7 @@
 package com.bs.spring.member.service;
 
+import java.util.Map;
+
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -21,4 +23,11 @@ public class MemberServiceImpl implements MemberService {
 		return dao.insertMember(session, member);
 	}
 
+	@Override
+	public Member selectMemberById(Map param) {
+		// TODO Auto-generated method stub
+		return dao.selectMemberById(session, param);
+	}
+
+	
 }
