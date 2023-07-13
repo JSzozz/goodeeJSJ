@@ -11,8 +11,9 @@
 <title>회원가입</title>
 </head>
 <body>
-<jsp:include page="/WEB-INF/views/common/header.jsp"/>
-
+<jsp:include page="/WEB-INF/views/common/header.jsp">
+	<jsp:param name="title" value="회원가입"/>
+</jsp:include>
 <style>
 div#enroll-container{width:400px; margin:0 auto; text-align:center;}
 div#enroll-container input, div#enroll-container select {margin-bottom:10px;}

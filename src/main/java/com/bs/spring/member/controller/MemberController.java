@@ -76,7 +76,8 @@ public class MemberController {
 	
 	
 	@RequestMapping("/mypage.do")
-	public String mypage() {
+	public String mypage(/* String userId, Model m */) {
+//		m.addAttribute("member", service.selectMemberById(Map.of("userId", userId)));
 		
 		return "member/mypage";
 	}

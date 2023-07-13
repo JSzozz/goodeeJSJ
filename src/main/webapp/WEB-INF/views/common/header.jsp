@@ -59,7 +59,7 @@
 					</ul>
 					<c:if test="${loginMember!=null }">
 						<span>	
-							<a href="${path }/member/mypage.do"><c:out  value="${loginMember.userName }"/></a>
+							<a href="${path }/member/mypage.do?userId=${loginMember.userId}"><c:out  value="${loginMember.userName }"/></a>
 							님 환영합니다.
 						</span>
 						<button class="btn btn-outline-dark my-2 my-sm-0"
