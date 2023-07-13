@@ -6,13 +6,20 @@
 <c:set var="path" value="${pageContext.request.contextPath }"/>
 <jsp:include page="/WEB-INF/views/common/header.jsp"/>
 
-<c:if test="${demo.devLang }.includes('Java')">
-
-</c:if>
 
 <section id="content">
 	<div id="demo-container">
-		<form id="devFrm" method="post">
+		<form id="devFrm" method="post" action="${path }/demo/update.do">
+			<div class="form-group row">
+			<label for="devNo" class="col-sm-2 col-form-label">번호</label>
+			<div class="col-sm-10">
+				<input type="text" class="form-control" id="devNo" name="devNo" readonly
+				<c:if test="${not empty demo.devNo }">
+					value="${demo.devNo }"
+				</c:if>				
+				>
+			</div>
+			</div>
 			<div class="form-group row">
 			<label for="devName" class="col-sm-2 col-form-label">이름</label>
 			<div class="col-sm-10">
@@ -87,9 +94,8 @@
 			
 			<div class="form-group row">
 				<div class="col-sm-12">
-					<button type="button" class="col-sm-12 btn btn-outline-primary"
-					onclick="requestSend('demo/insertDemo.do')">
-						수정하기(지금은 등록하기 기능 상태)
+					<button type="submit" class="col-sm-12 btn btn-outline-primary">
+						수정하기
 					</button>
 				</div>
 			</div>					

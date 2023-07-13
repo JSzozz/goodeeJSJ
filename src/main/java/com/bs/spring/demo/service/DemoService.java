@@ -12,4 +12,6 @@ public interface DemoService {
 	List<Demo> selectDemoAll();
 	
 	Demo devByDevNo(int devNo);
+	
+	int update(Demo demo);
 }

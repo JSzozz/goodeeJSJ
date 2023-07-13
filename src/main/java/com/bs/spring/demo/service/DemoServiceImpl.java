@@ -34,5 +34,11 @@ public class DemoServiceImpl implements DemoService {
 	public Demo devByDevNo(int devNo) {
 		return dao.devByDevNo(session, devNo);
 	}
+
+	@Override
+	public int update(Demo demo) {
+		// TODO Auto-generated method stub
+		return dao.update(session, demo);
+	}
 	
 }

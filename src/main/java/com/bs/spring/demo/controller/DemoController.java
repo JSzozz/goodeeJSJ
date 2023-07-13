@@ -26,6 +26,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.bs.spring.demo.model.dto.Demo;
 import com.bs.spring.demo.service.DemoService;
+import com.bs.spring.member.model.dto.Member;
 
 @Controller
 public class DemoController {
@@ -284,6 +285,7 @@ public class DemoController {
 //		System.out.println(demo);
 		
 		Demo d = Demo.builder()
+						.devNo(demo.getDevNo())
 						.devName(demo.getDevName())
 						.devAge(demo.getDevAge())
 						.devGender(demo.getDevGender())
@@ -294,6 +296,17 @@ public class DemoController {
 		m.addAttribute("demo", d);
 		
 		return "demo/updateDemo";
+	}
+	
+	@RequestMapping("/demo/update.do")
+	public String update(Demo demo, Model model) {
+		System.out.println(demo);
+		int result=service.update(demo);
+		
+		model.addAttribute("msg", result>0?"저장성공":"저장실패");
+		model.addAttribute("loc", "/demo/demoList.do");
+		
+		return "common/msg";
 	}
 	
 }
