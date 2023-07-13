@@ -56,8 +56,8 @@
 					<label for="hobby4" class="form-check-label">여행</label>&nbsp;
 				</div>
 				<br />
-				<input type="submit" class="btn btn-outline-success" value="가입"
-				>&nbsp;
+				<input type="submit" class="btn btn-outline-success" value="수정"
+				>(*개발중)&nbsp;
 				<input type="reset" class="btn btn-outline-success" value="취소"
 				>
 			</form>
