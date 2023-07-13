@@ -2,6 +2,7 @@ package com.bs.spring.member.controller;
 
 import java.util.Map;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -55,4 +56,19 @@ public class MemberController {
 		return "redirect:/";
 	}
 	
+	@RequestMapping("/logout.do")
+	public String logout(HttpServletRequest request) {
+		
+		HttpSession session=request.getSession(false);
+		if(session!=null) {
+			session.invalidate();
+		}
+		return "redirect:/";
+	}
+	
+	@RequestMapping("/mypage.do")
+	public String mypage() {
+		
+		return "member/mypage";
+	}
 }

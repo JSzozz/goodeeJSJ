@@ -57,6 +57,16 @@
 							<a class="nav-link" href="${path }/demo/demoList.do">searchAll</a>
 						</li>
 					</ul>
+					<c:if test="${loginMember!=null }">
+						<span>	
+							<a href="${path }/member/mypage.do"><c:out  value="${loginMember.userName }"/></a>
+							님 환영합니다.
+						</span>
+						<button class="btn btn-outline-dark my-2 my-sm-0"
+						onclick="location.href='${path }/member/logout.do';">
+							로그아웃
+						</button>
+					</c:if>
 					<c:if test="${loginMember==null }">
 						<button class="btn btn-outline-success my-2 my-sm-0"
 						data-toggle="modal" data-target="#loginModal">
@@ -67,9 +77,6 @@
 						onclick="location.href='${path}/member/enrollMember.do';">
 							회원가입
 						</button>
-					</c:if>
-					<c:if test="${loginMember!=null }">
-						<c:out  value="${loginMember.userName } 님 환영합니다" />
 					</c:if>
 				</div>
 			</nav>	
