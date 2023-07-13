@@ -10,17 +10,18 @@ import com.bs.spring.member.model.dto.Member;
 import com.bs.spring.member.service.MemberService;
 
 @Controller
+@RequestMapping("/member")
 public class MemberController {
 
 	@Autowired
 	public MemberService service;
 	
-	@RequestMapping("/member/enrollMember.do")
+	@RequestMapping("/enrollMember.do")
 	public String enrollMember() {
 		return "/member/enrollMember";
 	}
 	
-	@RequestMapping(value="/member/insertMember.do",
+	@RequestMapping(value="/insertMember.do",
 			method=RequestMethod.POST)
 	public String insertMember(Member member, Model m) {
 		System.out.println(member);
@@ -28,6 +29,7 @@ public class MemberController {
 		m.addAttribute("msg",result>0?"저장성공":"저장실패");
 		m.addAttribute("loc","/");
 		return "common/msg";
+		//return "redirect:/";
 	}
 	
 }
