@@ -5,12 +5,19 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller //spring에서 controller역할을 하는 클래스에 적용하는 것
 //springbean으로 등록된다
 public class MainController {
+	
+	//log를 출력하기 위한 Logger 가져오기
+	private static final Logger logger = LoggerFactory.getLogger(MainController.class);
+	//import org.slf4j.Logger;
+
+			
 	//@Controller로 등록된 클래스는 클라이언트가 요청한 서비스를 진행하는 메소드(매핑메소드)를 선언한다.
 	//요청 URL주소 연결되는 메소드
 	
@@ -35,11 +42,31 @@ public class MainController {
 		Cookie c = new Cookie("testData", "cookiedata");
 		c.setMaxAge(60*60*24);
 		res.addCookie(c);
-		
 		session.setAttribute("sessionId", "admin");
 		
-		return "index";
 		
+		//=============================================================
+		//log4j를 이용해서 log출력하기
+		//slf4j에서 제공하는 Logger인터페이스를 구현한 클래스를 이용함
+		//LoggerFactory클래스에 static메소드인 getLogger(logger가져오는 클래스지정);
+		
+		//log를 출력할때는 logger가 제공하는 메소드를 이용
+		//debug() : 개발시에 사용하는 로그를 출력할때 사용
+		//info() : 프로그램 실행하는 정보를 출력할때 사용
+		//warn() : 잘못된 사용을 했을때 출력할때 사용
+		//error() : Exception 실행이 불가능한 기능에 대한 로그를 출력할때 사용
+		// *메소드의 매개변수는 기본적으로 String만 가능, 객체나 다른 데이터를 출력하려면 ("{}",출력변변수)
+		
+		//level
+		// debug -> info -> warn -> error -> fatal
+		
+		//log4j를 이용해서 로그 출력하기
+		logger.debug("debug내용출력하기");
+		logger.info("info내용출력하기");
+		logger.warn("warn내용출력하기");
+		logger.error("error내용출력하기");
+		
+		
+		return "index";
 	}
-	
 }
