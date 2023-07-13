@@ -47,11 +47,13 @@
 				<label class="col-sm-2 col-form-label">성별</label>
 				<div class="col-sm-10">
 					<div class="form-check form-check-inline">
-					<input class="form-check-input" type="radio" name="devGender" id="devGender0" value="M">
+					<input class="form-check-input" type="radio" name="devGender" id="devGender0" value="M"
+					${demo.devGender=='M'?"checked":""} >
 					<label class="form-check-label" for="devGender0" >남</label>
 					</div>
 					<div class="form-check form-check-inline">
-					<input class="form-check-input" type="radio" name="devGender" id="devGender1" value="F">
+					<input class="form-check-input" type="radio" name="devGender" id="devGender1" value="F"
+					${demo.devGender=='F'?"checked":""} >
 					<label class="form-check-label" for="devGender1">여</label>
 					</div>
 				</div>
@@ -60,15 +62,18 @@
 				<label class="col-sm-2 col-form-label">개발언어</label>
 				<div class="col-sm-10">
 					<div class="form-check form-check-inline">
-					<input class="form-check-input" type="checkbox" name="devLang" id="devLang0" value="Java">
+					<input class="form-check-input" type="checkbox" name="devLang" id="devLang0" value="Java"
+					${demo.devLang.stream().anyMatch(e->e=="Java").get()?"checked":"" }>
 					<label class="form-check-label" for="devLang0">Java</label>
 					</div>
 					<div class="form-check form-check-inline">
-					<input class="form-check-input" type="checkbox" name="devLang" id="devLang1" value="C">
+					<input class="form-check-input" type="checkbox" name="devLang" id="devLang1" value="C"
+					${demo.devLang.stream().anyMatch(e->e=="C").get()?"checked":"" }>
 					<label class="form-check-label" for="devLang1">C</label>
 					</div>
 					<div class="form-check form-check-inline">
-					<input class="form-check-input" type="checkbox" name="devLang" id="devLang2" value="Javascript">
+					<input class="form-check-input" type="checkbox" name="devLang" id="devLang2" value="Javascript"
+					${demo.devLang.stream().anyMatch(e->e=="Javascript").get()?"checked":"" }>
 					<label class="form-check-label" for="devLang2">Javascript</label>
 					</div>
 				</div>
@@ -99,12 +104,12 @@
 		$("#devFrm").submit();
 	}
 	
-	if('${demo.devGender}'!=null&&'${demo.devGender}'=='M'){
+/* 	if('${demo.devGender}'!=null&&'${demo.devGender}'=='M'){
 		$("#devGender0").attr("checked", true);
 	}
 	if('${demo.devGender}'!=null&&'${demo.devGender}'=='F'){
 		$("#devGender1").attr("checked", true);
-	}	
+	} */	
 
 </script>
 <style>
