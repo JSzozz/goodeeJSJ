@@ -50,14 +50,14 @@ public class MemberController {
 		model.addAttribute("loc","/");
 		return "common/msg";
 		//return "redirect:/";
-	}
+	} 
 	
 	@RequestMapping("/login.do")
 	public String login(@RequestParam Map param, Model model, HttpSession session) {
 		Member m= service.selectMemberById(param);
 		System.out.println(m);
 		
-		//암호화된 값을 비교하기 위해서는 제공되는 passwordEncoder가 제공하는 메소드를 이용해야한다
+		//암호화된 값을 비교하기 위해서는 제공되는 BCryptPasswordEncoder가 제공하는 메소드를 이용해야한다
 		if(m!=null&&
 			passwordEncoder.matches((String)param.get("password"), m.getPassword())
 //			m.getPassword().equals(param.get("password"))
