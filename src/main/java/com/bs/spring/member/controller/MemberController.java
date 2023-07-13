@@ -35,11 +35,19 @@ public class MemberController {
 	
 	@RequestMapping(value="/insertMember.do",
 			method=RequestMethod.POST)
-	public String insertMember(Member member, Model m) {
+	public String insertMember(Member member, Model model) {
 //		System.out.println(member);
+
+		//패스워드를 암호화 처리하자
+		String oriPassword=member.getPassword();
+		String encodePassword=passwordEncoder.encode(oriPassword);
+		member.setPassword(encodePassword);
+		System.out.println(member.getPassword());
+		//$2a$10$6vOZQaomQvT/fBZ.wJXUnuW/hrbm083btZFyOwopDYhQSxTvyWxCi
+		
 		int result=service.insertMember(member);
-		m.addAttribute("msg",result>0?"저장성공":"저장실패");
-		m.addAttribute("loc","/");
+		model.addAttribute("msg",result>0?"저장성공":"저장실패");
+		model.addAttribute("loc","/");
 		return "common/msg";
 		//return "redirect:/";
 	}
