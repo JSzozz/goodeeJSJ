@@ -44,8 +44,11 @@ public class LoggerInterceptor implements HandlerInterceptor{
 	@Override
 	public void postHandle(HttpServletRequest request, HttpServletResponse response, Object handler,
 			ModelAndView modelAndView) throws Exception {
-		// TODO Auto-generated method stub
-		HandlerInterceptor.super.postHandle(request, response, handler, modelAndView);
+		log.debug("------ 인터셉터 postHandle -----");
+		log.debug("{}",modelAndView.getViewName());
+		Map modelData=modelAndView.getModel();
+		log.debug("{}",modelData);
+		log.debug("-----------------------------");
 	}
 	
 	
