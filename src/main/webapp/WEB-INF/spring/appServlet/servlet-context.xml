@@ -83,9 +83,14 @@
 			<mapping path="/demo/demoList.do"/>
 			<beans:ref bean="loginCheck"/>
 		</interceptor>
+		<!-- <interceptor>
+			<mapping path="/memo/memo.do"/>
+			<beans:ref bean="AmdinloginCheck"/>
+		</interceptor> -->
 	</interceptors>
 	
 	<beans:bean id="loginCheck" class="com.bs.spring.common.interceptor.LoginCheckInterceptor"/>
+	<beans:bean id="AmdinloginCheck" class="com.bs.spring.common.interceptor.AdminCheckInterceptor"/>
 		
 	 
 	 

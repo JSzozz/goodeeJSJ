@@ -62,10 +62,10 @@ public class MainController {
 		// debug -> info -> warn -> error -> fatal
 		
 		//log4j를 이용해서 로그 출력하기
-		logger.debug("debug내용출력하기");
-		logger.info("info내용출력하기");
-		logger.warn("warn내용출력하기");
-		logger.error("error내용출력하기");
+		//logger.debug("debug내용출력하기");
+		//logger.info("info내용출력하기");
+		//logger.warn("warn내용출력하기");
+		//logger.error("error내용출력하기");
 		
 		
 		return "index";

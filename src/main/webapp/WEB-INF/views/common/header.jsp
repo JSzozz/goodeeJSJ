@@ -56,6 +56,9 @@
 						<li class="nav-item">
 							<a class="nav-link" href="${path }/demo/demoList.do">searchAll</a>
 						</li>
+						<li class="nav-item">
+							<a class="nav-link" href="${path }/memo/memo.do">memo</a>
+						</li>
 					</ul>
 					<c:if test="${loginMember!=null }">
 						<span>	
