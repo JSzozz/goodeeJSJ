@@ -15,4 +15,13 @@ public class LoggerAspect {
 	log.debug(sig.getDeclaringTypeName()+" "+sig.getName());
 	log.debug("-----------AOP loogerBefore end-----------");
 	}
+	
+	public void loggerAfter(JoinPoint jp) {
+		log.debug("----- AOP loggerAfter -----");
+		Signature sig=jp.getSignature();
+		
+		log.debug(sig.getDeclaringTypeName()+" "+sig.getName());
+				
+		log.debug("----------------------------");
+	}
 }
