@@ -1,4 +1,4 @@
-package com.bs.spring.common;
+package com.bs.common;
 
 import java.sql.CallableStatement;
 import java.sql.PreparedStatement;

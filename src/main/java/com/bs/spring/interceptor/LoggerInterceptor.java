@@ -50,6 +50,17 @@ public class LoggerInterceptor implements HandlerInterceptor{
 		log.debug("{}",modelData);
 		log.debug("-----------------------------");
 	}
+
+	@Override
+	public void afterCompletion(HttpServletRequest request, HttpServletResponse response, Object handler, Exception ex)
+			throws Exception {
+		log.debug("--------응답 후 인터셉터실행 strat------------");
+		log.debug("요청주소{}", request.getRequestURI());
+		log.debug("에러메세지{}", ex!=null?ex.getMessage():"응답성공");
+		log.debug("--------응답 후 인터셉터실행 end------------");
+		
+	}
+	
 	
 	
 }
