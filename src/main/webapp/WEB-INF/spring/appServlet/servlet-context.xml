@@ -79,11 +79,11 @@
 			<!-- <exclude-mapping path="/demo/demo.do"/> -->
 			<beans:bean class="com.bs.spring.common.interceptor.LoggerInterceptor"/>
 		</interceptor>
-		<interceptor>
+		<!-- <interceptor>
 			<mapping path="/demo/demoList.do"/>
 			<beans:ref bean="loginCheck"/>
 		</interceptor>
-		<!-- <interceptor>
+		<interceptor>
 			<mapping path="/memo/memo.do"/>
 			<beans:ref bean="AmdinloginCheck"/>
 		</interceptor> -->
