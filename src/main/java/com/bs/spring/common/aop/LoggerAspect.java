@@ -12,7 +12,7 @@ public class LoggerAspect {
 	log.debug("-----------AOP loogerBefore start-----------");
 	Signature sig=jp.getSignature();
 	//import org.aspectj.lang.Signature;
-	log.debug(sig.getDeclaringTypeName()+"\n"+sig.getName());
+	log.debug(sig.getDeclaringTypeName()+" "+sig.getName());
 	log.debug("-----------AOP loogerBefore end-----------");
 	}
 }

@@ -11,7 +11,9 @@
 	
 	<aop:config>
 		<aop:aspect ref="loggerAspect">
-			<aop:pointcut expression="execution(* com.bs.spring.memo..*(..))" id="logPointcut"/>
+			<!-- <aop:pointcut expression="execution(* com.bs.spring.memo..*(..))" id="logPointcut"/>
+			<aop:pointcut expression="execution(* com.bs.spring..*(..))" id="logPointcut"/> -->
+			<aop:pointcut expression="execution(* com.bs.spring..select*(..))" id="logPointcut"/>
 			<aop:before method="loggerBefore" pointcut-ref="logPointcut"/>
 		</aop:aspect>
 	</aop:config>	
