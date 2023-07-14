@@ -26,7 +26,7 @@
 		<constructor-arg index="0" ref="dataSource"/>
 		<property name="logFormatter">
 			<bean class="net.sf.log4jdbc.tools.Log4JdbcCustomFormatter">
-				<property name="logginType" value="MULTI_LINE"/>
+				<property name="loggingType" value="MULTI_LINE"/>
 				<property name="sqlPrefix" value="[SQL]"/>
 			</bean>
 		</property>
