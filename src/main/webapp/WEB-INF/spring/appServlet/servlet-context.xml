@@ -76,7 +76,8 @@
 	<interceptors>
 		<interceptor>
 			<mapping path="/demo/*"/>
-			<beans:bean class="com.bs.spring.interceptor.LoggerInterceptor"/>
+			<exclude-mapping path="/demo/demo.do"/>
+			<beans:bean class="com.bs.spring.common.interceptor.LoggerInterceptor"/>
 		</interceptor>
 	</interceptors>
 	 

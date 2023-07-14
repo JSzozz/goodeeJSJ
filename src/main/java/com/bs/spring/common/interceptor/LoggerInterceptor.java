@@ -1,4 +1,4 @@
-package com.bs.spring.interceptor;
+package com.bs.spring.common.interceptor;
 
 import java.lang.reflect.Method;
 import java.util.Map;
