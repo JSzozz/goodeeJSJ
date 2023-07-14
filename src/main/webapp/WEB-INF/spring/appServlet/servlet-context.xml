@@ -92,7 +92,7 @@
 	<beans:bean id="loginCheck" class="com.bs.spring.common.interceptor.LoginCheckInterceptor"/>
 	<beans:bean id="AmdinloginCheck" class="com.bs.spring.common.interceptor.AdminCheckInterceptor"/>
 		    
-	  
+	   
 	 
 	 
 </beans:beans>
