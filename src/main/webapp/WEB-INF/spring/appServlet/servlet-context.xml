@@ -71,4 +71,15 @@
 	 	<beans:constructor-arg index="1" value="개발부"/>
 	 	<beans:constructor-arg index="2" value="판교"/>
 	 </beans:bean>
+	 
+	 <!--  인터셉터등록하기  -->
+	<interceptors>
+		<interceptor>
+			<mapping path="/demo/*"/>
+			<beans:bean class="com.bs.spring.interceptor.LoggerInterceptor"/>
+		</interceptor>
+	</interceptors>
+	 
+	 
+	 
 </beans:beans>
