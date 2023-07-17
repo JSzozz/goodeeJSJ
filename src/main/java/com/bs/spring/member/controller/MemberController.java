@@ -6,11 +6,13 @@ import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
-import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
+import org.springframework.validation.annotation.Validated;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.bind.support.SessionStatus;
@@ -33,15 +35,20 @@ public class MemberController {
 	private BCryptPasswordEncoder passwordEncoder;
 
 	@RequestMapping("/enrollMember.do")
-	public String enrollMember() {
+	public String enrollMember(@ModelAttribute("member") Member m ) {
 		return "/member/enrollMember";
 	}
 	
-	@RequestMapping(value="/insertMember.do",
-			method=RequestMethod.POST)
-	public String insertMember(Member member, Model model) {
+	//@RequestMapping(value="/insertMember.do",method=RequestMethod.POST)
+	@PostMapping("/insertMember.do")
+	public String insertMember(@Validated Member member,BindingResult isResult, Model model) {
 //		System.out.println(member);
-
+		
+		if(isResult.hasErrors()) {
+			//에러처리
+			return "/member/enrollMember";
+		}
+		
 		//패스워드를 암호화 처리하자
 		String oriPassword=member.getPassword();
 		log.debug(oriPassword);
