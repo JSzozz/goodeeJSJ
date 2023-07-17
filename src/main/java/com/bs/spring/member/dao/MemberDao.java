@@ -1,9 +1,11 @@
 package com.bs.spring.member.dao;
 
+import java.util.List;
 import java.util.Map;
 
 import org.mybatis.spring.SqlSessionTemplate;
 
+import com.bs.spring.board.model.dto.Board;
 import com.bs.spring.member.model.dto.Member;
 
 public interface MemberDao {
@@ -12,7 +14,7 @@ public interface MemberDao {
 
 	Member selectMemberById(SqlSessionTemplate session, Map param);
 
-	
+
 	
 	
 }

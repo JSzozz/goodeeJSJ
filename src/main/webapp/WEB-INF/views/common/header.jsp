@@ -59,6 +59,9 @@
 						<li class="nav-item">
 							<a class="nav-link" href="${path }/memo/memo.do">memo</a>
 						</li>
+						<li class="nav-item">
+							<a class="nav-link" href="${path }/board/boardList.do">게시판</a>
+						</li>
 					</ul>
 					<c:if test="${loginMember!=null }">
 						<span>	

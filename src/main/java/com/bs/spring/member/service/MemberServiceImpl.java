@@ -1,11 +1,13 @@
 package com.bs.spring.member.service;
 
+import java.util.List;
 import java.util.Map;
 
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.bs.spring.board.model.dto.Board;
 import com.bs.spring.member.dao.MemberDao;
 import com.bs.spring.member.model.dto.Member;
 
@@ -28,6 +30,7 @@ public class MemberServiceImpl implements MemberService {
 		// TODO Auto-generated method stub
 		return dao.selectMemberById(session, param);
 	}
+
 
 	
 }

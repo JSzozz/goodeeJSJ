@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="board">
+	
+	<update id="updateBoard" parameterType="board">
+		Insert into SPRING.BOARD (BOARDNO,BOARDTITLE,BOARDWRITER,BOARDCONTENT,BOARDDATE,BOARDREADCOUNT) 
+		values (SEQ_BOARDNO.nextval,#{boardTitle},#{boardWriter},#{boardContent},to_date('18/05/16','RR/MM/DD'),0)
+	</update>
+	
+	<select id="selectBoardAll" resultType="board" >
+		SELECT * FROM BOARD 
+	</select>
+
+	<select id="selectBoardCount" resultType="_int">
+		SELECT count(*) FROM BOARD
+	</select>
+	
+	<select id="selectBoardByNo" parameterType="_int" resultType="board">
+		SELECT * FROM BOARD WHERE BOARDNO=#{no}
+	</select>
+
+<!-- 	<select id="selectBoardByNo" parameterType="_int" resultType="board">
+		SELECT * FROM BOARD JOIN MEMBER ON BOARDWRITER=USERID ORDER BY BOARDNO
+	</select>
+ -->	
+</mapper>
