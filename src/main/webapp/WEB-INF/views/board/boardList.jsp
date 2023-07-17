@@ -4,13 +4,13 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <c:set var="path" value="${pageContext.request.contextPath}"/>
 <jsp:include page="/WEB-INF/views/common/header.jsp">
-	<jsp:param name="title" value="board"/>
+	<jsp:param name="title" value="게시판 리스트"/>
 </jsp:include>
 <section>
 	
 	<section id="board-container" class="container">
 		<c:if test="${empty boards }">
-			<h2>조횐된 게시글잉 없습니다.</h2>
+			<h2>조횐된 게시글이 없습니다.</h2>
 		</c:if>
 		<c:if test="${not empty boards }">
 	        <p>총 ${totalData }건의 게시물이 있습니다.</p>

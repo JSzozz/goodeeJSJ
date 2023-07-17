@@ -40,9 +40,9 @@
 	</logger>
 	
 	
-		<!-- Application Loggers -->
+	<!-- Application Loggers -->
 	<logger name="com.bs.spring">
-		<level value="debug" />
+		<level value="info" />
 		<appender-ref ref="fileAppender"/>
 	</logger>
 	
