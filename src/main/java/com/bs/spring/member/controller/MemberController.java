@@ -89,6 +89,8 @@ public class MemberController {
 //		if(session!=null)
 //			session.invalidate();
 		
+//		if(1==1) throw new IllegalArgumentException("잘못된 접근입니다");
+		
 		if(!status.isComplete()) status.setComplete();
 		
 		return "redirect:/";

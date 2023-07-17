@@ -4,6 +4,7 @@ import org.aspectj.lang.JoinPoint;
 import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.Signature;
 import org.aspectj.lang.annotation.After;
+import org.aspectj.lang.annotation.AfterThrowing;
 import org.aspectj.lang.annotation.Around;
 import org.aspectj.lang.annotation.Aspect;
 import org.aspectj.lang.annotation.Before;
@@ -63,4 +64,19 @@ public class AnnoLoggerAspect {
 		log.debug("=========== around logger dao  after end===============");
 		return obj;
 	}
+	
+	@AfterThrowing(pointcut = "loggerTest()", throwing = "e" )
+	public void afterThrowinglogger(JoinPoint jo, Throwable e) {
+	
+		log.debug("에러발생!!!");
+		Signature sig=jo.getSignature();
+		log.debug("{}", sig.getDeclaringTypeName()+" "+sig.getName());
+		log.debug("{}",e.getMessage());
+		StackTraceElement[] stacktrace= e.getStackTrace();
+		for(StackTraceElement element : stacktrace) {
+			log.debug("{}",element);
+		}
+	}
+	
+	
 }
