@@ -1,19 +1,29 @@
 package com.bs.spring.board.model.controller;
 
+import java.io.File;
+import java.io.IOException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 import java.util.Map;
+
+import javax.servlet.http.HttpSession;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.multipart.MultipartFile;
 
 import com.bs.spring.board.model.dto.Board;
 import com.bs.spring.board.model.service.BoardService;
 import com.bs.spring.common.PageFactory;
 
+import lombok.extern.slf4j.Slf4j;
+
 @Controller
 @RequestMapping("/board")
+@Slf4j
 public class BoardController {
 
 	private BoardService service;
@@ -44,9 +54,34 @@ public class BoardController {
 	}
 	
 	@RequestMapping("/insertBoard.do")
-	public String insertBoard(Board b) {
+	public String insertBoard(Board b, MultipartFile upFile, HttpSession session) {
+		log.info("{}",b);
+		log.info("{}",upFile);
 		
-		return "";
+		//MultipartFile에서 제공하는 메소드를 이용해서
+		//파일을 저장할 수 있음 -> transferTo()메소드를 이용
+		//절대경로 가져오기
+		String path = session.getServletContext().getRealPath("/resources/upload/board/");
+		//파일명에 대한 renamed규칙을 설정
+		//직접 리네임 규칙을 만들어서 저장해보자.
+		//yyyyMMdd_HHmmssSSS_랜덤값
+		String oriName=upFile.getOriginalFilename();
+		String ext=oriName.substring(oriName.lastIndexOf("."));//v
+		Date today=new Date(System.currentTimeMillis());//import java.util.Date
+		SimpleDateFormat sdf=new SimpleDateFormat("yyyyMMdd_HHmmssSSS");
+		int rdn=(int)(Math.random()*10000)+1;
+		String rename=sdf.format(today)+"_"+rdn+ext;
+		
+		try {
+			upFile.transferTo(new File(path+rename));
+		} catch (IllegalStateException e) {
+			e.printStackTrace();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		
+		
+		return "redirect:/board/boardList.do";
 	}
 	
 	@RequestMapping("/boardView.do")

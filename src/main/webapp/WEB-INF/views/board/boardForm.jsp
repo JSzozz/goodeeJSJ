@@ -12,7 +12,7 @@
 	</c:if>
 	<c:if test="${not empty userId }"> --%>
 		<div id="board-container">
-	        <form name="boardFrm" action="${path }/board/updateBoard.do"  >
+	        <form name="boardFrm" action="${path }/board/insertBoard.do" method="post" enctype="multipart/form-data" >
 	            <input type="text" class="form-control" placeholder="제목" name="boardTitle" id="boardTitle" required>
 	            <input type="text" class="form-control" placeholder="아이디 (4글자이상)" name="boardWriter" 
 	            value="${loginMember.userId}" readonly required>
