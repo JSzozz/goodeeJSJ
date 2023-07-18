@@ -39,11 +39,16 @@ public class BoardServiceImpl implements BoardService {
 					//b.getFile().setBoardNo(b.getBoardNo());
 					//result=dao.insertAttachment(session, b.getFile());
 					a.setBoardNo(b.getBoardNo());
-					result=dao.insertAttachment(session, a);
+					result+=dao.insertAttachment(session, a);
+					
+					//result=dao.insertAttachment(session, a);
+					//if(result!=0) throw new RuntimeException("내가 그냥 싫어!!!");//rollback방법1
 				}
 			}
 		}
-		return 0;
+		//rollback처리를 원하다면..... RuntimeException을 발생시키면됨.
+		if(result!=b.getFile().size()+1) throw new RuntimeException("내가 그냥 싫어!!!");//rollback방법2
+		return result;
 	}
 
 	@Override
