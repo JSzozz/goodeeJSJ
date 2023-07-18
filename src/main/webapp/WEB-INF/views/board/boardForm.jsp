@@ -32,7 +32,14 @@
 		</div>
 	<%-- </c:if> --%>
 </section>
-
+	<script>
+		$(()=>{
+			$("[name=upFile]").change(e=>{
+				const fileName=e.target.files[0].name;
+				$(e.target).next(".custom-file-label").text(fileName);
+			});
+		})
+	</script>
 	
 <style>
 	div#board-container{width:400px; margin:0 auto; text-align:center;}
