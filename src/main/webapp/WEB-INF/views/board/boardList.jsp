@@ -13,7 +13,7 @@
 			<h2>조횐된 게시글이 없습니다.</h2>
 		</c:if>
 		<c:if test="${not empty boards }">
-	        <p>총 ${totalData }건의 게시물이 있습니다.</p>
+	        <p>총 ${totalData }건의 게시물이 있습니다.(*LEFT조인을 하느라 실제와 값이 차이남. 별도로 카운트 값 가져와야함)</p>
 	        <button class="btn btn-outline-primary" onclick="location.assign('${path }/board/boardForm.do')">글쓰기</button>
 	        <table id="tbl-board" class="table table-striped table-hover">
 	            <tr>

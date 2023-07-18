@@ -38,7 +38,8 @@
 	</select>
 
 	<select id="selectBoardCount" resultType="_int">
-		SELECT count(*) FROM BOARD
+		SELECT count(*) FROM BOARD JOIN MEMBER ON BOARDWRITER=USERID
+			LEFT JOIN ATTACHMENT USING(BOARDNO)
 	</select>
 	
 	<select id="selectBoardByNo" parameterType="_int" resultMap="boardMap" >
