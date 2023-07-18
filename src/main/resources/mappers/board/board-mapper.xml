@@ -33,7 +33,7 @@
 	</insert>
 	
 	<insert id="insertAttachment" parameterType="attachment"> 
-		INSERT INTO ATTACHMENT VALUES(SEQ_ATTACHMENTNO.NEXTVAL,
+		INSERT INTO ATTACHMENT VALUES(SEQ_ATTACHMENTN.NEXTVAL,
 		#{boardNo}, #{originalFilename},#{renamedFilename},default,default,default) 
 	</insert>
 	
