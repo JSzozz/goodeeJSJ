@@ -36,5 +36,5 @@
 		INSERT INTO ATTACHMENT VALUES(SEQ_ATTACHMENTN.NEXTVAL,
 		#{boardNo}, #{originalFilename},#{renamedFilename},default,default,default) 
 	</insert>
-	
+	 
 </mapper>
