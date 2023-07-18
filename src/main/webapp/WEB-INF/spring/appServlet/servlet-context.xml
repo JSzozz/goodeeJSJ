@@ -95,7 +95,7 @@
 	
 	<beans:bean id="loginCheck" class="com.bs.spring.common.interceptor.LoginCheckInterceptor"/>
 	<beans:bean id="AmdinloginCheck" class="com.bs.spring.common.interceptor.AdminCheckInterceptor"/>
-		    
+		     
 	 <!-- 
 	 	파일업로드를 처리할 resolver를 등록하자
 	 	CommonsMultipartResolver클래스를 빈으로 등록
