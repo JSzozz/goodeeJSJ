@@ -26,18 +26,21 @@
 	            </tr>
 	            <c:forEach var="b" items="${boards }">
 		            <tr>
-		            	<td>
-			            	${b.boardNo }
-		            	</td>
-		            	<td>
-			            	<a href="${path }/board/boardView.do?no=${b.boardNo}">
-			            	${b.boardTitle }
-			            	</a>
-		            	</td>
-		            	<td>${b.boardWriter }</td>
-		            	<td>${b.boardDate }</td>
-		            	<td>첨부파일</td>
-		            	<td>${b.boardReadCount }</td>
+            			<td>${b.boardNo }</td>
+            			<td>
+            			<a href="${path }/board/boardView.do?no=${b.boardNo}">
+            				${b.boardTitle }
+            			</a>
+            			</td>
+            			<td>${b.boardWriter.userId }</td>
+            			<td>${b.boardDate }</td>
+            			<td>
+            				<c:if test="${not empty b.file }">
+            					<img src="${path }/resources/images/file.png" alt="첨부파일사진">
+            					<span>${b.file.size() }</span>
+            				</c:if>
+            			</td>
+            			<td>${b.boardReadCount }</td> 
 					</tr>
 	            </c:forEach>
 	        </table> 

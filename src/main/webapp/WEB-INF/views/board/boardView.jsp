@@ -11,11 +11,14 @@
         <input type="text" class="form-control" placeholder="제목" name="boardTitle" id="boardTitle"  
         value="${board.boardTitle }" required>
         <input type="text" class="form-control" name="boardWriter"  readonly 
-        value="${board.boardWriter }" required>
-	
-        <button type="button" class="btn btn-outline-success btn-block" onclick="">
-        무슨버튼이지?
-        </button>
+        value="${board.boardWriter.userId }" required>
+		<c:if test="${not empty board.file}">
+			<c:forEach var="f" items="${board.file }">
+		        <button type="button" class="btn btn-outline-success btn-block" onclick="">
+		        ${f.originalFilename }
+		        </button>
+			</c:forEach>
+		</c:if>
 		<textarea class="form-control" name="boardContent" placeholder="내용" required>${board.boardContent }</textarea>
 	</div>
 </section>

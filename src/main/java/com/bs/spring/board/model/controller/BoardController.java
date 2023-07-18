@@ -92,7 +92,6 @@ public class BoardController {
 								.build();
 					//b.setFile(file);
 					b.getFile().add(file);
-					b.getFile().add(file);
 				}
 			}
 		}

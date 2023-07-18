@@ -27,7 +27,7 @@ public class BoardServiceImpl implements BoardService {
 	}
 
 	@Override
-//	@Transactional
+	//@Transactional
 	public int insertBoard(Board b) {
 		//2개의 insert문을 실행!
 		log.info("{}", b.getBoardNo());
@@ -47,8 +47,8 @@ public class BoardServiceImpl implements BoardService {
 			}
 		}
 		//rollback처리를 원하다면..... RuntimeException을 발생시키면됨.
-//		if(result!=b.getFile().size()+1) throw new RuntimeException("내가 그냥 싫어!!!");//rollback방법2
-		if(result!=0) throw new RuntimeException("내가 그냥 싫어!!!");//rollback방법2
+		//if(result!=0) throw new RuntimeException("내가 그냥 싫어!!!");//rollback방법2
+		if(result!=b.getFile().size()+1) throw new RuntimeException("내가 그냥 싫어!!!");//rollback방법2
 		return result;
 	}
 
