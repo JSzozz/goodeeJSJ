@@ -92,12 +92,18 @@ public class BoardController {
 								.build();
 					//b.setFile(file);
 					b.getFile().add(file);
+					b.getFile().add(file);
 				}
 			}
 		}
 		try {
 			service.insertBoard(b);
 		}catch(RuntimeException e) {
+			//rollback해야하는 경우
+			for(Attachment a: b.getFile()) {
+				File delFile=new File(path+a.getRenamedFilename());
+				delFile.delete();
+			}
 			model.addAttribute("msg","글쓰기 등록실패! :P");
 			model.addAttribute("loc", "/board/boardForm.do");
 			return "common/msg";
