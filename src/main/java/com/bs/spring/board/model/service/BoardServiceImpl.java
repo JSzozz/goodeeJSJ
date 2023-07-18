@@ -7,6 +7,7 @@ import org.apache.ibatis.session.SqlSession;
 import org.springframework.stereotype.Service;
 
 import com.bs.spring.board.model.dao.BoardDao;
+import com.bs.spring.board.model.dto.Attachment;
 import com.bs.spring.board.model.dto.Board;
 
 import lombok.extern.slf4j.Slf4j;
@@ -31,8 +32,14 @@ public class BoardServiceImpl implements BoardService {
 		int result=dao.insertBoard(session, b);
 		log.info("{}", b.getBoardNo());
 		if(result>0) {
-			b.getFile().setBoardNo(b.getBoardNo());
-			result=dao.insertAttachment(session, b.getFile());
+			if(b.getFile().size()>0) {
+				for(Attachment a: b.getFile()) {
+					//b.getFile().setBoardNo(b.getBoardNo());
+					//result=dao.insertAttachment(session, b.getFile());
+					a.setBoardNo(b.getBoardNo());
+					result=dao.insertAttachment(session, a);
+				}
+			}
 		}
 		return 0;
 	}

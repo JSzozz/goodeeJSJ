@@ -1,6 +1,8 @@
 package com.bs.spring.board.model.dto;
 
 import java.sql.Date;
+import java.util.ArrayList;
+import java.util.List;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -19,5 +21,5 @@ public class Board {
 	private String boardContent; 
 	private Date boardDate; 
 	private int boardReadCount; 
-	private Attachment file;
+	private List<Attachment> file=new ArrayList();
 }

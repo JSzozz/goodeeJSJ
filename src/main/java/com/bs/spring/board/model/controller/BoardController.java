@@ -3,6 +3,7 @@ package com.bs.spring.board.model.controller;
 import java.io.File;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.Map;
@@ -55,7 +56,7 @@ public class BoardController {
 	}
 	
 	@RequestMapping("/insertBoard.do")
-	public String insertBoard(Board b, MultipartFile upFile, HttpSession session) {
+	public String insertBoard(Board b, MultipartFile[] upFile, HttpSession session) {
 		log.info("{}",b);
 		log.info("{}",upFile);
 		
@@ -66,27 +67,33 @@ public class BoardController {
 		//파일명에 대한 renamed규칙을 설정
 		//직접 리네임 규칙을 만들어서 저장해보자.
 		//yyyyMMdd_HHmmssSSS_랜덤값
-		String oriName=upFile.getOriginalFilename();
-		String ext=oriName.substring(oriName.lastIndexOf("."));//v
-		Date today=new Date(System.currentTimeMillis());//import java.util.Date
-		SimpleDateFormat sdf=new SimpleDateFormat("yyyyMMdd_HHmmssSSS");
-		int rdn=(int)(Math.random()*10000)+1;
-		String rename=sdf.format(today)+"_"+rdn+ext;
-		
-		try {
-			upFile.transferTo(new File(path+rename));
-		} catch (IllegalStateException e) {
-			e.printStackTrace();
-		} catch (IOException e) {
-			e.printStackTrace();
+//		List<Attachment> files=new ArrayList();
+		if(upFile!=null) {
+			for(MultipartFile mf:upFile) {
+				if(!mf.isEmpty()) {
+					String oriName=mf.getOriginalFilename();
+					String ext=oriName.substring(oriName.lastIndexOf("."));//v
+					Date today=new Date(System.currentTimeMillis());//import java.util.Date
+					SimpleDateFormat sdf=new SimpleDateFormat("yyyyMMdd_HHmmssSSS");
+					int rdn=(int)(Math.random()*10000)+1;
+					String rename=sdf.format(today)+"_"+rdn+ext;
+					try {
+						mf.transferTo(new File(path+rename));
+					} catch (IllegalStateException e) {
+						e.printStackTrace();
+					} catch (IOException e) {
+						e.printStackTrace();
+					}
+					
+					Attachment file=Attachment.builder()
+								.originalFilename(oriName)
+								.renamedFilename(rename)
+								.build();
+					//b.setFile(file);
+					b.getFile().add(file);
+				}
+			}
 		}
-		
-		Attachment file=Attachment.builder()
-					.originalFilename(oriName)
-					.renamedFilename(rename)
-					.build();
-		b.setFile(file);
-		
 		service.insertBoard(b);
 		
 		return "redirect:/board/boardList.do";
