@@ -54,6 +54,20 @@
 	<bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
 	<property name="dataSource" ref="proxyDataSource"/>
 	</bean>
-	<tx:annotation-driven transaction-manager="transactionManager"/>	 
+	<!-- <tx:annotation-driven transaction-manager="transactionManager"/>	  -->
+	
+	<!-- 
+		xml방식으로 선언하기 
+	 -->
+	<tx:advice id="txadvice" transaction-manager="transactionManager">
+		<tx:attributes>
+			<tx:method name="insert*"/>
+		</tx:attributes>
+	</tx:advice>
+	
+	<aop:config>
+		<aop:pointcut expression="within(com.bs.spring..*ServiceImpl)" id="transpo"/>
+		<aop:advisor advice-ref="txadvice" pointcut-ref="transpo"/>
+	</aop:config>
 	
 </beans>
