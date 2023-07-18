@@ -57,7 +57,7 @@ public class BoardController {
 	}
 	
 	@RequestMapping("/insertBoard.do")
-	public String insertBoard(Board b, MultipartFile[] upFile, HttpSession session) {
+	public String insertBoard(Board b, MultipartFile[] upFile, HttpSession session, Model model) {
 		log.info("{}",b);
 		log.info("{}",upFile);
 		
@@ -95,7 +95,13 @@ public class BoardController {
 				}
 			}
 		}
-		service.insertBoard(b);
+		try {
+			service.insertBoard(b);
+		}catch(RuntimeException e) {
+			model.addAttribute("msg","글쓰기 등록실패! :P");
+			model.addAttribute("loc", "/board/boardForm.do");
+			return "common/msg";
+		}
 		
 		return "redirect:/board/boardList.do";
 	}
