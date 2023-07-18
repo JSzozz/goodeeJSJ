@@ -41,4 +41,19 @@
 		<constructor-arg index="0" ref="sessionFactory"/>
 	</bean>
 	
+	<!-- 
+		트렌젝션 설정하기
+		DataSourceTranscationManager클래스를 bean으롣 등록
+		1. 어노테이션방식을오 설정하기
+		<tx:annotation-driven>태그를 설정
+	 -->
+	<!--  <bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+	 	<property name="dataSoruce" ref="proxyDataSource"></property>
+	 </bean>
+	 <tx:annotation-driven transaction-manager="transactionManager"/> -->
+	<bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+	<property name="dataSource" ref="proxyDataSource"/>
+	</bean>
+	<tx:annotation-driven transaction-manager="transactionManager"/>	 
+	
 </beans>
