@@ -14,7 +14,7 @@
 		</c:if>
 		<c:if test="${not empty boards }">
 	        <p>총 ${totalData }건의 게시물이 있습니다.</p>
-	        
+	        <button class="btn btn-outline-primary" onclick="location.assign('${path }/board/boardForm.do')">글쓰기</button>
 	        <table id="tbl-board" class="table table-striped table-hover">
 	            <tr>
 	                <th>번호</th>

@@ -15,7 +15,7 @@
 	        <form name="boardFrm" action="${path }/board/updateBoard.do"  >
 	            <input type="text" class="form-control" placeholder="제목" name="boardTitle" id="boardTitle" required>
 	            <input type="text" class="form-control" placeholder="아이디 (4글자이상)" name="boardWriter" 
-	            value="${board.boardWriter}" readonly required>
+	            value="${loginMember.userId}" readonly required>
 	            <div class="input-group mb-3" style="padding:0px;">
 	                <div class="input-group-prepend" style="padding:0px;">
 	                    <span class="input-group-text">첨부파일1</span>

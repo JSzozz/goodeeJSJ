@@ -38,6 +38,11 @@ public class BoardController {
 		return "board/boardList";
 	}
 	
+	@RequestMapping("/boardForm.do")
+	public String boardForm() {
+		return "board/boardForm";
+	}
+	
 	@RequestMapping("/insertBoard.do")
 	public String insertBoard(Board b) {
 		
