@@ -2,13 +2,9 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="board">
 	
-	<update id="updateBoard" parameterType="board">
-		Insert into SPRING.BOARD (BOARDNO,BOARDTITLE,BOARDWRITER,BOARDCONTENT,BOARDDATE,BOARDREADCOUNT) 
-		values (SEQ_BOARDNO.nextval,#{boardTitle},#{boardWriter},#{boardContent},to_date('18/05/16','RR/MM/DD'),0)
-	</update>
 	
 	<select id="selectBoardAll" resultType="board" >
-		SELECT * FROM BOARD 
+		SELECT * FROM BOARD ORDER BY BOARDDATE DESC
 	</select>
 
 	<select id="selectBoardCount" resultType="_int">
@@ -23,4 +19,22 @@
 		SELECT * FROM BOARD JOIN MEMBER ON BOARDWRITER=USERID ORDER BY BOARDNO
 	</select>
  -->	
+
+<!-- 	<update id="updateBoard" parameterType="board">
+		Insert into SPRING.BOARD (BOARDNO,BOARDTITLE,BOARDWRITER,BOARDCONTENT,BOARDDATE,BOARDREADCOUNT) 
+		values (SEQ_BOARDNO.nextval,#{boardTitle},#{boardWriter},#{boardContent},to_date('18/05/16','RR/MM/DD'),0)
+	</update> -->
+
+	<insert id="insertBoard" parameterType="board">
+		INSERT INTO BOARD VALUES(SEQ_BOARDNO.NEXTVAL, #{boardTitle}, #{boardWriter}, #{boardContent}, default, default)
+		<selectKey keyProperty="boardNo" resultType="_int" order="AFTER">
+		 	SELECT SEQ_BOARDNO.CURRVAL FROM DUAL 
+		 </selectKey>
+	</insert>
+	
+	<insert id="insertAttachment" parameterType="attachment"> 
+		INSERT INTO ATTACHMENT VALUES(SEQ_ATTACHMENTNO.NEXTVAL,
+		#{boardNo}, #{originalFilename},#{renamedFilename},default,default,default) 
+	</insert>
+	
 </mapper>

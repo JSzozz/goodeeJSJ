@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
+import com.bs.spring.board.model.dto.Attachment;
 import com.bs.spring.board.model.dto.Board;
 import com.bs.spring.board.model.service.BoardService;
 import com.bs.spring.common.PageFactory;
@@ -80,6 +81,13 @@ public class BoardController {
 			e.printStackTrace();
 		}
 		
+		Attachment file=Attachment.builder()
+					.originalFilename(oriName)
+					.renamedFilename(rename)
+					.build();
+		b.setFile(file);
+		
+		service.insertBoard(b);
 		
 		return "redirect:/board/boardList.do";
 	}

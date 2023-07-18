@@ -7,14 +7,14 @@ import org.apache.ibatis.session.RowBounds;
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.stereotype.Repository;
 
+import com.bs.spring.board.model.dto.Attachment;
 import com.bs.spring.board.model.dto.Board;
 @Repository
 public class BoardDaoImpl implements BoardDao {
 
 	@Override
 	public int insertBoard(SqlSession session, Board b) {
-		// TODO Auto-generated method stub
-		return 0;
+		return session.insert("board.insertBoard", b);
 	}
 
 	@Override
@@ -36,6 +36,12 @@ public class BoardDaoImpl implements BoardDao {
 	public Board selectBoardByNo(SqlSession session, int no) {
 		// TODO Auto-generated method stub
 		return session.selectOne("board.selectBoardByNo",no);
+	}
+
+	@Override
+	public int insertAttachment(SqlSession session, Attachment a) {
+		// TODO Auto-generated method stub
+		return session.insert("board.insertAttachment", a);
 	}
 
 }

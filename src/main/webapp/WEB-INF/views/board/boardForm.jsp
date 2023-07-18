@@ -31,10 +31,11 @@
 	        </form>
 		</div>
 	<%-- </c:if> --%>
+</section>
+
 	
 <style>
 	div#board-container{width:400px; margin:0 auto; text-align:center;}
 	div#board-container input{margin-bottom:15px;}
 </style>
-</section>
 <jsp:include page="/WEB-INF/views/common/footer.jsp"/>

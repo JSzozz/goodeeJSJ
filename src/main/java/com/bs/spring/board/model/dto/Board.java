@@ -19,5 +19,5 @@ public class Board {
 	private String boardContent; 
 	private Date boardDate; 
 	private int boardReadCount; 
-
+	private Attachment file;
 }

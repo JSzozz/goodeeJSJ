@@ -9,7 +9,10 @@ import org.springframework.stereotype.Service;
 import com.bs.spring.board.model.dao.BoardDao;
 import com.bs.spring.board.model.dto.Board;
 
+import lombok.extern.slf4j.Slf4j;
+
 @Service
+@Slf4j
 public class BoardServiceImpl implements BoardService {
 	
 	private BoardDao dao;
@@ -23,7 +26,14 @@ public class BoardServiceImpl implements BoardService {
 
 	@Override
 	public int insertBoard(Board b) {
-		// TODO Auto-generated method stub
+		//2개의 insert문을 실행!
+		log.info("{}", b.getBoardNo());
+		int result=dao.insertBoard(session, b);
+		log.info("{}", b.getBoardNo());
+		if(result>0) {
+			b.getFile().setBoardNo(b.getBoardNo());
+			result=dao.insertAttachment(session, b.getFile());
+		}
 		return 0;
 	}
 
