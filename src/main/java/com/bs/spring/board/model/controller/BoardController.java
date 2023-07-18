@@ -122,7 +122,7 @@ public class BoardController {
 		return "board/boardView";
 	}
 	
-	@RequestMapping("/filedownload")
+	@RequestMapping("/filedownload") 
 	public void fileDown(String oriname, String rename, OutputStream out,
 				@RequestHeader(value="user-agent") String header,
 				HttpSession session, HttpServletResponse response) {
