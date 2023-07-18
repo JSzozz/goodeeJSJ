@@ -5,6 +5,7 @@ import java.util.Map;
 
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.bs.spring.board.model.dao.BoardDao;
 import com.bs.spring.board.model.dto.Attachment;
@@ -26,6 +27,7 @@ public class BoardServiceImpl implements BoardService {
 	}
 
 	@Override
+	@Transactional
 	public int insertBoard(Board b) {
 		//2개의 insert문을 실행!
 		log.info("{}", b.getBoardNo());
