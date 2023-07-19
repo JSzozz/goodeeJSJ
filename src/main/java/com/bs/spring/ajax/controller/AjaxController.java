@@ -1,23 +1,34 @@
 package com.bs.spring.ajax.controller;
 
 import java.io.IOException;
+import java.util.Map;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.bs.spring.board.model.dto.Board;
+import com.bs.spring.member.model.dto.Member;
+import com.bs.spring.member.service.MemberService;
 import com.fasterxml.jackson.databind.ObjectMapper;
+
+import lombok.extern.slf4j.Slf4j;
 
 @Controller
 @RequestMapping("/ajax")
+@Slf4j
 public class AjaxController {
 
+	@Autowired
+	private MemberService memberService;
 	
 	@GetMapping("/basicTest.do")
 	public void basic(HttpServletRequest req, HttpServletResponse res)
@@ -37,6 +48,13 @@ public class AjaxController {
 	@ResponseBody
 	public Board convertTest() {
 		return Board.builder().boardTitle("spring좋다!").boardContent("하하하하하").build();
+	}
+	
+	
+	@PostMapping("/idduplicate")
+	public @ResponseBody Member idduplicate(@RequestParam Map param) {
+		log.info("{}",param);
+		return memberService.selectMemberById(param);
 	}
 	
 }
