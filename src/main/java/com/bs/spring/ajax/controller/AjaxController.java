@@ -1,7 +1,6 @@
 package com.bs.spring.ajax.controller;
 
 import java.io.IOException;
-import java.util.Map;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
@@ -10,6 +9,7 @@ import javax.servlet.http.HttpServletResponse;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.bs.spring.board.model.dto.Board;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -29,6 +29,14 @@ public class AjaxController {
 		res.setContentType("application/json;charset=utf-8");
 		res.getWriter().write(mapper.writeValueAsString(b));
 		
+	}
+
+	//리턴값에 반환할 객체를 선언
+	//@ResponseBody -> json으로 반환할 수 있게 처리
+	@GetMapping("/converter")
+	@ResponseBody
+	public Board convertTest() {
+		return Board.builder().boardTitle("spring좋다!").boardContent("하하하하하").build();
 	}
 	
 }
