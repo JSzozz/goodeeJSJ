@@ -12,6 +12,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -61,12 +62,20 @@ public class AjaxController {
 	@GetMapping("/basic2")
 	public String basic2() {
 		return "demo/demo";
-	}
+	} 
 	
 	@GetMapping("/memberAll.do")
 	@ResponseBody//v
 	public List<Member> selectMemberAll(){
 		return memberService.selectMemberAll();
+	}
+	
+	@PostMapping("/insertData.do")
+	@ResponseBody
+	public Member inserData(@RequestBody Member m) {
+		//@RequestBody가 문자열로 넘어온 정보를 알아서 파싱해서 데이터를 매칭시켜줌
+		log.info("{}",m);
+		return m;
 	}
 }
 
