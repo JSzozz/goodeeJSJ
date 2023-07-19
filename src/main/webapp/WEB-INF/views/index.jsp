@@ -9,6 +9,7 @@
 	<h2>Hello Spring</h2>
 	<h3>ajax통신하기</h3>
 	<h4><button class="btn btn-outline-primary" onclick="basicAjax();">기본ajax처리</button></h4>
+	<h4><button class="btn btn-outline-success" onclick="convertAjax();">json받기</button></h4>
 	<div id="ajaxContainer"></div>
 	
 	<script>
@@ -19,6 +20,11 @@
 					$("#ajaxContainer").html("<h2>"+data+"</h2>");
 				});
 			}
+		const convertAjax=()=>{
+			$.get("${pageContext.request.contextPath}/ajax/converter",data=>{
+				console.log(data);
+			});
+		}
 	</script>
 	
 </section>
