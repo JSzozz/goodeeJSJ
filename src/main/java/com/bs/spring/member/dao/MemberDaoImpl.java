@@ -24,6 +24,12 @@ public class MemberDaoImpl implements MemberDao{
 		return session.selectOne("member.selectMemberById",param);
 	}
 
+	@Override
+	public List<Member> selectMemberAll(SqlSessionTemplate session) {
+		// TODO Auto-generated method stub
+		return session.selectList("member.selectMemberAll");
+	}
+
 
 	
 }

@@ -12,5 +12,5 @@ public interface MemberService {
 
 	Member selectMemberById(Map param);
 	
-
+	List<Member> selectMemberAll();
 }

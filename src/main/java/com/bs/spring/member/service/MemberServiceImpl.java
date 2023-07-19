@@ -31,6 +31,12 @@ public class MemberServiceImpl implements MemberService {
 		return dao.selectMemberById(session, param);
 	}
 
+	@Override
+	public List<Member> selectMemberAll() {
+		// TODO Auto-generated method stub
+		return dao.selectMemberAll(session);
+	}
+
 
 	
 }

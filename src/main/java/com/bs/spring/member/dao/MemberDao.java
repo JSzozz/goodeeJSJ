@@ -14,7 +14,7 @@ public interface MemberDao {
 
 	Member selectMemberById(SqlSessionTemplate session, Map param);
 
-
+	List<Member> selectMemberAll(SqlSessionTemplate session);
 	
 	
 }

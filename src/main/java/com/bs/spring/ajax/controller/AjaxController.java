@@ -1,6 +1,7 @@
 package com.bs.spring.ajax.controller;
 
 import java.io.IOException;
+import java.util.List;
 import java.util.Map;
 
 import javax.servlet.ServletException;
@@ -57,6 +58,16 @@ public class AjaxController {
 		return memberService.selectMemberById(param);
 	}
 	
+	@GetMapping("/basic2")
+	public String basic2() {
+		return "demo/demo";
+	}
+	
+	@GetMapping("/memberAll.do")
+	@ResponseBody//v
+	public List<Member> selectMemberAll(){
+		return memberService.selectMemberAll();
+	}
 }
 
 
