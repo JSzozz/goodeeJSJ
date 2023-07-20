@@ -37,7 +37,9 @@
 		//fetch("URL주소",{요청에 대한 옵션})
 		//	.then(response=>response.json())//응답내용파싱,,에러처리
 		//	.then(data=>{처리로직})//success함수
-		fetch("${pageContext.request.contextPath}/ajax/memberAll.do",{
+		//	.catch(e=>{})//예외처리2
+		
+		/* fetch("${pageContext.request.contextPath}/ajax/memberAll.do",{
 			method:"get",
 			//headers:{}
 			//body:JSON.stringify(객체)
@@ -51,12 +53,27 @@
 			}
 		).catch(e=>{
 			alert(e);
+		}); */
+		
+		fetch("${pageContext.request.contextPath}/ajax/insertData.do",{
+			method:"post",
+			headers:{
+				"Content-type":"application/json"
+			},body:JSON.stringify(data)
+		}).then(response=>{
+				if(!response.ok) new Error("입력실패"); 
+				return response.json()//서버가 json으로 응답했을 때
+				//일반문자를 반환했을 때 response.text()
+			}
+		)
+		.then(data=>{
+			console.log(data);
+		}).catch(e=>{
+			
 		});
-		
-		
-		
 							
 	}
+		
 
 	const selectAll=()=>{
 		$.get("${pageContext.request.contextPath}/ajax/memberAll.do", data=>{

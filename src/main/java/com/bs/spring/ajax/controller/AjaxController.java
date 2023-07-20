@@ -68,7 +68,7 @@ public class AjaxController {
 	@GetMapping("/memberAll.do")
 	@ResponseBody//v
 	public List<Member> selectMemberAll(){
-		if(1==1)throw new AuthenticationException("권한에러");
+	//	if(1==1)throw new AuthenticationException("권한에러");
 		return memberService.selectMemberAll();
 	}
 	
