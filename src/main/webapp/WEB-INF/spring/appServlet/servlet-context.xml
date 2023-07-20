@@ -114,7 +114,7 @@
 	</beans:bean>
 	
 	<!-- 웹소켓 서버 설정하기 -->
-	<beans:bean id="chatting" class="con.bs.spring.common.ChattingServer"/>
+	<beans:bean id="chatting" class="com.bs.spring.common.websocket.ChattingServer"/>
 		
 	<websocket:handlers>
 		<websocket:mapping handler="chatting" path="/chatting"/>
