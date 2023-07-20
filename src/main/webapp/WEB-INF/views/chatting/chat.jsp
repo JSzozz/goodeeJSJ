@@ -25,7 +25,7 @@
 				<input class="form-control" type="text" id="msg">
 			</div>
 			<div class="col-xm-2">
-				<button class="btn btn-outline-danger">전송</button>
+				<button class="btn btn-outline-danger" id="send">전송</button>
 			</div>
 		</div>
 	</div>
@@ -35,11 +35,15 @@
 			server.send(JSON.stringify(new Message("open",'${loginMember.userId}')));
 		}
 		server.onmessage=data=>{
-			
+			console.log(data);
 		}
 		server.onclose=data=>{
 			
 		}
+		$("#send").click(e=>{
+			const msg=$("#msg").val();
+			server.send(JSON.stringify(new Message("msg","${loginMember.userId}","",msg,"")));
+		});
 		class Message{
 			constructor(type="",sender="",reciever="",msg="",room=""){
 				this.type=type;
