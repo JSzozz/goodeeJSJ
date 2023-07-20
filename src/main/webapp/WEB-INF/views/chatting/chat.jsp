@@ -57,7 +57,9 @@
 			const msg=$("#msg").val();
 			server.send(JSON.stringify(new Message("msg",me,"",msg,"")));
 		});
-		
+		function systemMessage(msg){
+			console.log(msg);
+		}
 		function printMessage(msg){
 			const msgContainer=$("<div>");
 			const content=$("<h4>").text(msg.sender+" : "+msg.msg).css("text-align",msg.sender==me?"right":"left");

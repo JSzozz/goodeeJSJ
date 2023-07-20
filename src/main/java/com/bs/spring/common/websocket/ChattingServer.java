@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Set;
+import java.util.stream.Collectors;
 
 import org.springframework.web.socket.CloseStatus;
 import org.springframework.web.socket.TextMessage;
@@ -51,6 +52,25 @@ public class ChattingServer extends TextWebSocketHandler{
 	private void addClient(WebSocketSession session,String sender) {
 		clients.put(sender, session);
 		log.info("현재접속자 : "+clients.size());
+		String attence=clients.keySet().stream().collect(Collectors.joining(","));
+		systemMessage(attence);
+
+	}
+	
+	
+	private void systemMessage(String msg) {
+		try {
+			Set<Map.Entry<String,WebSocketSession>> clients=this.clients.entrySet();
+			for(Map.Entry<String,WebSocketSession> client:clients) {
+				client.getValue().sendMessage(
+						new TextMessage(mapper.writeValueAsString(
+								ChattingMessage.builder().type("system").msg(msg).build()
+								))
+						);
+			}
+		}catch(IOException e) {
+			e.printStackTrace();
+		}
 	}
 	
 	private void sendMessage(ChattingMessage msg) {
