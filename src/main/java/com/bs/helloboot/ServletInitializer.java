@@ -1,4 +1,4 @@
-package com.bs.boot.first;
+package com.bs.helloboot;
 
 import org.springframework.boot.builder.SpringApplicationBuilder;
 import org.springframework.boot.web.servlet.support.SpringBootServletInitializer;
