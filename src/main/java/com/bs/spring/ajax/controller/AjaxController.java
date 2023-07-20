@@ -79,6 +79,17 @@ public class AjaxController {
 		log.info("{}",m);
 		return m;
 	}
+	
+	// REST API, RESTFul 예) _ RestMemberController.java에서 이용
+	// GET localhost:9090/spring/member -> 전체회원조회
+	// GET localhost:9090/spring/member/{id}1||admin -> 회원 1명 조회
+	// POST localhost:9090/spring/member -> 회원추가
+	// PUT localhost:9090/spring/member -> 회원수정
+	// DELETE localhost:9090/spring/member -> 회원삭제
+	
+	
+	
+	
 }
 
 
