@@ -41,6 +41,9 @@ public class ChattingServer extends TextWebSocketHandler{
 		log.info("{}",message);
 		log.info(message.getPayload());//클라이언트가 보낸 데이터
 		ChattingMessage msg=mapper.readValue(message.getPayload(),ChattingMessage.class);
+		
+		session.getAttributes().put("msg", msg);
+		
 		System.out.println(msg);
 		switch(msg.getType()) {
 			case "open" : addClient(session,msg.getSender());break;
