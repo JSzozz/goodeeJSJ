@@ -10,4 +10,4 @@ public class FirstbootApplication {
 		SpringApplication.run(FirstbootApplication.class, args);
 	}
 
-}
+} 
