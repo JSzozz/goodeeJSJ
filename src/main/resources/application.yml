@@ -1,0 +1,21 @@
+#yml '(개행)띄어쓰기 :'을 기준으로 계층을 구분
+#(yml 방식)
+#예) server: 
+#     prot:
+#(propertie방식) 
+#예)
+#   server.port
+server:
+  port: 9090
+  
+spring:
+  datasource:
+    driver-class-name: oracle.jdbc.driver.OracleDriver
+    url: jdbc:oracle:thin:@localhost:1521:xe
+    username: spring 
+    password: spring
+  
+  mvc:
+    view:
+      prefix: /WEB-INF/views/
+      suffix: .jsp
