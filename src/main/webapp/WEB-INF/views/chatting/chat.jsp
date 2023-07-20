@@ -4,13 +4,16 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>채팅페이지</title> 
+<title>채팅페이지</title>
 <!-- Latest compiled and minified CSS -->
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css">
+
 <!-- jQuery library -->
 <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.slim.min.js"></script>
+
 <!-- Popper JS -->
 <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+
 <!-- Latest compiled JavaScript -->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"></script>
 
@@ -31,19 +34,36 @@
 	</div>
 	<script>
 		const server=new WebSocket("ws://localhost:8080/spring/chatting");
+		const me='${loginMember.userId}';
+		
 		server.onopen=data=>{
-			server.send(JSON.stringify(new Message("open",'${loginMember.userId}')));
+			server.send(JSON.stringify(new Message("open",me)));
 		}
 		server.onmessage=data=>{
+			const msg=JSON.parse(data.data);
+			console.log("msg:");
+			console.log(msg);
+			console.log("data:");
 			console.log(data);
+			switch(msg.type){
+				case "msg" : printMessage(msg);break;
+				case "system" : systemMessage(msg.msg);break;
+			}
 		}
 		server.onclose=data=>{
 			
 		}
 		$("#send").click(e=>{
 			const msg=$("#msg").val();
-			server.send(JSON.stringify(new Message("msg","${loginMember.userId}","",msg,"")));
+			server.send(JSON.stringify(new Message("msg",me,"",msg,"")));
 		});
+		
+		function printMessage(msg){
+			const msgContainer=$("<div>");
+			const content=$("<h4>").text(msg.sender+" : "+msg.msg).css("text-align",msg.sender==me?"right":"left");
+			msgContainer.append(content);
+			$("#chattingcontainer").append(msgContainer);
+		}
 		class Message{
 			constructor(type="",sender="",reciever="",msg="",room=""){
 				this.type=type;
@@ -53,6 +73,7 @@
 				this.room=room;
 			}
 		}
+		
 	</script>
 </body>
 </html>
