@@ -23,6 +23,7 @@
 	<div class="container-fluid">
 		<h2>스프링 채팅하자!</h2>
 		<div id="chattingcontainer"></div>
+		<div id="accessMember"></div>
 		<div class="row">
 			<div class="col-xm-10">
 				<input class="form-control" type="text" id="msg">
@@ -58,7 +59,11 @@
 			server.send(JSON.stringify(new Message("msg",me,"",msg,"")));
 		});
 		function systemMessage(msg){
-			console.log(msg);
+			$("#accessMember").html("");
+			msg.split(",").forEach(e=>{
+				const m=$("<h5>").text(e);
+				$("#accessMember").append(m);
+			})
 		}
 		function printMessage(msg){
 			const msgContainer=$("<div>");
