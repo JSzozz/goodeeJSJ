@@ -1,4 +1,4 @@
-package com.bs.boot.first;
+package com.bs.boot.firstboot;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
