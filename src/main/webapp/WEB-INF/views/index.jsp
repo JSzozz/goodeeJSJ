@@ -23,15 +23,39 @@
 				data=>{
 					console.log(data);
 				}); */
-		$.ajax({
+		/* $.ajax({
 			url:"${pageContext.request.contextPath}/ajax/insertData.do",
 			type:"post",
 			data:JSON.stringify(data),
-			contentType:"application/json;charset-utf-8",
+			contentType:"application/json;charset=utf-8",
 			success:data=>{
 				console.log(data);
 			}
+		});			 */		
+		
+		//fetch함수를 제공함. -> 다른라이브러리가 필요없다
+		//fetch("URL주소",{요청에 대한 옵션})
+		//	.then(response=>response.json())//응답내용파싱,,에러처리
+		//	.then(data=>{처리로직})//success함수
+		fetch("${pageContext.request.contextPath}/ajax/memberAll.do",{
+			method:"get",
+			//headers:{}
+			//body:JSON.stringify(객체)
+		}).then(response=>{
+					console.log(response);
+					if(!response.ok) throw new Error("요청실패!"); 
+					return response.json()
+				}
+		).then(data=>{
+			console.log(data)
+			}
+		).catch(e=>{
+			alert(e);
 		});
+		
+		
+		
+							
 	}
 
 	const selectAll=()=>{

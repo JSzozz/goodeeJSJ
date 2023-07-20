@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.bs.spring.board.model.dto.Board;
+import com.bs.spring.common.exception.AuthenticationException;
 import com.bs.spring.member.model.dto.Member;
 import com.bs.spring.member.service.MemberService;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -67,6 +68,7 @@ public class AjaxController {
 	@GetMapping("/memberAll.do")
 	@ResponseBody//v
 	public List<Member> selectMemberAll(){
+		if(1==1)throw new AuthenticationException("권한에러");
 		return memberService.selectMemberAll();
 	}
 	
