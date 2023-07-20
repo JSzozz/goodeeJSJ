@@ -11,7 +11,7 @@ import org.springframework.web.socket.handler.TextWebSocketHandler;
 import lombok.extern.slf4j.Slf4j;
 
 
-@Slf4j
+@Slf4j 
 public class ChattingServer extends TextWebSocketHandler{
 	//key userId, session은 전달한 값을 저장
 	private Map<String, WebSocketSession> clients=new HashMap();
