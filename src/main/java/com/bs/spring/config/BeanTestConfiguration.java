@@ -6,13 +6,13 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.FilterType;
-import org.springframework.context.annotation.Import;
 import org.springframework.core.annotation.Order;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 
 import com.bs.spring.beantest.Animal;
 import com.bs.spring.beantest.Department;
 import com.bs.spring.beantest.Employee;
+import com.fasterxml.jackson.databind.ObjectMapper;
 
 //클래식 방식으로 bean등록해서 사용하기
 //pojo클래스를 configuraion으로 사용할 수 있음
@@ -77,5 +77,8 @@ public class BeanTestConfiguration {
 //	public Gson gson() {
 //		return new Gson();
 //	}
-	
+	@Bean
+	public ObjectMapper objectMapper() { 
+		return new ObjectMapper();
+	}
 }
