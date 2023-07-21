@@ -17,10 +17,10 @@ public class MemberController {
 		this.service=service;
 	}
 	
-	@GetMapping("/")
-	public String index() {
-		return "index";
-	}
+//	@GetMapping("/")
+//	public String index() {
+//		return "index";
+//	}
 	
 	@GetMapping("/memberAll")
 	public String selectMemberAll(Model m) {
