@@ -38,3 +38,10 @@ logging:
   level:
 #    root:
     '[com.bs.helloboot]': debug  
+    
+#
+linux:
+  url: http://14.36.141.71
+  port: 9994
+  baseDir: /home/bsyoo
+      
