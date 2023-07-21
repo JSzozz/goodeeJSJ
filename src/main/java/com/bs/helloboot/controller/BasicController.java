@@ -12,10 +12,14 @@ public class BasicController {
 
 	
 	@PostMapping("/fileUpload")
-	public String fileUpload(MultipartFile upFile) {
-		log.debug(upFile.getOriginalFilename());
-		log.debug("{}",upFile.getSize());
+	public String fileUpload(MultipartFile[] upFile) {
+//		log.debug(upFile.getOriginalFilename());
+//		log.debug("{}",upFile.getSize());
 		
+		for(MultipartFile f : upFile) {
+			log.debug(f.getOriginalFilename());
+			log.debug("{}",f.getSize());
+		}
 		//upFile.transferTo(new File(path+fileName))
 		
 		return "redirect:/";

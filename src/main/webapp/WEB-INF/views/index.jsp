@@ -12,6 +12,8 @@
 	<form action="${pageContext.request.contextPath }/fileUpload"
 	method="post" enctype="multipart/form-data">
 		<input type="file" name="upFile">
+		<input type="file" name="upFile">
+		<input type="file" name="upFile">
 		<input type="submit" Value="파일저장">
 	</form>
 </body>
