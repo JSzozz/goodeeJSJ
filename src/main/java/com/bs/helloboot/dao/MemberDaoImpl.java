@@ -6,7 +6,6 @@ import org.apache.ibatis.session.SqlSession;
 import org.springframework.stereotype.Repository;
 
 import com.bs.helloboot.dto.MemberDto;
-
 @Repository
 public class MemberDaoImpl implements MemberDao {
 
@@ -19,7 +18,7 @@ public class MemberDaoImpl implements MemberDao {
 	@Override
 	public int insertMember(SqlSession session, MemberDto m) {
 		// TODO Auto-generated method stub
-		return session.selectOne("member.insertMember", m);
+		return session.insert("member.insertMember",m);
 	}
 
 }
