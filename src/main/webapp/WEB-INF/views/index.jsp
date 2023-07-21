@@ -16,5 +16,11 @@
 		<input type="file" name="upFile">
 		<input type="submit" Value="파일저장">
 	</form>
+	
+	<form action="${pageContext.request.contextPath }/datatest" method="post">
+		<input type="text" name="data">
+		<input type="submit" value="전송">
+	</form>
+	
 </body>
 </html>

@@ -42,7 +42,11 @@ public class BasicController {
 		return "redirect:/";
 	}
 	
-	
+	@PostMapping("/datatest")
+	public String datatest(String data) {
+		log.debug(data);
+		return "redirect:/";
+	}
 	
 	
 	
