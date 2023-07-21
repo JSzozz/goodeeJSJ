@@ -1,6 +1,7 @@
 package com.bs.helloboot.config;
 
 import org.springframework.context.annotation.Configuration;
+import org.springframework.web.servlet.config.annotation.CorsRegistry;
 import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
 import org.springframework.web.servlet.config.annotation.ViewControllerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
@@ -25,11 +26,13 @@ public class MyWebMvcConfigration implements WebMvcConfigurer{
 	public void addInterceptors(InterceptorRegistry registry) {
 		registry.addInterceptor(new LoggerInterceptor()).addPathPatterns("/member/*");
 	}
-	
 
-	
-	
-	
 	//cors에 대한 허용설정 : 기원이 달랐을 경우 처리하는 담당(cross origin)
 	//
+	@Override
+	public void addCorsMappings(CorsRegistry registry) {
+		registry.addMapping("/**").allowedOrigins("http://localhost:3000");
+	}
+	
+	
 }

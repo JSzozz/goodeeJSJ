@@ -2,6 +2,7 @@ package com.bs.helloboot.controller;
 
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.multipart.MultipartFile;
@@ -10,6 +11,7 @@ import lombok.extern.slf4j.Slf4j;
 
 @Controller
 @Slf4j
+@CrossOrigin(origins = "http://localhost:8889")
 public class BasicController {
 
 	@Value("${linux.url}")
