@@ -8,5 +8,6 @@
 </head>
 <body>
 	<h2>나의 첫 boot 화면</h2>
+	<h3><a href="${pageContext.request.contextPath }/member/memberAll">전체회원조회</a></h3>
 </body>
 </html>
