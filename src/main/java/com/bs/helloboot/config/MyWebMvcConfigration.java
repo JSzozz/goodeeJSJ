@@ -34,6 +34,7 @@ public class MyWebMvcConfigration implements WebMvcConfigurer, WebSocketConfigur
 	public void addViewControllers(ViewControllerRegistry registry) {
 		registry.addViewController("/").setViewName("index");
 		registry.addViewController("/test").setViewName("test");
+		registry.addViewController("/chattingpage").setViewName("chattingpage");
 	}
 
 	//Interceptor 설정
@@ -48,7 +49,4 @@ public class MyWebMvcConfigration implements WebMvcConfigurer, WebSocketConfigur
 	public void addCorsMappings(CorsRegistry registry) {
 		registry.addMapping("/**").allowedOrigins("http://localhost:3000");
 	}
-
-
-	
 }

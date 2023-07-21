@@ -27,5 +27,13 @@
 		<input type="text" name="userId">
 		<input type="submit" value="아이디조회">
 	</form>
+	
+	<button onclick="openchatting();">채팅하기</button>
+	
+	<script>
+		function openchatting(){
+			open("/chattingpage","_blank","width=400,height=500");
+		}
+	</script>
 </body>
 </html>
