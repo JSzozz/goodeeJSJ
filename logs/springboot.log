@@ -1532,3 +1532,720 @@ java.lang.IllegalArgumentException: Mapped Statements collection does not contai
 2023-07-21 12:15:09.316  INFO 28460 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 9090 (http) with context path ''
 2023-07-21 12:15:09.320  INFO 28460 --- [restartedMain] com.bs.helloboot.HelloBootApplication    : Started HelloBootApplication in 0.605 seconds (JVM running for 98.73)
 2023-07-21 12:15:09.321  INFO 28460 --- [restartedMain] .ConditionEvaluationDeltaLoggingListener : Condition evaluation unchanged
+2023-07-21 12:18:34.711  INFO 28460 --- [File Watcher] rtingClassPathChangeChangedEventListener : Restarting due to 1 class path change (1 addition, 0 deletions, 0 modifications)
+2023-07-21 12:18:34.724  INFO 28460 --- [Thread-14] o.apache.catalina.core.StandardService   : Stopping service [Tomcat]
+2023-07-21 12:18:34.730  INFO 28460 --- [Thread-14] com.zaxxer.hikari.HikariDataSource       : HikariPool-3 - Shutdown initiated...
+2023-07-21 12:18:34.739  INFO 28460 --- [Thread-14] com.zaxxer.hikari.HikariDataSource       : HikariPool-3 - Shutdown completed.
+2023-07-21 12:18:34.807  INFO 28460 --- [restartedMain] com.bs.helloboot.HelloBootApplication    : Starting HelloBootApplication using Java 17.0.5 on DESKTOP-OSPAM2G with PID 28460 (C:\servlet\springwork\helloBoot\target\classes started by JeongSangjun in C:\servlet\springwork\helloBoot)
+2023-07-21 12:18:34.807 DEBUG 28460 --- [restartedMain] com.bs.helloboot.HelloBootApplication    : Running with Spring Boot v2.7.14-SNAPSHOT, Spring v5.3.29
+2023-07-21 12:18:34.807  INFO 28460 --- [restartedMain] com.bs.helloboot.HelloBootApplication    : No active profile set, falling back to 1 default profile: "default"
+2023-07-21 12:18:34.925  INFO 28460 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JDBC repositories in DEFAULT mode.
+2023-07-21 12:18:34.929  INFO 28460 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 4 ms. Found 0 JDBC repository interfaces.
+2023-07-21 12:18:34.945  WARN 28460 --- [restartedMain] o.m.s.mapper.ClassPathMapperScanner      : No MyBatis mapper was found in '[com.bs.helloboot]' package. Please check your configuration.
+2023-07-21 12:18:34.993  INFO 28460 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 9090 (http)
+2023-07-21 12:18:34.994  INFO 28460 --- [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2023-07-21 12:18:34.994  INFO 28460 --- [restartedMain] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.78]
+2023-07-21 12:18:35.052  INFO 28460 --- [restartedMain] org.apache.jasper.servlet.TldScanner     : At least one JAR was scanned for TLDs yet contained no TLDs. Enable debug logging for this logger for a complete list of JARs that were scanned but no TLDs were found in them. Skipping unneeded JARs during scanning can improve startup time and JSP compilation time.
+2023-07-21 12:18:35.054  INFO 28460 --- [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2023-07-21 12:18:35.054  INFO 28460 --- [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 245 ms
+2023-07-21 12:18:35.175  INFO 28460 --- [restartedMain] o.s.b.a.w.s.WelcomePageHandlerMapping    : Adding welcome page template: index
+2023-07-21 12:18:35.175 DEBUG 28460 --- [restartedMain] com.bs.helloboot.comm.aop.LoggerAop      : ===== aop before =====
+2023-07-21 12:18:35.176 DEBUG 28460 --- [restartedMain] com.bs.helloboot.comm.aop.LoggerAop      : com.bs.helloboot.config.MyWebMvcConfigration addInterceptors
+2023-07-21 12:18:35.176 DEBUG 28460 --- [restartedMain] com.bs.helloboot.comm.aop.LoggerAop      : ===== aop after =====
+2023-07-21 12:18:35.177 DEBUG 28460 --- [restartedMain] com.bs.helloboot.comm.aop.LoggerAop      : ===== aop before =====
+2023-07-21 12:18:35.177 DEBUG 28460 --- [restartedMain] com.bs.helloboot.comm.aop.LoggerAop      : com.bs.helloboot.config.MyWebMvcConfigration addCorsMappings
+2023-07-21 12:18:35.177 DEBUG 28460 --- [restartedMain] com.bs.helloboot.comm.aop.LoggerAop      : ===== aop after =====
+2023-07-21 12:18:35.192 DEBUG 28460 --- [restartedMain] com.bs.helloboot.comm.aop.LoggerAop      : ===== aop before =====
+2023-07-21 12:18:35.192 DEBUG 28460 --- [restartedMain] com.bs.helloboot.comm.aop.LoggerAop      : com.bs.helloboot.config.MyWebMvcConfigration addViewControllers
+2023-07-21 12:18:35.192 DEBUG 28460 --- [restartedMain] com.bs.helloboot.comm.aop.LoggerAop      : ===== aop after =====
+2023-07-21 12:18:35.238  INFO 28460 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-4 - Starting...
+2023-07-21 12:18:35.238  WARN 28460 --- [restartedMain] com.zaxxer.hikari.util.DriverDataSource  : Registered driver with driverClassName=oracle.jdbc.driver.OracleDriver was not found, trying direct instantiation.
+2023-07-21 12:18:35.326  INFO 28460 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-4 - Start completed.
+2023-07-21 12:18:35.349  INFO 28460 --- [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2023-07-21 12:18:35.362  INFO 28460 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 9090 (http) with context path ''
+2023-07-21 12:18:35.366  INFO 28460 --- [restartedMain] com.bs.helloboot.HelloBootApplication    : Started HelloBootApplication in 0.581 seconds (JVM running for 304.777)
+2023-07-21 12:18:35.368  INFO 28460 --- [restartedMain] .ConditionEvaluationDeltaLoggingListener : Condition evaluation unchanged
+2023-07-21 12:20:17.999  INFO 28460 --- [RMI TCP Connection(26)-127.0.0.1] inMXBeanRegistrar$SpringApplicationAdmin : Application shutdown requested.
+2023-07-21 12:20:18.011  INFO 28460 --- [RMI TCP Connection(26)-127.0.0.1] o.apache.catalina.core.StandardService   : Stopping service [Tomcat]
+2023-07-21 12:20:18.015  INFO 28460 --- [RMI TCP Connection(26)-127.0.0.1] com.zaxxer.hikari.HikariDataSource       : HikariPool-4 - Shutdown initiated...
+2023-07-21 12:20:18.024  INFO 28460 --- [RMI TCP Connection(26)-127.0.0.1] com.zaxxer.hikari.HikariDataSource       : HikariPool-4 - Shutdown completed.
+2023-07-21 12:20:20.617  INFO 41240 --- [restartedMain] com.bs.helloboot.HelloBootApplication    : Starting HelloBootApplication using Java 17.0.5 on DESKTOP-OSPAM2G with PID 41240 (C:\servlet\springwork\helloBoot\target\classes started by JeongSangjun in C:\servlet\springwork\helloBoot)
+2023-07-21 12:20:20.617 DEBUG 41240 --- [restartedMain] com.bs.helloboot.HelloBootApplication    : Running with Spring Boot v2.7.14-SNAPSHOT, Spring v5.3.29
+2023-07-21 12:20:20.618  INFO 41240 --- [restartedMain] com.bs.helloboot.HelloBootApplication    : No active profile set, falling back to 1 default profile: "default"
+2023-07-21 12:20:20.679  INFO 41240 --- [restartedMain] o.s.b.devtools.restart.ChangeableUrls    : The Class-Path manifest attribute in C:\Users\Jeong Sangjun\.m2\repository\com\oracle\database\jdbc\ojdbc8\21.5.0.0\ojdbc8-21.5.0.0.jar referenced one or more files that do not exist: file:/C:/Users/Jeong%20Sangjun/.m2/repository/com/oracle/database/jdbc/ojdbc8/21.5.0.0/oraclepki.jar
+2023-07-21 12:20:20.679  INFO 41240 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2023-07-21 12:20:20.679  INFO 41240 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2023-07-21 12:20:21.218  INFO 41240 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JDBC repositories in DEFAULT mode.
+2023-07-21 12:20:21.230  INFO 41240 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 8 ms. Found 0 JDBC repository interfaces.
+2023-07-21 12:20:21.959  INFO 41240 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 9090 (http)
+2023-07-21 12:20:21.966  INFO 41240 --- [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2023-07-21 12:20:21.967  INFO 41240 --- [restartedMain] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.78]
+2023-07-21 12:20:22.157  INFO 41240 --- [restartedMain] org.apache.jasper.servlet.TldScanner     : At least one JAR was scanned for TLDs yet contained no TLDs. Enable debug logging for this logger for a complete list of JARs that were scanned but no TLDs were found in them. Skipping unneeded JARs during scanning can improve startup time and JSP compilation time.
+2023-07-21 12:20:22.168  INFO 41240 --- [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2023-07-21 12:20:22.168  INFO 41240 --- [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1489 ms
+2023-07-21 12:20:22.686  INFO 41240 --- [restartedMain] o.s.b.a.w.s.WelcomePageHandlerMapping    : Adding welcome page template: index
+2023-07-21 12:20:22.689 DEBUG 41240 --- [restartedMain] com.bs.helloboot.comm.aop.LoggerAop      : ===== aop before =====
+2023-07-21 12:20:22.689 DEBUG 41240 --- [restartedMain] com.bs.helloboot.comm.aop.LoggerAop      : com.bs.helloboot.config.MyWebMvcConfigration addInterceptors
+2023-07-21 12:20:22.690 DEBUG 41240 --- [restartedMain] com.bs.helloboot.comm.aop.LoggerAop      : ===== aop after =====
+2023-07-21 12:20:22.703 DEBUG 41240 --- [restartedMain] com.bs.helloboot.comm.aop.LoggerAop      : ===== aop before =====
+2023-07-21 12:20:22.703 DEBUG 41240 --- [restartedMain] com.bs.helloboot.comm.aop.LoggerAop      : com.bs.helloboot.config.MyWebMvcConfigration addCorsMappings
+2023-07-21 12:20:22.703 DEBUG 41240 --- [restartedMain] com.bs.helloboot.comm.aop.LoggerAop      : ===== aop after =====
+2023-07-21 12:20:22.748 DEBUG 41240 --- [restartedMain] com.bs.helloboot.comm.aop.LoggerAop      : ===== aop before =====
+2023-07-21 12:20:22.749 DEBUG 41240 --- [restartedMain] com.bs.helloboot.comm.aop.LoggerAop      : com.bs.helloboot.config.MyWebMvcConfigration addViewControllers
+2023-07-21 12:20:22.749 DEBUG 41240 --- [restartedMain] com.bs.helloboot.comm.aop.LoggerAop      : ===== aop after =====
+2023-07-21 12:20:22.873  INFO 41240 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2023-07-21 12:20:22.878  WARN 41240 --- [restartedMain] com.zaxxer.hikari.util.DriverDataSource  : Registered driver with driverClassName=oracle.jdbc.driver.OracleDriver was not found, trying direct instantiation.
+2023-07-21 12:20:23.126  INFO 41240 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2023-07-21 12:20:23.248  INFO 41240 --- [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2023-07-21 12:20:23.316  INFO 41240 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 9090 (http) with context path ''
+2023-07-21 12:20:23.328  INFO 41240 --- [restartedMain] com.bs.helloboot.HelloBootApplication    : Started HelloBootApplication in 3.158 seconds (JVM running for 3.86)
+2023-07-21 12:22:27.725  INFO 41240 --- [File Watcher] rtingClassPathChangeChangedEventListener : Restarting due to 1 class path change (0 additions, 0 deletions, 1 modification)
+2023-07-21 12:22:27.743  INFO 41240 --- [Thread-7] o.apache.catalina.core.StandardService   : Stopping service [Tomcat]
+2023-07-21 12:22:27.752  INFO 41240 --- [Thread-7] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2023-07-21 12:22:27.762  INFO 41240 --- [Thread-7] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2023-07-21 12:22:27.826  INFO 41240 --- [restartedMain] com.bs.helloboot.HelloBootApplication    : Starting HelloBootApplication using Java 17.0.5 on DESKTOP-OSPAM2G with PID 41240 (C:\servlet\springwork\helloBoot\target\classes started by JeongSangjun in C:\servlet\springwork\helloBoot)
+2023-07-21 12:22:27.826 DEBUG 41240 --- [restartedMain] com.bs.helloboot.HelloBootApplication    : Running with Spring Boot v2.7.14-SNAPSHOT, Spring v5.3.29
+2023-07-21 12:22:27.826  INFO 41240 --- [restartedMain] com.bs.helloboot.HelloBootApplication    : No active profile set, falling back to 1 default profile: "default"
+2023-07-21 12:22:27.945  INFO 41240 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JDBC repositories in DEFAULT mode.
+2023-07-21 12:22:27.950  INFO 41240 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 4 ms. Found 0 JDBC repository interfaces.
+2023-07-21 12:22:28.024  INFO 41240 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 9090 (http)
+2023-07-21 12:22:28.025  INFO 41240 --- [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2023-07-21 12:22:28.025  INFO 41240 --- [restartedMain] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.78]
+2023-07-21 12:22:28.100  INFO 41240 --- [restartedMain] org.apache.jasper.servlet.TldScanner     : At least one JAR was scanned for TLDs yet contained no TLDs. Enable debug logging for this logger for a complete list of JARs that were scanned but no TLDs were found in them. Skipping unneeded JARs during scanning can improve startup time and JSP compilation time.
+2023-07-21 12:22:28.103  INFO 41240 --- [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2023-07-21 12:22:28.103  INFO 41240 --- [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 275 ms
+2023-07-21 12:22:28.265  INFO 41240 --- [restartedMain] o.s.b.a.w.s.WelcomePageHandlerMapping    : Adding welcome page template: index
+2023-07-21 12:22:28.266 DEBUG 41240 --- [restartedMain] com.bs.helloboot.comm.aop.LoggerAop      : ===== aop before =====
+2023-07-21 12:22:28.266 DEBUG 41240 --- [restartedMain] com.bs.helloboot.comm.aop.LoggerAop      : com.bs.helloboot.config.MyWebMvcConfigration addInterceptors
+2023-07-21 12:22:28.266 DEBUG 41240 --- [restartedMain] com.bs.helloboot.comm.aop.LoggerAop      : ===== aop after =====
+2023-07-21 12:22:28.268 DEBUG 41240 --- [restartedMain] com.bs.helloboot.comm.aop.LoggerAop      : ===== aop before =====
+2023-07-21 12:22:28.268 DEBUG 41240 --- [restartedMain] com.bs.helloboot.comm.aop.LoggerAop      : com.bs.helloboot.config.MyWebMvcConfigration addCorsMappings
+2023-07-21 12:22:28.268 DEBUG 41240 --- [restartedMain] com.bs.helloboot.comm.aop.LoggerAop      : ===== aop after =====
+2023-07-21 12:22:28.287 DEBUG 41240 --- [restartedMain] com.bs.helloboot.comm.aop.LoggerAop      : ===== aop before =====
+2023-07-21 12:22:28.288 DEBUG 41240 --- [restartedMain] com.bs.helloboot.comm.aop.LoggerAop      : com.bs.helloboot.config.MyWebMvcConfigration addViewControllers
+2023-07-21 12:22:28.288 DEBUG 41240 --- [restartedMain] com.bs.helloboot.comm.aop.LoggerAop      : ===== aop after =====
+2023-07-21 12:22:28.342  INFO 41240 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-2 - Starting...
+2023-07-21 12:22:28.342  WARN 41240 --- [restartedMain] com.zaxxer.hikari.util.DriverDataSource  : Registered driver with driverClassName=oracle.jdbc.driver.OracleDriver was not found, trying direct instantiation.
+2023-07-21 12:22:28.385  INFO 41240 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-2 - Start completed.
+2023-07-21 12:22:28.413  INFO 41240 --- [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2023-07-21 12:22:28.430  INFO 41240 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 9090 (http) with context path ''
+2023-07-21 12:22:28.433  INFO 41240 --- [restartedMain] com.bs.helloboot.HelloBootApplication    : Started HelloBootApplication in 0.632 seconds (JVM running for 128.965)
+2023-07-21 12:22:28.438  INFO 41240 --- [restartedMain] .ConditionEvaluationDeltaLoggingListener : Condition evaluation unchanged
+2023-07-21 12:22:34.913  INFO 41240 --- [File Watcher] rtingClassPathChangeChangedEventListener : Restarting due to 1 class path change (0 additions, 0 deletions, 1 modification)
+2023-07-21 12:22:34.924  INFO 41240 --- [Thread-9] o.apache.catalina.core.StandardService   : Stopping service [Tomcat]
+2023-07-21 12:22:34.929  INFO 41240 --- [Thread-9] com.zaxxer.hikari.HikariDataSource       : HikariPool-2 - Shutdown initiated...
+2023-07-21 12:22:34.936  INFO 41240 --- [Thread-9] com.zaxxer.hikari.HikariDataSource       : HikariPool-2 - Shutdown completed.
+2023-07-21 12:22:35.002  INFO 41240 --- [restartedMain] com.bs.helloboot.HelloBootApplication    : Starting HelloBootApplication using Java 17.0.5 on DESKTOP-OSPAM2G with PID 41240 (C:\servlet\springwork\helloBoot\target\classes started by JeongSangjun in C:\servlet\springwork\helloBoot)
+2023-07-21 12:22:35.002 DEBUG 41240 --- [restartedMain] com.bs.helloboot.HelloBootApplication    : Running with Spring Boot v2.7.14-SNAPSHOT, Spring v5.3.29
+2023-07-21 12:22:35.002  INFO 41240 --- [restartedMain] com.bs.helloboot.HelloBootApplication    : No active profile set, falling back to 1 default profile: "default"
+2023-07-21 12:22:35.115  INFO 41240 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JDBC repositories in DEFAULT mode.
+2023-07-21 12:22:35.120  INFO 41240 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 4 ms. Found 0 JDBC repository interfaces.
+2023-07-21 12:22:35.189  INFO 41240 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 9090 (http)
+2023-07-21 12:22:35.190  INFO 41240 --- [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2023-07-21 12:22:35.190  INFO 41240 --- [restartedMain] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.78]
+2023-07-21 12:22:35.258  INFO 41240 --- [restartedMain] org.apache.jasper.servlet.TldScanner     : At least one JAR was scanned for TLDs yet contained no TLDs. Enable debug logging for this logger for a complete list of JARs that were scanned but no TLDs were found in them. Skipping unneeded JARs during scanning can improve startup time and JSP compilation time.
+2023-07-21 12:22:35.261  INFO 41240 --- [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2023-07-21 12:22:35.261  INFO 41240 --- [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 257 ms
+2023-07-21 12:22:35.390  INFO 41240 --- [restartedMain] o.s.b.a.w.s.WelcomePageHandlerMapping    : Adding welcome page template: index
+2023-07-21 12:22:35.390 DEBUG 41240 --- [restartedMain] com.bs.helloboot.comm.aop.LoggerAop      : ===== aop before =====
+2023-07-21 12:22:35.390 DEBUG 41240 --- [restartedMain] com.bs.helloboot.comm.aop.LoggerAop      : com.bs.helloboot.config.MyWebMvcConfigration addInterceptors
+2023-07-21 12:22:35.391 DEBUG 41240 --- [restartedMain] com.bs.helloboot.comm.aop.LoggerAop      : ===== aop after =====
+2023-07-21 12:22:35.392 DEBUG 41240 --- [restartedMain] com.bs.helloboot.comm.aop.LoggerAop      : ===== aop before =====
+2023-07-21 12:22:35.392 DEBUG 41240 --- [restartedMain] com.bs.helloboot.comm.aop.LoggerAop      : com.bs.helloboot.config.MyWebMvcConfigration addCorsMappings
+2023-07-21 12:22:35.392 DEBUG 41240 --- [restartedMain] com.bs.helloboot.comm.aop.LoggerAop      : ===== aop after =====
+2023-07-21 12:22:35.406 DEBUG 41240 --- [restartedMain] com.bs.helloboot.comm.aop.LoggerAop      : ===== aop before =====
+2023-07-21 12:22:35.406 DEBUG 41240 --- [restartedMain] com.bs.helloboot.comm.aop.LoggerAop      : com.bs.helloboot.config.MyWebMvcConfigration addViewControllers
+2023-07-21 12:22:35.406 DEBUG 41240 --- [restartedMain] com.bs.helloboot.comm.aop.LoggerAop      : ===== aop after =====
+2023-07-21 12:22:35.454  INFO 41240 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-3 - Starting...
+2023-07-21 12:22:35.455  WARN 41240 --- [restartedMain] com.zaxxer.hikari.util.DriverDataSource  : Registered driver with driverClassName=oracle.jdbc.driver.OracleDriver was not found, trying direct instantiation.
+2023-07-21 12:22:35.502  INFO 41240 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-3 - Start completed.
+2023-07-21 12:22:35.527  INFO 41240 --- [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2023-07-21 12:22:35.536  INFO 41240 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 9090 (http) with context path ''
+2023-07-21 12:22:35.543  INFO 41240 --- [restartedMain] com.bs.helloboot.HelloBootApplication    : Started HelloBootApplication in 0.561 seconds (JVM running for 136.074)
+2023-07-21 12:22:35.544  INFO 41240 --- [restartedMain] .ConditionEvaluationDeltaLoggingListener : Condition evaluation unchanged
+2023-07-21 12:23:22.726  INFO 41240 --- [File Watcher] rtingClassPathChangeChangedEventListener : Restarting due to 1 class path change (0 additions, 0 deletions, 1 modification)
+2023-07-21 12:23:22.737  INFO 41240 --- [Thread-14] o.apache.catalina.core.StandardService   : Stopping service [Tomcat]
+2023-07-21 12:23:22.742  INFO 41240 --- [Thread-14] com.zaxxer.hikari.HikariDataSource       : HikariPool-3 - Shutdown initiated...
+2023-07-21 12:23:22.750  INFO 41240 --- [Thread-14] com.zaxxer.hikari.HikariDataSource       : HikariPool-3 - Shutdown completed.
+2023-07-21 12:23:22.811  INFO 41240 --- [restartedMain] com.bs.helloboot.HelloBootApplication    : Starting HelloBootApplication using Java 17.0.5 on DESKTOP-OSPAM2G with PID 41240 (C:\servlet\springwork\helloBoot\target\classes started by JeongSangjun in C:\servlet\springwork\helloBoot)
+2023-07-21 12:23:22.811 DEBUG 41240 --- [restartedMain] com.bs.helloboot.HelloBootApplication    : Running with Spring Boot v2.7.14-SNAPSHOT, Spring v5.3.29
+2023-07-21 12:23:22.811  INFO 41240 --- [restartedMain] com.bs.helloboot.HelloBootApplication    : No active profile set, falling back to 1 default profile: "default"
+2023-07-21 12:23:22.914  INFO 41240 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JDBC repositories in DEFAULT mode.
+2023-07-21 12:23:22.919  INFO 41240 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 4 ms. Found 0 JDBC repository interfaces.
+2023-07-21 12:23:22.976  INFO 41240 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 9090 (http)
+2023-07-21 12:23:22.977  INFO 41240 --- [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2023-07-21 12:23:22.977  INFO 41240 --- [restartedMain] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.78]
+2023-07-21 12:23:23.042  INFO 41240 --- [restartedMain] org.apache.jasper.servlet.TldScanner     : At least one JAR was scanned for TLDs yet contained no TLDs. Enable debug logging for this logger for a complete list of JARs that were scanned but no TLDs were found in them. Skipping unneeded JARs during scanning can improve startup time and JSP compilation time.
+2023-07-21 12:23:23.044  INFO 41240 --- [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2023-07-21 12:23:23.044  INFO 41240 --- [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 232 ms
+2023-07-21 12:23:23.167  INFO 41240 --- [restartedMain] o.s.b.a.w.s.WelcomePageHandlerMapping    : Adding welcome page template: index
+2023-07-21 12:23:23.167 DEBUG 41240 --- [restartedMain] com.bs.helloboot.comm.aop.LoggerAop      : ===== aop before =====
+2023-07-21 12:23:23.167 DEBUG 41240 --- [restartedMain] com.bs.helloboot.comm.aop.LoggerAop      : com.bs.helloboot.config.MyWebMvcConfigration addInterceptors
+2023-07-21 12:23:23.167 DEBUG 41240 --- [restartedMain] com.bs.helloboot.comm.aop.LoggerAop      : ===== aop after =====
+2023-07-21 12:23:23.169 DEBUG 41240 --- [restartedMain] com.bs.helloboot.comm.aop.LoggerAop      : ===== aop before =====
+2023-07-21 12:23:23.170 DEBUG 41240 --- [restartedMain] com.bs.helloboot.comm.aop.LoggerAop      : com.bs.helloboot.config.MyWebMvcConfigration addCorsMappings
+2023-07-21 12:23:23.170 DEBUG 41240 --- [restartedMain] com.bs.helloboot.comm.aop.LoggerAop      : ===== aop after =====
+2023-07-21 12:23:23.183 DEBUG 41240 --- [restartedMain] com.bs.helloboot.comm.aop.LoggerAop      : ===== aop before =====
+2023-07-21 12:23:23.183 DEBUG 41240 --- [restartedMain] com.bs.helloboot.comm.aop.LoggerAop      : com.bs.helloboot.config.MyWebMvcConfigration addViewControllers
+2023-07-21 12:23:23.184 DEBUG 41240 --- [restartedMain] com.bs.helloboot.comm.aop.LoggerAop      : ===== aop after =====
+2023-07-21 12:23:23.226  INFO 41240 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-4 - Starting...
+2023-07-21 12:23:23.227  WARN 41240 --- [restartedMain] com.zaxxer.hikari.util.DriverDataSource  : Registered driver with driverClassName=oracle.jdbc.driver.OracleDriver was not found, trying direct instantiation.
+2023-07-21 12:23:23.274  INFO 41240 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-4 - Start completed.
+2023-07-21 12:23:23.300  INFO 41240 --- [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2023-07-21 12:23:23.313  INFO 41240 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 9090 (http) with context path ''
+2023-07-21 12:23:23.316  INFO 41240 --- [restartedMain] com.bs.helloboot.HelloBootApplication    : Started HelloBootApplication in 0.527 seconds (JVM running for 183.848)
+2023-07-21 12:23:23.317  INFO 41240 --- [restartedMain] .ConditionEvaluationDeltaLoggingListener : Condition evaluation unchanged
+2023-07-21 12:23:23.421  INFO 41240 --- [RMI TCP Connection(17)-127.0.0.1] inMXBeanRegistrar$SpringApplicationAdmin : Application shutdown requested.
+2023-07-21 12:23:23.433  INFO 41240 --- [RMI TCP Connection(17)-127.0.0.1] o.apache.catalina.core.StandardService   : Stopping service [Tomcat]
+2023-07-21 12:23:23.438  INFO 41240 --- [RMI TCP Connection(17)-127.0.0.1] com.zaxxer.hikari.HikariDataSource       : HikariPool-4 - Shutdown initiated...
+2023-07-21 12:23:23.478  INFO 41240 --- [RMI TCP Connection(17)-127.0.0.1] com.zaxxer.hikari.HikariDataSource       : HikariPool-4 - Shutdown completed.
+2023-07-21 12:23:25.674  INFO 4780 --- [restartedMain] com.bs.helloboot.HelloBootApplication    : Starting HelloBootApplication using Java 17.0.5 on DESKTOP-OSPAM2G with PID 4780 (C:\servlet\springwork\helloBoot\target\classes started by JeongSangjun in C:\servlet\springwork\helloBoot)
+2023-07-21 12:23:25.675 DEBUG 4780 --- [restartedMain] com.bs.helloboot.HelloBootApplication    : Running with Spring Boot v2.7.14-SNAPSHOT, Spring v5.3.29
+2023-07-21 12:23:25.676  INFO 4780 --- [restartedMain] com.bs.helloboot.HelloBootApplication    : No active profile set, falling back to 1 default profile: "default"
+2023-07-21 12:23:25.745  INFO 4780 --- [restartedMain] o.s.b.devtools.restart.ChangeableUrls    : The Class-Path manifest attribute in C:\Users\Jeong Sangjun\.m2\repository\com\oracle\database\jdbc\ojdbc8\21.5.0.0\ojdbc8-21.5.0.0.jar referenced one or more files that do not exist: file:/C:/Users/Jeong%20Sangjun/.m2/repository/com/oracle/database/jdbc/ojdbc8/21.5.0.0/oraclepki.jar
+2023-07-21 12:23:25.746  INFO 4780 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2023-07-21 12:23:25.746  INFO 4780 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2023-07-21 12:23:26.331  INFO 4780 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JDBC repositories in DEFAULT mode.
+2023-07-21 12:23:26.343  INFO 4780 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 8 ms. Found 0 JDBC repository interfaces.
+2023-07-21 12:23:27.037  INFO 4780 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 9090 (http)
+2023-07-21 12:23:27.046  INFO 4780 --- [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2023-07-21 12:23:27.046  INFO 4780 --- [restartedMain] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.78]
+2023-07-21 12:23:27.239  INFO 4780 --- [restartedMain] org.apache.jasper.servlet.TldScanner     : At least one JAR was scanned for TLDs yet contained no TLDs. Enable debug logging for this logger for a complete list of JARs that were scanned but no TLDs were found in them. Skipping unneeded JARs during scanning can improve startup time and JSP compilation time.
+2023-07-21 12:23:27.249  INFO 4780 --- [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2023-07-21 12:23:27.249  INFO 4780 --- [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1503 ms
+2023-07-21 12:23:27.775  INFO 4780 --- [restartedMain] o.s.b.a.w.s.WelcomePageHandlerMapping    : Adding welcome page template: index
+2023-07-21 12:23:27.778 DEBUG 4780 --- [restartedMain] com.bs.helloboot.comm.aop.LoggerAop      : ===== aop before =====
+2023-07-21 12:23:27.779 DEBUG 4780 --- [restartedMain] com.bs.helloboot.comm.aop.LoggerAop      : com.bs.helloboot.config.MyWebMvcConfigration addInterceptors
+2023-07-21 12:23:27.779 DEBUG 4780 --- [restartedMain] com.bs.helloboot.comm.aop.LoggerAop      : ===== aop after =====
+2023-07-21 12:23:27.789 DEBUG 4780 --- [restartedMain] com.bs.helloboot.comm.aop.LoggerAop      : ===== aop before =====
+2023-07-21 12:23:27.790 DEBUG 4780 --- [restartedMain] com.bs.helloboot.comm.aop.LoggerAop      : com.bs.helloboot.config.MyWebMvcConfigration addCorsMappings
+2023-07-21 12:23:27.790 DEBUG 4780 --- [restartedMain] com.bs.helloboot.comm.aop.LoggerAop      : ===== aop after =====
+2023-07-21 12:23:27.836 DEBUG 4780 --- [restartedMain] com.bs.helloboot.comm.aop.LoggerAop      : ===== aop before =====
+2023-07-21 12:23:27.836 DEBUG 4780 --- [restartedMain] com.bs.helloboot.comm.aop.LoggerAop      : com.bs.helloboot.config.MyWebMvcConfigration addViewControllers
+2023-07-21 12:23:27.837 DEBUG 4780 --- [restartedMain] com.bs.helloboot.comm.aop.LoggerAop      : ===== aop after =====
+2023-07-21 12:23:27.946  INFO 4780 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2023-07-21 12:23:27.951  WARN 4780 --- [restartedMain] com.zaxxer.hikari.util.DriverDataSource  : Registered driver with driverClassName=oracle.jdbc.driver.OracleDriver was not found, trying direct instantiation.
+2023-07-21 12:23:28.174  INFO 4780 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2023-07-21 12:23:28.307  INFO 4780 --- [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2023-07-21 12:23:28.349  INFO 4780 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 9090 (http) with context path ''
+2023-07-21 12:23:28.360  INFO 4780 --- [restartedMain] com.bs.helloboot.HelloBootApplication    : Started HelloBootApplication in 3.098 seconds (JVM running for 3.802)
+2023-07-21 12:23:34.218  INFO 4780 --- [http-nio-9090-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2023-07-21 12:23:34.218  INFO 4780 --- [http-nio-9090-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2023-07-21 12:23:34.219  INFO 4780 --- [http-nio-9090-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 0 ms
+2023-07-21 12:23:34.225 DEBUG 4780 --- [http-nio-9090-exec-1] com.bs.helloboot.comm.aop.LoggerAop      : ===== aop before =====
+2023-07-21 12:23:34.225 DEBUG 4780 --- [http-nio-9090-exec-1] com.bs.helloboot.comm.aop.LoggerAop      : com.bs.helloboot.TestFilter doFilter
+2023-07-21 12:23:34.225 DEBUG 4780 --- [http-nio-9090-exec-1] com.bs.helloboot.comm.aop.LoggerAop      : ===== aop after =====
+2023-07-21 12:23:34.226 DEBUG 4780 --- [http-nio-9090-exec-1] com.bs.helloboot.TestFilter              : 필터가 적용되었다! ========
+2023-07-21 12:23:35.235 DEBUG 4780 --- [http-nio-9090-exec-2] com.bs.helloboot.comm.aop.LoggerAop      : ===== aop before =====
+2023-07-21 12:23:35.236 DEBUG 4780 --- [http-nio-9090-exec-2] com.bs.helloboot.comm.aop.LoggerAop      : com.bs.helloboot.TestFilter doFilter
+2023-07-21 12:23:35.236 DEBUG 4780 --- [http-nio-9090-exec-2] com.bs.helloboot.comm.aop.LoggerAop      : ===== aop after =====
+2023-07-21 12:23:35.236 DEBUG 4780 --- [http-nio-9090-exec-2] com.bs.helloboot.TestFilter              : 필터가 적용되었다! ========
+2023-07-21 12:23:35.237 DEBUG 4780 --- [http-nio-9090-exec-2] c.b.h.c.interceptor.LoggerInterceptor    : =====preHandle실행전=====
+2023-07-21 12:23:35.238 DEBUG 4780 --- [http-nio-9090-exec-2] c.b.h.c.interceptor.LoggerInterceptor    : /member/memberAll
+2023-07-21 12:23:35.238 DEBUG 4780 --- [http-nio-9090-exec-2] c.b.h.c.interceptor.LoggerInterceptor    : =====preHandle실행후=====
+2023-07-21 12:23:35.248 DEBUG 4780 --- [http-nio-9090-exec-2] com.bs.helloboot.comm.aop.LoggerAop      : ===== aop before =====
+2023-07-21 12:23:35.248 DEBUG 4780 --- [http-nio-9090-exec-2] com.bs.helloboot.comm.aop.LoggerAop      : com.bs.helloboot.controller.MemberController selectMemberAll
+2023-07-21 12:23:35.248 DEBUG 4780 --- [http-nio-9090-exec-2] com.bs.helloboot.comm.aop.LoggerAop      : ===== aop after =====
+2023-07-21 12:23:35.252 DEBUG 4780 --- [http-nio-9090-exec-2] com.bs.helloboot.comm.aop.LoggerAop      : ===== aop before =====
+2023-07-21 12:23:35.252 DEBUG 4780 --- [http-nio-9090-exec-2] com.bs.helloboot.comm.aop.LoggerAop      : com.bs.helloboot.service.MemberServiceImpl selectMemberAll
+2023-07-21 12:23:35.252 DEBUG 4780 --- [http-nio-9090-exec-2] com.bs.helloboot.comm.aop.LoggerAop      : ===== aop after =====
+2023-07-21 12:23:35.257 DEBUG 4780 --- [http-nio-9090-exec-2] com.bs.helloboot.comm.aop.LoggerAop      : ===== aop before =====
+2023-07-21 12:23:35.257 DEBUG 4780 --- [http-nio-9090-exec-2] com.bs.helloboot.comm.aop.LoggerAop      : com.bs.helloboot.dao.MemberDaoImpl selectMemberAll
+2023-07-21 12:23:35.257 DEBUG 4780 --- [http-nio-9090-exec-2] com.bs.helloboot.comm.aop.LoggerAop      : ===== aop after =====
+2023-07-21 12:23:35.259 DEBUG 4780 --- [http-nio-9090-exec-2] com.bs.helloboot.comm.aop.LoggerAop      : ===== aop before =====
+2023-07-21 12:23:35.259 DEBUG 4780 --- [http-nio-9090-exec-2] com.bs.helloboot.comm.aop.LoggerAop      : com.bs.helloboot.comm.mapper.MemberMapper selectMemberAll
+2023-07-21 12:23:35.259 DEBUG 4780 --- [http-nio-9090-exec-2] com.bs.helloboot.comm.aop.LoggerAop      : ===== aop after =====
+2023-07-21 12:23:35.277 DEBUG 4780 --- [http-nio-9090-exec-2] c.b.h.c.m.MemberMapper.selectMemberAll   : ==>  Preparing: SELECT * FROM MEMBER
+2023-07-21 12:23:35.364 DEBUG 4780 --- [http-nio-9090-exec-2] c.b.h.c.m.MemberMapper.selectMemberAll   : ==> Parameters: 
+2023-07-21 12:23:35.447 DEBUG 4780 --- [http-nio-9090-exec-2] c.b.h.c.m.MemberMapper.selectMemberAll   : <==      Total: 10
+2023-07-21 12:23:35.633 ERROR 4780 --- [http-nio-9090-exec-2] o.a.c.c.C.[.[localhost].[/].[jsp]        : Servlet.service() for servlet [jsp] threw exception
+
+javax.el.PropertyNotFoundException: Property [userName] not found on type [com.bs.helloboot.dto.MemberDto]
+	at javax.el.BeanELResolver$BeanProperties.get(BeanELResolver.java:253) ~[tomcat-embed-el-9.0.78.jar:3.0.FR]
+	at javax.el.BeanELResolver$BeanProperties.access$300(BeanELResolver.java:206) ~[tomcat-embed-el-9.0.78.jar:3.0.FR]
+	at javax.el.BeanELResolver.property(BeanELResolver.java:322) ~[tomcat-embed-el-9.0.78.jar:3.0.FR]
+	at javax.el.BeanELResolver.getValue(BeanELResolver.java:93) ~[tomcat-embed-el-9.0.78.jar:3.0.FR]
+	at org.apache.jasper.el.JasperELResolver.getValue(JasperELResolver.java:124) ~[tomcat-embed-jasper-9.0.78.jar:9.0.78]
+	at org.apache.el.parser.AstValue.getValue(AstValue.java:168) ~[tomcat-embed-el-9.0.78.jar:9.0.78]
+	at org.apache.el.ValueExpressionImpl.getValue(ValueExpressionImpl.java:189) ~[tomcat-embed-el-9.0.78.jar:9.0.78]
+	at org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate(PageContextImpl.java:690) ~[tomcat-embed-jasper-9.0.78.jar:9.0.78]
+	at org.apache.jsp.WEB_002dINF.views.member.memberList_jsp._jspx_meth_c_005fforEach_005f0(memberList_jsp.java:236) ~[na:na]
+	at org.apache.jsp.WEB_002dINF.views.member.memberList_jsp._jspx_meth_c_005fif_005f0(memberList_jsp.java:190) ~[na:na]
+	at org.apache.jsp.WEB_002dINF.views.member.memberList_jsp._jspService(memberList_jsp.java:141) ~[na:na]
+	at org.apache.jasper.runtime.HttpJspBase.service(HttpJspBase.java:70) ~[tomcat-embed-jasper-9.0.78.jar:9.0.78]
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:623) ~[tomcat-embed-core-9.0.78.jar:4.0.FR]
+	at org.apache.jasper.servlet.JspServletWrapper.service(JspServletWrapper.java:466) ~[tomcat-embed-jasper-9.0.78.jar:9.0.78]
+	at org.apache.jasper.servlet.JspServlet.serviceJspFile(JspServlet.java:379) ~[tomcat-embed-jasper-9.0.78.jar:9.0.78]
+	at org.apache.jasper.servlet.JspServlet.service(JspServlet.java:327) ~[tomcat-embed-jasper-9.0.78.jar:9.0.78]
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:623) ~[tomcat-embed-core-9.0.78.jar:4.0.FR]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:209) ~[tomcat-embed-core-9.0.78.jar:9.0.78]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:153) ~[tomcat-embed-core-9.0.78.jar:9.0.78]
+	at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:51) ~[tomcat-embed-websocket-9.0.78.jar:9.0.78]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:178) ~[tomcat-embed-core-9.0.78.jar:9.0.78]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:153) ~[tomcat-embed-core-9.0.78.jar:9.0.78]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:111) ~[spring-web-5.3.29.jar:5.3.29]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:178) ~[tomcat-embed-core-9.0.78.jar:9.0.78]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:153) ~[tomcat-embed-core-9.0.78.jar:9.0.78]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:111) ~[spring-web-5.3.29.jar:5.3.29]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:178) ~[tomcat-embed-core-9.0.78.jar:9.0.78]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:153) ~[tomcat-embed-core-9.0.78.jar:9.0.78]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:111) ~[spring-web-5.3.29.jar:5.3.29]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:178) ~[tomcat-embed-core-9.0.78.jar:9.0.78]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:153) ~[tomcat-embed-core-9.0.78.jar:9.0.78]
+	at org.apache.catalina.core.ApplicationDispatcher.invoke(ApplicationDispatcher.java:661) ~[tomcat-embed-core-9.0.78.jar:9.0.78]
+	at org.apache.catalina.core.ApplicationDispatcher.processRequest(ApplicationDispatcher.java:425) ~[tomcat-embed-core-9.0.78.jar:9.0.78]
+	at org.apache.catalina.core.ApplicationDispatcher.doForward(ApplicationDispatcher.java:357) ~[tomcat-embed-core-9.0.78.jar:9.0.78]
+	at org.apache.catalina.core.ApplicationDispatcher.forward(ApplicationDispatcher.java:294) ~[tomcat-embed-core-9.0.78.jar:9.0.78]
+	at org.springframework.web.servlet.view.InternalResourceView.renderMergedOutputModel(InternalResourceView.java:171) ~[spring-webmvc-5.3.29.jar:5.3.29]
+	at org.springframework.web.servlet.view.AbstractView.render(AbstractView.java:316) ~[spring-webmvc-5.3.29.jar:5.3.29]
+	at org.springframework.web.servlet.DispatcherServlet.render(DispatcherServlet.java:1406) ~[spring-webmvc-5.3.29.jar:5.3.29]
+	at org.springframework.web.servlet.DispatcherServlet.processDispatchResult(DispatcherServlet.java:1150) ~[spring-webmvc-5.3.29.jar:5.3.29]
+	at org.springframework.web.servlet.DispatcherServlet.doDispatch(DispatcherServlet.java:1089) ~[spring-webmvc-5.3.29.jar:5.3.29]
+	at org.springframework.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:965) ~[spring-webmvc-5.3.29.jar:5.3.29]
+	at org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:1006) ~[spring-webmvc-5.3.29.jar:5.3.29]
+	at org.springframework.web.servlet.FrameworkServlet.doGet(FrameworkServlet.java:898) ~[spring-webmvc-5.3.29.jar:5.3.29]
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:529) ~[tomcat-embed-core-9.0.78.jar:4.0.FR]
+	at org.springframework.web.servlet.FrameworkServlet.service(FrameworkServlet.java:883) ~[spring-webmvc-5.3.29.jar:5.3.29]
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:623) ~[tomcat-embed-core-9.0.78.jar:4.0.FR]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:209) ~[tomcat-embed-core-9.0.78.jar:9.0.78]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:153) ~[tomcat-embed-core-9.0.78.jar:9.0.78]
+	at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:51) ~[tomcat-embed-websocket-9.0.78.jar:9.0.78]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:178) ~[tomcat-embed-core-9.0.78.jar:9.0.78]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:153) ~[tomcat-embed-core-9.0.78.jar:9.0.78]
+	at com.bs.helloboot.TestFilter.doFilter(TestFilter.java:26) ~[classes/:na]
+	at com.bs.helloboot.TestFilter$$FastClassBySpringCGLIB$$66f51c44.invoke(<generated>) ~[classes/:na]
+	at org.springframework.cglib.proxy.MethodProxy.invoke(MethodProxy.java:218) ~[spring-core-5.3.29.jar:5.3.29]
+	at org.springframework.aop.framework.CglibAopProxy$CglibMethodInvocation.invokeJoinpoint(CglibAopProxy.java:793) ~[spring-aop-5.3.29.jar:5.3.29]
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:163) ~[spring-aop-5.3.29.jar:5.3.29]
+	at org.springframework.aop.framework.CglibAopProxy$CglibMethodInvocation.proceed(CglibAopProxy.java:763) ~[spring-aop-5.3.29.jar:5.3.29]
+	at org.springframework.aop.framework.adapter.MethodBeforeAdviceInterceptor.invoke(MethodBeforeAdviceInterceptor.java:58) ~[spring-aop-5.3.29.jar:5.3.29]
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:186) ~[spring-aop-5.3.29.jar:5.3.29]
+	at org.springframework.aop.framework.CglibAopProxy$CglibMethodInvocation.proceed(CglibAopProxy.java:763) ~[spring-aop-5.3.29.jar:5.3.29]
+	at org.springframework.aop.interceptor.ExposeInvocationInterceptor.invoke(ExposeInvocationInterceptor.java:97) ~[spring-aop-5.3.29.jar:5.3.29]
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:186) ~[spring-aop-5.3.29.jar:5.3.29]
+	at org.springframework.aop.framework.CglibAopProxy$CglibMethodInvocation.proceed(CglibAopProxy.java:763) ~[spring-aop-5.3.29.jar:5.3.29]
+	at org.springframework.aop.framework.CglibAopProxy$DynamicAdvisedInterceptor.intercept(CglibAopProxy.java:708) ~[spring-aop-5.3.29.jar:5.3.29]
+	at com.bs.helloboot.TestFilter$$EnhancerBySpringCGLIB$$dabac9ae.doFilter(<generated>) ~[classes/:na]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:178) ~[tomcat-embed-core-9.0.78.jar:9.0.78]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:153) ~[tomcat-embed-core-9.0.78.jar:9.0.78]
+	at org.springframework.web.filter.RequestContextFilter.doFilterInternal(RequestContextFilter.java:100) ~[spring-web-5.3.29.jar:5.3.29]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:117) ~[spring-web-5.3.29.jar:5.3.29]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:178) ~[tomcat-embed-core-9.0.78.jar:9.0.78]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:153) ~[tomcat-embed-core-9.0.78.jar:9.0.78]
+	at org.springframework.web.filter.FormContentFilter.doFilterInternal(FormContentFilter.java:93) ~[spring-web-5.3.29.jar:5.3.29]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:117) ~[spring-web-5.3.29.jar:5.3.29]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:178) ~[tomcat-embed-core-9.0.78.jar:9.0.78]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:153) ~[tomcat-embed-core-9.0.78.jar:9.0.78]
+	at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:201) ~[spring-web-5.3.29.jar:5.3.29]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:117) ~[spring-web-5.3.29.jar:5.3.29]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:178) ~[tomcat-embed-core-9.0.78.jar:9.0.78]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:153) ~[tomcat-embed-core-9.0.78.jar:9.0.78]
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:167) ~[tomcat-embed-core-9.0.78.jar:9.0.78]
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:90) ~[tomcat-embed-core-9.0.78.jar:9.0.78]
+	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:481) ~[tomcat-embed-core-9.0.78.jar:9.0.78]
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:130) ~[tomcat-embed-core-9.0.78.jar:9.0.78]
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:93) ~[tomcat-embed-core-9.0.78.jar:9.0.78]
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:74) ~[tomcat-embed-core-9.0.78.jar:9.0.78]
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:343) ~[tomcat-embed-core-9.0.78.jar:9.0.78]
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:390) ~[tomcat-embed-core-9.0.78.jar:9.0.78]
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:63) ~[tomcat-embed-core-9.0.78.jar:9.0.78]
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:926) ~[tomcat-embed-core-9.0.78.jar:9.0.78]
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1791) ~[tomcat-embed-core-9.0.78.jar:9.0.78]
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:52) ~[tomcat-embed-core-9.0.78.jar:9.0.78]
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1191) ~[tomcat-embed-core-9.0.78.jar:9.0.78]
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:659) ~[tomcat-embed-core-9.0.78.jar:9.0.78]
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61) ~[tomcat-embed-core-9.0.78.jar:9.0.78]
+	at java.base/java.lang.Thread.run(Thread.java:833) ~[na:na]
+
+2023-07-21 12:23:35.637 ERROR 4780 --- [http-nio-9090-exec-2] o.a.c.c.C.[.[.[/].[dispatcherServlet]    : Servlet.service() for servlet [dispatcherServlet] in context with path [] threw exception [An exception occurred processing [/WEB-INF/views/member/memberList.jsp] at line [25]
+
+22: 			<c:forEach var="m" items="${members }">
+23: 				<tr>
+24: 					<td>${m.userId }</td>
+25: 					<td>${m.userName }</td>
+26: 					<td>${m.age }</td>
+27: 					<td>${m.gender }</td>
+28: 					<td>${m.email }</td>
+
+
+Stacktrace:] with root cause
+
+javax.el.PropertyNotFoundException: Property [userName] not found on type [com.bs.helloboot.dto.MemberDto]
+	at javax.el.BeanELResolver$BeanProperties.get(BeanELResolver.java:253) ~[tomcat-embed-el-9.0.78.jar:3.0.FR]
+	at javax.el.BeanELResolver$BeanProperties.access$300(BeanELResolver.java:206) ~[tomcat-embed-el-9.0.78.jar:3.0.FR]
+	at javax.el.BeanELResolver.property(BeanELResolver.java:322) ~[tomcat-embed-el-9.0.78.jar:3.0.FR]
+	at javax.el.BeanELResolver.getValue(BeanELResolver.java:93) ~[tomcat-embed-el-9.0.78.jar:3.0.FR]
+	at org.apache.jasper.el.JasperELResolver.getValue(JasperELResolver.java:124) ~[tomcat-embed-jasper-9.0.78.jar:9.0.78]
+	at org.apache.el.parser.AstValue.getValue(AstValue.java:168) ~[tomcat-embed-el-9.0.78.jar:9.0.78]
+	at org.apache.el.ValueExpressionImpl.getValue(ValueExpressionImpl.java:189) ~[tomcat-embed-el-9.0.78.jar:9.0.78]
+	at org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate(PageContextImpl.java:690) ~[tomcat-embed-jasper-9.0.78.jar:9.0.78]
+	at org.apache.jsp.WEB_002dINF.views.member.memberList_jsp._jspx_meth_c_005fforEach_005f0(memberList_jsp.java:236) ~[na:na]
+	at org.apache.jsp.WEB_002dINF.views.member.memberList_jsp._jspx_meth_c_005fif_005f0(memberList_jsp.java:190) ~[na:na]
+	at org.apache.jsp.WEB_002dINF.views.member.memberList_jsp._jspService(memberList_jsp.java:141) ~[na:na]
+	at org.apache.jasper.runtime.HttpJspBase.service(HttpJspBase.java:70) ~[tomcat-embed-jasper-9.0.78.jar:9.0.78]
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:623) ~[tomcat-embed-core-9.0.78.jar:4.0.FR]
+	at org.apache.jasper.servlet.JspServletWrapper.service(JspServletWrapper.java:466) ~[tomcat-embed-jasper-9.0.78.jar:9.0.78]
+	at org.apache.jasper.servlet.JspServlet.serviceJspFile(JspServlet.java:379) ~[tomcat-embed-jasper-9.0.78.jar:9.0.78]
+	at org.apache.jasper.servlet.JspServlet.service(JspServlet.java:327) ~[tomcat-embed-jasper-9.0.78.jar:9.0.78]
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:623) ~[tomcat-embed-core-9.0.78.jar:4.0.FR]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:209) ~[tomcat-embed-core-9.0.78.jar:9.0.78]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:153) ~[tomcat-embed-core-9.0.78.jar:9.0.78]
+	at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:51) ~[tomcat-embed-websocket-9.0.78.jar:9.0.78]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:178) ~[tomcat-embed-core-9.0.78.jar:9.0.78]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:153) ~[tomcat-embed-core-9.0.78.jar:9.0.78]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:111) ~[spring-web-5.3.29.jar:5.3.29]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:178) ~[tomcat-embed-core-9.0.78.jar:9.0.78]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:153) ~[tomcat-embed-core-9.0.78.jar:9.0.78]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:111) ~[spring-web-5.3.29.jar:5.3.29]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:178) ~[tomcat-embed-core-9.0.78.jar:9.0.78]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:153) ~[tomcat-embed-core-9.0.78.jar:9.0.78]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:111) ~[spring-web-5.3.29.jar:5.3.29]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:178) ~[tomcat-embed-core-9.0.78.jar:9.0.78]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:153) ~[tomcat-embed-core-9.0.78.jar:9.0.78]
+	at org.apache.catalina.core.ApplicationDispatcher.invoke(ApplicationDispatcher.java:661) ~[tomcat-embed-core-9.0.78.jar:9.0.78]
+	at org.apache.catalina.core.ApplicationDispatcher.processRequest(ApplicationDispatcher.java:425) ~[tomcat-embed-core-9.0.78.jar:9.0.78]
+	at org.apache.catalina.core.ApplicationDispatcher.doForward(ApplicationDispatcher.java:357) ~[tomcat-embed-core-9.0.78.jar:9.0.78]
+	at org.apache.catalina.core.ApplicationDispatcher.forward(ApplicationDispatcher.java:294) ~[tomcat-embed-core-9.0.78.jar:9.0.78]
+	at org.springframework.web.servlet.view.InternalResourceView.renderMergedOutputModel(InternalResourceView.java:171) ~[spring-webmvc-5.3.29.jar:5.3.29]
+	at org.springframework.web.servlet.view.AbstractView.render(AbstractView.java:316) ~[spring-webmvc-5.3.29.jar:5.3.29]
+	at org.springframework.web.servlet.DispatcherServlet.render(DispatcherServlet.java:1406) ~[spring-webmvc-5.3.29.jar:5.3.29]
+	at org.springframework.web.servlet.DispatcherServlet.processDispatchResult(DispatcherServlet.java:1150) ~[spring-webmvc-5.3.29.jar:5.3.29]
+	at org.springframework.web.servlet.DispatcherServlet.doDispatch(DispatcherServlet.java:1089) ~[spring-webmvc-5.3.29.jar:5.3.29]
+	at org.springframework.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:965) ~[spring-webmvc-5.3.29.jar:5.3.29]
+	at org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:1006) ~[spring-webmvc-5.3.29.jar:5.3.29]
+	at org.springframework.web.servlet.FrameworkServlet.doGet(FrameworkServlet.java:898) ~[spring-webmvc-5.3.29.jar:5.3.29]
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:529) ~[tomcat-embed-core-9.0.78.jar:4.0.FR]
+	at org.springframework.web.servlet.FrameworkServlet.service(FrameworkServlet.java:883) ~[spring-webmvc-5.3.29.jar:5.3.29]
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:623) ~[tomcat-embed-core-9.0.78.jar:4.0.FR]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:209) ~[tomcat-embed-core-9.0.78.jar:9.0.78]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:153) ~[tomcat-embed-core-9.0.78.jar:9.0.78]
+	at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:51) ~[tomcat-embed-websocket-9.0.78.jar:9.0.78]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:178) ~[tomcat-embed-core-9.0.78.jar:9.0.78]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:153) ~[tomcat-embed-core-9.0.78.jar:9.0.78]
+	at com.bs.helloboot.TestFilter.doFilter(TestFilter.java:26) ~[classes/:na]
+	at com.bs.helloboot.TestFilter$$FastClassBySpringCGLIB$$66f51c44.invoke(<generated>) ~[classes/:na]
+	at org.springframework.cglib.proxy.MethodProxy.invoke(MethodProxy.java:218) ~[spring-core-5.3.29.jar:5.3.29]
+	at org.springframework.aop.framework.CglibAopProxy$CglibMethodInvocation.invokeJoinpoint(CglibAopProxy.java:793) ~[spring-aop-5.3.29.jar:5.3.29]
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:163) ~[spring-aop-5.3.29.jar:5.3.29]
+	at org.springframework.aop.framework.CglibAopProxy$CglibMethodInvocation.proceed(CglibAopProxy.java:763) ~[spring-aop-5.3.29.jar:5.3.29]
+	at org.springframework.aop.framework.adapter.MethodBeforeAdviceInterceptor.invoke(MethodBeforeAdviceInterceptor.java:58) ~[spring-aop-5.3.29.jar:5.3.29]
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:186) ~[spring-aop-5.3.29.jar:5.3.29]
+	at org.springframework.aop.framework.CglibAopProxy$CglibMethodInvocation.proceed(CglibAopProxy.java:763) ~[spring-aop-5.3.29.jar:5.3.29]
+	at org.springframework.aop.interceptor.ExposeInvocationInterceptor.invoke(ExposeInvocationInterceptor.java:97) ~[spring-aop-5.3.29.jar:5.3.29]
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:186) ~[spring-aop-5.3.29.jar:5.3.29]
+	at org.springframework.aop.framework.CglibAopProxy$CglibMethodInvocation.proceed(CglibAopProxy.java:763) ~[spring-aop-5.3.29.jar:5.3.29]
+	at org.springframework.aop.framework.CglibAopProxy$DynamicAdvisedInterceptor.intercept(CglibAopProxy.java:708) ~[spring-aop-5.3.29.jar:5.3.29]
+	at com.bs.helloboot.TestFilter$$EnhancerBySpringCGLIB$$dabac9ae.doFilter(<generated>) ~[classes/:na]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:178) ~[tomcat-embed-core-9.0.78.jar:9.0.78]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:153) ~[tomcat-embed-core-9.0.78.jar:9.0.78]
+	at org.springframework.web.filter.RequestContextFilter.doFilterInternal(RequestContextFilter.java:100) ~[spring-web-5.3.29.jar:5.3.29]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:117) ~[spring-web-5.3.29.jar:5.3.29]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:178) ~[tomcat-embed-core-9.0.78.jar:9.0.78]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:153) ~[tomcat-embed-core-9.0.78.jar:9.0.78]
+	at org.springframework.web.filter.FormContentFilter.doFilterInternal(FormContentFilter.java:93) ~[spring-web-5.3.29.jar:5.3.29]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:117) ~[spring-web-5.3.29.jar:5.3.29]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:178) ~[tomcat-embed-core-9.0.78.jar:9.0.78]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:153) ~[tomcat-embed-core-9.0.78.jar:9.0.78]
+	at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:201) ~[spring-web-5.3.29.jar:5.3.29]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:117) ~[spring-web-5.3.29.jar:5.3.29]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:178) ~[tomcat-embed-core-9.0.78.jar:9.0.78]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:153) ~[tomcat-embed-core-9.0.78.jar:9.0.78]
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:167) ~[tomcat-embed-core-9.0.78.jar:9.0.78]
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:90) ~[tomcat-embed-core-9.0.78.jar:9.0.78]
+	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:481) ~[tomcat-embed-core-9.0.78.jar:9.0.78]
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:130) ~[tomcat-embed-core-9.0.78.jar:9.0.78]
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:93) ~[tomcat-embed-core-9.0.78.jar:9.0.78]
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:74) ~[tomcat-embed-core-9.0.78.jar:9.0.78]
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:343) ~[tomcat-embed-core-9.0.78.jar:9.0.78]
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:390) ~[tomcat-embed-core-9.0.78.jar:9.0.78]
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:63) ~[tomcat-embed-core-9.0.78.jar:9.0.78]
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:926) ~[tomcat-embed-core-9.0.78.jar:9.0.78]
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1791) ~[tomcat-embed-core-9.0.78.jar:9.0.78]
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:52) ~[tomcat-embed-core-9.0.78.jar:9.0.78]
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1191) ~[tomcat-embed-core-9.0.78.jar:9.0.78]
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:659) ~[tomcat-embed-core-9.0.78.jar:9.0.78]
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61) ~[tomcat-embed-core-9.0.78.jar:9.0.78]
+	at java.base/java.lang.Thread.run(Thread.java:833) ~[na:na]
+
+2023-07-21 12:24:07.591  INFO 4780 --- [File Watcher] rtingClassPathChangeChangedEventListener : Restarting due to 2 class path changes (0 additions, 0 deletions, 2 modifications)
+2023-07-21 12:24:07.607  INFO 4780 --- [Thread-7] o.apache.catalina.core.StandardService   : Stopping service [Tomcat]
+2023-07-21 12:24:07.608  INFO 4780 --- [Thread-7] o.a.c.c.C.[Tomcat].[localhost].[/]       : Destroying Spring FrameworkServlet 'dispatcherServlet'
+2023-07-21 12:24:07.624  INFO 4780 --- [Thread-7] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2023-07-21 12:24:07.635  INFO 4780 --- [Thread-7] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2023-07-21 12:24:07.701  INFO 4780 --- [restartedMain] com.bs.helloboot.HelloBootApplication    : Starting HelloBootApplication using Java 17.0.5 on DESKTOP-OSPAM2G with PID 4780 (C:\servlet\springwork\helloBoot\target\classes started by JeongSangjun in C:\servlet\springwork\helloBoot)
+2023-07-21 12:24:07.702 DEBUG 4780 --- [restartedMain] com.bs.helloboot.HelloBootApplication    : Running with Spring Boot v2.7.14-SNAPSHOT, Spring v5.3.29
+2023-07-21 12:24:07.702  INFO 4780 --- [restartedMain] com.bs.helloboot.HelloBootApplication    : No active profile set, falling back to 1 default profile: "default"
+2023-07-21 12:24:07.875  INFO 4780 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JDBC repositories in DEFAULT mode.
+2023-07-21 12:24:07.882  INFO 4780 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 7 ms. Found 0 JDBC repository interfaces.
+2023-07-21 12:24:07.985  INFO 4780 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 9090 (http)
+2023-07-21 12:24:07.985  INFO 4780 --- [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2023-07-21 12:24:07.985  INFO 4780 --- [restartedMain] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.78]
+2023-07-21 12:24:08.063  INFO 4780 --- [restartedMain] org.apache.jasper.servlet.TldScanner     : At least one JAR was scanned for TLDs yet contained no TLDs. Enable debug logging for this logger for a complete list of JARs that were scanned but no TLDs were found in them. Skipping unneeded JARs during scanning can improve startup time and JSP compilation time.
+2023-07-21 12:24:08.066  INFO 4780 --- [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2023-07-21 12:24:08.066  INFO 4780 --- [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 362 ms
+2023-07-21 12:24:08.241  INFO 4780 --- [restartedMain] o.s.b.a.w.s.WelcomePageHandlerMapping    : Adding welcome page template: index
+2023-07-21 12:24:08.242 DEBUG 4780 --- [restartedMain] com.bs.helloboot.comm.aop.LoggerAop      : ===== aop before =====
+2023-07-21 12:24:08.242 DEBUG 4780 --- [restartedMain] com.bs.helloboot.comm.aop.LoggerAop      : com.bs.helloboot.config.MyWebMvcConfigration addInterceptors
+2023-07-21 12:24:08.242 DEBUG 4780 --- [restartedMain] com.bs.helloboot.comm.aop.LoggerAop      : ===== aop after =====
+2023-07-21 12:24:08.244 DEBUG 4780 --- [restartedMain] com.bs.helloboot.comm.aop.LoggerAop      : ===== aop before =====
+2023-07-21 12:24:08.244 DEBUG 4780 --- [restartedMain] com.bs.helloboot.comm.aop.LoggerAop      : com.bs.helloboot.config.MyWebMvcConfigration addCorsMappings
+2023-07-21 12:24:08.244 DEBUG 4780 --- [restartedMain] com.bs.helloboot.comm.aop.LoggerAop      : ===== aop after =====
+2023-07-21 12:24:08.262 DEBUG 4780 --- [restartedMain] com.bs.helloboot.comm.aop.LoggerAop      : ===== aop before =====
+2023-07-21 12:24:08.263 DEBUG 4780 --- [restartedMain] com.bs.helloboot.comm.aop.LoggerAop      : com.bs.helloboot.config.MyWebMvcConfigration addViewControllers
+2023-07-21 12:24:08.263 DEBUG 4780 --- [restartedMain] com.bs.helloboot.comm.aop.LoggerAop      : ===== aop after =====
+2023-07-21 12:24:08.331  INFO 4780 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-2 - Starting...
+2023-07-21 12:24:08.331  WARN 4780 --- [restartedMain] com.zaxxer.hikari.util.DriverDataSource  : Registered driver with driverClassName=oracle.jdbc.driver.OracleDriver was not found, trying direct instantiation.
+2023-07-21 12:24:08.407  INFO 4780 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-2 - Start completed.
+2023-07-21 12:24:08.436  INFO 4780 --- [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2023-07-21 12:24:08.448  INFO 4780 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 9090 (http) with context path ''
+2023-07-21 12:24:08.452  INFO 4780 --- [restartedMain] com.bs.helloboot.HelloBootApplication    : Started HelloBootApplication in 0.775 seconds (JVM running for 43.895)
+2023-07-21 12:24:08.454  INFO 4780 --- [restartedMain] .ConditionEvaluationDeltaLoggingListener : Condition evaluation unchanged
+2023-07-21 12:24:14.659  INFO 4780 --- [http-nio-9090-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2023-07-21 12:24:14.660  INFO 4780 --- [http-nio-9090-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2023-07-21 12:24:14.660  INFO 4780 --- [http-nio-9090-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 0 ms
+2023-07-21 12:24:14.661 DEBUG 4780 --- [http-nio-9090-exec-1] com.bs.helloboot.comm.aop.LoggerAop      : ===== aop before =====
+2023-07-21 12:24:14.661 DEBUG 4780 --- [http-nio-9090-exec-1] com.bs.helloboot.comm.aop.LoggerAop      : com.bs.helloboot.TestFilter doFilter
+2023-07-21 12:24:14.661 DEBUG 4780 --- [http-nio-9090-exec-1] com.bs.helloboot.comm.aop.LoggerAop      : ===== aop after =====
+2023-07-21 12:24:14.662 DEBUG 4780 --- [http-nio-9090-exec-1] com.bs.helloboot.TestFilter              : 필터가 적용되었다! ========
+2023-07-21 12:24:15.535 DEBUG 4780 --- [http-nio-9090-exec-2] com.bs.helloboot.comm.aop.LoggerAop      : ===== aop before =====
+2023-07-21 12:24:15.535 DEBUG 4780 --- [http-nio-9090-exec-2] com.bs.helloboot.comm.aop.LoggerAop      : com.bs.helloboot.TestFilter doFilter
+2023-07-21 12:24:15.535 DEBUG 4780 --- [http-nio-9090-exec-2] com.bs.helloboot.comm.aop.LoggerAop      : ===== aop after =====
+2023-07-21 12:24:15.535 DEBUG 4780 --- [http-nio-9090-exec-2] com.bs.helloboot.TestFilter              : 필터가 적용되었다! ========
+2023-07-21 12:24:15.536 DEBUG 4780 --- [http-nio-9090-exec-2] c.b.h.c.interceptor.LoggerInterceptor    : =====preHandle실행전=====
+2023-07-21 12:24:15.536 DEBUG 4780 --- [http-nio-9090-exec-2] c.b.h.c.interceptor.LoggerInterceptor    : /member/memberAll
+2023-07-21 12:24:15.536 DEBUG 4780 --- [http-nio-9090-exec-2] c.b.h.c.interceptor.LoggerInterceptor    : =====preHandle실행후=====
+2023-07-21 12:24:15.537 DEBUG 4780 --- [http-nio-9090-exec-2] com.bs.helloboot.comm.aop.LoggerAop      : ===== aop before =====
+2023-07-21 12:24:15.537 DEBUG 4780 --- [http-nio-9090-exec-2] com.bs.helloboot.comm.aop.LoggerAop      : com.bs.helloboot.controller.MemberController selectMemberAll
+2023-07-21 12:24:15.537 DEBUG 4780 --- [http-nio-9090-exec-2] com.bs.helloboot.comm.aop.LoggerAop      : ===== aop after =====
+2023-07-21 12:24:15.539 DEBUG 4780 --- [http-nio-9090-exec-2] com.bs.helloboot.comm.aop.LoggerAop      : ===== aop before =====
+2023-07-21 12:24:15.539 DEBUG 4780 --- [http-nio-9090-exec-2] com.bs.helloboot.comm.aop.LoggerAop      : com.bs.helloboot.service.MemberServiceImpl selectMemberAll
+2023-07-21 12:24:15.539 DEBUG 4780 --- [http-nio-9090-exec-2] com.bs.helloboot.comm.aop.LoggerAop      : ===== aop after =====
+2023-07-21 12:24:15.541 DEBUG 4780 --- [http-nio-9090-exec-2] com.bs.helloboot.comm.aop.LoggerAop      : ===== aop before =====
+2023-07-21 12:24:15.542 DEBUG 4780 --- [http-nio-9090-exec-2] com.bs.helloboot.comm.aop.LoggerAop      : com.bs.helloboot.dao.MemberDaoImpl selectMemberAll
+2023-07-21 12:24:15.542 DEBUG 4780 --- [http-nio-9090-exec-2] com.bs.helloboot.comm.aop.LoggerAop      : ===== aop after =====
+2023-07-21 12:24:15.544 DEBUG 4780 --- [http-nio-9090-exec-2] com.bs.helloboot.comm.aop.LoggerAop      : ===== aop before =====
+2023-07-21 12:24:15.544 DEBUG 4780 --- [http-nio-9090-exec-2] com.bs.helloboot.comm.aop.LoggerAop      : com.bs.helloboot.comm.mapper.MemberMapper selectMemberAll
+2023-07-21 12:24:15.544 DEBUG 4780 --- [http-nio-9090-exec-2] com.bs.helloboot.comm.aop.LoggerAop      : ===== aop after =====
+2023-07-21 12:24:15.546 DEBUG 4780 --- [http-nio-9090-exec-2] c.b.h.c.m.MemberMapper.selectMemberAll   : ==>  Preparing: SELECT * FROM MEMBER
+2023-07-21 12:24:15.546 DEBUG 4780 --- [http-nio-9090-exec-2] c.b.h.c.m.MemberMapper.selectMemberAll   : ==> Parameters: 
+2023-07-21 12:24:15.553 DEBUG 4780 --- [http-nio-9090-exec-2] c.b.h.c.m.MemberMapper.selectMemberAll   : <==      Total: 10
+2023-07-21 12:25:58.767  INFO 4780 --- [File Watcher] rtingClassPathChangeChangedEventListener : Restarting due to 1 class path change (0 additions, 0 deletions, 1 modification)
+2023-07-21 12:25:58.778  INFO 4780 --- [Thread-10] o.apache.catalina.core.StandardService   : Stopping service [Tomcat]
+2023-07-21 12:25:58.779  INFO 4780 --- [Thread-10] o.a.c.c.C.[Tomcat].[localhost].[/]       : Destroying Spring FrameworkServlet 'dispatcherServlet'
+2023-07-21 12:25:58.792  INFO 4780 --- [Thread-10] com.zaxxer.hikari.HikariDataSource       : HikariPool-2 - Shutdown initiated...
+2023-07-21 12:25:58.802  INFO 4780 --- [Thread-10] com.zaxxer.hikari.HikariDataSource       : HikariPool-2 - Shutdown completed.
+2023-07-21 12:25:58.877  INFO 4780 --- [restartedMain] com.bs.helloboot.HelloBootApplication    : Starting HelloBootApplication using Java 17.0.5 on DESKTOP-OSPAM2G with PID 4780 (C:\servlet\springwork\helloBoot\target\classes started by JeongSangjun in C:\servlet\springwork\helloBoot)
+2023-07-21 12:25:58.877 DEBUG 4780 --- [restartedMain] com.bs.helloboot.HelloBootApplication    : Running with Spring Boot v2.7.14-SNAPSHOT, Spring v5.3.29
+2023-07-21 12:25:58.877  INFO 4780 --- [restartedMain] com.bs.helloboot.HelloBootApplication    : No active profile set, falling back to 1 default profile: "default"
+2023-07-21 12:25:58.995  INFO 4780 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JDBC repositories in DEFAULT mode.
+2023-07-21 12:25:59.000  INFO 4780 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 4 ms. Found 0 JDBC repository interfaces.
+2023-07-21 12:25:59.082  INFO 4780 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 9090 (http)
+2023-07-21 12:25:59.082  INFO 4780 --- [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2023-07-21 12:25:59.082  INFO 4780 --- [restartedMain] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.78]
+2023-07-21 12:25:59.144  INFO 4780 --- [restartedMain] org.apache.jasper.servlet.TldScanner     : At least one JAR was scanned for TLDs yet contained no TLDs. Enable debug logging for this logger for a complete list of JARs that were scanned but no TLDs were found in them. Skipping unneeded JARs during scanning can improve startup time and JSP compilation time.
+2023-07-21 12:25:59.146  INFO 4780 --- [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2023-07-21 12:25:59.146  INFO 4780 --- [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 267 ms
+2023-07-21 12:25:59.284  INFO 4780 --- [restartedMain] o.s.b.a.w.s.WelcomePageHandlerMapping    : Adding welcome page template: index
+2023-07-21 12:25:59.284 DEBUG 4780 --- [restartedMain] com.bs.helloboot.comm.aop.LoggerAop      : ===== aop before =====
+2023-07-21 12:25:59.285 DEBUG 4780 --- [restartedMain] com.bs.helloboot.comm.aop.LoggerAop      : com.bs.helloboot.config.MyWebMvcConfigration addInterceptors
+2023-07-21 12:25:59.286 DEBUG 4780 --- [restartedMain] com.bs.helloboot.comm.aop.LoggerAop      : ===== aop after =====
+2023-07-21 12:25:59.288 DEBUG 4780 --- [restartedMain] com.bs.helloboot.comm.aop.LoggerAop      : ===== aop before =====
+2023-07-21 12:25:59.288 DEBUG 4780 --- [restartedMain] com.bs.helloboot.comm.aop.LoggerAop      : com.bs.helloboot.config.MyWebMvcConfigration addCorsMappings
+2023-07-21 12:25:59.288 DEBUG 4780 --- [restartedMain] com.bs.helloboot.comm.aop.LoggerAop      : ===== aop after =====
+2023-07-21 12:25:59.305 DEBUG 4780 --- [restartedMain] com.bs.helloboot.comm.aop.LoggerAop      : ===== aop before =====
+2023-07-21 12:25:59.305 DEBUG 4780 --- [restartedMain] com.bs.helloboot.comm.aop.LoggerAop      : com.bs.helloboot.config.MyWebMvcConfigration addViewControllers
+2023-07-21 12:25:59.305 DEBUG 4780 --- [restartedMain] com.bs.helloboot.comm.aop.LoggerAop      : ===== aop after =====
+2023-07-21 12:25:59.354  INFO 4780 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-3 - Starting...
+2023-07-21 12:25:59.355  WARN 4780 --- [restartedMain] com.zaxxer.hikari.util.DriverDataSource  : Registered driver with driverClassName=oracle.jdbc.driver.OracleDriver was not found, trying direct instantiation.
+2023-07-21 12:25:59.405  INFO 4780 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-3 - Start completed.
+2023-07-21 12:25:59.433  INFO 4780 --- [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2023-07-21 12:25:59.442  INFO 4780 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 9090 (http) with context path ''
+2023-07-21 12:25:59.446  INFO 4780 --- [restartedMain] com.bs.helloboot.HelloBootApplication    : Started HelloBootApplication in 0.595 seconds (JVM running for 154.889)
+2023-07-21 12:25:59.447  INFO 4780 --- [restartedMain] .ConditionEvaluationDeltaLoggingListener : Condition evaluation unchanged
+2023-07-21 12:26:03.329  INFO 4780 --- [http-nio-9090-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2023-07-21 12:26:03.330  INFO 4780 --- [http-nio-9090-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2023-07-21 12:26:03.330  INFO 4780 --- [http-nio-9090-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 0 ms
+2023-07-21 12:26:03.331 DEBUG 4780 --- [http-nio-9090-exec-1] com.bs.helloboot.comm.aop.LoggerAop      : ===== aop before =====
+2023-07-21 12:26:03.331 DEBUG 4780 --- [http-nio-9090-exec-1] com.bs.helloboot.comm.aop.LoggerAop      : com.bs.helloboot.TestFilter doFilter
+2023-07-21 12:26:03.331 DEBUG 4780 --- [http-nio-9090-exec-1] com.bs.helloboot.comm.aop.LoggerAop      : ===== aop after =====
+2023-07-21 12:26:03.332 DEBUG 4780 --- [http-nio-9090-exec-1] com.bs.helloboot.TestFilter              : 필터가 적용되었다! ========
+2023-07-21 12:26:04.106 DEBUG 4780 --- [http-nio-9090-exec-4] com.bs.helloboot.comm.aop.LoggerAop      : ===== aop before =====
+2023-07-21 12:26:04.106 DEBUG 4780 --- [http-nio-9090-exec-4] com.bs.helloboot.comm.aop.LoggerAop      : com.bs.helloboot.TestFilter doFilter
+2023-07-21 12:26:04.106 DEBUG 4780 --- [http-nio-9090-exec-4] com.bs.helloboot.comm.aop.LoggerAop      : ===== aop after =====
+2023-07-21 12:26:04.106 DEBUG 4780 --- [http-nio-9090-exec-4] com.bs.helloboot.TestFilter              : 필터가 적용되었다! ========
+2023-07-21 12:26:04.106 DEBUG 4780 --- [http-nio-9090-exec-4] c.b.h.c.interceptor.LoggerInterceptor    : =====preHandle실행전=====
+2023-07-21 12:26:04.107 DEBUG 4780 --- [http-nio-9090-exec-4] c.b.h.c.interceptor.LoggerInterceptor    : /member/memberAll
+2023-07-21 12:26:04.107 DEBUG 4780 --- [http-nio-9090-exec-4] c.b.h.c.interceptor.LoggerInterceptor    : =====preHandle실행후=====
+2023-07-21 12:26:04.107 DEBUG 4780 --- [http-nio-9090-exec-4] com.bs.helloboot.comm.aop.LoggerAop      : ===== aop before =====
+2023-07-21 12:26:04.107 DEBUG 4780 --- [http-nio-9090-exec-4] com.bs.helloboot.comm.aop.LoggerAop      : com.bs.helloboot.controller.MemberController selectMemberAll
+2023-07-21 12:26:04.107 DEBUG 4780 --- [http-nio-9090-exec-4] com.bs.helloboot.comm.aop.LoggerAop      : ===== aop after =====
+2023-07-21 12:26:04.109 DEBUG 4780 --- [http-nio-9090-exec-4] com.bs.helloboot.comm.aop.LoggerAop      : ===== aop before =====
+2023-07-21 12:26:04.110 DEBUG 4780 --- [http-nio-9090-exec-4] com.bs.helloboot.comm.aop.LoggerAop      : com.bs.helloboot.service.MemberServiceImpl selectMemberAll
+2023-07-21 12:26:04.110 DEBUG 4780 --- [http-nio-9090-exec-4] com.bs.helloboot.comm.aop.LoggerAop      : ===== aop after =====
+2023-07-21 12:26:04.112 DEBUG 4780 --- [http-nio-9090-exec-4] com.bs.helloboot.comm.aop.LoggerAop      : ===== aop before =====
+2023-07-21 12:26:04.112 DEBUG 4780 --- [http-nio-9090-exec-4] com.bs.helloboot.comm.aop.LoggerAop      : com.bs.helloboot.dao.MemberDaoImpl selectMemberAll
+2023-07-21 12:26:04.112 DEBUG 4780 --- [http-nio-9090-exec-4] com.bs.helloboot.comm.aop.LoggerAop      : ===== aop after =====
+2023-07-21 12:26:04.123 ERROR 4780 --- [http-nio-9090-exec-4] o.a.c.c.C.[.[.[/].[dispatcherServlet]    : Servlet.service() for servlet [dispatcherServlet] in context with path [] threw exception [Request processing failed; nested exception is org.mybatis.spring.MyBatisSystemException: nested exception is org.apache.ibatis.exceptions.PersistenceException: 
+### Error querying database.  Cause: java.lang.IllegalArgumentException: Mapped Statements collection does not contain value for member.selectMemberAll
+### Cause: java.lang.IllegalArgumentException: Mapped Statements collection does not contain value for member.selectMemberAll] with root cause
+
+java.lang.IllegalArgumentException: Mapped Statements collection does not contain value for member.selectMemberAll
+	at org.apache.ibatis.session.Configuration$StrictMap.get(Configuration.java:1097) ~[mybatis-3.5.13.jar:3.5.13]
+	at org.apache.ibatis.session.Configuration.getMappedStatement(Configuration.java:875) ~[mybatis-3.5.13.jar:3.5.13]
+	at org.apache.ibatis.session.Configuration.getMappedStatement(Configuration.java:868) ~[mybatis-3.5.13.jar:3.5.13]
+	at org.apache.ibatis.session.defaults.DefaultSqlSession.selectList(DefaultSqlSession.java:152) ~[mybatis-3.5.13.jar:3.5.13]
+	at org.apache.ibatis.session.defaults.DefaultSqlSession.selectList(DefaultSqlSession.java:147) ~[mybatis-3.5.13.jar:3.5.13]
+	at org.apache.ibatis.session.defaults.DefaultSqlSession.selectList(DefaultSqlSession.java:142) ~[mybatis-3.5.13.jar:3.5.13]
+	at org.apache.ibatis.session.defaults.DefaultSqlSession.selectList(DefaultSqlSession.java:137) ~[mybatis-3.5.13.jar:3.5.13]
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[na:na]
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77) ~[na:na]
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[na:na]
+	at java.base/java.lang.reflect.Method.invoke(Method.java:568) ~[na:na]
+	at org.mybatis.spring.SqlSessionTemplate$SqlSessionInterceptor.invoke(SqlSessionTemplate.java:425) ~[mybatis-spring-2.1.1.jar:2.1.1]
+	at jdk.proxy2/jdk.proxy2.$Proxy72.selectList(Unknown Source) ~[na:na]
+	at org.mybatis.spring.SqlSessionTemplate.selectList(SqlSessionTemplate.java:216) ~[mybatis-spring-2.1.1.jar:2.1.1]
+	at com.bs.helloboot.dao.MemberDaoImpl.selectMemberAll(MemberDaoImpl.java:22) ~[classes/:na]
+	at com.bs.helloboot.dao.MemberDaoImpl$$FastClassBySpringCGLIB$$e5dd1ca2.invoke(<generated>) ~[classes/:na]
+	at org.springframework.cglib.proxy.MethodProxy.invoke(MethodProxy.java:218) ~[spring-core-5.3.29.jar:5.3.29]
+	at org.springframework.aop.framework.CglibAopProxy$CglibMethodInvocation.invokeJoinpoint(CglibAopProxy.java:793) ~[spring-aop-5.3.29.jar:5.3.29]
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:163) ~[spring-aop-5.3.29.jar:5.3.29]
+	at org.springframework.aop.framework.CglibAopProxy$CglibMethodInvocation.proceed(CglibAopProxy.java:763) ~[spring-aop-5.3.29.jar:5.3.29]
+	at org.springframework.dao.support.PersistenceExceptionTranslationInterceptor.invoke(PersistenceExceptionTranslationInterceptor.java:137) ~[spring-tx-5.3.29.jar:5.3.29]
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:186) ~[spring-aop-5.3.29.jar:5.3.29]
+	at org.springframework.aop.framework.CglibAopProxy$CglibMethodInvocation.proceed(CglibAopProxy.java:763) ~[spring-aop-5.3.29.jar:5.3.29]
+	at org.springframework.aop.framework.adapter.MethodBeforeAdviceInterceptor.invoke(MethodBeforeAdviceInterceptor.java:58) ~[spring-aop-5.3.29.jar:5.3.29]
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:186) ~[spring-aop-5.3.29.jar:5.3.29]
+	at org.springframework.aop.framework.CglibAopProxy$CglibMethodInvocation.proceed(CglibAopProxy.java:763) ~[spring-aop-5.3.29.jar:5.3.29]
+	at org.springframework.aop.interceptor.ExposeInvocationInterceptor.invoke(ExposeInvocationInterceptor.java:97) ~[spring-aop-5.3.29.jar:5.3.29]
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:186) ~[spring-aop-5.3.29.jar:5.3.29]
+	at org.springframework.aop.framework.CglibAopProxy$CglibMethodInvocation.proceed(CglibAopProxy.java:763) ~[spring-aop-5.3.29.jar:5.3.29]
+	at org.springframework.aop.framework.CglibAopProxy$DynamicAdvisedInterceptor.intercept(CglibAopProxy.java:708) ~[spring-aop-5.3.29.jar:5.3.29]
+	at com.bs.helloboot.dao.MemberDaoImpl$$EnhancerBySpringCGLIB$$1b8ef588.selectMemberAll(<generated>) ~[classes/:na]
+	at com.bs.helloboot.service.MemberServiceImpl.selectMemberAll(MemberServiceImpl.java:26) ~[classes/:na]
+	at com.bs.helloboot.service.MemberServiceImpl$$FastClassBySpringCGLIB$$ebf2fba8.invoke(<generated>) ~[classes/:na]
+	at org.springframework.cglib.proxy.MethodProxy.invoke(MethodProxy.java:218) ~[spring-core-5.3.29.jar:5.3.29]
+	at org.springframework.aop.framework.CglibAopProxy$CglibMethodInvocation.invokeJoinpoint(CglibAopProxy.java:793) ~[spring-aop-5.3.29.jar:5.3.29]
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:163) ~[spring-aop-5.3.29.jar:5.3.29]
+	at org.springframework.aop.framework.CglibAopProxy$CglibMethodInvocation.proceed(CglibAopProxy.java:763) ~[spring-aop-5.3.29.jar:5.3.29]
+	at org.springframework.aop.framework.adapter.MethodBeforeAdviceInterceptor.invoke(MethodBeforeAdviceInterceptor.java:58) ~[spring-aop-5.3.29.jar:5.3.29]
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:186) ~[spring-aop-5.3.29.jar:5.3.29]
+	at org.springframework.aop.framework.CglibAopProxy$CglibMethodInvocation.proceed(CglibAopProxy.java:763) ~[spring-aop-5.3.29.jar:5.3.29]
+	at org.springframework.aop.interceptor.ExposeInvocationInterceptor.invoke(ExposeInvocationInterceptor.java:97) ~[spring-aop-5.3.29.jar:5.3.29]
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:186) ~[spring-aop-5.3.29.jar:5.3.29]
+	at org.springframework.aop.framework.CglibAopProxy$CglibMethodInvocation.proceed(CglibAopProxy.java:763) ~[spring-aop-5.3.29.jar:5.3.29]
+	at org.springframework.aop.framework.CglibAopProxy$DynamicAdvisedInterceptor.intercept(CglibAopProxy.java:708) ~[spring-aop-5.3.29.jar:5.3.29]
+	at com.bs.helloboot.service.MemberServiceImpl$$EnhancerBySpringCGLIB$$1499265a.selectMemberAll(<generated>) ~[classes/:na]
+	at com.bs.helloboot.controller.MemberController.selectMemberAll(MemberController.java:27) ~[classes/:na]
+	at com.bs.helloboot.controller.MemberController$$FastClassBySpringCGLIB$$a9582bce.invoke(<generated>) ~[classes/:na]
+	at org.springframework.cglib.proxy.MethodProxy.invoke(MethodProxy.java:218) ~[spring-core-5.3.29.jar:5.3.29]
+	at org.springframework.aop.framework.CglibAopProxy$CglibMethodInvocation.invokeJoinpoint(CglibAopProxy.java:793) ~[spring-aop-5.3.29.jar:5.3.29]
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:163) ~[spring-aop-5.3.29.jar:5.3.29]
+	at org.springframework.aop.framework.CglibAopProxy$CglibMethodInvocation.proceed(CglibAopProxy.java:763) ~[spring-aop-5.3.29.jar:5.3.29]
+	at org.springframework.aop.framework.adapter.MethodBeforeAdviceInterceptor.invoke(MethodBeforeAdviceInterceptor.java:58) ~[spring-aop-5.3.29.jar:5.3.29]
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:186) ~[spring-aop-5.3.29.jar:5.3.29]
+	at org.springframework.aop.framework.CglibAopProxy$CglibMethodInvocation.proceed(CglibAopProxy.java:763) ~[spring-aop-5.3.29.jar:5.3.29]
+	at org.springframework.aop.interceptor.ExposeInvocationInterceptor.invoke(ExposeInvocationInterceptor.java:97) ~[spring-aop-5.3.29.jar:5.3.29]
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:186) ~[spring-aop-5.3.29.jar:5.3.29]
+	at org.springframework.aop.framework.CglibAopProxy$CglibMethodInvocation.proceed(CglibAopProxy.java:763) ~[spring-aop-5.3.29.jar:5.3.29]
+	at org.springframework.aop.framework.CglibAopProxy$DynamicAdvisedInterceptor.intercept(CglibAopProxy.java:708) ~[spring-aop-5.3.29.jar:5.3.29]
+	at com.bs.helloboot.controller.MemberController$$EnhancerBySpringCGLIB$$669cfe8c.selectMemberAll(<generated>) ~[classes/:na]
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[na:na]
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77) ~[na:na]
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[na:na]
+	at java.base/java.lang.reflect.Method.invoke(Method.java:568) ~[na:na]
+	at org.springframework.web.method.support.InvocableHandlerMethod.doInvoke(InvocableHandlerMethod.java:205) ~[spring-web-5.3.29.jar:5.3.29]
+	at org.springframework.web.method.support.InvocableHandlerMethod.invokeForRequest(InvocableHandlerMethod.java:150) ~[spring-web-5.3.29.jar:5.3.29]
+	at org.springframework.web.servlet.mvc.method.annotation.ServletInvocableHandlerMethod.invokeAndHandle(ServletInvocableHandlerMethod.java:117) ~[spring-webmvc-5.3.29.jar:5.3.29]
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.invokeHandlerMethod(RequestMappingHandlerAdapter.java:895) ~[spring-webmvc-5.3.29.jar:5.3.29]
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.handleInternal(RequestMappingHandlerAdapter.java:808) ~[spring-webmvc-5.3.29.jar:5.3.29]
+	at org.springframework.web.servlet.mvc.method.AbstractHandlerMethodAdapter.handle(AbstractHandlerMethodAdapter.java:87) ~[spring-webmvc-5.3.29.jar:5.3.29]
+	at org.springframework.web.servlet.DispatcherServlet.doDispatch(DispatcherServlet.java:1072) ~[spring-webmvc-5.3.29.jar:5.3.29]
+	at org.springframework.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:965) ~[spring-webmvc-5.3.29.jar:5.3.29]
+	at org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:1006) ~[spring-webmvc-5.3.29.jar:5.3.29]
+	at org.springframework.web.servlet.FrameworkServlet.doGet(FrameworkServlet.java:898) ~[spring-webmvc-5.3.29.jar:5.3.29]
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:529) ~[tomcat-embed-core-9.0.78.jar:4.0.FR]
+	at org.springframework.web.servlet.FrameworkServlet.service(FrameworkServlet.java:883) ~[spring-webmvc-5.3.29.jar:5.3.29]
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:623) ~[tomcat-embed-core-9.0.78.jar:4.0.FR]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:209) ~[tomcat-embed-core-9.0.78.jar:9.0.78]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:153) ~[tomcat-embed-core-9.0.78.jar:9.0.78]
+	at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:51) ~[tomcat-embed-websocket-9.0.78.jar:9.0.78]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:178) ~[tomcat-embed-core-9.0.78.jar:9.0.78]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:153) ~[tomcat-embed-core-9.0.78.jar:9.0.78]
+	at com.bs.helloboot.TestFilter.doFilter(TestFilter.java:26) ~[classes/:na]
+	at com.bs.helloboot.TestFilter$$FastClassBySpringCGLIB$$66f51c44.invoke(<generated>) ~[classes/:na]
+	at org.springframework.cglib.proxy.MethodProxy.invoke(MethodProxy.java:218) ~[spring-core-5.3.29.jar:5.3.29]
+	at org.springframework.aop.framework.CglibAopProxy$CglibMethodInvocation.invokeJoinpoint(CglibAopProxy.java:793) ~[spring-aop-5.3.29.jar:5.3.29]
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:163) ~[spring-aop-5.3.29.jar:5.3.29]
+	at org.springframework.aop.framework.CglibAopProxy$CglibMethodInvocation.proceed(CglibAopProxy.java:763) ~[spring-aop-5.3.29.jar:5.3.29]
+	at org.springframework.aop.framework.adapter.MethodBeforeAdviceInterceptor.invoke(MethodBeforeAdviceInterceptor.java:58) ~[spring-aop-5.3.29.jar:5.3.29]
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:186) ~[spring-aop-5.3.29.jar:5.3.29]
+	at org.springframework.aop.framework.CglibAopProxy$CglibMethodInvocation.proceed(CglibAopProxy.java:763) ~[spring-aop-5.3.29.jar:5.3.29]
+	at org.springframework.aop.interceptor.ExposeInvocationInterceptor.invoke(ExposeInvocationInterceptor.java:97) ~[spring-aop-5.3.29.jar:5.3.29]
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:186) ~[spring-aop-5.3.29.jar:5.3.29]
+	at org.springframework.aop.framework.CglibAopProxy$CglibMethodInvocation.proceed(CglibAopProxy.java:763) ~[spring-aop-5.3.29.jar:5.3.29]
+	at org.springframework.aop.framework.CglibAopProxy$DynamicAdvisedInterceptor.intercept(CglibAopProxy.java:708) ~[spring-aop-5.3.29.jar:5.3.29]
+	at com.bs.helloboot.TestFilter$$EnhancerBySpringCGLIB$$dabac9ae.doFilter(<generated>) ~[classes/:na]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:178) ~[tomcat-embed-core-9.0.78.jar:9.0.78]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:153) ~[tomcat-embed-core-9.0.78.jar:9.0.78]
+	at org.springframework.web.filter.RequestContextFilter.doFilterInternal(RequestContextFilter.java:100) ~[spring-web-5.3.29.jar:5.3.29]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:117) ~[spring-web-5.3.29.jar:5.3.29]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:178) ~[tomcat-embed-core-9.0.78.jar:9.0.78]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:153) ~[tomcat-embed-core-9.0.78.jar:9.0.78]
+	at org.springframework.web.filter.FormContentFilter.doFilterInternal(FormContentFilter.java:93) ~[spring-web-5.3.29.jar:5.3.29]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:117) ~[spring-web-5.3.29.jar:5.3.29]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:178) ~[tomcat-embed-core-9.0.78.jar:9.0.78]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:153) ~[tomcat-embed-core-9.0.78.jar:9.0.78]
+	at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:201) ~[spring-web-5.3.29.jar:5.3.29]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:117) ~[spring-web-5.3.29.jar:5.3.29]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:178) ~[tomcat-embed-core-9.0.78.jar:9.0.78]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:153) ~[tomcat-embed-core-9.0.78.jar:9.0.78]
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:167) ~[tomcat-embed-core-9.0.78.jar:9.0.78]
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:90) ~[tomcat-embed-core-9.0.78.jar:9.0.78]
+	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:481) ~[tomcat-embed-core-9.0.78.jar:9.0.78]
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:130) ~[tomcat-embed-core-9.0.78.jar:9.0.78]
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:93) ~[tomcat-embed-core-9.0.78.jar:9.0.78]
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:74) ~[tomcat-embed-core-9.0.78.jar:9.0.78]
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:343) ~[tomcat-embed-core-9.0.78.jar:9.0.78]
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:390) ~[tomcat-embed-core-9.0.78.jar:9.0.78]
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:63) ~[tomcat-embed-core-9.0.78.jar:9.0.78]
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:926) ~[tomcat-embed-core-9.0.78.jar:9.0.78]
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1791) ~[tomcat-embed-core-9.0.78.jar:9.0.78]
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:52) ~[tomcat-embed-core-9.0.78.jar:9.0.78]
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1191) ~[tomcat-embed-core-9.0.78.jar:9.0.78]
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:659) ~[tomcat-embed-core-9.0.78.jar:9.0.78]
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61) ~[tomcat-embed-core-9.0.78.jar:9.0.78]
+	at java.base/java.lang.Thread.run(Thread.java:833) ~[na:na]
+
+2023-07-21 12:26:17.154  INFO 4780 --- [File Watcher] rtingClassPathChangeChangedEventListener : Restarting due to 1 class path change (0 additions, 0 deletions, 1 modification)
+2023-07-21 12:26:17.167  INFO 4780 --- [Thread-16] o.apache.catalina.core.StandardService   : Stopping service [Tomcat]
+2023-07-21 12:26:17.167  INFO 4780 --- [Thread-16] o.a.c.c.C.[Tomcat].[localhost].[/]       : Destroying Spring FrameworkServlet 'dispatcherServlet'
+2023-07-21 12:26:17.173  INFO 4780 --- [Thread-16] com.zaxxer.hikari.HikariDataSource       : HikariPool-3 - Shutdown initiated...
+2023-07-21 12:26:17.182  INFO 4780 --- [Thread-16] com.zaxxer.hikari.HikariDataSource       : HikariPool-3 - Shutdown completed.
+2023-07-21 12:26:17.246  INFO 4780 --- [restartedMain] com.bs.helloboot.HelloBootApplication    : Starting HelloBootApplication using Java 17.0.5 on DESKTOP-OSPAM2G with PID 4780 (C:\servlet\springwork\helloBoot\target\classes started by JeongSangjun in C:\servlet\springwork\helloBoot)
+2023-07-21 12:26:17.246 DEBUG 4780 --- [restartedMain] com.bs.helloboot.HelloBootApplication    : Running with Spring Boot v2.7.14-SNAPSHOT, Spring v5.3.29
+2023-07-21 12:26:17.246  INFO 4780 --- [restartedMain] com.bs.helloboot.HelloBootApplication    : No active profile set, falling back to 1 default profile: "default"
+2023-07-21 12:26:17.353  INFO 4780 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JDBC repositories in DEFAULT mode.
+2023-07-21 12:26:17.357  INFO 4780 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 4 ms. Found 0 JDBC repository interfaces.
+2023-07-21 12:26:17.427  INFO 4780 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 9090 (http)
+2023-07-21 12:26:17.427  INFO 4780 --- [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2023-07-21 12:26:17.428  INFO 4780 --- [restartedMain] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.78]
+2023-07-21 12:26:17.487  INFO 4780 --- [restartedMain] org.apache.jasper.servlet.TldScanner     : At least one JAR was scanned for TLDs yet contained no TLDs. Enable debug logging for this logger for a complete list of JARs that were scanned but no TLDs were found in them. Skipping unneeded JARs during scanning can improve startup time and JSP compilation time.
+2023-07-21 12:26:17.490  INFO 4780 --- [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2023-07-21 12:26:17.490  INFO 4780 --- [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 242 ms
+2023-07-21 12:26:17.618  INFO 4780 --- [restartedMain] o.s.b.a.w.s.WelcomePageHandlerMapping    : Adding welcome page template: index
+2023-07-21 12:26:17.618 DEBUG 4780 --- [restartedMain] com.bs.helloboot.comm.aop.LoggerAop      : ===== aop before =====
+2023-07-21 12:26:17.618 DEBUG 4780 --- [restartedMain] com.bs.helloboot.comm.aop.LoggerAop      : com.bs.helloboot.config.MyWebMvcConfigration addInterceptors
+2023-07-21 12:26:17.618 DEBUG 4780 --- [restartedMain] com.bs.helloboot.comm.aop.LoggerAop      : ===== aop after =====
+2023-07-21 12:26:17.620 DEBUG 4780 --- [restartedMain] com.bs.helloboot.comm.aop.LoggerAop      : ===== aop before =====
+2023-07-21 12:26:17.620 DEBUG 4780 --- [restartedMain] com.bs.helloboot.comm.aop.LoggerAop      : com.bs.helloboot.config.MyWebMvcConfigration addCorsMappings
+2023-07-21 12:26:17.621 DEBUG 4780 --- [restartedMain] com.bs.helloboot.comm.aop.LoggerAop      : ===== aop after =====
+2023-07-21 12:26:17.643 DEBUG 4780 --- [restartedMain] com.bs.helloboot.comm.aop.LoggerAop      : ===== aop before =====
+2023-07-21 12:26:17.643 DEBUG 4780 --- [restartedMain] com.bs.helloboot.comm.aop.LoggerAop      : com.bs.helloboot.config.MyWebMvcConfigration addViewControllers
+2023-07-21 12:26:17.643 DEBUG 4780 --- [restartedMain] com.bs.helloboot.comm.aop.LoggerAop      : ===== aop after =====
+2023-07-21 12:26:17.697  INFO 4780 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-4 - Starting...
+2023-07-21 12:26:17.698  WARN 4780 --- [restartedMain] com.zaxxer.hikari.util.DriverDataSource  : Registered driver with driverClassName=oracle.jdbc.driver.OracleDriver was not found, trying direct instantiation.
+2023-07-21 12:26:17.746  INFO 4780 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-4 - Start completed.
+2023-07-21 12:26:17.780  INFO 4780 --- [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2023-07-21 12:26:17.789  INFO 4780 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 9090 (http) with context path ''
+2023-07-21 12:26:17.793  INFO 4780 --- [restartedMain] com.bs.helloboot.HelloBootApplication    : Started HelloBootApplication in 0.567 seconds (JVM running for 173.237)
+2023-07-21 12:26:17.795  INFO 4780 --- [restartedMain] .ConditionEvaluationDeltaLoggingListener : Condition evaluation unchanged
