@@ -22,5 +22,10 @@
 		<input type="submit" value="전송">
 	</form>
 	
+	<!-- 아이디로 조회 -->
+	<form action="${pageContext.request.contextPath }/memberId" method="post">
+		<input type="text" name="userId">
+		<input type="submit" value="아이디조회">
+	</form>
 </body>
 </html>

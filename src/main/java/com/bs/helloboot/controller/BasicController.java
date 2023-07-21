@@ -5,7 +5,11 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
+
+import com.bs.helloboot.dto.MemberDto;
+import com.bs.helloboot.service.MemberService;
 
 import lombok.extern.slf4j.Slf4j;
 
@@ -19,7 +23,11 @@ public class BasicController {
 	@Value("${linux.baseDir}")
 	private String baseDir;
 	
+	private MemberService service;
 	
+	public BasicController(MemberService service) {
+		this.service=service;
+	}
 	
 	@PostMapping("/fileUpload")
 	public String fileUpload(MultipartFile[] upFile) {
@@ -48,7 +56,11 @@ public class BasicController {
 		return "redirect:/";
 	}
 	
-	
+	@PostMapping("/memberId")
+	@ResponseBody
+	public MemberDto selectMemberById(String userId) {
+		return service.selectMemberById(userId);
+	}
 	
 	
 	

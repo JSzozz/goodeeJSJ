@@ -10,4 +10,5 @@ public interface MemberService {
 	
 	int insertMember(MemberDto m);
 	
+	MemberDto selectMemberById(String userId);
 }

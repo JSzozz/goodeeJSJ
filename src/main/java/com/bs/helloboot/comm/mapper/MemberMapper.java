@@ -13,4 +13,6 @@ public interface MemberMapper {
 	@Select("SELECT * FROM MEMBER")
 	List<MemberDto> selectMemberAll();
 	
+	@Select("SELECT * FROM MEMBER WHERE USERID=#{id}")
+	MemberDto selectMemberById(String id);
 }

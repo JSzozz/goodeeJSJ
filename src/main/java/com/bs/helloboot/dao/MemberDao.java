@@ -11,4 +11,6 @@ public interface MemberDao {
 	List<MemberDto> selectMemberAll(SqlSession session);
 	
 	int insertMember (SqlSession session, MemberDto m);
+	
+	MemberDto selectMemberById(SqlSession session, String userId);
 }

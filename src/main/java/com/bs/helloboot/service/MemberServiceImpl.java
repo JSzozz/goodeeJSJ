@@ -31,6 +31,12 @@ public class MemberServiceImpl implements MemberService {
 		// TODO Auto-generated method stub
 		return dao.insertMember(session, m);
 	}
+
+	@Override
+	public MemberDto selectMemberById(String userId) {
+		// TODO Auto-generated method stub
+		return dao.selectMemberById(session, userId);
+	}
 	
 	
 	

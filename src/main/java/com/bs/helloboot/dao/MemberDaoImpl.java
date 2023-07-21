@@ -29,4 +29,10 @@ public class MemberDaoImpl implements MemberDao {
 		return session.insert("member.insertMember",m);
 	}
 
+	@Override
+	public MemberDto selectMemberById(SqlSession session, String userId) {
+		// TODO Auto-generated method stub
+		return mapper.selectMemberById(userId);
+	}
+
 }
