@@ -178,3 +178,147 @@
 2023-07-21 11:21:19.324  INFO 30964 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 9090 (http) with context path ''
 2023-07-21 11:21:19.327  INFO 30964 --- [restartedMain] com.bs.helloboot.HelloBootApplication    : Started HelloBootApplication in 0.467 seconds (JVM running for 321.392)
 2023-07-21 11:21:19.329  INFO 30964 --- [restartedMain] .ConditionEvaluationDeltaLoggingListener : Condition evaluation unchanged
+2023-07-21 11:22:11.492  INFO 30964 --- [File Watcher] rtingClassPathChangeChangedEventListener : Restarting due to 1 class path change (1 addition, 0 deletions, 0 modifications)
+2023-07-21 11:22:11.504  INFO 30964 --- [Thread-14] o.apache.catalina.core.StandardService   : Stopping service [Tomcat]
+2023-07-21 11:22:11.510  INFO 30964 --- [Thread-14] com.zaxxer.hikari.HikariDataSource       : HikariPool-3 - Shutdown initiated...
+2023-07-21 11:22:11.519  INFO 30964 --- [Thread-14] com.zaxxer.hikari.HikariDataSource       : HikariPool-3 - Shutdown completed.
+2023-07-21 11:22:11.587  INFO 30964 --- [restartedMain] com.bs.helloboot.HelloBootApplication    : Starting HelloBootApplication using Java 17.0.5 on DESKTOP-OSPAM2G with PID 30964 (C:\servlet\springwork\helloBoot\target\classes started by JeongSangjun in C:\servlet\springwork\helloBoot)
+2023-07-21 11:22:11.587 DEBUG 30964 --- [restartedMain] com.bs.helloboot.HelloBootApplication    : Running with Spring Boot v2.7.14-SNAPSHOT, Spring v5.3.29
+2023-07-21 11:22:11.587  INFO 30964 --- [restartedMain] com.bs.helloboot.HelloBootApplication    : No active profile set, falling back to 1 default profile: "default"
+2023-07-21 11:22:11.689  INFO 30964 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JDBC repositories in DEFAULT mode.
+2023-07-21 11:22:11.694  INFO 30964 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 3 ms. Found 0 JDBC repository interfaces.
+2023-07-21 11:22:11.708  WARN 30964 --- [restartedMain] o.m.s.mapper.ClassPathMapperScanner      : No MyBatis mapper was found in '[com.bs.helloboot]' package. Please check your configuration.
+2023-07-21 11:22:11.734  INFO 30964 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 9090 (http)
+2023-07-21 11:22:11.735  INFO 30964 --- [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2023-07-21 11:22:11.735  INFO 30964 --- [restartedMain] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.78]
+2023-07-21 11:22:11.801  INFO 30964 --- [restartedMain] org.apache.jasper.servlet.TldScanner     : At least one JAR was scanned for TLDs yet contained no TLDs. Enable debug logging for this logger for a complete list of JARs that were scanned but no TLDs were found in them. Skipping unneeded JARs during scanning can improve startup time and JSP compilation time.
+2023-07-21 11:22:11.803  INFO 30964 --- [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2023-07-21 11:22:11.803  INFO 30964 --- [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 214 ms
+2023-07-21 11:22:11.863  INFO 30964 --- [restartedMain] o.s.b.a.w.s.WelcomePageHandlerMapping    : Adding welcome page template: index
+2023-07-21 11:22:11.888  INFO 30964 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-4 - Starting...
+2023-07-21 11:22:11.889  WARN 30964 --- [restartedMain] com.zaxxer.hikari.util.DriverDataSource  : Registered driver with driverClassName=oracle.jdbc.driver.OracleDriver was not found, trying direct instantiation.
+2023-07-21 11:22:11.941  INFO 30964 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-4 - Start completed.
+2023-07-21 11:22:11.949  INFO 30964 --- [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2023-07-21 11:22:11.957  INFO 30964 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 9090 (http) with context path ''
+2023-07-21 11:22:11.960  INFO 30964 --- [restartedMain] com.bs.helloboot.HelloBootApplication    : Started HelloBootApplication in 0.394 seconds (JVM running for 374.025)
+2023-07-21 11:22:11.961  INFO 30964 --- [restartedMain] .ConditionEvaluationDeltaLoggingListener : Condition evaluation unchanged
+2023-07-21 11:23:32.681  INFO 30964 --- [File Watcher] rtingClassPathChangeChangedEventListener : Restarting due to 1 class path change (0 additions, 0 deletions, 1 modification)
+2023-07-21 11:23:32.692  INFO 30964 --- [Thread-19] o.apache.catalina.core.StandardService   : Stopping service [Tomcat]
+2023-07-21 11:23:32.698  INFO 30964 --- [Thread-19] com.zaxxer.hikari.HikariDataSource       : HikariPool-4 - Shutdown initiated...
+2023-07-21 11:23:32.708  INFO 30964 --- [Thread-19] com.zaxxer.hikari.HikariDataSource       : HikariPool-4 - Shutdown completed.
+2023-07-21 11:23:32.785  INFO 30964 --- [restartedMain] com.bs.helloboot.HelloBootApplication    : Starting HelloBootApplication using Java 17.0.5 on DESKTOP-OSPAM2G with PID 30964 (C:\servlet\springwork\helloBoot\target\classes started by JeongSangjun in C:\servlet\springwork\helloBoot)
+2023-07-21 11:23:32.786 DEBUG 30964 --- [restartedMain] com.bs.helloboot.HelloBootApplication    : Running with Spring Boot v2.7.14-SNAPSHOT, Spring v5.3.29
+2023-07-21 11:23:32.786  INFO 30964 --- [restartedMain] com.bs.helloboot.HelloBootApplication    : No active profile set, falling back to 1 default profile: "default"
+2023-07-21 11:23:32.884  INFO 30964 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JDBC repositories in DEFAULT mode.
+2023-07-21 11:23:32.889  INFO 30964 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 4 ms. Found 0 JDBC repository interfaces.
+2023-07-21 11:23:32.905  WARN 30964 --- [restartedMain] o.m.s.mapper.ClassPathMapperScanner      : No MyBatis mapper was found in '[com.bs.helloboot]' package. Please check your configuration.
+2023-07-21 11:23:32.936  INFO 30964 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 9090 (http)
+2023-07-21 11:23:32.937  INFO 30964 --- [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2023-07-21 11:23:32.937  INFO 30964 --- [restartedMain] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.78]
+2023-07-21 11:23:32.991  INFO 30964 --- [restartedMain] org.apache.jasper.servlet.TldScanner     : At least one JAR was scanned for TLDs yet contained no TLDs. Enable debug logging for this logger for a complete list of JARs that were scanned but no TLDs were found in them. Skipping unneeded JARs during scanning can improve startup time and JSP compilation time.
+2023-07-21 11:23:32.993  INFO 30964 --- [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2023-07-21 11:23:32.993  INFO 30964 --- [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 206 ms
+2023-07-21 11:23:33.047  INFO 30964 --- [restartedMain] o.s.b.a.w.s.WelcomePageHandlerMapping    : Adding welcome page template: index
+2023-07-21 11:23:33.070  INFO 30964 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-5 - Starting...
+2023-07-21 11:23:33.070  WARN 30964 --- [restartedMain] com.zaxxer.hikari.util.DriverDataSource  : Registered driver with driverClassName=oracle.jdbc.driver.OracleDriver was not found, trying direct instantiation.
+2023-07-21 11:23:33.116  INFO 30964 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-5 - Start completed.
+2023-07-21 11:23:33.128  INFO 30964 --- [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2023-07-21 11:23:33.137  INFO 30964 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 9090 (http) with context path ''
+2023-07-21 11:23:33.140  INFO 30964 --- [restartedMain] com.bs.helloboot.HelloBootApplication    : Started HelloBootApplication in 0.377 seconds (JVM running for 455.205)
+2023-07-21 11:23:33.142  INFO 30964 --- [restartedMain] .ConditionEvaluationDeltaLoggingListener : Condition evaluation unchanged
+2023-07-21 11:24:51.654  INFO 30964 --- [File Watcher] rtingClassPathChangeChangedEventListener : Restarting due to 1 class path change (0 additions, 0 deletions, 1 modification)
+2023-07-21 11:24:51.667  INFO 30964 --- [Thread-24] o.apache.catalina.core.StandardService   : Stopping service [Tomcat]
+2023-07-21 11:24:51.672  INFO 30964 --- [Thread-24] com.zaxxer.hikari.HikariDataSource       : HikariPool-5 - Shutdown initiated...
+2023-07-21 11:24:51.680  INFO 30964 --- [Thread-24] com.zaxxer.hikari.HikariDataSource       : HikariPool-5 - Shutdown completed.
+2023-07-21 11:24:51.752  INFO 30964 --- [restartedMain] com.bs.helloboot.HelloBootApplication    : Starting HelloBootApplication using Java 17.0.5 on DESKTOP-OSPAM2G with PID 30964 (C:\servlet\springwork\helloBoot\target\classes started by JeongSangjun in C:\servlet\springwork\helloBoot)
+2023-07-21 11:24:51.752 DEBUG 30964 --- [restartedMain] com.bs.helloboot.HelloBootApplication    : Running with Spring Boot v2.7.14-SNAPSHOT, Spring v5.3.29
+2023-07-21 11:24:51.752  INFO 30964 --- [restartedMain] com.bs.helloboot.HelloBootApplication    : No active profile set, falling back to 1 default profile: "default"
+2023-07-21 11:24:51.859  INFO 30964 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JDBC repositories in DEFAULT mode.
+2023-07-21 11:24:51.863  INFO 30964 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 4 ms. Found 0 JDBC repository interfaces.
+2023-07-21 11:24:51.878  WARN 30964 --- [restartedMain] o.m.s.mapper.ClassPathMapperScanner      : No MyBatis mapper was found in '[com.bs.helloboot]' package. Please check your configuration.
+2023-07-21 11:24:51.903  INFO 30964 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 9090 (http)
+2023-07-21 11:24:51.904  INFO 30964 --- [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2023-07-21 11:24:51.904  INFO 30964 --- [restartedMain] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.78]
+2023-07-21 11:24:51.961  INFO 30964 --- [restartedMain] org.apache.jasper.servlet.TldScanner     : At least one JAR was scanned for TLDs yet contained no TLDs. Enable debug logging for this logger for a complete list of JARs that were scanned but no TLDs were found in them. Skipping unneeded JARs during scanning can improve startup time and JSP compilation time.
+2023-07-21 11:24:51.963  INFO 30964 --- [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2023-07-21 11:24:51.963  INFO 30964 --- [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 210 ms
+2023-07-21 11:24:52.011  INFO 30964 --- [restartedMain] o.s.b.a.w.s.WelcomePageHandlerMapping    : Adding welcome page template: index
+2023-07-21 11:24:52.032  INFO 30964 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-6 - Starting...
+2023-07-21 11:24:52.032  WARN 30964 --- [restartedMain] com.zaxxer.hikari.util.DriverDataSource  : Registered driver with driverClassName=oracle.jdbc.driver.OracleDriver was not found, trying direct instantiation.
+2023-07-21 11:24:52.166  INFO 30964 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-6 - Start completed.
+2023-07-21 11:24:52.178  INFO 30964 --- [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2023-07-21 11:24:52.188  INFO 30964 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 9090 (http) with context path ''
+2023-07-21 11:24:52.192  INFO 30964 --- [restartedMain] com.bs.helloboot.HelloBootApplication    : Started HelloBootApplication in 0.459 seconds (JVM running for 534.257)
+2023-07-21 11:24:52.194  INFO 30964 --- [restartedMain] .ConditionEvaluationDeltaLoggingListener : Condition evaluation unchanged
+2023-07-21 11:26:38.460  INFO 30964 --- [File Watcher] rtingClassPathChangeChangedEventListener : Restarting due to 1 class path change (0 additions, 0 deletions, 1 modification)
+2023-07-21 11:26:38.471  INFO 30964 --- [Thread-29] o.apache.catalina.core.StandardService   : Stopping service [Tomcat]
+2023-07-21 11:26:38.476  INFO 30964 --- [Thread-29] com.zaxxer.hikari.HikariDataSource       : HikariPool-6 - Shutdown initiated...
+2023-07-21 11:26:38.490  INFO 30964 --- [Thread-29] com.zaxxer.hikari.HikariDataSource       : HikariPool-6 - Shutdown completed.
+2023-07-21 11:26:38.558  INFO 30964 --- [restartedMain] com.bs.helloboot.HelloBootApplication    : Starting HelloBootApplication using Java 17.0.5 on DESKTOP-OSPAM2G with PID 30964 (C:\servlet\springwork\helloBoot\target\classes started by JeongSangjun in C:\servlet\springwork\helloBoot)
+2023-07-21 11:26:38.558 DEBUG 30964 --- [restartedMain] com.bs.helloboot.HelloBootApplication    : Running with Spring Boot v2.7.14-SNAPSHOT, Spring v5.3.29
+2023-07-21 11:26:38.558  INFO 30964 --- [restartedMain] com.bs.helloboot.HelloBootApplication    : No active profile set, falling back to 1 default profile: "default"
+2023-07-21 11:26:38.677  INFO 30964 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JDBC repositories in DEFAULT mode.
+2023-07-21 11:26:38.684  INFO 30964 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 6 ms. Found 0 JDBC repository interfaces.
+2023-07-21 11:26:38.700  WARN 30964 --- [restartedMain] o.m.s.mapper.ClassPathMapperScanner      : No MyBatis mapper was found in '[com.bs.helloboot]' package. Please check your configuration.
+2023-07-21 11:26:38.728  INFO 30964 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 9090 (http)
+2023-07-21 11:26:38.729  INFO 30964 --- [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2023-07-21 11:26:38.731  INFO 30964 --- [restartedMain] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.78]
+2023-07-21 11:26:38.787  INFO 30964 --- [restartedMain] org.apache.jasper.servlet.TldScanner     : At least one JAR was scanned for TLDs yet contained no TLDs. Enable debug logging for this logger for a complete list of JARs that were scanned but no TLDs were found in them. Skipping unneeded JARs during scanning can improve startup time and JSP compilation time.
+2023-07-21 11:26:38.789  INFO 30964 --- [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2023-07-21 11:26:38.789  INFO 30964 --- [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 230 ms
+2023-07-21 11:26:38.845  INFO 30964 --- [restartedMain] o.s.b.a.w.s.WelcomePageHandlerMapping    : Adding welcome page template: index
+2023-07-21 11:26:38.872  INFO 30964 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-7 - Starting...
+2023-07-21 11:26:38.872  WARN 30964 --- [restartedMain] com.zaxxer.hikari.util.DriverDataSource  : Registered driver with driverClassName=oracle.jdbc.driver.OracleDriver was not found, trying direct instantiation.
+2023-07-21 11:26:38.954  INFO 30964 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-7 - Start completed.
+2023-07-21 11:26:38.964  INFO 30964 --- [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2023-07-21 11:26:38.973  INFO 30964 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 9090 (http) with context path ''
+2023-07-21 11:26:38.976  INFO 30964 --- [restartedMain] com.bs.helloboot.HelloBootApplication    : Started HelloBootApplication in 0.444 seconds (JVM running for 641.041)
+2023-07-21 11:26:38.978  INFO 30964 --- [restartedMain] .ConditionEvaluationDeltaLoggingListener : Condition evaluation unchanged
+2023-07-21 11:35:43.612  INFO 30964 --- [File Watcher] rtingClassPathChangeChangedEventListener : Restarting due to 1 class path change (0 additions, 0 deletions, 1 modification)
+2023-07-21 11:35:43.626  INFO 30964 --- [Thread-34] o.apache.catalina.core.StandardService   : Stopping service [Tomcat]
+2023-07-21 11:35:43.633  INFO 30964 --- [Thread-34] com.zaxxer.hikari.HikariDataSource       : HikariPool-7 - Shutdown initiated...
+2023-07-21 11:35:43.654  INFO 30964 --- [Thread-34] com.zaxxer.hikari.HikariDataSource       : HikariPool-7 - Shutdown completed.
+2023-07-21 11:35:43.770  INFO 30964 --- [restartedMain] com.bs.helloboot.HelloBootApplication    : Starting HelloBootApplication using Java 17.0.5 on DESKTOP-OSPAM2G with PID 30964 (C:\servlet\springwork\helloBoot\target\classes started by JeongSangjun in C:\servlet\springwork\helloBoot)
+2023-07-21 11:35:43.770 DEBUG 30964 --- [restartedMain] com.bs.helloboot.HelloBootApplication    : Running with Spring Boot v2.7.14-SNAPSHOT, Spring v5.3.29
+2023-07-21 11:35:43.770  INFO 30964 --- [restartedMain] com.bs.helloboot.HelloBootApplication    : No active profile set, falling back to 1 default profile: "default"
+2023-07-21 11:35:43.960  INFO 30964 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JDBC repositories in DEFAULT mode.
+2023-07-21 11:35:43.965  INFO 30964 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 4 ms. Found 0 JDBC repository interfaces.
+2023-07-21 11:35:43.985  WARN 30964 --- [restartedMain] o.m.s.mapper.ClassPathMapperScanner      : No MyBatis mapper was found in '[com.bs.helloboot]' package. Please check your configuration.
+2023-07-21 11:35:44.027  INFO 30964 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 9090 (http)
+2023-07-21 11:35:44.027  INFO 30964 --- [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2023-07-21 11:35:44.027  INFO 30964 --- [restartedMain] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.78]
+2023-07-21 11:35:44.133  INFO 30964 --- [restartedMain] org.apache.jasper.servlet.TldScanner     : At least one JAR was scanned for TLDs yet contained no TLDs. Enable debug logging for this logger for a complete list of JARs that were scanned but no TLDs were found in them. Skipping unneeded JARs during scanning can improve startup time and JSP compilation time.
+2023-07-21 11:35:44.136  INFO 30964 --- [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2023-07-21 11:35:44.136  INFO 30964 --- [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 363 ms
+2023-07-21 11:35:44.263  INFO 30964 --- [restartedMain] o.s.b.a.w.s.WelcomePageHandlerMapping    : Adding welcome page template: index
+2023-07-21 11:35:44.320  INFO 30964 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-8 - Starting...
+2023-07-21 11:35:44.320  WARN 30964 --- [restartedMain] com.zaxxer.hikari.util.DriverDataSource  : Registered driver with driverClassName=oracle.jdbc.driver.OracleDriver was not found, trying direct instantiation.
+2023-07-21 11:35:44.429  INFO 30964 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-8 - Start completed.
+2023-07-21 11:35:44.442  INFO 30964 --- [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2023-07-21 11:35:44.457  INFO 30964 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 9090 (http) with context path ''
+2023-07-21 11:35:44.461  INFO 30964 --- [restartedMain] com.bs.helloboot.HelloBootApplication    : Started HelloBootApplication in 0.74 seconds (JVM running for 1186.526)
+2023-07-21 11:35:44.463  INFO 30964 --- [restartedMain] .ConditionEvaluationDeltaLoggingListener : Condition evaluation unchanged
+2023-07-21 11:35:45.860  INFO 30964 --- [File Watcher] rtingClassPathChangeChangedEventListener : Restarting due to 1 class path change (0 additions, 0 deletions, 1 modification)
+2023-07-21 11:35:45.874  INFO 30964 --- [Thread-39] o.apache.catalina.core.StandardService   : Stopping service [Tomcat]
+2023-07-21 11:35:45.878  INFO 30964 --- [Thread-39] com.zaxxer.hikari.HikariDataSource       : HikariPool-8 - Shutdown initiated...
+2023-07-21 11:35:45.887  INFO 30964 --- [Thread-39] com.zaxxer.hikari.HikariDataSource       : HikariPool-8 - Shutdown completed.
+2023-07-21 11:35:45.954  INFO 30964 --- [restartedMain] com.bs.helloboot.HelloBootApplication    : Starting HelloBootApplication using Java 17.0.5 on DESKTOP-OSPAM2G with PID 30964 (C:\servlet\springwork\helloBoot\target\classes started by JeongSangjun in C:\servlet\springwork\helloBoot)
+2023-07-21 11:35:45.954 DEBUG 30964 --- [restartedMain] com.bs.helloboot.HelloBootApplication    : Running with Spring Boot v2.7.14-SNAPSHOT, Spring v5.3.29
+2023-07-21 11:35:45.954  INFO 30964 --- [restartedMain] com.bs.helloboot.HelloBootApplication    : No active profile set, falling back to 1 default profile: "default"
+2023-07-21 11:35:46.070  INFO 30964 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JDBC repositories in DEFAULT mode.
+2023-07-21 11:35:46.074  INFO 30964 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 4 ms. Found 0 JDBC repository interfaces.
+2023-07-21 11:35:46.088  WARN 30964 --- [restartedMain] o.m.s.mapper.ClassPathMapperScanner      : No MyBatis mapper was found in '[com.bs.helloboot]' package. Please check your configuration.
+2023-07-21 11:35:46.116  INFO 30964 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 9090 (http)
+2023-07-21 11:35:46.116  INFO 30964 --- [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2023-07-21 11:35:46.116  INFO 30964 --- [restartedMain] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.78]
+2023-07-21 11:35:46.181  INFO 30964 --- [restartedMain] org.apache.jasper.servlet.TldScanner     : At least one JAR was scanned for TLDs yet contained no TLDs. Enable debug logging for this logger for a complete list of JARs that were scanned but no TLDs were found in them. Skipping unneeded JARs during scanning can improve startup time and JSP compilation time.
+2023-07-21 11:35:46.183  INFO 30964 --- [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2023-07-21 11:35:46.183  INFO 30964 --- [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 228 ms
+2023-07-21 11:35:46.247  INFO 30964 --- [restartedMain] o.s.b.a.w.s.WelcomePageHandlerMapping    : Adding welcome page template: index
+2023-07-21 11:35:46.277  INFO 30964 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-9 - Starting...
+2023-07-21 11:35:46.277  WARN 30964 --- [restartedMain] com.zaxxer.hikari.util.DriverDataSource  : Registered driver with driverClassName=oracle.jdbc.driver.OracleDriver was not found, trying direct instantiation.
+2023-07-21 11:35:46.330  INFO 30964 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-9 - Start completed.
+2023-07-21 11:35:46.343  INFO 30964 --- [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2023-07-21 11:35:46.353  INFO 30964 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 9090 (http) with context path ''
+2023-07-21 11:35:46.360  INFO 30964 --- [restartedMain] com.bs.helloboot.HelloBootApplication    : Started HelloBootApplication in 0.424 seconds (JVM running for 1188.425)
+2023-07-21 11:35:46.361  INFO 30964 --- [restartedMain] .ConditionEvaluationDeltaLoggingListener : Condition evaluation unchanged

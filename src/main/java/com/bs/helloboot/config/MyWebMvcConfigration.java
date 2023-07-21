@@ -1,8 +1,11 @@
 package com.bs.helloboot.config;
 
 import org.springframework.context.annotation.Configuration;
+import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
 import org.springframework.web.servlet.config.annotation.ViewControllerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
+
+import com.bs.helloboot.comm.interceptor.LoggerInterceptor;
 
 @Configuration
 public class MyWebMvcConfigration implements WebMvcConfigurer{
@@ -17,9 +20,16 @@ public class MyWebMvcConfigration implements WebMvcConfigurer{
 		registry.addViewController("/test").setViewName("test");
 	}
 
-	
-	
 	//Interceptor 설정
+	@Override
+	public void addInterceptors(InterceptorRegistry registry) {
+		registry.addInterceptor(new LoggerInterceptor()).addPathPatterns("/member/*");
+	}
+	
+
+	
+	
+	
 	//cors에 대한 허용설정 : 기원이 달랐을 경우 처리하는 담당(cross origin)
 	//
 }
