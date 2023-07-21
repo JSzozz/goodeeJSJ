@@ -2630,3 +2630,971 @@ java.lang.IllegalArgumentException: Mapped Statements collection does not contai
 2023-07-21 12:47:16.248  INFO 41160 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 9090 (http) with context path ''
 2023-07-21 12:47:16.252  INFO 41160 --- [restartedMain] com.bs.helloboot.HelloBootApplication    : Started HelloBootApplication in 0.587 seconds (JVM running for 857.993)
 2023-07-21 12:47:16.253  INFO 41160 --- [restartedMain] .ConditionEvaluationDeltaLoggingListener : Condition evaluation unchanged
+2023-07-21 14:02:28.931  INFO 41160 --- [RMI TCP Connection(125)-127.0.0.1] inMXBeanRegistrar$SpringApplicationAdmin : Application shutdown requested.
+2023-07-21 14:02:29.032  INFO 41160 --- [RMI TCP Connection(125)-127.0.0.1] o.apache.catalina.core.StandardService   : Stopping service [Tomcat]
+2023-07-21 14:02:29.078  INFO 41160 --- [RMI TCP Connection(125)-127.0.0.1] com.zaxxer.hikari.HikariDataSource       : HikariPool-6 - Shutdown initiated...
+2023-07-21 14:02:29.090  INFO 41160 --- [RMI TCP Connection(125)-127.0.0.1] com.zaxxer.hikari.HikariDataSource       : HikariPool-6 - Shutdown completed.
+2023-07-21 14:02:31.708  INFO 35292 --- [restartedMain] com.bs.helloboot.HelloBootApplication    : Starting HelloBootApplication using Java 17.0.5 on DESKTOP-OSPAM2G with PID 35292 (C:\servlet\springwork\helloBoot\target\classes started by JeongSangjun in C:\servlet\springwork\helloBoot)
+2023-07-21 14:02:31.709 DEBUG 35292 --- [restartedMain] com.bs.helloboot.HelloBootApplication    : Running with Spring Boot v2.7.14-SNAPSHOT, Spring v5.3.29
+2023-07-21 14:02:31.710  INFO 35292 --- [restartedMain] com.bs.helloboot.HelloBootApplication    : No active profile set, falling back to 1 default profile: "default"
+2023-07-21 14:02:31.780  INFO 35292 --- [restartedMain] o.s.b.devtools.restart.ChangeableUrls    : The Class-Path manifest attribute in C:\Users\Jeong Sangjun\.m2\repository\com\oracle\database\jdbc\ojdbc8\21.5.0.0\ojdbc8-21.5.0.0.jar referenced one or more files that do not exist: file:/C:/Users/Jeong%20Sangjun/.m2/repository/com/oracle/database/jdbc/ojdbc8/21.5.0.0/oraclepki.jar
+2023-07-21 14:02:31.780  INFO 35292 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2023-07-21 14:02:31.780  INFO 35292 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2023-07-21 14:02:32.411  INFO 35292 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JDBC repositories in DEFAULT mode.
+2023-07-21 14:02:32.427  INFO 35292 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 12 ms. Found 0 JDBC repository interfaces.
+2023-07-21 14:02:33.286  INFO 35292 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 9090 (http)
+2023-07-21 14:02:33.295  INFO 35292 --- [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2023-07-21 14:02:33.295  INFO 35292 --- [restartedMain] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.78]
+2023-07-21 14:02:33.515  INFO 35292 --- [restartedMain] org.apache.jasper.servlet.TldScanner     : At least one JAR was scanned for TLDs yet contained no TLDs. Enable debug logging for this logger for a complete list of JARs that were scanned but no TLDs were found in them. Skipping unneeded JARs during scanning can improve startup time and JSP compilation time.
+2023-07-21 14:02:33.530  INFO 35292 --- [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2023-07-21 14:02:33.530  INFO 35292 --- [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1750 ms
+2023-07-21 14:02:34.108  INFO 35292 --- [restartedMain] o.s.b.a.w.s.WelcomePageHandlerMapping    : Adding welcome page template: index
+2023-07-21 14:02:34.111 DEBUG 35292 --- [restartedMain] com.bs.helloboot.comm.aop.LoggerAop      : ===== aop before =====
+2023-07-21 14:02:34.112 DEBUG 35292 --- [restartedMain] com.bs.helloboot.comm.aop.LoggerAop      : com.bs.helloboot.config.MyWebMvcConfigration addInterceptors
+2023-07-21 14:02:34.112 DEBUG 35292 --- [restartedMain] com.bs.helloboot.comm.aop.LoggerAop      : ===== aop after =====
+2023-07-21 14:02:34.125 DEBUG 35292 --- [restartedMain] com.bs.helloboot.comm.aop.LoggerAop      : ===== aop before =====
+2023-07-21 14:02:34.125 DEBUG 35292 --- [restartedMain] com.bs.helloboot.comm.aop.LoggerAop      : com.bs.helloboot.config.MyWebMvcConfigration addCorsMappings
+2023-07-21 14:02:34.125 DEBUG 35292 --- [restartedMain] com.bs.helloboot.comm.aop.LoggerAop      : ===== aop after =====
+2023-07-21 14:02:34.176 DEBUG 35292 --- [restartedMain] com.bs.helloboot.comm.aop.LoggerAop      : ===== aop before =====
+2023-07-21 14:02:34.176 DEBUG 35292 --- [restartedMain] com.bs.helloboot.comm.aop.LoggerAop      : com.bs.helloboot.config.MyWebMvcConfigration addViewControllers
+2023-07-21 14:02:34.176 DEBUG 35292 --- [restartedMain] com.bs.helloboot.comm.aop.LoggerAop      : ===== aop after =====
+2023-07-21 14:02:34.299  INFO 35292 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2023-07-21 14:02:34.303  WARN 35292 --- [restartedMain] com.zaxxer.hikari.util.DriverDataSource  : Registered driver with driverClassName=oracle.jdbc.driver.OracleDriver was not found, trying direct instantiation.
+2023-07-21 14:02:34.583  INFO 35292 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2023-07-21 14:02:34.719  INFO 35292 --- [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2023-07-21 14:02:34.765  INFO 35292 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 9090 (http) with context path ''
+2023-07-21 14:02:34.775  INFO 35292 --- [restartedMain] com.bs.helloboot.HelloBootApplication    : Started HelloBootApplication in 3.505 seconds (JVM running for 4.246)
+2023-07-21 14:05:12.834  INFO 35292 --- [File Watcher] rtingClassPathChangeChangedEventListener : Restarting due to 1 class path change (0 additions, 0 deletions, 1 modification)
+2023-07-21 14:05:12.852  INFO 35292 --- [Thread-7] o.apache.catalina.core.StandardService   : Stopping service [Tomcat]
+2023-07-21 14:05:12.860  INFO 35292 --- [Thread-7] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2023-07-21 14:05:12.871  INFO 35292 --- [Thread-7] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2023-07-21 14:05:12.944  INFO 35292 --- [restartedMain] com.bs.helloboot.HelloBootApplication    : Starting HelloBootApplication using Java 17.0.5 on DESKTOP-OSPAM2G with PID 35292 (C:\servlet\springwork\helloBoot\target\classes started by JeongSangjun in C:\servlet\springwork\helloBoot)
+2023-07-21 14:05:12.944 DEBUG 35292 --- [restartedMain] com.bs.helloboot.HelloBootApplication    : Running with Spring Boot v2.7.14-SNAPSHOT, Spring v5.3.29
+2023-07-21 14:05:12.944  INFO 35292 --- [restartedMain] com.bs.helloboot.HelloBootApplication    : No active profile set, falling back to 1 default profile: "default"
+2023-07-21 14:05:13.086  INFO 35292 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JDBC repositories in DEFAULT mode.
+2023-07-21 14:05:13.092  INFO 35292 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 4 ms. Found 0 JDBC repository interfaces.
+2023-07-21 14:05:13.189  INFO 35292 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 9090 (http)
+2023-07-21 14:05:13.190  INFO 35292 --- [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2023-07-21 14:05:13.190  INFO 35292 --- [restartedMain] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.78]
+2023-07-21 14:05:13.257  INFO 35292 --- [restartedMain] org.apache.jasper.servlet.TldScanner     : At least one JAR was scanned for TLDs yet contained no TLDs. Enable debug logging for this logger for a complete list of JARs that were scanned but no TLDs were found in them. Skipping unneeded JARs during scanning can improve startup time and JSP compilation time.
+2023-07-21 14:05:13.261  INFO 35292 --- [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2023-07-21 14:05:13.261  INFO 35292 --- [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 315 ms
+2023-07-21 14:05:13.451  INFO 35292 --- [restartedMain] o.s.b.a.w.s.WelcomePageHandlerMapping    : Adding welcome page template: index
+2023-07-21 14:05:13.451 DEBUG 35292 --- [restartedMain] com.bs.helloboot.comm.aop.LoggerAop      : ===== aop before =====
+2023-07-21 14:05:13.451 DEBUG 35292 --- [restartedMain] com.bs.helloboot.comm.aop.LoggerAop      : com.bs.helloboot.config.MyWebMvcConfigration addInterceptors
+2023-07-21 14:05:13.452 DEBUG 35292 --- [restartedMain] com.bs.helloboot.comm.aop.LoggerAop      : ===== aop after =====
+2023-07-21 14:05:13.455 DEBUG 35292 --- [restartedMain] com.bs.helloboot.comm.aop.LoggerAop      : ===== aop before =====
+2023-07-21 14:05:13.455 DEBUG 35292 --- [restartedMain] com.bs.helloboot.comm.aop.LoggerAop      : com.bs.helloboot.config.MyWebMvcConfigration addCorsMappings
+2023-07-21 14:05:13.455 DEBUG 35292 --- [restartedMain] com.bs.helloboot.comm.aop.LoggerAop      : ===== aop after =====
+2023-07-21 14:05:13.476 DEBUG 35292 --- [restartedMain] com.bs.helloboot.comm.aop.LoggerAop      : ===== aop before =====
+2023-07-21 14:05:13.476 DEBUG 35292 --- [restartedMain] com.bs.helloboot.comm.aop.LoggerAop      : com.bs.helloboot.config.MyWebMvcConfigration addViewControllers
+2023-07-21 14:05:13.476 DEBUG 35292 --- [restartedMain] com.bs.helloboot.comm.aop.LoggerAop      : ===== aop after =====
+2023-07-21 14:05:13.534  INFO 35292 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-2 - Starting...
+2023-07-21 14:05:13.534  WARN 35292 --- [restartedMain] com.zaxxer.hikari.util.DriverDataSource  : Registered driver with driverClassName=oracle.jdbc.driver.OracleDriver was not found, trying direct instantiation.
+2023-07-21 14:05:13.592  INFO 35292 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-2 - Start completed.
+2023-07-21 14:05:13.627  INFO 35292 --- [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2023-07-21 14:05:13.642  INFO 35292 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 9090 (http) with context path ''
+2023-07-21 14:05:13.647  INFO 35292 --- [restartedMain] com.bs.helloboot.HelloBootApplication    : Started HelloBootApplication in 0.736 seconds (JVM running for 163.118)
+2023-07-21 14:05:13.650  INFO 35292 --- [restartedMain] .ConditionEvaluationDeltaLoggingListener : Condition evaluation unchanged
+2023-07-21 14:05:43.437  INFO 35292 --- [File Watcher] rtingClassPathChangeChangedEventListener : Restarting due to 3 class path changes (0 additions, 0 deletions, 3 modifications)
+2023-07-21 14:05:43.450  INFO 35292 --- [Thread-9] o.apache.catalina.core.StandardService   : Stopping service [Tomcat]
+2023-07-21 14:05:43.455  INFO 35292 --- [Thread-9] com.zaxxer.hikari.HikariDataSource       : HikariPool-2 - Shutdown initiated...
+2023-07-21 14:05:43.465  INFO 35292 --- [Thread-9] com.zaxxer.hikari.HikariDataSource       : HikariPool-2 - Shutdown completed.
+2023-07-21 14:05:43.529  INFO 35292 --- [restartedMain] com.bs.helloboot.HelloBootApplication    : Starting HelloBootApplication using Java 17.0.5 on DESKTOP-OSPAM2G with PID 35292 (C:\servlet\springwork\helloBoot\target\classes started by JeongSangjun in C:\servlet\springwork\helloBoot)
+2023-07-21 14:05:43.530 DEBUG 35292 --- [restartedMain] com.bs.helloboot.HelloBootApplication    : Running with Spring Boot v2.7.14-SNAPSHOT, Spring v5.3.29
+2023-07-21 14:05:43.530  INFO 35292 --- [restartedMain] com.bs.helloboot.HelloBootApplication    : No active profile set, falling back to 1 default profile: "default"
+2023-07-21 14:05:43.656  INFO 35292 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JDBC repositories in DEFAULT mode.
+2023-07-21 14:05:43.661  INFO 35292 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 4 ms. Found 0 JDBC repository interfaces.
+2023-07-21 14:05:43.733  INFO 35292 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 9090 (http)
+2023-07-21 14:05:43.734  INFO 35292 --- [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2023-07-21 14:05:43.734  INFO 35292 --- [restartedMain] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.78]
+2023-07-21 14:05:43.793  INFO 35292 --- [restartedMain] org.apache.jasper.servlet.TldScanner     : At least one JAR was scanned for TLDs yet contained no TLDs. Enable debug logging for this logger for a complete list of JARs that were scanned but no TLDs were found in them. Skipping unneeded JARs during scanning can improve startup time and JSP compilation time.
+2023-07-21 14:05:43.795  INFO 35292 --- [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2023-07-21 14:05:43.796  INFO 35292 --- [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 265 ms
+2023-07-21 14:05:43.924  INFO 35292 --- [restartedMain] o.s.b.a.w.s.WelcomePageHandlerMapping    : Adding welcome page template: index
+2023-07-21 14:05:43.924 DEBUG 35292 --- [restartedMain] com.bs.helloboot.comm.aop.LoggerAop      : ===== aop before =====
+2023-07-21 14:05:43.924 DEBUG 35292 --- [restartedMain] com.bs.helloboot.comm.aop.LoggerAop      : com.bs.helloboot.config.MyWebMvcConfigration addInterceptors
+2023-07-21 14:05:43.924 DEBUG 35292 --- [restartedMain] com.bs.helloboot.comm.aop.LoggerAop      : ===== aop after =====
+2023-07-21 14:05:43.926 DEBUG 35292 --- [restartedMain] com.bs.helloboot.comm.aop.LoggerAop      : ===== aop before =====
+2023-07-21 14:05:43.927 DEBUG 35292 --- [restartedMain] com.bs.helloboot.comm.aop.LoggerAop      : com.bs.helloboot.config.MyWebMvcConfigration addCorsMappings
+2023-07-21 14:05:43.927 DEBUG 35292 --- [restartedMain] com.bs.helloboot.comm.aop.LoggerAop      : ===== aop after =====
+2023-07-21 14:05:43.948 DEBUG 35292 --- [restartedMain] com.bs.helloboot.comm.aop.LoggerAop      : ===== aop before =====
+2023-07-21 14:05:43.948 DEBUG 35292 --- [restartedMain] com.bs.helloboot.comm.aop.LoggerAop      : com.bs.helloboot.config.MyWebMvcConfigration addViewControllers
+2023-07-21 14:05:43.948 DEBUG 35292 --- [restartedMain] com.bs.helloboot.comm.aop.LoggerAop      : ===== aop after =====
+2023-07-21 14:05:43.997  INFO 35292 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-3 - Starting...
+2023-07-21 14:05:43.997  WARN 35292 --- [restartedMain] com.zaxxer.hikari.util.DriverDataSource  : Registered driver with driverClassName=oracle.jdbc.driver.OracleDriver was not found, trying direct instantiation.
+2023-07-21 14:05:44.041  INFO 35292 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-3 - Start completed.
+2023-07-21 14:05:44.066  INFO 35292 --- [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2023-07-21 14:05:44.077  INFO 35292 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 9090 (http) with context path ''
+2023-07-21 14:05:44.081  INFO 35292 --- [restartedMain] com.bs.helloboot.HelloBootApplication    : Started HelloBootApplication in 0.575 seconds (JVM running for 193.552)
+2023-07-21 14:05:44.082  INFO 35292 --- [restartedMain] .ConditionEvaluationDeltaLoggingListener : Condition evaluation unchanged
+2023-07-21 14:06:15.787  INFO 35292 --- [File Watcher] rtingClassPathChangeChangedEventListener : Restarting due to 1 class path change (0 additions, 0 deletions, 1 modification)
+2023-07-21 14:06:15.800  INFO 35292 --- [Thread-14] o.apache.catalina.core.StandardService   : Stopping service [Tomcat]
+2023-07-21 14:06:15.804  INFO 35292 --- [Thread-14] com.zaxxer.hikari.HikariDataSource       : HikariPool-3 - Shutdown initiated...
+2023-07-21 14:06:15.813  INFO 35292 --- [Thread-14] com.zaxxer.hikari.HikariDataSource       : HikariPool-3 - Shutdown completed.
+2023-07-21 14:06:15.876  INFO 35292 --- [restartedMain] com.bs.helloboot.HelloBootApplication    : Starting HelloBootApplication using Java 17.0.5 on DESKTOP-OSPAM2G with PID 35292 (C:\servlet\springwork\helloBoot\target\classes started by JeongSangjun in C:\servlet\springwork\helloBoot)
+2023-07-21 14:06:15.876 DEBUG 35292 --- [restartedMain] com.bs.helloboot.HelloBootApplication    : Running with Spring Boot v2.7.14-SNAPSHOT, Spring v5.3.29
+2023-07-21 14:06:15.876  INFO 35292 --- [restartedMain] com.bs.helloboot.HelloBootApplication    : No active profile set, falling back to 1 default profile: "default"
+2023-07-21 14:06:15.985  INFO 35292 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JDBC repositories in DEFAULT mode.
+2023-07-21 14:06:15.990  INFO 35292 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 5 ms. Found 0 JDBC repository interfaces.
+2023-07-21 14:06:16.058  INFO 35292 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 9090 (http)
+2023-07-21 14:06:16.059  INFO 35292 --- [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2023-07-21 14:06:16.059  INFO 35292 --- [restartedMain] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.78]
+2023-07-21 14:06:16.116  INFO 35292 --- [restartedMain] org.apache.jasper.servlet.TldScanner     : At least one JAR was scanned for TLDs yet contained no TLDs. Enable debug logging for this logger for a complete list of JARs that were scanned but no TLDs were found in them. Skipping unneeded JARs during scanning can improve startup time and JSP compilation time.
+2023-07-21 14:06:16.118  INFO 35292 --- [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2023-07-21 14:06:16.118  INFO 35292 --- [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 240 ms
+2023-07-21 14:06:16.250  INFO 35292 --- [restartedMain] o.s.b.a.w.s.WelcomePageHandlerMapping    : Adding welcome page template: index
+2023-07-21 14:06:16.251 DEBUG 35292 --- [restartedMain] com.bs.helloboot.comm.aop.LoggerAop      : ===== aop before =====
+2023-07-21 14:06:16.251 DEBUG 35292 --- [restartedMain] com.bs.helloboot.comm.aop.LoggerAop      : com.bs.helloboot.config.MyWebMvcConfigration addInterceptors
+2023-07-21 14:06:16.251 DEBUG 35292 --- [restartedMain] com.bs.helloboot.comm.aop.LoggerAop      : ===== aop after =====
+2023-07-21 14:06:16.253 DEBUG 35292 --- [restartedMain] com.bs.helloboot.comm.aop.LoggerAop      : ===== aop before =====
+2023-07-21 14:06:16.253 DEBUG 35292 --- [restartedMain] com.bs.helloboot.comm.aop.LoggerAop      : com.bs.helloboot.config.MyWebMvcConfigration addCorsMappings
+2023-07-21 14:06:16.253 DEBUG 35292 --- [restartedMain] com.bs.helloboot.comm.aop.LoggerAop      : ===== aop after =====
+2023-07-21 14:06:16.267 DEBUG 35292 --- [restartedMain] com.bs.helloboot.comm.aop.LoggerAop      : ===== aop before =====
+2023-07-21 14:06:16.267 DEBUG 35292 --- [restartedMain] com.bs.helloboot.comm.aop.LoggerAop      : com.bs.helloboot.config.MyWebMvcConfigration addViewControllers
+2023-07-21 14:06:16.267 DEBUG 35292 --- [restartedMain] com.bs.helloboot.comm.aop.LoggerAop      : ===== aop after =====
+2023-07-21 14:06:16.307  INFO 35292 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-4 - Starting...
+2023-07-21 14:06:16.308  WARN 35292 --- [restartedMain] com.zaxxer.hikari.util.DriverDataSource  : Registered driver with driverClassName=oracle.jdbc.driver.OracleDriver was not found, trying direct instantiation.
+2023-07-21 14:06:16.391  INFO 35292 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-4 - Start completed.
+2023-07-21 14:06:16.418  INFO 35292 --- [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2023-07-21 14:06:16.426  INFO 35292 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 9090 (http) with context path ''
+2023-07-21 14:06:16.430  INFO 35292 --- [restartedMain] com.bs.helloboot.HelloBootApplication    : Started HelloBootApplication in 0.576 seconds (JVM running for 225.901)
+2023-07-21 14:06:16.431  INFO 35292 --- [restartedMain] .ConditionEvaluationDeltaLoggingListener : Condition evaluation unchanged
+2023-07-21 14:06:35.096  INFO 35292 --- [File Watcher] rtingClassPathChangeChangedEventListener : Restarting due to 3 class path changes (0 additions, 0 deletions, 3 modifications)
+2023-07-21 14:06:35.110  INFO 35292 --- [Thread-19] o.apache.catalina.core.StandardService   : Stopping service [Tomcat]
+2023-07-21 14:06:35.114  INFO 35292 --- [Thread-19] com.zaxxer.hikari.HikariDataSource       : HikariPool-4 - Shutdown initiated...
+2023-07-21 14:06:35.122  INFO 35292 --- [Thread-19] com.zaxxer.hikari.HikariDataSource       : HikariPool-4 - Shutdown completed.
+2023-07-21 14:06:35.193  INFO 35292 --- [restartedMain] com.bs.helloboot.HelloBootApplication    : Starting HelloBootApplication using Java 17.0.5 on DESKTOP-OSPAM2G with PID 35292 (C:\servlet\springwork\helloBoot\target\classes started by JeongSangjun in C:\servlet\springwork\helloBoot)
+2023-07-21 14:06:35.193 DEBUG 35292 --- [restartedMain] com.bs.helloboot.HelloBootApplication    : Running with Spring Boot v2.7.14-SNAPSHOT, Spring v5.3.29
+2023-07-21 14:06:35.193  INFO 35292 --- [restartedMain] com.bs.helloboot.HelloBootApplication    : No active profile set, falling back to 1 default profile: "default"
+2023-07-21 14:06:35.305  INFO 35292 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JDBC repositories in DEFAULT mode.
+2023-07-21 14:06:35.312  INFO 35292 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 6 ms. Found 0 JDBC repository interfaces.
+2023-07-21 14:06:35.375  INFO 35292 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 9090 (http)
+2023-07-21 14:06:35.376  INFO 35292 --- [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2023-07-21 14:06:35.376  INFO 35292 --- [restartedMain] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.78]
+2023-07-21 14:06:35.433  INFO 35292 --- [restartedMain] org.apache.jasper.servlet.TldScanner     : At least one JAR was scanned for TLDs yet contained no TLDs. Enable debug logging for this logger for a complete list of JARs that were scanned but no TLDs were found in them. Skipping unneeded JARs during scanning can improve startup time and JSP compilation time.
+2023-07-21 14:06:35.435  INFO 35292 --- [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2023-07-21 14:06:35.435  INFO 35292 --- [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 240 ms
+2023-07-21 14:06:35.456  WARN 35292 --- [restartedMain] ConfigServletWebServerApplicationContext : Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'basicController' defined in file [C:\servlet\springwork\helloBoot\target\classes\com\bs\helloboot\controller\BasicController.class]: Unsatisfied dependency expressed through constructor parameter 0; nested exception is org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'memberServiceImpl': Lookup method resolution failed; nested exception is java.lang.IllegalStateException: Failed to introspect Class [com.bs.helloboot.service.MemberServiceImpl] from ClassLoader [org.springframework.boot.devtools.restart.classloader.RestartClassLoader@5ba10415]
+2023-07-21 14:06:35.456  INFO 35292 --- [restartedMain] o.apache.catalina.core.StandardService   : Stopping service [Tomcat]
+2023-07-21 14:06:35.462  INFO 35292 --- [restartedMain] ConditionEvaluationReportLoggingListener : 
+
+Error starting ApplicationContext. To display the conditions report re-run your application with 'debug' enabled.
+2023-07-21 14:06:35.485 ERROR 35292 --- [restartedMain] o.s.boot.SpringApplication               : Application run failed
+
+org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'basicController' defined in file [C:\servlet\springwork\helloBoot\target\classes\com\bs\helloboot\controller\BasicController.class]: Unsatisfied dependency expressed through constructor parameter 0; nested exception is org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'memberServiceImpl': Lookup method resolution failed; nested exception is java.lang.IllegalStateException: Failed to introspect Class [com.bs.helloboot.service.MemberServiceImpl] from ClassLoader [org.springframework.boot.devtools.restart.classloader.RestartClassLoader@5ba10415]
+	at org.springframework.beans.factory.support.ConstructorResolver.createArgumentArray(ConstructorResolver.java:800) ~[spring-beans-5.3.29.jar:5.3.29]
+	at org.springframework.beans.factory.support.ConstructorResolver.autowireConstructor(ConstructorResolver.java:229) ~[spring-beans-5.3.29.jar:5.3.29]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.autowireConstructor(AbstractAutowireCapableBeanFactory.java:1372) ~[spring-beans-5.3.29.jar:5.3.29]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBeanInstance(AbstractAutowireCapableBeanFactory.java:1222) ~[spring-beans-5.3.29.jar:5.3.29]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:582) ~[spring-beans-5.3.29.jar:5.3.29]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:542) ~[spring-beans-5.3.29.jar:5.3.29]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:335) ~[spring-beans-5.3.29.jar:5.3.29]
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:234) ~[spring-beans-5.3.29.jar:5.3.29]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:333) ~[spring-beans-5.3.29.jar:5.3.29]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:208) ~[spring-beans-5.3.29.jar:5.3.29]
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.preInstantiateSingletons(DefaultListableBeanFactory.java:955) ~[spring-beans-5.3.29.jar:5.3.29]
+	at org.springframework.context.support.AbstractApplicationContext.finishBeanFactoryInitialization(AbstractApplicationContext.java:921) ~[spring-context-5.3.29.jar:5.3.29]
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:583) ~[spring-context-5.3.29.jar:5.3.29]
+	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.refresh(ServletWebServerApplicationContext.java:147) ~[spring-boot-2.7.14-SNAPSHOT.jar:2.7.14-SNAPSHOT]
+	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:731) ~[spring-boot-2.7.14-SNAPSHOT.jar:2.7.14-SNAPSHOT]
+	at org.springframework.boot.SpringApplication.refreshContext(SpringApplication.java:408) ~[spring-boot-2.7.14-SNAPSHOT.jar:2.7.14-SNAPSHOT]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:307) ~[spring-boot-2.7.14-SNAPSHOT.jar:2.7.14-SNAPSHOT]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1303) ~[spring-boot-2.7.14-SNAPSHOT.jar:2.7.14-SNAPSHOT]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1292) ~[spring-boot-2.7.14-SNAPSHOT.jar:2.7.14-SNAPSHOT]
+	at com.bs.helloboot.HelloBootApplication.main(HelloBootApplication.java:10) ~[classes/:na]
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[na:na]
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77) ~[na:na]
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[na:na]
+	at java.base/java.lang.reflect.Method.invoke(Method.java:568) ~[na:na]
+	at org.springframework.boot.devtools.restart.RestartLauncher.run(RestartLauncher.java:50) ~[spring-boot-devtools-2.7.14-SNAPSHOT.jar:2.7.14-SNAPSHOT]
+Caused by: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'memberServiceImpl': Lookup method resolution failed; nested exception is java.lang.IllegalStateException: Failed to introspect Class [com.bs.helloboot.service.MemberServiceImpl] from ClassLoader [org.springframework.boot.devtools.restart.classloader.RestartClassLoader@5ba10415]
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor.determineCandidateConstructors(AutowiredAnnotationBeanPostProcessor.java:289) ~[spring-beans-5.3.29.jar:5.3.29]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.determineConstructorsFromBeanPostProcessors(AbstractAutowireCapableBeanFactory.java:1302) ~[spring-beans-5.3.29.jar:5.3.29]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBeanInstance(AbstractAutowireCapableBeanFactory.java:1219) ~[spring-beans-5.3.29.jar:5.3.29]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:582) ~[spring-beans-5.3.29.jar:5.3.29]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:542) ~[spring-beans-5.3.29.jar:5.3.29]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:335) ~[spring-beans-5.3.29.jar:5.3.29]
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:234) ~[spring-beans-5.3.29.jar:5.3.29]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:333) ~[spring-beans-5.3.29.jar:5.3.29]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:208) ~[spring-beans-5.3.29.jar:5.3.29]
+	at org.springframework.beans.factory.config.DependencyDescriptor.resolveCandidate(DependencyDescriptor.java:276) ~[spring-beans-5.3.29.jar:5.3.29]
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.doResolveDependency(DefaultListableBeanFactory.java:1391) ~[spring-beans-5.3.29.jar:5.3.29]
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.resolveDependency(DefaultListableBeanFactory.java:1311) ~[spring-beans-5.3.29.jar:5.3.29]
+	at org.springframework.beans.factory.support.ConstructorResolver.resolveAutowiredArgument(ConstructorResolver.java:887) ~[spring-beans-5.3.29.jar:5.3.29]
+	at org.springframework.beans.factory.support.ConstructorResolver.createArgumentArray(ConstructorResolver.java:791) ~[spring-beans-5.3.29.jar:5.3.29]
+	... 24 common frames omitted
+Caused by: java.lang.IllegalStateException: Failed to introspect Class [com.bs.helloboot.service.MemberServiceImpl] from ClassLoader [org.springframework.boot.devtools.restart.classloader.RestartClassLoader@5ba10415]
+	at org.springframework.util.ReflectionUtils.getDeclaredMethods(ReflectionUtils.java:485) ~[spring-core-5.3.29.jar:5.3.29]
+	at org.springframework.util.ReflectionUtils.doWithLocalMethods(ReflectionUtils.java:321) ~[spring-core-5.3.29.jar:5.3.29]
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor.determineCandidateConstructors(AutowiredAnnotationBeanPostProcessor.java:267) ~[spring-beans-5.3.29.jar:5.3.29]
+	... 37 common frames omitted
+Caused by: java.lang.NoClassDefFoundError: Map
+	at java.base/java.lang.Class.getDeclaredMethods0(Native Method) ~[na:na]
+	at java.base/java.lang.Class.privateGetDeclaredMethods(Class.java:3402) ~[na:na]
+	at java.base/java.lang.Class.privateGetPublicMethods(Class.java:3427) ~[na:na]
+	at java.base/java.lang.Class.getMethods(Class.java:2019) ~[na:na]
+	at org.springframework.util.ReflectionUtils.findConcreteMethodsOnInterfaces(ReflectionUtils.java:495) ~[spring-core-5.3.29.jar:5.3.29]
+	at org.springframework.util.ReflectionUtils.getDeclaredMethods(ReflectionUtils.java:468) ~[spring-core-5.3.29.jar:5.3.29]
+	... 39 common frames omitted
+Caused by: java.lang.ClassNotFoundException: Map
+	at java.base/jdk.internal.loader.BuiltinClassLoader.loadClass(BuiltinClassLoader.java:641) ~[na:na]
+	at java.base/jdk.internal.loader.ClassLoaders$AppClassLoader.loadClass(ClassLoaders.java:188) ~[na:na]
+	at java.base/java.lang.ClassLoader.loadClass(ClassLoader.java:520) ~[na:na]
+	at java.base/java.lang.Class.forName0(Native Method) ~[na:na]
+	at java.base/java.lang.Class.forName(Class.java:467) ~[na:na]
+	at org.springframework.boot.devtools.restart.classloader.RestartClassLoader.loadClass(RestartClassLoader.java:145) ~[spring-boot-devtools-2.7.14-SNAPSHOT.jar:2.7.14-SNAPSHOT]
+	at java.base/java.lang.ClassLoader.loadClass(ClassLoader.java:520) ~[na:na]
+	... 45 common frames omitted
+
+2023-07-21 14:06:42.013  INFO 35292 --- [restartedMain] com.bs.helloboot.HelloBootApplication    : Starting HelloBootApplication using Java 17.0.5 on DESKTOP-OSPAM2G with PID 35292 (C:\servlet\springwork\helloBoot\target\classes started by JeongSangjun in C:\servlet\springwork\helloBoot)
+2023-07-21 14:06:42.013 DEBUG 35292 --- [restartedMain] com.bs.helloboot.HelloBootApplication    : Running with Spring Boot v2.7.14-SNAPSHOT, Spring v5.3.29
+2023-07-21 14:06:42.013  INFO 35292 --- [restartedMain] com.bs.helloboot.HelloBootApplication    : No active profile set, falling back to 1 default profile: "default"
+2023-07-21 14:06:42.119  INFO 35292 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JDBC repositories in DEFAULT mode.
+2023-07-21 14:06:42.124  INFO 35292 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 4 ms. Found 0 JDBC repository interfaces.
+2023-07-21 14:06:42.192  INFO 35292 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 9090 (http)
+2023-07-21 14:06:42.193  INFO 35292 --- [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2023-07-21 14:06:42.193  INFO 35292 --- [restartedMain] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.78]
+2023-07-21 14:06:42.246  INFO 35292 --- [restartedMain] org.apache.jasper.servlet.TldScanner     : At least one JAR was scanned for TLDs yet contained no TLDs. Enable debug logging for this logger for a complete list of JARs that were scanned but no TLDs were found in them. Skipping unneeded JARs during scanning can improve startup time and JSP compilation time.
+2023-07-21 14:06:42.248  INFO 35292 --- [restartedMain] o.a.c.c.C.[Tomcat-1].[localhost].[/]     : Initializing Spring embedded WebApplicationContext
+2023-07-21 14:06:42.248  INFO 35292 --- [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 234 ms
+2023-07-21 14:06:42.377  INFO 35292 --- [restartedMain] o.s.b.a.w.s.WelcomePageHandlerMapping    : Adding welcome page template: index
+2023-07-21 14:06:42.377 DEBUG 35292 --- [restartedMain] com.bs.helloboot.comm.aop.LoggerAop      : ===== aop before =====
+2023-07-21 14:06:42.377 DEBUG 35292 --- [restartedMain] com.bs.helloboot.comm.aop.LoggerAop      : com.bs.helloboot.config.MyWebMvcConfigration addInterceptors
+2023-07-21 14:06:42.377 DEBUG 35292 --- [restartedMain] com.bs.helloboot.comm.aop.LoggerAop      : ===== aop after =====
+2023-07-21 14:06:42.379 DEBUG 35292 --- [restartedMain] com.bs.helloboot.comm.aop.LoggerAop      : ===== aop before =====
+2023-07-21 14:06:42.379 DEBUG 35292 --- [restartedMain] com.bs.helloboot.comm.aop.LoggerAop      : com.bs.helloboot.config.MyWebMvcConfigration addCorsMappings
+2023-07-21 14:06:42.379 DEBUG 35292 --- [restartedMain] com.bs.helloboot.comm.aop.LoggerAop      : ===== aop after =====
+2023-07-21 14:06:42.393 DEBUG 35292 --- [restartedMain] com.bs.helloboot.comm.aop.LoggerAop      : ===== aop before =====
+2023-07-21 14:06:42.393 DEBUG 35292 --- [restartedMain] com.bs.helloboot.comm.aop.LoggerAop      : com.bs.helloboot.config.MyWebMvcConfigration addViewControllers
+2023-07-21 14:06:42.393 DEBUG 35292 --- [restartedMain] com.bs.helloboot.comm.aop.LoggerAop      : ===== aop after =====
+2023-07-21 14:06:42.442  INFO 35292 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-5 - Starting...
+2023-07-21 14:06:42.442  WARN 35292 --- [restartedMain] com.zaxxer.hikari.util.DriverDataSource  : Registered driver with driverClassName=oracle.jdbc.driver.OracleDriver was not found, trying direct instantiation.
+2023-07-21 14:06:42.490  INFO 35292 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-5 - Start completed.
+2023-07-21 14:06:42.518  INFO 35292 --- [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2023-07-21 14:06:42.529  INFO 35292 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 9090 (http) with context path ''
+2023-07-21 14:06:42.533  INFO 35292 --- [restartedMain] com.bs.helloboot.HelloBootApplication    : Started HelloBootApplication in 0.54 seconds (JVM running for 252.004)
+2023-07-21 14:06:42.535  INFO 35292 --- [restartedMain] .ConditionEvaluationDeltaLoggingListener : Condition evaluation unchanged
+2023-07-21 14:07:01.234  INFO 35292 --- [File Watcher] rtingClassPathChangeChangedEventListener : Restarting due to 1 class path change (0 additions, 0 deletions, 1 modification)
+2023-07-21 14:07:01.249  INFO 35292 --- [Thread-24] o.apache.catalina.core.StandardService   : Stopping service [Tomcat]
+2023-07-21 14:07:01.253  INFO 35292 --- [Thread-24] com.zaxxer.hikari.HikariDataSource       : HikariPool-5 - Shutdown initiated...
+2023-07-21 14:07:01.262  INFO 35292 --- [Thread-24] com.zaxxer.hikari.HikariDataSource       : HikariPool-5 - Shutdown completed.
+2023-07-21 14:07:01.331  INFO 35292 --- [restartedMain] com.bs.helloboot.HelloBootApplication    : Starting HelloBootApplication using Java 17.0.5 on DESKTOP-OSPAM2G with PID 35292 (C:\servlet\springwork\helloBoot\target\classes started by JeongSangjun in C:\servlet\springwork\helloBoot)
+2023-07-21 14:07:01.331 DEBUG 35292 --- [restartedMain] com.bs.helloboot.HelloBootApplication    : Running with Spring Boot v2.7.14-SNAPSHOT, Spring v5.3.29
+2023-07-21 14:07:01.331  INFO 35292 --- [restartedMain] com.bs.helloboot.HelloBootApplication    : No active profile set, falling back to 1 default profile: "default"
+2023-07-21 14:07:01.448  INFO 35292 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JDBC repositories in DEFAULT mode.
+2023-07-21 14:07:01.453  INFO 35292 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 4 ms. Found 0 JDBC repository interfaces.
+2023-07-21 14:07:01.533  INFO 35292 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 9090 (http)
+2023-07-21 14:07:01.534  INFO 35292 --- [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2023-07-21 14:07:01.534  INFO 35292 --- [restartedMain] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.78]
+2023-07-21 14:07:01.593  INFO 35292 --- [restartedMain] org.apache.jasper.servlet.TldScanner     : At least one JAR was scanned for TLDs yet contained no TLDs. Enable debug logging for this logger for a complete list of JARs that were scanned but no TLDs were found in them. Skipping unneeded JARs during scanning can improve startup time and JSP compilation time.
+2023-07-21 14:07:01.595  INFO 35292 --- [restartedMain] o.a.c.c.C.[Tomcat-1].[localhost].[/]     : Initializing Spring embedded WebApplicationContext
+2023-07-21 14:07:01.595  INFO 35292 --- [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 262 ms
+2023-07-21 14:07:01.717  INFO 35292 --- [restartedMain] o.s.b.a.w.s.WelcomePageHandlerMapping    : Adding welcome page template: index
+2023-07-21 14:07:01.717 DEBUG 35292 --- [restartedMain] com.bs.helloboot.comm.aop.LoggerAop      : ===== aop before =====
+2023-07-21 14:07:01.717 DEBUG 35292 --- [restartedMain] com.bs.helloboot.comm.aop.LoggerAop      : com.bs.helloboot.config.MyWebMvcConfigration addInterceptors
+2023-07-21 14:07:01.717 DEBUG 35292 --- [restartedMain] com.bs.helloboot.comm.aop.LoggerAop      : ===== aop after =====
+2023-07-21 14:07:01.724 DEBUG 35292 --- [restartedMain] com.bs.helloboot.comm.aop.LoggerAop      : ===== aop before =====
+2023-07-21 14:07:01.724 DEBUG 35292 --- [restartedMain] com.bs.helloboot.comm.aop.LoggerAop      : com.bs.helloboot.config.MyWebMvcConfigration addCorsMappings
+2023-07-21 14:07:01.724 DEBUG 35292 --- [restartedMain] com.bs.helloboot.comm.aop.LoggerAop      : ===== aop after =====
+2023-07-21 14:07:01.744 DEBUG 35292 --- [restartedMain] com.bs.helloboot.comm.aop.LoggerAop      : ===== aop before =====
+2023-07-21 14:07:01.744 DEBUG 35292 --- [restartedMain] com.bs.helloboot.comm.aop.LoggerAop      : com.bs.helloboot.config.MyWebMvcConfigration addViewControllers
+2023-07-21 14:07:01.744 DEBUG 35292 --- [restartedMain] com.bs.helloboot.comm.aop.LoggerAop      : ===== aop after =====
+2023-07-21 14:07:01.787  INFO 35292 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-6 - Starting...
+2023-07-21 14:07:01.787  WARN 35292 --- [restartedMain] com.zaxxer.hikari.util.DriverDataSource  : Registered driver with driverClassName=oracle.jdbc.driver.OracleDriver was not found, trying direct instantiation.
+2023-07-21 14:07:01.844  INFO 35292 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-6 - Start completed.
+2023-07-21 14:07:01.871  INFO 35292 --- [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2023-07-21 14:07:01.885  INFO 35292 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 9090 (http) with context path ''
+2023-07-21 14:07:01.888  INFO 35292 --- [restartedMain] com.bs.helloboot.HelloBootApplication    : Started HelloBootApplication in 0.583 seconds (JVM running for 271.359)
+2023-07-21 14:07:01.889  INFO 35292 --- [restartedMain] .ConditionEvaluationDeltaLoggingListener : Condition evaluation unchanged
+2023-07-21 14:07:29.727  INFO 35292 --- [File Watcher] rtingClassPathChangeChangedEventListener : Restarting due to 2 class path changes (0 additions, 0 deletions, 2 modifications)
+2023-07-21 14:07:29.744  INFO 35292 --- [Thread-32] o.apache.catalina.core.StandardService   : Stopping service [Tomcat]
+2023-07-21 14:07:29.751  INFO 35292 --- [Thread-32] com.zaxxer.hikari.HikariDataSource       : HikariPool-6 - Shutdown initiated...
+2023-07-21 14:07:29.759  INFO 35292 --- [Thread-32] com.zaxxer.hikari.HikariDataSource       : HikariPool-6 - Shutdown completed.
+2023-07-21 14:07:29.829  INFO 35292 --- [restartedMain] com.bs.helloboot.HelloBootApplication    : Starting HelloBootApplication using Java 17.0.5 on DESKTOP-OSPAM2G with PID 35292 (C:\servlet\springwork\helloBoot\target\classes started by JeongSangjun in C:\servlet\springwork\helloBoot)
+2023-07-21 14:07:29.829 DEBUG 35292 --- [restartedMain] com.bs.helloboot.HelloBootApplication    : Running with Spring Boot v2.7.14-SNAPSHOT, Spring v5.3.29
+2023-07-21 14:07:29.829  INFO 35292 --- [restartedMain] com.bs.helloboot.HelloBootApplication    : No active profile set, falling back to 1 default profile: "default"
+2023-07-21 14:07:29.941  INFO 35292 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JDBC repositories in DEFAULT mode.
+2023-07-21 14:07:29.946  INFO 35292 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 4 ms. Found 0 JDBC repository interfaces.
+2023-07-21 14:07:30.014  INFO 35292 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 9090 (http)
+2023-07-21 14:07:30.014  INFO 35292 --- [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2023-07-21 14:07:30.014  INFO 35292 --- [restartedMain] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.78]
+2023-07-21 14:07:30.075  INFO 35292 --- [restartedMain] org.apache.jasper.servlet.TldScanner     : At least one JAR was scanned for TLDs yet contained no TLDs. Enable debug logging for this logger for a complete list of JARs that were scanned but no TLDs were found in them. Skipping unneeded JARs during scanning can improve startup time and JSP compilation time.
+2023-07-21 14:07:30.078  INFO 35292 --- [restartedMain] o.a.c.c.C.[Tomcat-1].[localhost].[/]     : Initializing Spring embedded WebApplicationContext
+2023-07-21 14:07:30.078  INFO 35292 --- [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 248 ms
+2023-07-21 14:07:30.219  INFO 35292 --- [restartedMain] o.s.b.a.w.s.WelcomePageHandlerMapping    : Adding welcome page template: index
+2023-07-21 14:07:30.219 DEBUG 35292 --- [restartedMain] com.bs.helloboot.comm.aop.LoggerAop      : ===== aop before =====
+2023-07-21 14:07:30.219 DEBUG 35292 --- [restartedMain] com.bs.helloboot.comm.aop.LoggerAop      : com.bs.helloboot.config.MyWebMvcConfigration addInterceptors
+2023-07-21 14:07:30.220 DEBUG 35292 --- [restartedMain] com.bs.helloboot.comm.aop.LoggerAop      : ===== aop after =====
+2023-07-21 14:07:30.221 DEBUG 35292 --- [restartedMain] com.bs.helloboot.comm.aop.LoggerAop      : ===== aop before =====
+2023-07-21 14:07:30.221 DEBUG 35292 --- [restartedMain] com.bs.helloboot.comm.aop.LoggerAop      : com.bs.helloboot.config.MyWebMvcConfigration addCorsMappings
+2023-07-21 14:07:30.221 DEBUG 35292 --- [restartedMain] com.bs.helloboot.comm.aop.LoggerAop      : ===== aop after =====
+2023-07-21 14:07:30.235 DEBUG 35292 --- [restartedMain] com.bs.helloboot.comm.aop.LoggerAop      : ===== aop before =====
+2023-07-21 14:07:30.235 DEBUG 35292 --- [restartedMain] com.bs.helloboot.comm.aop.LoggerAop      : com.bs.helloboot.config.MyWebMvcConfigration addViewControllers
+2023-07-21 14:07:30.235 DEBUG 35292 --- [restartedMain] com.bs.helloboot.comm.aop.LoggerAop      : ===== aop after =====
+2023-07-21 14:07:30.276  INFO 35292 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-7 - Starting...
+2023-07-21 14:07:30.277  WARN 35292 --- [restartedMain] com.zaxxer.hikari.util.DriverDataSource  : Registered driver with driverClassName=oracle.jdbc.driver.OracleDriver was not found, trying direct instantiation.
+2023-07-21 14:07:30.331  INFO 35292 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-7 - Start completed.
+2023-07-21 14:07:30.356  INFO 35292 --- [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2023-07-21 14:07:30.365  INFO 35292 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 9090 (http) with context path ''
+2023-07-21 14:07:30.369  INFO 35292 --- [restartedMain] com.bs.helloboot.HelloBootApplication    : Started HelloBootApplication in 0.561 seconds (JVM running for 299.839)
+2023-07-21 14:07:30.370  INFO 35292 --- [restartedMain] .ConditionEvaluationDeltaLoggingListener : Condition evaluation unchanged
+2023-07-21 14:07:51.108  INFO 35292 --- [File Watcher] rtingClassPathChangeChangedEventListener : Restarting due to 1 class path change (0 additions, 0 deletions, 1 modification)
+2023-07-21 14:07:51.120  INFO 35292 --- [Thread-37] o.apache.catalina.core.StandardService   : Stopping service [Tomcat]
+2023-07-21 14:07:51.123  INFO 35292 --- [Thread-37] com.zaxxer.hikari.HikariDataSource       : HikariPool-7 - Shutdown initiated...
+2023-07-21 14:07:51.131  INFO 35292 --- [Thread-37] com.zaxxer.hikari.HikariDataSource       : HikariPool-7 - Shutdown completed.
+2023-07-21 14:07:51.195  INFO 35292 --- [restartedMain] com.bs.helloboot.HelloBootApplication    : Starting HelloBootApplication using Java 17.0.5 on DESKTOP-OSPAM2G with PID 35292 (C:\servlet\springwork\helloBoot\target\classes started by JeongSangjun in C:\servlet\springwork\helloBoot)
+2023-07-21 14:07:51.196 DEBUG 35292 --- [restartedMain] com.bs.helloboot.HelloBootApplication    : Running with Spring Boot v2.7.14-SNAPSHOT, Spring v5.3.29
+2023-07-21 14:07:51.196  INFO 35292 --- [restartedMain] com.bs.helloboot.HelloBootApplication    : No active profile set, falling back to 1 default profile: "default"
+2023-07-21 14:07:51.298  INFO 35292 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JDBC repositories in DEFAULT mode.
+2023-07-21 14:07:51.303  INFO 35292 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 4 ms. Found 0 JDBC repository interfaces.
+2023-07-21 14:07:51.369  INFO 35292 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 9090 (http)
+2023-07-21 14:07:51.369  INFO 35292 --- [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2023-07-21 14:07:51.370  INFO 35292 --- [restartedMain] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.78]
+2023-07-21 14:07:51.428  INFO 35292 --- [restartedMain] org.apache.jasper.servlet.TldScanner     : At least one JAR was scanned for TLDs yet contained no TLDs. Enable debug logging for this logger for a complete list of JARs that were scanned but no TLDs were found in them. Skipping unneeded JARs during scanning can improve startup time and JSP compilation time.
+2023-07-21 14:07:51.430  INFO 35292 --- [restartedMain] o.a.c.c.C.[Tomcat-1].[localhost].[/]     : Initializing Spring embedded WebApplicationContext
+2023-07-21 14:07:51.430  INFO 35292 --- [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 233 ms
+2023-07-21 14:07:51.553  INFO 35292 --- [restartedMain] o.s.b.a.w.s.WelcomePageHandlerMapping    : Adding welcome page template: index
+2023-07-21 14:07:51.554 DEBUG 35292 --- [restartedMain] com.bs.helloboot.comm.aop.LoggerAop      : ===== aop before =====
+2023-07-21 14:07:51.554 DEBUG 35292 --- [restartedMain] com.bs.helloboot.comm.aop.LoggerAop      : com.bs.helloboot.config.MyWebMvcConfigration addInterceptors
+2023-07-21 14:07:51.554 DEBUG 35292 --- [restartedMain] com.bs.helloboot.comm.aop.LoggerAop      : ===== aop after =====
+2023-07-21 14:07:51.556 DEBUG 35292 --- [restartedMain] com.bs.helloboot.comm.aop.LoggerAop      : ===== aop before =====
+2023-07-21 14:07:51.556 DEBUG 35292 --- [restartedMain] com.bs.helloboot.comm.aop.LoggerAop      : com.bs.helloboot.config.MyWebMvcConfigration addCorsMappings
+2023-07-21 14:07:51.556 DEBUG 35292 --- [restartedMain] com.bs.helloboot.comm.aop.LoggerAop      : ===== aop after =====
+2023-07-21 14:07:51.569 DEBUG 35292 --- [restartedMain] com.bs.helloboot.comm.aop.LoggerAop      : ===== aop before =====
+2023-07-21 14:07:51.569 DEBUG 35292 --- [restartedMain] com.bs.helloboot.comm.aop.LoggerAop      : com.bs.helloboot.config.MyWebMvcConfigration addViewControllers
+2023-07-21 14:07:51.569 DEBUG 35292 --- [restartedMain] com.bs.helloboot.comm.aop.LoggerAop      : ===== aop after =====
+2023-07-21 14:07:51.615  INFO 35292 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-8 - Starting...
+2023-07-21 14:07:51.615  WARN 35292 --- [restartedMain] com.zaxxer.hikari.util.DriverDataSource  : Registered driver with driverClassName=oracle.jdbc.driver.OracleDriver was not found, trying direct instantiation.
+2023-07-21 14:07:51.659  INFO 35292 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-8 - Start completed.
+2023-07-21 14:07:51.683  INFO 35292 --- [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2023-07-21 14:07:51.691  INFO 35292 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 9090 (http) with context path ''
+2023-07-21 14:07:51.694  INFO 35292 --- [restartedMain] com.bs.helloboot.HelloBootApplication    : Started HelloBootApplication in 0.518 seconds (JVM running for 321.166)
+2023-07-21 14:07:51.696  INFO 35292 --- [restartedMain] .ConditionEvaluationDeltaLoggingListener : Condition evaluation unchanged
+2023-07-21 14:08:04.308  INFO 35292 --- [File Watcher] rtingClassPathChangeChangedEventListener : Restarting due to 1 class path change (0 additions, 0 deletions, 1 modification)
+2023-07-21 14:08:04.320  INFO 35292 --- [Thread-42] o.apache.catalina.core.StandardService   : Stopping service [Tomcat]
+2023-07-21 14:08:04.323  INFO 35292 --- [Thread-42] com.zaxxer.hikari.HikariDataSource       : HikariPool-8 - Shutdown initiated...
+2023-07-21 14:08:04.330  INFO 35292 --- [Thread-42] com.zaxxer.hikari.HikariDataSource       : HikariPool-8 - Shutdown completed.
+2023-07-21 14:08:04.403  INFO 35292 --- [restartedMain] com.bs.helloboot.HelloBootApplication    : Starting HelloBootApplication using Java 17.0.5 on DESKTOP-OSPAM2G with PID 35292 (C:\servlet\springwork\helloBoot\target\classes started by JeongSangjun in C:\servlet\springwork\helloBoot)
+2023-07-21 14:08:04.403 DEBUG 35292 --- [restartedMain] com.bs.helloboot.HelloBootApplication    : Running with Spring Boot v2.7.14-SNAPSHOT, Spring v5.3.29
+2023-07-21 14:08:04.403  INFO 35292 --- [restartedMain] com.bs.helloboot.HelloBootApplication    : No active profile set, falling back to 1 default profile: "default"
+2023-07-21 14:08:04.509  INFO 35292 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JDBC repositories in DEFAULT mode.
+2023-07-21 14:08:04.514  INFO 35292 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 4 ms. Found 0 JDBC repository interfaces.
+2023-07-21 14:08:04.585  INFO 35292 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 9090 (http)
+2023-07-21 14:08:04.585  INFO 35292 --- [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2023-07-21 14:08:04.586  INFO 35292 --- [restartedMain] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.78]
+2023-07-21 14:08:04.642  INFO 35292 --- [restartedMain] org.apache.jasper.servlet.TldScanner     : At least one JAR was scanned for TLDs yet contained no TLDs. Enable debug logging for this logger for a complete list of JARs that were scanned but no TLDs were found in them. Skipping unneeded JARs during scanning can improve startup time and JSP compilation time.
+2023-07-21 14:08:04.644  INFO 35292 --- [restartedMain] o.a.c.c.C.[Tomcat-1].[localhost].[/]     : Initializing Spring embedded WebApplicationContext
+2023-07-21 14:08:04.644  INFO 35292 --- [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 239 ms
+2023-07-21 14:08:04.801  INFO 35292 --- [restartedMain] o.s.b.a.w.s.WelcomePageHandlerMapping    : Adding welcome page template: index
+2023-07-21 14:08:04.801 DEBUG 35292 --- [restartedMain] com.bs.helloboot.comm.aop.LoggerAop      : ===== aop before =====
+2023-07-21 14:08:04.801 DEBUG 35292 --- [restartedMain] com.bs.helloboot.comm.aop.LoggerAop      : com.bs.helloboot.config.MyWebMvcConfigration addInterceptors
+2023-07-21 14:08:04.801 DEBUG 35292 --- [restartedMain] com.bs.helloboot.comm.aop.LoggerAop      : ===== aop after =====
+2023-07-21 14:08:04.803 DEBUG 35292 --- [restartedMain] com.bs.helloboot.comm.aop.LoggerAop      : ===== aop before =====
+2023-07-21 14:08:04.803 DEBUG 35292 --- [restartedMain] com.bs.helloboot.comm.aop.LoggerAop      : com.bs.helloboot.config.MyWebMvcConfigration addCorsMappings
+2023-07-21 14:08:04.803 DEBUG 35292 --- [restartedMain] com.bs.helloboot.comm.aop.LoggerAop      : ===== aop after =====
+2023-07-21 14:08:04.820 DEBUG 35292 --- [restartedMain] com.bs.helloboot.comm.aop.LoggerAop      : ===== aop before =====
+2023-07-21 14:08:04.820 DEBUG 35292 --- [restartedMain] com.bs.helloboot.comm.aop.LoggerAop      : com.bs.helloboot.config.MyWebMvcConfigration addViewControllers
+2023-07-21 14:08:04.820 DEBUG 35292 --- [restartedMain] com.bs.helloboot.comm.aop.LoggerAop      : ===== aop after =====
+2023-07-21 14:08:04.861  INFO 35292 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-9 - Starting...
+2023-07-21 14:08:04.861  WARN 35292 --- [restartedMain] com.zaxxer.hikari.util.DriverDataSource  : Registered driver with driverClassName=oracle.jdbc.driver.OracleDriver was not found, trying direct instantiation.
+2023-07-21 14:08:04.908  INFO 35292 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-9 - Start completed.
+2023-07-21 14:08:04.938  INFO 35292 --- [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2023-07-21 14:08:04.950  INFO 35292 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 9090 (http) with context path ''
+2023-07-21 14:08:04.954  INFO 35292 --- [restartedMain] com.bs.helloboot.HelloBootApplication    : Started HelloBootApplication in 0.572 seconds (JVM running for 334.425)
+2023-07-21 14:08:04.955  INFO 35292 --- [restartedMain] .ConditionEvaluationDeltaLoggingListener : Condition evaluation unchanged
+2023-07-21 14:08:13.316  INFO 35292 --- [RMI TCP Connection(29)-127.0.0.1] inMXBeanRegistrar$SpringApplicationAdmin : Application shutdown requested.
+2023-07-21 14:08:13.327  INFO 35292 --- [RMI TCP Connection(29)-127.0.0.1] o.apache.catalina.core.StandardService   : Stopping service [Tomcat]
+2023-07-21 14:08:13.331  INFO 35292 --- [RMI TCP Connection(29)-127.0.0.1] com.zaxxer.hikari.HikariDataSource       : HikariPool-9 - Shutdown initiated...
+2023-07-21 14:08:13.338  INFO 35292 --- [RMI TCP Connection(29)-127.0.0.1] com.zaxxer.hikari.HikariDataSource       : HikariPool-9 - Shutdown completed.
+2023-07-21 14:08:15.411  INFO 44476 --- [restartedMain] com.bs.helloboot.HelloBootApplication    : Starting HelloBootApplication using Java 17.0.5 on DESKTOP-OSPAM2G with PID 44476 (C:\servlet\springwork\helloBoot\target\classes started by JeongSangjun in C:\servlet\springwork\helloBoot)
+2023-07-21 14:08:15.411 DEBUG 44476 --- [restartedMain] com.bs.helloboot.HelloBootApplication    : Running with Spring Boot v2.7.14-SNAPSHOT, Spring v5.3.29
+2023-07-21 14:08:15.412  INFO 44476 --- [restartedMain] com.bs.helloboot.HelloBootApplication    : No active profile set, falling back to 1 default profile: "default"
+2023-07-21 14:08:15.475  INFO 44476 --- [restartedMain] o.s.b.devtools.restart.ChangeableUrls    : The Class-Path manifest attribute in C:\Users\Jeong Sangjun\.m2\repository\com\oracle\database\jdbc\ojdbc8\21.5.0.0\ojdbc8-21.5.0.0.jar referenced one or more files that do not exist: file:/C:/Users/Jeong%20Sangjun/.m2/repository/com/oracle/database/jdbc/ojdbc8/21.5.0.0/oraclepki.jar
+2023-07-21 14:08:15.475  INFO 44476 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2023-07-21 14:08:15.475  INFO 44476 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2023-07-21 14:08:16.030  INFO 44476 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JDBC repositories in DEFAULT mode.
+2023-07-21 14:08:16.043  INFO 44476 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 9 ms. Found 0 JDBC repository interfaces.
+2023-07-21 14:08:16.793  INFO 44476 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 9090 (http)
+2023-07-21 14:08:16.808  INFO 44476 --- [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2023-07-21 14:08:16.808  INFO 44476 --- [restartedMain] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.78]
+2023-07-21 14:08:17.030  INFO 44476 --- [restartedMain] org.apache.jasper.servlet.TldScanner     : At least one JAR was scanned for TLDs yet contained no TLDs. Enable debug logging for this logger for a complete list of JARs that were scanned but no TLDs were found in them. Skipping unneeded JARs during scanning can improve startup time and JSP compilation time.
+2023-07-21 14:08:17.042  INFO 44476 --- [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2023-07-21 14:08:17.043  INFO 44476 --- [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1567 ms
+2023-07-21 14:08:17.614  INFO 44476 --- [restartedMain] o.s.b.a.w.s.WelcomePageHandlerMapping    : Adding welcome page template: index
+2023-07-21 14:08:17.617 DEBUG 44476 --- [restartedMain] com.bs.helloboot.comm.aop.LoggerAop      : ===== aop before =====
+2023-07-21 14:08:17.618 DEBUG 44476 --- [restartedMain] com.bs.helloboot.comm.aop.LoggerAop      : com.bs.helloboot.config.MyWebMvcConfigration addInterceptors
+2023-07-21 14:08:17.618 DEBUG 44476 --- [restartedMain] com.bs.helloboot.comm.aop.LoggerAop      : ===== aop after =====
+2023-07-21 14:08:17.628 DEBUG 44476 --- [restartedMain] com.bs.helloboot.comm.aop.LoggerAop      : ===== aop before =====
+2023-07-21 14:08:17.629 DEBUG 44476 --- [restartedMain] com.bs.helloboot.comm.aop.LoggerAop      : com.bs.helloboot.config.MyWebMvcConfigration addCorsMappings
+2023-07-21 14:08:17.629 DEBUG 44476 --- [restartedMain] com.bs.helloboot.comm.aop.LoggerAop      : ===== aop after =====
+2023-07-21 14:08:17.683 DEBUG 44476 --- [restartedMain] com.bs.helloboot.comm.aop.LoggerAop      : ===== aop before =====
+2023-07-21 14:08:17.684 DEBUG 44476 --- [restartedMain] com.bs.helloboot.comm.aop.LoggerAop      : com.bs.helloboot.config.MyWebMvcConfigration addViewControllers
+2023-07-21 14:08:17.684 DEBUG 44476 --- [restartedMain] com.bs.helloboot.comm.aop.LoggerAop      : ===== aop after =====
+2023-07-21 14:08:17.799  INFO 44476 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2023-07-21 14:08:17.802  WARN 44476 --- [restartedMain] com.zaxxer.hikari.util.DriverDataSource  : Registered driver with driverClassName=oracle.jdbc.driver.OracleDriver was not found, trying direct instantiation.
+2023-07-21 14:08:18.052  INFO 44476 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2023-07-21 14:08:18.182  INFO 44476 --- [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2023-07-21 14:08:18.225  INFO 44476 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 9090 (http) with context path ''
+2023-07-21 14:08:18.238  INFO 44476 --- [restartedMain] com.bs.helloboot.HelloBootApplication    : Started HelloBootApplication in 3.251 seconds (JVM running for 3.968)
+2023-07-21 14:09:34.944  INFO 44476 --- [File Watcher] rtingClassPathChangeChangedEventListener : Restarting due to 1 class path change (0 additions, 0 deletions, 1 modification)
+2023-07-21 14:09:34.960  INFO 44476 --- [Thread-7] o.apache.catalina.core.StandardService   : Stopping service [Tomcat]
+2023-07-21 14:09:34.971  INFO 44476 --- [Thread-7] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2023-07-21 14:09:34.981  INFO 44476 --- [Thread-7] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2023-07-21 14:09:35.042  INFO 44476 --- [restartedMain] com.bs.helloboot.HelloBootApplication    : Starting HelloBootApplication using Java 17.0.5 on DESKTOP-OSPAM2G with PID 44476 (C:\servlet\springwork\helloBoot\target\classes started by JeongSangjun in C:\servlet\springwork\helloBoot)
+2023-07-21 14:09:35.043 DEBUG 44476 --- [restartedMain] com.bs.helloboot.HelloBootApplication    : Running with Spring Boot v2.7.14-SNAPSHOT, Spring v5.3.29
+2023-07-21 14:09:35.043  INFO 44476 --- [restartedMain] com.bs.helloboot.HelloBootApplication    : No active profile set, falling back to 1 default profile: "default"
+2023-07-21 14:09:35.167  INFO 44476 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JDBC repositories in DEFAULT mode.
+2023-07-21 14:09:35.175  INFO 44476 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 7 ms. Found 0 JDBC repository interfaces.
+2023-07-21 14:09:35.262  INFO 44476 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 9090 (http)
+2023-07-21 14:09:35.262  INFO 44476 --- [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2023-07-21 14:09:35.263  INFO 44476 --- [restartedMain] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.78]
+2023-07-21 14:09:35.328  INFO 44476 --- [restartedMain] org.apache.jasper.servlet.TldScanner     : At least one JAR was scanned for TLDs yet contained no TLDs. Enable debug logging for this logger for a complete list of JARs that were scanned but no TLDs were found in them. Skipping unneeded JARs during scanning can improve startup time and JSP compilation time.
+2023-07-21 14:09:35.331  INFO 44476 --- [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2023-07-21 14:09:35.331  INFO 44476 --- [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 287 ms
+2023-07-21 14:09:35.503  INFO 44476 --- [restartedMain] o.s.b.a.w.s.WelcomePageHandlerMapping    : Adding welcome page template: index
+2023-07-21 14:09:35.504 DEBUG 44476 --- [restartedMain] com.bs.helloboot.comm.aop.LoggerAop      : ===== aop before =====
+2023-07-21 14:09:35.504 DEBUG 44476 --- [restartedMain] com.bs.helloboot.comm.aop.LoggerAop      : com.bs.helloboot.config.MyWebMvcConfigration addInterceptors
+2023-07-21 14:09:35.504 DEBUG 44476 --- [restartedMain] com.bs.helloboot.comm.aop.LoggerAop      : ===== aop after =====
+2023-07-21 14:09:35.507 DEBUG 44476 --- [restartedMain] com.bs.helloboot.comm.aop.LoggerAop      : ===== aop before =====
+2023-07-21 14:09:35.507 DEBUG 44476 --- [restartedMain] com.bs.helloboot.comm.aop.LoggerAop      : com.bs.helloboot.config.MyWebMvcConfigration addCorsMappings
+2023-07-21 14:09:35.507 DEBUG 44476 --- [restartedMain] com.bs.helloboot.comm.aop.LoggerAop      : ===== aop after =====
+2023-07-21 14:09:35.528 DEBUG 44476 --- [restartedMain] com.bs.helloboot.comm.aop.LoggerAop      : ===== aop before =====
+2023-07-21 14:09:35.529 DEBUG 44476 --- [restartedMain] com.bs.helloboot.comm.aop.LoggerAop      : com.bs.helloboot.config.MyWebMvcConfigration addViewControllers
+2023-07-21 14:09:35.529 DEBUG 44476 --- [restartedMain] com.bs.helloboot.comm.aop.LoggerAop      : ===== aop after =====
+2023-07-21 14:09:35.579  INFO 44476 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-2 - Starting...
+2023-07-21 14:09:35.579  WARN 44476 --- [restartedMain] com.zaxxer.hikari.util.DriverDataSource  : Registered driver with driverClassName=oracle.jdbc.driver.OracleDriver was not found, trying direct instantiation.
+2023-07-21 14:09:35.624  INFO 44476 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-2 - Start completed.
+2023-07-21 14:09:35.652  INFO 44476 --- [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2023-07-21 14:09:35.665  INFO 44476 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 9090 (http) with context path ''
+2023-07-21 14:09:35.669  INFO 44476 --- [restartedMain] com.bs.helloboot.HelloBootApplication    : Started HelloBootApplication in 0.65 seconds (JVM running for 81.398)
+2023-07-21 14:09:35.671  INFO 44476 --- [restartedMain] .ConditionEvaluationDeltaLoggingListener : Condition evaluation unchanged
+2023-07-21 14:10:09.619  INFO 44476 --- [http-nio-9090-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2023-07-21 14:10:09.619  INFO 44476 --- [http-nio-9090-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2023-07-21 14:10:09.620  INFO 44476 --- [http-nio-9090-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
+2023-07-21 14:10:09.628 DEBUG 44476 --- [http-nio-9090-exec-1] com.bs.helloboot.comm.aop.LoggerAop      : ===== aop before =====
+2023-07-21 14:10:09.628 DEBUG 44476 --- [http-nio-9090-exec-1] com.bs.helloboot.comm.aop.LoggerAop      : com.bs.helloboot.TestFilter doFilter
+2023-07-21 14:10:09.628 DEBUG 44476 --- [http-nio-9090-exec-1] com.bs.helloboot.comm.aop.LoggerAop      : ===== aop after =====
+2023-07-21 14:10:09.629 DEBUG 44476 --- [http-nio-9090-exec-1] com.bs.helloboot.TestFilter              : 필터가 적용되었다! ========
+2023-07-21 14:10:09.655 DEBUG 44476 --- [http-nio-9090-exec-1] com.bs.helloboot.comm.aop.LoggerAop      : ===== aop before =====
+2023-07-21 14:10:09.656 DEBUG 44476 --- [http-nio-9090-exec-1] com.bs.helloboot.comm.aop.LoggerAop      : com.bs.helloboot.controller.BasicController selectMemberByName
+2023-07-21 14:10:09.656 DEBUG 44476 --- [http-nio-9090-exec-1] com.bs.helloboot.comm.aop.LoggerAop      : ===== aop after =====
+2023-07-21 14:10:09.658 DEBUG 44476 --- [http-nio-9090-exec-1] com.bs.helloboot.comm.aop.LoggerAop      : ===== aop before =====
+2023-07-21 14:10:09.658 DEBUG 44476 --- [http-nio-9090-exec-1] com.bs.helloboot.comm.aop.LoggerAop      : com.bs.helloboot.service.MemberServiceImpl selectMemberByName
+2023-07-21 14:10:09.658 DEBUG 44476 --- [http-nio-9090-exec-1] com.bs.helloboot.comm.aop.LoggerAop      : ===== aop after =====
+2023-07-21 14:10:09.660 DEBUG 44476 --- [http-nio-9090-exec-1] com.bs.helloboot.comm.aop.LoggerAop      : ===== aop before =====
+2023-07-21 14:10:09.660 DEBUG 44476 --- [http-nio-9090-exec-1] com.bs.helloboot.comm.aop.LoggerAop      : com.bs.helloboot.dao.MemberDaoImpl selectMemberByName
+2023-07-21 14:10:09.660 DEBUG 44476 --- [http-nio-9090-exec-1] com.bs.helloboot.comm.aop.LoggerAop      : ===== aop after =====
+2023-07-21 14:10:09.662 DEBUG 44476 --- [http-nio-9090-exec-1] com.bs.helloboot.comm.aop.LoggerAop      : ===== aop before =====
+2023-07-21 14:10:09.662 DEBUG 44476 --- [http-nio-9090-exec-1] com.bs.helloboot.comm.aop.LoggerAop      : com.bs.helloboot.comm.mapper.MemberMapper selectMemberByWhere
+2023-07-21 14:10:09.662 DEBUG 44476 --- [http-nio-9090-exec-1] com.bs.helloboot.comm.aop.LoggerAop      : ===== aop after =====
+2023-07-21 14:10:09.684 DEBUG 44476 --- [http-nio-9090-exec-1] c.b.h.c.m.M.selectMemberByWhere          : ==>  Preparing: SELECT * FROM MEMBER WHERE (USERNAME like '%'||?||'%')
+2023-07-21 14:10:09.771 DEBUG 44476 --- [http-nio-9090-exec-1] c.b.h.c.m.M.selectMemberByWhere          : ==> Parameters: admin(String)
+2023-07-21 14:10:09.859 DEBUG 44476 --- [http-nio-9090-exec-1] c.b.h.c.m.M.selectMemberByWhere          : <==      Total: 1
+2023-07-21 14:10:15.881 DEBUG 44476 --- [http-nio-9090-exec-4] com.bs.helloboot.comm.aop.LoggerAop      : ===== aop before =====
+2023-07-21 14:10:15.882 DEBUG 44476 --- [http-nio-9090-exec-4] com.bs.helloboot.comm.aop.LoggerAop      : com.bs.helloboot.TestFilter doFilter
+2023-07-21 14:10:15.882 DEBUG 44476 --- [http-nio-9090-exec-4] com.bs.helloboot.comm.aop.LoggerAop      : ===== aop after =====
+2023-07-21 14:10:15.882 DEBUG 44476 --- [http-nio-9090-exec-4] com.bs.helloboot.TestFilter              : 필터가 적용되었다! ========
+2023-07-21 14:10:15.883 DEBUG 44476 --- [http-nio-9090-exec-4] com.bs.helloboot.comm.aop.LoggerAop      : ===== aop before =====
+2023-07-21 14:10:15.883 DEBUG 44476 --- [http-nio-9090-exec-4] com.bs.helloboot.comm.aop.LoggerAop      : com.bs.helloboot.controller.BasicController selectMemberByName
+2023-07-21 14:10:15.883 DEBUG 44476 --- [http-nio-9090-exec-4] com.bs.helloboot.comm.aop.LoggerAop      : ===== aop after =====
+2023-07-21 14:10:15.883 DEBUG 44476 --- [http-nio-9090-exec-4] com.bs.helloboot.comm.aop.LoggerAop      : ===== aop before =====
+2023-07-21 14:10:15.884 DEBUG 44476 --- [http-nio-9090-exec-4] com.bs.helloboot.comm.aop.LoggerAop      : com.bs.helloboot.service.MemberServiceImpl selectMemberByName
+2023-07-21 14:10:15.884 DEBUG 44476 --- [http-nio-9090-exec-4] com.bs.helloboot.comm.aop.LoggerAop      : ===== aop after =====
+2023-07-21 14:10:15.884 DEBUG 44476 --- [http-nio-9090-exec-4] com.bs.helloboot.comm.aop.LoggerAop      : ===== aop before =====
+2023-07-21 14:10:15.884 DEBUG 44476 --- [http-nio-9090-exec-4] com.bs.helloboot.comm.aop.LoggerAop      : com.bs.helloboot.dao.MemberDaoImpl selectMemberByName
+2023-07-21 14:10:15.884 DEBUG 44476 --- [http-nio-9090-exec-4] com.bs.helloboot.comm.aop.LoggerAop      : ===== aop after =====
+2023-07-21 14:10:15.884 DEBUG 44476 --- [http-nio-9090-exec-4] com.bs.helloboot.comm.aop.LoggerAop      : ===== aop before =====
+2023-07-21 14:10:15.884 DEBUG 44476 --- [http-nio-9090-exec-4] com.bs.helloboot.comm.aop.LoggerAop      : com.bs.helloboot.comm.mapper.MemberMapper selectMemberByWhere
+2023-07-21 14:10:15.884 DEBUG 44476 --- [http-nio-9090-exec-4] com.bs.helloboot.comm.aop.LoggerAop      : ===== aop after =====
+2023-07-21 14:10:15.886 DEBUG 44476 --- [http-nio-9090-exec-4] c.b.h.c.m.M.selectMemberByWhere          : ==>  Preparing: SELECT * FROM MEMBER WHERE (USERNAME like '%'||?||'%')
+2023-07-21 14:10:15.886 DEBUG 44476 --- [http-nio-9090-exec-4] c.b.h.c.m.M.selectMemberByWhere          : ==> Parameters: 유(String)
+2023-07-21 14:10:15.887 DEBUG 44476 --- [http-nio-9090-exec-4] c.b.h.c.m.M.selectMemberByWhere          : <==      Total: 0
+2023-07-21 14:10:22.563 DEBUG 44476 --- [http-nio-9090-exec-5] com.bs.helloboot.comm.aop.LoggerAop      : ===== aop before =====
+2023-07-21 14:10:22.563 DEBUG 44476 --- [http-nio-9090-exec-5] com.bs.helloboot.comm.aop.LoggerAop      : com.bs.helloboot.TestFilter doFilter
+2023-07-21 14:10:22.563 DEBUG 44476 --- [http-nio-9090-exec-5] com.bs.helloboot.comm.aop.LoggerAop      : ===== aop after =====
+2023-07-21 14:10:22.563 DEBUG 44476 --- [http-nio-9090-exec-5] com.bs.helloboot.TestFilter              : 필터가 적용되었다! ========
+2023-07-21 14:10:22.564 DEBUG 44476 --- [http-nio-9090-exec-5] com.bs.helloboot.comm.aop.LoggerAop      : ===== aop before =====
+2023-07-21 14:10:22.564 DEBUG 44476 --- [http-nio-9090-exec-5] com.bs.helloboot.comm.aop.LoggerAop      : com.bs.helloboot.controller.BasicController selectMemberByName
+2023-07-21 14:10:22.564 DEBUG 44476 --- [http-nio-9090-exec-5] com.bs.helloboot.comm.aop.LoggerAop      : ===== aop after =====
+2023-07-21 14:10:22.565 DEBUG 44476 --- [http-nio-9090-exec-5] com.bs.helloboot.comm.aop.LoggerAop      : ===== aop before =====
+2023-07-21 14:10:22.565 DEBUG 44476 --- [http-nio-9090-exec-5] com.bs.helloboot.comm.aop.LoggerAop      : com.bs.helloboot.service.MemberServiceImpl selectMemberByName
+2023-07-21 14:10:22.565 DEBUG 44476 --- [http-nio-9090-exec-5] com.bs.helloboot.comm.aop.LoggerAop      : ===== aop after =====
+2023-07-21 14:10:22.565 DEBUG 44476 --- [http-nio-9090-exec-5] com.bs.helloboot.comm.aop.LoggerAop      : ===== aop before =====
+2023-07-21 14:10:22.565 DEBUG 44476 --- [http-nio-9090-exec-5] com.bs.helloboot.comm.aop.LoggerAop      : com.bs.helloboot.dao.MemberDaoImpl selectMemberByName
+2023-07-21 14:10:22.565 DEBUG 44476 --- [http-nio-9090-exec-5] com.bs.helloboot.comm.aop.LoggerAop      : ===== aop after =====
+2023-07-21 14:10:22.565 DEBUG 44476 --- [http-nio-9090-exec-5] com.bs.helloboot.comm.aop.LoggerAop      : ===== aop before =====
+2023-07-21 14:10:22.565 DEBUG 44476 --- [http-nio-9090-exec-5] com.bs.helloboot.comm.aop.LoggerAop      : com.bs.helloboot.comm.mapper.MemberMapper selectMemberByWhere
+2023-07-21 14:10:22.566 DEBUG 44476 --- [http-nio-9090-exec-5] com.bs.helloboot.comm.aop.LoggerAop      : ===== aop after =====
+2023-07-21 14:10:22.567 DEBUG 44476 --- [http-nio-9090-exec-5] c.b.h.c.m.M.selectMemberByWhere          : ==>  Preparing: SELECT * FROM MEMBER WHERE (USERNAME like '%'||?||'%')
+2023-07-21 14:10:22.568 DEBUG 44476 --- [http-nio-9090-exec-5] c.b.h.c.m.M.selectMemberByWhere          : ==> Parameters: a(String)
+2023-07-21 14:10:22.570 DEBUG 44476 --- [http-nio-9090-exec-5] c.b.h.c.m.M.selectMemberByWhere          : <==      Total: 1
+2023-07-21 14:11:12.204 DEBUG 44476 --- [http-nio-9090-exec-8] com.bs.helloboot.comm.aop.LoggerAop      : ===== aop before =====
+2023-07-21 14:11:12.205 DEBUG 44476 --- [http-nio-9090-exec-8] com.bs.helloboot.comm.aop.LoggerAop      : com.bs.helloboot.TestFilter doFilter
+2023-07-21 14:11:12.205 DEBUG 44476 --- [http-nio-9090-exec-8] com.bs.helloboot.comm.aop.LoggerAop      : ===== aop after =====
+2023-07-21 14:11:12.205 DEBUG 44476 --- [http-nio-9090-exec-8] com.bs.helloboot.TestFilter              : 필터가 적용되었다! ========
+2023-07-21 14:11:12.206 DEBUG 44476 --- [http-nio-9090-exec-8] com.bs.helloboot.comm.aop.LoggerAop      : ===== aop before =====
+2023-07-21 14:11:12.206 DEBUG 44476 --- [http-nio-9090-exec-8] com.bs.helloboot.comm.aop.LoggerAop      : com.bs.helloboot.controller.BasicController selectMemberByName
+2023-07-21 14:11:12.206 DEBUG 44476 --- [http-nio-9090-exec-8] com.bs.helloboot.comm.aop.LoggerAop      : ===== aop after =====
+2023-07-21 14:11:12.206 DEBUG 44476 --- [http-nio-9090-exec-8] com.bs.helloboot.comm.aop.LoggerAop      : ===== aop before =====
+2023-07-21 14:11:12.206 DEBUG 44476 --- [http-nio-9090-exec-8] com.bs.helloboot.comm.aop.LoggerAop      : com.bs.helloboot.service.MemberServiceImpl selectMemberByName
+2023-07-21 14:11:12.206 DEBUG 44476 --- [http-nio-9090-exec-8] com.bs.helloboot.comm.aop.LoggerAop      : ===== aop after =====
+2023-07-21 14:11:12.207 DEBUG 44476 --- [http-nio-9090-exec-8] com.bs.helloboot.comm.aop.LoggerAop      : ===== aop before =====
+2023-07-21 14:11:12.207 DEBUG 44476 --- [http-nio-9090-exec-8] com.bs.helloboot.comm.aop.LoggerAop      : com.bs.helloboot.dao.MemberDaoImpl selectMemberByName
+2023-07-21 14:11:12.207 DEBUG 44476 --- [http-nio-9090-exec-8] com.bs.helloboot.comm.aop.LoggerAop      : ===== aop after =====
+2023-07-21 14:11:12.207 DEBUG 44476 --- [http-nio-9090-exec-8] com.bs.helloboot.comm.aop.LoggerAop      : ===== aop before =====
+2023-07-21 14:11:12.207 DEBUG 44476 --- [http-nio-9090-exec-8] com.bs.helloboot.comm.aop.LoggerAop      : com.bs.helloboot.comm.mapper.MemberMapper selectMemberByWhere
+2023-07-21 14:11:12.207 DEBUG 44476 --- [http-nio-9090-exec-8] com.bs.helloboot.comm.aop.LoggerAop      : ===== aop after =====
+2023-07-21 14:11:12.208 DEBUG 44476 --- [http-nio-9090-exec-8] c.b.h.c.m.M.selectMemberByWhere          : ==>  Preparing: SELECT * FROM MEMBER WHERE (USERNAME like '%'||?||'%')
+2023-07-21 14:11:12.209 DEBUG 44476 --- [http-nio-9090-exec-8] c.b.h.c.m.M.selectMemberByWhere          : ==> Parameters: admin(String)
+2023-07-21 14:11:12.211 DEBUG 44476 --- [http-nio-9090-exec-8] c.b.h.c.m.M.selectMemberByWhere          : <==      Total: 1
+2023-07-21 14:11:18.305 DEBUG 44476 --- [http-nio-9090-exec-1] com.bs.helloboot.comm.aop.LoggerAop      : ===== aop before =====
+2023-07-21 14:11:18.305 DEBUG 44476 --- [http-nio-9090-exec-1] com.bs.helloboot.comm.aop.LoggerAop      : com.bs.helloboot.TestFilter doFilter
+2023-07-21 14:11:18.305 DEBUG 44476 --- [http-nio-9090-exec-1] com.bs.helloboot.comm.aop.LoggerAop      : ===== aop after =====
+2023-07-21 14:11:18.305 DEBUG 44476 --- [http-nio-9090-exec-1] com.bs.helloboot.TestFilter              : 필터가 적용되었다! ========
+2023-07-21 14:11:18.306 DEBUG 44476 --- [http-nio-9090-exec-1] com.bs.helloboot.comm.aop.LoggerAop      : ===== aop before =====
+2023-07-21 14:11:18.307 DEBUG 44476 --- [http-nio-9090-exec-1] com.bs.helloboot.comm.aop.LoggerAop      : com.bs.helloboot.controller.BasicController selectMemberByName
+2023-07-21 14:11:18.307 DEBUG 44476 --- [http-nio-9090-exec-1] com.bs.helloboot.comm.aop.LoggerAop      : ===== aop after =====
+2023-07-21 14:11:18.307 DEBUG 44476 --- [http-nio-9090-exec-1] com.bs.helloboot.comm.aop.LoggerAop      : ===== aop before =====
+2023-07-21 14:11:18.307 DEBUG 44476 --- [http-nio-9090-exec-1] com.bs.helloboot.comm.aop.LoggerAop      : com.bs.helloboot.service.MemberServiceImpl selectMemberByName
+2023-07-21 14:11:18.307 DEBUG 44476 --- [http-nio-9090-exec-1] com.bs.helloboot.comm.aop.LoggerAop      : ===== aop after =====
+2023-07-21 14:11:18.307 DEBUG 44476 --- [http-nio-9090-exec-1] com.bs.helloboot.comm.aop.LoggerAop      : ===== aop before =====
+2023-07-21 14:11:18.307 DEBUG 44476 --- [http-nio-9090-exec-1] com.bs.helloboot.comm.aop.LoggerAop      : com.bs.helloboot.dao.MemberDaoImpl selectMemberByName
+2023-07-21 14:11:18.307 DEBUG 44476 --- [http-nio-9090-exec-1] com.bs.helloboot.comm.aop.LoggerAop      : ===== aop after =====
+2023-07-21 14:11:18.307 DEBUG 44476 --- [http-nio-9090-exec-1] com.bs.helloboot.comm.aop.LoggerAop      : ===== aop before =====
+2023-07-21 14:11:18.307 DEBUG 44476 --- [http-nio-9090-exec-1] com.bs.helloboot.comm.aop.LoggerAop      : com.bs.helloboot.comm.mapper.MemberMapper selectMemberByWhere
+2023-07-21 14:11:18.307 DEBUG 44476 --- [http-nio-9090-exec-1] com.bs.helloboot.comm.aop.LoggerAop      : ===== aop after =====
+2023-07-21 14:11:18.309 DEBUG 44476 --- [http-nio-9090-exec-1] c.b.h.c.m.M.selectMemberByWhere          : ==>  Preparing: SELECT * FROM MEMBER WHERE (USERNAME like '%'||?||'%')
+2023-07-21 14:11:18.309 DEBUG 44476 --- [http-nio-9090-exec-1] c.b.h.c.m.M.selectMemberByWhere          : ==> Parameters: admin(String)
+2023-07-21 14:11:18.311 DEBUG 44476 --- [http-nio-9090-exec-1] c.b.h.c.m.M.selectMemberByWhere          : <==      Total: 1
+2023-07-21 14:11:23.018 DEBUG 44476 --- [http-nio-9090-exec-2] com.bs.helloboot.comm.aop.LoggerAop      : ===== aop before =====
+2023-07-21 14:11:23.019 DEBUG 44476 --- [http-nio-9090-exec-2] com.bs.helloboot.comm.aop.LoggerAop      : com.bs.helloboot.TestFilter doFilter
+2023-07-21 14:11:23.019 DEBUG 44476 --- [http-nio-9090-exec-2] com.bs.helloboot.comm.aop.LoggerAop      : ===== aop after =====
+2023-07-21 14:11:23.019 DEBUG 44476 --- [http-nio-9090-exec-2] com.bs.helloboot.TestFilter              : 필터가 적용되었다! ========
+2023-07-21 14:11:23.020 DEBUG 44476 --- [http-nio-9090-exec-2] com.bs.helloboot.comm.aop.LoggerAop      : ===== aop before =====
+2023-07-21 14:11:23.020 DEBUG 44476 --- [http-nio-9090-exec-2] com.bs.helloboot.comm.aop.LoggerAop      : com.bs.helloboot.controller.BasicController selectMemberByName
+2023-07-21 14:11:23.020 DEBUG 44476 --- [http-nio-9090-exec-2] com.bs.helloboot.comm.aop.LoggerAop      : ===== aop after =====
+2023-07-21 14:11:23.020 DEBUG 44476 --- [http-nio-9090-exec-2] com.bs.helloboot.comm.aop.LoggerAop      : ===== aop before =====
+2023-07-21 14:11:23.020 DEBUG 44476 --- [http-nio-9090-exec-2] com.bs.helloboot.comm.aop.LoggerAop      : com.bs.helloboot.service.MemberServiceImpl selectMemberByName
+2023-07-21 14:11:23.020 DEBUG 44476 --- [http-nio-9090-exec-2] com.bs.helloboot.comm.aop.LoggerAop      : ===== aop after =====
+2023-07-21 14:11:23.021 DEBUG 44476 --- [http-nio-9090-exec-2] com.bs.helloboot.comm.aop.LoggerAop      : ===== aop before =====
+2023-07-21 14:11:23.021 DEBUG 44476 --- [http-nio-9090-exec-2] com.bs.helloboot.comm.aop.LoggerAop      : com.bs.helloboot.dao.MemberDaoImpl selectMemberByName
+2023-07-21 14:11:23.021 DEBUG 44476 --- [http-nio-9090-exec-2] com.bs.helloboot.comm.aop.LoggerAop      : ===== aop after =====
+2023-07-21 14:11:23.021 DEBUG 44476 --- [http-nio-9090-exec-2] com.bs.helloboot.comm.aop.LoggerAop      : ===== aop before =====
+2023-07-21 14:11:23.021 DEBUG 44476 --- [http-nio-9090-exec-2] com.bs.helloboot.comm.aop.LoggerAop      : com.bs.helloboot.comm.mapper.MemberMapper selectMemberByWhere
+2023-07-21 14:11:23.021 DEBUG 44476 --- [http-nio-9090-exec-2] com.bs.helloboot.comm.aop.LoggerAop      : ===== aop after =====
+2023-07-21 14:11:23.022 DEBUG 44476 --- [http-nio-9090-exec-2] c.b.h.c.m.M.selectMemberByWhere          : ==>  Preparing: SELECT * FROM MEMBER WHERE (USERNAME like '%'||?||'%')
+2023-07-21 14:11:23.023 DEBUG 44476 --- [http-nio-9090-exec-2] c.b.h.c.m.M.selectMemberByWhere          : ==> Parameters: admin(String)
+2023-07-21 14:11:23.025 DEBUG 44476 --- [http-nio-9090-exec-2] c.b.h.c.m.M.selectMemberByWhere          : <==      Total: 1
+2023-07-21 14:11:32.676 DEBUG 44476 --- [http-nio-9090-exec-5] com.bs.helloboot.comm.aop.LoggerAop      : ===== aop before =====
+2023-07-21 14:11:32.677 DEBUG 44476 --- [http-nio-9090-exec-5] com.bs.helloboot.comm.aop.LoggerAop      : com.bs.helloboot.TestFilter doFilter
+2023-07-21 14:11:32.677 DEBUG 44476 --- [http-nio-9090-exec-5] com.bs.helloboot.comm.aop.LoggerAop      : ===== aop after =====
+2023-07-21 14:11:32.677 DEBUG 44476 --- [http-nio-9090-exec-5] com.bs.helloboot.TestFilter              : 필터가 적용되었다! ========
+2023-07-21 14:11:32.678 DEBUG 44476 --- [http-nio-9090-exec-5] com.bs.helloboot.comm.aop.LoggerAop      : ===== aop before =====
+2023-07-21 14:11:32.678 DEBUG 44476 --- [http-nio-9090-exec-5] com.bs.helloboot.comm.aop.LoggerAop      : com.bs.helloboot.controller.BasicController selectMemberByName
+2023-07-21 14:11:32.678 DEBUG 44476 --- [http-nio-9090-exec-5] com.bs.helloboot.comm.aop.LoggerAop      : ===== aop after =====
+2023-07-21 14:11:32.678 DEBUG 44476 --- [http-nio-9090-exec-5] com.bs.helloboot.comm.aop.LoggerAop      : ===== aop before =====
+2023-07-21 14:11:32.678 DEBUG 44476 --- [http-nio-9090-exec-5] com.bs.helloboot.comm.aop.LoggerAop      : com.bs.helloboot.service.MemberServiceImpl selectMemberByName
+2023-07-21 14:11:32.678 DEBUG 44476 --- [http-nio-9090-exec-5] com.bs.helloboot.comm.aop.LoggerAop      : ===== aop after =====
+2023-07-21 14:11:32.678 DEBUG 44476 --- [http-nio-9090-exec-5] com.bs.helloboot.comm.aop.LoggerAop      : ===== aop before =====
+2023-07-21 14:11:32.678 DEBUG 44476 --- [http-nio-9090-exec-5] com.bs.helloboot.comm.aop.LoggerAop      : com.bs.helloboot.dao.MemberDaoImpl selectMemberByName
+2023-07-21 14:11:32.678 DEBUG 44476 --- [http-nio-9090-exec-5] com.bs.helloboot.comm.aop.LoggerAop      : ===== aop after =====
+2023-07-21 14:11:32.678 DEBUG 44476 --- [http-nio-9090-exec-5] com.bs.helloboot.comm.aop.LoggerAop      : ===== aop before =====
+2023-07-21 14:11:32.679 DEBUG 44476 --- [http-nio-9090-exec-5] com.bs.helloboot.comm.aop.LoggerAop      : com.bs.helloboot.comm.mapper.MemberMapper selectMemberByWhere
+2023-07-21 14:11:32.679 DEBUG 44476 --- [http-nio-9090-exec-5] com.bs.helloboot.comm.aop.LoggerAop      : ===== aop after =====
+2023-07-21 14:11:32.681 DEBUG 44476 --- [http-nio-9090-exec-5] c.b.h.c.m.M.selectMemberByWhere          : ==>  Preparing: SELECT * FROM MEMBER WHERE (USERNAME like '%'||?||'%')
+2023-07-21 14:11:32.682 DEBUG 44476 --- [http-nio-9090-exec-5] c.b.h.c.m.M.selectMemberByWhere          : ==> Parameters: user(String)
+2023-07-21 14:11:32.683 DEBUG 44476 --- [http-nio-9090-exec-5] c.b.h.c.m.M.selectMemberByWhere          : <==      Total: 0
+2023-07-21 14:11:35.293 DEBUG 44476 --- [http-nio-9090-exec-8] com.bs.helloboot.comm.aop.LoggerAop      : ===== aop before =====
+2023-07-21 14:11:35.294 DEBUG 44476 --- [http-nio-9090-exec-8] com.bs.helloboot.comm.aop.LoggerAop      : com.bs.helloboot.TestFilter doFilter
+2023-07-21 14:11:35.294 DEBUG 44476 --- [http-nio-9090-exec-8] com.bs.helloboot.comm.aop.LoggerAop      : ===== aop after =====
+2023-07-21 14:11:35.294 DEBUG 44476 --- [http-nio-9090-exec-8] com.bs.helloboot.TestFilter              : 필터가 적용되었다! ========
+2023-07-21 14:11:35.295 DEBUG 44476 --- [http-nio-9090-exec-8] com.bs.helloboot.comm.aop.LoggerAop      : ===== aop before =====
+2023-07-21 14:11:35.295 DEBUG 44476 --- [http-nio-9090-exec-8] com.bs.helloboot.comm.aop.LoggerAop      : com.bs.helloboot.controller.BasicController selectMemberByName
+2023-07-21 14:11:35.295 DEBUG 44476 --- [http-nio-9090-exec-8] com.bs.helloboot.comm.aop.LoggerAop      : ===== aop after =====
+2023-07-21 14:11:35.295 DEBUG 44476 --- [http-nio-9090-exec-8] com.bs.helloboot.comm.aop.LoggerAop      : ===== aop before =====
+2023-07-21 14:11:35.295 DEBUG 44476 --- [http-nio-9090-exec-8] com.bs.helloboot.comm.aop.LoggerAop      : com.bs.helloboot.service.MemberServiceImpl selectMemberByName
+2023-07-21 14:11:35.295 DEBUG 44476 --- [http-nio-9090-exec-8] com.bs.helloboot.comm.aop.LoggerAop      : ===== aop after =====
+2023-07-21 14:11:35.295 DEBUG 44476 --- [http-nio-9090-exec-8] com.bs.helloboot.comm.aop.LoggerAop      : ===== aop before =====
+2023-07-21 14:11:35.295 DEBUG 44476 --- [http-nio-9090-exec-8] com.bs.helloboot.comm.aop.LoggerAop      : com.bs.helloboot.dao.MemberDaoImpl selectMemberByName
+2023-07-21 14:11:35.295 DEBUG 44476 --- [http-nio-9090-exec-8] com.bs.helloboot.comm.aop.LoggerAop      : ===== aop after =====
+2023-07-21 14:11:35.296 DEBUG 44476 --- [http-nio-9090-exec-8] com.bs.helloboot.comm.aop.LoggerAop      : ===== aop before =====
+2023-07-21 14:11:35.296 DEBUG 44476 --- [http-nio-9090-exec-8] com.bs.helloboot.comm.aop.LoggerAop      : com.bs.helloboot.comm.mapper.MemberMapper selectMemberByWhere
+2023-07-21 14:11:35.296 DEBUG 44476 --- [http-nio-9090-exec-8] com.bs.helloboot.comm.aop.LoggerAop      : ===== aop after =====
+2023-07-21 14:11:35.297 DEBUG 44476 --- [http-nio-9090-exec-8] c.b.h.c.m.M.selectMemberByWhere          : ==>  Preparing: SELECT * FROM MEMBER WHERE (USERNAME like '%'||?||'%')
+2023-07-21 14:11:35.297 DEBUG 44476 --- [http-nio-9090-exec-8] c.b.h.c.m.M.selectMemberByWhere          : ==> Parameters: user02(String)
+2023-07-21 14:11:35.299 DEBUG 44476 --- [http-nio-9090-exec-8] c.b.h.c.m.M.selectMemberByWhere          : <==      Total: 0
+2023-07-21 14:11:40.166 DEBUG 44476 --- [http-nio-9090-exec-1] com.bs.helloboot.comm.aop.LoggerAop      : ===== aop before =====
+2023-07-21 14:11:40.166 DEBUG 44476 --- [http-nio-9090-exec-1] com.bs.helloboot.comm.aop.LoggerAop      : com.bs.helloboot.TestFilter doFilter
+2023-07-21 14:11:40.166 DEBUG 44476 --- [http-nio-9090-exec-1] com.bs.helloboot.comm.aop.LoggerAop      : ===== aop after =====
+2023-07-21 14:11:40.170 DEBUG 44476 --- [http-nio-9090-exec-1] com.bs.helloboot.TestFilter              : 필터가 적용되었다! ========
+2023-07-21 14:11:40.171 DEBUG 44476 --- [http-nio-9090-exec-1] com.bs.helloboot.comm.aop.LoggerAop      : ===== aop before =====
+2023-07-21 14:11:40.171 DEBUG 44476 --- [http-nio-9090-exec-1] com.bs.helloboot.comm.aop.LoggerAop      : com.bs.helloboot.controller.BasicController selectMemberByName
+2023-07-21 14:11:40.171 DEBUG 44476 --- [http-nio-9090-exec-1] com.bs.helloboot.comm.aop.LoggerAop      : ===== aop after =====
+2023-07-21 14:11:40.171 DEBUG 44476 --- [http-nio-9090-exec-1] com.bs.helloboot.comm.aop.LoggerAop      : ===== aop before =====
+2023-07-21 14:11:40.171 DEBUG 44476 --- [http-nio-9090-exec-1] com.bs.helloboot.comm.aop.LoggerAop      : com.bs.helloboot.service.MemberServiceImpl selectMemberByName
+2023-07-21 14:11:40.171 DEBUG 44476 --- [http-nio-9090-exec-1] com.bs.helloboot.comm.aop.LoggerAop      : ===== aop after =====
+2023-07-21 14:11:40.171 DEBUG 44476 --- [http-nio-9090-exec-1] com.bs.helloboot.comm.aop.LoggerAop      : ===== aop before =====
+2023-07-21 14:11:40.172 DEBUG 44476 --- [http-nio-9090-exec-1] com.bs.helloboot.comm.aop.LoggerAop      : com.bs.helloboot.dao.MemberDaoImpl selectMemberByName
+2023-07-21 14:11:40.172 DEBUG 44476 --- [http-nio-9090-exec-1] com.bs.helloboot.comm.aop.LoggerAop      : ===== aop after =====
+2023-07-21 14:11:40.172 DEBUG 44476 --- [http-nio-9090-exec-1] com.bs.helloboot.comm.aop.LoggerAop      : ===== aop before =====
+2023-07-21 14:11:40.172 DEBUG 44476 --- [http-nio-9090-exec-1] com.bs.helloboot.comm.aop.LoggerAop      : com.bs.helloboot.comm.mapper.MemberMapper selectMemberByWhere
+2023-07-21 14:11:40.172 DEBUG 44476 --- [http-nio-9090-exec-1] com.bs.helloboot.comm.aop.LoggerAop      : ===== aop after =====
+2023-07-21 14:11:40.173 DEBUG 44476 --- [http-nio-9090-exec-1] c.b.h.c.m.M.selectMemberByWhere          : ==>  Preparing: SELECT * FROM MEMBER WHERE (USERNAME like '%'||?||'%')
+2023-07-21 14:11:40.174 DEBUG 44476 --- [http-nio-9090-exec-1] c.b.h.c.m.M.selectMemberByWhere          : ==> Parameters: 비밀(String)
+2023-07-21 14:11:40.175 DEBUG 44476 --- [http-nio-9090-exec-1] c.b.h.c.m.M.selectMemberByWhere          : <==      Total: 1
+2023-07-21 14:12:59.997 DEBUG 44476 --- [http-nio-9090-exec-3] com.bs.helloboot.comm.aop.LoggerAop      : ===== aop before =====
+2023-07-21 14:12:59.998 DEBUG 44476 --- [http-nio-9090-exec-3] com.bs.helloboot.comm.aop.LoggerAop      : com.bs.helloboot.TestFilter doFilter
+2023-07-21 14:12:59.998 DEBUG 44476 --- [http-nio-9090-exec-3] com.bs.helloboot.comm.aop.LoggerAop      : ===== aop after =====
+2023-07-21 14:12:59.998 DEBUG 44476 --- [http-nio-9090-exec-3] com.bs.helloboot.TestFilter              : 필터가 적용되었다! ========
+2023-07-21 14:12:59.999 DEBUG 44476 --- [http-nio-9090-exec-3] com.bs.helloboot.comm.aop.LoggerAop      : ===== aop before =====
+2023-07-21 14:12:59.999 DEBUG 44476 --- [http-nio-9090-exec-3] com.bs.helloboot.comm.aop.LoggerAop      : com.bs.helloboot.controller.BasicController selectMemberByName
+2023-07-21 14:12:59.999 DEBUG 44476 --- [http-nio-9090-exec-3] com.bs.helloboot.comm.aop.LoggerAop      : ===== aop after =====
+2023-07-21 14:12:59.999 DEBUG 44476 --- [http-nio-9090-exec-3] com.bs.helloboot.comm.aop.LoggerAop      : ===== aop before =====
+2023-07-21 14:12:59.999 DEBUG 44476 --- [http-nio-9090-exec-3] com.bs.helloboot.comm.aop.LoggerAop      : com.bs.helloboot.service.MemberServiceImpl selectMemberByName
+2023-07-21 14:12:59.999 DEBUG 44476 --- [http-nio-9090-exec-3] com.bs.helloboot.comm.aop.LoggerAop      : ===== aop after =====
+2023-07-21 14:12:59.999 DEBUG 44476 --- [http-nio-9090-exec-3] com.bs.helloboot.comm.aop.LoggerAop      : ===== aop before =====
+2023-07-21 14:12:59.999 DEBUG 44476 --- [http-nio-9090-exec-3] com.bs.helloboot.comm.aop.LoggerAop      : com.bs.helloboot.dao.MemberDaoImpl selectMemberByName
+2023-07-21 14:12:59.999 DEBUG 44476 --- [http-nio-9090-exec-3] com.bs.helloboot.comm.aop.LoggerAop      : ===== aop after =====
+2023-07-21 14:12:59.999 DEBUG 44476 --- [http-nio-9090-exec-3] com.bs.helloboot.comm.aop.LoggerAop      : ===== aop before =====
+2023-07-21 14:12:59.999 DEBUG 44476 --- [http-nio-9090-exec-3] com.bs.helloboot.comm.aop.LoggerAop      : com.bs.helloboot.comm.mapper.MemberMapper selectMemberByWhere
+2023-07-21 14:12:59.999 DEBUG 44476 --- [http-nio-9090-exec-3] com.bs.helloboot.comm.aop.LoggerAop      : ===== aop after =====
+2023-07-21 14:13:00.001 DEBUG 44476 --- [http-nio-9090-exec-3] c.b.h.c.m.M.selectMemberByWhere          : ==>  Preparing: SELECT * FROM MEMBER WHERE (USERNAME like '%'||?||'%')
+2023-07-21 14:13:00.001 DEBUG 44476 --- [http-nio-9090-exec-3] c.b.h.c.m.M.selectMemberByWhere          : ==> Parameters: 정(String)
+2023-07-21 14:13:00.003 DEBUG 44476 --- [http-nio-9090-exec-3] c.b.h.c.m.M.selectMemberByWhere          : <==      Total: 3
+2023-07-21 14:18:57.210 DEBUG 44476 --- [http-nio-9090-exec-6] com.bs.helloboot.comm.aop.LoggerAop      : ===== aop before =====
+2023-07-21 14:18:57.210 DEBUG 44476 --- [http-nio-9090-exec-6] com.bs.helloboot.comm.aop.LoggerAop      : com.bs.helloboot.TestFilter doFilter
+2023-07-21 14:18:57.210 DEBUG 44476 --- [http-nio-9090-exec-6] com.bs.helloboot.comm.aop.LoggerAop      : ===== aop after =====
+2023-07-21 14:18:57.210 DEBUG 44476 --- [http-nio-9090-exec-6] com.bs.helloboot.TestFilter              : 필터가 적용되었다! ========
+2023-07-21 14:18:57.211 DEBUG 44476 --- [http-nio-9090-exec-6] com.bs.helloboot.comm.aop.LoggerAop      : ===== aop before =====
+2023-07-21 14:18:57.211 DEBUG 44476 --- [http-nio-9090-exec-6] com.bs.helloboot.comm.aop.LoggerAop      : com.bs.helloboot.controller.BasicController selectMemberByName
+2023-07-21 14:18:57.211 DEBUG 44476 --- [http-nio-9090-exec-6] com.bs.helloboot.comm.aop.LoggerAop      : ===== aop after =====
+2023-07-21 14:18:57.212 DEBUG 44476 --- [http-nio-9090-exec-6] com.bs.helloboot.comm.aop.LoggerAop      : ===== aop before =====
+2023-07-21 14:18:57.212 DEBUG 44476 --- [http-nio-9090-exec-6] com.bs.helloboot.comm.aop.LoggerAop      : com.bs.helloboot.service.MemberServiceImpl selectMemberByName
+2023-07-21 14:18:57.212 DEBUG 44476 --- [http-nio-9090-exec-6] com.bs.helloboot.comm.aop.LoggerAop      : ===== aop after =====
+2023-07-21 14:18:57.212 DEBUG 44476 --- [http-nio-9090-exec-6] com.bs.helloboot.comm.aop.LoggerAop      : ===== aop before =====
+2023-07-21 14:18:57.212 DEBUG 44476 --- [http-nio-9090-exec-6] com.bs.helloboot.comm.aop.LoggerAop      : com.bs.helloboot.dao.MemberDaoImpl selectMemberByName
+2023-07-21 14:18:57.212 DEBUG 44476 --- [http-nio-9090-exec-6] com.bs.helloboot.comm.aop.LoggerAop      : ===== aop after =====
+2023-07-21 14:18:57.212 DEBUG 44476 --- [http-nio-9090-exec-6] com.bs.helloboot.comm.aop.LoggerAop      : ===== aop before =====
+2023-07-21 14:18:57.212 DEBUG 44476 --- [http-nio-9090-exec-6] com.bs.helloboot.comm.aop.LoggerAop      : com.bs.helloboot.comm.mapper.MemberMapper selectMemberByWhere
+2023-07-21 14:18:57.212 DEBUG 44476 --- [http-nio-9090-exec-6] com.bs.helloboot.comm.aop.LoggerAop      : ===== aop after =====
+2023-07-21 14:18:57.214 DEBUG 44476 --- [http-nio-9090-exec-6] c.b.h.c.m.M.selectMemberByWhere          : ==>  Preparing: SELECT * FROM MEMBER
+2023-07-21 14:18:57.214 DEBUG 44476 --- [http-nio-9090-exec-6] c.b.h.c.m.M.selectMemberByWhere          : ==> Parameters: 
+2023-07-21 14:18:57.222 DEBUG 44476 --- [http-nio-9090-exec-6] c.b.h.c.m.M.selectMemberByWhere          : <==      Total: 10
+2023-07-21 14:19:57.728  INFO 44476 --- [RMI TCP Connection(28)-127.0.0.1] inMXBeanRegistrar$SpringApplicationAdmin : Application shutdown requested.
+2023-07-21 14:19:57.739  INFO 44476 --- [RMI TCP Connection(28)-127.0.0.1] o.apache.catalina.core.StandardService   : Stopping service [Tomcat]
+2023-07-21 14:19:57.740  INFO 44476 --- [RMI TCP Connection(28)-127.0.0.1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Destroying Spring FrameworkServlet 'dispatcherServlet'
+2023-07-21 14:19:57.745  INFO 44476 --- [RMI TCP Connection(28)-127.0.0.1] com.zaxxer.hikari.HikariDataSource       : HikariPool-2 - Shutdown initiated...
+2023-07-21 14:19:57.757  INFO 44476 --- [RMI TCP Connection(28)-127.0.0.1] com.zaxxer.hikari.HikariDataSource       : HikariPool-2 - Shutdown completed.
+2023-07-21 14:20:00.191  INFO 44356 --- [restartedMain] com.bs.helloboot.HelloBootApplication    : Starting HelloBootApplication using Java 17.0.5 on DESKTOP-OSPAM2G with PID 44356 (C:\servlet\springwork\helloBoot\target\classes started by JeongSangjun in C:\servlet\springwork\helloBoot)
+2023-07-21 14:20:00.192 DEBUG 44356 --- [restartedMain] com.bs.helloboot.HelloBootApplication    : Running with Spring Boot v2.7.14-SNAPSHOT, Spring v5.3.29
+2023-07-21 14:20:00.193  INFO 44356 --- [restartedMain] com.bs.helloboot.HelloBootApplication    : No active profile set, falling back to 1 default profile: "default"
+2023-07-21 14:20:00.262  INFO 44356 --- [restartedMain] o.s.b.devtools.restart.ChangeableUrls    : The Class-Path manifest attribute in C:\Users\Jeong Sangjun\.m2\repository\com\oracle\database\jdbc\ojdbc8\21.5.0.0\ojdbc8-21.5.0.0.jar referenced one or more files that do not exist: file:/C:/Users/Jeong%20Sangjun/.m2/repository/com/oracle/database/jdbc/ojdbc8/21.5.0.0/oraclepki.jar
+2023-07-21 14:20:00.262  INFO 44356 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2023-07-21 14:20:00.262  INFO 44356 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2023-07-21 14:20:00.882  INFO 44356 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JDBC repositories in DEFAULT mode.
+2023-07-21 14:20:00.895  INFO 44356 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 9 ms. Found 0 JDBC repository interfaces.
+2023-07-21 14:20:01.681  INFO 44356 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 9090 (http)
+2023-07-21 14:20:01.691  INFO 44356 --- [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2023-07-21 14:20:01.691  INFO 44356 --- [restartedMain] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.78]
+2023-07-21 14:20:01.915  INFO 44356 --- [restartedMain] org.apache.jasper.servlet.TldScanner     : At least one JAR was scanned for TLDs yet contained no TLDs. Enable debug logging for this logger for a complete list of JARs that were scanned but no TLDs were found in them. Skipping unneeded JARs during scanning can improve startup time and JSP compilation time.
+2023-07-21 14:20:01.927  INFO 44356 --- [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2023-07-21 14:20:01.927  INFO 44356 --- [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1665 ms
+2023-07-21 14:20:02.486  INFO 44356 --- [restartedMain] o.s.b.a.w.s.WelcomePageHandlerMapping    : Adding welcome page template: index
+2023-07-21 14:20:02.489 DEBUG 44356 --- [restartedMain] com.bs.helloboot.comm.aop.LoggerAop      : ===== aop before =====
+2023-07-21 14:20:02.490 DEBUG 44356 --- [restartedMain] com.bs.helloboot.comm.aop.LoggerAop      : com.bs.helloboot.config.MyWebMvcConfigration addInterceptors
+2023-07-21 14:20:02.490 DEBUG 44356 --- [restartedMain] com.bs.helloboot.comm.aop.LoggerAop      : ===== aop after =====
+2023-07-21 14:20:02.502 DEBUG 44356 --- [restartedMain] com.bs.helloboot.comm.aop.LoggerAop      : ===== aop before =====
+2023-07-21 14:20:02.502 DEBUG 44356 --- [restartedMain] com.bs.helloboot.comm.aop.LoggerAop      : com.bs.helloboot.config.MyWebMvcConfigration addCorsMappings
+2023-07-21 14:20:02.502 DEBUG 44356 --- [restartedMain] com.bs.helloboot.comm.aop.LoggerAop      : ===== aop after =====
+2023-07-21 14:20:02.549 DEBUG 44356 --- [restartedMain] com.bs.helloboot.comm.aop.LoggerAop      : ===== aop before =====
+2023-07-21 14:20:02.550 DEBUG 44356 --- [restartedMain] com.bs.helloboot.comm.aop.LoggerAop      : com.bs.helloboot.config.MyWebMvcConfigration addViewControllers
+2023-07-21 14:20:02.550 DEBUG 44356 --- [restartedMain] com.bs.helloboot.comm.aop.LoggerAop      : ===== aop after =====
+2023-07-21 14:20:02.691  INFO 44356 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2023-07-21 14:20:02.697  WARN 44356 --- [restartedMain] com.zaxxer.hikari.util.DriverDataSource  : Registered driver with driverClassName=oracle.jdbc.driver.OracleDriver was not found, trying direct instantiation.
+2023-07-21 14:20:03.000  INFO 44356 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2023-07-21 14:20:03.129  INFO 44356 --- [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2023-07-21 14:20:03.172  INFO 44356 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 9090 (http) with context path ''
+2023-07-21 14:20:03.193  INFO 44356 --- [restartedMain] com.bs.helloboot.HelloBootApplication    : Started HelloBootApplication in 3.441 seconds (JVM running for 4.23)
+2023-07-21 14:20:12.718  INFO 44356 --- [File Watcher] rtingClassPathChangeChangedEventListener : Restarting due to 2 class path changes (0 additions, 0 deletions, 2 modifications)
+2023-07-21 14:20:12.736  INFO 44356 --- [Thread-7] o.apache.catalina.core.StandardService   : Stopping service [Tomcat]
+2023-07-21 14:20:12.746  INFO 44356 --- [Thread-7] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2023-07-21 14:20:12.754  INFO 44356 --- [Thread-7] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2023-07-21 14:20:12.835  INFO 44356 --- [restartedMain] com.bs.helloboot.HelloBootApplication    : Starting HelloBootApplication using Java 17.0.5 on DESKTOP-OSPAM2G with PID 44356 (C:\servlet\springwork\helloBoot\target\classes started by JeongSangjun in C:\servlet\springwork\helloBoot)
+2023-07-21 14:20:12.835 DEBUG 44356 --- [restartedMain] com.bs.helloboot.HelloBootApplication    : Running with Spring Boot v2.7.14-SNAPSHOT, Spring v5.3.29
+2023-07-21 14:20:12.835  INFO 44356 --- [restartedMain] com.bs.helloboot.HelloBootApplication    : No active profile set, falling back to 1 default profile: "default"
+2023-07-21 14:20:13.005  INFO 44356 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JDBC repositories in DEFAULT mode.
+2023-07-21 14:20:13.010  INFO 44356 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 4 ms. Found 0 JDBC repository interfaces.
+2023-07-21 14:20:13.097  INFO 44356 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 9090 (http)
+2023-07-21 14:20:13.098  INFO 44356 --- [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2023-07-21 14:20:13.098  INFO 44356 --- [restartedMain] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.78]
+2023-07-21 14:20:13.169  INFO 44356 --- [restartedMain] org.apache.jasper.servlet.TldScanner     : At least one JAR was scanned for TLDs yet contained no TLDs. Enable debug logging for this logger for a complete list of JARs that were scanned but no TLDs were found in them. Skipping unneeded JARs during scanning can improve startup time and JSP compilation time.
+2023-07-21 14:20:13.171  INFO 44356 --- [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2023-07-21 14:20:13.172  INFO 44356 --- [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 334 ms
+2023-07-21 14:20:13.348  INFO 44356 --- [restartedMain] o.s.b.a.w.s.WelcomePageHandlerMapping    : Adding welcome page template: index
+2023-07-21 14:20:13.349 DEBUG 44356 --- [restartedMain] com.bs.helloboot.comm.aop.LoggerAop      : ===== aop before =====
+2023-07-21 14:20:13.349 DEBUG 44356 --- [restartedMain] com.bs.helloboot.comm.aop.LoggerAop      : com.bs.helloboot.config.MyWebMvcConfigration addInterceptors
+2023-07-21 14:20:13.349 DEBUG 44356 --- [restartedMain] com.bs.helloboot.comm.aop.LoggerAop      : ===== aop after =====
+2023-07-21 14:20:13.351 DEBUG 44356 --- [restartedMain] com.bs.helloboot.comm.aop.LoggerAop      : ===== aop before =====
+2023-07-21 14:20:13.351 DEBUG 44356 --- [restartedMain] com.bs.helloboot.comm.aop.LoggerAop      : com.bs.helloboot.config.MyWebMvcConfigration addCorsMappings
+2023-07-21 14:20:13.352 DEBUG 44356 --- [restartedMain] com.bs.helloboot.comm.aop.LoggerAop      : ===== aop after =====
+2023-07-21 14:20:13.368 DEBUG 44356 --- [restartedMain] com.bs.helloboot.comm.aop.LoggerAop      : ===== aop before =====
+2023-07-21 14:20:13.369 DEBUG 44356 --- [restartedMain] com.bs.helloboot.comm.aop.LoggerAop      : com.bs.helloboot.config.MyWebMvcConfigration addViewControllers
+2023-07-21 14:20:13.369 DEBUG 44356 --- [restartedMain] com.bs.helloboot.comm.aop.LoggerAop      : ===== aop after =====
+2023-07-21 14:20:13.431  INFO 44356 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-2 - Starting...
+2023-07-21 14:20:13.431  WARN 44356 --- [restartedMain] com.zaxxer.hikari.util.DriverDataSource  : Registered driver with driverClassName=oracle.jdbc.driver.OracleDriver was not found, trying direct instantiation.
+2023-07-21 14:20:13.479  INFO 44356 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-2 - Start completed.
+2023-07-21 14:20:13.516  INFO 44356 --- [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2023-07-21 14:20:13.527  INFO 44356 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 9090 (http) with context path ''
+2023-07-21 14:20:13.532  INFO 44356 --- [restartedMain] com.bs.helloboot.HelloBootApplication    : Started HelloBootApplication in 0.732 seconds (JVM running for 14.569)
+2023-07-21 14:20:13.534  INFO 44356 --- [restartedMain] .ConditionEvaluationDeltaLoggingListener : Condition evaluation unchanged
+2023-07-21 14:20:17.267  INFO 44356 --- [http-nio-9090-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2023-07-21 14:20:17.267  INFO 44356 --- [http-nio-9090-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2023-07-21 14:20:17.268  INFO 44356 --- [http-nio-9090-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
+2023-07-21 14:20:17.275 DEBUG 44356 --- [http-nio-9090-exec-1] com.bs.helloboot.comm.aop.LoggerAop      : ===== aop before =====
+2023-07-21 14:20:17.275 DEBUG 44356 --- [http-nio-9090-exec-1] com.bs.helloboot.comm.aop.LoggerAop      : com.bs.helloboot.TestFilter doFilter
+2023-07-21 14:20:17.275 DEBUG 44356 --- [http-nio-9090-exec-1] com.bs.helloboot.comm.aop.LoggerAop      : ===== aop after =====
+2023-07-21 14:20:17.276 DEBUG 44356 --- [http-nio-9090-exec-1] com.bs.helloboot.TestFilter              : 필터가 적용되었다! ========
+2023-07-21 14:20:17.301 DEBUG 44356 --- [http-nio-9090-exec-1] com.bs.helloboot.comm.aop.LoggerAop      : ===== aop before =====
+2023-07-21 14:20:17.301 DEBUG 44356 --- [http-nio-9090-exec-1] com.bs.helloboot.comm.aop.LoggerAop      : com.bs.helloboot.controller.BasicController selectMemberByName
+2023-07-21 14:20:17.301 DEBUG 44356 --- [http-nio-9090-exec-1] com.bs.helloboot.comm.aop.LoggerAop      : ===== aop after =====
+2023-07-21 14:20:17.303 DEBUG 44356 --- [http-nio-9090-exec-1] com.bs.helloboot.comm.aop.LoggerAop      : ===== aop before =====
+2023-07-21 14:20:17.303 DEBUG 44356 --- [http-nio-9090-exec-1] com.bs.helloboot.comm.aop.LoggerAop      : com.bs.helloboot.service.MemberServiceImpl selectMemberByName
+2023-07-21 14:20:17.304 DEBUG 44356 --- [http-nio-9090-exec-1] com.bs.helloboot.comm.aop.LoggerAop      : ===== aop after =====
+2023-07-21 14:20:17.306 DEBUG 44356 --- [http-nio-9090-exec-1] com.bs.helloboot.comm.aop.LoggerAop      : ===== aop before =====
+2023-07-21 14:20:17.307 DEBUG 44356 --- [http-nio-9090-exec-1] com.bs.helloboot.comm.aop.LoggerAop      : com.bs.helloboot.dao.MemberDaoImpl selectMemberByName
+2023-07-21 14:20:17.307 DEBUG 44356 --- [http-nio-9090-exec-1] com.bs.helloboot.comm.aop.LoggerAop      : ===== aop after =====
+2023-07-21 14:20:17.309 DEBUG 44356 --- [http-nio-9090-exec-1] com.bs.helloboot.comm.aop.LoggerAop      : ===== aop before =====
+2023-07-21 14:20:17.310 DEBUG 44356 --- [http-nio-9090-exec-1] com.bs.helloboot.comm.aop.LoggerAop      : com.bs.helloboot.comm.mapper.MemberMapper selectMemberByWhere
+2023-07-21 14:20:17.310 DEBUG 44356 --- [http-nio-9090-exec-1] com.bs.helloboot.comm.aop.LoggerAop      : ===== aop after =====
+2023-07-21 14:20:17.329 DEBUG 44356 --- [http-nio-9090-exec-1] c.b.h.c.m.M.selectMemberByWhere          : ==>  Preparing: SELECT * FROM MEMBER
+2023-07-21 14:20:17.404 DEBUG 44356 --- [http-nio-9090-exec-1] c.b.h.c.m.M.selectMemberByWhere          : ==> Parameters: 
+2023-07-21 14:20:17.470 DEBUG 44356 --- [http-nio-9090-exec-1] c.b.h.c.m.M.selectMemberByWhere          : <==      Total: 10
+2023-07-21 14:20:28.884 DEBUG 44356 --- [http-nio-9090-exec-4] com.bs.helloboot.comm.aop.LoggerAop      : ===== aop before =====
+2023-07-21 14:20:28.884 DEBUG 44356 --- [http-nio-9090-exec-4] com.bs.helloboot.comm.aop.LoggerAop      : com.bs.helloboot.TestFilter doFilter
+2023-07-21 14:20:28.885 DEBUG 44356 --- [http-nio-9090-exec-4] com.bs.helloboot.comm.aop.LoggerAop      : ===== aop after =====
+2023-07-21 14:20:28.885 DEBUG 44356 --- [http-nio-9090-exec-4] com.bs.helloboot.TestFilter              : 필터가 적용되었다! ========
+2023-07-21 14:20:28.885 DEBUG 44356 --- [http-nio-9090-exec-4] com.bs.helloboot.comm.aop.LoggerAop      : ===== aop before =====
+2023-07-21 14:20:28.885 DEBUG 44356 --- [http-nio-9090-exec-4] com.bs.helloboot.comm.aop.LoggerAop      : com.bs.helloboot.controller.BasicController selectMemberByName
+2023-07-21 14:20:28.886 DEBUG 44356 --- [http-nio-9090-exec-4] com.bs.helloboot.comm.aop.LoggerAop      : ===== aop after =====
+2023-07-21 14:20:28.886 DEBUG 44356 --- [http-nio-9090-exec-4] com.bs.helloboot.comm.aop.LoggerAop      : ===== aop before =====
+2023-07-21 14:20:28.886 DEBUG 44356 --- [http-nio-9090-exec-4] com.bs.helloboot.comm.aop.LoggerAop      : com.bs.helloboot.service.MemberServiceImpl selectMemberByName
+2023-07-21 14:20:28.886 DEBUG 44356 --- [http-nio-9090-exec-4] com.bs.helloboot.comm.aop.LoggerAop      : ===== aop after =====
+2023-07-21 14:20:28.886 DEBUG 44356 --- [http-nio-9090-exec-4] com.bs.helloboot.comm.aop.LoggerAop      : ===== aop before =====
+2023-07-21 14:20:28.886 DEBUG 44356 --- [http-nio-9090-exec-4] com.bs.helloboot.comm.aop.LoggerAop      : com.bs.helloboot.dao.MemberDaoImpl selectMemberByName
+2023-07-21 14:20:28.886 DEBUG 44356 --- [http-nio-9090-exec-4] com.bs.helloboot.comm.aop.LoggerAop      : ===== aop after =====
+2023-07-21 14:20:28.886 DEBUG 44356 --- [http-nio-9090-exec-4] com.bs.helloboot.comm.aop.LoggerAop      : ===== aop before =====
+2023-07-21 14:20:28.886 DEBUG 44356 --- [http-nio-9090-exec-4] com.bs.helloboot.comm.aop.LoggerAop      : com.bs.helloboot.comm.mapper.MemberMapper selectMemberByWhere
+2023-07-21 14:20:28.886 DEBUG 44356 --- [http-nio-9090-exec-4] com.bs.helloboot.comm.aop.LoggerAop      : ===== aop after =====
+2023-07-21 14:20:28.888 DEBUG 44356 --- [http-nio-9090-exec-4] c.b.h.c.m.M.selectMemberByWhere          : ==>  Preparing: SELECT * FROM MEMBER
+2023-07-21 14:20:28.888 DEBUG 44356 --- [http-nio-9090-exec-4] c.b.h.c.m.M.selectMemberByWhere          : ==> Parameters: 
+2023-07-21 14:20:28.894 DEBUG 44356 --- [http-nio-9090-exec-4] c.b.h.c.m.M.selectMemberByWhere          : <==      Total: 10
+2023-07-21 14:20:56.771 DEBUG 44356 --- [http-nio-9090-exec-9] com.bs.helloboot.comm.aop.LoggerAop      : ===== aop before =====
+2023-07-21 14:20:56.771 DEBUG 44356 --- [http-nio-9090-exec-9] com.bs.helloboot.comm.aop.LoggerAop      : com.bs.helloboot.TestFilter doFilter
+2023-07-21 14:20:56.771 DEBUG 44356 --- [http-nio-9090-exec-9] com.bs.helloboot.comm.aop.LoggerAop      : ===== aop after =====
+2023-07-21 14:20:56.772 DEBUG 44356 --- [http-nio-9090-exec-9] com.bs.helloboot.TestFilter              : 필터가 적용되었다! ========
+2023-07-21 14:20:56.773 DEBUG 44356 --- [http-nio-9090-exec-9] com.bs.helloboot.comm.aop.LoggerAop      : ===== aop before =====
+2023-07-21 14:20:56.773 DEBUG 44356 --- [http-nio-9090-exec-9] com.bs.helloboot.comm.aop.LoggerAop      : com.bs.helloboot.controller.BasicController selectMemberByName
+2023-07-21 14:20:56.773 DEBUG 44356 --- [http-nio-9090-exec-9] com.bs.helloboot.comm.aop.LoggerAop      : ===== aop after =====
+2023-07-21 14:20:56.773 DEBUG 44356 --- [http-nio-9090-exec-9] com.bs.helloboot.comm.aop.LoggerAop      : ===== aop before =====
+2023-07-21 14:20:56.774 DEBUG 44356 --- [http-nio-9090-exec-9] com.bs.helloboot.comm.aop.LoggerAop      : com.bs.helloboot.service.MemberServiceImpl selectMemberByName
+2023-07-21 14:20:56.774 DEBUG 44356 --- [http-nio-9090-exec-9] com.bs.helloboot.comm.aop.LoggerAop      : ===== aop after =====
+2023-07-21 14:20:56.774 DEBUG 44356 --- [http-nio-9090-exec-9] com.bs.helloboot.comm.aop.LoggerAop      : ===== aop before =====
+2023-07-21 14:20:56.774 DEBUG 44356 --- [http-nio-9090-exec-9] com.bs.helloboot.comm.aop.LoggerAop      : com.bs.helloboot.dao.MemberDaoImpl selectMemberByName
+2023-07-21 14:20:56.774 DEBUG 44356 --- [http-nio-9090-exec-9] com.bs.helloboot.comm.aop.LoggerAop      : ===== aop after =====
+2023-07-21 14:20:56.774 DEBUG 44356 --- [http-nio-9090-exec-9] com.bs.helloboot.comm.aop.LoggerAop      : ===== aop before =====
+2023-07-21 14:20:56.774 DEBUG 44356 --- [http-nio-9090-exec-9] com.bs.helloboot.comm.aop.LoggerAop      : com.bs.helloboot.comm.mapper.MemberMapper selectMemberByWhere
+2023-07-21 14:20:56.774 DEBUG 44356 --- [http-nio-9090-exec-9] com.bs.helloboot.comm.aop.LoggerAop      : ===== aop after =====
+2023-07-21 14:20:56.776 DEBUG 44356 --- [http-nio-9090-exec-9] c.b.h.c.m.M.selectMemberByWhere          : ==>  Preparing: SELECT * FROM MEMBER WHERE (USERNAME like '%'||?||'%')
+2023-07-21 14:20:56.778 DEBUG 44356 --- [http-nio-9090-exec-9] c.b.h.c.m.M.selectMemberByWhere          : ==> Parameters: admin(String)
+2023-07-21 14:20:56.780 DEBUG 44356 --- [http-nio-9090-exec-9] c.b.h.c.m.M.selectMemberByWhere          : <==      Total: 1
+2023-07-21 14:21:00.615 DEBUG 44356 --- [http-nio-9090-exec-3] com.bs.helloboot.comm.aop.LoggerAop      : ===== aop before =====
+2023-07-21 14:21:00.616 DEBUG 44356 --- [http-nio-9090-exec-3] com.bs.helloboot.comm.aop.LoggerAop      : com.bs.helloboot.TestFilter doFilter
+2023-07-21 14:21:00.616 DEBUG 44356 --- [http-nio-9090-exec-3] com.bs.helloboot.comm.aop.LoggerAop      : ===== aop after =====
+2023-07-21 14:21:00.616 DEBUG 44356 --- [http-nio-9090-exec-3] com.bs.helloboot.TestFilter              : 필터가 적용되었다! ========
+2023-07-21 14:21:00.617 DEBUG 44356 --- [http-nio-9090-exec-3] com.bs.helloboot.comm.aop.LoggerAop      : ===== aop before =====
+2023-07-21 14:21:00.617 DEBUG 44356 --- [http-nio-9090-exec-3] com.bs.helloboot.comm.aop.LoggerAop      : com.bs.helloboot.controller.BasicController selectMemberByName
+2023-07-21 14:21:00.617 DEBUG 44356 --- [http-nio-9090-exec-3] com.bs.helloboot.comm.aop.LoggerAop      : ===== aop after =====
+2023-07-21 14:21:00.617 DEBUG 44356 --- [http-nio-9090-exec-3] com.bs.helloboot.comm.aop.LoggerAop      : ===== aop before =====
+2023-07-21 14:21:00.617 DEBUG 44356 --- [http-nio-9090-exec-3] com.bs.helloboot.comm.aop.LoggerAop      : com.bs.helloboot.service.MemberServiceImpl selectMemberByName
+2023-07-21 14:21:00.617 DEBUG 44356 --- [http-nio-9090-exec-3] com.bs.helloboot.comm.aop.LoggerAop      : ===== aop after =====
+2023-07-21 14:21:00.617 DEBUG 44356 --- [http-nio-9090-exec-3] com.bs.helloboot.comm.aop.LoggerAop      : ===== aop before =====
+2023-07-21 14:21:00.617 DEBUG 44356 --- [http-nio-9090-exec-3] com.bs.helloboot.comm.aop.LoggerAop      : com.bs.helloboot.dao.MemberDaoImpl selectMemberByName
+2023-07-21 14:21:00.617 DEBUG 44356 --- [http-nio-9090-exec-3] com.bs.helloboot.comm.aop.LoggerAop      : ===== aop after =====
+2023-07-21 14:21:00.617 DEBUG 44356 --- [http-nio-9090-exec-3] com.bs.helloboot.comm.aop.LoggerAop      : ===== aop before =====
+2023-07-21 14:21:00.617 DEBUG 44356 --- [http-nio-9090-exec-3] com.bs.helloboot.comm.aop.LoggerAop      : com.bs.helloboot.comm.mapper.MemberMapper selectMemberByWhere
+2023-07-21 14:21:00.618 DEBUG 44356 --- [http-nio-9090-exec-3] com.bs.helloboot.comm.aop.LoggerAop      : ===== aop after =====
+2023-07-21 14:21:00.619 DEBUG 44356 --- [http-nio-9090-exec-3] c.b.h.c.m.M.selectMemberByWhere          : ==>  Preparing: SELECT * FROM MEMBER WHERE (USERNAME like '%'||?||'%')
+2023-07-21 14:21:00.620 DEBUG 44356 --- [http-nio-9090-exec-3] c.b.h.c.m.M.selectMemberByWhere          : ==> Parameters: ""(String)
+2023-07-21 14:21:00.621 DEBUG 44356 --- [http-nio-9090-exec-3] c.b.h.c.m.M.selectMemberByWhere          : <==      Total: 0
+2023-07-21 14:21:03.443 DEBUG 44356 --- [http-nio-9090-exec-2] com.bs.helloboot.comm.aop.LoggerAop      : ===== aop before =====
+2023-07-21 14:21:03.443 DEBUG 44356 --- [http-nio-9090-exec-2] com.bs.helloboot.comm.aop.LoggerAop      : com.bs.helloboot.TestFilter doFilter
+2023-07-21 14:21:03.443 DEBUG 44356 --- [http-nio-9090-exec-2] com.bs.helloboot.comm.aop.LoggerAop      : ===== aop after =====
+2023-07-21 14:21:03.443 DEBUG 44356 --- [http-nio-9090-exec-2] com.bs.helloboot.TestFilter              : 필터가 적용되었다! ========
+2023-07-21 14:21:03.444 DEBUG 44356 --- [http-nio-9090-exec-2] com.bs.helloboot.comm.aop.LoggerAop      : ===== aop before =====
+2023-07-21 14:21:03.444 DEBUG 44356 --- [http-nio-9090-exec-2] com.bs.helloboot.comm.aop.LoggerAop      : com.bs.helloboot.controller.BasicController selectMemberByName
+2023-07-21 14:21:03.445 DEBUG 44356 --- [http-nio-9090-exec-2] com.bs.helloboot.comm.aop.LoggerAop      : ===== aop after =====
+2023-07-21 14:21:03.445 DEBUG 44356 --- [http-nio-9090-exec-2] com.bs.helloboot.comm.aop.LoggerAop      : ===== aop before =====
+2023-07-21 14:21:03.445 DEBUG 44356 --- [http-nio-9090-exec-2] com.bs.helloboot.comm.aop.LoggerAop      : com.bs.helloboot.service.MemberServiceImpl selectMemberByName
+2023-07-21 14:21:03.445 DEBUG 44356 --- [http-nio-9090-exec-2] com.bs.helloboot.comm.aop.LoggerAop      : ===== aop after =====
+2023-07-21 14:21:03.445 DEBUG 44356 --- [http-nio-9090-exec-2] com.bs.helloboot.comm.aop.LoggerAop      : ===== aop before =====
+2023-07-21 14:21:03.445 DEBUG 44356 --- [http-nio-9090-exec-2] com.bs.helloboot.comm.aop.LoggerAop      : com.bs.helloboot.dao.MemberDaoImpl selectMemberByName
+2023-07-21 14:21:03.445 DEBUG 44356 --- [http-nio-9090-exec-2] com.bs.helloboot.comm.aop.LoggerAop      : ===== aop after =====
+2023-07-21 14:21:03.445 DEBUG 44356 --- [http-nio-9090-exec-2] com.bs.helloboot.comm.aop.LoggerAop      : ===== aop before =====
+2023-07-21 14:21:03.445 DEBUG 44356 --- [http-nio-9090-exec-2] com.bs.helloboot.comm.aop.LoggerAop      : com.bs.helloboot.comm.mapper.MemberMapper selectMemberByWhere
+2023-07-21 14:21:03.445 DEBUG 44356 --- [http-nio-9090-exec-2] com.bs.helloboot.comm.aop.LoggerAop      : ===== aop after =====
+2023-07-21 14:21:03.447 DEBUG 44356 --- [http-nio-9090-exec-2] c.b.h.c.m.M.selectMemberByWhere          : ==>  Preparing: SELECT * FROM MEMBER
+2023-07-21 14:21:03.447 DEBUG 44356 --- [http-nio-9090-exec-2] c.b.h.c.m.M.selectMemberByWhere          : ==> Parameters: 
+2023-07-21 14:21:03.450 DEBUG 44356 --- [http-nio-9090-exec-2] c.b.h.c.m.M.selectMemberByWhere          : <==      Total: 10
+2023-07-21 14:21:13.058  INFO 44356 --- [File Watcher] rtingClassPathChangeChangedEventListener : Restarting due to 2 class path changes (0 additions, 0 deletions, 2 modifications)
+2023-07-21 14:21:13.070  INFO 44356 --- [Thread-9] o.apache.catalina.core.StandardService   : Stopping service [Tomcat]
+2023-07-21 14:21:13.071  INFO 44356 --- [Thread-9] o.a.c.c.C.[Tomcat].[localhost].[/]       : Destroying Spring FrameworkServlet 'dispatcherServlet'
+2023-07-21 14:21:13.075  INFO 44356 --- [Thread-9] com.zaxxer.hikari.HikariDataSource       : HikariPool-2 - Shutdown initiated...
+2023-07-21 14:21:13.084  INFO 44356 --- [Thread-9] com.zaxxer.hikari.HikariDataSource       : HikariPool-2 - Shutdown completed.
+2023-07-21 14:21:13.152  INFO 44356 --- [restartedMain] com.bs.helloboot.HelloBootApplication    : Starting HelloBootApplication using Java 17.0.5 on DESKTOP-OSPAM2G with PID 44356 (C:\servlet\springwork\helloBoot\target\classes started by JeongSangjun in C:\servlet\springwork\helloBoot)
+2023-07-21 14:21:13.152 DEBUG 44356 --- [restartedMain] com.bs.helloboot.HelloBootApplication    : Running with Spring Boot v2.7.14-SNAPSHOT, Spring v5.3.29
+2023-07-21 14:21:13.153  INFO 44356 --- [restartedMain] com.bs.helloboot.HelloBootApplication    : No active profile set, falling back to 1 default profile: "default"
+2023-07-21 14:21:13.285  INFO 44356 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JDBC repositories in DEFAULT mode.
+2023-07-21 14:21:13.290  INFO 44356 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 4 ms. Found 0 JDBC repository interfaces.
+2023-07-21 14:21:13.380  INFO 44356 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 9090 (http)
+2023-07-21 14:21:13.381  INFO 44356 --- [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2023-07-21 14:21:13.381  INFO 44356 --- [restartedMain] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.78]
+2023-07-21 14:21:13.444  INFO 44356 --- [restartedMain] org.apache.jasper.servlet.TldScanner     : At least one JAR was scanned for TLDs yet contained no TLDs. Enable debug logging for this logger for a complete list of JARs that were scanned but no TLDs were found in them. Skipping unneeded JARs during scanning can improve startup time and JSP compilation time.
+2023-07-21 14:21:13.449  INFO 44356 --- [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2023-07-21 14:21:13.449  INFO 44356 --- [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 295 ms
+2023-07-21 14:21:13.611  INFO 44356 --- [restartedMain] o.s.b.a.w.s.WelcomePageHandlerMapping    : Adding welcome page template: index
+2023-07-21 14:21:13.612 DEBUG 44356 --- [restartedMain] com.bs.helloboot.comm.aop.LoggerAop      : ===== aop before =====
+2023-07-21 14:21:13.612 DEBUG 44356 --- [restartedMain] com.bs.helloboot.comm.aop.LoggerAop      : com.bs.helloboot.config.MyWebMvcConfigration addInterceptors
+2023-07-21 14:21:13.612 DEBUG 44356 --- [restartedMain] com.bs.helloboot.comm.aop.LoggerAop      : ===== aop after =====
+2023-07-21 14:21:13.613 DEBUG 44356 --- [restartedMain] com.bs.helloboot.comm.aop.LoggerAop      : ===== aop before =====
+2023-07-21 14:21:13.614 DEBUG 44356 --- [restartedMain] com.bs.helloboot.comm.aop.LoggerAop      : com.bs.helloboot.config.MyWebMvcConfigration addCorsMappings
+2023-07-21 14:21:13.614 DEBUG 44356 --- [restartedMain] com.bs.helloboot.comm.aop.LoggerAop      : ===== aop after =====
+2023-07-21 14:21:13.628 DEBUG 44356 --- [restartedMain] com.bs.helloboot.comm.aop.LoggerAop      : ===== aop before =====
+2023-07-21 14:21:13.629 DEBUG 44356 --- [restartedMain] com.bs.helloboot.comm.aop.LoggerAop      : com.bs.helloboot.config.MyWebMvcConfigration addViewControllers
+2023-07-21 14:21:13.629 DEBUG 44356 --- [restartedMain] com.bs.helloboot.comm.aop.LoggerAop      : ===== aop after =====
+2023-07-21 14:21:13.683  INFO 44356 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-3 - Starting...
+2023-07-21 14:21:13.684  WARN 44356 --- [restartedMain] com.zaxxer.hikari.util.DriverDataSource  : Registered driver with driverClassName=oracle.jdbc.driver.OracleDriver was not found, trying direct instantiation.
+2023-07-21 14:21:13.730  INFO 44356 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-3 - Start completed.
+2023-07-21 14:21:13.757  INFO 44356 --- [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2023-07-21 14:21:13.767  INFO 44356 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 9090 (http) with context path ''
+2023-07-21 14:21:13.770  INFO 44356 --- [restartedMain] com.bs.helloboot.HelloBootApplication    : Started HelloBootApplication in 0.64 seconds (JVM running for 74.808)
+2023-07-21 14:21:13.772  INFO 44356 --- [restartedMain] .ConditionEvaluationDeltaLoggingListener : Condition evaluation unchanged
+2023-07-21 14:21:32.467  INFO 44356 --- [http-nio-9090-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2023-07-21 14:21:32.467  INFO 44356 --- [http-nio-9090-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2023-07-21 14:21:32.468  INFO 44356 --- [http-nio-9090-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
+2023-07-21 14:21:32.468 DEBUG 44356 --- [http-nio-9090-exec-1] com.bs.helloboot.comm.aop.LoggerAop      : ===== aop before =====
+2023-07-21 14:21:32.468 DEBUG 44356 --- [http-nio-9090-exec-1] com.bs.helloboot.comm.aop.LoggerAop      : com.bs.helloboot.TestFilter doFilter
+2023-07-21 14:21:32.468 DEBUG 44356 --- [http-nio-9090-exec-1] com.bs.helloboot.comm.aop.LoggerAop      : ===== aop after =====
+2023-07-21 14:21:32.469 DEBUG 44356 --- [http-nio-9090-exec-1] com.bs.helloboot.TestFilter              : 필터가 적용되었다! ========
+2023-07-21 14:21:32.470 DEBUG 44356 --- [http-nio-9090-exec-1] com.bs.helloboot.comm.aop.LoggerAop      : ===== aop before =====
+2023-07-21 14:21:32.471 DEBUG 44356 --- [http-nio-9090-exec-1] com.bs.helloboot.comm.aop.LoggerAop      : com.bs.helloboot.controller.BasicController selectMemberByName
+2023-07-21 14:21:32.471 DEBUG 44356 --- [http-nio-9090-exec-1] com.bs.helloboot.comm.aop.LoggerAop      : ===== aop after =====
+2023-07-21 14:21:32.473 DEBUG 44356 --- [http-nio-9090-exec-1] com.bs.helloboot.comm.aop.LoggerAop      : ===== aop before =====
+2023-07-21 14:21:32.473 DEBUG 44356 --- [http-nio-9090-exec-1] com.bs.helloboot.comm.aop.LoggerAop      : com.bs.helloboot.service.MemberServiceImpl selectMemberByName
+2023-07-21 14:21:32.473 DEBUG 44356 --- [http-nio-9090-exec-1] com.bs.helloboot.comm.aop.LoggerAop      : ===== aop after =====
+2023-07-21 14:21:32.474 DEBUG 44356 --- [http-nio-9090-exec-1] com.bs.helloboot.comm.aop.LoggerAop      : ===== aop before =====
+2023-07-21 14:21:32.475 DEBUG 44356 --- [http-nio-9090-exec-1] com.bs.helloboot.comm.aop.LoggerAop      : com.bs.helloboot.dao.MemberDaoImpl selectMemberByName
+2023-07-21 14:21:32.475 DEBUG 44356 --- [http-nio-9090-exec-1] com.bs.helloboot.comm.aop.LoggerAop      : ===== aop after =====
+2023-07-21 14:21:32.476 DEBUG 44356 --- [http-nio-9090-exec-1] com.bs.helloboot.comm.aop.LoggerAop      : ===== aop before =====
+2023-07-21 14:21:32.476 DEBUG 44356 --- [http-nio-9090-exec-1] com.bs.helloboot.comm.aop.LoggerAop      : com.bs.helloboot.comm.mapper.MemberMapper selectMemberByWhere
+2023-07-21 14:21:32.476 DEBUG 44356 --- [http-nio-9090-exec-1] com.bs.helloboot.comm.aop.LoggerAop      : ===== aop after =====
+2023-07-21 14:21:32.478 DEBUG 44356 --- [http-nio-9090-exec-1] c.b.h.c.m.M.selectMemberByWhere          : ==>  Preparing: SELECT * FROM MEMBER
+2023-07-21 14:21:32.479 DEBUG 44356 --- [http-nio-9090-exec-1] c.b.h.c.m.M.selectMemberByWhere          : ==> Parameters: 
+2023-07-21 14:21:32.482 DEBUG 44356 --- [http-nio-9090-exec-1] c.b.h.c.m.M.selectMemberByWhere          : <==      Total: 10
+2023-07-21 14:22:14.150  INFO 44356 --- [File Watcher] rtingClassPathChangeChangedEventListener : Restarting due to 1 class path change (0 additions, 0 deletions, 1 modification)
+2023-07-21 14:22:14.162  INFO 44356 --- [Thread-19] o.apache.catalina.core.StandardService   : Stopping service [Tomcat]
+2023-07-21 14:22:14.162  INFO 44356 --- [Thread-19] o.a.c.c.C.[Tomcat].[localhost].[/]       : Destroying Spring FrameworkServlet 'dispatcherServlet'
+2023-07-21 14:22:14.166  INFO 44356 --- [Thread-19] com.zaxxer.hikari.HikariDataSource       : HikariPool-3 - Shutdown initiated...
+2023-07-21 14:22:14.174  INFO 44356 --- [Thread-19] com.zaxxer.hikari.HikariDataSource       : HikariPool-3 - Shutdown completed.
+2023-07-21 14:22:14.241  INFO 44356 --- [restartedMain] com.bs.helloboot.HelloBootApplication    : Starting HelloBootApplication using Java 17.0.5 on DESKTOP-OSPAM2G with PID 44356 (C:\servlet\springwork\helloBoot\target\classes started by JeongSangjun in C:\servlet\springwork\helloBoot)
+2023-07-21 14:22:14.242 DEBUG 44356 --- [restartedMain] com.bs.helloboot.HelloBootApplication    : Running with Spring Boot v2.7.14-SNAPSHOT, Spring v5.3.29
+2023-07-21 14:22:14.242  INFO 44356 --- [restartedMain] com.bs.helloboot.HelloBootApplication    : No active profile set, falling back to 1 default profile: "default"
+2023-07-21 14:22:14.341  INFO 44356 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JDBC repositories in DEFAULT mode.
+2023-07-21 14:22:14.347  INFO 44356 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 5 ms. Found 0 JDBC repository interfaces.
+2023-07-21 14:22:14.409  INFO 44356 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 9090 (http)
+2023-07-21 14:22:14.410  INFO 44356 --- [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2023-07-21 14:22:14.410  INFO 44356 --- [restartedMain] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.78]
+2023-07-21 14:22:14.464  INFO 44356 --- [restartedMain] org.apache.jasper.servlet.TldScanner     : At least one JAR was scanned for TLDs yet contained no TLDs. Enable debug logging for this logger for a complete list of JARs that were scanned but no TLDs were found in them. Skipping unneeded JARs during scanning can improve startup time and JSP compilation time.
+2023-07-21 14:22:14.466  INFO 44356 --- [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2023-07-21 14:22:14.466  INFO 44356 --- [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 223 ms
+2023-07-21 14:22:14.592  INFO 44356 --- [restartedMain] o.s.b.a.w.s.WelcomePageHandlerMapping    : Adding welcome page template: index
+2023-07-21 14:22:14.592 DEBUG 44356 --- [restartedMain] com.bs.helloboot.comm.aop.LoggerAop      : ===== aop before =====
+2023-07-21 14:22:14.592 DEBUG 44356 --- [restartedMain] com.bs.helloboot.comm.aop.LoggerAop      : com.bs.helloboot.config.MyWebMvcConfigration addInterceptors
+2023-07-21 14:22:14.592 DEBUG 44356 --- [restartedMain] com.bs.helloboot.comm.aop.LoggerAop      : ===== aop after =====
+2023-07-21 14:22:14.594 DEBUG 44356 --- [restartedMain] com.bs.helloboot.comm.aop.LoggerAop      : ===== aop before =====
+2023-07-21 14:22:14.594 DEBUG 44356 --- [restartedMain] com.bs.helloboot.comm.aop.LoggerAop      : com.bs.helloboot.config.MyWebMvcConfigration addCorsMappings
+2023-07-21 14:22:14.594 DEBUG 44356 --- [restartedMain] com.bs.helloboot.comm.aop.LoggerAop      : ===== aop after =====
+2023-07-21 14:22:14.614 DEBUG 44356 --- [restartedMain] com.bs.helloboot.comm.aop.LoggerAop      : ===== aop before =====
+2023-07-21 14:22:14.614 DEBUG 44356 --- [restartedMain] com.bs.helloboot.comm.aop.LoggerAop      : com.bs.helloboot.config.MyWebMvcConfigration addViewControllers
+2023-07-21 14:22:14.614 DEBUG 44356 --- [restartedMain] com.bs.helloboot.comm.aop.LoggerAop      : ===== aop after =====
+2023-07-21 14:22:14.657  INFO 44356 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-4 - Starting...
+2023-07-21 14:22:14.657  WARN 44356 --- [restartedMain] com.zaxxer.hikari.util.DriverDataSource  : Registered driver with driverClassName=oracle.jdbc.driver.OracleDriver was not found, trying direct instantiation.
+2023-07-21 14:22:14.721  INFO 44356 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-4 - Start completed.
+2023-07-21 14:22:14.745  INFO 44356 --- [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2023-07-21 14:22:14.757  INFO 44356 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 9090 (http) with context path ''
+2023-07-21 14:22:14.761  INFO 44356 --- [restartedMain] com.bs.helloboot.HelloBootApplication    : Started HelloBootApplication in 0.542 seconds (JVM running for 135.798)
+2023-07-21 14:22:14.762  INFO 44356 --- [restartedMain] .ConditionEvaluationDeltaLoggingListener : Condition evaluation unchanged
+2023-07-21 14:22:18.225  INFO 44356 --- [File Watcher] rtingClassPathChangeChangedEventListener : Restarting due to 1 class path change (0 additions, 0 deletions, 1 modification)
+2023-07-21 14:22:18.238  INFO 44356 --- [Thread-25] o.apache.catalina.core.StandardService   : Stopping service [Tomcat]
+2023-07-21 14:22:18.242  INFO 44356 --- [Thread-25] com.zaxxer.hikari.HikariDataSource       : HikariPool-4 - Shutdown initiated...
+2023-07-21 14:22:18.250  INFO 44356 --- [Thread-25] com.zaxxer.hikari.HikariDataSource       : HikariPool-4 - Shutdown completed.
+2023-07-21 14:22:18.316  INFO 44356 --- [restartedMain] com.bs.helloboot.HelloBootApplication    : Starting HelloBootApplication using Java 17.0.5 on DESKTOP-OSPAM2G with PID 44356 (C:\servlet\springwork\helloBoot\target\classes started by JeongSangjun in C:\servlet\springwork\helloBoot)
+2023-07-21 14:22:18.316 DEBUG 44356 --- [restartedMain] com.bs.helloboot.HelloBootApplication    : Running with Spring Boot v2.7.14-SNAPSHOT, Spring v5.3.29
+2023-07-21 14:22:18.317  INFO 44356 --- [restartedMain] com.bs.helloboot.HelloBootApplication    : No active profile set, falling back to 1 default profile: "default"
+2023-07-21 14:22:18.414  INFO 44356 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JDBC repositories in DEFAULT mode.
+2023-07-21 14:22:18.421  INFO 44356 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 5 ms. Found 0 JDBC repository interfaces.
+2023-07-21 14:22:18.483  INFO 44356 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 9090 (http)
+2023-07-21 14:22:18.485  INFO 44356 --- [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2023-07-21 14:22:18.486  INFO 44356 --- [restartedMain] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.78]
+2023-07-21 14:22:18.542  INFO 44356 --- [restartedMain] org.apache.jasper.servlet.TldScanner     : At least one JAR was scanned for TLDs yet contained no TLDs. Enable debug logging for this logger for a complete list of JARs that were scanned but no TLDs were found in them. Skipping unneeded JARs during scanning can improve startup time and JSP compilation time.
+2023-07-21 14:22:18.545  INFO 44356 --- [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2023-07-21 14:22:18.545  INFO 44356 --- [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 227 ms
+2023-07-21 14:22:18.677  INFO 44356 --- [restartedMain] o.s.b.a.w.s.WelcomePageHandlerMapping    : Adding welcome page template: index
+2023-07-21 14:22:18.677 DEBUG 44356 --- [restartedMain] com.bs.helloboot.comm.aop.LoggerAop      : ===== aop before =====
+2023-07-21 14:22:18.677 DEBUG 44356 --- [restartedMain] com.bs.helloboot.comm.aop.LoggerAop      : com.bs.helloboot.config.MyWebMvcConfigration addInterceptors
+2023-07-21 14:22:18.677 DEBUG 44356 --- [restartedMain] com.bs.helloboot.comm.aop.LoggerAop      : ===== aop after =====
+2023-07-21 14:22:18.679 DEBUG 44356 --- [restartedMain] com.bs.helloboot.comm.aop.LoggerAop      : ===== aop before =====
+2023-07-21 14:22:18.679 DEBUG 44356 --- [restartedMain] com.bs.helloboot.comm.aop.LoggerAop      : com.bs.helloboot.config.MyWebMvcConfigration addCorsMappings
+2023-07-21 14:22:18.679 DEBUG 44356 --- [restartedMain] com.bs.helloboot.comm.aop.LoggerAop      : ===== aop after =====
+2023-07-21 14:22:18.694 DEBUG 44356 --- [restartedMain] com.bs.helloboot.comm.aop.LoggerAop      : ===== aop before =====
+2023-07-21 14:22:18.694 DEBUG 44356 --- [restartedMain] com.bs.helloboot.comm.aop.LoggerAop      : com.bs.helloboot.config.MyWebMvcConfigration addViewControllers
+2023-07-21 14:22:18.694 DEBUG 44356 --- [restartedMain] com.bs.helloboot.comm.aop.LoggerAop      : ===== aop after =====
+2023-07-21 14:22:18.739  INFO 44356 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-5 - Starting...
+2023-07-21 14:22:18.739  WARN 44356 --- [restartedMain] com.zaxxer.hikari.util.DriverDataSource  : Registered driver with driverClassName=oracle.jdbc.driver.OracleDriver was not found, trying direct instantiation.
+2023-07-21 14:22:18.790  INFO 44356 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-5 - Start completed.
+2023-07-21 14:22:18.813  INFO 44356 --- [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2023-07-21 14:22:18.824  INFO 44356 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 9090 (http) with context path ''
+2023-07-21 14:22:18.829  INFO 44356 --- [restartedMain] com.bs.helloboot.HelloBootApplication    : Started HelloBootApplication in 0.532 seconds (JVM running for 139.866)
+2023-07-21 14:22:18.830  INFO 44356 --- [restartedMain] .ConditionEvaluationDeltaLoggingListener : Condition evaluation unchanged
+2023-07-21 14:24:03.035  INFO 44356 --- [File Watcher] rtingClassPathChangeChangedEventListener : Restarting due to 2 class path changes (0 additions, 0 deletions, 2 modifications)
+2023-07-21 14:24:03.048  INFO 44356 --- [Thread-30] o.apache.catalina.core.StandardService   : Stopping service [Tomcat]
+2023-07-21 14:24:03.051  INFO 44356 --- [Thread-30] com.zaxxer.hikari.HikariDataSource       : HikariPool-5 - Shutdown initiated...
+2023-07-21 14:24:03.059  INFO 44356 --- [Thread-30] com.zaxxer.hikari.HikariDataSource       : HikariPool-5 - Shutdown completed.
+2023-07-21 14:24:03.122  INFO 44356 --- [restartedMain] com.bs.helloboot.HelloBootApplication    : Starting HelloBootApplication using Java 17.0.5 on DESKTOP-OSPAM2G with PID 44356 (C:\servlet\springwork\helloBoot\target\classes started by JeongSangjun in C:\servlet\springwork\helloBoot)
+2023-07-21 14:24:03.123 DEBUG 44356 --- [restartedMain] com.bs.helloboot.HelloBootApplication    : Running with Spring Boot v2.7.14-SNAPSHOT, Spring v5.3.29
+2023-07-21 14:24:03.123  INFO 44356 --- [restartedMain] com.bs.helloboot.HelloBootApplication    : No active profile set, falling back to 1 default profile: "default"
+2023-07-21 14:24:03.223  INFO 44356 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JDBC repositories in DEFAULT mode.
+2023-07-21 14:24:03.228  INFO 44356 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 4 ms. Found 0 JDBC repository interfaces.
+2023-07-21 14:24:03.285  INFO 44356 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 9090 (http)
+2023-07-21 14:24:03.286  INFO 44356 --- [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2023-07-21 14:24:03.286  INFO 44356 --- [restartedMain] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.78]
+2023-07-21 14:24:03.341  INFO 44356 --- [restartedMain] org.apache.jasper.servlet.TldScanner     : At least one JAR was scanned for TLDs yet contained no TLDs. Enable debug logging for this logger for a complete list of JARs that were scanned but no TLDs were found in them. Skipping unneeded JARs during scanning can improve startup time and JSP compilation time.
+2023-07-21 14:24:03.344  INFO 44356 --- [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2023-07-21 14:24:03.344  INFO 44356 --- [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 220 ms
+2023-07-21 14:24:03.465  INFO 44356 --- [restartedMain] o.s.b.a.w.s.WelcomePageHandlerMapping    : Adding welcome page template: index
+2023-07-21 14:24:03.465 DEBUG 44356 --- [restartedMain] com.bs.helloboot.comm.aop.LoggerAop      : ===== aop before =====
+2023-07-21 14:24:03.465 DEBUG 44356 --- [restartedMain] com.bs.helloboot.comm.aop.LoggerAop      : com.bs.helloboot.config.MyWebMvcConfigration addInterceptors
+2023-07-21 14:24:03.465 DEBUG 44356 --- [restartedMain] com.bs.helloboot.comm.aop.LoggerAop      : ===== aop after =====
+2023-07-21 14:24:03.467 DEBUG 44356 --- [restartedMain] com.bs.helloboot.comm.aop.LoggerAop      : ===== aop before =====
+2023-07-21 14:24:03.467 DEBUG 44356 --- [restartedMain] com.bs.helloboot.comm.aop.LoggerAop      : com.bs.helloboot.config.MyWebMvcConfigration addCorsMappings
+2023-07-21 14:24:03.467 DEBUG 44356 --- [restartedMain] com.bs.helloboot.comm.aop.LoggerAop      : ===== aop after =====
+2023-07-21 14:24:03.481 DEBUG 44356 --- [restartedMain] com.bs.helloboot.comm.aop.LoggerAop      : ===== aop before =====
+2023-07-21 14:24:03.481 DEBUG 44356 --- [restartedMain] com.bs.helloboot.comm.aop.LoggerAop      : com.bs.helloboot.config.MyWebMvcConfigration addViewControllers
+2023-07-21 14:24:03.481 DEBUG 44356 --- [restartedMain] com.bs.helloboot.comm.aop.LoggerAop      : ===== aop after =====
+2023-07-21 14:24:03.527  INFO 44356 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-6 - Starting...
+2023-07-21 14:24:03.527  WARN 44356 --- [restartedMain] com.zaxxer.hikari.util.DriverDataSource  : Registered driver with driverClassName=oracle.jdbc.driver.OracleDriver was not found, trying direct instantiation.
+2023-07-21 14:24:03.573  INFO 44356 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-6 - Start completed.
+2023-07-21 14:24:03.595  INFO 44356 --- [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2023-07-21 14:24:03.603  INFO 44356 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 9090 (http) with context path ''
+2023-07-21 14:24:03.607  INFO 44356 --- [restartedMain] com.bs.helloboot.HelloBootApplication    : Started HelloBootApplication in 0.505 seconds (JVM running for 244.644)
+2023-07-21 14:24:03.608  INFO 44356 --- [restartedMain] .ConditionEvaluationDeltaLoggingListener : Condition evaluation unchanged

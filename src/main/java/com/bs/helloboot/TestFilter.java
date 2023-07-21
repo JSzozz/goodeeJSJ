@@ -22,7 +22,7 @@ public class TestFilter implements Filter{//import javax.servlet.Filter;
 	public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain)
 			throws IOException, ServletException {
 		
-		log.debug("필터가 적용되었다! ========");
+		log.debug("========필터가 적용!========");
 		chain.doFilter(request, response);
 		
 	}

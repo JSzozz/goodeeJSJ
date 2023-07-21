@@ -1,6 +1,7 @@
 package com.bs.helloboot.service;
 
 import java.util.List;
+import java.util.Map;
 
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.stereotype.Service;
@@ -36,6 +37,14 @@ public class MemberServiceImpl implements MemberService {
 	public MemberDto selectMemberById(String userId) {
 		// TODO Auto-generated method stub
 		return dao.selectMemberById(session, userId);
+	}
+
+
+
+	@Override
+	public List<MemberDto> selectMemberByName(Map<String, Object> param) {
+		// TODO Auto-generated method stub
+		return dao.selectMemberByName(session, param);
 	}
 	
 	

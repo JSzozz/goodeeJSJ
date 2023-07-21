@@ -10,9 +10,12 @@ public class MemberSelectBuilder {
 		return new SQL() {{
 			SELECT("*");
 			FROM("MEMBER");
-			if(param.get("userName")!=null && !param.get("userName").equals("")){
+			if(param.get("userName")!=null && !param.get("userName").equals("")) {
 				WHERE("USERNAME like '%'||#{userName}||'%'");
 			}
-			}}.toString();
-	}	
+//			if(param.get("address")!=null && !param.get("address").equals("")) {
+//				WHERE("ADDRESS like '%'||#{address}||'%'");
+//			}
+		}}.toString();
+	}
 }

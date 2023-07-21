@@ -1,6 +1,7 @@
 package com.bs.helloboot.dao;
 
 import java.util.List;
+import java.util.Map;
 
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.stereotype.Repository;
@@ -33,6 +34,12 @@ public class MemberDaoImpl implements MemberDao {
 	public MemberDto selectMemberById(SqlSession session, String userId) {
 		// TODO Auto-generated method stub
 		return mapper.selectMemberById(userId);
+	}
+
+	@Override
+	public List selectMemberByName(SqlSession session, Map<String, Object> param) {
+		// TODO Auto-generated method stub
+		return mapper.selectMemberByWhere(param);
 	}
 
 }
