@@ -74,14 +74,18 @@
 			1. 인메모리 인증처리 : 사용자에 대해 직접 작성해 놓은 것
 			2. DB와 연동해서 인증처리 : DB에 저장된 정보를 가지고 처리하기
 		 -->
-		 <security:authentication-provider>
-			<security:user-service>
+		 <security:authentication-provider user-service-ref="loginService">
+			
+			<!-- <security:user-service>
 				<security:user name="admin" authorities="ROLE_ADMIN" 
 				password="$2a$10$crgiCKKYEopzM50gcHuJJeGd6hABfqYMhLeAs0WEtDjqGJeBtYS8y"/>
 				<security:user name="user01" authorities="ROLE_USER" 
 				password="$2a$10$crgiCKKYEopzM50gcHuJJeGd6hABfqYMhLeAs0WEtDjqGJeBtYS8y"/>
 			</security:user-service>		 
+			<security:password-encoder ref="bcryptPassword"/> -->
+			
 			<security:password-encoder ref="bcryptPassword"/>
+			
 		 </security:authentication-provider>
 	</security:authentication-manager>
 
