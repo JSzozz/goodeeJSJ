@@ -46,7 +46,7 @@
 			access : 이용권한에 대한 설정 permitAll(), hasRole("역할이름"), hasAnyRole("역할이름",""), hasAnyAuthority(""), hasAuthority("")
 		-->
 		<!-- <security:intercept-url pattern="/**" access="hasRole('ROLE_USER')"/> -->
-		<security:intercept-url pattern="loginpage" access="permitAll()"/>
+		<security:intercept-url pattern="/loginpage" access="permitAll()"/>
 		<security:intercept-url pattern="/**" access="hasAnyRole('ROLE_USER','ROLE_ADMIN')"/>
 		
 		
