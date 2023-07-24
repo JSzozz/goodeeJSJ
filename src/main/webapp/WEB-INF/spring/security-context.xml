@@ -9,4 +9,4 @@
 	<!--  암호화처리 클래스를 빈으로 등록하기  -->
 	<bean id="bcryptPassword" class="org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder"/>	
 
-</beans>
+</beans> 
