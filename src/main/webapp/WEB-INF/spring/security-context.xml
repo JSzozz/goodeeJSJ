@@ -24,10 +24,14 @@
 		 	authentication-success-forward-url : 인증과정에서 인증이 성공했을 때 연결되는 주소 
 		 	login-procession-url : 인증처리할 요청 주소
 		 -->
-		<security:form-login
-			username-parameter="userId"
-			password-parameter="password"
-			login-page="/loginpage"
+		<security:form-login 
+			username-parameter="userId" 
+			password-parameter="password" 
+			login-page="/loginpage" 
+			login-processing-url="/loginEnd" 
+			default-target-url="/" 
+			authentication-failure-forward-url="/error.do" 
+			authentication-success-forward-url="/successLogin.do"
 		/>
 		
 		<security:csrf disabled="true"/>		
