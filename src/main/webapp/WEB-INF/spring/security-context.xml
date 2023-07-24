@@ -35,9 +35,10 @@
 			예외 사항엗 ㅐ한 것을 추가 등록하는 방식으로 설정
 			속성설정
 			pattern : 해당하는 url 주소 -> 패턴 방식으로 설정
-			access : 이용권한에 대한 설정 permitAll(), hasRole("역할이름"), anyRole("역할이름","")
+			access : 이용권한에 대한 설정 permitAll(), hasRole("역할이름"), hasAnyRole("역할이름",""), hasAnyAuthority(""), hasAuthority("")
 		-->
-		<security:intercept-url pattern="/**" access="hasRole('ROLE_USER')"/>
+		<!-- <security:intercept-url pattern="/**" access="hasRole('ROLE_USER')"/> -->
+		<security:intercept-url pattern="/**" access="hasAnyRole('ROLE_USER','ROLE_ADMIN')"/>
 		
 		
 	</security:http>
