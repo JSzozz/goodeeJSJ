@@ -49,6 +49,8 @@
 		<security:intercept-url pattern="/loginpage" access="permitAll()"/>
 		<security:intercept-url pattern="/logoutsuccess" access="permitAll()"/>
 		<security:intercept-url pattern="/resources/**" access="permitAll()"/>
+		<security:intercept-url pattern="/member/enrollMember.do" access="permitAll()"/>
+		<security:intercept-url pattern="/member/insertMember.do" access="permitAll()"/>
 		<security:intercept-url pattern="/admin/**" access="hasRole('ROLE_ADMIN')"/>
 		<security:intercept-url pattern="/**" access="hasAnyRole('ROLE_USER','ROLE_ADMIN')"/>
 		

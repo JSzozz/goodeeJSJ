@@ -8,7 +8,7 @@
 </jsp:include>
 <section>
 
-	<form action="${path }/login" method="post">
+	<form action="${path }/loginEnd" method="post">
 		<input type="text" name="userId">
 		<input type="password" name="password">
 		<input type="submit" value="로그인">
