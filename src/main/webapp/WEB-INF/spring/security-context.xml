@@ -47,10 +47,18 @@
 		-->
 		<!-- <security:intercept-url pattern="/**" access="hasRole('ROLE_USER')"/> -->
 		<security:intercept-url pattern="/loginpage" access="permitAll()"/>
+		<security:intercept-url pattern="/logoutsuccess" access="permitAll()"/>
 		<security:intercept-url pattern="/resources/**" access="permitAll()"/>
 		<security:intercept-url pattern="/**" access="hasAnyRole('ROLE_USER','ROLE_ADMIN')"/>
 		
-		
+		<!--  
+			logout에 대한 설정 
+			security:logout태그를 이용
+			logout-url : 로그아웃을 처리하는 url주소 설정
+			logout-success-url : 로그아웃 후 처리할 서비스가 있으면 설정
+		 -->
+		<security:logout logout-url="/seculogout.do" logout-success-url="/logoutsuccess"/>
+			
 	</security:http>
 
 	<security:authentication-manager>
