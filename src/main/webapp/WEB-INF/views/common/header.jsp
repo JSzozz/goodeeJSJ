@@ -71,8 +71,8 @@
 					</ul>
 					<c:if test="${loginInfo!=null }">
 						<span>	
-							<a href="${path }/member/mypage.do?userId=${loginInfo.username}">
-								<c:out value="${loginInfo.username }"/>
+							<a href="${path }/member/mypage.do?userId=${loginInfo.userId}">
+								<c:out value="${loginInfo.name }"/>
 							</a>
 							님 환영합니다.
 						</span>

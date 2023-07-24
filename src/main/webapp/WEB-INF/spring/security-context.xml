@@ -6,6 +6,8 @@
       http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
       http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.3.xsd">
  
+ <!-- <import resource="root-context.xml"/> -->
+ 
 	<!--  암호화처리 클래스를 빈으로 등록하기  -->
 	<bean id="bcryptPassword" class="org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder"/>	
 
@@ -89,4 +91,11 @@
 		 </security:authentication-provider>
 	</security:authentication-manager>
 
+	<bean id="dao" class="com.bs.spring.member.dao.MemberDaoImpl"></bean>
+
+	<bean id="loginService" class="com.bs.spring.security.controller.SecurityLoginService">
+		<constructor-arg index="0" ref="dao"/>
+		<constructor-arg index="1" ref="sessionTemplate"/>
+	</bean>
+	
 </beans> 
