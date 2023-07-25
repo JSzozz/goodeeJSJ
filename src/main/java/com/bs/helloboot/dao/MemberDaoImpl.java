@@ -31,7 +31,7 @@ public class MemberDaoImpl implements MemberDao {
 	}
 
 	@Override
-	public MemberDto selectMemberById(SqlSession session, String userId) {
+	public MemberDto selectMemberById(String userId) {
 		// TODO Auto-generated method stub
 		return mapper.selectMemberById(userId);
 	}

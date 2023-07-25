@@ -13,7 +13,8 @@ public interface MemberDao {
 	
 	int insertMember (SqlSession session, MemberDto m);
 	
-	MemberDto selectMemberById(SqlSession session, String userId);
+	/* MemberDto selectMemberById(SqlSession session, String userId); */
+	MemberDto selectMemberById(String userId);
 	
 	List selectMemberByName(SqlSession session, Map<String, Object> param);
 }

@@ -16,6 +16,13 @@ public class SecurityConfig {
 //	2. 인증방법에 대한 설정 클래스를 등록
 //	inMemory, DB연동방식 -> provider를 등록
 //	
+
+	private DbConnectProvider provider;
+	
+	public SecurityConfig(DbConnectProvider provider) {
+		this.provider=provider;
+	}
+	
 	@Bean
 	public SecurityFilterChain authenticationPath(HttpSecurity http) throws Exception{
 		

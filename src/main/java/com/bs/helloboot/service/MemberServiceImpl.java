@@ -19,8 +19,6 @@ public class MemberServiceImpl implements MemberService {
 		this.session=session;
 	}
 	
-
-
 	@Override
 	public List<MemberDto> selectMemberAll() {
 		// TODO Auto-generated method stub
@@ -36,7 +34,8 @@ public class MemberServiceImpl implements MemberService {
 	@Override
 	public MemberDto selectMemberById(String userId) {
 		// TODO Auto-generated method stub
-		return dao.selectMemberById(session, userId);
+//		return dao.selectMemberById(session, userId);
+		return dao.selectMemberById(userId);
 	}
 
 
