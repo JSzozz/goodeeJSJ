@@ -60,15 +60,22 @@ public class Member implements UserDetails {
 	public Collection<? extends GrantedAuthority> getAuthorities() {
 		//로그인한 사용자의 권한을 설정하는 메소드
 		List<GrantedAuthority> auth=new ArrayList();
-		auth.add(new SimpleGrantedAuthority("ROLE_USER"));
+//		auth.add(new SimpleGrantedAuthority("ROLE_USER"));
+//		if(userId.equals("admin")) {
+//			auth.add(new SimpleGrantedAuthority("ROLE_ADMIN"));
+//		}
+		auth.add(new SimpleGrantedAuthority("user"));
 		if(userId.equals("admin")) {
-			auth.add(new SimpleGrantedAuthority("ROLE_ADMIN"));
+			auth.add(new SimpleGrantedAuthority("admin"));
+		}else if(userId.equals("user02")){
+			auth.add(new SimpleGrantedAuthority("manager"));
 		}
 		return auth;
 	}
 
 	@Override
 	public String getUsername() {
+		//인증할 ID값을 변환해주는 함수
 		// TODO Auto-generated method stub
 		return null;
 	}
