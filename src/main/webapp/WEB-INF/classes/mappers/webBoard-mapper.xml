@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="board">
+
+<!-- member================================================================ -->
+  <resultMap type="member" id="memberMap">
+  	<id property="userid" column="USERID"/>
+  	<result property="password" column="PASSWORD"/>
+  	<result property="username" column="USERNAME"/>
+  	<result property="gender" column="GENDER"/>
+  	<result property="age" column="AGE"/>
+  	<result property="email" column="EMAIL"/>
+  	<result property="phone" column="PHONE"/>
+  	<result property="address" column="ADDRESS"/>
+  	<result property="hobby" column="HOBBY" typeHandler="strArrType"/>
+  	<result property="enrolldate" column="ENROLLDATE"/>
+  </resultMap>
+  
+<!-- board==================================================================== --> 
+ <resultMap type="board" id="boardMap">
+  	<id property="boardNo" column="BOARD_NO"/>
+  	<result property="boardTitle" column="BOARD_TITLE"/>
+  	<result property="boardContent" column="BOARD_CONTENT"/>
+  	<result property="boardOriginalFilename" column="BOARD_ORIGINAL_FILENAME"/>
+  	<result property="boardRenamedFilename" column="BOARD_RENAMED_FILENAME"/>
+  	<result property="boardDate" column="BOARD_DATE"/>
+  	<result property="boardReadcount" column="BOARD_READCOUNT"/>
+  	<association property="boardWriter" resultMap="memberMap" />
+  	
+  	<!-- <collection property="boardComments" resultMap="boardCommentMap"/> -->
+  	<collection property="boardComments" ofType="boardComment">
+	  	<id property="boardCommentNo" column="BOARD_COMMENT_NO"/>
+	  	<result property="boardCommentLevel" column="BOARD_COMMENT_LEVEL"/>
+	  	<result property="boardCommentContent" column="BOARD_COMMENT_CONTENT"/>
+	  	<result property="boardRef" column="BOARD_REF"/>
+	  	<result property="boardCommentRef" column="BOARD_COMMENT_REF"/>
+	  	<result property="boardCommentDate" column="BOARD_COMMENT_DATE"/>  		
+	  	<result property="boardCommentWriter" column="BOARD_COMMENT_WRITER"/>
+	  	<!-- <association property="boardCommentWriter" resultMap="memberMap" /> -->
+  	</collection>
+  </resultMap>
+  <!-- (유의)association, collection이 들어가는 순간 (DB컬럼명과 필드 변수명이 같은 경우) 
+  		자동 매칭되던 부분이 매칭이 안되게됨 따라서 빼먹는 부분 없이 모두 작성이 필요함 -->
+  		
+<!-- boardComment============================================================= -->
+<!--   <resultMap type="boardComment" id="boardCommentMap"  >type : Alias
+  	<id property="boardCommentNo" column="BOARD_COMMENT_NO"/>
+  	<result property="boardCommentLevel" column="BOARD_COMMENT_LEVEL"/>
+  	<result property="boardCommentWriter" column="BOARD_COMMENT_WRITER"/>
+  	<result property="boardCommentContent" column="BOARD_COMMENT_CONTENT"/>
+  	<result property="boardRef" column="BOARD_REF"/>
+  	<result property="boardCommentRef" column="BOARD_COMMENT_REF"/>
+  	<result property="boardCommentDate" column="BOARD_COMMENT_DATE"/>
+  	
+  	1:n 관계일 때
+  	<collection property="boards" resultMap="boardMap" />
+  </resultMap> -->
+
+<!-- SQL ============================================================== -->
+	<select id="searchBoard" parameterType="_int" resultMap="boardMap" >
+<!-- 		SELECT b.*, bc.*, m.*
+			FROM BOARD b  JOIN BOARD_COMMENT bc 
+			ON board_no = BOARD_REF
+			JOIN MEMBER m ON BOARD_WRITER=USERID
+		WHERE BOARD_NO=#{no}
+		START WITH BOARD_COMMENT_LEVEL=1
+		CONNECT BY BOARD_COMMENT_NO=BOARD_COMMENT_REF
+		ORDER BY BOARD_COMMENT_NO -->
+	SELECT * FROM BOARD 
+		LEFT JOIN BOARD_COMMENT ON BOARD_NO=BOARD_REF
+		JOIN MEMBER ON USERID=BOARD_WRITER
+		JOIN MEMBER M ON BOARD_COMMENT_WRITER=M.USERID
+	WHERE BOARD_NO=#{no}
+	</select>
+
+</mapper>

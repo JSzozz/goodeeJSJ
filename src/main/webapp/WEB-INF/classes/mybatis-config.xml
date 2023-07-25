@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE configuration PUBLIC "-//mybatis.org/DTD config 3.0//EN" "http://mybatis.org/dtd/mybatis-3-config.dtd" >
+
+
+<configuration>
+	<properties resource="driver.properties"/><!-- v -->
+	<settings>
+		<setting name="jdbcTypeForNull" value="NULL"/>
+	</settings>
+	<typeAliases>
+		<typeAlias type="com.mybatis.model.dto.Employee" alias="emp"/>
+		<typeAlias type="com.mybatis.model.dto.Department" alias="department"/>
+		<typeAlias type="com.mybatis.model.dto.Board" alias="board"/>
+		<typeAlias type="com.mybatis.model.dto.BoardComment" alias="boardComment"/>
+		<typeAlias type="com.mybatis.model.dto.Member" alias="member"/>
+		<typeAlias type="com.mybatis.common.StringArrTypeHandler" alias="strArrType"/>
+
+	</typeAliases>
+	<environments default="mybatis">
+		<environment id="mybatis">
+			<transactionManager type="JDBC">
+			</transactionManager>
+			<dataSource type="POOLED">
+				<!-- <property name="driver" value="oracle.jdbc.driver.OracleDriver"/>
+				<property name="url" value="jdbc:oracle:thin:@localhost:1521:xe"/>
+				<property name="username" value="bs"/>
+				<property name="password" value="BS"/> -->
+				<property name="driver" value="${driver}"/>
+				<property name="url" value="${url}"/>
+				<property name="username" value="${user}"/>
+				<property name="password" value="${pw}"/>
+			</dataSource>
+		</environment>
+		<environment id="web">
+			<transactionManager type="JDBC"/>
+			<dataSource type="POOLED">
+				<property name="driver" value="${driver}"/>
+				<property name="url" value="${url}"/>
+				<property name="username" value="web"/><!-- v -->
+				<property name="password" value="WEB"/><!-- v -->
+			</dataSource>
+		</environment>
+	</environments>
+	
+	<mappers>
+		<mapper resource="/mappers/employee-mapper.xml"/>
+		<mapper resource="/mappers/webMember-mapper.xml"/>
+		<mapper resource="/mappers/webBoard-mapper.xml"/>
+	</mappers>
+</configuration>
