@@ -9,6 +9,7 @@
 	</insert>
 	
 	<resultMap type="member" id="memberMap">
+		<result property="name" column="USERNAME"/>
 		<result property="hobby" column="HOBBY" typeHandler="strArr"/>
 	</resultMap>
 	
