@@ -20,8 +20,8 @@ public class MemberDaoImpl implements MemberDao {
 	@Override
 	public List<MemberDto> selectMemberAll(SqlSession session) {
 		// TODO Auto-generated method stub
-		return session.selectList("member.selectMemberAll");
-//		return mapper.selectMemberAll();
+//		return session.selectList("member.selectMemberAll");
+		return mapper.selectMemberAll();
 	}
 
 	@Override

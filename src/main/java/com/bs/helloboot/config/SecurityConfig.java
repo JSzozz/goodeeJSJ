@@ -5,6 +5,7 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.web.SecurityFilterChain;
+import org.springframework.web.cors.CorsUtils;
 
 import com.bs.helloboot.dto.MyAuthority;
 
@@ -38,7 +39,10 @@ public class SecurityConfig {
 					.loginPage("/loginpage")
 				.and()
 				.authorizeHttpRequests()//interceptor를 등록하는 것과 동일한 기능
+					.requestMatchers(CorsUtils::isPreFlightRequest).permitAll()
+					//import org.springframework.web.cors.CorsUtils;
 					.antMatchers("/loginpage").permitAll()
+					.antMatchers("/").permitAll()
 					.antMatchers("/**").hasAnyAuthority(MyAuthority.ADMIN.name(),MyAuthority.USER.name())
 				.and()
 				.logout()

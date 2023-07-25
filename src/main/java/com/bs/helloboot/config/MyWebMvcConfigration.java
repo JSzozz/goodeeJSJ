@@ -20,7 +20,7 @@ import com.bs.helloboot.websocket.ChattingServer;
 
 @Configuration
 @EnableWebSocket
-@EnableWebMvc
+//@EnableWebMvc
 public class MyWebMvcConfigration implements WebMvcConfigurer, WebSocketConfigurer{
 
 	private ChattingServer chatting;
