@@ -14,8 +14,8 @@ import lombok.extern.slf4j.Slf4j;
 @Component
 @Slf4j
 public class ChattingServer extends TextWebSocketHandler{
-	
-	private Map<String,WebSocketSession> clients=new HashMap<>();
+
+	private Map<String, WebSocketSession> clients = new HashMap<>();
 	
 	@Override
 	public void afterConnectionEstablished(WebSocketSession session) throws Exception {
@@ -34,7 +34,5 @@ public class ChattingServer extends TextWebSocketHandler{
 		// TODO Auto-generated method stub
 		super.afterConnectionClosed(session, status);
 	}
-
-	
 	
 }
