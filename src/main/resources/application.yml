@@ -35,8 +35,8 @@ mybatis:
   
 #log 설정하기
 logging:
-  file:
-    name: logs/springboot.log
+#  file: 
+#    name: logs/springboot.log
   level:
 #    root:
     '[com.bs.helloboot]': debug  
