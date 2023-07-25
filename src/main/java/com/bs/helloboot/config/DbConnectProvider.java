@@ -33,7 +33,7 @@ public class DbConnectProvider implements AuthenticationProvider{
 		if(loginMember==null||!encoder.matches(password, loginMember.getPassword())){
 			throw new BadCredentialsException("인증실패");
 		}
-		return new UsernamePasswordAuthenticationToken(loginMember, loginMember.getPassword());
+		return new UsernamePasswordAuthenticationToken(loginMember, loginMember.getPassword(),loginMember.getAuthorities());
 	}
  
 	@Override

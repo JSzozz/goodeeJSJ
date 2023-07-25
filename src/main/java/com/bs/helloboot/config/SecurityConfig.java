@@ -6,6 +6,8 @@ import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.web.SecurityFilterChain;
 
+import com.bs.helloboot.dto.MyAuthority;
+
 @Configuration
 @EnableWebSecurity
 public class SecurityConfig {
@@ -37,7 +39,7 @@ public class SecurityConfig {
 				.and()
 				.authorizeHttpRequests()//interceptor를 등록하는 것과 동일한 기능
 					.antMatchers("/loginpage").permitAll()
-					.antMatchers("/**").hasAnyAuthority("admin","user")
+					.antMatchers("/**").hasAnyAuthority(MyAuthority.ADMIN.name(),MyAuthority.USER.name())
 				.and()
 				.logout()
 					.logoutSuccessUrl("/logout")
