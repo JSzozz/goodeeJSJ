@@ -11,7 +11,7 @@ import lombok.extern.slf4j.Slf4j;
 public class SecurityController {
 
 	@GetMapping("/loginpage")
-	public String login() {
+	public String loginpage() {
 		return "login";
 	}
 	

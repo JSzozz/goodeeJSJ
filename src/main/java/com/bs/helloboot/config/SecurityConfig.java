@@ -45,7 +45,7 @@ public class SecurityConfig {
 					.logoutSuccessUrl("/logout")
 					.logoutUrl("/logout.do")
 				.and()
-				.authenticationProvider(null)
+				.authenticationProvider(provider)
 				.build();	
 	}
 	
