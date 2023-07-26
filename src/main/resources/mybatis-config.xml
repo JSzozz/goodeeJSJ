@@ -14,5 +14,7 @@
 		<typeAlias type="com.bs.spring.board.model.dto.Attachment" alias="attachment"/>
 		<typeAlias type="com.bs.spring.common.StringArrayTypeHandler" alias="strArr"/>
 	</typeAliases>
+	
 
+	
 </configuration>
