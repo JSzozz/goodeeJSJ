@@ -8,6 +8,16 @@
 			<property name="javax.persistence.jdbc.url" value="jdbc:oracle:thin:@localhost:1521:xe"/>
 			<property name="javax.persistence.jdbc.user" value="spring"/>
 			<property name="javax.persistence.jdbc.password" value="spring"/>
+			<!--  DB방언설정  -->
+			<property name="hibernate.dialect" value="org.hibernate.dialect.Oracle10gDialect"/>
+			<!--  hibernate 출력 log에 대한 설정  -->
+			<property name="hibernate.show_sql" value="true"/>
+			<property name="hibernate.format_sql" value="true"/>
+			<!--  
+				DDL자동실행관련 옵션설정 
+				create, create-drop, update, validate, none
+			 -->
+			<property name="hibernate.hbm2ddl.auto" value="create"/>
 		</properties>
 	</persistence-unit>
 </persistence>
