@@ -32,6 +32,8 @@ public class JpaDaoImpl implements JpaDao {
 		
 		em.persist(m2);
 		
-
+		//저장된 객체 불러오기 -> select문
+		JpaMember selectM = em.find(JpaMember.class, 1L);
+		System.out.println(selectM);
 	}
 }
