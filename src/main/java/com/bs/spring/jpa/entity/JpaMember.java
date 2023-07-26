@@ -1,8 +1,10 @@
 package com.bs.spring.jpa.entity;
 
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.SequenceGenerator;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -32,9 +34,16 @@ import lombok.NoArgsConstructor;
 //@JsonIdentityInfo -> Entity 객체를 가져올 때 양방향으로 일대다, 다대일 관계에 있으면 무한루핑이 발생하는데 이를 차단하는 어노테이션 
 
 //@Table(name="memberJpa")
+@SequenceGenerator(
+		name = "seq_jpamemberno", 
+		sequenceName = "seq_jpamemberno", 
+		initialValue = 1, 
+		allocationSize = 1)
+
 public class JpaMember {
 
 	@Id //entity를 식별하는 식별자, DB에서는 Primary key제약조건 설정
+	@GeneratedValue(generator = "seq_jpamemberno",strategy = GenerationType.SEQUENCE)
 	private Long memberNo;//not null o
 	private String memberId;//not null x
 	private String memberPwd;//not null x
