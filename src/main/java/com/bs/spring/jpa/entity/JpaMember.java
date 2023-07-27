@@ -83,7 +83,7 @@ public class JpaMember {
 	@Enumerated(EnumType.ORDINAL)//문자열과 연결되어 있는 숫자를 저장(비권장 - 자료꼬임위험있음)
 	private Level level;
 	
-	//날짜타입에 대해 설정하기
+	//날짜타입에 대해 설정하기 
 	@Temporal(TemporalType.DATE)
 	private Date birthDay;
 	//import java.util.Date;
