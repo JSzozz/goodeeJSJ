@@ -1,6 +1,9 @@
 package com.bs.spring.jpa.model.dao;
 
 import java.math.BigDecimal;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.util.Date;
 
 import javax.persistence.EntityManager;
 
@@ -24,6 +27,8 @@ public class JpaDaoImpl implements JpaDao {
 					.height(178.2)
 					.level(Level.DIAMOND)
 					.role(Role.ADMIN)
+					.birthDay(new Date(java.sql.Date.valueOf(LocalDate.of(1998, 8, 3)).getTime()))
+					.startDate(new Date(java.sql.Timestamp.valueOf(LocalDateTime.of(1998, 8, 3, 10, 30)).getTime()))
 					.build(); // ->비영속
 
 		//영속성 처리하기
@@ -36,6 +41,8 @@ public class JpaDaoImpl implements JpaDao {
 				.height(165.2)
 				.level(Level.GOLD)
 				.role(Role.USER)
+				.birthDay(new Date(java.sql.Date.valueOf(LocalDate.of(1998, 8, 3)).getTime()))
+				.startDate(new Date(java.sql.Timestamp.valueOf(LocalDateTime.of(1998, 8, 3, 10, 30)).getTime()))
 				.build(); // ->비영속
 		
 		em.persist(m2);
