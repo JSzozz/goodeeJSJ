@@ -1,5 +1,8 @@
 package com.bs.spring.jpa.entity;
 
+import java.math.BigDecimal;
+
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -44,11 +47,21 @@ public class JpaMember {
 
 	@Id //entity를 식별하는 식별자, DB에서는 Primary key제약조건 설정
 	@GeneratedValue(generator = "seq_jpamemberno",strategy = GenerationType.SEQUENCE)
+	@Column(name = "member_no")
 	private Long memberNo;//not null o
+	@Column(name = "member_id", unique = true, nullable=false, length = 20)
 	private String memberId;//not null x
+	@Column(name = "member_pwd", nullable=false, length = 20)
 	private String memberPwd;//not null x
-	private Integer age;//not null x
+	
+	//BigDecimal 타입에 사용하는 숫자설정
+	//precision : 전체자리수
+	//scale : 소수점자리수
+	@Column(precision = 10,scale = 3)
+	private BigDecimal age;//not null x
+	//private Integer age;//not null x
 	//private int age;//not null o
+	@Column(columnDefinition = "number default 100.0")
 	private double height;//not null o
 	 
 } 
