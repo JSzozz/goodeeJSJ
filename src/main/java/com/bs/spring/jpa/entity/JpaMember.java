@@ -14,6 +14,7 @@ import javax.persistence.Lob;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import javax.persistence.Transient;
 
 import com.bs.spring.jpa.common.Level;
 import com.bs.spring.jpa.common.Role;
@@ -95,4 +96,7 @@ public class JpaMember {
 	@Lob
 	private byte[] dataSample;
 	
+	//DB컬럼 대상에서 제외하기
+	@Transient
+	private String tempDate;
 } 
