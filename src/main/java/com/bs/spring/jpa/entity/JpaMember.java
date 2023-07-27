@@ -10,6 +10,7 @@ import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Lob;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -88,4 +89,10 @@ public class JpaMember {
 	private Date startDate;
 	//import java.util.Date;
 
+	//lob타입 저장하기
+	@Lob
+	private String info;//varchar2
+	@Lob
+	private byte[] dataSample;
+	
 } 
