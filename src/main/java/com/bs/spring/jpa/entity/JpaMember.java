@@ -51,4 +51,4 @@ public class JpaMember {
 	//private int age;//not null o
 	private double height;//not null o
 	 
-}
+} 
