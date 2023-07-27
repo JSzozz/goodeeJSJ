@@ -4,10 +4,15 @@ import java.math.BigDecimal;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.SequenceGenerator;
+
+import com.bs.spring.jpa.common.Level;
+import com.bs.spring.jpa.common.Role;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -64,4 +69,13 @@ public class JpaMember {
 	@Column(columnDefinition = "number default 100.0")
 	private double height;//not null o
 	 
+	//EnumType을 이용해서 처리하기
+	@Column(name = "member_role")
+	@Enumerated(EnumType.STRING)//문자열 자체를 저장(권장)
+	private Role role;
+	@Column(name = "member_level")
+	@Enumerated(EnumType.ORDINAL)//문자열과 연결되어 있는 숫자를 저장(비권장 - 자료꼬임위험있음)
+	private Level level;
+	
+	
 } 

@@ -1,9 +1,13 @@
 package com.bs.spring.jpa.model.dao;
 
+import java.math.BigDecimal;
+
 import javax.persistence.EntityManager;
 
 import org.springframework.stereotype.Repository;
 
+import com.bs.spring.jpa.common.Level;
+import com.bs.spring.jpa.common.Role;
 import com.bs.spring.jpa.entity.JpaMember;
 
 @Repository
@@ -16,8 +20,10 @@ public class JpaDaoImpl implements JpaDao {
 		JpaMember m=JpaMember.builder()
 					.memberId("20200120")
 					.memberPwd("rhrhrh22")
-					.age(27)
+					.age(new BigDecimal(27))
 					.height(178.2)
+					.level(Level.DIAMOND)
+					.role(Role.ADMIN)
 					.build(); // ->비영속
 
 		//영속성 처리하기
@@ -26,8 +32,10 @@ public class JpaDaoImpl implements JpaDao {
 		JpaMember m2=JpaMember.builder()
 				.memberId("abc")
 				.memberPwd("abc123")
-				.age(26)
+				.age(new BigDecimal(26))
 				.height(165.2)
+				.level(Level.GOLD)
+				.role(Role.USER)
 				.build(); // ->비영속
 		
 		em.persist(m2);
