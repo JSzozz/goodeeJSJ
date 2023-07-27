@@ -11,6 +11,7 @@ import org.springframework.stereotype.Repository;
 
 import com.bs.spring.jpa.common.Level;
 import com.bs.spring.jpa.common.Role;
+import com.bs.spring.jpa.entity.Address;
 import com.bs.spring.jpa.entity.JpaMember;
 
 @Repository
@@ -29,6 +30,7 @@ public class JpaDaoImpl implements JpaDao {
 					.role(Role.ADMIN)
 					.birthDay(new Date(java.sql.Date.valueOf(LocalDate.of(1998, 8, 3)).getTime()))
 					.startDate(new Date(java.sql.Timestamp.valueOf(LocalDateTime.of(1998, 8, 3, 10, 30)).getTime()))
+					.addr(Address.builder().statement("경기도").detailAddress("시흥시 배곧동").zipcode("123-456").build())
 					.build(); // ->비영속
 
 		//영속성 처리하기

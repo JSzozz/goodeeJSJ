@@ -4,6 +4,7 @@ import java.math.BigDecimal;
 import java.util.Date;
 
 import javax.persistence.Column;
+import javax.persistence.Embedded;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
@@ -99,4 +100,7 @@ public class JpaMember {
 	//DB컬럼 대상에서 제외하기
 	@Transient
 	private String tempDate;
+	
+	@Embedded
+	private Address addr;
 } 
