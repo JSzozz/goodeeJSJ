@@ -26,4 +26,14 @@ public class JpaServiceImpl implements JpaService {
 		et.commit();
 //		et.rollback();
 	}
+
+	@Override
+	public void manytoone() {
+		EntityTransaction et=em.getTransaction();
+		et.begin();
+			dao.manytoone(em);
+		et.commit();
+		
+		
+	}
 }

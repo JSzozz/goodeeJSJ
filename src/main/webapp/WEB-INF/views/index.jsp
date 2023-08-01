@@ -132,6 +132,12 @@
 		기본 EntityManager이용하기
 		</a>
 	</h3>
+
+	<h3>
+		<a href="${pageContext.request.contextPath }/jpa/manyToOne.do">
+		manyToOne단방향
+		</a>
+	</h3>
 	
 	
 </section>

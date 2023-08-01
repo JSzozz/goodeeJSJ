@@ -21,4 +21,11 @@ public class JpaController {
 		return "redirect:/";
 		
 	}
+	
+	@GetMapping("/manyToOne.do")
+	public String manytoone() {
+		service.manytoone();
+		return "redirect:/";
+	}
+	
 }
