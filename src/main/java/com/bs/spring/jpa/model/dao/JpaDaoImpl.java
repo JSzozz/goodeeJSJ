@@ -104,5 +104,8 @@ public class JpaDaoImpl implements JpaDao {
 		BoardEntity b=em.find(BoardEntity.class, no);
 		System.out.println("boardEntity조회결과");
 		System.out.println(b);
+		JpaMember m=em.find(JpaMember.class, no);
+		System.out.println("jpaMember조회결과");
+		System.out.println(m);
 	}
 }

@@ -2,6 +2,7 @@ package com.bs.spring.jpa.entity;
 
 import java.math.BigDecimal;
 import java.util.Date;
+import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Embedded;
@@ -12,6 +13,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Lob;
+import javax.persistence.OneToMany;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -24,12 +26,12 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import lombok.ToString;
 
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
-
 //일반 pojo클래스를 Entity로 등록하기 위해서는
 //@Entity를 이용한다 -> 클래스 선언부에 선언.
 //(유의)기본생성자는 필수로 있어야함, final클래스(enum, interface, inner)는 사용불가 필드에 final사용 불가
@@ -103,4 +105,9 @@ public class JpaMember {
 	
 	@Embedded
 	private Address addr;
+	
+	//서브클래스는 mappedBy속성을 추가한다.
+	//List타입을 필드로 갖는 클레스에 mappedBy 설정하자
+	@OneToMany(mappedBy = "boardWriter")
+	List<BoardEntity> boards;
 } 
