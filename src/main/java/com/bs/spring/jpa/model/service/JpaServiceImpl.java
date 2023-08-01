@@ -33,7 +33,6 @@ public class JpaServiceImpl implements JpaService {
 		et.begin();
 			dao.manytoone(em);
 		et.commit();
-		
-		
+		dao.boardBydId(em, 1);
 	}
 }

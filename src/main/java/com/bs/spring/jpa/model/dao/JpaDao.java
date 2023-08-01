@@ -6,4 +6,6 @@ public interface JpaDao {
 
 	void basictest(EntityManager em	);
 	void manytoone(EntityManager em	);
+	void boardBydId(EntityManager em, long no);
+
 }

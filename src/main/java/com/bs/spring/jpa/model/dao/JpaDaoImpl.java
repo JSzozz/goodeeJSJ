@@ -97,4 +97,12 @@ public class JpaDaoImpl implements JpaDao {
 						.build();
 		em.persist(b);		
 	}
+	
+
+	@Override
+	public void boardBydId(EntityManager em, long no) {
+		BoardEntity b=em.find(BoardEntity.class, no);
+		System.out.println("boardEntity조회결과");
+		System.out.println(b);
+	}
 }
