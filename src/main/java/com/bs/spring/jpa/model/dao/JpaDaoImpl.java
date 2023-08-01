@@ -57,25 +57,44 @@ public class JpaDaoImpl implements JpaDao {
 
 	@Override
 	public void manytoone(EntityManager em) {
+//x		BoardEntity b=BoardEntity.builder()
+//						.boardTitle("첫번째 게시글")
+//						.boardContent("나의 첫 게시글")
+//						.writeDate(java.sql.Date.valueOf(LocalDate.now()))
+//						.boardWriter(
+//								JpaMember.builder()
+//								.memberId("202001201")
+//								.memberPwd("rhrhrh22")
+//								.age(new BigDecimal(27))
+//								.height(178.2)
+//								.level(Level.DIAMOND)
+//								.role(Role.ADMIN)
+//								.birthDay(new Date(java.sql.Date.valueOf(LocalDate.of(1998, 8, 3)).getTime()))
+//								.startDate(new Date(java.sql.Timestamp.valueOf(LocalDateTime.of(1998, 8, 3,10,30)).getTime()))
+//								.addr(Address.builder().statement("경기도").detailAddress("시흥시 배곧동")
+//										.zipcode("123-456").build())
+//								.build())
+//						.build();
+//		em.persist(b);
+		JpaMember m=JpaMember.builder()
+				.memberId("202001201")
+				.memberPwd("rhrhrh22")
+				.age(new BigDecimal(27))
+				.height(178.2)
+				.level(Level.DIAMOND)
+				.role(Role.ADMIN)
+				.birthDay(new Date(java.sql.Date.valueOf(LocalDate.of(1998, 8, 3)).getTime()))
+				.startDate(new Date(java.sql.Timestamp.valueOf(LocalDateTime.of(1998, 8, 3,10,30)).getTime()))
+				.addr(Address.builder().statement("경기도").detailAddress("시흥시 배곧동")
+						.zipcode("123-456").build())
+				.build();
+		em.persist(m);	//v(유의) : 영속성을 단계적으로 만들어줘야함	
 		BoardEntity b=BoardEntity.builder()
 						.boardTitle("첫번째 게시글")
 						.boardContent("나의 첫 게시글")
 						.writeDate(java.sql.Date.valueOf(LocalDate.now()))
-						.boardWriter(
-								JpaMember.builder()
-								.memberId("202001201")
-								.memberPwd("rhrhrh22")
-								.age(new BigDecimal(27))
-								.height(178.2)
-								.level(Level.DIAMOND)
-								.role(Role.ADMIN)
-								.birthDay(new Date(java.sql.Date.valueOf(LocalDate.of(1998, 8, 3)).getTime()))
-								.startDate(new Date(java.sql.Timestamp.valueOf(LocalDateTime.of(1998, 8, 3,10,30)).getTime()))
-								.addr(Address.builder().statement("경기도").detailAddress("시흥시 배곧동")
-										.zipcode("123-456").build())
-								.build())
+						.boardWriter(m)
 						.build();
-		em.persist(b);
-		
+		em.persist(b);		
 	}
 }
