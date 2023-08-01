@@ -143,7 +143,11 @@
 			onetoone단방향관계 저장
 		</a>
 	</h3>
-	
+	<h3>
+		<a href="${pageContext.request.contextPath }/jpa/entitydelete.do?no=1">
+			student삭제하기
+		</a>
+	</h3>
 </section>
 
 <jsp:include page="/WEB-INF/views/common/footer.jsp"/>

@@ -47,4 +47,13 @@ public class JpaServiceImpl implements JpaService {
 		em.clear();
 		dao.selectStudentById(em,1);
 	}
+	
+	@Override
+	public void deleteStudent(long no) {
+		// TODO Auto-generated method stub
+		EntityTransaction et=em.getTransaction();
+		et.begin();
+			dao.deleteStudent(em,no);
+		et.commit();
+	}
 }

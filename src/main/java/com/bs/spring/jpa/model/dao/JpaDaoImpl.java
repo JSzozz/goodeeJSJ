@@ -145,5 +145,11 @@ public class JpaDaoImpl implements JpaDao {
 		StudentEntity search=em.find(StudentEntity.class, 1L);
 		System.out.println(search);
 	}
-	
+
+	@Override
+	public void deleteStudent(EntityManager em, long no) {
+		LockerEntity l=em.find(LockerEntity.class, no);	
+		System.out.println(l);
+		em.remove(l);
+	}
 }

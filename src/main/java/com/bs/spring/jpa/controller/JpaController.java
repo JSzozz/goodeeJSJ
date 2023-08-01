@@ -32,5 +32,9 @@ public class JpaController {
 		service.insertStudent();
 		return "redirect:/";
 	}
-	
+	@GetMapping("/entitydelete.do")
+	public String deleteStudent(long no) {
+		service.deleteStudent(no);
+		return "redirect:/";
+	}
 }

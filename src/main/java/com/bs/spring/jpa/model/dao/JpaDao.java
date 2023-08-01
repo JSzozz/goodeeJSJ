@@ -9,5 +9,6 @@ public interface JpaDao {
 	void boardBydId(EntityManager em, long no);
 	void insertStudent(EntityManager em);
 	void selectStudentById(EntityManager em,long no);
+	void deleteStudent(EntityManager em,long no);
 
 }
