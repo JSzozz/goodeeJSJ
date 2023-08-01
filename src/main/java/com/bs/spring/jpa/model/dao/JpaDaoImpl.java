@@ -3,6 +3,7 @@ package com.bs.spring.jpa.model.dao;
 import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.Date;
 
 import javax.persistence.EntityManager;
@@ -95,6 +96,10 @@ public class JpaDaoImpl implements JpaDao {
 						.writeDate(java.sql.Date.valueOf(LocalDate.now()))
 						.boardWriter(m)
 						.build();
+		
+		m.setBoards(new ArrayList());
+		m.getBoards().add(b);
+		
 		em.persist(b);		
 	}
 	
@@ -106,10 +111,11 @@ public class JpaDaoImpl implements JpaDao {
 //		System.out.println(b);
 		JpaMember m=em.find(JpaMember.class, no);
 		System.out.println("jpaMember조회결과");
-		System.out.println(m.getMemberNo()+m.getMemberId()+m.getMemberPwd());
+//		System.out.println(m.getMemberNo()+m.getMemberId()+m.getMemberPwd());
+		System.out.println(m);
 
-		System.out.println("jpaMember조회결과");
-		System.out.println(m.getBoards());
+//		System.out.println("jpaMember조회결과");
+//		System.out.println(m.getBoards());
 	}
 		
 	}

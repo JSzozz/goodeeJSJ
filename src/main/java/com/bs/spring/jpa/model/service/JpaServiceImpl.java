@@ -33,7 +33,7 @@ public class JpaServiceImpl implements JpaService {
 		et.begin();
 			dao.manytoone(em);
 		et.commit();
-		em.clear();//영속성 객체들 비우기
+//		em.clear();//영속성 객체들 비우기
 		dao.boardBydId(em, 1);
 	}
 }
