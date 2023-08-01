@@ -1,5 +1,6 @@
 package com.bs.spring.jpa.entity;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
@@ -26,7 +27,8 @@ public class StudentEntity {
 	
 	private int classNumber;
 	
-	@OneToOne
-	@JoinColumn(name = "mylocker")
+	//영속성전이
+	@OneToOne(cascade = CascadeType.PERSIST)
+	@JoinColumn(name="mylocker", nullable = false)
 	private LockerEntity mylocker;
 }

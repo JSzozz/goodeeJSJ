@@ -40,8 +40,11 @@ public class JpaServiceImpl implements JpaService {
 	@Override
 	public void insertStudent() {
 		EntityTransaction et=em.getTransaction();
+		em.clear();
 		et.begin();
 			dao.insertStudent(em);
 		et.commit();
+		em.clear();
+		dao.selectStudentById(em,1);
 	}
 }

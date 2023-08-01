@@ -123,19 +123,27 @@ public class JpaDaoImpl implements JpaDao {
 	@Override
 	public void insertStudent(EntityManager em) {
 		StudentEntity s=StudentEntity.builder()
-						.studentNo(1)
-						.studentName("유병승")
-						.classNumber(3)
-						.grade(1)
-						.build();
-		LockerEntity l = LockerEntity.builder()
-						.lockerNo(1)
-						.lockerColor("파랑")
-						.lockerPosition("3층 2강의장")
-						.build();
+				.studentNo(1)
+				.studentName("유병승")
+				.classNumber(3)
+				.grade(1)
+				.build();
+		
+		LockerEntity l=LockerEntity.builder()
+				.lockerNo(1).lockerColor("파랑")
+				.lockerPosition("3층 E강의장")
+				.build();
+		
 		s.setMylocker(l);
+		
 		em.persist(s);
+		
 	}
-	
+
+	@Override
+	public void selectStudentById(EntityManager em, long no) {
+		StudentEntity search=em.find(StudentEntity.class, 1L);
+		System.out.println(search);
+	}
 	
 }

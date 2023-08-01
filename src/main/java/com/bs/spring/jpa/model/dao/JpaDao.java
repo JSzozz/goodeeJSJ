@@ -8,5 +8,6 @@ public interface JpaDao {
 	void manytoone(EntityManager em	);
 	void boardBydId(EntityManager em, long no);
 	void insertStudent(EntityManager em);
+	void selectStudentById(EntityManager em,long no);
 
 }
