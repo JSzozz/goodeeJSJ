@@ -138,7 +138,11 @@
 		manyToOne단방향
 		</a>
 	</h3>
-	
+	<h3>
+		<a href="${pageContext.request.contextPath }/jpa/onetoone.do">
+			onetoone단방향관계 저장
+		</a>
+	</h3>
 	
 </section>
 

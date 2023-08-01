@@ -27,5 +27,10 @@ public class JpaController {
 		service.manytoone();
 		return "redirect:/";
 	}
+	@GetMapping("/onetoone.do")
+	public String onetoone() {
+		service.insertStudent();
+		return "redirect:/";
+	}
 	
 }

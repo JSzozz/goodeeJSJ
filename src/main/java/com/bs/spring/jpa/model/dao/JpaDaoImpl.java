@@ -15,6 +15,8 @@ import com.bs.spring.jpa.common.Role;
 import com.bs.spring.jpa.entity.Address;
 import com.bs.spring.jpa.entity.BoardEntity;
 import com.bs.spring.jpa.entity.JpaMember;
+import com.bs.spring.jpa.entity.LockerEntity;
+import com.bs.spring.jpa.entity.StudentEntity;
 
 @Repository
 public class JpaDaoImpl implements JpaDao {
@@ -117,5 +119,23 @@ public class JpaDaoImpl implements JpaDao {
 //		System.out.println("jpaMember조회결과");
 //		System.out.println(m.getBoards());
 	}
-		
+
+	@Override
+	public void insertStudent(EntityManager em) {
+		StudentEntity s=StudentEntity.builder()
+						.studentNo(1)
+						.studentName("유병승")
+						.classNumber(3)
+						.grade(1)
+						.build();
+		LockerEntity l = LockerEntity.builder()
+						.lockerNo(1)
+						.lockerColor("파랑")
+						.lockerPosition("3층 2강의장")
+						.build();
+		s.setMylocker(l);
+		em.persist(s);
 	}
+	
+	
+}

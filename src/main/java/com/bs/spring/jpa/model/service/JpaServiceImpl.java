@@ -36,4 +36,12 @@ public class JpaServiceImpl implements JpaService {
 //		em.clear();//영속성 객체들 비우기
 		dao.boardBydId(em, 1);
 	}
+	
+	@Override
+	public void insertStudent() {
+		EntityTransaction et=em.getTransaction();
+		et.begin();
+			dao.insertStudent(em);
+		et.commit();
+	}
 }
