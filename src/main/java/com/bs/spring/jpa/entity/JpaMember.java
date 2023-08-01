@@ -9,6 +9,7 @@ import javax.persistence.Embedded;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -108,6 +109,7 @@ public class JpaMember {
 	
 	//서브클래스는 mappedBy속성을 추가한다.
 	//List타입을 필드로 갖는 클레스에 mappedBy 설정하자
-	@OneToMany(mappedBy = "boardWriter")
+	//지연로딩 처리하기 -> 프록시 객체를 먼저 불러오고 실제 데이터를 사용할 때 가져오는 기술
+	@OneToMany(mappedBy = "boardWriter",fetch = FetchType.LAZY)
 	List<BoardEntity> boards;
 } 

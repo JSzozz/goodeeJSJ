@@ -101,11 +101,15 @@ public class JpaDaoImpl implements JpaDao {
 
 	@Override
 	public void boardBydId(EntityManager em, long no) {
-		BoardEntity b=em.find(BoardEntity.class, no);
-		System.out.println("boardEntity조회결과");
-		System.out.println(b);
+//		BoardEntity b=em.find(BoardEntity.class, no);
+//		System.out.println("boardEntity조회결과");
+//		System.out.println(b);
 		JpaMember m=em.find(JpaMember.class, no);
 		System.out.println("jpaMember조회결과");
-		System.out.println(m);
+		System.out.println(m.getMemberNo()+m.getMemberId()+m.getMemberPwd());
+
+		System.out.println("jpaMember조회결과");
+		System.out.println(m.getBoards());
 	}
-}
+		
+	}
