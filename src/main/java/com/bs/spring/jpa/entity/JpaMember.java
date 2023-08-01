@@ -13,8 +13,10 @@ import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.Lob;
 import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -112,4 +114,8 @@ public class JpaMember {
 	//지연로딩 처리하기 -> 프록시 객체를 먼저 불러오고 실제 데이터를 사용할 때 가져오는 기술
 	@OneToMany(mappedBy = "boardWriter"/* ,fetch = FetchType.LAZY */)
 	List<BoardEntity> boards;
+	
+	@OneToOne
+	@JoinColumn(name = "mylocker_no")
+	private LockerEntity mylocker;
 } 
