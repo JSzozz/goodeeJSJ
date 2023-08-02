@@ -18,6 +18,7 @@ import com.bs.spring.jpa.entity.BoardEntity;
 import com.bs.spring.jpa.entity.Club;
 import com.bs.spring.jpa.entity.JpaMember;
 import com.bs.spring.jpa.entity.LockerEntity;
+import com.bs.spring.jpa.entity.StudentClubs;
 import com.bs.spring.jpa.entity.StudentEntity;
 
 @Repository
@@ -162,6 +163,7 @@ public class JpaDaoImpl implements JpaDao {
 		student.setGrade(Integer.parseInt((String)param.get("grade")));
 	}
 	
+
 	@Override
 	public void insertClub(EntityManager em) {
 		Club c=Club.builder()
@@ -196,18 +198,24 @@ public class JpaDaoImpl implements JpaDao {
 				.grade(2)
 				.build();
 		
-		s.setClubs(new ArrayList<Club>());
-		s.getClubs().add(c1);
-		s.getClubs().add(c2);
+		StudentClubs sc=StudentClubs.builder()
+				.student(s).club(c).enrollDate(new Date())
+				.build();
 		
-		s2.setClubs(new ArrayList<>());
-		s2.getClubs().add(c3);
+		em.persist(sc);
 		
-		s3.setClubs(new ArrayList<>());
-		s3.getClubs().add(c);
-		s3.getClubs().add(c1);
-		s3.getClubs().add(c2);
-		s3.getClubs().add(c3);
+		//s.setClubs(new ArrayList<>());
+//		s.getClubs().add(c1);
+//		s.getClubs().add(c2);
+		
+	//	s2.setClubs(new ArrayList<>());
+//		s2.getClubs().add(c3);
+		
+		//s3.setClubs(new ArrayList<>());
+//		s3.getClubs().add(c);
+//		s3.getClubs().add(c1);
+//		s3.getClubs().add(c2);
+//		s3.getClubs().add(c3);
 		
 		em.persist(s);
 		em.persist(s2);
