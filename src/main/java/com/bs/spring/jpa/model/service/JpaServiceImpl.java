@@ -1,6 +1,7 @@
 package com.bs.spring.jpa.model.service;
 
 import javax.persistence.EntityManager;
+import javax.persistence.EntityManagerFactory;
 import javax.persistence.EntityTransaction;
 
 import org.springframework.stereotype.Service;
@@ -12,10 +13,12 @@ public class JpaServiceImpl implements JpaService {
 
 	private EntityManager em;
 	private JpaDao dao;
+	private EntityManagerFactory factory;
 	
-	public JpaServiceImpl(EntityManager em, JpaDao dao) {
+	public JpaServiceImpl(EntityManager em , JpaDao dao, EntityManagerFactory factory) {
 		this.em=em;
 		this.dao=dao;
+		this.factory=factory;
 	}
 	
 	@Override
@@ -50,10 +53,12 @@ public class JpaServiceImpl implements JpaService {
 	
 	@Override
 	public void deleteStudent(long no) {
+		EntityManager em=factory.createEntityManager();
 		// TODO Auto-generated method stub
 		EntityTransaction et=em.getTransaction();
 		et.begin();
 			dao.deleteStudent(em,no);
 		et.commit();
+		em.close();
 	}
 }
