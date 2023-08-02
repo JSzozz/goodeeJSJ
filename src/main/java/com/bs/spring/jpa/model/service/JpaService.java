@@ -9,5 +9,6 @@ public interface JpaService {
 	void insertStudent();
 	void deleteStudent(long no);
 	void updateStudent(Map<String,Object> param);
+	void insertClub();
 
 }

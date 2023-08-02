@@ -155,6 +155,10 @@
 		학생학년 <input type="number" name="grade"><br>
 		<input type="submit" value="변경">
 	</form>
+	
+	<h3>
+		<a href="${pageContext.request.contextPath }/jpa/insertClub.do">다대다테스트</a>
+	</h3>
 </section>
 
 <jsp:include page="/WEB-INF/views/common/footer.jsp"/>

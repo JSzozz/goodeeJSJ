@@ -74,4 +74,14 @@ public class JpaServiceImpl implements JpaService {
 		et.commit();
 		em.close();
 	}
+	
+	@Override
+	public void insertClub() {
+		// TODO Auto-generated method stub
+		EntityManager em=factory.createEntityManager();
+		EntityTransaction et=em.getTransaction();
+		et.begin();
+			dao.insertClub(em);
+		et.commit();
+	}
 }

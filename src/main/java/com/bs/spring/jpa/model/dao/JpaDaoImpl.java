@@ -15,6 +15,7 @@ import com.bs.spring.jpa.common.Level;
 import com.bs.spring.jpa.common.Role;
 import com.bs.spring.jpa.entity.Address;
 import com.bs.spring.jpa.entity.BoardEntity;
+import com.bs.spring.jpa.entity.Club;
 import com.bs.spring.jpa.entity.JpaMember;
 import com.bs.spring.jpa.entity.LockerEntity;
 import com.bs.spring.jpa.entity.StudentEntity;
@@ -159,6 +160,59 @@ public class JpaDaoImpl implements JpaDao {
 		StudentEntity student=em.find(StudentEntity.class, Long.parseLong((String)param.get("no")));
 		student.setStudentName((String)param.get("name"));
 		student.setGrade(Integer.parseInt((String)param.get("grade")));
+	}
+	
+	@Override
+	public void insertClub(EntityManager em) {
+		Club c=Club.builder()
+				.clubNo(1).clubName("낚시").location("안양천")
+				.build();
+		Club c1=Club.builder()
+				.clubNo(2).clubName("등산").location("남산")
+				.build();
+		Club c2=Club.builder()
+				.clubNo(3).clubName("컴퓨터").location("정보화교육실")
+				.build();
+		Club c3=Club.builder()
+				.clubNo(4).clubName("축구").location("운동장")
+				.build();
+		
+		StudentEntity s=StudentEntity.builder()
+				.studentNo(1)
+				.studentName("유병승")
+				.classNumber(3)
+				.grade(1)
+				.build();
+		StudentEntity s2=StudentEntity.builder()
+				.studentNo(2)
+				.studentName("강민기")
+				.classNumber(2)
+				.grade(1)
+				.build();
+		StudentEntity s3=StudentEntity.builder()
+				.studentNo(3)
+				.studentName("이은지")
+				.classNumber(4)
+				.grade(2)
+				.build();
+		
+		s.setClubs(new ArrayList<Club>());
+		s.getClubs().add(c1);
+		s.getClubs().add(c2);
+		
+		s2.setClubs(new ArrayList<>());
+		s2.getClubs().add(c3);
+		
+		s3.setClubs(new ArrayList<>());
+		s3.getClubs().add(c);
+		s3.getClubs().add(c1);
+		s3.getClubs().add(c2);
+		s3.getClubs().add(c3);
+		
+		em.persist(s);
+		em.persist(s2);
+		em.persist(s3);
+		
 		
 	}
 	

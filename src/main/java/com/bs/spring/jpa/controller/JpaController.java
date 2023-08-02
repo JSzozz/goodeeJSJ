@@ -49,4 +49,9 @@ public class JpaController {
 		
 		return "redirect:/";
 	}
+	@GetMapping("/insertClub.do")
+	public String insertClub() {
+		service.insertClub();
+		return "redirect:/";
+	}
 }

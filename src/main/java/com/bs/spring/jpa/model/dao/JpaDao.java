@@ -13,5 +13,6 @@ public interface JpaDao {
 	void selectStudentById(EntityManager em,long no);
 	void deleteStudent(EntityManager em,long no);
 	void updateStudent(EntityManager em,Map<String,Object> param);
+	void insertClub(EntityManager em);
 
 }
