@@ -198,11 +198,7 @@ public class JpaDaoImpl implements JpaDao {
 				.grade(2)
 				.build();
 		
-		StudentClubs sc=StudentClubs.builder()
-				.student(s).club(c).enrollDate(new Date())
-				.build();
-		
-		em.persist(sc);
+	
 		
 		//s.setClubs(new ArrayList<>());
 //		s.getClubs().add(c1);
@@ -217,10 +213,18 @@ public class JpaDaoImpl implements JpaDao {
 //		s3.getClubs().add(c2);
 //		s3.getClubs().add(c3);
 		
-		em.persist(s);
-		em.persist(s2);
-		em.persist(s3);
+//		em.persist(s);
+//		em.persist(s2);
+//		em.persist(s3);
+		StudentClubs sc=StudentClubs.builder()
+				.student(s).club(c).enrollDate(new Date())
+				.build();
 		
+		StudentClubs sc2=StudentClubs.builder()
+				.student(s).club(c).enrollDate(new Date())
+				.build();
+		em.persist(sc);
+//		em.persist(sc2); // 주석해제하는 경우 복합키 설정 상 sc와 sc2의 동일 값으로 인한 오류 발생 확인 가능함
 		
 	}
 	
