@@ -44,13 +44,14 @@ public class JpaServiceImpl implements JpaService {
 	
 	@Override
 	public void insertStudent() {
+		EntityManager em=factory.createEntityManager();
 		EntityTransaction et=em.getTransaction();
-		em.clear();
 		et.begin();
 			dao.insertStudent(em);
 		et.commit();
-		em.clear();
-		dao.selectStudentById(em,1);
+		//em.clear();
+		//dao.selectStudentById(em,1);
+		em.close();
 	}
 	
 	@Override

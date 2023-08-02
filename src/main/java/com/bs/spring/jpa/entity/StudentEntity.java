@@ -27,8 +27,10 @@ public class StudentEntity {
 	
 	private int classNumber;
 	
-	//영속성전이
-	@OneToOne(cascade = {CascadeType.PERSIST, CascadeType.REMOVE},orphanRemoval = true)
-	@JoinColumn(name="mylocker", nullable = false)
+//	//영속성전이
+//	@OneToOne(cascade = {CascadeType.PERSIST, CascadeType.REMOVE},orphanRemoval = true)
+//	@JoinColumn(name="mylocker", nullable = false)
+//	private LockerEntity mylocker;
+	@OneToOne(cascade = {CascadeType.PERSIST})
 	private LockerEntity mylocker;
 }
