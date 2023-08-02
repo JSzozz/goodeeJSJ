@@ -148,6 +148,13 @@
 			student삭제하기
 		</a>
 	</h3>
+	<h3>entity수정하기</h3>
+	<form action="${pageContext.request.contextPath }/jpa/updatestudent.do" method="post">
+		학생번호 <input type="text" name="no"><br>
+		학생이름 <input type="text" name="name"><br>
+		학생학년 <input type="number" name="grade"><br>
+		<input type="submit" value="변경">
+	</form>
 </section>
 
 <jsp:include page="/WEB-INF/views/common/footer.jsp"/>

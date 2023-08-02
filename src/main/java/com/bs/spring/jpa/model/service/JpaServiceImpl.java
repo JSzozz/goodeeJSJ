@@ -1,5 +1,7 @@
 package com.bs.spring.jpa.model.service;
 
+import java.util.Map;
+
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.EntityTransaction;
@@ -58,6 +60,16 @@ public class JpaServiceImpl implements JpaService {
 		EntityTransaction et=em.getTransaction();
 		et.begin();
 			dao.deleteStudent(em,no);
+		et.commit();
+		em.close();
+	}
+	
+	@Override
+	public void updateStudent(Map<String, Object> param) {
+		EntityManager em=factory.createEntityManager();
+		EntityTransaction et=em.getTransaction();
+		et.begin();
+			dao.updateStudent(em,param);
 		et.commit();
 		em.close();
 	}

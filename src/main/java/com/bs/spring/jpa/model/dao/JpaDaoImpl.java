@@ -5,6 +5,7 @@ import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.Map;
 
 import javax.persistence.EntityManager;
 
@@ -152,4 +153,13 @@ public class JpaDaoImpl implements JpaDao {
 		System.out.println(l);
 		em.remove(l);
 	}
+	
+	@Override
+	public void updateStudent(EntityManager em, Map<String, Object> param) {
+		StudentEntity student=em.find(StudentEntity.class, Long.parseLong((String)param.get("no")));
+		student.setStudentName((String)param.get("name"));
+		student.setGrade(Integer.parseInt((String)param.get("grade")));
+		
+	}
+	
 }
