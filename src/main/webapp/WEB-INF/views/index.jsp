@@ -159,6 +159,19 @@
 	<h3>
 		<a href="${pageContext.request.contextPath }/jpa/insertClub.do">다대다테스트</a>
 	</h3>
+	
+		<h2>web계정 테이블 조회하기</h2>
+	<h3>
+		<button onclick="getMembers();">전체회원가져오기</button>
+	</h3>
+	<script>
+		function getMembers(){
+			$.get("${pageContext.request.contextPath}/web/members",data=>{
+				console.log(data);
+			});
+		}
+	
+	</script>
 </section>
 
 <jsp:include page="/WEB-INF/views/common/footer.jsp"/>

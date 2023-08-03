@@ -28,9 +28,8 @@ public class JapConfig {
 		EntityManagerFactory factory=Persistence.createEntityManagerFactory("web");
 		return factory;
 	}
-	
-	@Bean(name = "bstest2")
-	public EntityManager entityManager() {
-		return entityManagerFactory().createEntityManager();
-	}
+	/*
+	 * @Bean(name = "bstest2") public EntityManager entityManager() { return
+	 * entityManagerFactory().createEntityManager(); }
+	 */
 }
