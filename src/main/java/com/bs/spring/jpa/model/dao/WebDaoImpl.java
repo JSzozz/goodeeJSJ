@@ -51,6 +51,25 @@ public class WebDaoImpl implements WebDao {
 		System.out.println("query 실행결과");
 		result2.forEach(System.out::println);
 		
+		//컬럼 선택해서 조회하기
+		//프로젝션 사용하기
+		sql="""
+			SELECT m.userName, m.email, m.age
+			FROM WebMember m	
+				""";
+		
+//		tquery=em.createQuery(sql,WebMember.class);//illegalargumentexception 유의!
+		query=em.createQuery(sql); // 결과는 Object[] 생성해서 결과를 반환.
+		System.out.println("컬럼 선택해서 가져오기");
+		List<Object[]> result3=query.getResultList();
+		result3.forEach(e->{
+			System.out.println(e[0]+" "+e[1]+" "+e[2]);
+		});
+//		query.getResultStream().forEach(e->{
+//			Object[] oarr=(Object[])e;
+//			System.out.println(oarr[0]+" "+oarr[1]+" "+oarr[2]);
+//		});
+		
 		return result;
 	}
 
