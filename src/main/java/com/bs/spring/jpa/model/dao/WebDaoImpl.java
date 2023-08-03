@@ -35,6 +35,14 @@ public class WebDaoImpl implements WebDao {
 		// getResultList()메소드를 이용 : 리스트로 row를 가져옴
 		// getSingleResult()메소드를 이용 : 한개 row만 반환하는 쿼리문 -> 다중 row면 Exception발생
 		// getResultStream()메소드를 이용 : row들을 stream으로 반환
+		
+		//페이징처리하기
+		//query클래스에서 페이징처리 메소드를 제공함.
+		//setFirstResult() -> 시작인덱스 0 부터시작 -> cPage
+		//setMaxResults() -> 조회할 갯수 -> numPerPage
+		tquery.setFirstResult(0);
+		tquery.setMaxResults(10);
+		
 		List<WebMember> result=tquery.getResultList();
 		List result2=query.getResultList();
 		
