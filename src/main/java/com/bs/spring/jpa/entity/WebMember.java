@@ -22,7 +22,7 @@ public class WebMember {
 	@Id
 	private String userId;
 	private String password;
-	private String username;
+	private String userName;
 	private String gender;
 	private int age;
 	private String email;

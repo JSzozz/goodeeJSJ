@@ -10,4 +10,5 @@ public interface WebDao {
 	
 	List<WebMember> selectMemberAll(EntityManager em);
 	
+	List<WebMember> selectMemberByName(EntityManager em, String name);
 }

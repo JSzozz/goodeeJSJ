@@ -34,4 +34,14 @@ public class WebServiceImpl implements WebService {
 		return members;
 	}
 
+
+	@Override
+	public List<WebMember> selectMemberByName(String name) {
+		EntityManager em=factory.createEntityManager();
+		List<WebMember> members=dao.selectMemberByName(em, name);
+		em.close();
+		return members;
+	}
+
+	
 }

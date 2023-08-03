@@ -7,6 +7,6 @@ import com.bs.spring.jpa.entity.WebMember;
 public interface WebService {
 	
 	List<WebMember> selectMemberAll();
-	
+	List<WebMember> selectMemberByName(String name);
 	
 }

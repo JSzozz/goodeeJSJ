@@ -164,14 +164,23 @@
 	<h3>
 		<button onclick="getMembers();">전체회원가져오기</button>
 	</h3>
-	<script>
-		function getMembers(){
-			$.get("${pageContext.request.contextPath}/web/members",data=>{
-				console.log(data);
-			});
-		}
+	<h3>
+		<input type="text" id="name"><button onclick="searchMemberName();">검색</button>
+	</h3>
+<script>
+	function searchMemberName(){
+		const name=$("#name").val();
+		$.get("${pageContext.request.contextPath}/web/members/"+name,data=>{
+			console.log(data);
+		})
+	}
+	function getMembers(){
+		$.get("${pageContext.request.contextPath}/web/members",data=>{
+			console.log(data);
+		});
+	}
 	
-	</script>
+</script>
 </section>
 
 <jsp:include page="/WEB-INF/views/common/footer.jsp"/>

@@ -46,4 +46,20 @@ public class WebDaoImpl implements WebDao {
 		return result;
 	}
 
+	@Override
+	public List<WebMember> selectMemberByName(EntityManager em, String name) {
+		//매개변수를 받아서 처리하는 JPQL만들기
+		String sql = """
+				SELECT m
+				FROM WebMember m
+				WHERE m.userName LIKE '%'||:name||'%'
+				""";
+		TypedQuery<WebMember> tquery = em.createQuery(sql, WebMember.class);
+		//setParameter()메소드로 매개변수 세팅
+		tquery.setParameter("name", name);
+		
+		return tquery.getResultList();
+	}
+
+		
 }

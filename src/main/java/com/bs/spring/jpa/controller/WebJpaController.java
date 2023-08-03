@@ -3,6 +3,7 @@ package com.bs.spring.jpa.controller;
 import java.util.List;
 
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -20,11 +21,13 @@ public class WebJpaController {
 		this.service = service;
 	}
 
-
-
 	@GetMapping("/members")
 	public List<WebMember> selectMemberAll(){
 		return service.selectMemberAll();
+	}
+	@GetMapping("/members/{name}")
+	public List<WebMember> selectMemberByName(@PathVariable("name") String name){
+		return service.selectMemberByName(name);
 	}
 }
 
