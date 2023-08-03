@@ -6,6 +6,7 @@ import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.EntityTransaction;
 
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 
 import com.bs.spring.jpa.model.dao.JpaDao;
@@ -17,7 +18,7 @@ public class JpaServiceImpl implements JpaService {
 	private JpaDao dao;
 	private EntityManagerFactory factory;
 	
-	public JpaServiceImpl(EntityManager em , JpaDao dao, EntityManagerFactory factory) {
+	public JpaServiceImpl(@Qualifier("bstest2")EntityManager em , JpaDao dao, @Qualifier("bstest") EntityManagerFactory factory) {
 		this.em=em;
 		this.dao=dao;
 		this.factory=factory;

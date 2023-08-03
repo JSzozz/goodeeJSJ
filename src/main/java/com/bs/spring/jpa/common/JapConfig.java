@@ -17,13 +17,19 @@ public class JapConfig {
 	//EntityManagerFactory클래스를 가져오기 위해서는 
 	//Persistence클래스의 static메소드인 createEntityManagerFactory()메소드를 이용한다.
 	
-	@Bean
+	@Bean(name = "bstest")
 	public EntityManagerFactory entityManagerFactory() {
 		EntityManagerFactory factory=Persistence.createEntityManagerFactory("bstest");
 		return factory;
 	}
 	
-	@Bean
+	@Bean(name="web")
+	public EntityManagerFactory entityManagerFactoryWeb() {
+		EntityManagerFactory factory=Persistence.createEntityManagerFactory("web");
+		return factory;
+	}
+	
+	@Bean(name = "bstest2")
 	public EntityManager entityManager() {
 		return entityManagerFactory().createEntityManager();
 	}
