@@ -1,5 +1,6 @@
 package com.bs.spring.jpa.model.dao;
 
+import java.util.Arrays;
 import java.util.List;
 
 import javax.persistence.EntityManager;
@@ -69,6 +70,23 @@ public class WebDaoImpl implements WebDao {
 //			Object[] oarr=(Object[])e;
 //			System.out.println(oarr[0]+" "+oarr[1]+" "+oarr[2]);
 //		});
+		
+		sql="""
+				SELECT AVG(m.age), sum(m.age), count(m)
+				FROM WebMember m 
+				GROUP BY m.gender
+				HAVING count(m)> 50
+				""";
+			query=em.createQuery(sql);
+			result3=query.getResultList();
+			//Object[] group=(Object[])query.getSingleResult();
+			System.out.println("그룹함수 이용");
+			result3.forEach(e->{
+				System.out.println(e[0]+" "+e[1]+" "+e[2]);
+			});
+			//System.out.println(Arrays.toString(group));
+//			System.out.println(group);
+			
 		
 		return result;
 	}
