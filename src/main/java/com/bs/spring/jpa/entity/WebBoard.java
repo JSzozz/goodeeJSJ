@@ -21,7 +21,7 @@ import lombok.ToString;
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
-@ToString(exclude = "boardWriter")
+@ToString(exclude = "boardWriter") 
 public class WebBoard {
 	@Id
 	@Column(name="board_no")
