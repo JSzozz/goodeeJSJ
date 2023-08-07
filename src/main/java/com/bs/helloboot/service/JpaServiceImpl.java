@@ -2,6 +2,8 @@ package com.bs.helloboot.service;
 
 import java.util.List;
 
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import com.bs.helloboot.dao.JpaBoardDao;
@@ -35,7 +37,10 @@ public class JpaServiceImpl implements JpaService {
 	@Override
 	public List<BoardEntity> selectBoardAll() {
 		// TODO Auto-generated method stub
-		return boardDao.findAll();
+		//return boardDao.findAll();
+		return boardDao.findAll(PageRequest.of(0,5,Sort.by("boardDate").descending()))
+				.get().toList();
+		//import org.springframework.data.domain.Sort;
 	}
 
 	@Override

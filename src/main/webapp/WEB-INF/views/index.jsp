@@ -58,7 +58,7 @@
 	<h2>jpa적용하기</h2>
 	<h3><a href="${pageContext.request.contextPath }/jpa/member/admin">관리자 조회</a></h3>
 	<h3><a href="${pageContext.request.contextPath }/jpa/member/insertMember">회원정보저장</a></h3>
-	<h3><a href="${pageContext.request.contextPath }/board">전체 게시글조회</a></h3>
+	<h3><a href="${pageContext.request.contextPath }/board">전체 게시글조회(페이징처리추가)</a></h3>
 	<h3><a href="${pageContext.request.contextPath }/board?title=안녕">제목으로 게시글조회</a></h3>
 
 </body>

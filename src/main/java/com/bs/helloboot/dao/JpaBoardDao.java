@@ -2,6 +2,8 @@ package com.bs.helloboot.dao;
 
 import java.util.List;
 
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
@@ -20,4 +22,8 @@ public interface JpaBoardDao extends JpaRepository<BoardEntity, Long>{
 	
 	List<BoardEntity> findByBoardWriter(String boardWriter);
 
+	//페이징 처리하기
+	Page<BoardEntity> findAll(Pageable p);
+	//import org.springframework.data.domain.Page;
+	//import org.springframework.data.domain.Pageable;
 }
