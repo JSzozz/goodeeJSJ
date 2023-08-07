@@ -54,5 +54,8 @@
 				});
 		}
 	</script>
+	
+	<h2>jpa적용하기</h2>
+	<h3><a href="${pageContext.request.contextPath }/jpa/member/admin">관리자 조회</a></h3>
 </body>
 </html>
