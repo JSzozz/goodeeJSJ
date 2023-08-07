@@ -46,13 +46,13 @@ public class JpaServiceImpl implements JpaService {
 	@Override
 	public List<BoardEntity> selectByTitle(String title) {
 		// TODO Auto-generated method stub
-		return null;
+		return boardDao.findByBoardTitleLike("%"+title+"%");
 	}
 
 	@Override
 	public List<BoardEntity> selectByTitleAndContent(String title, String content) {
 		// TODO Auto-generated method stub
-		return boardDao.findByBoardTitleLike("%"+title+"%");
+		return null;
 	}
 
 	@Override
