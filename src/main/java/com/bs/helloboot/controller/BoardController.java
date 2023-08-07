@@ -24,6 +24,11 @@ public class BoardController {
 	public List<BoardEntity> selectAllBoard(){
 		return service.selectBoardAll();
 	}
+
+	@GetMapping(params = "title")
+	public List<BoardEntity> selectBoardByTitle(String title){
+		return service.selectByTitle(title);
+	}
 }
 
 
