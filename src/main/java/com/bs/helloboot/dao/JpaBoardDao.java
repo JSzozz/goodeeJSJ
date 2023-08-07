@@ -18,4 +18,6 @@ public interface JpaBoardDao extends JpaRepository<BoardEntity, Long>{
 	// 정렬 -> findBy필드명OrderBy필드명Asc||Desc(value)
 	List<BoardEntity> findByBoardTitleLike(String title);
 	
+	List<BoardEntity> findByBoardWriter(String boardWriter);
+
 }
