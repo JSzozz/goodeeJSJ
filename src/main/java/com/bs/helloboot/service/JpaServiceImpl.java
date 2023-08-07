@@ -20,4 +20,9 @@ public class JpaServiceImpl implements JpaService {
 		// TODO Auto-generated method stub
 		return memberDao.findById(id).orElseThrow();
 	}
+
+	@Override
+	public void insertMember(MemberDto m) {
+		memberDao.save(m);
+	}
 }

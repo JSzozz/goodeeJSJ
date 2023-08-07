@@ -5,4 +5,6 @@ import com.bs.helloboot.dto.MemberDto;
 public interface JpaService {
 
 	MemberDto selectById(String id);
+	void insertMember(MemberDto m);
+
 }
