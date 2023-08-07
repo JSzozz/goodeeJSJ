@@ -36,7 +36,7 @@
 		}
 	</script>
 	
-	
+	<br>
 	<button onclick="memberAll();">요청처리하기</button>
 	<script>
 		const memberAll=()=>{
